@@ -107,14 +107,26 @@ class UtilisateurController extends AppController
     }
 
     public function login()
-{
-    if ($this->request->is('post')) {
-        $utilisateur = $this->Auth->identify();
-        if ($utilisateur) {
-            $this->Auth->setUser($utilisateur);
-            return $this->redirect($this->Auth->redirectUrl());
+    {
+        if ($this->request->is('post')) {
+            $utilisateur = $this->Auth->identify();
+            if ($utilisateur) {
+                $this->Auth->setUser($utilisateur);
+                return $this->redirect($this->Auth->redirectUrl());
+            }
+            $this->Flash->error('Votre username ou mot de passe est incorrect.');
         }
-        $this->Flash->error('Votre username ou mot de passe est incorrect.');
     }
-}
+
+    public function initialize()
+    {
+        parent::initialize();
+        $this->Auth->allow(['logout','add']);
+    }
+
+    public function logout() 
+    {
+        $this->Flash->success('Vous êtes maintenant déconnecté.');
+        return $this->redirect($this->Auth->logout());
+    }
 }

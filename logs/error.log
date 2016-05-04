@@ -151,3 +151,1261 @@ Stack Trace:
 #3 {main}
 
 
+2016-05-04 13:33:18 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'bddcake.users' doesn't exist
+Request URL: /utilisateur/login
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(96): Cake\Database\Schema\Collection->_reflect('Column', 'users', Array, Object(Cake\Database\Schema\Table))
+#1 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(64): Cake\Database\Schema\Collection->describe('users', Array)
+#2 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Table.php(429): Cake\Database\Schema\CachedCollection->describe('users')
+#3 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Query.php(211): Cake\ORM\Table->schema()
+#4 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Query.php(169): Cake\ORM\Query->addDefaultTypes(Object(Cake\ORM\Table))
+#5 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Table.php(1242): Cake\ORM\Query->__construct(Object(Cake\Database\Connection), Object(Cake\ORM\Table))
+#6 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Table.php(945): Cake\ORM\Table->query()
+#7 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Auth\BaseAuthenticate.php(156): Cake\ORM\Table->find('all', Array)
+#8 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Auth\BaseAuthenticate.php(108): Cake\Auth\BaseAuthenticate->_query('cake')
+#9 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Auth\FormAuthenticate.php(77): Cake\Auth\BaseAuthenticate->_findUser('cake', 'isalie')
+#10 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Controller\Component\AuthComponent.php(769): Cake\Auth\FormAuthenticate->authenticate(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#11 C:\wamp\www\journalCake\JournalActivite_cakePhp\src\Controller\UtilisateurController.php(112): Cake\Controller\Component\AuthComponent->identify()
+#12 [internal function]: App\Controller\UtilisateurController->login()
+#13 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Controller\Controller.php(429): call_user_func_array(Array, Array)
+#14 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(114): Cake\Controller\Controller->invokeAction()
+#15 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\UtilisateurController))
+#16 C:\wamp\www\journalCake\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#17 {main}
+
+
+2016-05-04 13:39:10 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'bddcake.users' doesn't exist
+Request URL: /utilisateur/login
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(96): Cake\Database\Schema\Collection->_reflect('Column', 'users', Array, Object(Cake\Database\Schema\Table))
+#1 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(64): Cake\Database\Schema\Collection->describe('users', Array)
+#2 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Table.php(429): Cake\Database\Schema\CachedCollection->describe('users')
+#3 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Query.php(211): Cake\ORM\Table->schema()
+#4 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Query.php(169): Cake\ORM\Query->addDefaultTypes(Object(Cake\ORM\Table))
+#5 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Table.php(1242): Cake\ORM\Query->__construct(Object(Cake\Database\Connection), Object(Cake\ORM\Table))
+#6 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Table.php(945): Cake\ORM\Table->query()
+#7 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Auth\BaseAuthenticate.php(156): Cake\ORM\Table->find('all', Array)
+#8 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Auth\BaseAuthenticate.php(108): Cake\Auth\BaseAuthenticate->_query('cake')
+#9 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Auth\FormAuthenticate.php(77): Cake\Auth\BaseAuthenticate->_findUser('cake', 'isalie')
+#10 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Controller\Component\AuthComponent.php(769): Cake\Auth\FormAuthenticate->authenticate(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#11 C:\wamp\www\journalCake\JournalActivite_cakePhp\src\Controller\UtilisateurController.php(112): Cake\Controller\Component\AuthComponent->identify()
+#12 [internal function]: App\Controller\UtilisateurController->login()
+#13 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Controller\Controller.php(429): call_user_func_array(Array, Array)
+#14 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(114): Cake\Controller\Controller->invokeAction()
+#15 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\UtilisateurController))
+#16 C:\wamp\www\journalCake\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#17 {main}
+
+
+2016-05-04 13:42:34 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'bddcake.users' doesn't exist
+Request URL: /utilisateur/login
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(96): Cake\Database\Schema\Collection->_reflect('Column', 'users', Array, Object(Cake\Database\Schema\Table))
+#1 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(64): Cake\Database\Schema\Collection->describe('users', Array)
+#2 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Table.php(429): Cake\Database\Schema\CachedCollection->describe('users')
+#3 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Query.php(211): Cake\ORM\Table->schema()
+#4 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Query.php(169): Cake\ORM\Query->addDefaultTypes(Object(Cake\ORM\Table))
+#5 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Table.php(1242): Cake\ORM\Query->__construct(Object(Cake\Database\Connection), Object(Cake\ORM\Table))
+#6 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Table.php(945): Cake\ORM\Table->query()
+#7 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Auth\BaseAuthenticate.php(156): Cake\ORM\Table->find('all', Array)
+#8 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Auth\BaseAuthenticate.php(108): Cake\Auth\BaseAuthenticate->_query('cake')
+#9 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Auth\FormAuthenticate.php(77): Cake\Auth\BaseAuthenticate->_findUser('cake', 'isalie')
+#10 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Controller\Component\AuthComponent.php(769): Cake\Auth\FormAuthenticate->authenticate(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#11 C:\wamp\www\journalCake\JournalActivite_cakePhp\src\Controller\UtilisateurController.php(112): Cake\Controller\Component\AuthComponent->identify()
+#12 [internal function]: App\Controller\UtilisateurController->login()
+#13 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Controller\Controller.php(429): call_user_func_array(Array, Array)
+#14 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(114): Cake\Controller\Controller->invokeAction()
+#15 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\UtilisateurController))
+#16 C:\wamp\www\journalCake\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#17 {main}
+
+
+2016-05-04 14:15:10 Warning: Warning (512): Method App\View\Helper\HtmlHelper::charset does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::charset() - APP/Template\Layout\default.ctp, line 21
+include - APP/Template\Layout\default.ctp, line 21
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:15:10 Warning: Warning (512): Method App\View\Helper\HtmlHelper::meta does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::meta() - APP/Template\Layout\default.ctp, line 27
+include - APP/Template\Layout\default.ctp, line 27
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:15:10 Warning: Warning (512): Method App\View\Helper\HtmlHelper::css does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::css() - APP/Template\Layout\default.ctp, line 29
+include - APP/Template\Layout\default.ctp, line 29
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:15:10 Warning: Warning (512): Method App\View\Helper\HtmlHelper::css does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::css() - APP/Template\Layout\default.ctp, line 30
+include - APP/Template\Layout\default.ctp, line 30
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:15:11 Warning: Warning (512): Method App\View\Helper\HtmlHelper::image does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /debug_kit/toolbar/28d80d03-42dd-4c79-9ba0-8230528fdd91
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::image() - ROOT\vendor\cakephp\debug_kit\src\Template\Requests\view.ctp, line 29
+include - ROOT\vendor\cakephp\debug_kit\src\Template\Requests\view.ctp, line 29
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::render() - CORE\src\View\View.php, line 587
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:15:11 Warning: Warning (512): Method App\View\Helper\HtmlHelper::script does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /debug_kit/toolbar/28d80d03-42dd-4c79-9ba0-8230528fdd91
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::script() - ROOT\vendor\cakephp\debug_kit\src\Template\Requests\view.ctp, line 38
+include - ROOT\vendor\cakephp\debug_kit\src\Template\Requests\view.ctp, line 38
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::render() - CORE\src\View\View.php, line 587
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:15:11 Warning: Warning (512): Method App\View\Helper\HtmlHelper::css does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /debug_kit/toolbar/28d80d03-42dd-4c79-9ba0-8230528fdd91
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::css() - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 5
+include - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 5
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:15:11 Warning: Warning (512): Method App\View\Helper\HtmlHelper::css does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /debug_kit/toolbar/28d80d03-42dd-4c79-9ba0-8230528fdd91
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::css() - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 6
+include - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 6
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:15:11 Warning: Warning (512): Method App\View\Helper\HtmlHelper::image does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /debug_kit/toolbar/28d80d03-42dd-4c79-9ba0-8230528fdd91
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::image() - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 11
+include - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 11
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:15:11 Warning: Warning (512): Method App\View\Helper\HtmlHelper::script does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /debug_kit/toolbar/28d80d03-42dd-4c79-9ba0-8230528fdd91
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::script() - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 14
+include - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 14
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:15:11 Warning: Warning (512): Method App\View\Helper\HtmlHelper::script does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /debug_kit/toolbar/28d80d03-42dd-4c79-9ba0-8230528fdd91
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::script() - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 15
+include - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 15
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:16:29 Error: Fatal Error (4): syntax error, unexpected 'echo' (T_ECHO), expecting function (T_FUNCTION) in [C:\wamp\www\journalCake\JournalActivite_cakePhp\src\View\Helper\HtmlHelper.php, line 20]
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 215
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-05-04 14:16:30 Error: [Cake\Error\FatalErrorException] syntax error, unexpected 'echo' (T_ECHO), expecting function (T_FUNCTION)
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\jou...', 20)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-05-04 14:16:30 Error: Fatal Error (4): syntax error, unexpected 'echo' (T_ECHO), expecting function (T_FUNCTION) in [C:\wamp\www\journalCake\JournalActivite_cakePhp\src\View\Helper\HtmlHelper.php, line 20]
+Request URL: /debug_kit/toolbar/4b40fb17-df23-4373-a462-a15f0b2ed0c5
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 215
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-05-04 14:16:30 Error: [Cake\Error\FatalErrorException] syntax error, unexpected 'echo' (T_ECHO), expecting function (T_FUNCTION)
+Request URL: /debug_kit/toolbar/4b40fb17-df23-4373-a462-a15f0b2ed0c5
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\jou...', 20)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-05-04 14:16:53 Warning: Warning (512): Method App\View\Helper\HtmlHelper::charset does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::charset() - APP/Template\Layout\default.ctp, line 21
+include - APP/Template\Layout\default.ctp, line 21
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:16:53 Warning: Warning (512): Method App\View\Helper\HtmlHelper::meta does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::meta() - APP/Template\Layout\default.ctp, line 27
+include - APP/Template\Layout\default.ctp, line 27
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:16:53 Warning: Warning (512): Method App\View\Helper\HtmlHelper::css does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::css() - APP/Template\Layout\default.ctp, line 29
+include - APP/Template\Layout\default.ctp, line 29
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:16:53 Warning: Warning (512): Method App\View\Helper\HtmlHelper::css does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::css() - APP/Template\Layout\default.ctp, line 30
+include - APP/Template\Layout\default.ctp, line 30
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:16:55 Warning: Warning (512): Method App\View\Helper\HtmlHelper::image does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /debug_kit/toolbar/ba4032f3-197c-4553-97ab-891479a326ba
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::image() - ROOT\vendor\cakephp\debug_kit\src\Template\Requests\view.ctp, line 29
+include - ROOT\vendor\cakephp\debug_kit\src\Template\Requests\view.ctp, line 29
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::render() - CORE\src\View\View.php, line 587
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:16:55 Warning: Warning (512): Method App\View\Helper\HtmlHelper::script does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /debug_kit/toolbar/ba4032f3-197c-4553-97ab-891479a326ba
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::script() - ROOT\vendor\cakephp\debug_kit\src\Template\Requests\view.ctp, line 38
+include - ROOT\vendor\cakephp\debug_kit\src\Template\Requests\view.ctp, line 38
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::render() - CORE\src\View\View.php, line 587
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:16:55 Warning: Warning (512): Method App\View\Helper\HtmlHelper::css does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /debug_kit/toolbar/ba4032f3-197c-4553-97ab-891479a326ba
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::css() - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 5
+include - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 5
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:16:55 Warning: Warning (512): Method App\View\Helper\HtmlHelper::css does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /debug_kit/toolbar/ba4032f3-197c-4553-97ab-891479a326ba
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::css() - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 6
+include - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 6
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:16:55 Warning: Warning (512): Method App\View\Helper\HtmlHelper::image does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /debug_kit/toolbar/ba4032f3-197c-4553-97ab-891479a326ba
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::image() - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 11
+include - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 11
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:16:55 Warning: Warning (512): Method App\View\Helper\HtmlHelper::script does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /debug_kit/toolbar/ba4032f3-197c-4553-97ab-891479a326ba
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::script() - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 14
+include - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 14
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:16:55 Warning: Warning (512): Method App\View\Helper\HtmlHelper::script does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /debug_kit/toolbar/ba4032f3-197c-4553-97ab-891479a326ba
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::script() - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 15
+include - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 15
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:17:16 Error: Fatal Error (4): syntax error, unexpected 'echo' (T_ECHO) in [C:\wamp\www\journalCake\JournalActivite_cakePhp\src\Template\Utilisateur\login.ctp, line 1]
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 215
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-05-04 14:17:16 Warning: Warning (512): Method App\View\Helper\HtmlHelper::charset does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::charset() - CORE\src\Template\Layout\dev_error.ctp, line 20
+include - CORE\src\Template\Layout\dev_error.ctp, line 20
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Error\ExceptionRenderer::_outputMessage() - CORE\src\Error\ExceptionRenderer.php, line 320
+Cake\Error\ExceptionRenderer::render() - CORE\src\Error\ExceptionRenderer.php, line 192
+Cake\Error\ErrorHandler::_displayException() - CORE\src\Error\ErrorHandler.php, line 144
+Cake\Error\BaseErrorHandler::handleException() - CORE\src\Error\BaseErrorHandler.php, line 179
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 217
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-05-04 14:17:16 Warning: Warning (512): Method App\View\Helper\HtmlHelper::meta does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::meta() - CORE\src\Template\Layout\dev_error.ctp, line 25
+include - CORE\src\Template\Layout\dev_error.ctp, line 25
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Error\ExceptionRenderer::_outputMessage() - CORE\src\Error\ExceptionRenderer.php, line 320
+Cake\Error\ExceptionRenderer::render() - CORE\src\Error\ExceptionRenderer.php, line 192
+Cake\Error\ErrorHandler::_displayException() - CORE\src\Error\ErrorHandler.php, line 144
+Cake\Error\BaseErrorHandler::handleException() - CORE\src\Error\BaseErrorHandler.php, line 179
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 217
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-05-04 14:17:17 Error: [Cake\Error\FatalErrorException] syntax error, unexpected 'echo' (T_ECHO)
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\jou...', 1)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-05-04 14:17:18 Warning: Warning (512): Method App\View\Helper\HtmlHelper::image does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /debug_kit/toolbar/a7baef73-6e7d-41d0-b4a6-6e69eb74df70
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::image() - ROOT\vendor\cakephp\debug_kit\src\Template\Requests\view.ctp, line 29
+include - ROOT\vendor\cakephp\debug_kit\src\Template\Requests\view.ctp, line 29
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::render() - CORE\src\View\View.php, line 587
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:17:18 Warning: Warning (512): Method App\View\Helper\HtmlHelper::script does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /debug_kit/toolbar/a7baef73-6e7d-41d0-b4a6-6e69eb74df70
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::script() - ROOT\vendor\cakephp\debug_kit\src\Template\Requests\view.ctp, line 38
+include - ROOT\vendor\cakephp\debug_kit\src\Template\Requests\view.ctp, line 38
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::render() - CORE\src\View\View.php, line 587
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:17:18 Warning: Warning (512): Method App\View\Helper\HtmlHelper::css does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /debug_kit/toolbar/a7baef73-6e7d-41d0-b4a6-6e69eb74df70
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::css() - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 5
+include - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 5
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:17:18 Warning: Warning (512): Method App\View\Helper\HtmlHelper::css does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /debug_kit/toolbar/a7baef73-6e7d-41d0-b4a6-6e69eb74df70
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::css() - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 6
+include - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 6
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:17:18 Warning: Warning (512): Method App\View\Helper\HtmlHelper::image does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /debug_kit/toolbar/a7baef73-6e7d-41d0-b4a6-6e69eb74df70
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::image() - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 11
+include - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 11
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:17:18 Warning: Warning (512): Method App\View\Helper\HtmlHelper::script does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /debug_kit/toolbar/a7baef73-6e7d-41d0-b4a6-6e69eb74df70
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::script() - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 14
+include - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 14
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:17:18 Warning: Warning (512): Method App\View\Helper\HtmlHelper::script does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /debug_kit/toolbar/a7baef73-6e7d-41d0-b4a6-6e69eb74df70
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::script() - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 15
+include - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 15
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:17:35 Warning: Warning (512): Method App\View\Helper\HtmlHelper::charset does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::charset() - APP/Template\Utilisateur\login.ctp, line 1
+include - APP/Template\Utilisateur\login.ctp, line 1
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::render() - CORE\src\View\View.php, line 587
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:17:35 Warning: Warning (512): Method App\View\Helper\HtmlHelper::charset does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::charset() - APP/Template\Layout\default.ctp, line 21
+include - APP/Template\Layout\default.ctp, line 21
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:17:35 Warning: Warning (512): Method App\View\Helper\HtmlHelper::meta does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::meta() - APP/Template\Layout\default.ctp, line 27
+include - APP/Template\Layout\default.ctp, line 27
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:17:35 Warning: Warning (512): Method App\View\Helper\HtmlHelper::css does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::css() - APP/Template\Layout\default.ctp, line 29
+include - APP/Template\Layout\default.ctp, line 29
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:17:35 Warning: Warning (512): Method App\View\Helper\HtmlHelper::css does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::css() - APP/Template\Layout\default.ctp, line 30
+include - APP/Template\Layout\default.ctp, line 30
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:17:37 Warning: Warning (512): Method App\View\Helper\HtmlHelper::image does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /debug_kit/toolbar/057d49f5-f72e-4d34-b5ba-7a225b6474c3
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::image() - ROOT\vendor\cakephp\debug_kit\src\Template\Requests\view.ctp, line 29
+include - ROOT\vendor\cakephp\debug_kit\src\Template\Requests\view.ctp, line 29
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::render() - CORE\src\View\View.php, line 587
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:17:37 Warning: Warning (512): Method App\View\Helper\HtmlHelper::script does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /debug_kit/toolbar/057d49f5-f72e-4d34-b5ba-7a225b6474c3
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::script() - ROOT\vendor\cakephp\debug_kit\src\Template\Requests\view.ctp, line 38
+include - ROOT\vendor\cakephp\debug_kit\src\Template\Requests\view.ctp, line 38
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::render() - CORE\src\View\View.php, line 587
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:17:37 Warning: Warning (512): Method App\View\Helper\HtmlHelper::css does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /debug_kit/toolbar/057d49f5-f72e-4d34-b5ba-7a225b6474c3
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::css() - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 5
+include - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 5
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:17:37 Warning: Warning (512): Method App\View\Helper\HtmlHelper::css does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /debug_kit/toolbar/057d49f5-f72e-4d34-b5ba-7a225b6474c3
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::css() - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 6
+include - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 6
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:17:37 Warning: Warning (512): Method App\View\Helper\HtmlHelper::image does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /debug_kit/toolbar/057d49f5-f72e-4d34-b5ba-7a225b6474c3
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::image() - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 11
+include - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 11
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:17:37 Warning: Warning (512): Method App\View\Helper\HtmlHelper::script does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /debug_kit/toolbar/057d49f5-f72e-4d34-b5ba-7a225b6474c3
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::script() - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 14
+include - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 14
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:17:37 Warning: Warning (512): Method App\View\Helper\HtmlHelper::script does not exist in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\Helper.php, line 140]
+Request URL: /debug_kit/toolbar/057d49f5-f72e-4d34-b5ba-7a225b6474c3
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 146
+Cake\View\Helper::__call() - CORE\src\View\Helper.php, line 140
+App\View\Helper\HtmlHelper::script() - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 15
+include - ROOT\vendor\cakephp\debug_kit\src\Template\Layout\toolbar.ctp, line 15
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::renderLayout() - CORE\src\View\View.php, line 633
+Cake\View\View::render() - CORE\src\View\View.php, line 592
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-05-04 14:21:11 Error: Fatal Error (4): syntax error, unexpected '$this' (T_VARIABLE), expecting function (T_FUNCTION) in [C:\wamp\www\journalCake\JournalActivite_cakePhp\src\View\Helper\HtmlHelper.php, line 20]
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 215
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-05-04 14:21:12 Error: [Cake\Error\FatalErrorException] syntax error, unexpected '$this' (T_VARIABLE), expecting function (T_FUNCTION)
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\jou...', 20)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-05-04 14:21:12 Error: Fatal Error (4): syntax error, unexpected '$this' (T_VARIABLE), expecting function (T_FUNCTION) in [C:\wamp\www\journalCake\JournalActivite_cakePhp\src\View\Helper\HtmlHelper.php, line 20]
+Request URL: /debug_kit/toolbar/ec78f811-2e3c-4109-adfb-35b9e944ae55
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 215
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-05-04 14:21:12 Error: [Cake\Error\FatalErrorException] syntax error, unexpected '$this' (T_VARIABLE), expecting function (T_FUNCTION)
+Request URL: /debug_kit/toolbar/ec78f811-2e3c-4109-adfb-35b9e944ae55
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\jou...', 20)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-05-04 14:21:29 Error: Fatal Error (4): syntax error, unexpected 'echo' (T_ECHO), expecting function (T_FUNCTION) in [C:\wamp\www\journalCake\JournalActivite_cakePhp\src\View\Helper\HtmlHelper.php, line 20]
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 215
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-05-04 14:21:30 Error: [Cake\Error\FatalErrorException] syntax error, unexpected 'echo' (T_ECHO), expecting function (T_FUNCTION)
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\jou...', 20)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-05-04 14:21:31 Error: Fatal Error (4): syntax error, unexpected 'echo' (T_ECHO), expecting function (T_FUNCTION) in [C:\wamp\www\journalCake\JournalActivite_cakePhp\src\View\Helper\HtmlHelper.php, line 20]
+Request URL: /debug_kit/toolbar/16524606-3659-4816-9ecb-69c3c48eeeee
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 215
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-05-04 14:21:31 Error: [Cake\Error\FatalErrorException] syntax error, unexpected 'echo' (T_ECHO), expecting function (T_FUNCTION)
+Request URL: /debug_kit/toolbar/16524606-3659-4816-9ecb-69c3c48eeeee
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\jou...', 20)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-05-04 14:21:55 Error: Fatal Error (4): syntax error, unexpected '$this' (T_VARIABLE), expecting function (T_FUNCTION) in [C:\wamp\www\journalCake\JournalActivite_cakePhp\src\View\Helper\HtmlHelper.php, line 20]
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 215
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-05-04 14:21:56 Error: [Cake\Error\FatalErrorException] syntax error, unexpected '$this' (T_VARIABLE), expecting function (T_FUNCTION)
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\jou...', 20)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-05-04 14:21:56 Error: Fatal Error (4): syntax error, unexpected '$this' (T_VARIABLE), expecting function (T_FUNCTION) in [C:\wamp\www\journalCake\JournalActivite_cakePhp\src\View\Helper\HtmlHelper.php, line 20]
+Request URL: /debug_kit/toolbar/3b0922bf-0d39-4add-bdeb-f4f938e4cf14
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 215
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-05-04 14:21:56 Error: [Cake\Error\FatalErrorException] syntax error, unexpected '$this' (T_VARIABLE), expecting function (T_FUNCTION)
+Request URL: /debug_kit/toolbar/3b0922bf-0d39-4add-bdeb-f4f938e4cf14
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\jou...', 20)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-05-04 14:24:31 Error: Fatal Error (4): syntax error, unexpected '(', expecting ']' in [C:\wamp\www\journalCake\JournalActivite_cakePhp\src\View\Helper\HtmlHelper.php, line 17]
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 215
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-05-04 14:24:32 Error: [Cake\Error\FatalErrorException] syntax error, unexpected '(', expecting ']'
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\jou...', 17)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-05-04 14:24:32 Error: Fatal Error (4): syntax error, unexpected '(', expecting ']' in [C:\wamp\www\journalCake\JournalActivite_cakePhp\src\View\Helper\HtmlHelper.php, line 17]
+Request URL: /debug_kit/toolbar/265a97fa-9084-4b05-aecc-2f88e825f6b8
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 215
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-05-04 14:24:32 Error: [Cake\Error\FatalErrorException] syntax error, unexpected '(', expecting ']'
+Request URL: /debug_kit/toolbar/265a97fa-9084-4b05-aecc-2f88e825f6b8
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\jou...', 17)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-05-04 14:24:52 Error: Fatal Error (4): syntax error, unexpected '->' (T_OBJECT_OPERATOR), expecting ']' in [C:\wamp\www\journalCake\JournalActivite_cakePhp\src\View\Helper\HtmlHelper.php, line 17]
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 215
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-05-04 14:24:53 Error: [Cake\Error\FatalErrorException] syntax error, unexpected '->' (T_OBJECT_OPERATOR), expecting ']'
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\jou...', 17)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-05-04 14:24:53 Error: Fatal Error (4): syntax error, unexpected '->' (T_OBJECT_OPERATOR), expecting ']' in [C:\wamp\www\journalCake\JournalActivite_cakePhp\src\View\Helper\HtmlHelper.php, line 17]
+Request URL: /debug_kit/toolbar/e4f31ec1-2034-414d-8a90-482e20f309a6
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 215
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-05-04 14:24:53 Error: [Cake\Error\FatalErrorException] syntax error, unexpected '->' (T_OBJECT_OPERATOR), expecting ']'
+Request URL: /debug_kit/toolbar/e4f31ec1-2034-414d-8a90-482e20f309a6
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\jou...', 17)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-05-04 14:25:08 Error: Fatal Error (4): syntax error, unexpected '$this' (T_VARIABLE) in [C:\wamp\www\journalCake\JournalActivite_cakePhp\src\View\Helper\HtmlHelper.php, line 17]
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 215
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-05-04 14:25:08 Error: [Cake\Error\FatalErrorException] syntax error, unexpected '$this' (T_VARIABLE)
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\jou...', 17)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-05-04 14:25:09 Error: Fatal Error (4): syntax error, unexpected '$this' (T_VARIABLE) in [C:\wamp\www\journalCake\JournalActivite_cakePhp\src\View\Helper\HtmlHelper.php, line 17]
+Request URL: /debug_kit/toolbar/4c52da25-7d98-4b3d-9f6d-8ded2c3f0d2e
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 215
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-05-04 14:25:09 Error: [Cake\Error\FatalErrorException] syntax error, unexpected '$this' (T_VARIABLE)
+Request URL: /debug_kit/toolbar/4c52da25-7d98-4b3d-9f6d-8ded2c3f0d2e
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\jou...', 17)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-05-04 14:26:08 Error: Fatal Error (4): syntax error, unexpected '$charset' (T_VARIABLE), expecting function (T_FUNCTION) in [C:\wamp\www\journalCake\JournalActivite_cakePhp\src\View\Helper\HtmlHelper.php, line 20]
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 215
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-05-04 14:26:09 Error: [Cake\Error\FatalErrorException] syntax error, unexpected '$charset' (T_VARIABLE), expecting function (T_FUNCTION)
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\jou...', 20)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-05-04 14:26:10 Error: Fatal Error (4): syntax error, unexpected '$charset' (T_VARIABLE), expecting function (T_FUNCTION) in [C:\wamp\www\journalCake\JournalActivite_cakePhp\src\View\Helper\HtmlHelper.php, line 20]
+Request URL: /debug_kit/toolbar/5cde340e-acb1-446f-97df-8490cd2ac8f8
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 215
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-05-04 14:26:10 Error: [Cake\Error\FatalErrorException] syntax error, unexpected '$charset' (T_VARIABLE), expecting function (T_FUNCTION)
+Request URL: /debug_kit/toolbar/5cde340e-acb1-446f-97df-8490cd2ac8f8
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\jou...', 20)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
