@@ -42,21 +42,36 @@ class UtilisateurTable extends Table
             ->allowEmpty('ID', 'create');
 
         $validator
-            ->requirePresence('Login', 'create')
-            ->notEmpty('Login');
+            ->requirePresence('login', 'create')
+            ->notEmpty('login');
 
         $validator
-            ->requirePresence('TypeUser', 'create')
-            ->notEmpty('TypeUser');
+            ->requirePresence('typeUser', 'create')
+            ->notEmpty('typeUser');
 
         $validator
-            ->requirePresence('MotDePasse', 'create')
-            ->notEmpty('MotDePasse');
+            ->requirePresence('password', 'create')
+            ->notEmpty('password');
 
         $validator
-            ->requirePresence('MailCandidat', 'create')
-            ->notEmpty('MailCandidat');
+            ->email('email')
+            ->requirePresence('email', 'create')
+            ->notEmpty('email');
 
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules)
+    {
+        $rules->add($rules->isUnique(['login']));
+        $rules->add($rules->isUnique(['email']));
+        return $rules;
     }
 }

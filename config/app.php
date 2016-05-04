@@ -228,7 +228,7 @@ return [
             //'port' => 'non_standard_port_number',
             'username' => 'cake',
             'password' => 'isalie',
-            'database' => 'bdd',
+            'database' => 'bddCake',
             'encoding' => 'utf8',
             'timezone' => 'UTC',
             'flags' => [],

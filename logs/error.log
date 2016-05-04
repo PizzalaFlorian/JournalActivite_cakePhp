@@ -27,3 +27,17 @@ Stack Trace:
 #1 {main}
 
 
+2016-05-04 12:49:03 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Occupation could not be found.
+Exception Attributes: array (
+  'class' => 'Occupation',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /occupation
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\journalCake\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+

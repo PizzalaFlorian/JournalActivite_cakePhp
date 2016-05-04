@@ -25,10 +25,10 @@ class UtilisateurFixture extends TestFixture
     // @codingStandardsIgnoreStart
     public $fields = [
         'ID' => ['type' => 'integer', 'length' => 10, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
-        'Login' => ['type' => 'string', 'length' => 250, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
-        'TypeUser' => ['type' => 'string', 'length' => 25, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
-        'MotDePasse' => ['type' => 'string', 'length' => 250, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
-        'MailCandidat' => ['type' => 'string', 'length' => 250, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
+        'login' => ['type' => 'string', 'length' => 250, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
+        'typeUser' => ['type' => 'string', 'length' => 25, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
+        'password' => ['type' => 'string', 'length' => 250, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
+        'email' => ['type' => 'string', 'length' => 250, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['ID'], 'length' => []],
         ],
@@ -47,10 +47,10 @@ class UtilisateurFixture extends TestFixture
     public $records = [
         [
             'ID' => 1,
-            'Login' => 'Lorem ipsum dolor sit amet',
-            'TypeUser' => 'Lorem ipsum dolor sit a',
-            'MotDePasse' => 'Lorem ipsum dolor sit amet',
-            'MailCandidat' => 'Lorem ipsum dolor sit amet'
+            'login' => 'Lorem ipsum dolor sit amet',
+            'typeUser' => 'Lorem ipsum dolor sit a',
+            'password' => 'Lorem ipsum dolor sit amet',
+            'email' => 'Lorem ipsum dolor sit amet'
         ],
     ];
 }

@@ -9,10 +9,10 @@
     <fieldset>
         <legend><?= __('Add Utilisateur') ?></legend>
         <?php
-            echo $this->Form->input('Login');
-            echo $this->Form->input('TypeUser');
-            echo $this->Form->input('MotDePasse');
-            echo $this->Form->input('MailCandidat');
+            echo $this->Form->input('login');
+            echo $this->Form->input('typeUser');
+            echo $this->Form->input('password');
+            echo $this->Form->input('email');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

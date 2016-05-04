@@ -10,10 +10,10 @@
         <thead>
             <tr>
                 <th><?= $this->Paginator->sort('ID') ?></th>
-                <th><?= $this->Paginator->sort('Login') ?></th>
-                <th><?= $this->Paginator->sort('TypeUser') ?></th>
-                <th><?= $this->Paginator->sort('MotDePasse') ?></th>
-                <th><?= $this->Paginator->sort('MailCandidat') ?></th>
+                <th><?= $this->Paginator->sort('login') ?></th>
+                <th><?= $this->Paginator->sort('typeUser') ?></th>
+                <th><?= $this->Paginator->sort('password') ?></th>
+                <th><?= $this->Paginator->sort('email') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -21,10 +21,10 @@
             <?php foreach ($utilisateur as $utilisateur): ?>
             <tr>
                 <td><?= $this->Number->format($utilisateur->ID) ?></td>
-                <td><?= h($utilisateur->Login) ?></td>
-                <td><?= h($utilisateur->TypeUser) ?></td>
-                <td><?= h($utilisateur->MotDePasse) ?></td>
-                <td><?= h($utilisateur->MailCandidat) ?></td>
+                <td><?= h($utilisateur->login) ?></td>
+                <td><?= h($utilisateur->typeUser) ?></td>
+                <td><?= h($utilisateur->password) ?></td>
+                <td><?= h($utilisateur->email) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $utilisateur->ID]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $utilisateur->ID]) ?>

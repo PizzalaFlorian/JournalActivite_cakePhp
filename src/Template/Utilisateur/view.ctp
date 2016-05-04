@@ -12,19 +12,19 @@
     <table class="vertical-table">
         <tr>
             <th><?= __('Login') ?></th>
-            <td><?= h($utilisateur->Login) ?></td>
+            <td><?= h($utilisateur->login) ?></td>
         </tr>
         <tr>
             <th><?= __('TypeUser') ?></th>
-            <td><?= h($utilisateur->TypeUser) ?></td>
+            <td><?= h($utilisateur->typeUser) ?></td>
         </tr>
         <tr>
-            <th><?= __('MotDePasse') ?></th>
-            <td><?= h($utilisateur->MotDePasse) ?></td>
+            <th><?= __('Password') ?></th>
+            <td><?= h($utilisateur->password) ?></td>
         </tr>
         <tr>
-            <th><?= __('MailCandidat') ?></th>
-            <td><?= h($utilisateur->MailCandidat) ?></td>
+            <th><?= __('Email') ?></th>
+            <td><?= h($utilisateur->email) ?></td>
         </tr>
         <tr>
             <th><?= __('ID') ?></th>
