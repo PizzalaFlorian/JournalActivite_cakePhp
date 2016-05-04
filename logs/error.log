@@ -13,3 +13,17 @@ Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHa
 2016-05-04 10:29:28 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2016-05-04 10:34:42 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 >>>>>>> origin/master
+2016-05-04 11:41:41 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Utilisateurs could not be found.
+Exception Attributes: array (
+  'class' => 'Utilisateurs',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /utilisateurs
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\journalCake\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
