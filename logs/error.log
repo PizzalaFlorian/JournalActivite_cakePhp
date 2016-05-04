@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2016-05-04 11:22:08 Error: Fatal Error (1): Maximum execution time of 60 seconds exceeded in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php, line 119]
 Request URL: /
 Client IP: 127.0.0.1
@@ -8,3 +9,7 @@ Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHa
 
 
 
+=======
+2016-05-04 10:29:28 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-04 10:34:42 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+>>>>>>> origin/master
