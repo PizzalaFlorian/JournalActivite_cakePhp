@@ -41,3 +41,113 @@ Stack Trace:
 #1 {main}
 
 
+2016-05-04 13:07:30 Error: [Cake\Controller\Exception\MissingActionException] Action UtilisateurController::test() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'UtilisateurController',
+  'action' => 'test',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /utilisateur/test
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(114): Cake\Controller\Controller->invokeAction()
+#1 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\UtilisateurController))
+#2 C:\wamp\www\journalCake\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-05-04 13:09:40 Error: [Cake\Controller\Exception\MissingActionException] Action CandidatController::index.ctp() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'CandidatController',
+  'action' => 'index.ctp',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /candidat/index.ctp
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(114): Cake\Controller\Controller->invokeAction()
+#1 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CandidatController))
+#2 C:\wamp\www\journalCake\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-05-04 13:10:07 Error: [Cake\Controller\Exception\MissingActionException] Action UtilisateurController::1() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'UtilisateurController',
+  'action' => '1',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /utilisateur/1
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(114): Cake\Controller\Controller->invokeAction()
+#1 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\UtilisateurController))
+#2 C:\wamp\www\journalCake\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-05-04 13:16:13 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Test could not be found.
+Exception Attributes: array (
+  'class' => 'Test',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /test
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\journalCake\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-04 13:16:28 Error: [Cake\Controller\Exception\MissingActionException] Action UtilisateurController::login() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'UtilisateurController',
+  'action' => 'login',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(114): Cake\Controller\Controller->invokeAction()
+#1 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\UtilisateurController))
+#2 C:\wamp\www\journalCake\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-05-04 13:30:51 Error: [Cake\Controller\Exception\MissingActionException] Action UtilisateurController::login.ctp() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'UtilisateurController',
+  'action' => 'login.ctp',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /utilisateur/login.ctp
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(114): Cake\Controller\Controller->invokeAction()
+#1 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\UtilisateurController))
+#2 C:\wamp\www\journalCake\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-05-04 13:31:11 Error: [Cake\Controller\Exception\MissingActionException] Action UtilisateurController::login.ctp() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'UtilisateurController',
+  'action' => 'login.ctp',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /utilisateur/login.ctp
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(114): Cake\Controller\Controller->invokeAction()
+#1 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\UtilisateurController))
+#2 C:\wamp\www\journalCake\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+

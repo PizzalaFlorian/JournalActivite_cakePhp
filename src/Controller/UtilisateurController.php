@@ -105,4 +105,16 @@ class UtilisateurController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+
+    public function login()
+{
+    if ($this->request->is('post')) {
+        $utilisateur = $this->Auth->identify();
+        if ($utilisateur) {
+            $this->Auth->setUser($utilisateur);
+            return $this->redirect($this->Auth->redirectUrl());
+        }
+        $this->Flash->error('Votre username ou mot de passe est incorrect.');
+    }
+}
 }
