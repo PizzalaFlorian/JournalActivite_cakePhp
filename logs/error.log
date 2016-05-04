@@ -1,0 +1,10 @@
+2016-05-04 11:22:08 Error: Fatal Error (1): Maximum execution time of 60 seconds exceeded in [C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php, line 119]
+Request URL: /
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 215
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
