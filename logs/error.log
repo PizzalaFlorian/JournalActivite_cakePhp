@@ -2323,3 +2323,108 @@ Stack Trace:
 #1 {main}
 
 
+2016-05-06 09:37:33 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /css/cake.css
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-06 09:37:34 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /css/images/bg01.png
+Referer URL: http://localhost:8765/css/main.css
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-06 09:41:07 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /css/images/bg01.png
+Referer URL: http://localhost:8765/css/main.css
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-06 09:43:28 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /css/images/bg02.png
+Referer URL: http://localhost:8765/css/main.css
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-06 09:43:28 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /css/images/bg01.png
+Referer URL: http://localhost:8765/css/main.css
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-06 09:47:25 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /css/images/bg01.png
+Referer URL: http://localhost:8765/css/main.css
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-06 10:07:27 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /css/images/bg01.png
+Referer URL: http://localhost:8765/css/main.css
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
