@@ -71,7 +71,7 @@ class UsersTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->isUnique(['login']));
-        $rules->add($rules->isUnique(['email']));
+        $rules->add($rules->isUnique(['ID']));
         return $rules;
     }
 }

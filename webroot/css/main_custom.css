@@ -2,7 +2,7 @@
 	text-align:center;
 }
 
-#login form input[type="password"]{
+#login form input[type="password"], form input[type="login"]{
 	text-align:center;
 }
 

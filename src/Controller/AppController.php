@@ -39,12 +39,20 @@ public function initialize()
 				'controller' => 'Users',
 				'action' => 'login'
 			],
+            'authenticate' => [
+                'Form' => [
+                    'userModel' => 'Users',
+                    'fields' => [
+                        'username' => 'login',
+                        'password' => 'password'
+                        ]
+                ]
+            ],
+            'loginRedirect' => [
+                'controller' => 'Candidat',
+                'action' => 'index'
+            ],
 			'authError' => 'Vous croyez vraiment que vous pouvez faire cela?',
-			'authenticate' => [
-				'Form' => [
-					'fields' => ['username' => 'login', 'password' => 'password']
-				]
-			],
 			'storage' => 'Session'
 		]);
 	}
@@ -83,18 +91,18 @@ public function initialize()
         // $this->Auth->allow(['display']);
     // }
 
-    // /**
-     // * Before render callback.
-     // *
-     // * @param \Cake\Event\Event $event The beforeRender event.
-     // * @return void
-     // */
-    // public function beforeRender(Event $event)
-    // {
-        // if (!array_key_exists('_serialize', $this->viewVars) &&
-            // in_array($this->response->type(), ['application/json', 'application/xml'])
-        // ) {
-            // $this->set('_serialize', true);
-        // }
-    // }
+    /**
+     * Before render callback.
+     *
+     * @param \Cake\Event\Event $event The beforeRender event.
+     * @return void
+     */
+    public function beforeRender(Event $event)
+    {
+        if (!array_key_exists('_serialize', $this->viewVars) &&
+            in_array($this->response->type(), ['application/json', 'application/xml'])
+        ) {
+            $this->set('_serialize', true);
+        }
+    }
 }

@@ -30,7 +30,7 @@ USE `bddCake`;
 
 CREATE TABLE IF NOT EXISTS `activite` (
   `CodeActivite` int(10) unsigned NOT NULL,
-  `NomActivite` varchar(250) NOT NULL,
+  `NomActivite` varchar(255) NOT NULL,
   `DescriptifActivite` text NOT NULL,
   `CodeCategorie` int(10) unsigned NOT NULL,
   PRIMARY KEY (`CodeActivite`),
@@ -156,11 +156,11 @@ CREATE TABLE IF NOT EXISTS `administrateur` (
 CREATE TABLE IF NOT EXISTS `candidat` (
   `CodeCandidat` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Age` int(11) NOT NULL COMMENT 'pas plustot anné de naissance',
-  `GenreCandidat` varchar(250) NOT NULL,
-  `LieuxEtude` varchar(250) NOT NULL,
-  `NiveauEtude` varchar(250) NOT NULL,
-  `DiplomePrep` varchar(250) NOT NULL,
-  `EtatCivil` varchar(250) NOT NULL,
+  `GenreCandidat` varchar(255) NOT NULL,
+  `LieuxEtude` varchar(255) NOT NULL,
+  `NiveauEtude` varchar(255) NOT NULL,
+  `DiplomePrep` varchar(255) NOT NULL,
+  `EtatCivil` varchar(255) NOT NULL,
   `NombreEnfant` int(10) unsigned NOT NULL,
   `ID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`CodeCandidat`),
@@ -176,7 +176,7 @@ CREATE TABLE IF NOT EXISTS `candidat` (
 CREATE TABLE IF NOT EXISTS `carnetdebord` (
   `CodeEntree` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Date` date NOT NULL,
-  `Sujet` varchar(250) NOT NULL,
+  `Sujet` varchar(255) NOT NULL,
   `Commentaire` text NOT NULL,
   `CodeChercheur` int(10) unsigned NOT NULL,
   PRIMARY KEY (`CodeEntree`),
@@ -191,7 +191,7 @@ CREATE TABLE IF NOT EXISTS `carnetdebord` (
 
 CREATE TABLE IF NOT EXISTS `categorieactivite` (
   `CodeCategorieActivite` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `NomCategorie` varchar(250) NOT NULL,
+  `NomCategorie` varchar(255) NOT NULL,
   PRIMARY KEY (`CodeCategorieActivite`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
 
@@ -227,7 +227,7 @@ INSERT INTO `categorieactivite` (`CodeCategorieActivite`, `NomCategorie`) VALUES
 
 CREATE TABLE IF NOT EXISTS `categorielieu` (
   `CodeCategorieLieux` int(10) unsigned NOT NULL,
-  `NomCategorie` varchar(250) NOT NULL,
+  `NomCategorie` varchar(255) NOT NULL,
   PRIMARY KEY (`CodeCategorieLieux`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -247,8 +247,8 @@ INSERT INTO `categorielieu` (`CodeCategorieLieux`, `NomCategorie`) VALUES
 
 CREATE TABLE IF NOT EXISTS `chercheur` (
   `CodeChercheur` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `NomChercheur` varchar(250) NOT NULL,
-  `PrenomChercheur` varchar(250) NOT NULL,
+  `NomChercheur` varchar(255) NOT NULL,
+  `PrenomChercheur` varchar(255) NOT NULL,
   `ID` int(11) unsigned NOT NULL,
   PRIMARY KEY (`CodeChercheur`),
   KEY `ID` (`ID`)
@@ -261,7 +261,7 @@ CREATE TABLE IF NOT EXISTS `chercheur` (
 --
 
 CREATE TABLE IF NOT EXISTS `compagnie` (
-  `NomCompagnie` varchar(250) NOT NULL,
+  `NomCompagnie` varchar(255) NOT NULL,
   `CodeCompagnie` int(10) unsigned NOT NULL,
   PRIMARY KEY (`CodeCompagnie`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -284,7 +284,7 @@ INSERT INTO `compagnie` (`NomCompagnie`, `CodeCompagnie`) VALUES
 
 CREATE TABLE IF NOT EXISTS `dispositif` (
   `CodeDispositif` int(10) unsigned NOT NULL,
-  `NomDispositif` varchar(250) NOT NULL,
+  `NomDispositif` varchar(255) NOT NULL,
   PRIMARY KEY (`CodeDispositif`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -310,7 +310,7 @@ INSERT INTO `dispositif` (`CodeDispositif`, `NomDispositif`) VALUES
 
 CREATE TABLE IF NOT EXISTS `lieu` (
   `CodeLieux` int(10) unsigned NOT NULL,
-  `NomLieux` varchar(250) NOT NULL,
+  `NomLieux` varchar(255) NOT NULL,
   `CodeCategorieLieux` int(10) unsigned NOT NULL,
   PRIMARY KEY (`CodeLieux`),
   KEY `CodeCategorieLieux` (`CodeCategorieLieux`)
@@ -354,7 +354,7 @@ INSERT INTO `lieu` (`CodeLieux`, `NomLieux`, `CodeCategorieLieux`) VALUES
 CREATE TABLE IF NOT EXISTS `message` (
   `IDMessage` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `DateEnvoi` date NOT NULL,
-  `Sujet` varchar(250) NOT NULL,
+  `Sujet` varchar(255) NOT NULL,
   `ContenuMessage` text NOT NULL,
   `Lu` tinyint(1) NOT NULL,
   `IDExpediteur` int(10) unsigned NOT NULL,
@@ -395,10 +395,10 @@ CREATE TABLE IF NOT EXISTS `occupation` (
 
 CREATE TABLE IF NOT EXISTS `users` (
   `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `login` varchar(250) NOT NULL,
+  `login` varchar(255) NOT NULL,
   `typeUser` varchar(25) NOT NULL,
-  `password` varchar(250) NOT NULL,
-  `email` varchar(250) NOT NULL,
+  `password` varchar(60) NOT NULL,
+  `email` varchar(255) NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
