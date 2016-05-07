@@ -11,13 +11,13 @@ a {
     color: #1798A5;
 }
 
-/*.side-nav li a:not(.button) {
+.side-nav li a:not(.button) {
     color: #15848F;
-}*/
+}
 
-/*.side-nav li a:not(.button):hover {
+.side-nav li a:not(.button):hover {
     color: #15848F;
-}*/
+}
 
 header {
     background-color: #15848F;
@@ -129,20 +129,20 @@ ul.pagination .disabled:hover a {
     content: " \2191";
 }
 
-/*button {
+button {
     background: #8D6E65;
 }
-*/
-/*.form button:hover, .form button:focus {
+
+.form button:hover, .form button:focus {
     background: #7A6058;
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.26) !important;
-}*/
+}
 
-/*.form button[type="submit"] {
+.form button[type="submit"] {
     float: right;
     text-transform: uppercase;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.26);
-}*/
+}
 
 .form .error-message {
     display: block;
@@ -381,14 +381,14 @@ pre {
     background: #01545b;
 }
 
-/*.top-bar.expanded, .top-bar,.top-bar-section ul li,.top-bar-section li:not(.has-form) a:not(.button) {
+.top-bar.expanded, .top-bar,.top-bar-section ul li,.top-bar-section li:not(.has-form) a:not(.button) {
     background: #116d76;
 }
-*/
-/*.top-bar-section li:not(.has-form) a:not(.button):hover {
+
+.top-bar-section li:not(.has-form) a:not(.button):hover {
     background-color: #308e97;
     background: #308e97;
-}*/
+}
 
 .side-nav li.heading {
     color: #1798A5;
@@ -451,20 +451,20 @@ fieldset legend {
     line-height: 2rem;
 }
 
-/*.form button[type="submit"] {
+.form button[type="submit"] {
     float: right;
     text-transform: uppercase;
     box-shadow: none;
-}*/
+}
 
-/*.form button:hover, .form button:focus {
+.form button:hover, .form button:focus {
     background: #BE840B;
     box-shadow: none;
-}*/
+}
 
-/*button {
+button {
     background: #966600;
-}*/
+}
 
 div.message {
 	text-align: center;

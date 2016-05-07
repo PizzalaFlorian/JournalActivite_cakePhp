@@ -2428,6 +2428,7 @@ Stack Trace:
 #1 {main}
 
 
+<<<<<<< HEAD
 2016-05-07 07:48:35 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2016-05-07 07:48:35 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2016-05-07 07:48:36 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
@@ -2449,6 +2450,9 @@ Stack Trace:
 2016-05-07 07:49:23 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2016-05-07 07:49:24 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2016-05-07 07:49:24 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+=======
+2016-05-06 11:30:20 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+>>>>>>> 70a2b8fc5f9c138df9832cb52fc091cf4d88fde7
 Exception Attributes: array (
   'class' => 'Css',
   'plugin' => NULL,
@@ -2456,6 +2460,7 @@ Exception Attributes: array (
   '_ext' => NULL,
 )
 Request URL: /css/images/bg01.png
+<<<<<<< HEAD
 Referer URL: http://192.168.1.66:5673/css/main.css
 Client IP: 192.168.1.49
 Stack Trace:
@@ -2493,6 +2498,16 @@ Stack Trace:
 2016-05-07 07:49:41 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2016-05-07 07:49:42 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2016-05-07 07:49:42 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+=======
+Referer URL: http://localhost:8765/css/main.css
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-06 11:31:31 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+>>>>>>> 70a2b8fc5f9c138df9832cb52fc091cf4d88fde7
 Exception Attributes: array (
   'class' => 'Css',
   'plugin' => NULL,
@@ -2500,6 +2515,7 @@ Exception Attributes: array (
   '_ext' => NULL,
 )
 Request URL: /css/images/bg01.png
+<<<<<<< HEAD
 Referer URL: http://192.168.1.66:5673/css/main.css
 Client IP: 192.168.1.49
 Stack Trace:
@@ -2536,6 +2552,16 @@ Stack Trace:
 2016-05-07 07:51:54 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2016-05-07 07:51:54 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2016-05-07 07:51:54 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+=======
+Referer URL: http://localhost:8765/css/main.css
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-06 11:32:26 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+>>>>>>> 70a2b8fc5f9c138df9832cb52fc091cf4d88fde7
 Exception Attributes: array (
   'class' => 'Css',
   'plugin' => NULL,
@@ -2543,6 +2569,7 @@ Exception Attributes: array (
   '_ext' => NULL,
 )
 Request URL: /css/images/bg01.png
+<<<<<<< HEAD
 Referer URL: http://192.168.1.66:5673/css/main.css
 Client IP: 192.168.1.49
 Stack Trace:
@@ -3061,6 +3088,16 @@ Stack Trace:
 2016-05-07 09:49:37 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2016-05-07 09:49:37 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2016-05-07 09:49:37 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+=======
+Referer URL: http://localhost:8765/css/main.css
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-06 11:32:32 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+>>>>>>> 70a2b8fc5f9c138df9832cb52fc091cf4d88fde7
 Exception Attributes: array (
   'class' => 'Css',
   'plugin' => NULL,
@@ -3068,6 +3105,7 @@ Exception Attributes: array (
   '_ext' => NULL,
 )
 Request URL: /css/images/bg01.png
+<<<<<<< HEAD
 Referer URL: http://192.168.1.66:5673/css/main.css
 Client IP: 192.168.1.49
 Stack Trace:
@@ -3120,6 +3158,16 @@ Stack Trace:
 2016-05-07 09:51:04 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2016-05-07 09:51:04 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2016-05-07 09:51:04 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+=======
+Referer URL: http://localhost:8765/css/main.css
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-06 11:33:03 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+>>>>>>> 70a2b8fc5f9c138df9832cb52fc091cf4d88fde7
 Exception Attributes: array (
   'class' => 'Css',
   'plugin' => NULL,
@@ -3127,6 +3175,7 @@ Exception Attributes: array (
   '_ext' => NULL,
 )
 Request URL: /css/images/bg01.png
+<<<<<<< HEAD
 Referer URL: http://192.168.1.66:5673/css/main.css
 Client IP: 192.168.1.49
 Stack Trace:
@@ -3137,6 +3186,16 @@ Stack Trace:
 2016-05-07 09:51:08 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2016-05-07 09:51:08 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2016-05-07 09:51:08 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+=======
+Referer URL: http://localhost:8765/css/main.css
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-06 11:33:38 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+>>>>>>> 70a2b8fc5f9c138df9832cb52fc091cf4d88fde7
 Exception Attributes: array (
   'class' => 'Css',
   'plugin' => NULL,
@@ -3144,6 +3203,7 @@ Exception Attributes: array (
   '_ext' => NULL,
 )
 Request URL: /css/images/bg01.png
+<<<<<<< HEAD
 Referer URL: http://192.168.1.66:5673/css/main.css
 Client IP: 192.168.1.49
 Stack Trace:
@@ -3154,6 +3214,16 @@ Stack Trace:
 2016-05-07 09:51:59 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2016-05-07 09:51:59 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2016-05-07 09:51:59 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+=======
+Referer URL: http://localhost:8765/css/main.css
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-06 12:59:14 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+>>>>>>> 70a2b8fc5f9c138df9832cb52fc091cf4d88fde7
 Exception Attributes: array (
   'class' => 'Css',
   'plugin' => NULL,
@@ -3161,6 +3231,7 @@ Exception Attributes: array (
   '_ext' => NULL,
 )
 Request URL: /css/images/bg01.png
+<<<<<<< HEAD
 Referer URL: http://192.168.1.66:5673/css/main.css
 Client IP: 192.168.1.49
 Stack Trace:
@@ -3171,6 +3242,16 @@ Stack Trace:
 2016-05-07 09:52:03 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2016-05-07 09:52:03 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2016-05-07 09:52:03 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+=======
+Referer URL: http://localhost:8765/css/main.css
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-06 16:04:13 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+>>>>>>> 70a2b8fc5f9c138df9832cb52fc091cf4d88fde7
 Exception Attributes: array (
   'class' => 'Css',
   'plugin' => NULL,
@@ -3178,6 +3259,7 @@ Exception Attributes: array (
   '_ext' => NULL,
 )
 Request URL: /css/images/bg01.png
+<<<<<<< HEAD
 Referer URL: http://192.168.1.66:5673/css/main.css
 Client IP: 192.168.1.49
 Stack Trace:
@@ -3188,6 +3270,16 @@ Stack Trace:
 2016-05-07 09:52:07 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2016-05-07 09:52:07 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2016-05-07 09:52:07 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+=======
+Referer URL: http://localhost:8765/css/main.css
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-06 18:27:06 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+>>>>>>> 70a2b8fc5f9c138df9832cb52fc091cf4d88fde7
 Exception Attributes: array (
   'class' => 'Css',
   'plugin' => NULL,
@@ -3195,6 +3287,7 @@ Exception Attributes: array (
   '_ext' => NULL,
 )
 Request URL: /css/images/bg01.png
+<<<<<<< HEAD
 Referer URL: http://192.168.1.66:5673/css/main.css
 Client IP: 192.168.1.49
 Stack Trace:
@@ -3205,6 +3298,16 @@ Stack Trace:
 2016-05-07 09:53:44 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2016-05-07 09:53:44 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2016-05-07 09:53:44 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+=======
+Referer URL: http://localhost:8765/css/main.css
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-07 07:54:55 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+>>>>>>> 70a2b8fc5f9c138df9832cb52fc091cf4d88fde7
 Exception Attributes: array (
   'class' => 'Css',
   'plugin' => NULL,
@@ -3212,6 +3315,7 @@ Exception Attributes: array (
   '_ext' => NULL,
 )
 Request URL: /css/images/bg01.png
+<<<<<<< HEAD
 Referer URL: http://192.168.1.66:5673/css/main.css
 Client IP: 192.168.1.49
 Stack Trace:
@@ -3222,6 +3326,16 @@ Stack Trace:
 2016-05-07 09:53:53 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2016-05-07 09:53:53 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2016-05-07 09:53:53 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+=======
+Referer URL: http://localhost:8765/css/main.css
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-07 08:02:33 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+>>>>>>> 70a2b8fc5f9c138df9832cb52fc091cf4d88fde7
 Exception Attributes: array (
   'class' => 'Css',
   'plugin' => NULL,
@@ -3229,6 +3343,7 @@ Exception Attributes: array (
   '_ext' => NULL,
 )
 Request URL: /css/images/bg01.png
+<<<<<<< HEAD
 Referer URL: http://192.168.1.66:5673/css/main.css
 Client IP: 192.168.1.49
 Stack Trace:
@@ -3387,5 +3502,507 @@ Client IP: 192.168.1.49
 Stack Trace:
 #0 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
 #1 {main}
+=======
+Referer URL: http://localhost:8765/css/main.css
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-07 08:46:39 Error: [PDOException] SQLSTATE[HY000] [2002] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée.
+
+Request URL: /utilisateur/login
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Database\Driver\PDODriverTrait.php(48): PDO->__construct('mysql:host=loca...', 'cake', 'isalie', Array)
+#1 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Database\Driver\Mysql.php(90): Cake\Database\Driver\Mysql->_connect('mysql:host=loca...', Array)
+#2 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Database\Schema\BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Database\Dialect\MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(43): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Database\Connection.php(317): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Table.php(428): Cake\Database\Connection->schemaCollection()
+#8 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Query.php(211): Cake\ORM\Table->schema()
+#9 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Query.php(169): Cake\ORM\Query->addDefaultTypes(Object(Cake\ORM\Table))
+#10 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Table.php(1242): Cake\ORM\Query->__construct(Object(Cake\Database\Connection), Object(Cake\ORM\Table))
+#11 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Table.php(945): Cake\ORM\Table->query()
+#12 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Auth\BaseAuthenticate.php(156): Cake\ORM\Table->find('all', Array)
+#13 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Auth\BaseAuthenticate.php(108): Cake\Auth\BaseAuthenticate->_query('test')
+#14 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Auth\FormAuthenticate.php(77): Cake\Auth\BaseAuthenticate->_findUser('test', 'test')
+#15 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Controller\Component\AuthComponent.php(769): Cake\Auth\FormAuthenticate->authenticate(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 C:\wamp\www\JournalActivite_cakePhp\src\Controller\UtilisateurController.php(112): Cake\Controller\Component\AuthComponent->identify()
+#17 [internal function]: App\Controller\UtilisateurController->login()
+#18 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Controller\Controller.php(429): call_user_func_array(Array, Array)
+#19 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(114): Cake\Controller\Controller->invokeAction()
+#20 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\UtilisateurController))
+#21 C:\wamp\www\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#22 {main}
+
+
+2016-05-07 08:47:20 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'bddcake.users' doesn't exist
+Request URL: /utilisateur/login
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(96): Cake\Database\Schema\Collection->_reflect('Column', 'users', Array, Object(Cake\Database\Schema\Table))
+#1 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(64): Cake\Database\Schema\Collection->describe('users', Array)
+#2 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Table.php(429): Cake\Database\Schema\CachedCollection->describe('users')
+#3 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Query.php(211): Cake\ORM\Table->schema()
+#4 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Query.php(169): Cake\ORM\Query->addDefaultTypes(Object(Cake\ORM\Table))
+#5 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Table.php(1242): Cake\ORM\Query->__construct(Object(Cake\Database\Connection), Object(Cake\ORM\Table))
+#6 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Table.php(945): Cake\ORM\Table->query()
+#7 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Auth\BaseAuthenticate.php(156): Cake\ORM\Table->find('all', Array)
+#8 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Auth\BaseAuthenticate.php(108): Cake\Auth\BaseAuthenticate->_query('test')
+#9 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Auth\FormAuthenticate.php(77): Cake\Auth\BaseAuthenticate->_findUser('test', 'test')
+#10 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Controller\Component\AuthComponent.php(769): Cake\Auth\FormAuthenticate->authenticate(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#11 C:\wamp\www\JournalActivite_cakePhp\src\Controller\UtilisateurController.php(112): Cake\Controller\Component\AuthComponent->identify()
+#12 [internal function]: App\Controller\UtilisateurController->login()
+#13 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Controller\Controller.php(429): call_user_func_array(Array, Array)
+#14 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(114): Cake\Controller\Controller->invokeAction()
+#15 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\UtilisateurController))
+#16 C:\wamp\www\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#17 {main}
+
+
+2016-05-07 09:37:17 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'bddcake.users' doesn't exist
+Request URL: /utilisateur/login
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(96): Cake\Database\Schema\Collection->_reflect('Column', 'users', Array, Object(Cake\Database\Schema\Table))
+#1 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(64): Cake\Database\Schema\Collection->describe('users', Array)
+#2 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Table.php(429): Cake\Database\Schema\CachedCollection->describe('users')
+#3 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Query.php(211): Cake\ORM\Table->schema()
+#4 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Query.php(169): Cake\ORM\Query->addDefaultTypes(Object(Cake\ORM\Table))
+#5 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Table.php(1242): Cake\ORM\Query->__construct(Object(Cake\Database\Connection), Object(Cake\ORM\Table))
+#6 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Table.php(945): Cake\ORM\Table->query()
+#7 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Auth\BaseAuthenticate.php(156): Cake\ORM\Table->find('all', Array)
+#8 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Auth\BaseAuthenticate.php(108): Cake\Auth\BaseAuthenticate->_query('test')
+#9 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Auth\FormAuthenticate.php(77): Cake\Auth\BaseAuthenticate->_findUser('test', 'test')
+#10 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Controller\Component\AuthComponent.php(769): Cake\Auth\FormAuthenticate->authenticate(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#11 C:\wamp\www\JournalActivite_cakePhp\src\Controller\UtilisateurController.php(112): Cake\Controller\Component\AuthComponent->identify()
+#12 [internal function]: App\Controller\UtilisateurController->login()
+#13 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Controller\Controller.php(429): call_user_func_array(Array, Array)
+#14 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(114): Cake\Controller\Controller->invokeAction()
+#15 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\UtilisateurController))
+#16 C:\wamp\www\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#17 {main}
+
+
+2016-05-07 09:45:34 Error: [RuntimeException] The "Auth" alias has already been loaded with the following config: array (
+  'authenticate' => 
+  array (
+    'Form' => 
+    array (
+      'fields' => 
+      array (
+        'username' => 'login',
+        'password' => 'password',
+      ),
+    ),
+  ),
+  'authorize' => NULL,
+  'ajaxLogin' => NULL,
+  'flash' => NULL,
+  'loginAction' => 
+  array (
+    'controller' => 'Utilisateur',
+    'action' => 'login',
+  ),
+  'loginRedirect' => NULL,
+  'logoutRedirect' => NULL,
+  'authError' => NULL,
+  'unauthorizedRedirect' => true,
+  'storage' => 'Session',
+  'checkAuthIn' => 'Controller.startup',
+) which differs from array (
+  'loginAction' => 
+  array (
+    'controller' => 'utilisateur',
+    'action' => 'login',
+  ),
+  'authenticate' => 
+  array (
+    'Form' => 
+    array (
+      'fields' => 
+      array (
+        'username' => 'login',
+        'password' => 'password',
+      ),
+    ),
+  ),
+  'storage' => 'Session',
+)
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Core\ObjectRegistry.php(82): Cake\Core\ObjectRegistry->_checkDuplicate('Auth', Array)
+#1 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Controller\Controller.php(321): Cake\Core\ObjectRegistry->load('Auth', Array)
+#2 C:\wamp\www\JournalActivite_cakePhp\src\Controller\UtilisateurController.php(137): Cake\Controller\Controller->loadComponent('Auth', Array)
+#3 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Controller\Controller.php(262): App\Controller\UtilisateurController->initialize()
+#4 [internal function]: Cake\Controller\Controller->__construct(Object(Cake\Network\Request), Object(Cake\Network\Response), 'Utilisateur')
+#5 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Filter\ControllerFactoryFilter.php(100): ReflectionClass->newInstance(Object(Cake\Network\Request), Object(Cake\Network\Response), 'Utilisateur')
+#6 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Filter\ControllerFactoryFilter.php(51): Cake\Routing\Filter\ControllerFactoryFilter->_getController(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#7 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\DispatcherFilter.php(145): Cake\Routing\Filter\ControllerFactoryFilter->beforeDispatch(Object(Cake\Event\Event))
+#8 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Event\EventManager.php(390): Cake\Routing\DispatcherFilter->handle(Object(Cake\Event\Event), Object(Cake\Network\Request), Object(Cake\Network\Response))
+#9 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Event\EventManager.php(356): Cake\Event\EventManager->_callListener(Array, Object(Cake\Event\Event))
+#10 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Event\EventDispatcherTrait.php(78): Cake\Event\EventManager->dispatch(Object(Cake\Event\Event))
+#11 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(62): Cake\Routing\Dispatcher->dispatchEvent('Dispatcher.befo...', Array)
+#12 C:\wamp\www\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#13 {main}
+
+
+2016-05-07 09:46:50 Error: [RuntimeException] The "Auth" alias has already been loaded with the following config: array (
+  'authenticate' => 
+  array (
+    'Form' => 
+    array (
+      'fields' => 
+      array (
+        'username' => 'login',
+        'password' => 'password',
+      ),
+    ),
+  ),
+  'authorize' => NULL,
+  'ajaxLogin' => NULL,
+  'flash' => NULL,
+  'loginAction' => 
+  array (
+    'controller' => 'Utilisateur',
+    'action' => 'login',
+  ),
+  'loginRedirect' => NULL,
+  'logoutRedirect' => NULL,
+  'authError' => NULL,
+  'unauthorizedRedirect' => true,
+  'storage' => 'Session',
+  'checkAuthIn' => 'Controller.startup',
+) which differs from array (
+  'loginAction' => 
+  array (
+    'controller' => 'utilisateur',
+    'action' => 'login',
+  ),
+  'authenticate' => 
+  array (
+    'Form' => 
+    array (
+      'fields' => 
+      array (
+        'username' => 'login',
+        'password' => 'password',
+      ),
+    ),
+  ),
+  'storage' => 'Session',
+)
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Core\ObjectRegistry.php(82): Cake\Core\ObjectRegistry->_checkDuplicate('Auth', Array)
+#1 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Controller\Controller.php(321): Cake\Core\ObjectRegistry->load('Auth', Array)
+#2 C:\wamp\www\JournalActivite_cakePhp\src\Controller\UtilisateurController.php(137): Cake\Controller\Controller->loadComponent('Auth', Array)
+#3 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Controller\Controller.php(262): App\Controller\UtilisateurController->initialize()
+#4 [internal function]: Cake\Controller\Controller->__construct(Object(Cake\Network\Request), Object(Cake\Network\Response), 'Utilisateur')
+#5 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Filter\ControllerFactoryFilter.php(100): ReflectionClass->newInstance(Object(Cake\Network\Request), Object(Cake\Network\Response), 'Utilisateur')
+#6 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Filter\ControllerFactoryFilter.php(51): Cake\Routing\Filter\ControllerFactoryFilter->_getController(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#7 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\DispatcherFilter.php(145): Cake\Routing\Filter\ControllerFactoryFilter->beforeDispatch(Object(Cake\Event\Event))
+#8 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Event\EventManager.php(390): Cake\Routing\DispatcherFilter->handle(Object(Cake\Event\Event), Object(Cake\Network\Request), Object(Cake\Network\Response))
+#9 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Event\EventManager.php(356): Cake\Event\EventManager->_callListener(Array, Object(Cake\Event\Event))
+#10 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Event\EventDispatcherTrait.php(78): Cake\Event\EventManager->dispatch(Object(Cake\Event\Event))
+#11 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(62): Cake\Routing\Dispatcher->dispatchEvent('Dispatcher.befo...', Array)
+#12 C:\wamp\www\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#13 {main}
+
+
+2016-05-07 09:47:14 Error: [RuntimeException] The "Auth" alias has already been loaded with the following config: array (
+  'authenticate' => 
+  array (
+    'Form' => 
+    array (
+      'fields' => 
+      array (
+        'username' => 'login',
+        'password' => 'password',
+      ),
+    ),
+  ),
+  'authorize' => NULL,
+  'ajaxLogin' => NULL,
+  'flash' => NULL,
+  'loginAction' => 
+  array (
+    'controller' => 'Utilisateur',
+    'action' => 'login',
+  ),
+  'loginRedirect' => NULL,
+  'logoutRedirect' => NULL,
+  'authError' => NULL,
+  'unauthorizedRedirect' => true,
+  'storage' => 'Session',
+  'checkAuthIn' => 'Controller.startup',
+) which differs from array (
+  'loginAction' => 
+  array (
+    'controller' => 'utilisateur',
+    'action' => 'login',
+  ),
+)
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Core\ObjectRegistry.php(82): Cake\Core\ObjectRegistry->_checkDuplicate('Auth', Array)
+#1 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Controller\Controller.php(321): Cake\Core\ObjectRegistry->load('Auth', Array)
+#2 C:\wamp\www\JournalActivite_cakePhp\src\Controller\UtilisateurController.php(129): Cake\Controller\Controller->loadComponent('Auth', Array)
+#3 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Controller\Controller.php(262): App\Controller\UtilisateurController->initialize()
+#4 [internal function]: Cake\Controller\Controller->__construct(Object(Cake\Network\Request), Object(Cake\Network\Response), 'Utilisateur')
+#5 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Filter\ControllerFactoryFilter.php(100): ReflectionClass->newInstance(Object(Cake\Network\Request), Object(Cake\Network\Response), 'Utilisateur')
+#6 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Filter\ControllerFactoryFilter.php(51): Cake\Routing\Filter\ControllerFactoryFilter->_getController(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#7 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\DispatcherFilter.php(145): Cake\Routing\Filter\ControllerFactoryFilter->beforeDispatch(Object(Cake\Event\Event))
+#8 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Event\EventManager.php(390): Cake\Routing\DispatcherFilter->handle(Object(Cake\Event\Event), Object(Cake\Network\Request), Object(Cake\Network\Response))
+#9 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Event\EventManager.php(356): Cake\Event\EventManager->_callListener(Array, Object(Cake\Event\Event))
+#10 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Event\EventDispatcherTrait.php(78): Cake\Event\EventManager->dispatch(Object(Cake\Event\Event))
+#11 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(62): Cake\Routing\Dispatcher->dispatchEvent('Dispatcher.befo...', Array)
+#12 C:\wamp\www\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#13 {main}
+
+
+2016-05-07 09:49:16 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'bddcake.users' doesn't exist
+Request URL: /utilisateur/login
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(96): Cake\Database\Schema\Collection->_reflect('Column', 'users', Array, Object(Cake\Database\Schema\Table))
+#1 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(64): Cake\Database\Schema\Collection->describe('users', Array)
+#2 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Table.php(429): Cake\Database\Schema\CachedCollection->describe('users')
+#3 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Query.php(211): Cake\ORM\Table->schema()
+#4 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Query.php(169): Cake\ORM\Query->addDefaultTypes(Object(Cake\ORM\Table))
+#5 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Table.php(1242): Cake\ORM\Query->__construct(Object(Cake\Database\Connection), Object(Cake\ORM\Table))
+#6 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Table.php(945): Cake\ORM\Table->query()
+#7 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Auth\BaseAuthenticate.php(156): Cake\ORM\Table->find('all', Array)
+#8 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Auth\BaseAuthenticate.php(108): Cake\Auth\BaseAuthenticate->_query('test')
+#9 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Auth\FormAuthenticate.php(77): Cake\Auth\BaseAuthenticate->_findUser('test', 'test')
+#10 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Controller\Component\AuthComponent.php(769): Cake\Auth\FormAuthenticate->authenticate(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#11 C:\wamp\www\JournalActivite_cakePhp\src\Controller\UtilisateurController.php(112): Cake\Controller\Component\AuthComponent->identify()
+#12 [internal function]: App\Controller\UtilisateurController->login()
+#13 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Controller\Controller.php(429): call_user_func_array(Array, Array)
+#14 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(114): Cake\Controller\Controller->invokeAction()
+#15 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\UtilisateurController))
+#16 C:\wamp\www\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#17 {main}
+
+
+2016-05-07 09:50:42 Error: [RuntimeException] The "Auth" alias has already been loaded with the following config: array (
+  'authenticate' => 
+  array (
+    'Form' => 
+    array (
+      'fields' => 
+      array (
+        'username' => 'login',
+        'password' => 'password',
+      ),
+    ),
+  ),
+  'authorize' => NULL,
+  'ajaxLogin' => NULL,
+  'flash' => NULL,
+  'loginAction' => 
+  array (
+    'controller' => 'Utilisateur',
+    'action' => 'login',
+  ),
+  'loginRedirect' => NULL,
+  'logoutRedirect' => NULL,
+  'authError' => NULL,
+  'unauthorizedRedirect' => true,
+  'storage' => 'Session',
+  'checkAuthIn' => 'Controller.startup',
+) which differs from array (
+  'loginAction' => 
+  array (
+    'controller' => 'utilisateur',
+    'action' => 'login',
+  ),
+  'authenticate' => 
+  array (
+    'Form' => 
+    array (
+      'fields' => 
+      array (
+        'username' => 'login',
+        'password' => 'password',
+      ),
+    ),
+  ),
+  'storage' => 'Session',
+)
+Request URL: /utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Core\ObjectRegistry.php(82): Cake\Core\ObjectRegistry->_checkDuplicate('Auth', Array)
+#1 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Controller\Controller.php(321): Cake\Core\ObjectRegistry->load('Auth', Array)
+#2 C:\wamp\www\JournalActivite_cakePhp\src\Controller\UtilisateurController.php(137): Cake\Controller\Controller->loadComponent('Auth', Array)
+#3 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Controller\Controller.php(262): App\Controller\UtilisateurController->initialize()
+#4 [internal function]: Cake\Controller\Controller->__construct(Object(Cake\Network\Request), Object(Cake\Network\Response), 'Utilisateur')
+#5 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Filter\ControllerFactoryFilter.php(100): ReflectionClass->newInstance(Object(Cake\Network\Request), Object(Cake\Network\Response), 'Utilisateur')
+#6 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Filter\ControllerFactoryFilter.php(51): Cake\Routing\Filter\ControllerFactoryFilter->_getController(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#7 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\DispatcherFilter.php(145): Cake\Routing\Filter\ControllerFactoryFilter->beforeDispatch(Object(Cake\Event\Event))
+#8 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Event\EventManager.php(390): Cake\Routing\DispatcherFilter->handle(Object(Cake\Event\Event), Object(Cake\Network\Request), Object(Cake\Network\Response))
+#9 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Event\EventManager.php(356): Cake\Event\EventManager->_callListener(Array, Object(Cake\Event\Event))
+#10 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Event\EventDispatcherTrait.php(78): Cake\Event\EventManager->dispatch(Object(Cake\Event\Event))
+#11 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(62): Cake\Routing\Dispatcher->dispatchEvent('Dispatcher.befo...', Array)
+#12 C:\wamp\www\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#13 {main}
+
+
+2016-05-07 09:50:46 Error: [RuntimeException] The "Auth" alias has already been loaded with the following config: array (
+  'authenticate' => 
+  array (
+    'Form' => 
+    array (
+      'fields' => 
+      array (
+        'username' => 'login',
+        'password' => 'password',
+      ),
+    ),
+  ),
+  'authorize' => NULL,
+  'ajaxLogin' => NULL,
+  'flash' => NULL,
+  'loginAction' => 
+  array (
+    'controller' => 'Utilisateur',
+    'action' => 'login',
+  ),
+  'loginRedirect' => NULL,
+  'logoutRedirect' => NULL,
+  'authError' => NULL,
+  'unauthorizedRedirect' => true,
+  'storage' => 'Session',
+  'checkAuthIn' => 'Controller.startup',
+) which differs from array (
+  'loginAction' => 
+  array (
+    'controller' => 'utilisateur',
+    'action' => 'login',
+  ),
+  'authenticate' => 
+  array (
+    'Form' => 
+    array (
+      'fields' => 
+      array (
+        'username' => 'login',
+        'password' => 'password',
+      ),
+    ),
+  ),
+  'storage' => 'Session',
+)
+Request URL: /utilisateur/login
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Core\ObjectRegistry.php(82): Cake\Core\ObjectRegistry->_checkDuplicate('Auth', Array)
+#1 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Controller\Controller.php(321): Cake\Core\ObjectRegistry->load('Auth', Array)
+#2 C:\wamp\www\JournalActivite_cakePhp\src\Controller\UtilisateurController.php(137): Cake\Controller\Controller->loadComponent('Auth', Array)
+#3 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Controller\Controller.php(262): App\Controller\UtilisateurController->initialize()
+#4 [internal function]: Cake\Controller\Controller->__construct(Object(Cake\Network\Request), Object(Cake\Network\Response), 'Utilisateur')
+#5 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Filter\ControllerFactoryFilter.php(100): ReflectionClass->newInstance(Object(Cake\Network\Request), Object(Cake\Network\Response), 'Utilisateur')
+#6 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Filter\ControllerFactoryFilter.php(51): Cake\Routing\Filter\ControllerFactoryFilter->_getController(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#7 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\DispatcherFilter.php(145): Cake\Routing\Filter\ControllerFactoryFilter->beforeDispatch(Object(Cake\Event\Event))
+#8 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Event\EventManager.php(390): Cake\Routing\DispatcherFilter->handle(Object(Cake\Event\Event), Object(Cake\Network\Request), Object(Cake\Network\Response))
+#9 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Event\EventManager.php(356): Cake\Event\EventManager->_callListener(Array, Object(Cake\Event\Event))
+#10 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Event\EventDispatcherTrait.php(78): Cake\Event\EventManager->dispatch(Object(Cake\Event\Event))
+#11 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(62): Cake\Routing\Dispatcher->dispatchEvent('Dispatcher.befo...', Array)
+#12 C:\wamp\www\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#13 {main}
+
+
+2016-05-07 09:53:26 Error: [RuntimeException] The "Auth" alias has already been loaded with the following config: array (
+  'authenticate' => 
+  array (
+    'Form' => 
+    array (
+      'fields' => 
+      array (
+        'username' => 'login',
+        'password' => 'password',
+      ),
+    ),
+  ),
+  'authorize' => NULL,
+  'ajaxLogin' => NULL,
+  'flash' => NULL,
+  'loginAction' => 
+  array (
+    'controller' => 'Utilisateur',
+    'action' => 'login',
+  ),
+  'loginRedirect' => NULL,
+  'logoutRedirect' => NULL,
+  'authError' => NULL,
+  'unauthorizedRedirect' => true,
+  'storage' => 'Session',
+  'checkAuthIn' => 'Controller.startup',
+) which differs from array (
+  'authenticate' => 
+  array (
+    'Form' => 
+    array (
+      'finder' => 'auth',
+    ),
+  ),
+)
+Request URL: /utilisateur/login
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Core\ObjectRegistry.php(82): Cake\Core\ObjectRegistry->_checkDuplicate('Auth', Array)
+#1 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Controller\Controller.php(321): Cake\Core\ObjectRegistry->load('Auth', Array)
+#2 C:\wamp\www\JournalActivite_cakePhp\src\Controller\UtilisateurController.php(130): Cake\Controller\Controller->loadComponent('Auth', Array)
+#3 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Controller\Controller.php(262): App\Controller\UtilisateurController->initialize()
+#4 [internal function]: Cake\Controller\Controller->__construct(Object(Cake\Network\Request), Object(Cake\Network\Response), 'Utilisateur')
+#5 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Filter\ControllerFactoryFilter.php(100): ReflectionClass->newInstance(Object(Cake\Network\Request), Object(Cake\Network\Response), 'Utilisateur')
+#6 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Filter\ControllerFactoryFilter.php(51): Cake\Routing\Filter\ControllerFactoryFilter->_getController(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#7 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\DispatcherFilter.php(145): Cake\Routing\Filter\ControllerFactoryFilter->beforeDispatch(Object(Cake\Event\Event))
+#8 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Event\EventManager.php(390): Cake\Routing\DispatcherFilter->handle(Object(Cake\Event\Event), Object(Cake\Network\Request), Object(Cake\Network\Response))
+#9 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Event\EventManager.php(356): Cake\Event\EventManager->_callListener(Array, Object(Cake\Event\Event))
+#10 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Event\EventDispatcherTrait.php(78): Cake\Event\EventManager->dispatch(Object(Cake\Event\Event))
+#11 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(62): Cake\Routing\Dispatcher->dispatchEvent('Dispatcher.befo...', Array)
+#12 C:\wamp\www\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#13 {main}
+
+
+2016-05-07 09:55:31 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'bddcake.users' doesn't exist
+Request URL: /utilisateur/login
+Referer URL: http://localhost:8765/utilisateur/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(96): Cake\Database\Schema\Collection->_reflect('Column', 'users', Array, Object(Cake\Database\Schema\Table))
+#1 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(64): Cake\Database\Schema\Collection->describe('users', Array)
+#2 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Table.php(429): Cake\Database\Schema\CachedCollection->describe('users')
+#3 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Query.php(211): Cake\ORM\Table->schema()
+#4 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Query.php(169): Cake\ORM\Query->addDefaultTypes(Object(Cake\ORM\Table))
+#5 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Table.php(1242): Cake\ORM\Query->__construct(Object(Cake\Database\Connection), Object(Cake\ORM\Table))
+#6 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Table.php(945): Cake\ORM\Table->query()
+#7 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Auth\BaseAuthenticate.php(156): Cake\ORM\Table->find('all', Array)
+#8 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Auth\BaseAuthenticate.php(108): Cake\Auth\BaseAuthenticate->_query('test')
+#9 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Auth\FormAuthenticate.php(77): Cake\Auth\BaseAuthenticate->_findUser('test', 'tets')
+#10 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Controller\Component\AuthComponent.php(769): Cake\Auth\FormAuthenticate->authenticate(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#11 C:\wamp\www\JournalActivite_cakePhp\src\Controller\UtilisateurController.php(112): Cake\Controller\Component\AuthComponent->identify()
+#12 [internal function]: App\Controller\UtilisateurController->login()
+#13 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Controller\Controller.php(429): call_user_func_array(Array, Array)
+#14 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(114): Cake\Controller\Controller->invokeAction()
+#15 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\UtilisateurController))
+#16 C:\wamp\www\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#17 {main}
+>>>>>>> 70a2b8fc5f9c138df9832cb52fc091cf4d88fde7
 
 
