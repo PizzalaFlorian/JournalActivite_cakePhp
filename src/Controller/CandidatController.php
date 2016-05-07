@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use fonction-perso\functionDate;
+use fonction-perso\affichageActivite;
 
 /**
  * Candidat Controller
@@ -13,7 +15,10 @@ class CandidatController extends AppController
 
     public function show_agenda(){
          require_once(ROOT .DS. "Vendor" . DS  . "function-perso" . DS . "fonctions.affichage.activite.php");
-         require_once(ROOT .DS. "Vendor" . DS  . "function-perso" . DS . "fonctions.date.php");   
+         require_once(ROOT .DS. "Vendor" . DS  . "function-perso" . DS . "fonctions.date.php"); 
+
+         $fdate = new functionDate();
+         $affActi = new affichageActivite();  
     }
     /**
      * Index method
