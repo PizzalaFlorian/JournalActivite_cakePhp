@@ -11,6 +11,10 @@ use App\Controller\AppController;
 class CandidatController extends AppController
 {
 
+    public function show_agenda(){
+         require_once(ROOT .DS. "Vendor" . DS  . "function-perso" . DS . "fonctions.affichage.activite.php");
+         require_once(ROOT .DS. "Vendor" . DS  . "function-perso" . DS . "fonctions.date.php");   
+    }
     /**
      * Index method
      *

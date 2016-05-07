@@ -70,6 +70,6 @@ class AppView extends View
         echo $this->Html->script('modernizr');
         echo $this->Html->script('timeline');
 
-        
+
     }
 }

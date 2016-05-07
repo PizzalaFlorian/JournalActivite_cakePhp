@@ -4021,3 +4021,56 @@ Stack Trace:
 #1 {main}
 
 
+2016-05-07 13:02:21 Error: Fatal Error (1): Class 'App\View\App' not found in [C:\wamp\www\JournalActivite_cakePhp\src\View\AppView.php, line 17]
+Request URL: /users/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 215
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-05-07 13:02:22 Error: [Cake\Error\FatalErrorException] Class 'App\View\App' not found
+Request URL: /users/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Class 'App\\View...', 'C:\\wamp\\www\\Jou...', 17)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-05-07 13:03:03 Error: Fatal Error (1): Class 'App\View\App' not found in [C:\wamp\www\JournalActivite_cakePhp\src\View\AppView.php, line 17]
+Request URL: /users/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 215
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-05-07 13:03:03 Error: [Cake\Error\FatalErrorException] Class 'App\View\App' not found
+Request URL: /users/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Class 'App\\View...', 'C:\\wamp\\www\\Jou...', 17)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-05-07 13:27:07 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Js could not be found.
+Exception Attributes: array (
+  'class' => 'Js',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /js/candidat_Renseignement.activte.js
+Referer URL: http://localhost:8765/users/login
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
