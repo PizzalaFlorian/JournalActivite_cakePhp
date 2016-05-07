@@ -33,9 +33,7 @@ class UtilisateurController extends AppController
      */
     public function view($id = null)
     {
-        $utilisateur = $this->Utilisateur->get($id, [
-            'contain' => []
-        ]);
+        $utilisateur = $this->Utilisateur->get($id, ['contain' => []]);
 
         $this->set('utilisateur', $utilisateur);
         $this->set('_serialize', ['utilisateur']);

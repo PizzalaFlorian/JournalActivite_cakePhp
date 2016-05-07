@@ -28,6 +28,27 @@ use Cake\Event\Event;
 class AppController extends Controller
 {
 
+
+public function initialize()
+    {
+		parent::initialize();
+		$this->loadComponent('RequestHandler');
+        $this->loadComponent('Flash');
+		$this->loadComponent('Auth', [
+			'loginAction' => [
+				'controller' => 'Users',
+				'action' => 'login'
+			],
+			'authError' => 'Vous croyez vraiment que vous pouvez faire cela?',
+			'authenticate' => [
+				'Form' => [
+					'fields' => ['username' => 'login', 'password' => 'password']
+				]
+			],
+			'storage' => 'Session'
+		]);
+	}
+
     /**
      * Initialization hook method.
      *
@@ -37,44 +58,43 @@ class AppController extends Controller
      *
      * @return void
      */
-    public function initialize()
-    {
-        parent::initialize();
+    // public function initialize()
+    // {
+        // parent::initialize();
 
-        $this->loadComponent('RequestHandler');
-        $this->loadComponent('Flash');
-        $this->loadComponent('Auth', [
-            'authenticate' => [
-                'Form' => [
-                    'fields' => [
-                        'username' => 'login',
-                        'password' => 'password'
-                    ]
-                ]
-            ],
-            'loginAction' => [
-                'controller' => 'Utilisateur',
-                'action' => 'login'
-            ]
-        ]);
+        // $this->loadComponent('RequestHandler');
+        // $this->loadComponent('Flash');
+        // $this->loadComponent('Auth', [
+            // 'authenticate' => [
+                // 'Form' => [
+                    // 'fields' => [
+                        // 'username' => 'login',
+                        // 'password' => 'password'
+                    // ]
+                // ]
+            // ],
+            // 'loginAction' => [
+                // 'controller' => 'Utilisateur',
+                // 'action' => 'login'
+            // ]
+        // ]);
 
-        // Autorise l'action display pour que notre controller de pages
-        // continue de fonctionner.
-        $this->Auth->allow(['display']);
-    }
+        // Autorise l'action display pour que notre controller de pages continue de fonctionner.
+        // $this->Auth->allow(['display']);
+    // }
 
-    /**
-     * Before render callback.
-     *
-     * @param \Cake\Event\Event $event The beforeRender event.
-     * @return void
-     */
-    public function beforeRender(Event $event)
-    {
-        if (!array_key_exists('_serialize', $this->viewVars) &&
-            in_array($this->response->type(), ['application/json', 'application/xml'])
-        ) {
-            $this->set('_serialize', true);
-        }
-    }
+    // /**
+     // * Before render callback.
+     // *
+     // * @param \Cake\Event\Event $event The beforeRender event.
+     // * @return void
+     // */
+    // public function beforeRender(Event $event)
+    // {
+        // if (!array_key_exists('_serialize', $this->viewVars) &&
+            // in_array($this->response->type(), ['application/json', 'application/xml'])
+        // ) {
+            // $this->set('_serialize', true);
+        // }
+    // }
 }

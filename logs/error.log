@@ -2428,3 +2428,964 @@ Stack Trace:
 #1 {main}
 
 
+2016-05-07 07:48:35 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 07:48:35 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 07:48:36 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /css/images/bg02.png
+Referer URL: http://192.168.1.66:5673/css/main.css
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-07 07:49:23 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 07:49:23 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 07:49:24 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 07:49:24 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /css/images/bg01.png
+Referer URL: http://192.168.1.66:5673/css/main.css
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-07 07:49:27 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 07:49:27 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'bddCake.users' doesn't exist
+Request URL: /utilisateur/login
+Referer URL: http://192.168.1.66:5673/utilisateur/login
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(96): Cake\Database\Schema\Collection->_reflect('Column', 'users', Array, Object(Cake\Database\Schema\Table))
+#1 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(64): Cake\Database\Schema\Collection->describe('users', Array)
+#2 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/ORM/Table.php(429): Cake\Database\Schema\CachedCollection->describe('users')
+#3 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/ORM/Query.php(211): Cake\ORM\Table->schema()
+#4 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/ORM/Query.php(169): Cake\ORM\Query->addDefaultTypes(Object(Cake\ORM\Table))
+#5 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/ORM/Table.php(1242): Cake\ORM\Query->__construct(Object(Cake\Database\Connection), Object(Cake\ORM\Table))
+#6 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/ORM/Table.php(945): Cake\ORM\Table->query()
+#7 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Auth/BaseAuthenticate.php(156): Cake\ORM\Table->find('all', Array)
+#8 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Auth/BaseAuthenticate.php(108): Cake\Auth\BaseAuthenticate->_query('test')
+#9 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Auth/FormAuthenticate.php(77): Cake\Auth\BaseAuthenticate->_findUser('test', 'test')
+#10 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php(769): Cake\Auth\FormAuthenticate->authenticate(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#11 /home/garnesson/public_html/JournalActivite_cakePhp/src/Controller/UtilisateurController.php(112): Cake\Controller\Component\AuthComponent->identify()
+#12 [internal function]: App\Controller\UtilisateurController->login()
+#13 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Controller.php(429): call_user_func_array(Array, Array)
+#14 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(114): Cake\Controller\Controller->invokeAction()
+#15 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\UtilisateurController))
+#16 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#17 {main}
+
+
+2016-05-07 07:49:41 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 07:49:41 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 07:49:42 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 07:49:42 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /css/images/bg01.png
+Referer URL: http://192.168.1.66:5673/css/main.css
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-07 07:49:46 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 07:49:46 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'bddCake.users' doesn't exist
+Request URL: /utilisateur/login
+Referer URL: http://192.168.1.66:5673/utilisateur/login
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(96): Cake\Database\Schema\Collection->_reflect('Column', 'users', Array, Object(Cake\Database\Schema\Table))
+#1 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(64): Cake\Database\Schema\Collection->describe('users', Array)
+#2 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/ORM/Table.php(429): Cake\Database\Schema\CachedCollection->describe('users')
+#3 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/ORM/Query.php(211): Cake\ORM\Table->schema()
+#4 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/ORM/Query.php(169): Cake\ORM\Query->addDefaultTypes(Object(Cake\ORM\Table))
+#5 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/ORM/Table.php(1242): Cake\ORM\Query->__construct(Object(Cake\Database\Connection), Object(Cake\ORM\Table))
+#6 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/ORM/Table.php(945): Cake\ORM\Table->query()
+#7 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Auth/BaseAuthenticate.php(156): Cake\ORM\Table->find('all', Array)
+#8 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Auth/BaseAuthenticate.php(108): Cake\Auth\BaseAuthenticate->_query('test')
+#9 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Auth/FormAuthenticate.php(77): Cake\Auth\BaseAuthenticate->_findUser('test', 'test')
+#10 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php(769): Cake\Auth\FormAuthenticate->authenticate(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#11 /home/garnesson/public_html/JournalActivite_cakePhp/src/Controller/UtilisateurController.php(112): Cake\Controller\Component\AuthComponent->identify()
+#12 [internal function]: App\Controller\UtilisateurController->login()
+#13 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Controller.php(429): call_user_func_array(Array, Array)
+#14 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(114): Cake\Controller\Controller->invokeAction()
+#15 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\UtilisateurController))
+#16 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#17 {main}
+
+
+2016-05-07 07:51:54 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 07:51:54 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 07:51:54 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /css/images/bg01.png
+Referer URL: http://192.168.1.66:5673/css/main.css
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-07 07:52:00 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 07:52:00 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'bddCake.users' doesn't exist
+Request URL: /utilisateur/login
+Referer URL: http://192.168.1.66:5673/utilisateur/login
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(96): Cake\Database\Schema\Collection->_reflect('Column', 'users', Array, Object(Cake\Database\Schema\Table))
+#1 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(64): Cake\Database\Schema\Collection->describe('users', Array)
+#2 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/ORM/Table.php(429): Cake\Database\Schema\CachedCollection->describe('users')
+#3 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/ORM/Query.php(211): Cake\ORM\Table->schema()
+#4 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/ORM/Query.php(169): Cake\ORM\Query->addDefaultTypes(Object(Cake\ORM\Table))
+#5 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/ORM/Table.php(1242): Cake\ORM\Query->__construct(Object(Cake\Database\Connection), Object(Cake\ORM\Table))
+#6 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/ORM/Table.php(945): Cake\ORM\Table->query()
+#7 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Auth/BaseAuthenticate.php(156): Cake\ORM\Table->find('all', Array)
+#8 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Auth/BaseAuthenticate.php(108): Cake\Auth\BaseAuthenticate->_query('test')
+#9 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Auth/FormAuthenticate.php(77): Cake\Auth\BaseAuthenticate->_findUser('test', 'test')
+#10 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php(769): Cake\Auth\FormAuthenticate->authenticate(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#11 /home/garnesson/public_html/JournalActivite_cakePhp/src/Controller/UtilisateurController.php(110): Cake\Controller\Component\AuthComponent->identify()
+#12 [internal function]: App\Controller\UtilisateurController->login()
+#13 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Controller.php(429): call_user_func_array(Array, Array)
+#14 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(114): Cake\Controller\Controller->invokeAction()
+#15 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\UtilisateurController))
+#16 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#17 {main}
+
+
+2016-05-07 08:13:38 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 08:13:39 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 08:13:39 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /css/images/bg02.png
+Referer URL: http://192.168.1.66:5673/css/main.css
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-07 08:13:44 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 08:13:44 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 08:13:44 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 08:13:44 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /css/images/bg01.png
+Referer URL: http://192.168.1.66:5673/css/main.css
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-07 08:13:50 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 08:13:50 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'bddCake.users' doesn't exist
+Request URL: /utilisateur/login
+Referer URL: http://192.168.1.66:5673/utilisateur/login
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(96): Cake\Database\Schema\Collection->_reflect('Column', 'users', Array, Object(Cake\Database\Schema\Table))
+#1 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(64): Cake\Database\Schema\Collection->describe('users', Array)
+#2 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/ORM/Table.php(429): Cake\Database\Schema\CachedCollection->describe('users')
+#3 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/ORM/Query.php(211): Cake\ORM\Table->schema()
+#4 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/ORM/Query.php(169): Cake\ORM\Query->addDefaultTypes(Object(Cake\ORM\Table))
+#5 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/ORM/Table.php(1242): Cake\ORM\Query->__construct(Object(Cake\Database\Connection), Object(Cake\ORM\Table))
+#6 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/ORM/Table.php(945): Cake\ORM\Table->query()
+#7 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Auth/BaseAuthenticate.php(156): Cake\ORM\Table->find('all', Array)
+#8 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Auth/BaseAuthenticate.php(108): Cake\Auth\BaseAuthenticate->_query('test')
+#9 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Auth/FormAuthenticate.php(77): Cake\Auth\BaseAuthenticate->_findUser('test', 'test')
+#10 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php(769): Cake\Auth\FormAuthenticate->authenticate(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#11 /home/garnesson/public_html/JournalActivite_cakePhp/src/Controller/UtilisateurController.php(110): Cake\Controller\Component\AuthComponent->identify()
+#12 [internal function]: App\Controller\UtilisateurController->login()
+#13 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Controller.php(429): call_user_func_array(Array, Array)
+#14 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(114): Cake\Controller\Controller->invokeAction()
+#15 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\UtilisateurController))
+#16 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#17 {main}
+
+
+2016-05-07 08:25:12 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 08:25:12 Error: Fatal Error (4): syntax error, unexpected 'parent' (T_STRING), expecting function (T_FUNCTION) in [/home/garnesson/public_html/JournalActivite_cakePhp/src/Controller/AppController.php, line 33]
+Request URL: /utilisateur/login
+Client IP: 192.168.1.49
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 215
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-05-07 08:25:12 Error: [Cake\Error\FatalErrorException] syntax error, unexpected 'parent' (T_STRING), expecting function (T_FUNCTION)
+Request URL: /utilisateur/login
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', '/home/garnesson...', 33)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-05-07 08:25:21 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 08:25:21 Error: Fatal Error (4): syntax error, unexpected 'parent' (T_STRING), expecting function (T_FUNCTION) in [/home/garnesson/public_html/JournalActivite_cakePhp/src/Controller/AppController.php, line 33]
+Request URL: /activite
+Client IP: 192.168.1.49
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 215
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-05-07 08:25:21 Error: [Cake\Error\FatalErrorException] syntax error, unexpected 'parent' (T_STRING), expecting function (T_FUNCTION)
+Request URL: /activite
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', '/home/garnesson...', 33)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-05-07 08:26:03 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 08:26:03 Error: [Cake\Routing\Exception\MissingRouteException] A route matching "array (
+  'controller' => 'Utilisateur',
+  'action' => 'login',
+  'plugin' => 'Utilisateur',
+  '_ext' => NULL,
+)" could not be found.
+Exception Attributes: array (
+  'url' => 'array (
+  \'controller\' => \'Utilisateur\',
+  \'action\' => \'login\',
+  \'plugin\' => \'Utilisateur\',
+  \'_ext\' => NULL,
+)',
+  'context' => 
+  array (
+    '_base' => '',
+    '_port' => '5673',
+    '_scheme' => 'http',
+    '_host' => '192.168.1.66:5673',
+    'params' => 
+    array (
+      'plugin' => NULL,
+      'controller' => 'Activite',
+      'action' => 'index',
+      '_ext' => NULL,
+      'pass' => 
+      array (
+      ),
+    ),
+  ),
+)
+Request URL: /activite
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Router.php(612): Cake\Routing\RouteCollection->match(Array, Array)
+#1 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Router.php(725): Cake\Routing\Router::url(Array)
+#2 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php(400): Cake\Routing\Router::normalize(Array)
+#3 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php(290): Cake\Controller\Component\AuthComponent->_isLoginAction(Object(App\Controller\ActiviteController))
+#4 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php(258): Cake\Controller\Component\AuthComponent->authCheck(Object(Cake\Event\Event))
+#5 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Event/EventManager.php(386): Cake\Controller\Component\AuthComponent->startup(Object(Cake\Event\Event))
+#6 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Event/EventManager.php(356): Cake\Event\EventManager->_callListener(Array, Object(Cake\Event\Event))
+#7 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Event/EventDispatcherTrait.php(78): Cake\Event\EventManager->dispatch(Object(Cake\Event\Event))
+#8 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Controller.php(495): Cake\Controller\Controller->dispatchEvent('Controller.star...')
+#9 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(109): Cake\Controller\Controller->startupProcess()
+#10 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\ActiviteController))
+#11 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#12 {main}
+
+
+2016-05-07 08:26:25 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 08:26:25 Error: [Cake\Routing\Exception\MissingRouteException] A route matching "array (
+  'controller' => 'Utilisateur',
+  'action' => 'login',
+  'plugin' => 'Utilisateur',
+  '_ext' => NULL,
+)" could not be found.
+Exception Attributes: array (
+  'url' => 'array (
+  \'controller\' => \'Utilisateur\',
+  \'action\' => \'login\',
+  \'plugin\' => \'Utilisateur\',
+  \'_ext\' => NULL,
+)',
+  'context' => 
+  array (
+    '_base' => '',
+    '_port' => '5673',
+    '_scheme' => 'http',
+    '_host' => '192.168.1.66:5673',
+    'params' => 
+    array (
+      'plugin' => NULL,
+      'controller' => 'Utilisateur',
+      'action' => 'index',
+      '_ext' => NULL,
+      'pass' => 
+      array (
+      ),
+    ),
+  ),
+)
+Request URL: /utilisateur
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Router.php(612): Cake\Routing\RouteCollection->match(Array, Array)
+#1 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Router.php(725): Cake\Routing\Router::url(Array)
+#2 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php(400): Cake\Routing\Router::normalize(Array)
+#3 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php(290): Cake\Controller\Component\AuthComponent->_isLoginAction(Object(App\Controller\UtilisateurController))
+#4 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php(258): Cake\Controller\Component\AuthComponent->authCheck(Object(Cake\Event\Event))
+#5 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Event/EventManager.php(386): Cake\Controller\Component\AuthComponent->startup(Object(Cake\Event\Event))
+#6 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Event/EventManager.php(356): Cake\Event\EventManager->_callListener(Array, Object(Cake\Event\Event))
+#7 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Event/EventDispatcherTrait.php(78): Cake\Event\EventManager->dispatch(Object(Cake\Event\Event))
+#8 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Controller.php(495): Cake\Controller\Controller->dispatchEvent('Controller.star...')
+#9 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(109): Cake\Controller\Controller->startupProcess()
+#10 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\UtilisateurController))
+#11 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#12 {main}
+
+
+2016-05-07 08:26:40 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 08:26:40 Error: [Cake\Routing\Exception\MissingRouteException] A route matching "array (
+  'controller' => 'Utilisateur',
+  'action' => 'login',
+  'plugin' => 'Utilisateur',
+  '_ext' => NULL,
+)" could not be found.
+Exception Attributes: array (
+  'url' => 'array (
+  \'controller\' => \'Utilisateur\',
+  \'action\' => \'login\',
+  \'plugin\' => \'Utilisateur\',
+  \'_ext\' => NULL,
+)',
+  'context' => 
+  array (
+    '_base' => '',
+    '_port' => '5673',
+    '_scheme' => 'http',
+    '_host' => '192.168.1.66:5673',
+    'params' => 
+    array (
+      'plugin' => NULL,
+      'controller' => 'Utilisateur',
+      'action' => 'index',
+      '_ext' => NULL,
+      'pass' => 
+      array (
+      ),
+    ),
+  ),
+)
+Request URL: /utilisateur
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Router.php(612): Cake\Routing\RouteCollection->match(Array, Array)
+#1 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Router.php(725): Cake\Routing\Router::url(Array)
+#2 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php(400): Cake\Routing\Router::normalize(Array)
+#3 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php(290): Cake\Controller\Component\AuthComponent->_isLoginAction(Object(App\Controller\UtilisateurController))
+#4 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php(258): Cake\Controller\Component\AuthComponent->authCheck(Object(Cake\Event\Event))
+#5 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Event/EventManager.php(386): Cake\Controller\Component\AuthComponent->startup(Object(Cake\Event\Event))
+#6 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Event/EventManager.php(356): Cake\Event\EventManager->_callListener(Array, Object(Cake\Event\Event))
+#7 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Event/EventDispatcherTrait.php(78): Cake\Event\EventManager->dispatch(Object(Cake\Event\Event))
+#8 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Controller.php(495): Cake\Controller\Controller->dispatchEvent('Controller.star...')
+#9 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(109): Cake\Controller\Controller->startupProcess()
+#10 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\UtilisateurController))
+#11 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#12 {main}
+
+
+2016-05-07 08:29:00 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 08:29:00 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 08:29:00 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Users could not be found.
+Exception Attributes: array (
+  'class' => 'Users',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /users/login
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-07 08:29:37 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 08:29:37 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Users could not be found.
+Exception Attributes: array (
+  'class' => 'Users',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /users/login
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-07 09:41:21 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 09:41:21 Error: [Cake\Routing\Exception\MissingRouteException] A route matching "array (
+  'controller' => 'Users',
+  'action' => 'login',
+  'plugin' => 'Users',
+  '_ext' => NULL,
+)" could not be found.
+Exception Attributes: array (
+  'url' => 'array (
+  \'controller\' => \'Users\',
+  \'action\' => \'login\',
+  \'plugin\' => \'Users\',
+  \'_ext\' => NULL,
+)',
+  'context' => 
+  array (
+    '_base' => '',
+    '_port' => '5673',
+    '_scheme' => 'http',
+    '_host' => '192.168.1.66:5673',
+    'params' => 
+    array (
+      'plugin' => NULL,
+      'controller' => 'Users',
+      'action' => 'login',
+      '_ext' => NULL,
+      'pass' => 
+      array (
+      ),
+    ),
+  ),
+)
+Request URL: /users/login
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Router.php(612): Cake\Routing\RouteCollection->match(Array, Array)
+#1 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Router.php(725): Cake\Routing\Router::url(Array)
+#2 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php(400): Cake\Routing\Router::normalize(Array)
+#3 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php(290): Cake\Controller\Component\AuthComponent->_isLoginAction(Object(App\Controller\UsersController))
+#4 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php(258): Cake\Controller\Component\AuthComponent->authCheck(Object(Cake\Event\Event))
+#5 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Event/EventManager.php(386): Cake\Controller\Component\AuthComponent->startup(Object(Cake\Event\Event))
+#6 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Event/EventManager.php(356): Cake\Event\EventManager->_callListener(Array, Object(Cake\Event\Event))
+#7 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Event/EventDispatcherTrait.php(78): Cake\Event\EventManager->dispatch(Object(Cake\Event\Event))
+#8 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Controller.php(495): Cake\Controller\Controller->dispatchEvent('Controller.star...')
+#9 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(109): Cake\Controller\Controller->startupProcess()
+#10 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\UsersController))
+#11 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#12 {main}
+
+
+2016-05-07 09:47:10 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 09:47:10 Error: [Cake\Routing\Exception\MissingRouteException] A route matching "array (
+  'controller' => 'Users',
+  'action' => 'login',
+  'plugin' => 'Users',
+  '_ext' => NULL,
+)" could not be found.
+Exception Attributes: array (
+  'url' => 'array (
+  \'controller\' => \'Users\',
+  \'action\' => \'login\',
+  \'plugin\' => \'Users\',
+  \'_ext\' => NULL,
+)',
+  'context' => 
+  array (
+    '_base' => '',
+    '_port' => '5673',
+    '_scheme' => 'http',
+    '_host' => '192.168.1.66:5673',
+    'params' => 
+    array (
+      'plugin' => NULL,
+      'controller' => 'Users',
+      'action' => 'login',
+      '_ext' => NULL,
+      'pass' => 
+      array (
+      ),
+    ),
+  ),
+)
+Request URL: /users/login
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Router.php(612): Cake\Routing\RouteCollection->match(Array, Array)
+#1 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Router.php(725): Cake\Routing\Router::url(Array)
+#2 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php(400): Cake\Routing\Router::normalize(Array)
+#3 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php(290): Cake\Controller\Component\AuthComponent->_isLoginAction(Object(App\Controller\UsersController))
+#4 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php(258): Cake\Controller\Component\AuthComponent->authCheck(Object(Cake\Event\Event))
+#5 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Event/EventManager.php(386): Cake\Controller\Component\AuthComponent->startup(Object(Cake\Event\Event))
+#6 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Event/EventManager.php(356): Cake\Event\EventManager->_callListener(Array, Object(Cake\Event\Event))
+#7 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Event/EventDispatcherTrait.php(78): Cake\Event\EventManager->dispatch(Object(Cake\Event\Event))
+#8 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Controller.php(495): Cake\Controller\Controller->dispatchEvent('Controller.star...')
+#9 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(109): Cake\Controller\Controller->startupProcess()
+#10 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\UsersController))
+#11 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#12 {main}
+
+
+2016-05-07 09:47:19 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 09:47:19 Error: [Cake\Routing\Exception\MissingRouteException] A route matching "array (
+  'controller' => 'Users',
+  'action' => 'login',
+  'plugin' => 'Users',
+  '_ext' => NULL,
+)" could not be found.
+Exception Attributes: array (
+  'url' => 'array (
+  \'controller\' => \'Users\',
+  \'action\' => \'login\',
+  \'plugin\' => \'Users\',
+  \'_ext\' => NULL,
+)',
+  'context' => 
+  array (
+    '_base' => '',
+    '_port' => '5673',
+    '_scheme' => 'http',
+    '_host' => '192.168.1.66:5673',
+    'params' => 
+    array (
+      'plugin' => NULL,
+      'controller' => 'Pages',
+      'action' => 'display',
+      '_ext' => NULL,
+      'pass' => 
+      array (
+        0 => 'home',
+      ),
+    ),
+  ),
+)
+Request URL: /
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Router.php(612): Cake\Routing\RouteCollection->match(Array, Array)
+#1 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Router.php(725): Cake\Routing\Router::url(Array)
+#2 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php(400): Cake\Routing\Router::normalize(Array)
+#3 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php(290): Cake\Controller\Component\AuthComponent->_isLoginAction(Object(App\Controller\PagesController))
+#4 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php(258): Cake\Controller\Component\AuthComponent->authCheck(Object(Cake\Event\Event))
+#5 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Event/EventManager.php(386): Cake\Controller\Component\AuthComponent->startup(Object(Cake\Event\Event))
+#6 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Event/EventManager.php(356): Cake\Event\EventManager->_callListener(Array, Object(Cake\Event\Event))
+#7 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Event/EventDispatcherTrait.php(78): Cake\Event\EventManager->dispatch(Object(Cake\Event\Event))
+#8 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Controller.php(495): Cake\Controller\Controller->dispatchEvent('Controller.star...')
+#9 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(109): Cake\Controller\Controller->startupProcess()
+#10 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\PagesController))
+#11 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#12 {main}
+
+
+2016-05-07 09:47:59 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 09:47:59 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 09:47:59 Error: [Cake\View\Exception\MissingTemplateException] Template file "Users/login.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users/login.ctp',
+)
+Request URL: /users/login
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/View/View.php(584): Cake\View\View->_getViewFileName(NULL)
+#1 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Controller.php(611): Cake\View\View->render(NULL, NULL)
+#2 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(120): Cake\Controller\Controller->render()
+#3 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\UsersController))
+#4 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 {main}
+
+
+2016-05-07 09:48:43 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 09:48:43 Error: [Cake\View\Exception\MissingTemplateException] Template file "Users/login.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users/login.ctp',
+)
+Request URL: /users/login
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/View/View.php(584): Cake\View\View->_getViewFileName(NULL)
+#1 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Controller.php(611): Cake\View\View->render(NULL, NULL)
+#2 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(120): Cake\Controller\Controller->render()
+#3 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\UsersController))
+#4 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 {main}
+
+
+2016-05-07 09:48:46 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 09:48:46 Error: [Cake\View\Exception\MissingTemplateException] Template file "Users/login.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Users/login.ctp',
+)
+Request URL: /users/login
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/View/View.php(584): Cake\View\View->_getViewFileName(NULL)
+#1 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Controller/Controller.php(611): Cake\View\View->render(NULL, NULL)
+#2 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(120): Cake\Controller\Controller->render()
+#3 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\UsersController))
+#4 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 {main}
+
+
+2016-05-07 09:49:37 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 09:49:37 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 09:49:37 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /css/images/bg01.png
+Referer URL: http://192.168.1.66:5673/css/main.css
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-07 09:49:41 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 09:49:42 Error: Fatal Error (1): Call to a member function error() on boolean in [/home/garnesson/public_html/JournalActivite_cakePhp/src/Controller/UsersController.php, line 119]
+Request URL: /users/login
+Referer URL: http://192.168.1.66:5673/users/login
+Client IP: 192.168.1.49
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 215
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-05-07 09:49:42 Error: [Cake\Error\FatalErrorException] Call to a member function error() on boolean
+Request URL: /users/login
+Referer URL: http://192.168.1.66:5673/users/login
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to a membe...', '/home/garnesson...', 119)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-05-07 09:50:45 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 09:50:45 Error: Fatal Error (4): syntax error, unexpected ';', expecting ']' in [/home/garnesson/public_html/JournalActivite_cakePhp/src/Controller/AppController.php, line 50]
+Request URL: /users/login
+Client IP: 192.168.1.49
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 215
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 98
+[main] - [internal], line ??
+
+
+
+2016-05-07 09:50:45 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ';', expecting ']'
+Request URL: /users/login
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(98): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', '/home/garnesson...', 50)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-05-07 09:51:04 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 09:51:04 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 09:51:04 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /css/images/bg01.png
+Referer URL: http://192.168.1.66:5673/css/main.css
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-07 09:51:08 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 09:51:08 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 09:51:08 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /css/images/bg01.png
+Referer URL: http://192.168.1.66:5673/css/main.css
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-07 09:51:59 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 09:51:59 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 09:51:59 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /css/images/bg01.png
+Referer URL: http://192.168.1.66:5673/css/main.css
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-07 09:52:03 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 09:52:03 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 09:52:03 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /css/images/bg01.png
+Referer URL: http://192.168.1.66:5673/css/main.css
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-07 09:52:07 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 09:52:07 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 09:52:07 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /css/images/bg01.png
+Referer URL: http://192.168.1.66:5673/css/main.css
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-07 09:53:44 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 09:53:44 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 09:53:44 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /css/images/bg01.png
+Referer URL: http://192.168.1.66:5673/css/main.css
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-07 09:53:53 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 09:53:53 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 09:53:53 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /css/images/bg01.png
+Referer URL: http://192.168.1.66:5673/css/main.css
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-07 10:11:25 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 10:11:25 Warning: Warning (4096): Argument 1 passed to App\Controller\UsersController::beforeFilter() must be an instance of App\Controller\Event, instance of Cake\Event\Event given, called in /home/garnesson/public_html/JournalActivite_cakePhp/vendor/cakephp/cakephp/src/Event/EventManager.php on line 386 and defined in [/home/garnesson/public_html/JournalActivite_cakePhp/src/Controller/UsersController.php, line 110]
+Request URL: /users/login
+Referer URL: http://192.168.1.66:5673/users/login
+Client IP: 192.168.1.49
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+App\Controller\UsersController::beforeFilter() - APP/Controller/UsersController.php, line 110
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 386
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 356
+Cake\Controller\Controller::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 78
+Cake\Controller\Controller::startupProcess() - CORE/src/Controller/Controller.php, line 491
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 109
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 87
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-05-07 10:11:26 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 10:11:26 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /css/images/bg01.png
+Referer URL: http://192.168.1.66:5673/css/main.css
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-07 10:14:01 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 10:14:01 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 10:14:01 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /css/images/bg01.png
+Referer URL: http://192.168.1.66:5673/css/main.css
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-07 10:14:05 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 10:14:05 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 10:14:05 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /css/images/bg01.png
+Referer URL: http://192.168.1.66:5673/css/main.css
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-07 10:14:11 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 10:14:11 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 10:14:11 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /css/images/bg01.png
+Referer URL: http://192.168.1.66:5673/css/main.css
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-07 10:14:23 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 10:14:23 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 10:14:23 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /css/images/bg01.png
+Referer URL: http://192.168.1.66:5673/css/main.css
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-07 10:15:32 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 10:15:32 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 10:15:32 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /css/images/bg01.png
+Referer URL: http://192.168.1.66:5673/css/main.css
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-07 10:15:34 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 10:15:34 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 10:15:34 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /css/images/bg01.png
+Referer URL: http://192.168.1.66:5673/css/main.css
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-05-07 10:15:39 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 10:15:40 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-05-07 10:15:40 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /css/images/bg01.png
+Referer URL: http://192.168.1.66:5673/css/main.css
+Client IP: 192.168.1.49
+Stack Trace:
+#0 /home/garnesson/public_html/JournalActivite_cakePhp/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
