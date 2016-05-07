@@ -41,11 +41,12 @@ class AppView extends View
         $this->loadHelper('Form');
         $this->loadHelper('Flash');
         
-        echo $this->Html->css('main');
+        // echo $this->Html->css('main');
+        echo $this->Html->css('main_custom');
         echo $this->Html->css('ie8');
         echo $this->Html->css('modale');
         echo $this->Html->css('occupation');
-        echo $this->Html->css('font-awesome.min');
+        // echo $this->Html->css('font-awesome.min');
         echo $this->Html->css('Demo_calendar_style');
         echo $this->Html->css('Demo_calendar_jquery');
         

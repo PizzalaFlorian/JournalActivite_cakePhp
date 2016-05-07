@@ -118,6 +118,11 @@ class UtilisateurController extends AppController
         }
     }
 
+    public function login_view()
+    {
+         $this->layout ='loginlayout';
+    }
+
     public function initialize()
     {
         parent::initialize();
