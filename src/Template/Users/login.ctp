@@ -4,7 +4,7 @@
 	<?= $this->Flash->render('auth') ?>
 	<?= $this->Form->create('user') ?>
     <fieldset>
-        <legend><?= __("Merci de rentrer vos nom d'utilisateur et mot de passe") ?></legend>
+        <legend><?= __("Merci de rentrer vos login et mot de passe") ?></legend>
         <?= $this->Form->input('login') ?>
         <?= $this->Form->input('password') ?>
     </fieldset>

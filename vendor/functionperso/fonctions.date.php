@@ -1,9 +1,5 @@
 <?php
 
-// namespace functionDate;
-
-// class functionDate
-// {
 	function SemaineCourante ($SemaineCourante,$Semaine) 
 	{
 		//fonction de choix entre un affichage par défault et le retour du post.
@@ -173,7 +169,5 @@
 		return $s;
 	}
 
-// }
-	
 
 ?>

@@ -1,48 +1,39 @@
 <?php
 
-// namespace affichageActivite;
-
-// class affichageActivite
-// {
 	use Cake\ORM\TableRegistry;
 	
-	 function renvoyerCodeCandidatfromCodetilisateur($id,$bdd){
-		// $sql = 'SELECT CodeCandidat FROM candidat WHERE ID="'.$id.'"';
-		// $res = $bdd->query($sql);
-		// $data = $res->fetch();
-		// return $data['CodeCandidat'];
-		var_dump('id =',$id);	
-		$query = TableRegistry::get('candidat')
+	 function renvoyerCodeCandidatfromCodetilisateur($id){
+		$res = TableRegistry::get('candidat')
 		    ->find()
-		    ->select(['CodeCandidat'])
-		    ->where(['id' == $id])
+		    ->where(['ID' => $id])
 		    ->first();
-		var_dump($article->CodeCandidat);
-		debug($article->CodeCandidat);
+		return $res->CodeCandidat;
 	}
 	
-	 function renvoyerToutesOccupationDunCandidatALaDate($codeCandidat,$date,$bdd){
-		$sql = 'SELECT * FROM occupation WHERE CodeCandidat="'.$codeCandidat.'" AND HeureDebut LIKE "'.$date.'%"';
-		$res = $bdd->query($sql);
+	 function renvoyerToutesOccupationDunCandidatALaDate($codeCandidat,$date){
 		$table = null;
-		while($data = $res->fetch())
-			$table[] = $data;
+
+		$table = TableRegistry::get('occupation')
+		    ->find()
+		    ->where(['CodeCandidat' => $codeCandidat,'HeureDebut LIKE' => $date.'%'])
+		    ->toArray();
+		
 		return $table;
 	}
 	
-	 function print_table($weekquery,$id,$bdd){
-		$codeCandidat = renvoyerCodeCandidatfromCodetilisateur($id,$bdd);
+	 function print_table($weekquery,$id){
+		$codeCandidat = renvoyerCodeCandidatfromCodetilisateur($id);
 		foreach($weekquery as $key => $value){
 			echo '<td valign="top" class="other_day calendar_td" id="'.$value.'">';
-			echo afficheColone($codeCandidat,$value,$key,$bdd);
+			echo afficheColone($codeCandidat,$value,$key);
 			echo'</td>';
 		}
 	}
 	
-	 function afficheColone($codeCandidat,$date,$day,$bdd){
-		$table = renvoyerToutesOccupationDunCandidatALaDate($codeCandidat,$date,$bdd);
+	 function afficheColone($codeCandidat,$date,$day){
+		$table = renvoyerToutesOccupationDunCandidatALaDate($codeCandidat,$date);
 		if(isset($table)){
-			return retournerOccupations($table,$bdd);
+			return retournerOccupations($table);
 		}
 		else
 		return '';
@@ -50,12 +41,12 @@
 	
 	
 	 function retournerDureeSeconde($occupation){
-		$hours = convertDateTimeToHours($occupation['HeureDebut']);
+		$hours = convertDateTimeToHours($occupation['HeureDebut']->i18nFormat('yyyy-MM-dd HH:mm:ss'));
 		$data = explode(':',$hours);
 		
 		$depSec = $data[0]*60*60 + $data[1]*60;
 		
-		$hoursf = convertDateTimeToHours($occupation['HeureFin']);
+		$hoursf = convertDateTimeToHours($occupation['HeureFin']->i18nFormat('yyyy-MM-dd HH:mm:ss'));
 		$dataf = explode(':',$hoursf);
 		
 		$finSec = $dataf[0]*60*60 + $dataf[1]*60;
@@ -66,12 +57,12 @@
 	
 	 function generateStyle($occupation){
 		
-		$hours = convertDateTimeToHours($occupation['HeureDebut']);
+		$hours = convertDateTimeToHours($occupation['HeureDebut']->i18nFormat('yyyy-MM-dd HH:mm:ss'));
 		$data = explode(':',$hours);
 		
 		$depSec = $data[0]*60*60 + $data[1]*60;
 		
-		$hoursf = convertDateTimeToHours($occupation['HeureFin']);
+		$hoursf = convertDateTimeToHours($occupation['HeureFin']->i18nFormat('yyyy-MM-dd HH:mm:ss'));
 		$dataf = explode(':',$hoursf);
 		
 		$finSec = $dataf[0]*60*60 + $dataf[1]*60;
@@ -93,58 +84,62 @@
 	}
 	
 	 function retournerHeureDebut($occupation){
-		$hours = convertDateTimeToHours($occupation['HeureDebut']);
+		$hours = convertDateTimeToHours($occupation['HeureDebut']->i18nFormat('yyyy-MM-dd HH:mm:ss'));
 		$data = explode(':',$hours);
 		return $data[0];
 	}
 	
 	 function retournerMinuteDebut($occupation){
-		$hours = convertDateTimeToHours($occupation['HeureDebut']);
+		$hours = convertDateTimeToHours($occupation['HeureDebut']->i18nFormat('yyyy-MM-dd HH:mm:ss'));
 		$data = explode(':',$hours);
 		return $data[1];
 	}
 	
 	 function retournerHeureFin($occupation){
-		$hours = convertDateTimeToHours($occupation['HeureFin']);
+		$hours = convertDateTimeToHours($occupation['HeureFin']->i18nFormat('yyyy-MM-dd HH:mm:ss'));
 		$data = explode(':',$hours);
 		return $data[0];
 	}
 	
 	 function retournerMinuteFin($occupation){
-		$hours = convertDateTimeToHours($occupation['HeureFin']);
+		$hours = convertDateTimeToHours($occupation['HeureFin']->i18nFormat('yyyy-MM-dd HH:mm:ss'));
 		$data = explode(':',$hours);
 		return $data[1];
 	}
 	
-	 function convertCodeToNomActivite($codeActivite,$bdd){
-		$sql = 'SELECT NomActivite FROM activite WHERE CodeActivite="'.$codeActivite.'"';
-		$res = $bdd->query($sql);
-		$data = $res->fetch();
-		return $data['NomActivite'];
+	 function convertCodeToNomActivite($codeActivite){
+		$res = TableRegistry::get('activite')
+		    ->find()
+		    ->where(['CodeActivite' => $codeActivite])
+		    ->first();
+		return $res->NomActivite;
 	}
 			
-	 function convertCodeToNomLieu($CodeLieux,$bdd){
-		$sql = 'SELECT NomLieux FROM lieu WHERE CodeLieux="'.$CodeLieux.'"';
-		$res = $bdd->query($sql);
-		$data = $res->fetch();
-		return $data['NomLieux'];
+	 function convertCodeToNomLieu($CodeLieux){
+		$res = TableRegistry::get('lieu')
+		    ->find()
+		    ->where(['CodeLieux' => $CodeLieux])
+		    ->first();
+		return $res->NomLieux;
 	}
 	
-	 function convertCodeToNomCompagnie($CodeCompagnie,$bdd){
-		$sql = 'SELECT NomCompagnie FROM compagnie WHERE CodeCompagnie="'.$CodeCompagnie.'"';
-		$res = $bdd->query($sql);
-		$data = $res->fetch();
-		return $data['NomCompagnie'];
+	 function convertCodeToNomCompagnie($CodeCompagnie){
+		$res = TableRegistry::get('compagnie')
+		    ->find()
+		    ->where(['CodeCompagnie' => $CodeCompagnie])
+		    ->first();
+		return $res->NomCompagnie;
 	} 
 	
-	 function convertCodeToNomDispositif($CodeDispositif,$bdd){
-		$sql = 'SELECT NomDispositif FROM dispositif WHERE CodeDispositif="'.$CodeDispositif.'"';
-		$res = $bdd->query($sql);
-		$data = $res->fetch();
-		return $data['NomDispositif'];
+	 function convertCodeToNomDispositif($CodeDispositif){
+		$res = TableRegistry::get('dispositif')
+		    ->find()
+		    ->where(['CodeDispositif' => $CodeDispositif])
+		    ->first();
+		return $res->NomDispositif;
 	}
 	
-	 function retournerOccupations($table,$bdd){
+	 function retournerOccupations($table){
 		$string = '';
 		foreach($table as $occupation){
 			$Ds = retournerDureeSeconde($occupation);
@@ -161,25 +156,25 @@
 				$string = $string.'</div>';
 			}
 			else if($Dm > 60 && $Dm <= 100){
-				$string = $string.'<div class="calendar_event_activite" id="'.$occupation['CodeOccupation'].'_activite">'.convertCodeToNomActivite($occupation['CodeActivite'],$bdd).'</div>
+				$string = $string.'<div class="calendar_event_activite" id="'.$occupation['CodeOccupation'].'_activite">'.convertCodeToNomActivite($occupation['CodeActivite']).'</div>
 				</div>';
 			}
 			else if($Dm > 100 && $Dm <= 140){
-				$string = $string.'<div class="calendar_event_activite" id="'.$occupation['CodeOccupation'].'_activite">'.convertCodeToNomActivite($occupation['CodeActivite'],$bdd).'</div>
-				<div class="calendar_event_lieu" id="'.$occupation['CodeOccupation'].'_lieu">'.convertCodeToNomLieu($occupation['CodeLieux'],$bdd).'</div>
+				$string = $string.'<div class="calendar_event_activite" id="'.$occupation['CodeOccupation'].'_activite">'.convertCodeToNomActivite($occupation['CodeActivite']).'</div>
+				<div class="calendar_event_lieu" id="'.$occupation['CodeOccupation'].'_lieu">'.convertCodeToNomLieu($occupation['CodeLieux']).'</div>
 				</div>';
 			}
 			else if($Dm > 140 && $Dm <= 180){
-				$string = $string.'<div class="calendar_event_activite" id="'.$occupation['CodeOccupation'].'_activite">'.convertCodeToNomActivite($occupation['CodeActivite'],$bdd).'</div>
-				<div class="calendar_event_lieu" id="'.$occupation['CodeOccupation'].'_lieu">'.convertCodeToNomLieu($occupation['CodeLieux'],$bdd).'</div>
-				<div class="calendar_event_compagnie" id="'.$occupation['CodeOccupation'].'_compagnie">'.convertCodeToNomCompagnie($occupation['CodeCompagnie'],$bdd).'</div>
+				$string = $string.'<div class="calendar_event_activite" id="'.$occupation['CodeOccupation'].'_activite">'.convertCodeToNomActivite($occupation['CodeActivite']).'</div>
+				<div class="calendar_event_lieu" id="'.$occupation['CodeOccupation'].'_lieu">'.convertCodeToNomLieu($occupation['CodeLieux']).'</div>
+				<div class="calendar_event_compagnie" id="'.$occupation['CodeOccupation'].'_compagnie">'.convertCodeToNomCompagnie($occupation['CodeCompagnie']).'</div>
 				</div>';
 			}
 			else{
-				$string = $string.'<div class="calendar_event_activite" id="'.$occupation['CodeOccupation'].'_activite">'.convertCodeToNomActivite($occupation['CodeActivite'],$bdd).'</div>
-				<div class="calendar_event_lieu" id="'.$occupation['CodeOccupation'].'_lieu">'.convertCodeToNomLieu($occupation['CodeLieux'],$bdd).'</div>
-				<div class="calendar_event_compagnie" id="'.$occupation['CodeOccupation'].'_compagnie">'.convertCodeToNomCompagnie($occupation['CodeCompagnie'],$bdd).'</div>
-				<div class="calendar_event_dispositif" id="'.$occupation['CodeOccupation'].'_dispositif">'.convertCodeToNomDispositif($occupation['CodeDispositif'],$bdd).'</div>
+				$string = $string.'<div class="calendar_event_activite" id="'.$occupation['CodeOccupation'].'_activite">'.convertCodeToNomActivite($occupation['CodeActivite']).'</div>
+				<div class="calendar_event_lieu" id="'.$occupation['CodeOccupation'].'_lieu">'.convertCodeToNomLieu($occupation['CodeLieux']).'</div>
+				<div class="calendar_event_compagnie" id="'.$occupation['CodeOccupation'].'_compagnie">'.convertCodeToNomCompagnie($occupation['CodeCompagnie']).'</div>
+				<div class="calendar_event_dispositif" id="'.$occupation['CodeOccupation'].'_dispositif">'.convertCodeToNomDispositif($occupation['CodeDispositif']).'</div>
 				</div>';
 				
 			}	

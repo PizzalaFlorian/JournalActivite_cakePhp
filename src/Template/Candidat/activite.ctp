@@ -1,4 +1,18 @@
 <!-- Content -->
+<?php
+    $SemaineCourante = date("W");
+    if(isset($_POST['semaine'])){
+        $Semaine = $_POST['semaine'];
+    }
+    else{
+        $Semaine=null;
+    }  
+    $Week = SemaineCourante ((date("W")), $Semaine) ;
+    $currentWeek = get_date_lundi_to_Sunday_from_week($Week,date("Y"),1);
+    $queryWeek = get_date_lundi_to_Sunday_from_week_for_query($Week,date("Y"));
+?>
+
+
 	<div id="content">
             <div id="gen_new_content" title="Nouvel événement">
                 <form action="">
@@ -63,7 +77,7 @@
             <div id="ajax_load" class="info_activation_module"></div>
             <div id="dialog" title="Suppression">Veuillez confirmer la suppression</div>
 
-            <?php echo genererChoixSemaine($Week,date("Y"));?>
+            <?php echo genererChoixSemaine($Week,date("Y")); ?>
             
             <div id="calendrier">
                 <table id="calendar_table">
@@ -105,7 +119,7 @@
                             </td>
                             <?php
 								//var_dump($_SESSION);
-								print_table($queryWeek,$_SESSION['id'],$bdd);
+								print_table($queryWeek,$_SESSION['Auth']['User']['ID']);
                             ?>
                         </tr>
                     </tbody>

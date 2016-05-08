@@ -53,22 +53,23 @@ class AppView extends View
         echo $this->Html->css('Demo_calendar_jquery');
 
         //**************** JS *************************
-        echo $this->Html->script('candidat.activite');
-        echo $this->Html->script('candidat_Renseignement.activte');
-        echo $this->Html->script('chercheurDonnees');
-        echo $this->Html->script('chercheurMonCompte');
-        echo $this->Html->script('chercheurTables');
-        echo $this->Html->script('Demo_calendar_script');
-        echo $this->Html->script('highcharts');
-        echo $this->Html->script('jquery.corner');
-        echo $this->Html->script('jquery.mobile.custom.min');
         echo $this->Html->script('jquery-1.3.2.min');
         echo $this->Html->script('jquery-1.7.min');
         echo $this->Html->script('jquery-ui-1.7.2.custom.min');
+        echo $this->Html->script('jquery.corner');
+        echo $this->Html->script('jquery.mobile.custom.min');
+        echo $this->Html->script('highcharts');
         echo $this->Html->script('main');
         echo $this->Html->script('modale');
         echo $this->Html->script('modernizr');
         echo $this->Html->script('timeline');
+        echo $this->Html->script('candidat.activite');
+        echo $this->Html->script('candidat_Renseignement.activite');
+        echo $this->Html->script('chercheurTables');
+        echo $this->Html->script('chercheurDonnees');
+        echo $this->Html->script('chercheurMonCompte');
+        echo $this->Html->script('Demo_calendar_script');
+
 
 
     }
