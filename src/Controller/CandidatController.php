@@ -15,10 +15,20 @@ class CandidatController extends AppController
 
     public function activite()
     {
-        $id = $_SESSION['Auth']['User']['ID'];
         $this->viewBuilder()->layout('candiLayout');
-        require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "fonctions.affichage.activite.php");
-        require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "fonctions.date.php"); 
+
+        require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "calendar" . DS ."fonctions.affichage.activite.php");
+        require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "calendar" . DS ."fonctions.date.php"); 
+
+        require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "activite" . DS ."activite.php"); 
+        require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "activite" . DS ."categorie.activite.php"); 
+
+        require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "lieu" . DS ."lieux.php");
+        require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "lieu" . DS ."categorie.lieu.php"); 
+
+        require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "compagnie" . DS ."compagnie.php"); 
+
+        require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "dispositif" . DS ."dispositif.php"); 
 
         // Classes requise
         // require '../class/activite.class.php';
@@ -35,17 +45,6 @@ class CandidatController extends AppController
         // require '../modele/categorieLieu.modele.php';
         // require '../modele/compagnie.modele.php';
         // require '../modele/dispositif.modele.php';
-
-        
-
-        // $liste_Activites = get_Activites($bdd);
-
-        // $liste_CategorieActivite = get_CategorieActivite($bdd);
-        // $liste_ActiviteDefault = get_Activites($bdd,1);
-        // $liste_CategorieLieu = get_CategorieLieu($bdd);
-        // $liste_LieuDefault = get_Lieux($bdd,1);     
-        // // $liste_compagnie = get_Compagnie($bdd);
-        // $liste_dispositif = get_dispositif($bdd);
     }
     /**
      * Index method

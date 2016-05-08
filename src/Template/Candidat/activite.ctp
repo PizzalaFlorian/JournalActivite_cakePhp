@@ -1,5 +1,6 @@
 <!-- Content -->
 <?php
+    /***********************************Variables dates**************************************/
     $SemaineCourante = date("W");
     if(isset($_POST['semaine'])){
         $Semaine = $_POST['semaine'];
@@ -10,6 +11,17 @@
     $Week = SemaineCourante ((date("W")), $Semaine) ;
     $currentWeek = get_date_lundi_to_Sunday_from_week($Week,date("Y"),1);
     $queryWeek = get_date_lundi_to_Sunday_from_week_for_query($Week,date("Y"));
+
+
+    /***********************************fenetre modale**************************************/
+    $liste_Activites = get_Activites();
+    $liste_CategorieActivite = get_CategorieActivite();
+    $liste_ActiviteDefault = get_Activites(1);
+    $liste_CategorieLieu = get_CategorieLieu();
+    $liste_LieuDefault = get_Lieux(1);     
+    $liste_compagnie = get_Compagnie();
+    $liste_dispositif = get_dispositif();
+
 ?>
 
 
