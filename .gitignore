@@ -1,33 +1,15 @@
-# CakePHP
+# CakePHP 3
 
-/app/tmp/cache/*
-!/app/tmp/cache/
-!/app/tmp/cache/empty
- 
-/app/tmp/cache/models/*
-!/app/tmp/cache/models/
-!/app/tmp/cache/models/empty
- 
-/app/tmp/cache/persistent/*
-!/app/tmp/cache/persistent/
-!/app/tmp/cache/persistent/empty
- 
-/app/tmp/cache/views/*
-!/app/tmp/cache/views/
-!/app/tmp/cache/views/empty
- 
-/app/tmp/logs/*
-!/app/tmp/logs/
-!/app/tmp/logs/empty
- 
-/app/tmp/sessions/*
-!/app/tmp/sessions/
-!/app/tmp/sessions/empty
- 
-/app/tmp/tests/*
-!/app/tmp/tests/
-!/app/tmp/tests/empty
+/tmp/cache/models/*
+!/tmp/cache/models/empty
+/tmp/cache/persistent/*
+!/tmp/cache/persistent/empty
+/tmp/cache/views/*
+!/tmp/cache/views/empty
+/tmp/sessions/*
+!/tmp/sessions/empty
+/tmp/tests/*
+!/tmp/tests/empty
 
-/app/webroot/files/*
-!/app/webroot/files/
-!/app/webroot/files/empty
+/logs/*
+!/logs/empty
