@@ -1,5 +1,5 @@
 <div class='hidden'><?= $this->layout = 'loginlayout' ?></div>
-<div id='login'>
+<div id='loginSite'>
 	<h1>Connexion</h1>
 	<?= $this->Flash->render('auth') ?>
 	<?= $this->Form->create('user') ?>

@@ -1,10 +1,10 @@
 <?php
 
-namespace functionDate;
+// namespace functionDate;
 
-class functionDate
-{
-	public function SemaineCourante ($SemaineCourante,$Semaine) 
+// class functionDate
+// {
+	function SemaineCourante ($SemaineCourante,$Semaine) 
 	{
 		//fonction de choix entre un affichage par défault et le retour du post.
 		if ($Semaine == NULL)
@@ -14,7 +14,7 @@ class functionDate
 	}
 
 			
-	public function convertNumToDay($j)
+	function convertNumToDay($j)
 	{
 		//fonction de conversion perso
 		switch ($j) {
@@ -30,7 +30,7 @@ class functionDate
 		return $text;
 	}	
 	
-	public function print_current_date () {
+	function print_current_date () {
 		//renvoie la date du jours courant.
 		$j = date ("w") ;
 		switch ($j) {
@@ -63,7 +63,7 @@ class functionDate
 		echo $text.' '.date ("Y") ;
 	}
 	
-	public function get_date_lundi_to_Sunday_from_week ($week,$year,$affichage,$format="d/m/Y") {
+	function get_date_lundi_to_Sunday_from_week ($week,$year,$affichage,$format="d/m/Y") {
 		//renvoie un tableau des jours de la semaine et des dates associées en fonction du
 		//numero de semaine et de l'année.
 		$firstDayInYear = date ("N",mktime(0,0,0,1,1,$year)) ;
@@ -104,14 +104,14 @@ class functionDate
 			) ;
 	}
 	
-	public function remplirEnteteCalendar($week){
+	function remplirEnteteCalendar($week){
 		$dates = get_date_lundi_to_Sunday_from_week($week,date("Y"),0);
 		for($i=0;$i<7;$i++){
 			echo '<th><a  href="">'.$dates[$i].'</a></th>';
 		}	
 	}
 	
-	public function get_date_lundi_to_Sunday_from_week_for_query ($week,$year,$format="Y-m-d") {
+	function get_date_lundi_to_Sunday_from_week_for_query ($week,$year,$format="Y-m-d") {
 		//renvoie un tableau des jours de la semaine et des dates associées en fonction du
 		//numero de semaine et de l'année.
 		$firstDayInYear = date ("N",mktime(0,0,0,1,1,$year)) ;
@@ -141,18 +141,18 @@ class functionDate
 		) ;
 	}
 	
-	public function convertDateTimeToHours($DateTime){
+	function convertDateTimeToHours($DateTime){
 		return substr($DateTime,11,-3);
 	}
 	
-	public function ConvertNumSemaineToDateDebEtFin($W,$Y)
+	function ConvertNumSemaineToDateDebEtFin($W,$Y)
 	{
 		//renvoie la date de début et fin de semaine en fonction du numéro de semaine et de l'année.
 		$debut_fin_semaine = get_date_lundi_to_Sunday_from_week($W,$Y,1);
 		return "Semaine du ".$debut_fin_semaine[0] . " au " . $debut_fin_semaine [6];
 	}
 
-	public function genererChoixSemaine($W,$Y)
+	function genererChoixSemaine($W,$Y)
 	{
 		//propose toutes les semaines du début de l'année a la semaine courante
 		$s ='<form action="candidatActivites.ctrl.php" method="POST">
@@ -173,7 +173,7 @@ class functionDate
 		return $s;
 	}
 
-}
+// }
 	
 
 ?>

@@ -13,12 +13,16 @@ use fonctionperso\affichageActivite;
 class CandidatController extends AppController
 {
 
-    public function show_agenda(){
-         require_once(ROOT .DS. "Vendor" . DS  . "function-perso" . DS . "fonctions.affichage.activite.php");
-         require_once(ROOT .DS. "Vendor" . DS  . "function-perso" . DS . "fonctions.date.php"); 
+    public function activite($id = null){
+        // $candidat = $this->Candidat->get($id, [
+        //     'contain' => []
+        // ]);
+        var_dump($user);
+         require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "fonctions.affichage.activite.php");
+         require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "fonctions.date.php"); 
 
-         $fdate = new functionDate();
-         $affActi = new affichageActivite();  
+         // $fdate = new functionDate();
+         // $affActi = new affichageActivite();  
     }
     /**
      * Index method

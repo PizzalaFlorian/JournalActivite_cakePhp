@@ -1,10 +1,13 @@
-#login{
+/*#loginSite{
 	text-align:center;
 }
 
-#login form input[type="password"], form input[type="login"]{
+#loginSite form input[type="password"]{
 	text-align:center;
 }
+#loginSite form input[type="login"]{
+	text-align:center;
+}*/
 
 .hidden{
 	display: none;

@@ -1,18 +1,27 @@
 <?php
 
-namespace affichageActivite;
+// namespace affichageActivite;
 
-class affichageActivite
-{
-
-	public function renvoyerCodeCandidatfromCodetilisateur($id,$bdd){
-		$sql = 'SELECT CodeCandidat FROM candidat WHERE ID="'.$id.'"';
-		$res = $bdd->query($sql);
-		$data = $res->fetch();
-		return $data['CodeCandidat'];	
+// class affichageActivite
+// {
+	use Cake\ORM\TableRegistry;
+	
+	 function renvoyerCodeCandidatfromCodetilisateur($id,$bdd){
+		// $sql = 'SELECT CodeCandidat FROM candidat WHERE ID="'.$id.'"';
+		// $res = $bdd->query($sql);
+		// $data = $res->fetch();
+		// return $data['CodeCandidat'];
+		var_dump('id =',$id);	
+		$query = TableRegistry::get('candidat')
+		    ->find()
+		    ->select(['CodeCandidat'])
+		    ->where(['id' == $id])
+		    ->first();
+		var_dump($article->CodeCandidat);
+		debug($article->CodeCandidat);
 	}
 	
-	public function renvoyerToutesOccupationDunCandidatALaDate($codeCandidat,$date,$bdd){
+	 function renvoyerToutesOccupationDunCandidatALaDate($codeCandidat,$date,$bdd){
 		$sql = 'SELECT * FROM occupation WHERE CodeCandidat="'.$codeCandidat.'" AND HeureDebut LIKE "'.$date.'%"';
 		$res = $bdd->query($sql);
 		$table = null;
@@ -21,7 +30,7 @@ class affichageActivite
 		return $table;
 	}
 	
-	public function print_table($weekquery,$id,$bdd){
+	 function print_table($weekquery,$id,$bdd){
 		$codeCandidat = renvoyerCodeCandidatfromCodetilisateur($id,$bdd);
 		foreach($weekquery as $key => $value){
 			echo '<td valign="top" class="other_day calendar_td" id="'.$value.'">';
@@ -30,7 +39,7 @@ class affichageActivite
 		}
 	}
 	
-	public function afficheColone($codeCandidat,$date,$day,$bdd){
+	 function afficheColone($codeCandidat,$date,$day,$bdd){
 		$table = renvoyerToutesOccupationDunCandidatALaDate($codeCandidat,$date,$bdd);
 		if(isset($table)){
 			return retournerOccupations($table,$bdd);
@@ -40,7 +49,7 @@ class affichageActivite
 	}
 	
 	
-	public function retournerDureeSeconde($occupation){
+	 function retournerDureeSeconde($occupation){
 		$hours = convertDateTimeToHours($occupation['HeureDebut']);
 		$data = explode(':',$hours);
 		
@@ -55,7 +64,7 @@ class affichageActivite
 		return $dureeSec;
 	}
 	
-	public function generateStyle($occupation){
+	 function generateStyle($occupation){
 		
 		$hours = convertDateTimeToHours($occupation['HeureDebut']);
 		$data = explode(':',$hours);
@@ -77,65 +86,65 @@ class affichageActivite
 		return 'height:'.$height.'px; margin-top:'.$margin_top.'px;';      
 	}
 	
-	public function convertHoursToSecond($hours){
+	 function convertHoursToSecond($hours){
 		$data = explode(':',$hours);
 		//var_dump($data);
 		return ($data[0]*60*60) + ($data[1]*60);
 	}
 	
-	public function retournerHeureDebut($occupation){
+	 function retournerHeureDebut($occupation){
 		$hours = convertDateTimeToHours($occupation['HeureDebut']);
 		$data = explode(':',$hours);
 		return $data[0];
 	}
 	
-	public function retournerMinuteDebut($occupation){
+	 function retournerMinuteDebut($occupation){
 		$hours = convertDateTimeToHours($occupation['HeureDebut']);
 		$data = explode(':',$hours);
 		return $data[1];
 	}
 	
-	public function retournerHeureFin($occupation){
+	 function retournerHeureFin($occupation){
 		$hours = convertDateTimeToHours($occupation['HeureFin']);
 		$data = explode(':',$hours);
 		return $data[0];
 	}
 	
-	public function retournerMinuteFin($occupation){
+	 function retournerMinuteFin($occupation){
 		$hours = convertDateTimeToHours($occupation['HeureFin']);
 		$data = explode(':',$hours);
 		return $data[1];
 	}
 	
-	public function convertCodeToNomActivite($codeActivite,$bdd){
+	 function convertCodeToNomActivite($codeActivite,$bdd){
 		$sql = 'SELECT NomActivite FROM activite WHERE CodeActivite="'.$codeActivite.'"';
 		$res = $bdd->query($sql);
 		$data = $res->fetch();
 		return $data['NomActivite'];
 	}
 			
-	public function convertCodeToNomLieu($CodeLieux,$bdd){
+	 function convertCodeToNomLieu($CodeLieux,$bdd){
 		$sql = 'SELECT NomLieux FROM lieu WHERE CodeLieux="'.$CodeLieux.'"';
 		$res = $bdd->query($sql);
 		$data = $res->fetch();
 		return $data['NomLieux'];
 	}
 	
-	public function convertCodeToNomCompagnie($CodeCompagnie,$bdd){
+	 function convertCodeToNomCompagnie($CodeCompagnie,$bdd){
 		$sql = 'SELECT NomCompagnie FROM compagnie WHERE CodeCompagnie="'.$CodeCompagnie.'"';
 		$res = $bdd->query($sql);
 		$data = $res->fetch();
 		return $data['NomCompagnie'];
 	} 
 	
-	public function convertCodeToNomDispositif($CodeDispositif,$bdd){
+	 function convertCodeToNomDispositif($CodeDispositif,$bdd){
 		$sql = 'SELECT NomDispositif FROM dispositif WHERE CodeDispositif="'.$CodeDispositif.'"';
 		$res = $bdd->query($sql);
 		$data = $res->fetch();
 		return $data['NomDispositif'];
 	}
 	
-	public function retournerOccupations($table,$bdd){
+	 function retournerOccupations($table,$bdd){
 		$string = '';
 		foreach($table as $occupation){
 			$Ds = retournerDureeSeconde($occupation);
@@ -177,5 +186,5 @@ class affichageActivite
 		}
 		return $string;
 	}
-}
+// }
 ?>
