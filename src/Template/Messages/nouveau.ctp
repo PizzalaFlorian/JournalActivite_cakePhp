@@ -9,8 +9,8 @@
     <fieldset>
         <legend><?= __('Nouveau message') ?></legend>
         <?php
-            echo '<label for="idrecepteur">Á</label>';
-            echo '<input id="idrecepteur" type="text" required="required" name="IDRecepteur" value="Chercheur" disabled>';
+            echo '<label for="IDRecepteur">Á</label>';
+            echo '<select id="IDRecepteur" type="text" name="IDRecepteur"><option value="1">Chercheur</option></select>';
             echo $this->Form->input('Sujet', array('label' => 'Sujet'));
             echo $this->Form->input('ContenuMessage', array('label' => 'Contenu'));
         ?>

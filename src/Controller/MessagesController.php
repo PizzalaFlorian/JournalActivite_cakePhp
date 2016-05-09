@@ -4,6 +4,13 @@ namespace App\Controller;
 use App\Controller\AppController;
 use vendor\fonctionperso\messagerie\messagerie;
 use Cake\ORM\TableRegistry;
+//*******************************
+//
+// note : 
+//        -   tout les chercheurs : 1
+//        -   tout les etudiants  : 2
+//  
+//*******************************
 
 /**
  * Messages Controller
@@ -112,6 +119,11 @@ class MessagesController extends AppController
         // A SUPPRIMER AVEC LES FICHIER CONTROLLER ET TEMPLATE
     }
 //envoie de message vers un utilisateur
+//
+//note : 
+// tout les etudiants : 1
+// tout les chercheurs : 2
+//  
     public function nouveau()
     {
         $message = $this->Messages->newEntity();
@@ -120,19 +132,13 @@ class MessagesController extends AppController
             $message->DateEnvoi = "2016-05-08";
             $message->Lu = "0";
             $message->IDExpediteur = $_SESSION['Auth']['User']['ID'];
-            var_dump($message);
+            //var_dump($message);
             if ($this->Messages->save($message)) {
                 $this->Flash->success(__('Votre message à bien été envoyé.'));
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('Echec de l\'envoie. Veuillez réessayer.'));
             }
-        }
-        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur'){
-            $listeUtilisateur = "";
-        }
-        else{
-            $users = $res = TableRegistry::get('users')->find()->where(['typeUser' => 'chercheur']);
         }
         $this->set(compact('message'));
         $this->set(compact('users'));
