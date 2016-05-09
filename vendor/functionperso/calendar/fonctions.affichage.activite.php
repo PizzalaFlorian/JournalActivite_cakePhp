@@ -7,7 +7,7 @@
 		    ->find()
 		    ->where(['ID' => $id])
 		    ->first();
-		return $res['CodeCandidat'];
+		return $res->CodeCandidat;
 	}
 	
 	 function renvoyerToutesOccupationDunCandidatALaDate($codeCandidat,$date){
