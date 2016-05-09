@@ -17,7 +17,7 @@
     $liste_Activites = get_Activites();
     $liste_CategorieActivite = get_CategorieActivite();
     $liste_ActiviteDefault = get_Activites(1);
-    $liste_CategorieLieu = get_CategorieLieu();
+    $liste_CategorieLieu = get_CategorieLieu(1);
     $liste_LieuDefault = get_Lieux(1);     
     $liste_compagnie = get_Compagnie();
     $liste_dispositif = get_dispositif();

@@ -445,7 +445,7 @@ ALTER TABLE `lieu`
 --
 -- Contraintes pour la table `message`
 --
-ALTER TABLE `message`
+ALTER TABLE `messages`
   ADD CONSTRAINT `message_ibfk_2` FOREIGN KEY (`IDRecepteur`) REFERENCES `users` (`ID`),
   ADD CONSTRAINT `message_ibfk_1` FOREIGN KEY (`IDExpediteur`) REFERENCES `users` (`ID`);
 

@@ -2,8 +2,14 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-use fonctionperso\functionDate;
-use fonctionperso\affichageActivite;
+use fonctionperso\calendar\functionDate;
+use fonctionperso\calendar\affichageActivite;
+use fonctionperso\activite\activite;
+use fonctionperso\activite\categorieActivite;
+use fonctionperso\lieu\lieux;
+use fonctionperso\lieu\categorieLieu;
+use fonctionperso\compagnie\compagnie;
+use fonctionperso\dispositif\dispositif;
 
 /**
  * Candidat Controller
