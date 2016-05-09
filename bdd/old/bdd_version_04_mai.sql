@@ -351,7 +351,7 @@ INSERT INTO `lieu` (`CodeLieux`, `NomLieux`, `CodeCategorieLieux`) VALUES
 -- Structure de la table `message`
 --
 
-CREATE TABLE IF NOT EXISTS `message` (
+CREATE TABLE IF NOT EXISTS `messages` (
   `IDMessage` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `DateEnvoi` date NOT NULL,
   `Sujet` varchar(250) NOT NULL,
