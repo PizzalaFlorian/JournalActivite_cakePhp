@@ -237,8 +237,9 @@ $(function(){
 					console.log(new_activit);
 					
 					// envoie a controleur/CandidatRenseigneActivites.ctrl.php pour ajout BDD
+                    //TODO
 					$.ajax({
-						url: "../controleur/CandidatRenseigneActivites.ctrl.php",
+						url: "../occupation/add",
 						type : 'POST',
 						data : 	'HeureDebut=' + new_event_heure_debut + 
 								'&HeureFin=' + new_event_heure_fin  + 
