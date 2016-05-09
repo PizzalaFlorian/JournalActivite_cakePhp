@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use vendor\fonctionperso\messagerie\messagerie;
+use Cake\ORM\TableRegistry;
 
 /**
  * Messages Controller
@@ -10,16 +12,15 @@ use App\Controller\AppController;
  */
 class MessagesController extends AppController
 {
-
     /**
-     * Index method
+     * INDEX MESSAGERIE D'UN UTILISATEUR
      *
      * @return \Cake\Network\Response|null
      */
     public function index()
     {
-        $messages = $this->paginate($this->Messages);
-
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "messagerie" . DS ."messagerie.php");
+        $messages = $this->paginate($this->Messages->find('all', ['conditions' => ['Messages.IDRecepteur' => $_SESSION['Auth']['User']['ID']]]));
         $this->set(compact('messages'));
         $this->set('_serialize', ['messages']);
     }
@@ -99,18 +100,42 @@ class MessagesController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $message = $this->Messages->get($id);
         if ($this->Messages->delete($message)) {
-            $this->Flash->success(__('The message has been deleted.'));
+            $this->Flash->success(__('Le message à bien été supprimé.'));
         } else {
             $this->Flash->error(__('The message could not be deleted. Please, try again.'));
         }
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(['action' => 'messagerie']);
     }
-	
+//affiche la messagerie d'un utilisateur
 	public function messagerie($id = null)
     {
-        $messages = $this->paginate($this->Messages);
-
-        $this->set(compact('messages'));
-        $this->set('_serialize', ['messages']);
+        // A SUPPRIMER AVEC LES FICHIER CONTROLLER ET TEMPLATE
+    }
+//envoie de message vers un utilisateur
+    public function nouveau()
+    {
+        $message = $this->Messages->newEntity();
+        if ($this->request->is('post')) {
+            $message = $this->Messages->patchEntity($message, $this->request->data);
+            $message->DateEnvoi = "2016-05-08";
+            $message->Lu = "0";
+            $message->IDExpediteur = $_SESSION['Auth']['User']['ID'];
+            var_dump($message);
+            if ($this->Messages->save($message)) {
+                $this->Flash->success(__('Votre message à bien été envoyé.'));
+                return $this->redirect(['action' => 'index']);
+            } else {
+                $this->Flash->error(__('Echec de l\'envoie. Veuillez réessayer.'));
+            }
+        }
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur'){
+            $listeUtilisateur = "";
+        }
+        else{
+            $users = $res = TableRegistry::get('users')->find()->where(['typeUser' => 'chercheur']);
+        }
+        $this->set(compact('message'));
+        $this->set(compact('users'));
+        $this->set('_serialize', ['message']);
     }
 }
