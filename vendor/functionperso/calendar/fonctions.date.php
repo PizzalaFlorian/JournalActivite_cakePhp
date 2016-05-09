@@ -151,7 +151,7 @@
 	function genererChoixSemaine($W,$Y)
 	{
 		//propose toutes les semaines du début de l'année a la semaine courante
-		$s ='<form action="candidatActivites.ctrl.php" method="POST">
+		$s ='<form action="./activite" method="POST">
 		<fieldset>
 		<SELECT name="semaine" onchange="this.form.submit()">';
 		for($i=1;$i<=date("W");$i++)

@@ -86,7 +86,7 @@
                 </form>
             </div>
             <div id="create_event"></div>
-            <div id="ajax_load" class="info_activation_module"></div>
+            <!-- <div id="ajax_load" class="info_activation_module"></div> -->
             <div id="dialog" title="Suppression">Veuillez confirmer la suppression</div>
 
             <?php echo genererChoixSemaine($Week,date("Y")); ?>
