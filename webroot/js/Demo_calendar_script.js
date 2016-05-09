@@ -338,16 +338,16 @@ $(function(){
         $('<span>:</span>')
         .appendTo(event_date);
         
-        var event_date_heure_fin = $('<span>'+nouvelle_heure_fin.getMinutes()+'</span>')
+        var event_date_minute_fin = $('<span>'+nouvelle_heure_fin.getMinutes()+'</span>')
         .appendTo(event_date)
         .attr('id',event_id+'_date_fin_minute');
 
-        var event_date = $('<div>(Sans titre)</div>')
+        var event_date_titre = $('<div>(Sans titre)</div>')
         .appendTo(event)
         .attr('class','calendar_event_title')
         .attr('id',event_id+'_title');
 
-        var event_date = $('<div>(Inconnu)</div>')
+        var event_date_lieu = $('<div>(Inconnu)</div>')
         .appendTo(event)
         .attr('class','calendar_event_lieu')
         .attr('id',event_id+'_lieu');
@@ -645,7 +645,7 @@ $("#ajax_load").html("Evenement correctement supprim&eacute;.");
     $('div#container_top').corner("top cc:#4E6257");
     $('div#header_content').corner("bottom cc:#4E6257");
     $('div#visu_page_perso').corner();
-    $('div#footer').corner("bottom")
+    $('div#footer').corner("bottom");
     $('.lab_form').corner();
     $('.identifiant').corner("round 9px");
     $('.password').corner("round 9px");

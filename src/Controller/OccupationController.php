@@ -99,7 +99,14 @@ class OccupationController extends AppController
                 'CodeCompagnie' => $this->request->data['CodeCompagnie'],
                 'CodeDispositif' => $this->request->data['CodeDispositif']
                 ];
-
+                $string = $HeureDebut['year'].' '.$HeureDebut['month'].' '.$HeureDebut['day'].' '.$HeureDebut['hour'].$HeureDebut['minute'];
+                $string = $string.' '.$HeureFin['year'].' '.$HeureFin['month'].' '.$HeureFin['day'].' '.$HeureFin['hour'].$HeureFin['minute'];
+                $string = $string .' '.$this->request->data['CodeCandidat'];
+                $string = $string .' '.$this->request->data['CodeLieux'];
+                $string = $string .' '.$this->request->data['CodeActivite'];
+                $string = $string .' '.$this->request->data['CodeCompagnie'];
+                $string = $string .' '.$this->request->data['CodeDispositif'];
+                
                 $occupation = $this->Occupation->patchEntity($occupation, $newData);
             }
             else{ 
@@ -110,6 +117,7 @@ class OccupationController extends AppController
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The occupation could not be saved. Please, try again.'));
+                $this->Flash->error(__($string));
             }
         }
         $this->set(compact('occupation'));
