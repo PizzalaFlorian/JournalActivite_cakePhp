@@ -19,7 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `bddCake`
 --
-
+CREATE DATABASE IF NOT EXISTS `bddCake` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `bddCake`;
 -- --------------------------------------------------------
 
 --
@@ -163,11 +164,7 @@ CREATE TABLE IF NOT EXISTS `candidat` (
 -- Dumping data for table `candidat`
 --
 
-INSERT INTO `candidat` (`CodeCandidat`, `Age`, `GenreCandidat`, `LieuxEtude`, `NiveauEtude`, `DiplomePrep`, `EtatCivil`, `NombreEnfant`, `ID`) VALUES
-(1, 22, 'vache', 'Grenoble', 'CAP', 'Master Macrame', 'Decede', 12, 1),
-(2, 19, 'tortue', 'Suez', 'BAC +2', 'Master Droit', 'En couple', 0, 2),
-(3, 26, 'homme', 'Vienne', 'BAC+7', 'L1 jardinage', 'Celibataire', 1, 3),
-(4, 11, 'chien', 'Paris', 'MatSup', 'CNRS', 'Union libre', 4, 4);
+
 
 -- --------------------------------------------------------
 
@@ -419,35 +416,6 @@ INSERT INTO `users` (`ID`, `login`, `typeUser`, `password`, `email`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `utilisateur`
---
-
-CREATE TABLE IF NOT EXISTS `utilisateur` (
-  `ID` int(10) unsigned NOT NULL,
-  `login` varchar(250) NOT NULL,
-  `typeUser` varchar(25) NOT NULL,
-  `password` varchar(250) NOT NULL,
-  `email` varchar(250) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `utilisateur`
---
-
-INSERT INTO `utilisateur` (`ID`, `login`, `typeUser`, `password`, `email`) VALUES
-(1, 'test', 'candidat', 'test', 'test@gmail.com'),
-(2, 'toto', 'candidat', 'toto', 'test@gmail.com'),
-(3, 'boule', 'candidat', 'boule', 'test@gmail.com'),
-(4, 'bill', 'candidat', 'bill', 'test@gmail.com'),
-(5, 'JM', 'chercheur', 'JM', 'test@gmail.com'),
-(6, 'trouve', 'chercheur', 'trouve', 'test@gmail.com'),
-(7, 'James', 'admin', 'Bond', 'test@gmail.com');
-
---
--- Indexes for dumped tables
---
-
---
 -- Indexes for table `activite`
 --
 ALTER TABLE `activite`
@@ -538,13 +506,7 @@ ALTER TABLE `occupation`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`ID`);
 
---
--- Indexes for table `utilisateur`
---
-ALTER TABLE `utilisateur`
-  ADD PRIMARY KEY (`ID`);
 
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -588,14 +550,7 @@ ALTER TABLE `occupation`
 --
 ALTER TABLE `users`
   MODIFY `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
---
--- AUTO_INCREMENT for table `utilisateur`
---
-ALTER TABLE `utilisateur`
-  MODIFY `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
---
--- Constraints for dumped tables
---
+
 
 --
 -- Constraints for table `activite`
@@ -607,13 +562,13 @@ ALTER TABLE `activite`
 -- Constraints for table `administrateur`
 --
 ALTER TABLE `administrateur`
-  ADD CONSTRAINT `administrateur_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `utilisateur` (`ID`);
+  ADD CONSTRAINT `administrateur_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `users` (`ID`);
 
 --
 -- Constraints for table `candidat`
 --
 ALTER TABLE `candidat`
-  ADD CONSTRAINT `candidat_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `utilisateur` (`ID`);
+  ADD CONSTRAINT `candidat_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `users` (`ID`);
 
 --
 -- Constraints for table `carnetdebord`
@@ -625,7 +580,7 @@ ALTER TABLE `carnetdebord`
 -- Constraints for table `chercheur`
 --
 ALTER TABLE `chercheur`
-  ADD CONSTRAINT `chercheur_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `utilisateur` (`ID`);
+  ADD CONSTRAINT `chercheur_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `users` (`ID`);
 
 --
 -- Constraints for table `lieu`
@@ -643,6 +598,13 @@ ALTER TABLE `occupation`
   ADD CONSTRAINT `occupation_ibfk_4` FOREIGN KEY (`CodeDispositif`) REFERENCES `dispositif` (`CodeDispositif`),
   ADD CONSTRAINT `occupation_ibfk_5` FOREIGN KEY (`CodeActivite`) REFERENCES `activite` (`CodeActivite`);
 
+
+
+INSERT INTO `candidat` (`CodeCandidat`, `Age`, `GenreCandidat`, `LieuxEtude`, `NiveauEtude`, `DiplomePrep`, `EtatCivil`, `NombreEnfant`, `ID`) VALUES
+(1, 22, 'vache', 'Grenoble', 'CAP', 'Master Macrame', 'Decede', 12, 9),
+(2, 19, 'tortue', 'Suez', 'BAC +2', 'Master Droit', 'En couple', 0, 10),
+(3, 26, 'homme', 'Vienne', 'BAC+7', 'L1 jardinage', 'Celibataire', 1, 11),
+(4, 11, 'chien', 'Paris', 'MatSup', 'CNRS', 'Union libre', 4, 12);
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

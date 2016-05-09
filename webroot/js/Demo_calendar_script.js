@@ -249,7 +249,7 @@ $(function(){
 								'&CodeDispositif=' + new_dispositif,
 						dataType : 'html',
 						success : function(rep, statut){
-							// console.log("Ajout finis");
+							 console.log("Ajout finis");
 							console.log(rep);				// affichage requete SQL
 						}
 					});

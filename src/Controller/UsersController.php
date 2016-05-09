@@ -126,7 +126,7 @@ class UsersController extends AppController
                 //$_SESSION['id'] = $user->id;
                 return $this->redirect($this->Auth->redirectUrl());
             }
-            $this->Flash->error(__('Invalid username or password, try again'));
+            $this->Flash->error(__('Invalid login or password, try again'));
         }
     }
 
