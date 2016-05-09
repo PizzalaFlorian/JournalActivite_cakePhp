@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
+use Cake\ORM\TableRegistry;
 /**
  * Occupation Controller
  *
@@ -73,51 +73,55 @@ class OccupationController extends AppController
 
                 $sep_date_timefin = explode(' ', $this->request->data['HeureFin']);
 
-                $datefin   = explode('-',$sep_date_time[0]);
-                $yearfin   = $date[0];
-                $monthfin  = $date[1];
-                $dayfin    = $date[2];
+                $datefin   = explode('-',$sep_date_timefin[0]);
+                $yearfin   = $datefin[0];
+                $monthfin  = $datefin[1];
+                $dayfin    = $datefin[2];
 
-                $timefin   = explode(':',$sep_date_time[1]);
-                $hourfin   = $time[0];
-                $minutefin = $time[1];
+                $timefin   = explode(':',$sep_date_timefin[1]);
+                $hourfin   = $timefin[0];
+                $minutefin = $timefin[1];
 
                 $HeureFin = [
-                    'year'  => $year,
-                    'month' => $month,
-                    'day'   => $day,
-                    'hour'  => $hour,
-                    'minute'=> $minute
+                    'year'  => $yearfin,
+                    'month' => $monthfin,
+                    'day'   => $dayfin,
+                    'hour'  => $hourfin,
+                    'minute'=> $minutefin
                 ];
+
+                $res = TableRegistry::get('candidat')
+                    ->find()
+                    ->where(['ID'=>$_SESSION['Auth']['User']['ID']])
+                    ->first();
 
                 $newData = [
                 'HeureDebut' => $HeureDebut,
                 'HeureFin' => $HeureFin,
-                'CodeCandidat' => $this->request->data['CodeCandidat'],
+                'CodeCandidat' => $res['CodeCandidat'],
                 'CodeLieux' => $this->request->data['CodeLieux'],
                 'CodeActivite' => $this->request->data['CodeActivite'],
                 'CodeCompagnie' => $this->request->data['CodeCompagnie'],
                 'CodeDispositif' => $this->request->data['CodeDispositif']
                 ];
-                $string = $HeureDebut['year'].' '.$HeureDebut['month'].' '.$HeureDebut['day'].' '.$HeureDebut['hour'].$HeureDebut['minute'];
-                $string = $string.' '.$HeureFin['year'].' '.$HeureFin['month'].' '.$HeureFin['day'].' '.$HeureFin['hour'].$HeureFin['minute'];
-                $string = $string .' '.$this->request->data['CodeCandidat'];
-                $string = $string .' '.$this->request->data['CodeLieux'];
-                $string = $string .' '.$this->request->data['CodeActivite'];
-                $string = $string .' '.$this->request->data['CodeCompagnie'];
-                $string = $string .' '.$this->request->data['CodeDispositif'];
-                
+                                
                 $occupation = $this->Occupation->patchEntity($occupation, $newData);
+
+                if ($this->Occupation->save($occupation)) {
+                    $this->Flash->success(__('The occupation has been saved.'));
+                } else {
+                    $this->Flash->error(__('The occupation could not be saved. Please, try again.'));
+                }
             }
             else{ 
                 $occupation = $this->Occupation->patchEntity($occupation, $this->request->data);
-            }
-            if ($this->Occupation->save($occupation)) {
-                $this->Flash->success(__('The occupation has been saved.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The occupation could not be saved. Please, try again.'));
-                $this->Flash->error(__($string));
+            
+                if ($this->Occupation->save($occupation)) {
+                    $this->Flash->success(__('The occupation has been saved.'));
+                    return $this->redirect(['action' => 'index']);
+                } else {
+                    $this->Flash->error(__('The occupation could not be saved. Please, try again.'));
+                }
             }
         }
         $this->set(compact('occupation'));
