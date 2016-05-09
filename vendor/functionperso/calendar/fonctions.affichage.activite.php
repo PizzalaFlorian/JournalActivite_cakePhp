@@ -9,7 +9,13 @@
 		    ->first();
 		return $res['CodeCandidat'];
 	}
-	
+
+	function renvoyerListeChercheur(){
+		$res = TableRegistry::get('users')
+		    ->find()
+		    ->where(['typeUser' => 'chercheur']);
+		return $res;
+	}	
 	 function renvoyerToutesOccupationDunCandidatALaDate($codeCandidat,$date){
 		$table = null;
 
