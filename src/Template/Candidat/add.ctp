@@ -9,6 +9,8 @@
     <fieldset>
         <legend><?= __('Add Candidat') ?></legend>
         <?php
+            echo $this->Form->input('NomCandidat');
+            echo $this->Form->input('PrenomCandidat');
             echo $this->Form->input('Age');
             echo $this->Form->input('GenreCandidat');
             echo $this->Form->input('LieuxEtude');

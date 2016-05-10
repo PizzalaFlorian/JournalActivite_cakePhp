@@ -10,6 +10,8 @@
         <thead>
             <tr>
                 <th><?= $this->Paginator->sort('CodeCandidat') ?></th>
+                <th><?= $this->Paginator->sort('NomCandidat') ?></th>
+                <th><?= $this->Paginator->sort('PrenomCandidat') ?></th>
                 <th><?= $this->Paginator->sort('Age') ?></th>
                 <th><?= $this->Paginator->sort('GenreCandidat') ?></th>
                 <th><?= $this->Paginator->sort('LieuxEtude') ?></th>
@@ -25,6 +27,8 @@
             <?php foreach ($candidat as $candidat): ?>
             <tr>
                 <td><?= $this->Number->format($candidat->CodeCandidat) ?></td>
+                <td><?= h($candidat->NomCandidat) ?></td>
+                <td><?= h($candidat->PrenomCandidat) ?></td>
                 <td><?= $this->Number->format($candidat->Age) ?></td>
                 <td><?= h($candidat->GenreCandidat) ?></td>
                 <td><?= h($candidat->LieuxEtude) ?></td>

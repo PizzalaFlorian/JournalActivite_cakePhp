@@ -11,6 +11,14 @@
     <h3><?= h($candidat->CodeCandidat) ?></h3>
     <table class="vertical-table">
         <tr>
+            <th><?= __('NomCandidat') ?></th>
+            <td><?= h($candidat->NomCandidat) ?></td>
+        </tr>
+        <tr>
+            <th><?= __('PrenomCandidat') ?></th>
+            <td><?= h($candidat->PrenomCandidat) ?></td>
+        </tr>
+        <tr>
             <th><?= __('GenreCandidat') ?></th>
             <td><?= h($candidat->GenreCandidat) ?></td>
         </tr>

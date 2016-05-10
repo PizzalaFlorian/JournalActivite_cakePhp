@@ -42,6 +42,14 @@ class CandidatTable extends Table
             ->allowEmpty('CodeCandidat', 'create');
 
         $validator
+            ->requirePresence('NomCandidat', 'create')
+            ->notEmpty('NomCandidat');
+
+        $validator
+            ->requirePresence('PrenomCandidat', 'create')
+            ->notEmpty('PrenomCandidat');
+
+        $validator
             ->integer('Age')
             ->requirePresence('Age', 'create')
             ->notEmpty('Age');

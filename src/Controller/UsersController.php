@@ -123,12 +123,26 @@ class UsersController extends AppController
             //var_dump($user);
             if ($user) {
                 $this->Auth->setUser($user);
-                //$_SESSION['id'] = $user->id;
-                return $this->redirect($this->Auth->redirectUrl());
+               
+                //return $this->redirect($this->Auth->redirectUrl());
+                if($user['typeUser']=='candidat')
+                    return $this->redirect([
+                        'controller' => 'candidat',
+                        'action' => 'index']);
+                if($user['typeUser']=='chercheur')
+                    return $this->redirect([
+                        'controller' => 'chercheur',
+                        'action' => 'index']);
+                if($user['typeUser']=='admin')
+                    return $this->redirect([
+                        'controller' => 'administrateur',
+                        'action' => 'index']);
+
             }
             $this->Flash->error(__('Invalid login or password, try again'));
         }
     }
+
 
     public function logout()
     {

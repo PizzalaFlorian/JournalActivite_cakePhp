@@ -37,8 +37,8 @@
 <li> 
     <?php 
         echo $this->Html->link(
-            'Mes activitées',
-            ['controller' => 'candidat', 'action' => 'activite', '_full' => true]
+            'But de l\'expérience',
+            ['controller' => 'candidat', 'action' => 'but_experience', '_full' => true]
         ); 
     ?> 
 </li>

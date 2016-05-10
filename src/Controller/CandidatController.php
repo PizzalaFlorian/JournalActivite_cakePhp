@@ -21,6 +21,31 @@ use fonctionperso\dispositif\dispositif;
 class CandidatController extends AppController
 {
 
+    public function accueil()
+    {
+        $this->viewBuilder()->layout('candiLayout');
+    }
+
+    public function actualite()
+    {
+        $this->viewBuilder()->layout('candiLayout');
+    }
+
+    public function but_experience()
+    {
+        $this->viewBuilder()->layout('candiLayout');
+    }
+
+    public function compte()
+    {
+        $this->viewBuilder()->layout('candiLayout');
+    }
+
+    public function historique()
+    {
+        $this->viewBuilder()->layout('candiLayout');
+    }
+
     public function activite()
     {
         $this->viewBuilder()->layout('candiLayout');
@@ -37,10 +62,10 @@ class CandidatController extends AppController
         require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "compagnie" . DS ."compagnie.php"); 
 
         require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "dispositif" . DS ."dispositif.php"); 
- 
     }
 
-    public function request(){
+    public function request()
+    {
         //NE SURTOUT PAS SUPPRIMER LA TEMPLATE ASSOCIER
         if ($this->request->is('post')) {
             if($this->request->data['categorie'] == "lieu"){

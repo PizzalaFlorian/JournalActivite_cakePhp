@@ -7,6 +7,8 @@ use Cake\ORM\Entity;
  * Candidat Entity.
  *
  * @property int $CodeCandidat
+ * @property string $NomCandidat
+ * @property string $PrenomCandidat
  * @property int $Age
  * @property string $GenreCandidat
  * @property string $LieuxEtude
