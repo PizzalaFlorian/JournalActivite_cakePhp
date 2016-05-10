@@ -40,8 +40,8 @@ class MessagesController extends AppController
         // on assigne un id pour les messageries
         switch ($_SESSION['Auth']['User']['typeUser']) {
             case 'chercheur':       $monID = 1;                                                 break;
-            case 'Candidat':        $monID = $_SESSION['Auth']['User']['ID'];                   break;
-            case 'admin':           $diffusion = 3;                                             break;
+            case 'candidat':        $monID = $_SESSION['Auth']['User']['ID'];                   break;
+            case 'admin':           $monID = 3;                                                 break;
         }
         // recuperation des messages
         $messages = $this->paginate($this->Messages->findAllByIdrecepteur($monID));
