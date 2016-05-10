@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 10, 2016 at 02:36 PM
+-- Generation Time: May 10, 2016 at 02:47 PM
 -- Server version: 5.6.30-0ubuntu0.15.10.1
 -- PHP Version: 5.6.11-1ubuntu3.3
 
@@ -21,7 +21,6 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `bddCake` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `bddCake`;
-
 -- --------------------------------------------------------
 
 --
@@ -131,6 +130,27 @@ INSERT INTO `activite` (`CodeActivite`, `NomActivite`, `DescriptifActivite`, `Co
 (940, 'Consultations médias sur supports électroniques (tablettes, ordinateurs…)', '', 15),
 (950, 'écoute de musique (autre que radio)', '', 15),
 (999, 'Autres temps, temps non spécifié', '', 18);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `actualites`
+--
+
+CREATE TABLE IF NOT EXISTS `actualites` (
+  `ID` int(11) NOT NULL,
+  `Sujet` varchar(255) NOT NULL,
+  `Contenue` text NOT NULL,
+  `Date` date NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `actualites`
+--
+
+INSERT INTO `actualites` (`ID`, `Sujet`, `Contenue`, `Date`) VALUES
+(1, 'Bienvenue', 'Bienvenue sur cette magnifique application en cours de création\r\n', '2016-05-11'),
+(2, 'SVP', 'Ou sont les toilettes', '2016-05-04');
 
 -- --------------------------------------------------------
 
@@ -453,6 +473,12 @@ ALTER TABLE `activite`
   ADD KEY `CodeCategorie` (`CodeCategorie`);
 
 --
+-- Indexes for table `actualites`
+--
+ALTER TABLE `actualites`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `administrateur`
 --
 ALTER TABLE `administrateur`
@@ -540,6 +566,11 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `actualites`
+--
+ALTER TABLE `actualites`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `administrateur`
 --
