@@ -404,6 +404,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`ID`, `login`, `typeUser`, `password`, `email`) VALUES
+(1, 'chercheur', 'chercheur', 'chercheur', 'test@gmail.com'), 
+(2, 'utilisateur', 'utilisateur', 'utilisateur', 'test@gmail.com'),
 (5, 'JM', 'chercheur', 'JM', 'test@gmail.com'),
 (6, 'trouve', 'chercheur', 'trouve', 'test@gmail.com'),
 (7, 'James', 'admin', 'Bond', 'test@gmail.com'),
