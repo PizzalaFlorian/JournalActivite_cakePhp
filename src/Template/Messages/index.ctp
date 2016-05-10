@@ -10,11 +10,24 @@
     <h3>Actualités</h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
-                <th><?= $this->Paginator->sort('DateEnvoi') ?></th>
-                <th><?= $this->Paginator->sort('Expediteur') ?></th>
-                <th><?= $this->Paginator->sort('ContenuMessage') ?></th>
+                <th><?= $this->Paginator->sort('Date') ?></th>
+                <th><?= $this->Paginator->sort('Sujet') ?></th>
+                <th><?= $this->Paginator->sort('Message') ?></th>
         </thead>
         <tbody>
+            <?php foreach ($actualites as $actualite): ?>
+            <tr>
+                <td>
+                        <?= h($actualite->Date) ?>
+                </td>
+                <td>
+                        <?= h($actualite->Sujet) ?>
+                </td>
+                <td>
+                        <?= h($actualite->Contenue) ?>
+                </td>
+            </tr>
+            <?php endforeach; ?>
         </tbody>
     </table>
 
