@@ -4,13 +4,13 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\ORM\TableRegistry;
 
-use fonctionperso\calendar\functionDate;
-use fonctionperso\calendar\affichageActivite;
-use fonctionperso\candidat\toolboxCandidat;
+use fonctionperso\calendar\functiondate;
+use fonctionperso\calendar\affichageactivite;
+use fonctionperso\candidat\toolboxcandidat;
 use fonctionperso\activite\activite;
-use fonctionperso\activite\categorieActivite;
+use fonctionperso\activite\categorieactivite;
 use fonctionperso\lieu\lieux;
-use fonctionperso\lieu\categorieLieu;
+use fonctionperso\lieu\categorielieu;
 use fonctionperso\compagnie\compagnie;
 use fonctionperso\dispositif\dispositif;
 
@@ -25,8 +25,7 @@ class CandidatController extends AppController
     public function accueil()
     {
         $this->viewBuilder()->layout('candiLayout');
-        //require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "candidat" . DS ."toolbox.candidat.php");
-        require_once("/vendor/functionperso/candidat/toolbox.candidat.php");
+        require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "candidat" . DS ."toolboxcandidat.php");
     }
 
     public function but_experience()
@@ -55,14 +54,14 @@ class CandidatController extends AppController
     {
         $this->viewBuilder()->layout('candiLayout');
 
-        require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "calendar" . DS ."fonctions.affichage.activite.php");
-        require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "calendar" . DS ."fonctions.date.php"); 
+        require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "calendar" . DS ."affichageactivite.php");
+        require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "calendar" . DS ."fonctionsdate.php"); 
 
         require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "activite" . DS ."activite.php"); 
-        require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "activite" . DS ."categorie.activite.php"); 
+        require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "activite" . DS ."categorieactivite.php"); 
 
         require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "lieu" . DS ."lieux.php");
-        require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "lieu" . DS ."categorie.lieu.php"); 
+        require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "lieu" . DS ."categorielieu.php"); 
 
         require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "compagnie" . DS ."compagnie.php"); 
 
