@@ -55,9 +55,14 @@ class MessagesTable extends Table
             ->notEmpty('ContenuMessage');
 
         $validator
-            ->boolean('Lu')
-            ->requirePresence('Lu', 'create')
-            ->notEmpty('Lu');
+            ->boolean('recepteurLu')
+            ->requirePresence('recepteurLu', 'create')
+            ->notEmpty('recepteurLu');
+
+        $validator
+            ->boolean('expediteurLu')
+            ->requirePresence('expediteurLu', 'create')
+            ->notEmpty('expediteurLu');
 
         $validator
             ->integer('IDExpediteur')
@@ -68,6 +73,16 @@ class MessagesTable extends Table
             ->integer('IDRecepteur')
             ->requirePresence('IDRecepteur', 'create')
             ->notEmpty('IDRecepteur');
+
+        $validator
+            ->integer('userExpediteur')
+            ->requirePresence('userExpediteur', 'create')
+            ->notEmpty('userExpediteur');
+
+        $validator
+            ->integer('userRecepteur')
+            ->requirePresence('userRecepteur', 'create')
+            ->notEmpty('userRecepteur');
 
         return $validator;
     }

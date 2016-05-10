@@ -10,9 +10,12 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\Time $DateEnvoi
  * @property string $Sujet
  * @property string $ContenuMessage
- * @property bool $Lu
+ * @property bool $recepteurLu
+ * @property bool $expediteurLu
  * @property int $IDExpediteur
  * @property int $IDRecepteur
+ * @property int $userExpediteur
+ * @property int $userRecepteur
  */
 class Message extends Entity
 {
