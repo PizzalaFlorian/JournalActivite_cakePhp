@@ -6,7 +6,7 @@ $(function(){
 	
     function getBaseURL() {
         var url = location.href;  // entire url including querystring - also: window.location.href;
-        var baseURL = url.substring(0, url.indexOf('/admin', 14)); 
+        var baseURL = url.substring(0, url.indexOf('/candidat', 14)); 
 
         if (baseURL.indexOf('http://localhost') != -1) {
             var pathname = location.pathname;  // window.location.pathname;
@@ -36,6 +36,7 @@ $(function(){
     });
 
     /*  Déplacement event */
+    //TODO
     $(".calendar_event").draggable({
         containment: "parent",
         grid: [10, 10],
@@ -116,6 +117,7 @@ $(function(){
 
 
     /* Redimensionnement event */
+    //TODO
     $(".calendar_event").resizable({
         handles: 's',
         grid: [0, 10],
@@ -199,6 +201,7 @@ $(function(){
 				
 				
         /*creation de l'event dans la bdd*/
+        //TODO ?//
         var url_create=getBaseURL()+"/admin/ajax/evenementcreation/ds/"+day_start+"/de/"+day_end+"/ag/"+agenda_first_id;
 /*        var event_id = $.ajax({
             url: url_create,

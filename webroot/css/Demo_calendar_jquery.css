@@ -1466,7 +1466,7 @@
 ----------------------------------*/
 
 .ui-resizable {
-    position: relative !important;
+    position: relative;
 }
 
 .ui-resizable-handle {
