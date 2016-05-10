@@ -28,7 +28,7 @@ class CandidatController extends AppController
         require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "candidat" . DS ."toolboxcandidat.php");
     }
 
-    public function but_experience()
+    public function butExperience()
     {
         $this->viewBuilder()->layout('candiLayout');
     }
