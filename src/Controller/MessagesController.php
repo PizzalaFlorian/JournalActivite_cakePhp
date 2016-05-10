@@ -7,8 +7,8 @@ use Cake\ORM\TableRegistry;
 //*******************************
 //
 // note : 
-//        -   tout les chercheurs : 1
-//        -   tout les etudiants  : 2
+//        -   messages pour tout les chercheurs : 1
+//        -   messages pour tout les etudiants  : 2
 //  
 //*******************************
 
@@ -26,8 +26,16 @@ class MessagesController extends AppController
      */
     public function index()
     {
+        //fonction lié a la messagerie dans messagerie.php
         require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "messagerie" . DS ."messagerie.php");
-        $messages = $this->paginate($this->Messages->find('all', ['conditions' => ['Messages.IDRecepteur' => $_SESSION['Auth']['User']['ID']]]));
+        // recupère les messages de l'utilisateur $_SESSION et de sa liste de diffusion 
+        switch ($_SESSION['Auth']['User']['typeUser']) {
+            case 'chercheur':       $diffusion = 1;     break;
+            case 'Candidat':        $diffusion = 2;     break;
+            case 'admin':           $diffusion = 3;     break;
+        }
+        $actualite = $this->paginate($this->Messages->findAllByIdrecepteur(1));
+        $messages = $this->paginate($this->Messages->findAllByIdrecepteur($_SESSION['Auth']['User']['ID']));
         $this->set(compact('messages'));
         $this->set('_serialize', ['messages']);
     }
