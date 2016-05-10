@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
+
 use fonctionperso\calendar\functionDate;
 use fonctionperso\calendar\affichageActivite;
 use fonctionperso\activite\activite;
@@ -35,22 +37,33 @@ class CandidatController extends AppController
         require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "compagnie" . DS ."compagnie.php"); 
 
         require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "dispositif" . DS ."dispositif.php"); 
+ 
+    }
 
-        // Classes requise
-        // require '../class/activite.class.php';
-        // require '../class/lieu.class.php';
-        // require '../class/categorieActivite.class.php';
-        // require '../class/categorieLieu.class.php';
-        // require '../class/compagnie.class.php';
-        // require '../class/dispositif.class.php';
+    public function request(){
+        //NE SURTOUT PAS SUPPRIMER LA TEMPLATE ASSOCIER
+        if ($this->request->is('post')) {
+            if($this->request->data['categorie'] == "lieu"){
+                $liste_Lieu = TableRegistry::get('lieu')
+                    ->find()
+                    ->where(['CodeCategorieLieux'=>$this->request->data['codeCategorie']])
+                    ->toArray();
 
-        // // Modele requis
-        // require '../modele/activite.modele.php';
-        // require '../modele/lieux.modele.php';
-        // require '../modele/categorieActivite.modele.php';
-        // require '../modele/categorieLieu.modele.php';
-        // require '../modele/compagnie.modele.php';
-        // require '../modele/dispositif.modele.php';
+                foreach($liste_Lieu as $lieu){
+                    echo '<option id="'.$lieu['CodeLieux'].'">'.$lieu['NomLieux'].'</option>';
+                }
+            }
+            if($this->request->data['categorie'] == "activite"){
+                $liste_activite = TableRegistry::get('activite')
+                    ->find()
+                    ->where(['CodeCategorie'=>$this->request->data['codeCategorie']])
+                    ->toArray();
+                
+                foreach($liste_activite as $activite){
+                    echo'<option id="'.$activite['CodeActivite'].'">'.$activite['NomActivite'].'</option>';
+                }
+            }
+        }   
     }
     /**
      * Index method

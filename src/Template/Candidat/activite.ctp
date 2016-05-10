@@ -22,8 +22,8 @@
     $liste_compagnie = get_Compagnie();
     $liste_dispositif = get_dispositif();
 
+    echo $this->element('sidebarCandidat');
 ?>
-
 
 	<div id="content">
             <div id="gen_new_content" title="Nouvel événement">

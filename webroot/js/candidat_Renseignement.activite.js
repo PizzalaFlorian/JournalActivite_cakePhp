@@ -8,13 +8,18 @@ $(function() {
 		if(categorie == "new_event_categorieActivite"){targetCategorie = "RA_activ"; cat = "activite";}
 		if(categorie == "new_event_categorieLieu"){targetCategorie = "RA_Lieu"; cat = "lieu";}
 		$.ajax({
-			url: "../fonctions/retourneCategorie.php",
+			url: "../candidat/request",
 			type : 'POST',
 			data : 'categorie=' + cat + '&codeCategorie=' + codeCategorie,
 			dataType : 'html',
 			success : function(reponse, statut){
+				console.log('succes');
+				console.log(reponse);
 				$( "."+targetCategorie ).html(reponse);
-			}
+			},
+			 error: function (request, status, error) {
+      		 	alert(request.responseText);
+    		}
 		});
 	});
 	//CodeOccupation,HeureDebut,HeureFin,CodeCandidat,CodeLieux,CodeActivite,CodeCompagnie,CodeDispositif

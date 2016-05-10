@@ -548,6 +548,7 @@ div.message.hidden {
 #actions-sidebar {
     margin-bottom: -99999px;
     padding-bottom: 99999px;
+    margin-left: auto;
 }
 @media(max-width: 640px) {
     #actions-sidebar {
