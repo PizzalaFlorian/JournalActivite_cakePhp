@@ -25,7 +25,8 @@ class CandidatController extends AppController
     public function accueil()
     {
         $this->viewBuilder()->layout('candiLayout');
-        require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "candidat" . DS ."toolbox.candidat.php");
+        //require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "candidat" . DS ."toolbox.candidat.php");
+        require_once("/vendor/functionperso/candidat/toolbox.candidat.php");
     }
 
     public function but_experience()
@@ -42,7 +43,7 @@ class CandidatController extends AppController
     {
         $this->viewBuilder()->layout('candiLayout');
     }
-    
+
     public function aide()
     {
         $this->viewBuilder()->layout('candiLayout');
