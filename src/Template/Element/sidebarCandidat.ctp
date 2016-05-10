@@ -29,8 +29,8 @@
 <li> 
     <?php 
         echo $this->Html->link(
-            'Actualitées',
-            ['controller' => 'candidat', 'action' => 'actualite', '_full' => true]
+            'Messagerie',
+            ['controller' => 'messages', 'action' => 'index', '_full' => true]
         ); 
     ?> 
 </li>

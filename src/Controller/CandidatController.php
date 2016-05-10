@@ -6,6 +6,7 @@ use Cake\ORM\TableRegistry;
 
 use fonctionperso\calendar\functionDate;
 use fonctionperso\calendar\affichageActivite;
+use fonctionperso\candidat\toolboxCandidat;
 use fonctionperso\activite\activite;
 use fonctionperso\activite\categorieActivite;
 use fonctionperso\lieu\lieux;
@@ -24,12 +25,7 @@ class CandidatController extends AppController
     public function accueil()
     {
         $this->viewBuilder()->layout('candiLayout');
-        require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "candidat" . DS ."fonctions.affichage.activite.php");
-    }
-
-    public function actualite()
-    {
-        $this->viewBuilder()->layout('candiLayout');
+        require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "candidat" . DS ."toolbox.candidat.php");
     }
 
     public function but_experience()
@@ -46,6 +42,13 @@ class CandidatController extends AppController
     {
         $this->viewBuilder()->layout('candiLayout');
     }
+    
+    public function aide()
+    {
+        $this->viewBuilder()->layout('candiLayout');
+    }
+
+
 
     public function activite()
     {

@@ -128,7 +128,7 @@ class UsersController extends AppController
                 if($user['typeUser']=='candidat')
                     return $this->redirect([
                         'controller' => 'candidat',
-                        'action' => 'index']);
+                        'action' => 'accueil']);
                 if($user['typeUser']=='chercheur')
                     return $this->redirect([
                         'controller' => 'chercheur',
