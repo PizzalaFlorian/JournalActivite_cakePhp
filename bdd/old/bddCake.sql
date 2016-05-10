@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 10, 2016 at 12:18 PM
+-- Generation Time: May 09, 2016 at 10:23 AM
 -- Server version: 5.6.30-0ubuntu0.15.10.1
 -- PHP Version: 5.6.11-1ubuntu3.3
 
@@ -19,7 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `bddCake`
 --
-
+CREATE DATABASE IF NOT EXISTS `bddCake` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `bddCake`;
 -- --------------------------------------------------------
 
 --
@@ -133,19 +134,6 @@ INSERT INTO `activite` (`CodeActivite`, `NomActivite`, `DescriptifActivite`, `Co
 -- --------------------------------------------------------
 
 --
--- Table structure for table `actualites`
---
-
-CREATE TABLE IF NOT EXISTS `actualites` (
-  `ID` int(11) NOT NULL,
-  `Sujet` varchar(255) NOT NULL,
-  `Contenue` text NOT NULL,
-  `Date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `administrateur`
 --
 
@@ -176,11 +164,7 @@ CREATE TABLE IF NOT EXISTS `candidat` (
 -- Dumping data for table `candidat`
 --
 
-INSERT INTO `candidat` (`CodeCandidat`, `Age`, `GenreCandidat`, `LieuxEtude`, `NiveauEtude`, `DiplomePrep`, `EtatCivil`, `NombreEnfant`, `ID`) VALUES
-(1, 22, 'vache', 'Grenoble', 'CAP', 'Master Macrame', 'Decede', 12, 9),
-(2, 19, 'tortue', 'Suez', 'BAC +2', 'Master Droit', 'En couple', 0, 10),
-(3, 26, 'homme', 'Vienne', 'BAC+7', 'L1 jardinage', 'Celibataire', 1, 11),
-(4, 11, 'chien', 'Paris', 'MatSup', 'CNRS', 'Union libre', 4, 12);
+
 
 -- --------------------------------------------------------
 
@@ -420,7 +404,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`ID`, `login`, `typeUser`, `password`, `email`) VALUES
-(1, 'chercheur', 'chercheur', 'chercheur', 'test@gmail.com'),
+(1, 'chercheur', 'chercheur', 'chercheur', 'test@gmail.com'), 
 (2, 'utilisateur', 'utilisateur', 'utilisateur', 'test@gmail.com'),
 (5, 'JM', 'chercheur', 'JM', 'test@gmail.com'),
 (6, 'trouve', 'chercheur', 'trouve', 'test@gmail.com'),
@@ -431,9 +415,7 @@ INSERT INTO `users` (`ID`, `login`, `typeUser`, `password`, `email`) VALUES
 (11, 'boule', 'candidat', '$2y$10$70jLgRkEiNnFGZGPNo7f0OsvW1.nbgGNGo2OtBzIR.lwWSpSyuOVe', 'boule@boule.com'),
 (12, 'bill', 'candidat', '$2y$10$FcO8VR4QeUKeGX7NozVv6u21KrRoEjZgmYeMduAXLAhEVbFEroAYO', 'bill@bill.com');
 
---
--- Indexes for dumped tables
---
+-- --------------------------------------------------------
 
 --
 -- Indexes for table `activite`
@@ -441,12 +423,6 @@ INSERT INTO `users` (`ID`, `login`, `typeUser`, `password`, `email`) VALUES
 ALTER TABLE `activite`
   ADD PRIMARY KEY (`CodeActivite`),
   ADD KEY `CodeCategorie` (`CodeCategorie`);
-
---
--- Indexes for table `actualites`
---
-ALTER TABLE `actualites`
-  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `administrateur`
@@ -532,15 +508,10 @@ ALTER TABLE `occupation`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`ID`);
 
---
+
 -- AUTO_INCREMENT for dumped tables
 --
 
---
--- AUTO_INCREMENT for table `actualites`
---
-ALTER TABLE `actualites`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `administrateur`
 --
@@ -581,9 +552,7 @@ ALTER TABLE `occupation`
 --
 ALTER TABLE `users`
   MODIFY `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
---
--- Constraints for dumped tables
---
+
 
 --
 -- Constraints for table `activite`
@@ -631,6 +600,13 @@ ALTER TABLE `occupation`
   ADD CONSTRAINT `occupation_ibfk_4` FOREIGN KEY (`CodeDispositif`) REFERENCES `dispositif` (`CodeDispositif`),
   ADD CONSTRAINT `occupation_ibfk_5` FOREIGN KEY (`CodeActivite`) REFERENCES `activite` (`CodeActivite`);
 
+
+
+INSERT INTO `candidat` (`CodeCandidat`, `Age`, `GenreCandidat`, `LieuxEtude`, `NiveauEtude`, `DiplomePrep`, `EtatCivil`, `NombreEnfant`, `ID`) VALUES
+(1, 22, 'vache', 'Grenoble', 'CAP', 'Master Macrame', 'Decede', 12, 9),
+(2, 19, 'tortue', 'Suez', 'BAC +2', 'Master Droit', 'En couple', 0, 10),
+(3, 26, 'homme', 'Vienne', 'BAC+7', 'L1 jardinage', 'Celibataire', 1, 11),
+(4, 11, 'chien', 'Paris', 'MatSup', 'CNRS', 'Union libre', 4, 12);
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
