@@ -24,6 +24,7 @@ class CandidatController extends AppController
     public function accueil()
     {
         $this->viewBuilder()->layout('candiLayout');
+        require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "candidat" . DS ."fonctions.affichage.activite.php");
     }
 
     public function actualite()
