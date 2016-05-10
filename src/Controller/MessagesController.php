@@ -26,18 +26,29 @@ class MessagesController extends AppController
      */
     public function index()
     {
+    // ==== ACTUALITES ==== //
+        $this->loadModel('Actualites');
+        $actualites = $this->Actualites->find('all');
+        //$actualites = $this->paginate($this->Actualites);
+
+        //$this->set(compact('actualites'));
+        //$this->set('_serialize', ['actualites']);
+
+    // ==== MESSAGERIE ==== //
         //fonction lié a la messagerie dans messagerie.php
         require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "messagerie" . DS ."messagerie.php");
-        // recupère les messages de l'utilisateur $_SESSION et de sa liste de diffusion 
+        // on assigne un id pour les messageries
         switch ($_SESSION['Auth']['User']['typeUser']) {
-            case 'chercheur':       $diffusion = 1;     break;
-            case 'Candidat':        $diffusion = 2;     break;
-            case 'admin':           $diffusion = 3;     break;
+            case 'chercheur':       $monID = 1;                                                 break;
+            case 'Candidat':        $monID = $_SESSION['Auth']['User']['ID'];                   break;
+            case 'admin':           $diffusion = 3;                                             break;
         }
-        $actualite = $this->paginate($this->Messages->findAllByIdrecepteur(1));
-        $messages = $this->paginate($this->Messages->findAllByIdrecepteur($_SESSION['Auth']['User']['ID']));
+        // recuperation des messages
+        $messages = $this->paginate($this->Messages->findAllByIdrecepteur($monID));
         $this->set(compact('messages'));
+        $this->set(compact('actualites'));
         $this->set('_serialize', ['messages']);
+        $this->set('_serialize', ['actualites']);
     }
 
     /**
