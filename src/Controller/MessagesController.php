@@ -149,8 +149,11 @@ class MessagesController extends AppController
         if ($this->request->is('post')) {
             $message = $this->Messages->patchEntity($message, $this->request->data);
             $message->DateEnvoi = "2016-05-08";
-            $message->Lu = "0";
+            $message->recepteurLu = "0";
+            $message->expediteurLu = "0";
             $message->IDExpediteur = $_SESSION['Auth']['User']['ID'];
+            $message->userExpediteur = $message->IDExpediteur;
+            $message->userRecepteur = $message->IDRecepteur;
             //var_dump($message);
             if ($this->Messages->save($message)) {
                 $this->Flash->success(__('Votre message à bien été envoyé.'));

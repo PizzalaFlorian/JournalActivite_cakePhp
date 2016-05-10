@@ -21,10 +21,10 @@
                         <?= h($actualite->Date) ?>
                 </td>
                 <td>
-                        <?= h($actualite->Sujet) ?>
+                        <?= $this->Html->link(h(substr($actualite->Sujet, 0, 30)), ['action' => 'view', $actualite->ID]) ?>
                 </td>
                 <td>
-                        <?= h($actualite->Contenue) ?>
+                        <?= h(substr($actualite->Contenue, 0, 100)) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
