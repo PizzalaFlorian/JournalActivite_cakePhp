@@ -25,7 +25,7 @@ class CandidatController extends AppController
     public function accueil()
     {
         $this->viewBuilder()->layout('candiLayout');
-        require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "candidat" . DS ."toolboxcandidat.php");
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "candidat" . DS ."toolboxcandidat.php");
     }
 
     public function but_experience()
@@ -54,18 +54,18 @@ class CandidatController extends AppController
     {
         $this->viewBuilder()->layout('candiLayout');
 
-        require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "calendar" . DS ."affichageactivite.php");
-        require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "calendar" . DS ."fonctionsdate.php"); 
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "calendar" . DS ."affichageactivite.php");
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "calendar" . DS ."fonctionsdate.php"); 
 
-        require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "activite" . DS ."activite.php"); 
-        require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "activite" . DS ."categorieactivite.php"); 
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "activite" . DS ."activite.php"); 
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "activite" . DS ."categorieactivite.php"); 
 
-        require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "lieu" . DS ."lieux.php");
-        require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "lieu" . DS ."categorielieu.php"); 
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "lieu" . DS ."lieux.php");
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "lieu" . DS ."categorielieu.php"); 
 
-        require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "compagnie" . DS ."compagnie.php"); 
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "compagnie" . DS ."compagnie.php"); 
 
-        require_once(ROOT .DS. "Vendor" . DS  . "functionperso" . DS . "dispositif" . DS ."dispositif.php"); 
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "dispositif" . DS ."dispositif.php"); 
     }
 
     public function request()
