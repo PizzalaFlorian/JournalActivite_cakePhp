@@ -34,6 +34,25 @@
         ); 
     ?> 
 </li>
+
+<li> 
+    <?php 
+        echo $this->Html->link(
+            'Mon Compte',
+            ['controller' => 'users', 'action' => 'modif', '_full' => true]
+        ); 
+    ?> 
+</li>
+
+<li> 
+    <?php 
+        echo $this->Html->link(
+            'Informations Personnelles',
+            ['controller' => 'candidat', 'action' => 'modif', '_full' => true]
+        ); 
+    ?> 
+</li>
+
 <li> 
     <?php 
         echo $this->Html->link(
@@ -52,22 +71,6 @@
     ?> 
 </li>
 
-<li> 
-    <?php 
-        echo $this->Html->link(
-            'Mon Compte',
-            ['controller' => 'users', 'action' => 'modif', '_full' => true]
-        ); 
-    ?> 
-</li>
-<li> 
-    <?php 
-        echo $this->Html->link(
-            'Informations Personnelles',
-            ['controller' => 'candidat', 'action' => 'modif', '_full' => true]
-        ); 
-    ?> 
-</li>
 <li> 
     <?php 
         echo $this->Html->link(
