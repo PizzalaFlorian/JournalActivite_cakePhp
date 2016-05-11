@@ -166,13 +166,12 @@ class MessagesController extends AppController
         $message = $this->Messages->newEntity();
         if ($this->request->is('post')) {
             $message = $this->Messages->patchEntity($message, $this->request->data);
-            $message->DateEnvoi = "2016-05-08";
+            $message->DateEnvoi = date('Y-m-d');
             $message->recepteurLu = "0";
             $message->expediteurLu = "0";
             $message->IDExpediteur = $_SESSION['Auth']['User']['ID'];
             $message->userExpediteur = $message->IDExpediteur;
             $message->userRecepteur = $message->IDRecepteur;
-            //var_dump($message);
             if ($this->Messages->save($message)) {
                 $this->Flash->success(__('Votre message à bien été envoyé.'));
                 return $this->redirect(['action' => 'index']);
@@ -183,5 +182,59 @@ class MessagesController extends AppController
         $this->set(compact('message'));
         $this->set(compact('users'));
         $this->set('_serialize', ['message']);
+    }
+
+    public function repondre($id = null)
+    {
+        // on verifie que l'utilisateur accède bien a un message dont il est le destinataire ou le recepteur
+        $monID = $_SESSION['Auth']['User']['ID'];
+        $message = $this->Messages->get($id, ['contain' => [] ]);
+        if(($message->IDExpediteur == $monID) || ($message->IDRecepteur == $monID)){
+            //cherche la fonction afficheContenu de messagerie
+            require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "messagerie" . DS ."messagerie.php");
+            //si post, on enregistre
+            if ($this->request->is(['patch', 'post', 'put'])) {
+                //selectionne l'id de l'expediteur
+                switch ($_SESSION['Auth']['User']['typeUser']) {
+                    case 'candidat':    $monID = $_SESSION['Auth']['User']['ID'];       break;
+                    case 'chercheur':   $monID = '1';                                   break;
+                    case 'admin':       $monID = '0';                                   break;
+                }
+                $newMessage = $this->Messages->newEntity();
+                $newMessage = $this->Messages->patchEntity($newMessage, $this->request->data);
+                $newMessage->DateEnvoi = date('Y-m-d');
+                $newMessage->recepteurLu = "0";
+                $newMessage->expediteurLu = "0";
+                $newMessage->IDExpediteur = $monID;
+                $newMessage->userExpediteur = $newMessage->IDExpediteur;
+                $newMessage->userRecepteur = $newMessage->IDRecepteur;
+                if ($this->Messages->save($newMessage)) {
+                    $this->Flash->success(__('Votre message à bien été envoyé.'));
+                    return $this->redirect(['action' => 'index']);
+                } else {
+                    $this->Flash->error(__('Echec de l\'envoie. Veuillez réessayer.'));
+                    //return $this->redirect(['action' => 'index']);
+                }
+            }
+            //recupère le pseudo de l'expediteur
+            $this->loadModel('Users');
+            $users = $this->Users->get($message->IDExpediteur, ['contain' => [] ]);
+            switch ($users->typeUser) {
+                case 'candidat':    $pseudo = "Candidat ".$users->ID;  $pseudoID = $users->ID;           break;
+                case 'chercheur':   $pseudo = "Chercheur";             $pseudoID = '1';                  break;
+                case 'admin':       $pseudo = "Administrateur";        $pseudoID = '0';                  break;
+            }
+            //prépare les variables pour le template
+            $this->set(compact('pseudo'));
+            $this->set(compact('pseudoID'));
+            //$this->set('_serialize', ['pseudo']);
+            $this->set(compact('message'));
+            $this->set('_serialize', ['message']);
+        } else {
+            // Si le message affiché n'appartient pas a l'utilisateur connecté, on demande une nouvel authentification
+            $this->Flash->error(__('Une erreur d\'Authentification est survenue.'));
+            $this->Flash->error(__('Veuillez vous reconnecter.'));
+            return $this->redirect(['controller' => 'users', 'action' => 'logout']);
+        }
     }
 }
