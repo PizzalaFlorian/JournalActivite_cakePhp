@@ -121,16 +121,34 @@ class MessagesController extends AppController
      * @return \Cake\Network\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function delete($id = null)
+    public function delete($id = 0)
     {
-        $this->request->allowMethod(['post', 'delete']);
-        $message = $this->Messages->get($id);
-        if ($this->Messages->delete($message)) {
-            $this->Flash->success(__('Le message à bien été supprimé.'));
-        } else {
-            $this->Flash->error(__('The message could not be deleted. Please, try again.'));
+        // si l'utilisateur est l'expediteur
+        $message = $this->Messages->get($id, ['contain' => [] ]);
+        if($_SESSION['Auth']['User']['ID'] == $message->IDExpediteur){
+            $message->IDExpediteur = 0;
+            if ($this->Messages->save($message)) {
+                $this->Flash->success(__('Le message à bien été supprimé.'));
+                //return $this->redirect(['action' => '']);
+            } else {
+                $this->Flash->error(__('Erreur: Le message n\'a pas pu être supprimer, veuillez réessayer.'));
+            }
         }
-        return $this->redirect(['action' => 'messagerie']);
+        // si l'utilisateur est le recepteur
+        if($_SESSION['Auth']['User']['ID'] == $message->IDRecepteur){
+            $message->IDRecepteur = 0;
+            if ($this->Messages->save($message)) {
+               $this->Flash->success(__('Le message à bien été supprimé.'));
+                //return $this->redirect(['action' => '']);
+            } else {
+                $this->Flash->error(__('Erreur: Le message n\'a pas pu être supprimer, veuillez réessayer.'));
+            }
+        }
+        // si plus aucun expediteur / recepteur, alors on supprimer le message de la base de données.
+        if(($message->IDExpediteur == 0)&&($message->IDRecepteur == 0)){
+            $this->Messages->delete($message);
+        }
+        return $this->redirect(['action' => 'index']);
     }
 //affiche la messagerie d'un utilisateur
 	public function messagerie($id = null)
