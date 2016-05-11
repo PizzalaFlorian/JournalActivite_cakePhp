@@ -170,6 +170,26 @@ class CandidatController extends AppController
         $this->set('_serialize', ['candidat']);
     }
 
+    public function modif()
+    {
+        $candidat = TableRegistry::get('candidat')
+            ->find()
+            ->where(['ID' => $_SESSION['Auth']['User']['ID']])
+            ->first();
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $candidat = $this->Candidat->patchEntity($candidat, $this->request->data);
+            if ($this->Candidat->save($candidat)) {
+                $this->Flash->success(__('The candidat has been saved.'));
+                return $this->redirect(['action' => 'index']);
+            } else {
+                $this->Flash->error(__('The candidat could not be saved. Please, try again.'));
+            }
+        }
+        $this->set(compact('candidat'));
+        $this->set('_serialize', ['candidat']);
+    }
+
     /**
      * Delete method
      *

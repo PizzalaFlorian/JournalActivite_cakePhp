@@ -56,7 +56,15 @@
     <?php 
         echo $this->Html->link(
             'Mon Compte',
-            ['controller' => 'candidat', 'action' => 'compte', '_full' => true]
+            ['controller' => 'users', 'action' => 'modif', '_full' => true]
+        ); 
+    ?> 
+</li>
+<li> 
+    <?php 
+        echo $this->Html->link(
+            'Informations Personnelles',
+            ['controller' => 'candidat', 'action' => 'modif', '_full' => true]
         ); 
     ?> 
 </li>

@@ -1,7 +1,6 @@
 <?php
 	echo $this->element('sidebarCandidat');
 ?>
-
 <!-- Content -->
 <div id="content">
 	<div class="inner">

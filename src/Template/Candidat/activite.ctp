@@ -23,10 +23,11 @@
     $liste_dispositif = get_dispositif();
 
     echo $this->element('sidebarCandidat');
-    
+
     echo $this->Html->script('jquery-1.7.min');
     echo $this->Html->script('jquery-ui-1.7.2.custom.min');
     echo $this->Html->script('jquery.corner');
+    echo $this->Html->script('jquery.mobile.custom.min');
     echo $this->Html->script('candidat.activite');
     echo $this->Html->script('candidat_Renseignement.activite');
     echo $this->Html->script('Demo_calendar_script');
