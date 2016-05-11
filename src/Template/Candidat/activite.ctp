@@ -31,6 +31,11 @@
     echo $this->Html->script('candidat.activite');
     echo $this->Html->script('candidat_Renseignement.activite');
     echo $this->Html->script('Demo_calendar_script');
+
+    echo $this->Html->css('modale');
+    echo $this->Html->css('occupation');
+    echo $this->Html->css('Demo_calendar_style');
+    echo $this->Html->css('Demo_calendar_jquery');
 ?>
 
 	<div id="content">

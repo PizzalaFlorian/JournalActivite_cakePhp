@@ -7,6 +7,7 @@ use Cake\ORM\TableRegistry;
 use fonctionperso\calendar\functiondate;
 use fonctionperso\calendar\affichageactivite;
 use fonctionperso\candidat\toolboxcandidat;
+use fonctionperso\candidat\candidatHistorique;
 use fonctionperso\activite\activite;
 use fonctionperso\activite\categorieactivite;
 use fonctionperso\lieu\lieux;
@@ -61,6 +62,7 @@ class CandidatController extends AppController
     public function historique()
     {
         $this->viewBuilder()->layout('candiLayout');
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "candidat" . DS ."candidatHistorique.php");
     }
 
     public function aide()

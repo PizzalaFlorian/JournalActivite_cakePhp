@@ -1,5 +1,20 @@
 <?php
+	use Cake\ORM\TableRegistry;
 	echo $this->element('sidebarCandidat');
+
+	echo $this->Html->script('jquery-1.7.min');
+    echo $this->Html->script('jquery-ui-1.7.2.custom.min');
+ //    echo $this->Html->script('jquery.corner');
+    echo $this->Html->script('jquery.mobile.custom.min');
+	echo $this->Html->script('highcharts');
+	echo $this->Html->script('modernizr');
+    echo $this->Html->script('timeline');
+
+    $candidat = TableRegistry::get('candidat')
+            ->find()
+            ->where(['ID' => $_SESSION['Auth']['User']['ID']])
+            ->first();
+    $dure_total = duree_totale($candidat['CodeCandidat']);
 ?>
 
 <!-- Content -->
@@ -17,8 +32,8 @@
 		<div class="events-wrapper">
 			<div class="events">
 				<ol>
-					<li><a href="#0" data-date="<?php echo premiere_date_moins_un($bdd)?>" class="selected">Résumé</a></li>
-					<?php date_des_jours($bdd); ?>
+					<li><a href="#0" data-date="<?php echo premiere_date_moins_un($candidat['CodeCandidat'])?>" class="selected">Résumé</a></li>
+					<?php date_des_jours($candidat['CodeCandidat']); ?>
 				</ol>
 
 				<span class="filling-line" aria-hidden="true"></span>
@@ -33,40 +48,34 @@
 
 	<div class="events-content">
 		<ol>
-			<li class="selected" data-date="<?php echo premiere_date_moins_un($bdd)?>">
+			<li class="selected" data-date="<?php echo premiere_date_moins_un($candidat['CodeCandidat'])?>">
 			<section id="all_historique">
 			<div id="activite_all_camembert" style="width:100%; height:400px;"></div>
 			<?php
-			camembert_all_activite($bdd,"activite_all_camembert");
-			stat_all_activite($bdd);
+			camembert_all_activite("activite_all_camembert",$dure_total);
+			stat_all_activite($candidat['CodeCandidat'],$dure_total);
 			?>
 			<div id="compagnie_all_camembert" style="width:100%; height:400px;"></div>
 			<?php
-			camembert_all_compagnie($bdd,"compagnie_all_camembert");
-			stat_all_compagnie($bdd);
+			camembert_all_compagnie("compagnie_all_camembert",$dure_total);
+			stat_all_compagnie($candidat['CodeCandidat'],$dure_total);
 			?>
 			<div id="dispositif_all_camembert" style="width:100%; height:400px;"></div>
 			<?php
-			camembert_all_dispositif($bdd,"dispositif_all_camembert");
-			stat_all_dispositif($bdd);
+			camembert_all_dispositif("dispositif_all_camembert",$dure_total);
+			stat_all_dispositif($candidat['CodeCandidat'],$dure_total);
 			?>
 			<div id="lieu_all_camembert" style="width:100%; height:400px;"></div>
 			<?php
-			camembert_all_lieu($bdd,"lieu_all_camembert");
-			stat_all_lieu($bdd);
+			camembert_all_lieu("lieu_all_camembert",$dure_total);
+			stat_all_lieu($candidat['CodeCandidat'],$dure_total);
 			?>
 		</section>
 			</li>
-			<?php contenu_date($bdd);?>
+			<?php contenu_date($candidat['CodeCandidat'],$dure_total);?>
 		</ol>
 	</div> <!-- .events-content -->
 </section>
-		
-	<script src="../js/jquery.mobile.custom.min.js"></script>
-	
-	<script src="../js/modernizr.js"></script>		
-	<script src="../js/timeline.js"></script> 	
-		
-		
+
 	</div>
 </div>
