@@ -54,7 +54,7 @@
                 </td>
                 <!-- LIEN AFFICHE LE MESSAGE -->
                 <td class="<?php echo $lu; ?>">
-                    <?= $this->Html->link(h(substr($message->Sujet, 0, 15)), ['action' => 'view', $message->IDMessage]) ?>
+                    <?= $this->Html->link(h(substr($message->Sujet, 0, 30)), ['action' => 'view', $message->IDMessage]) ?>
                 </td>
                 <!-- NOM DE L'EXPEDITEUR -->
                 <td class="<?php echo $lu; ?>">
@@ -63,7 +63,7 @@
                 <!-- ACTIONS -->
                 <td class="actions">
                     <!-- REPONDRE -->  
-                    <?= $this->Form->postLink(__('Répondre'), ['action' => 'repondre', $message->IDMessage])?>
+                    <?= $this->Html->link(__('Répondre'), ['action' => 'repondre', $message->IDMessage]) ?>
                     <br/>
                     <!-- SUPPRIMER -->      
                     <?= $this->Form->postLink(__('Supprimer'), ['action' => 'delete', $message->IDMessage], ['confirm' => __('Êtes-vous sûr de vouloir supprimer ce message?', $message->IDMessage)]) ?>
