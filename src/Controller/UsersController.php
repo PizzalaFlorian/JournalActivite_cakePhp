@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\ORM\TableRegistry;
 /**
  * Users Controller
  *
@@ -87,6 +88,30 @@ class UsersController extends AppController
         $this->set('_serialize', ['user']);
     }
 
+
+    public function modif()
+    {
+        if($_SESSION['Auth']['User']['typeUser']=='candidat')
+            $this->viewBuilder()->layout('candiLayout');
+        if($_SESSION['Auth']['User']['typeUser']=='chercheur')
+            $this->viewBuilder()->layout('cherLayout');
+        $user = TableRegistry::get('users')
+            ->find()
+            ->where(['ID' => $_SESSION['Auth']['User']['ID']])
+            ->first();
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $user = $this->Users->patchEntity($user, $this->request->data);
+            if ($this->Users->save($user)) {
+                $this->Flash->success(__('The user has been saved.'));
+                    return $this->redirect(['action' => 'modif']);
+            } else {
+                $this->Flash->error(__('The user could not be saved. Please, try again.'));
+            }
+        }
+        $this->set(compact('user'));
+        $this->set('_serialize', ['user']);
+    }
     /**
      * Delete method
      *
