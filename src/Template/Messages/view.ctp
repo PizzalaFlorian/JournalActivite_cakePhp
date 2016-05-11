@@ -1,42 +1,28 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Message'), ['action' => 'edit', $message->IDMessage]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Message'), ['action' => 'delete', $message->IDMessage], ['confirm' => __('Are you sure you want to delete # {0}?', $message->IDMessage)]) ?> </li>
-        <li><?= $this->Html->link(__('List Messages'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Message'), ['action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('Répondre'), ['action' => 'edit', $message->IDMessage]) ?> </li>
+        <li><?= $this->Form->postLink(__('Supprimer'), ['action' => 'delete', $message->IDMessage], ['confirm' => __('Etes vous sur de vouloir supprimer ce message?', $message->IDMessage)]) ?> </li>
+        <li><?= $this->Html->link(__('Messagerie'), ['action' => 'index']) ?></li>
     </ul>
 </nav>
 <div class="messages view large-9 medium-8 columns content">
-    <h3><?= h($message->IDMessage) ?></h3>
     <table class="vertical-table">
         <tr>
-            <th><?= __('Sujet') ?></th>
+            <th><?= __('Sujet :') ?></th>
             <td><?= h($message->Sujet) ?></td>
         </tr>
         <tr>
-            <th><?= __('IDMessage') ?></th>
-            <td><?= $this->Number->format($message->IDMessage) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('IDExpediteur') ?></th>
+            <th><?= __('De :') ?></th>
             <td><?= $this->Number->format($message->IDExpediteur) ?></td>
         </tr>
         <tr>
-            <th><?= __('IDRecepteur') ?></th>
-            <td><?= $this->Number->format($message->IDRecepteur) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('DateEnvoi') ?></th>
+            <th><?= __('Date :') ?></th>
             <td><?= h($message->DateEnvoi) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Lu') ?></th>
-            <td><?= $message->Lu ? __('Yes') : __('No'); ?></td>
         </tr>
     </table>
     <div class="row">
-        <h4><?= __('ContenuMessage') ?></h4>
+        <h4><?= __('') ?></h4>
         <?= $this->Text->autoParagraph(h($message->ContenuMessage)); ?>
     </div>
 </div>

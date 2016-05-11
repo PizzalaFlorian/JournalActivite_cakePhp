@@ -21,7 +21,7 @@
                         <?= h($actualite->Date) ?>
                 </td>
                 <td>
-                        <?= $this->Html->link(h(substr($actualite->Sujet, 0, 30)), ['action' => 'view', $actualite->ID]) ?>
+                        <?= $this->Html->link(h(substr($actualite->Sujet, 0, 30)), ['controller' => 'actualites','action' => 'view', $actualite->ID]) ?>
                 </td>
                 <td>
                         <?= h(substr($actualite->Contenue, 0, 100)) ?>
@@ -58,7 +58,7 @@
                 </td>
                 <!-- NOM DE L'EXPEDITEUR -->
                 <td class="<?php echo $lu; ?>">
-                    Candidat <?= $this->Number->format($message->IDExpediteur) ?>
+                    Chercheur
                 </td>
                 <!-- ACTIONS -->
                 <td class="actions">
