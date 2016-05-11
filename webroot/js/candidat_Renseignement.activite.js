@@ -8,6 +8,7 @@ $(function() {
 		if(categorie == "new_event_categorieActivite"){targetCategorie = "RA_activ"; cat = "activite";}
 		if(categorie == "new_event_categorieLieu"){targetCategorie = "RA_Lieu"; cat = "lieu";}
 		$.ajax({
+			// url: "../../vendor/functionperso/requestactivite.php",
 			url: "../candidat/request",
 			type : 'POST',
 			data : 'categorie=' + cat + '&codeCategorie=' + codeCategorie,

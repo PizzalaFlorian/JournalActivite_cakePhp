@@ -54,6 +54,7 @@ class AppView extends View
        
 
         //**************** JS *************************
+        /*
         echo $this->Html->script('jquery-1.3.2.min');
         echo $this->Html->script('jquery-1.7.min');
         echo $this->Html->script('jquery-ui-1.7.2.custom.min');
@@ -70,6 +71,7 @@ class AppView extends View
         echo $this->Html->script('chercheurDonnees');
         echo $this->Html->script('chercheurMonCompte');
         echo $this->Html->script('Demo_calendar_script');
+        */
 
 
 
