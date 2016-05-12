@@ -25,8 +25,18 @@ class CandidatController extends AppController
 
     public function accueil()
     {
+
         $this->viewBuilder()->layout('candiLayout');
         require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "candidat" . DS ."toolboxcandidat.php");
+
+        // ==== ACTUALITES ==== //
+            //fonction lié au actualité dans actualité.php
+            require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "actualite" . DS ."actualite.php");
+            $this->loadModel('Actualites');
+            $actualites = $this->Actualites->find('all');
+            //envoie des actualites au template
+            $this->set(compact('actualites'));
+            $this->set('_serialize', ['actualites']);
     }
 
     public function butExperience()

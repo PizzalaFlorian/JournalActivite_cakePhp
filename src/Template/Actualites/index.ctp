@@ -9,7 +9,6 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th><?= $this->Paginator->sort('ID') ?></th>
                 <th><?= $this->Paginator->sort('Sujet') ?></th>
                 <th><?= $this->Paginator->sort('Date') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
@@ -18,13 +17,12 @@
         <tbody>
             <?php foreach ($actualites as $actualite): ?>
             <tr>
-                <td><?= $this->Number->format($actualite->ID) ?></td>
                 <td><?= h($actualite->Sujet) ?></td>
-                <td><?= h($actualite->Date) ?></td>
+                <td><?= h(transformeDate($actualite->Date)) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $actualite->ID]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $actualite->ID]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $actualite->ID], ['confirm' => __('Are you sure you want to delete # {0}?', $actualite->ID)]) ?>
+                    <?= $this->Html->link(__('Voir'), ['action' => 'view', $actualite->ID]) ?><br />
+                    <?= $this->Html->link(__('Editer'), ['action' => 'edit', $actualite->ID]) ?><br />
+                    <?= $this->Form->postLink(__('Supprimer'), ['action' => 'delete', $actualite->ID], ['confirm' => __('Etes vous sur de vouloir supprimer cette actualité ?', $actualite->ID)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

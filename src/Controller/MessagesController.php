@@ -8,7 +8,8 @@ use Cake\ORM\TableRegistry;
 //
 // note : 
 //        -   messages pour tout les chercheurs : 1
-//        -   messages pour tout les etudiants  : 2
+//        -   messages pour tout les etudiants  : annulé
+//        -   messages pour les administrateur  : 0
 //  
 //*******************************
 
@@ -37,13 +38,18 @@ class MessagesController extends AppController
     // ==== MESSAGERIE ==== //
         //fonction lié a la messagerie dans messagerie.php
         require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "messagerie" . DS ."messagerie.php");
+        //fonction lié au actualité dans actualité.php
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "actualite" . DS ."actualite.php");
         // on assigne un id pour les messageries
         switch ($_SESSION['Auth']['User']['typeUser']) {
+            // les messages des chercheurs ont l'id 1
             case 'chercheur':       $monID = 1;                                                 break;
+            // les messages des utilisateurs ont leur propre id
             case 'candidat':        $monID = $_SESSION['Auth']['User']['ID'];                   break;
-            case 'admin':           $monID = 3;                                                 break;
+            // les messages de admin auront l'id 0
+            case 'admin':           $monID = 0;                                                 break;
         }
-        // recuperation des messages
+        // recuperation des messages en fonction de l'id
         $messages = $this->paginate($this->Messages->findAllByIdrecepteur($monID));
         $this->set(compact('messages'));
         $this->set(compact('actualites'));
@@ -187,8 +193,10 @@ class MessagesController extends AppController
     public function repondre($id = null)
     {
         // on verifie que l'utilisateur accède bien a un message dont il est le destinataire ou le recepteur
+
         $monID = $_SESSION['Auth']['User']['ID'];
         $message = $this->Messages->get($id, ['contain' => [] ]);
+
         if(($message->IDExpediteur == $monID) || ($message->IDRecepteur == $monID)){
             //cherche la fonction afficheContenu de messagerie
             require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "messagerie" . DS ."messagerie.php");
