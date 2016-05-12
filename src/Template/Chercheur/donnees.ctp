@@ -19,16 +19,33 @@
 			Il y a <b><?php echo nombreCandidat();?></b> candidat(s) inscrit à l'étude qui ont renseigné un total de <b><?php echo nombreOccupation();?></b> occupations sur la période allant du <b><?php echo premierOccupation();?> au <?php echo dernierOccupation();?></b>.<br/>
 			
 			<h2>Téléchargement des données:</h2>
-			<a href="../file/telechargerCandidatExcel.php" target="_blank">Téléchargement des données</a> Format: .xsl (Compatible Excel 2003)<br/>
+			<?php echo $this->Html->link(
+            'Téléchargement des données',
+            ['controller' => 'chercheur', 'action' => 'telechargerCandidatExcel', '_full' => true]
+       		 ); 
+       		?>
+			Format: .xsl (Compatible Excel 2003)<br/>
 			Les données des candidats sont sur la feuille Candidat, les occupations des candidats sont sur la feuille Occupation dans le fichier Excel. <br/>
-			<a href="../file/telechargerDonnees.php" target="_blank">Téléchargement des occupations entrées par les candidats</a> Format: .csv , séparateur: ; <br/>
-			<a href="../file/telechargerCandidat.php" target="_blank">Téléchargement des données des candidats</a> Format: .csv , séparateur: ; <br/>
+			<?php echo $this->Html->link(
+            'Téléchargement des occupations entrées par les candidats',
+            ['controller' => 'chercheur', 'action' => 'telechargerDonnees', '_full' => true]
+       		 ); 
+       		?> Format: .csv , séparateur: ; <br/>
+			<?php echo $this->Html->link(
+            'Téléchargement des données des candidats',
+            ['controller' => 'chercheur', 'action' => 'telechargerCandidat', '_full' => true]
+       		 ); 
+       		?> Format: .csv , séparateur: ; <br/>
 			
 			
 			
 			<h2>Noms correspondants au codes:</h2>
 			<a href="#" id="afficheLegende">Afficher les noms correspondant aux codes</a><br/>
-			<a href="../file/telechargerLegende.php" target="_blank">Télécharger les noms correspondant au codes</a>
+			<?php echo $this->Html->link(
+            'Télécharger les noms correspondant au codes',
+            ['controller' => 'chercheur', 'action' => 'telechargerLegende', '_full' => true]
+       		 ); 
+       		?>
 			<div id="legende">
 			<h2>Les codes des activités :</h2> 
 			<?php echo tableauActivite(); ?>
