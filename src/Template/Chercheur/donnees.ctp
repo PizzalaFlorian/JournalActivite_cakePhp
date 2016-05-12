@@ -1,5 +1,11 @@
 <?php
 	echo $this->element('sidebarChercheur');
+	
+  	echo $this->Html->script("https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js");
+	echo $this->Html->script("https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js");
+	echo $this->Html->script("https://cdn.datatables.net/t/dt/dt-1.10.11/datatables.min.js");
+	
+	echo $this->Html->script('chercheurDonnees');
 ?>
 <!-- Content -->
 <div id="content">

@@ -2,10 +2,7 @@
 	use Cake\ORM\TableRegistry;
 	echo $this->element('sidebarCandidat');
 
-	echo $this->Html->script('jquery-1.7.min');
-    echo $this->Html->script('jquery-ui-1.7.2.custom.min');
- //    echo $this->Html->script('jquery.corner');
-    echo $this->Html->script('jquery.mobile.custom.min');
+	echo $this->Html->script("https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js");
 	echo $this->Html->script('highcharts');
 	echo $this->Html->script('modernizr');
     echo $this->Html->script('timeline');

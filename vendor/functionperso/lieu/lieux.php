@@ -27,7 +27,7 @@
 			$resultat = "<table>\n<tr><th>Code du Lieu</th><th>Nom du Lieu</th></tr>\n";
 
 			$table = null;
-			$table = TableRegistry::get('categorieactivite')
+			$table = TableRegistry::get('lieu')
 		    	->find()
 		    	->toArray();
 
