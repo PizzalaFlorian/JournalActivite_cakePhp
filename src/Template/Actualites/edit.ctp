@@ -15,11 +15,11 @@
     <fieldset>
         <legend><?= __('Edit Actualite') ?></legend>
         <?php
+            echo $this->Form->input('Date');
             echo $this->Form->input('Sujet');
             echo $this->Form->input('Contenue');
-            echo $this->Form->input('Date');
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Envoyer')) ?>
     <?= $this->Form->end() ?>
 </div>

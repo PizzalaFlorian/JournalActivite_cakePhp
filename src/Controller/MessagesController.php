@@ -27,10 +27,11 @@ class MessagesController extends AppController
      */
     public function index()
     {
-    // ==== ACTUALITES ==== //
-        $this->loadModel('Actualites');
-        $actualites = $this->Actualites->find('all');
-        //$actualites = $this->paginate($this->Actualites);
+        switch ($_SESSION['Auth']['User']['typeUser']) {
+            case 'chercheur':       $monController = "chercheur";        $monAction="accueil";                 break;
+            case 'candidat':        $monController = "candidat";         $monAction="accueil";                 break;
+            case 'admin':           $monController = "";                 $monAction="";                 break;
+        }
 
         //$this->set(compact('actualites'));
         //$this->set('_serialize', ['actualites']);
@@ -38,8 +39,6 @@ class MessagesController extends AppController
     // ==== MESSAGERIE ==== //
         //fonction lié a la messagerie dans messagerie.php
         require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "messagerie" . DS ."messagerie.php");
-        //fonction lié au actualité dans actualité.php
-        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "actualite" . DS ."actualite.php");
         // on assigne un id pour les messageries
         switch ($_SESSION['Auth']['User']['typeUser']) {
             // les messages des chercheurs ont l'id 1
@@ -51,10 +50,10 @@ class MessagesController extends AppController
         }
         // recuperation des messages en fonction de l'id
         $messages = $this->paginate($this->Messages->findAllByIdrecepteur($monID));
+        $this->set(compact('monController'));
+        $this->set(compact('monAction'));
         $this->set(compact('messages'));
-        $this->set(compact('actualites'));
         $this->set('_serialize', ['messages']);
-        $this->set('_serialize', ['actualites']);
     }
 
     /**
@@ -66,12 +65,21 @@ class MessagesController extends AppController
      */
     public function view($id = null)
     {
-        $message = $this->Messages->get($id, [
-            'contain' => []
-        ]);
-
-        $this->set('message', $message);
-        $this->set('_serialize', ['message']);
+        switch ($_SESSION['Auth']['User']['typeUser']) {
+            case 'candidat':    $monID = $_SESSION['Auth']['User']['ID'];       break;
+            case 'chercheur':   $monID = '1';                                   break;
+            case 'admin':       $monID = '0';                                   break;
+        }
+        $message = $this->Messages->get($id, ['contain' => [] ]);
+        if(($message->IDExpediteur == $monID) || ($message->IDRecepteur == $monID)){
+            $this->set('message', $message);
+            $this->set('_serialize', ['message']);    
+        } else {
+            // Si la page demandé n'est pas disponible pour l'utilisateur, on demande une nouvel authentification
+            $this->Flash->error(__('Une erreur d\'Authentification est survenue.'));
+            $this->Flash->error(__('Veuillez vous reconnecter.'));
+            return $this->redirect(['controller' => 'users', 'action' => 'logout']);
+        }
     }
 
     /**
@@ -81,18 +89,9 @@ class MessagesController extends AppController
      */
     public function add()
     {
-        $message = $this->Messages->newEntity();
-        if ($this->request->is('post')) {
-            $message = $this->Messages->patchEntity($message, $this->request->data);
-            if ($this->Messages->save($message)) {
-                $this->Flash->success(__('The message has been saved.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The message could not be saved. Please, try again.'));
-            }
-        }
-        $this->set(compact('message'));
-        $this->set('_serialize', ['message']);
+        // ============== //
+        // A suppr : on utilise nouveau pour creer des message
+        // ============== //
     }
 
     /**
@@ -104,20 +103,9 @@ class MessagesController extends AppController
      */
     public function edit($id = null)
     {
-        $message = $this->Messages->get($id, [
-            'contain' => []
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $message = $this->Messages->patchEntity($message, $this->request->data);
-            if ($this->Messages->save($message)) {
-                $this->Flash->success(__('The message has been saved.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The message could not be saved. Please, try again.'));
-            }
-        }
-        $this->set(compact('message'));
-        $this->set('_serialize', ['message']);
+        // ============== //
+        // A suppr : on edite pas son message
+        // ============== //
     }
 
     /**
@@ -129,9 +117,13 @@ class MessagesController extends AppController
      */
     public function delete($id = 0)
     {
-        // si l'utilisateur est l'expediteur
         $message = $this->Messages->get($id, ['contain' => [] ]);
-        if($_SESSION['Auth']['User']['ID'] == $message->IDExpediteur){
+        switch ($_SESSION['Auth']['User']['typeUser']) {
+            case 'candidat':    $monID = $_SESSION['Auth']['User']['ID'];       break;
+            case 'chercheur':   $monID = '1';                                   break;
+            case 'admin':       $monID = '0';                                   break;
+        }
+        if($monID == $message->IDExpediteur){
             $message->IDExpediteur = 0;
             if ($this->Messages->save($message)) {
                 $this->Flash->success(__('Le message à bien été supprimé.'));
@@ -141,7 +133,7 @@ class MessagesController extends AppController
             }
         }
         // si l'utilisateur est le recepteur
-        if($_SESSION['Auth']['User']['ID'] == $message->IDRecepteur){
+        if($monID == $message->IDRecepteur){
             $message->IDRecepteur = 0;
             if ($this->Messages->save($message)) {
                $this->Flash->success(__('Le message à bien été supprimé.'));
@@ -194,7 +186,11 @@ class MessagesController extends AppController
     {
         // on verifie que l'utilisateur accède bien a un message dont il est le destinataire ou le recepteur
 
-        $monID = $_SESSION['Auth']['User']['ID'];
+        switch ($_SESSION['Auth']['User']['typeUser']) {
+            case 'candidat':    $monID = $_SESSION['Auth']['User']['ID'];       break;
+            case 'chercheur':   $monID = '1';                                   break;
+            case 'admin':       $monID = '0';                                   break;
+        }
         $message = $this->Messages->get($id, ['contain' => [] ]);
 
         if(($message->IDExpediteur == $monID) || ($message->IDRecepteur == $monID)){
@@ -203,11 +199,7 @@ class MessagesController extends AppController
             //si post, on enregistre
             if ($this->request->is(['patch', 'post', 'put'])) {
                 //selectionne l'id de l'expediteur
-                switch ($_SESSION['Auth']['User']['typeUser']) {
-                    case 'candidat':    $monID = $_SESSION['Auth']['User']['ID'];       break;
-                    case 'chercheur':   $monID = '1';                                   break;
-                    case 'admin':       $monID = '0';                                   break;
-                }
+                
                 $newMessage = $this->Messages->newEntity();
                 $newMessage = $this->Messages->patchEntity($newMessage, $this->request->data);
                 $newMessage->DateEnvoi = date('Y-m-d');

@@ -17,7 +17,6 @@
 
 <div class="actualites index large-9 medium-8 columns content">
     <h3>News</h3>
-    <?= $this->Html->link(__('Créer une News'), ['controller' => 'actualites','action' => 'nouveau']) ?>
     <table cellpadding="0" cellspacing="0">
         <tbody>
             <?php foreach ($actualites as $actualite): ?>

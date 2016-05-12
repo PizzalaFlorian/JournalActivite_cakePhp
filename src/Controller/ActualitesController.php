@@ -35,6 +35,7 @@ class ActualitesController extends AppController
      */
     public function view($id = null)
     {
+        // les chemin d'acces sont different en fonction du type d'user, on les definit ici
         switch ($_SESSION['Auth']['User']['typeUser']) {
             case 'chercheur':       $monController = "chercheur";        $monAction="accueil";                 break;
             case 'candidat':        $monController = "candidat";         $monAction="accueil";                 break;
@@ -79,20 +80,27 @@ class ActualitesController extends AppController
      */
     public function edit($id = null)
     {
-        $actualite = $this->Actualites->get($id, [
-            'contain' => []
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $actualite = $this->Actualites->patchEntity($actualite, $this->request->data);
-            if ($this->Actualites->save($actualite)) {
-                $this->Flash->success(__('The actualite has been saved.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The actualite could not be saved. Please, try again.'));
+        var_dump($_SESSION['Auth']['User']);
+        // on verifie que l'utilisateur est de type chercheur ou admin
+        if(($_SESSION['Auth']['User']['typeUser'] == 'chercheur') || ($_SESSION['Auth']['User']['typeUser'] =='admin')){
+            $actualite = $this->Actualites->get($id, ['contain' => [] ]);
+            if ($this->request->is(['patch', 'post', 'put'])) {
+                $actualite = $this->Actualites->patchEntity($actualite, $this->request->data);
+                if ($this->Actualites->save($actualite)) {
+                    $this->Flash->success(__('La modification a été sauvegardé.'));
+                    return $this->redirect(['action' => 'index']);
+                } else {
+                    $this->Flash->error(__('Une erreur est survenue. Veuillez réessayer.'));
+                }
             }
+            $this->set(compact('actualite'));
+            $this->set('_serialize', ['actualite']);
+        } else {
+            // Si la page demandé n'est pas disponible pour l'utilisateur, on demande une nouvel authentification
+            $this->Flash->error(__('Une erreur d\'Authentification est survenue.'));
+            $this->Flash->error(__('Veuillez vous reconnecter.'));
+            return $this->redirect(['controller' => 'users', 'action' => 'logout']);
         }
-        $this->set(compact('actualite'));
-        $this->set('_serialize', ['actualite']);
     }
 
     /**
@@ -104,8 +112,8 @@ class ActualitesController extends AppController
      */
     public function delete($id = null)
     {
-        // verifie que l'utilisateur est de type chercheur ou admin
-        if($_SESSION['Auth']['User']['typeUser'] == ('chercheur' || 'admin')){
+        // on verifie que l'utilisateur est de type chercheur ou admin
+        if(($_SESSION['Auth']['User']['typeUser'] == 'chercheur') || ($_SESSION['Auth']['User']['typeUser'] =='admin')){
             $this->request->allowMethod(['post', 'delete']);
             $actualite = $this->Actualites->get($id);
             if ($this->Actualites->delete($actualite)) {
@@ -123,7 +131,7 @@ class ActualitesController extends AppController
 
     }
     public function nouveau(){
-        if($_SESSION['Auth']['User']['typeUser'] == ('chercheur' || 'admin')){
+        if(($_SESSION['Auth']['User']['typeUser'] == 'chercheur') || ($_SESSION['Auth']['User']['typeUser'] =='admin')){
             $actualite = $this->Actualites->newEntity();
             if ($this->request->is('post')) {
                 $actualite = $this->Actualites->patchEntity($actualite, $this->request->data);

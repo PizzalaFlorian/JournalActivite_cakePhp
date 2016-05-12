@@ -3,7 +3,7 @@
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('Nouveau Message'), ['action' => 'nouveau']) ?></li>
         <li><?= $this->Html->link(__('Message envoyé'), ['action' => 'view']) ?></li>
-        <li><?= $this->Html->link(__('Retour'), ['action' => 'users']) ?></li>
+        <li><?= $this->Html->link(__('Retour'), ['controller' => "$monController", 'action' => "$monAction"]) ?></li>
     </ul>
 </nav>
 <div class="messages index large-9 medium-8 columns content">
