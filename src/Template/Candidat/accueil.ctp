@@ -17,6 +17,7 @@
 
 <div class="actualites index large-9 medium-8 columns content">
     <h3>News</h3>
+    <?= $this->Html->link(__('Créer une News'), ['controller' => 'actualites','action' => 'nouveau']) ?>
     <table cellpadding="0" cellspacing="0">
         <tbody>
             <?php foreach ($actualites as $actualite): ?>
@@ -29,6 +30,11 @@
                 </td>
                 <td>
                         <?= h(substr($actualite->Contenue, 0, 100)) ?>
+                </td>
+                <td class="actions">
+                    <?= $this->Html->link(__('Voir'), ['action' => 'view', $actualite->ID]) ?><br />
+                    <?= $this->Html->link(__('Editer'), ['action' => 'edit', $actualite->ID]) ?><br />
+                    <?= $this->Form->postLink(__('Supprimer'), ['action' => 'delete', $actualite->ID], ['confirm' => __('Etes vous sur de vouloir supprimer cette actualité ?', $actualite->ID)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
