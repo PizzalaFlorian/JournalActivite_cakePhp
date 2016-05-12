@@ -1,19 +1,10 @@
-<!-- <nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $user->ID],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $user->ID)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
-    </ul>
-</nav> -->
+
 
 <?php
     if($_SESSION['Auth']['User']['typeUser']=='candidat')
         echo $this->element('sidebarCandidat');
+    if($_SESSION['Auth']['User']['typeUser']=='chercheur')
+        echo $this->element('sidebarChercheur');
 ?>
 <div class="users form large-9 medium-8 columns content">
     <?= $this->Form->create($user) ?>
