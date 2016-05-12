@@ -32,7 +32,6 @@
                         <?= h(substr($actualite->Contenue, 0, 100)) ?>
                 </td>
                 <td class="actions">
-                    <?= $this->Html->link(__('Voir'), ['controller' => 'actualites', 'action' => 'view', $actualite->ID]) ?><br />
                     <?= $this->Html->link(__('Editer'), ['controller' => 'actualites','action' => 'edit', $actualite->ID]) ?><br />
                     <?= $this->Form->postLink(__('Supprimer'), ['controller' => 'actualites','action' => 'delete', $actualite->ID], ['confirm' => __('Etes vous sur de vouloir supprimer cette actualité ?', $actualite->ID)]) ?>
                 </td>
