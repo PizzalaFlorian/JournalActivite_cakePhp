@@ -6,33 +6,6 @@
         <li><?= $this->Html->link(__('Retour'), ['action' => 'users']) ?></li>
     </ul>
 </nav>
-<div class="actualites index large-9 medium-8 columns content">
-    <h3>Actualités</h3>
-    <table cellpadding="0" cellspacing="0">
-        <thead>
-                <th><?= $this->Paginator->sort('Date') ?></th>
-                <th><?= $this->Paginator->sort('Sujet') ?></th>
-                <th><?= $this->Paginator->sort('Message') ?></th>
-        </thead>
-        <tbody>
-            <?php foreach ($actualites as $actualite): ?>
-            <tr>
-                <td>
-                        <?= h(transformeDate($actualite->Date)) ?>
-                </td>
-                <td>
-                        <?= $this->Html->link(h(substr($actualite->Sujet, 0, 30)), ['controller' => 'actualites','action' => 'view', $actualite->ID]) ?>
-                </td>
-                <td>
-                        <?= h(substr($actualite->Contenue, 0, 100)) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-
-
-</div>
 <div class="messages index large-9 medium-8 columns content">
     <h3>Mes <?= __('Messages') ?></h3>
     <table cellpadding="0" cellspacing="0">

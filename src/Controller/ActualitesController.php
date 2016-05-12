@@ -98,13 +98,43 @@ class ActualitesController extends AppController
      */
     public function delete($id = null)
     {
-        $this->request->allowMethod(['post', 'delete']);
-        $actualite = $this->Actualites->get($id);
-        if ($this->Actualites->delete($actualite)) {
-            $this->Flash->success(__('The actualite has been deleted.'));
+        // verifie que l'utilisateur est de type chercheur ou admin
+        if($_SESSION['Auth']['User']['typeUser'] == ('chercheur' || 'admin')){
+            $this->request->allowMethod(['post', 'delete']);
+            $actualite = $this->Actualites->get($id);
+            if ($this->Actualites->delete($actualite)) {
+                $this->Flash->success(__('La suppression à réussi.'));
+            } else {
+                $this->Flash->error(__('L\'actualité n\'a pas pu être supprimer. Veuillez réessayer.'));
+            }
+            return $this->redirect(['controller' => 'candidat', 'action' => 'accueil']);
         } else {
-            $this->Flash->error(__('The actualite could not be deleted. Please, try again.'));
+            // Si la page demandé n'est pas disponible pour l'utilisateur, on demande une nouvel authentification
+            $this->Flash->error(__('Une erreur d\'Authentification est survenue.'));
+            $this->Flash->error(__('Veuillez vous reconnecter.'));
+            return $this->redirect(['controller' => 'users', 'action' => 'logout']);
         }
-        return $this->redirect(['action' => 'index']);
+
+    }
+    public function nouveau(){
+        if($_SESSION['Auth']['User']['typeUser'] == ('chercheur' || 'admin')){
+            $actualite = $this->Actualites->newEntity();
+            if ($this->request->is('post')) {
+                $actualite = $this->Actualites->patchEntity($actualite, $this->request->data);
+                if ($this->Actualites->save($actualite)) {
+                    $this->Flash->success(__('The actualite has been saved.'));
+                    return $this->redirect(['controller' => 'candidat', 'action' => 'accueil']);
+                } else {
+                    $this->Flash->error(__('The actualite could not be saved. Please, try again.'));
+                }
+            }
+            $this->set(compact('actualite'));
+            $this->set('_serialize', ['actualite']);
+        } else {
+            // Si la page demandé n'est pas disponible pour l'utilisateur, on demande une nouvel authentification
+            $this->Flash->error(__('Une erreur d\'Authentification est survenue.'));
+            $this->Flash->error(__('Veuillez vous reconnecter.'));
+            return $this->redirect(['controller' => 'users', 'action' => 'logout']);
+        }
     }
 }
