@@ -57,18 +57,9 @@ class ActualitesController extends AppController
      */
     public function add()
     {
-        $actualite = $this->Actualites->newEntity();
-        if ($this->request->is('post')) {
-            $actualite = $this->Actualites->patchEntity($actualite, $this->request->data);
-            if ($this->Actualites->save($actualite)) {
-                $this->Flash->success(__('The actualite has been saved.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The actualite could not be saved. Please, try again.'));
-            }
-        }
-        $this->set(compact('actualite'));
-        $this->set('_serialize', ['actualite']);
+        // ============== //
+        // A suppr : on utilise nouveau pour creer des actualité
+        // ============== //
     }
 
     /**
