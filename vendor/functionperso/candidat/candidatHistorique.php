@@ -108,7 +108,7 @@ function stat_jour_activite($jour,$CodeCandidat,$dure_total){
 
 
 /*Function pour l'activite des jours*/
-function camembert_jour_activite($id_conatainer,$jour,$dure_total){
+function camembert_jour_activite($id_conatainer,$jour,$dure_total,$CodeCandidat){
 ?>
 <script>
 $(document).ready(function(){
@@ -192,7 +192,7 @@ $(document).ready(function(){
 
 
 /*Génération scripte activité camemebert*/
-function camembert_all_activite($id_conatainer){
+function camembert_all_activite($id_conatainer,$dure_total,$CodeCandidat){
 ?>
 <script>
 $(document).ready(function(){
@@ -260,7 +260,7 @@ $(document).ready(function(){
 			        ]
 			    ])
 	            ->where(['CodeCandidat' => $CodeCandidat,
-	            		'DATE(HeureDebut)' => $jour
+	            		// 'DATE(HeureDebut)' => $jour
 	            	])
 	            ->group('occupation.CodeActivite')
 	            ->order(['dure'=>'DESC'])
@@ -320,21 +320,40 @@ function stat_all_compagnie($CodeCandidat,$dure_total){
 
 /*Renvoie les statistiques journé des compagnies*/
 function stat_jour_compagnie($jour,$CodeCandidat,$dure_total){
-	//TODO
-	// $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		
-	// 	echo  "J'ai passé mon temps avec :<br/>";
-	// 	$requete = $bdd->query("SELECT SUM(TIME_TO_SEC(TIMEDIFF(HeureFin,HeureDebut))) AS dure, NomCompagnie, SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(HeureFin,HeureDebut)))) AS temps FROM occupation o INNER JOIN compagnie c ON o.codeCompagnie = c.CodeCompagnie WHERE CodeCandidat = $id AND DATE(HeureDebut) = '$jour' GROUP BY o.CodeCompagnie,NomCompagnie ORDER BY dure DESC");
-	// 	while ($data = $requete->fetch()){
-	// 			$dure = $data['temps'];
-	// 			$nom =  $data['NomCompagnie'];
-	// 			echo "$dure : $nom <br/>";
-	// 		}
-	// 	$requete->closeCursor();
+	
+	echo  "J'ai passé mon temps avec :<br/>";
+			
+	$table = TableRegistry::get('occupation')
+            ->find()
+            ->select(array(
+            	'dure' => 'SUM(TIME_TO_SEC(TIMEDIFF(occupation.HeureFin,occupation.HeureDebut)))',
+            	'NomCompagnie'=>'c.NomCompagnie',
+            	'temps'=>'SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(occupation.HeureFin,occupation.HeureDebut))))'
+            	)
+            )
+             ->join([
+		        'c' => [
+		            'table' => 'compagnie',
+		            'type' => 'INNER',
+		            'conditions' => 'c.CodeCompagnie = occupation.CodeCompagnie',
+		        ]
+		    ])
+            ->where(['CodeCandidat' => $CodeCandidat,
+            		'DATE(HeureDebut)' => $jour
+            	])
+            ->group('occupation.CodeCompagnie')
+            ->order(['dure'=>'DESC'])
+            ->toArray();
+    // debug($table);
+    foreach ($table as $data) {
+    	$dure = $data['temps'];
+		$nom =  $data['NomCompagnie'];
+		echo "$dure : $nom <br/>";
+    }
 }
 
 /*Génération scripte compagnie camemebert*/
-function camembert_all_compagnie($id_conatainer){
+function camembert_all_compagnie($id_conatainer,$dure_total,$CodeCandidat){
 ?>
 <script>
 $(document).ready(function(){
@@ -366,29 +385,44 @@ $(document).ready(function(){
                 }
             }
         },
-        <?php
-        //TODO
-			// sélection de la durée total
-		
-		// $requete = $bdd->query("SELECT SUM(TIME_TO_SEC(TIMEDIFF(HeureFin,HeureDebut))) AS dure, NomCompagnie, SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(HeureFin,HeureDebut)))) AS temps FROM occupation o INNER JOIN compagnie c ON o.codeCompagnie = c.CodeCompagnie WHERE CodeCandidat = $id GROUP BY o.CodeCompagnie,NomCompagnie ORDER BY dure DESC");	
-		// ?>
         series: [{
             name: 'Temps',
             data: [
 		 <?php	
-		// 	$i = 0; 
-		// 	while ($data = $requete->fetch()){
-		// 		$dure = $data['dure'];
-		// 		$nom =  $data['NomCompagnie'];
-		// 		if ($i == 0)
-		// 			echo "{ name: '$nom',y: $dure}\n";
-		// 		elseif ($i == 1)
-		// 			echo ",{ name: '$nom',y: $dure, sliced: true, selected : true}\n";
-		// 		else
-		// 			echo ",{ name: '$nom',y: $dure}\n";
-		// 		$i++;
-		// 	}
-		// $requete->closeCursor();
+
+		 $table = TableRegistry::get('occupation')
+            ->find()
+            ->select(array(
+            	'dure' => 'SUM(TIME_TO_SEC(TIMEDIFF(occupation.HeureFin,occupation.HeureDebut)))',
+            	'NomCompagnie'=>'c.NomCompagnie',
+            	'temps'=>'SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(occupation.HeureFin,occupation.HeureDebut))))'
+            	)
+            )
+             ->join([
+		        'c' => [
+		            'table' => 'compagnie',
+		            'type' => 'INNER',
+		            'conditions' => 'c.CodeCompagnie = occupation.CodeCompagnie',
+		        ]
+		    ])
+            ->where(['CodeCandidat' => $CodeCandidat])
+            ->group('occupation.CodeCompagnie')
+            ->order(['dure'=>'DESC'])
+            ->toArray();
+		    // debug($table);
+		    
+			$i = 0; 
+			foreach ($table as $data) {
+				$dure = $data['dure'];
+				$nom =  $data['NomCompagnie'];
+				if ($i == 0)
+					echo "{ name: '$nom',y: $dure}\n";
+				elseif ($i == 1)
+					echo ",{ name: '$nom',y: $dure, sliced: true, selected : true}\n";
+				else
+					echo ",{ name: '$nom',y: $dure}\n";
+				$i++;
+			}
 		?>	
             ]
         }]
@@ -400,7 +434,7 @@ $(document).ready(function(){
 
 
 /*Génération scripte compagnie camemebert*/
-function camembert_jour_compagnie($id_conatainer,$jour){
+function camembert_jour_compagnie($id_conatainer,$jour,$dure_total,$CodeCandidat){
 ?>
 <script>
 $(document).ready(function(){
@@ -431,29 +465,46 @@ $(document).ready(function(){
                     connectorColor: 'silver'
                 }
             }
-        },<?php
-        //TODO
-			// sélection de la durée total
-		
-		// $requete = $bdd->query("SELECT SUM(TIME_TO_SEC(TIMEDIFF(HeureFin,HeureDebut))) AS dure, NomCompagnie, SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(HeureFin,HeureDebut)))) AS temps FROM occupation o INNER JOIN compagnie c ON o.codeCompagnie = c.CodeCompagnie WHERE CodeCandidat = $id AND DATE(HeureDebut) = '$jour' GROUP BY o.CodeCompagnie,NomCompagnie ORDER BY dure DESC");	
-		// ?>
+        },
         series: [{
             name: 'Temps',
             data: [
 		<?php	
-		// 	$i = 0; 
-		// 	while ($data = $requete->fetch()){
-		// 		$dure = $data['dure'];
-		// 		$nom =  $data['NomCompagnie'];
-		// 		if ($i == 0)
-		// 			echo "{ name: '$nom',y: $dure}\n";
-		// 		elseif ($i == 1)
-		// 			echo ",{ name: '$nom',y: $dure, sliced: true, selected : true}\n";
-		// 		else
-		// 			echo ",{ name: '$nom',y: $dure}\n";
-		// 		$i++;
-		// 	}
-		// $requete->closeCursor();
+		$table = TableRegistry::get('occupation')
+            ->find()
+            ->select(array(
+            	'dure' => 'SUM(TIME_TO_SEC(TIMEDIFF(occupation.HeureFin,occupation.HeureDebut)))',
+            	'NomCompagnie'=>'c.NomCompagnie',
+            	'temps'=>'SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(occupation.HeureFin,occupation.HeureDebut))))'
+            	)
+            )
+             ->join([
+		        'c' => [
+		            'table' => 'compagnie',
+		            'type' => 'INNER',
+		            'conditions' => 'c.CodeCompagnie = occupation.CodeCompagnie',
+		        ]
+		    ])
+            ->where(['CodeCandidat' => $CodeCandidat,
+            		'DATE(HeureDebut)' => $jour
+            	])
+            ->group('occupation.CodeCompagnie')
+            ->order(['dure'=>'DESC'])
+            ->toArray();
+		    // debug($table);
+		    
+			$i = 0; 
+			foreach ($table as $data) {
+				$dure = $data['dure'];
+				$nom =  $data['NomCompagnie'];
+				if ($i == 0)
+					echo "{ name: '$nom',y: $dure}\n";
+				elseif ($i == 1)
+					echo ",{ name: '$nom',y: $dure, sliced: true, selected : true}\n";
+				else
+					echo ",{ name: '$nom',y: $dure}\n";
+				$i++;
+			}
 		?>	
             ]
         }]
@@ -498,20 +549,40 @@ function stat_all_dispositif($CodeCandidat,$dure_total){
 
 /*Renvoie les statistiques des dispositifs*/
 function stat_jour_dispositif($jour,$CodeCandidat,$dure_total){
-	//TODO
-		
-		// echo  "Ai-je été un geek ou ai-je passé mon temps à feuilleter les revues scientifiques?<br/>";
-		// $requete = $bdd->query("SELECT SUM(TIME_TO_SEC(TIMEDIFF(HeureFin,HeureDebut))) AS dure, NomDispositif, SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(HeureFin,HeureDebut)))) AS temps FROM occupation o INNER JOIN dispositif d ON o.codeDispositif = d.CodeDispositif WHERE CodeCandidat = $id AND DATE(HeureDebut) = '$jour' GROUP BY o.CodeDispositif,NomDispositif ORDER BY dure DESC");
-		// while ($data = $requete->fetch()){
-		// 		$dure = $data['temps'];
-		// 		$nom =  $data['NomDispositif'];
-		// 		echo "$dure : $nom <br/>";
-		// 	}
-		// $requete->closeCursor();
+	
+		echo  "Combient de temps ai-je passé mon temps avec :<br/>";
+				
+		$table = TableRegistry::get('occupation')
+            ->find()
+            ->select(array(
+            	'dure' => 'SUM(TIME_TO_SEC(TIMEDIFF(occupation.HeureFin,occupation.HeureDebut)))',
+            	'NomDispositif'=>'c.NomDispositif',
+            	'temps'=>'SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(occupation.HeureFin,occupation.HeureDebut))))'
+            	)
+            )
+             ->join([
+		        'c' => [
+		            'table' => 'dispositif',
+		            'type' => 'INNER',
+		            'conditions' => 'c.CodeDispositif = occupation.CodeDispositif',
+		        ]
+		    ])
+            ->where(['CodeCandidat' => $CodeCandidat,
+            	 'DATE(HeureDebut)' => $jour])
+            ->group('occupation.CodeDispositif')
+            ->order(['dure'=>'DESC'])
+            ->toArray();
+		    // debug($table);
+		    
+			foreach ($table as $data) {
+				$dure = $data['temps'];
+				$nom =  $data['NomDispositif'];
+				echo "$dure : $nom <br/>";
+			}
 }
 
 /*Génération scripte dispositif camemebert*/
-function camembert_all_dispositif($id_conatainer){
+function camembert_all_dispositif($id_conatainer,$dure_total,$CodeCandidat){
 ?>
 <script>
 $(document).ready(function(){
@@ -542,28 +613,45 @@ $(document).ready(function(){
                     connectorColor: 'silver'
                 }
             }
-        },<?php
-			// sélection de la durée 
-		//TODO
-		// $requete = $bdd->query("SELECT SUM(TIME_TO_SEC(TIMEDIFF(HeureFin,HeureDebut))) AS dure, NomDispositif, SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(HeureFin,HeureDebut)))) AS temps FROM occupation o INNER JOIN dispositif d ON o.codeDispositif = d.CodeDispositif WHERE CodeCandidat = $id GROUP BY o.CodeDispositif,NomDispositif ORDER BY dure DESC");	
-		// ?>
+        },
         series: [{
             name: 'Temps',
             data: [
 		<?php	
-		// 	$i = 0; 
-		// 	while ($data = $requete->fetch()){
-		// 		$dure = $data['dure'];
-		// 		$nom =  $data['NomDispositif'];
-		// 		if ($i == 0)
-		// 			echo "{ name: '$nom',y: $dure}\n";
-		// 		elseif ($i == 1)
-		// 			echo ",{ name: '$nom',y: $dure, sliced: true, selected : true}\n";
-		// 		else
-		// 			echo ",{ name: '$nom',y: $dure}\n";
-		// 		$i++;
-		// 	}
-		// $requete->closeCursor();
+
+		$table = TableRegistry::get('occupation')
+            ->find()
+            ->select(array(
+            	'dure' => 'SUM(TIME_TO_SEC(TIMEDIFF(occupation.HeureFin,occupation.HeureDebut)))',
+            	'NomDispositif'=>'c.NomDispositif',
+            	'temps'=>'SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(occupation.HeureFin,occupation.HeureDebut))))'
+            	)
+            )
+             ->join([
+		        'c' => [
+		            'table' => 'dispositif',
+		            'type' => 'INNER',
+		            'conditions' => 'c.CodeDispositif = occupation.CodeDispositif',
+		        ]
+		    ])
+            ->where(['CodeCandidat' => $CodeCandidat])
+            ->group('occupation.CodeDispositif')
+            ->order(['dure'=>'DESC'])
+            ->toArray();
+		    // debug($table);
+		    
+			$i = 0; 
+			foreach ($table as $data) {
+				$dure = $data['dure'];
+				$nom =  $data['NomDispositif'];
+				if ($i == 0)
+					echo "{ name: '$nom',y: $dure}\n";
+				elseif ($i == 1)
+					echo ",{ name: '$nom',y: $dure, sliced: true, selected : true}\n";
+				else
+					echo ",{ name: '$nom',y: $dure}\n";
+				$i++;
+			}
 		?>	
             ]
         }]
@@ -574,7 +662,7 @@ $(document).ready(function(){
 }
 
 /*Génération scripte dispositif camemebert*/
-function camembert_jour_dispositif($id_conatainer,$jour){
+function camembert_jour_dispositif($id_conatainer,$jour,$dure_total,$CodeCandidat){
 ?>
 <script>
 $(document).ready(function(){
@@ -605,28 +693,45 @@ $(document).ready(function(){
                     connectorColor: 'silver'
                 }
             }
-        },<?php
-			// sélection de la durée 
-		//TODO
-		// $requete = $bdd->query("SELECT SUM(TIME_TO_SEC(TIMEDIFF(HeureFin,HeureDebut))) AS dure, NomDispositif, SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(HeureFin,HeureDebut)))) AS temps FROM occupation o INNER JOIN dispositif d ON o.codeDispositif = d.CodeDispositif WHERE CodeCandidat = $id AND DATE(HeureDebut) = '$jour' GROUP BY o.CodeDispositif,NomDispositif ORDER BY dure DESC");	
-		// ?>
+        },
         series: [{
             name: 'Temps',
             data: [
 		<?php	
-		// 	$i = 0; 
-		// 	while ($data = $requete->fetch()){
-		// 		$dure = $data['dure'];
-		// 		$nom =  $data['NomDispositif'];
-		// 		if ($i == 0)
-		// 			echo "{ name: '$nom',y: $dure}\n";
-		// 		elseif ($i == 1)
-		// 			echo ",{ name: '$nom',y: $dure, sliced: true, selected : true}\n";
-		// 		else
-		// 			echo ",{ name: '$nom',y: $dure}\n";
-		// 		$i++;
-		// 	}
-		// $requete->closeCursor();
+		$table = TableRegistry::get('occupation')
+            ->find()
+            ->select(array(
+            	'dure' => 'SUM(TIME_TO_SEC(TIMEDIFF(occupation.HeureFin,occupation.HeureDebut)))',
+            	'NomDispositif'=>'c.NomDispositif',
+            	'temps'=>'SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(occupation.HeureFin,occupation.HeureDebut))))'
+            	)
+            )
+             ->join([
+		        'c' => [
+		            'table' => 'dispositif',
+		            'type' => 'INNER',
+		            'conditions' => 'c.CodeDispositif = occupation.CodeDispositif',
+		        ]
+		    ])
+            ->where(['CodeCandidat' => $CodeCandidat,
+            	'DATE(HeureDebut)' => $jour])
+            ->group('occupation.CodeDispositif')
+            ->order(['dure'=>'DESC'])
+            ->toArray();
+		    // debug($table);
+		    
+			$i = 0; 
+			foreach ($table as $data) {
+				$dure = $data['dure'];
+				$nom =  $data['NomDispositif'];
+				if ($i == 0)
+					echo "{ name: '$nom',y: $dure}\n";
+				elseif ($i == 1)
+					echo ",{ name: '$nom',y: $dure, sliced: true, selected : true}\n";
+				else
+					echo ",{ name: '$nom',y: $dure}\n";
+				$i++;
+			}
 		?>	
             ]
         }]
@@ -669,27 +774,64 @@ function stat_all_lieu($CodeCandidat,$dure_total){
 
 /*Renvoie les statistiques des lieux*/
 function stat_jour_lieu($jour,$CodeCandidat,$dure_total){
-		//TODO
-		// $requete = $bdd->query("SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(HeureFin,HeureDebut)))) AS dure FROM occupation o INNER JOIN lieu l ON o.CodeLieux = l.codeLieux WHERE CodeCandidat = $id AND CodeCategorieLieux = 2 AND DATE(HeureDebut) = '$jour' ");
-		// $data = $requete->fetch();
-		// if (!empty($data['dure'])){
-		// 	echo  "Combien de temps ai-je perdu dans les transports?<br/>";
-		// 	$dure_total = afficher_temps($data['dure']);
-		// 	echo "J'ai passé $dure_total dans les transports.<br/>";
-			
-		// }
-		// $requete->closeCursor();
-		// $requete = $bdd->query("SELECT SUM(TIME_TO_SEC(TIMEDIFF(HeureFin,HeureDebut))) AS dure, NomLieux, SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(HeureFin,HeureDebut)))) AS temps FROM occupation o INNER JOIN lieu l ON o.codeLieux = l.CodeLieux WHERE CodeCandidat = $id AND DATE(HeureDebut) = '$jour' GROUP BY o.CodeLieux,NomLieux ORDER BY dure DESC");
-		// while ($data = $requete->fetch()){
-		// 		$dure = $data['temps'];
-		// 		$nom =  $data['NomLieux'];
-		// 		echo "$dure : $nom <br/>";
-		// 	}
-		// $requete->closeCursor();
+		$dtransport = TableRegistry::get('occupation')
+            ->find()
+            ->select(array(
+            	'dure' => 'SUM(TIME_TO_SEC(TIMEDIFF(occupation.HeureFin,occupation.HeureDebut)))',
+            	'NomLieux'=>'c.NomLieux',
+            	'temps'=>'SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(occupation.HeureFin,occupation.HeureDebut))))'
+            	)
+            )
+             ->join([
+		        'c' => [
+		            'table' => 'lieu',
+		            'type' => 'INNER',
+		            'conditions' => array('c.CodeLieux = occupation.CodeLieux',
+		            						'c.CodeCategorieLieux = 2'),
+		        ]
+		    ])
+            ->where(['CodeCandidat' => $CodeCandidat,
+            	'DATE(HeureDebut)' => $jour])
+            ->group('occupation.CodeLieux')
+            ->order(['dure'=>'DESC'])
+            ->first();
+		    // debug($table);
+		    if (!empty($dtransport['dure'])){
+				echo  "Combien de temps ai-je perdu dans les transports?<br/>";
+				$dure_total = afficher_temps($dtransport['dure']);
+				echo "J'ai passé $dure_total dans les transports.<br/>";
+			}
+		    
+		    $table = TableRegistry::get('occupation')
+            ->find()
+            ->select(array(
+            	'dure' => 'SUM(TIME_TO_SEC(TIMEDIFF(occupation.HeureFin,occupation.HeureDebut)))',
+            	'NomLieux'=>'c.NomLieux',
+            	'temps'=>'SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(occupation.HeureFin,occupation.HeureDebut))))'
+            	)
+            )
+             ->join([
+		        'c' => [
+		            'table' => 'lieu',
+		            'type' => 'INNER',
+		            'conditions' => 'c.CodeLieux = occupation.CodeLieux'
+		        ]
+		    ])
+            ->where(['CodeCandidat' => $CodeCandidat,
+            	'DATE(HeureDebut)' => $jour])
+            ->group('occupation.CodeLieux')
+            ->order(['dure'=>'DESC'])
+            ->toArray();
+			 
+			foreach ($table as $data) {
+				$dure = $data['temps'];
+				$nom =  $data['NomLieux'];
+				echo "$dure : $nom <br/>";
+			}
 }
 
 /*Génération scripte dispositif camemebert*/
-function camembert_all_lieu($id_conatainer){
+function camembert_all_lieu($id_conatainer,$dure_total,$CodeCandidat){
 ?>
 <script>
 $(document).ready(function(){
@@ -720,28 +862,45 @@ $(document).ready(function(){
                     connectorColor: 'silver'
                 }
             }
-        },<?php
-			// sélection de la durée 
-		//TODO
-		// $requete = $bdd->query("SELECT SUM(TIME_TO_SEC(TIMEDIFF(HeureFin,HeureDebut))) AS dure, NomLieux, SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(HeureFin,HeureDebut)))) AS temps FROM occupation o INNER JOIN lieu l ON o.codeLieux = l.CodeLieux WHERE CodeCandidat = $id GROUP BY o.CodeLieux,NomLieux ORDER BY dure DESC");	
-		// ?>
+        },
         series: [{
             name: 'Temps',
             data: [
-		<?php	
-		// 	$i = 0; 
-		// 	while ($data = $requete->fetch()){
-		// 		$dure = $data['dure'];
-		// 		$nom =  $data['NomLieux'];
-		// 		if ($i == 0)
-		// 			echo "{ name: \"$nom\",y: $dure}\n";
-		// 		elseif ($i == 1)
-		// 			echo ",{ name: \"$nom\",y: $dure, sliced: true, selected : true}\n";
-		// 		else
-		// 			echo ",{ name: \"$nom\",y: $dure}\n";
-		// 		$i++;
-		// 	}
-		// $requete->closeCursor();
+		<?php
+
+			$table = TableRegistry::get('occupation')
+            ->find()
+            ->select(array(
+            	'dure' => 'SUM(TIME_TO_SEC(TIMEDIFF(occupation.HeureFin,occupation.HeureDebut)))',
+            	'NomLieux'=>'c.NomLieux',
+            	'temps'=>'SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(occupation.HeureFin,occupation.HeureDebut))))'
+            	)
+            )
+             ->join([
+		        'c' => [
+		            'table' => 'lieu',
+		            'type' => 'INNER',
+		            'conditions' => 'c.CodeLieux = occupation.CodeLieux'
+		        ]
+		    ])
+            ->where(['CodeCandidat' => $CodeCandidat])
+            ->group('occupation.CodeLieux')
+            ->order(['dure'=>'DESC'])
+            ->toArray();
+			 
+				
+			$i = 0; 
+			foreach ($table as $data) {
+				$dure = $data['dure'];
+				$nom =  $data['NomLieux'];
+				if ($i == 0)
+					echo "{ name: \"$nom\",y: $dure}\n";
+				elseif ($i == 1)
+					echo ",{ name: \"$nom\",y: $dure, sliced: true, selected : true}\n";
+				else
+					echo ",{ name: \"$nom\",y: $dure}\n";
+				$i++;
+			}
 		?>	
             ]
         }]
@@ -752,7 +911,7 @@ $(document).ready(function(){
 }
 
 /*Génération scripte dispositif camemebert*/
-function camembert_jour_lieu($id_conatainer,$jour){
+function camembert_jour_lieu($id_conatainer,$jour,$dure_total,$CodeCandidat){
 ?>
 <script>
 $(document).ready(function(){
@@ -784,28 +943,44 @@ $(document).ready(function(){
                 }
             }
         },
-        <?php
-			// sélection de la durée 
-		//TODO
-		// $requete = $bdd->query("SELECT SUM(TIME_TO_SEC(TIMEDIFF(HeureFin,HeureDebut))) AS dure, NomLieux, SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(HeureFin,HeureDebut)))) AS temps FROM occupation o INNER JOIN lieu l ON o.codeLieux = l.CodeLieux WHERE CodeCandidat = $id AND DATE(HeureDebut) = '$jour' GROUP BY o.CodeLieux,NomLieux ORDER BY dure DESC");	
-		// ?>
         series: [{
             name: 'Temps',
             data: [
 		<?php	
-		// 	$i = 0; 
-		// 	while ($data = $requete->fetch()){
-		// 		$dure = $data['dure'];
-		// 		$nom =  $data['NomLieux'];
-		// 		if ($i == 0)
-		// 			echo "{ name: \"$nom\",y: $dure}\n";
-		// 		elseif ($i == 1)
-		// 			echo ",{ name: \"$nom\",y: $dure, sliced: true, selected : true}\n";
-		// 		else
-		// 			echo ",{ name: \"$nom\",y: $dure}\n";
-		// 		$i++;
-		// 	}
-		// $requete->closeCursor();
+		$table = TableRegistry::get('occupation')
+            ->find()
+            ->select(array(
+            	'dure' => 'SUM(TIME_TO_SEC(TIMEDIFF(occupation.HeureFin,occupation.HeureDebut)))',
+            	'NomLieux'=>'c.NomLieux',
+            	'temps'=>'SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(occupation.HeureFin,occupation.HeureDebut))))'
+            	)
+            )
+             ->join([
+		        'c' => [
+		            'table' => 'lieu',
+		            'type' => 'INNER',
+		            'conditions' => 'c.CodeLieux = occupation.CodeLieux'
+		        ]
+		    ])
+            ->where(['CodeCandidat' => $CodeCandidat,
+            	'DATE(HeureDebut)' => $jour])
+            ->group('occupation.CodeLieux')
+            ->order(['dure'=>'DESC'])
+            ->toArray();
+			 
+				
+			$i = 0; 
+			foreach ($table as $data) {
+				$dure = $data['dure'];
+				$nom =  $data['NomLieux'];
+				if ($i == 0)
+					echo "{ name: \"$nom\",y: $dure}\n";
+				elseif ($i == 1)
+					echo ",{ name: \"$nom\",y: $dure, sliced: true, selected : true}\n";
+				else
+					echo ",{ name: \"$nom\",y: $dure}\n";
+				$i++;
+			}
 		?>	
             ]
         }]
@@ -876,16 +1051,16 @@ function contenu_date($CodeCandidat,$dure_total){
 		echo "<li data-date=\"$jour\">";
 		echo "<center>$jour $jourm</center>";
 		echo "<div id=\"activite_$jourm"."_camembert\" style=\"width:100%; height:400px;\"></div>";
-			camembert_jour_activite("activite_$jourm"."_camembert",$jourm,$CodeCandidat);
+			camembert_jour_activite("activite_$jourm"."_camembert",$jourm,$dure_total,$CodeCandidat);
 			stat_jour_activite($jourm,$CodeCandidat,$dure_total);
 		echo "<div id=\"compagnie_$jourm"."_camembert\" style=\"width:100%; height:400px;\"></div>";
-			camembert_jour_compagnie("compagnie_$jourm"."_camembert",$jourm,$CodeCandidat);
+			camembert_jour_compagnie("compagnie_$jourm"."_camembert",$jourm,$dure_total,$CodeCandidat);
 			stat_jour_compagnie($jourm,$CodeCandidat,$dure_total);
 		echo "<div id=\"dispositif_$jourm"."_camembert\" style=\"width:100%; height:400px;\"></div>";
-			camembert_jour_dispositif("dispositif_$jourm"."_camembert",$jourm,$CodeCandidat);
+			camembert_jour_dispositif("dispositif_$jourm"."_camembert",$jourm,$dure_total,$CodeCandidat,$CodeCandidat);
 			stat_jour_dispositif($jourm,$CodeCandidat,$dure_total);
 		echo "<div id=\"lieu_$jourm"."_camembert\" style=\"width:100%; height:400px;\"></div>";
-			camembert_jour_lieu("lieu_$jourm"."_camembert",$jourm,$CodeCandidat);
+			camembert_jour_lieu("lieu_$jourm"."_camembert",$jourm,$dure_total,$CodeCandidat);
 			stat_jour_lieu($jourm,$CodeCandidat,$dure_total);		
 		echo "</li>";
     }

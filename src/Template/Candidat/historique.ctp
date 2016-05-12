@@ -14,6 +14,7 @@
             ->find()
             ->where(['ID' => $_SESSION['Auth']['User']['ID']])
             ->first();
+    $CodeCandidat = $candidat['CodeCandidat'];
     $dure_total = duree_totale($candidat['CodeCandidat']);
 ?>
 
@@ -52,22 +53,22 @@
 			<section id="all_historique">
 			<div id="activite_all_camembert" style="width:100%; height:400px;"></div>
 			<?php
-			camembert_all_activite("activite_all_camembert",$dure_total);
+			camembert_all_activite("activite_all_camembert",$dure_total,$CodeCandidat);
 			stat_all_activite($candidat['CodeCandidat'],$dure_total);
 			?>
 			<div id="compagnie_all_camembert" style="width:100%; height:400px;"></div>
 			<?php
-			camembert_all_compagnie("compagnie_all_camembert",$dure_total);
+			camembert_all_compagnie("compagnie_all_camembert",$dure_total,$CodeCandidat);
 			stat_all_compagnie($candidat['CodeCandidat'],$dure_total);
 			?>
 			<div id="dispositif_all_camembert" style="width:100%; height:400px;"></div>
 			<?php
-			camembert_all_dispositif("dispositif_all_camembert",$dure_total);
+			camembert_all_dispositif("dispositif_all_camembert",$dure_total,$CodeCandidat);
 			stat_all_dispositif($candidat['CodeCandidat'],$dure_total);
 			?>
 			<div id="lieu_all_camembert" style="width:100%; height:400px;"></div>
 			<?php
-			camembert_all_lieu("lieu_all_camembert",$dure_total);
+			camembert_all_lieu("lieu_all_camembert",$dure_total,$CodeCandidat);
 			stat_all_lieu($candidat['CodeCandidat'],$dure_total);
 			?>
 		</section>
