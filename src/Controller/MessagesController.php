@@ -117,6 +117,7 @@ class MessagesController extends AppController
      */
     public function delete($id = 0)
     {
+        $operationInterdite = "true";
         $message = $this->Messages->get($id, ['contain' => [] ]);
         switch ($_SESSION['Auth']['User']['typeUser']) {
             case 'candidat':    $monID = $_SESSION['Auth']['User']['ID'];       break;
@@ -124,6 +125,7 @@ class MessagesController extends AppController
             case 'admin':       $monID = '0';                                   break;
         }
         if($monID == $message->IDExpediteur){
+            $operationInterdite = "false";
             $message->IDExpediteur = 0;
             if ($this->Messages->save($message)) {
                 $this->Flash->success(__('Le message à bien été supprimé.'));
@@ -134,6 +136,7 @@ class MessagesController extends AppController
         }
         // si l'utilisateur est le recepteur
         if($monID == $message->IDRecepteur){
+            $operationInterdite = "false";
             $message->IDRecepteur = 0;
             if ($this->Messages->save($message)) {
                $this->Flash->success(__('Le message à bien été supprimé.'));
@@ -146,7 +149,14 @@ class MessagesController extends AppController
         if(($message->IDExpediteur == 0)&&($message->IDRecepteur == 0)){
             $this->Messages->delete($message);
         }
-        return $this->redirect(['action' => 'index']);
+        if($operationInterdite == "true"){
+            // Si le message affiché n'appartient pas a l'utilisateur connecté, on demande une nouvel authentification
+            $this->Flash->error(__('Une erreur d\'Authentification est survenue.'));
+            $this->Flash->error(__('Veuillez vous reconnecter.'));
+            return $this->redirect(['controller' => 'users', 'action' => 'logout']);
+        } else {
+            return $this->redirect(['action' => 'index']);  
+        }
     }
 //affiche la messagerie d'un utilisateur
 	public function messagerie($id = null)
