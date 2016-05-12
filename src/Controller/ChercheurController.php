@@ -10,6 +10,8 @@ use fonctionperso\activite\activite;
 use fonctionperso\lieu\lieux;
 use fonctionperso\dispositif\dispositif;
 use fonctionperso\compagnie\compagnie;
+use fonctionperso\PHPExcel;
+use fonctionperso\PHPExcel\Writer\Excel5;
 
 /**
  * Chercheur Controller
@@ -48,9 +50,8 @@ class ChercheurController extends AppController
     public function telechargerCandidat(){
         /*générer un fichier csv avec les données de la table candidat*/
         //créer un fichier
-        // 1 : on ouvre le fichier
 
-        $fichierCSV = fopen('../../vendor/functionperso/file/candidat.csv', 'a');
+        $fichierCSV = fopen(ROOT .DS. "webroot". DS . "files" . DS .'candidat.csv', 'a');
 
         ftruncate($fichierCSV,0);
         $delimiter = ";";
@@ -66,17 +67,28 @@ class ChercheurController extends AppController
             fputcsv($fichierCSV,$res,$delimiter);
         }
 
-        // 3 : quand on a fini de l'utiliser, on ferme le fichier
         fclose($fichierCSV);
-        header('Location: candidat.csv');
-        exit();        
+        //download fichier
+        $path = ROOT .DS. "webroot". DS . "files" . DS .'candidat.csv';
+        $this->response->file($path, array(
+            'download' => true,
+            'name' => 'candidat.csv',
+        ));
+        return $this->response;        
+    }
+
+    public function testExcel(){
+        //$this->autoLayout = false;
     }
 
     public function telechargerCandidatExel(){
-        require '../includes/connection_MYSQL.inc.php';
-        include '../class/PHPExcel.php';
-    //  include '../class/PHPExcel/Writer/Excel2007.php';
-        include '../class/PHPExcel/Writer/Excel5.php';
+        // include '../class/PHPExcel.php';
+        // include '../class/PHPExcel/Writer/Excel5.php';
+        
+        //App::classname('PHPExcel');
+        //require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "PHPExcel" . DS ."Writer" . DS ."Excel5.php");
+        
+        App::import('Vendor', 'PHPExcel', array('file' => 'PHPExcel.php'));
 
         $workbook = new PHPExcel;
 
@@ -94,8 +106,10 @@ class ChercheurController extends AppController
         $sheet->setCellValueByColumnAndRow('7','1',"Nombre d'enfant");
         
         $i = 2;
-        $requete = $bdd->query("SELECT * FROM candidat");
-        while ($data = $requete->fetch()){
+        $Candidats = TableRegistry::get('candidat')
+            ->find()
+            ->toArray();
+        foreach ($Candidats as $data){
             $sheet->setCellValueByColumnAndRow('0',$i,$data['CodeCandidat']);
             $sheet->setCellValueByColumnAndRow('1',$i,$data['Age']);
             $sheet->setCellValueByColumnAndRow('2',$i,$data['GenreCandidat']);
@@ -121,8 +135,22 @@ class ChercheurController extends AppController
         $sheet2->setCellValueByColumnAndRow('7','1',"Code Candidat");
         
         $i = 2;
-        $requete = $bdd->query("SELECT *, TIMEDIFF(HeureFin,HeureDebut) AS dure FROM occupation");
-        while ($data = $requete->fetch()){
+        $Occupations = TableRegistry::get('occupation')
+            ->find()
+            ->select(array(
+                    'dure'=>'TIMEDIFF(HeureFin,HeureDebut)',
+                    'CodeCandidat',
+                    'CodeLieux',
+                    'CodeCompagnie',
+                    'CodeActivite',
+                    'CodeDispositif',
+                    'CodeOccupation',
+                    'HeureDebut',
+                    'HeureFin'
+                    )
+                )
+            ->toArray();
+        foreach ($Occupations as $data) {
             $sheet2->setCellValueByColumnAndRow('0',$i,$data['HeureDebut']);
             $sheet2->setCellValueByColumnAndRow('1',$i,$data['HeureFin']);
             $sheet2->setCellValueByColumnAndRow('2',$i,$data['dure']);
@@ -135,78 +163,94 @@ class ChercheurController extends AppController
         }
         
         
-        $writer = new PHPExcel_Writer_Excel5($workbook);
+        //$writer = new PHPExcel_Writer_Excel5($workbook);
+        $writer = PHPExcel_IOFactory::createWriter($workbook, "Excel5");
 
         $records = './journal.xls';
+        $path = ROOT .DS. "webroot". DS . "files" . DS .'.journal.xls';
+        //$writer->save($records);
+        $writer->save($path);
 
-        $writer->save($records);
-
-        header('Location: journal.xls');
-        exit();
+        
+        $this->response->file($path, array(
+            'download' => true,
+            'name' => 'journal.xls',
+        ));
+        return $this->response;
     }
 
     public function telechargerDonnees(){
-        require '../includes/connection_MYSQL.inc.php';
-        require '../modele/activite.modele.php';
-        require '../modele/lieux.modele.php';
-        require '../modele/compagnie.modele.php';
-        require '../modele/dispositif.modele.php';
-        /*générer un fichier csv avec les données de la table occupation*/
-        //créer un fichier
-        // 1 : on ouvre le fichier
-
-        $fichierCSV = fopen('../file/donnees.csv', 'a');
+        
+        $fichierCSV = fopen(ROOT .DS. "webroot". DS . "files" . DS .'donnees.csv', 'a');
         ftruncate($fichierCSV,0);
         $delimiter = ";";
         $entete = array( "Début" , "Fin" , "Durée", "Code Activité" , "Code Lieu" , "Code Compagnie" , "Code Dispositif" , "Code Candidat"); 
         fputcsv($fichierCSV,$entete,$delimiter);
-        $requete = $bdd->query("SELECT *, TIMEDIFF(HeureFin,HeureDebut) AS dure FROM occupation");
-        while ($data = $requete->fetch()){
-            $res = array($data['HeureDebut'] , $data['HeureFin'], $data['dure'], $data['CodeActivite'], $data['CodeLieux'] , $data['CodeCompagnie'] , $data['CodeDispositif'] , $data['CodeCandidat']);
+        $Occupations = TableRegistry::get('occupation')
+            ->find()
+            ->select(array(
+                    'dure'=>'TIMEDIFF(HeureFin,HeureDebut)',
+                    'CodeCandidat',
+                    'CodeLieux',
+                    'CodeCompagnie',
+                    'CodeActivite',
+                    'CodeDispositif',
+                    'CodeOccupation',
+                    'HeureDebut',
+                    'HeureFin'
+                    )
+                )
+            ->toArray();
+        foreach ($Occupations as $data) {
+            $res = array($data['HeureDebut']->i18nFormat('yyyy-MM-dd HH:mm:ss') , $data['HeureFin']->i18nFormat('yyyy-MM-dd HH:mm:ss'), $data['dure'], $data['CodeActivite'], $data['CodeLieux'] , $data['CodeCompagnie'] , $data['CodeDispositif'] , $data['CodeCandidat']);
             fputcsv($fichierCSV,$res,$delimiter);
         }
-        $requete->closeCursor();
-
+        
         // 3 : quand on a fini de l'utiliser, on ferme le fichier
         fclose($fichierCSV);
-        header('Location: donnees.csv');
-        exit();
+        $path = ROOT .DS. "webroot". DS . "files" . DS .'donnees.csv';
+        $this->response->file($path, array(
+            'download' => true,
+            'name' => 'donnees.csv',
+        ));
+        return $this->response;
     }
 
     public function telechargerLegende(){
-        require '../includes/connection_MYSQL.inc.php';
-        require '../modele/activite.modele.php';
-        require '../modele/lieux.modele.php';
-        require '../modele/compagnie.modele.php';
-        require '../modele/dispositif.modele.php';
-        /*générer un fichier txt avec le les codes correspondant aux codes*/
-        //créer un fichier
-        // 1 : on ouvre le fichier
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "activite" . DS ."activite.php");
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "lieu" . DS ."lieux.php");
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "dispositif" . DS ."dispositif.php");
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "compagnie" . DS ."compagnie.php");
 
-        $fichierLegende = fopen('../file/legende.txt', 'a');
+        $fichierLegende = fopen(ROOT .DS. "webroot". DS . "files" . DS .'legende.txt', 'a');
         ftruncate($fichierLegende,0);
         fputs($fichierLegende,"\n-----------------------------------------------------------------------------\n");
         $date = date("Y-m-d H:i");
         fputs($fichierLegende,"\nLes codes correspondant aux noms dans la base de données au $date\n");
         fputs($fichierLegende,"\n-----------------------------------------------------------------------------\n");
         fputs($fichierLegende,"Les codes des activités :\n");
-        fputs($fichierLegende,listeActivite($bdd));
+        fputs($fichierLegende,listeActivite());
         fputs($fichierLegende,"\n-----------------------------------------------------------------------------\n");
         fputs($fichierLegende,"Les codes des lieux :\n");
-        fputs($fichierLegende,listeLieu($bdd));
+        fputs($fichierLegende,listeLieu());
         fputs($fichierLegende,"\n-----------------------------------------------------------------------------\n");
         fputs($fichierLegende,"Les codes des compagnies :\n");
-        fputs($fichierLegende,listeCompagnie($bdd));
+        fputs($fichierLegende,listeCompagnie());
         fputs($fichierLegende,"\n-----------------------------------------------------------------------------\n");
         fputs($fichierLegende,"Les codes des dispositifs :\n");
-        fputs($fichierLegende,listeDispositif($bdd));
+        fputs($fichierLegende,listeDispositif());
         fputs($fichierLegende,"\n-----------------------------------------------------------------------------\n");
         fputs($fichierLegende,"Les codes candidats : ce sont les codes des candidats, leur noms n'est pas communiqué aux chercheurs à cause de la confidentialité, si vous vous rendez compte qu'un candidat rentre des mauvaises données signalez le à l'administrateur qui se chargera de supprimer le candidat.\n");
 
         // 3 : quand on a fini de l'utiliser, on ferme le fichier
         fclose($fichierLegende);
-        header('Location: legende.txt');
-        exit();
+        //header('Location: legende.txt');
+        $path = ROOT .DS. "webroot". DS . "files" . DS .'journal.xls';
+        $this->response->file($path, array(
+            'download' => true,
+            'name' => 'journal.xls',
+        ));
+        return $this->response;
 
     }
 

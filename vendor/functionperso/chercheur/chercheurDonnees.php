@@ -26,7 +26,7 @@ function tableDonnees(){
 	$res.= "<thead><tr><th>Heure début</th><th>Heure Fin</th><th>Durée</th><th>Code Activité</th><th>Code Lieu</th><th>Code Compagnie</th><th>Code Dispositif</th><th>Code Candidat</th></tr></thead><tbody>";
 		
 	foreach ($table as $data) {
-		$res.= "<tr><td>".$data['HeureDebut']."</td><td>".$data['HeureFin']."</td><td>".$data['dure']."</td><td>".$data['CodeActivite']."</td><td>".$data['CodeLieux']."</td><td>".$data['CodeCompagnie']."</td><td>".$data['CodeDispositif']."</td><td>".$data['CodeCandidat']."</td></tr>\n";
+		$res.= "<tr><td>".$data['HeureDebut']->i18nFormat('yyyy-MM-dd HH:mm:ss')."</td><td>".$data['HeureFin']->i18nFormat('yyyy-MM-dd HH:mm:ss')."</td><td>".$data['dure']."</td><td>".$data['CodeActivite']."</td><td>".$data['CodeLieux']."</td><td>".$data['CodeCompagnie']."</td><td>".$data['CodeDispositif']."</td><td>".$data['CodeCandidat']."</td></tr>\n";
 	}
 	
 	$res.="</tbody></table>";
