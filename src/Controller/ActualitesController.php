@@ -35,10 +35,16 @@ class ActualitesController extends AppController
      */
     public function view($id = null)
     {
+        switch ($_SESSION['Auth']['User']['typeUser']) {
+            case 'chercheur':       $monController = "chercheur";        $monAction="accueil";                 break;
+            case 'candidat':        $monController = "candidat";         $monAction="accueil";                 break;
+            case 'admin':           $monController = "";                 $monAction="";                 break;
+        }
         $actualite = $this->Actualites->get($id, [
             'contain' => []
         ]);
-
+        $this->set(compact('monController'));
+        $this->set(compact('monAction'));
         $this->set('actualite', $actualite);
         $this->set('_serialize', ['actualite']);
     }
