@@ -202,7 +202,7 @@ CREATE TABLE IF NOT EXISTS `candidat` (
 --
 
 INSERT INTO `candidat` (`CodeCandidat`, `NomCandidat`, `PrenomCandidat`, `Age`, `GenreCandidat`, `LieuxEtude`, `NiveauEtude`, `DiplomePrep`, `EtatCivil`, `NombreEnfant`, `ID`) VALUES
-(1, 'Gimenz', 'Jeremy', 22, '0', 'Grenoble', '0', '1', '4', 12, 9),
+(1, 'Gimenz', 'Jeremy', 22, 'homme', 'Grenoble', 'Bac +1', 'Master', 'Marié(e)', 12, 9),
 (2, 'Boyle', 'Suzanne', 19, 'tortue', 'Suez', 'BAC +2', 'Master Droit', 'En couple', 0, 10),
 (3, 'Michel', 'Jean-Jacque', 26, 'homme', 'Vienne', 'BAC+7', 'L1 jardinage', 'Celibataire', 1, 11),
 (4, 'Robert', 'Christian', 11, 'chien', 'Paris', 'MatSup', 'CNRS', 'Union libre', 4, 12);
