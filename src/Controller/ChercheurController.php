@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use fonctionperso\chercheur\chercheurAccueil;
 
 /**
  * Chercheur Controller
@@ -11,6 +12,32 @@ use App\Controller\AppController;
 class ChercheurController extends AppController
 {
 
+
+
+    public function accueil(){
+        $this->viewBuilder()->layout('cherLayout');
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "chercheur" . DS ."chercheurAccueil.php");
+
+    }
+
+    public function modif()
+    {
+        $this->viewBuilder()->layout('cherLayout');
+        $chercheur = $this->Chercheur->get($S_SESSION['Auth']['User']['ID'], [
+            'contain' => []
+        ]);
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $chercheur = $this->Chercheur->patchEntity($chercheur, $this->request->data);
+            if ($this->Chercheur->save($chercheur)) {
+                $this->Flash->success(__('The chercheur has been saved.'));
+                return $this->redirect(['action' => 'index']);
+            } else {
+                $this->Flash->error(__('The chercheur could not be saved. Please, try again.'));
+            }
+        }
+        $this->set(compact('chercheur'));
+        $this->set('_serialize', ['chercheur']);
+    }
     /**
      * Index method
      *

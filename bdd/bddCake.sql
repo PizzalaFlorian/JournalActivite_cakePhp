@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.13.1deb1
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: May 10, 2016 at 02:47 PM
--- Server version: 5.6.30-0ubuntu0.15.10.1
--- PHP Version: 5.6.11-1ubuntu3.3
+-- Client :  127.0.0.1
+-- Généré le :  Jeu 12 Mai 2016 à 11:05
+-- Version du serveur :  5.6.17
+-- Version de PHP :  5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,28 +14,30 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
--- Database: `bddCake`
+-- Base de données :  `bddcake`
 --
 CREATE DATABASE IF NOT EXISTS `bddCake` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `bddCake`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `activite`
+-- Structure de la table `activite`
 --
 
 CREATE TABLE IF NOT EXISTS `activite` (
   `CodeActivite` int(10) unsigned NOT NULL,
   `NomActivite` varchar(250) NOT NULL,
   `DescriptifActivite` text NOT NULL,
-  `CodeCategorie` int(10) unsigned NOT NULL
+  `CodeCategorie` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`CodeActivite`),
+  KEY `CodeCategorie` (`CodeCategorie`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `activite`
+-- Contenu de la table `activite`
 --
 
 INSERT INTO `activite` (`CodeActivite`, `NomActivite`, `DescriptifActivite`, `CodeCategorie`) VALUES
@@ -134,18 +136,19 @@ INSERT INTO `activite` (`CodeActivite`, `NomActivite`, `DescriptifActivite`, `Co
 -- --------------------------------------------------------
 
 --
--- Table structure for table `actualites`
+-- Structure de la table `actualites`
 --
 
 CREATE TABLE IF NOT EXISTS `actualites` (
-  `ID` int(11) NOT NULL,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Sujet` varchar(255) NOT NULL,
   `Contenue` text NOT NULL,
-  `Date` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `Date` date NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `actualites`
+-- Contenu de la table `actualites`
 --
 
 INSERT INTO `actualites` (`ID`, `Sujet`, `Contenue`, `Date`) VALUES
@@ -155,16 +158,18 @@ INSERT INTO `actualites` (`ID`, `Sujet`, `Contenue`, `Date`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `administrateur`
+-- Structure de la table `administrateur`
 --
 
 CREATE TABLE IF NOT EXISTS `administrateur` (
-  `CodeAdmin` int(10) unsigned NOT NULL,
-  `ID` int(10) unsigned NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `CodeAdmin` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `ID` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`CodeAdmin`),
+  KEY `ID` (`ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `administrateur`
+-- Contenu de la table `administrateur`
 --
 
 INSERT INTO `administrateur` (`CodeAdmin`, `ID`) VALUES
@@ -173,11 +178,11 @@ INSERT INTO `administrateur` (`CodeAdmin`, `ID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `candidat`
+-- Structure de la table `candidat`
 --
 
 CREATE TABLE IF NOT EXISTS `candidat` (
-  `CodeCandidat` int(10) unsigned NOT NULL,
+  `CodeCandidat` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `NomCandidat` varchar(250) NOT NULL,
   `PrenomCandidat` varchar(250) NOT NULL,
   `Age` int(11) NOT NULL COMMENT 'pas plustot anné de naissance',
@@ -187,15 +192,17 @@ CREATE TABLE IF NOT EXISTS `candidat` (
   `DiplomePrep` varchar(250) NOT NULL,
   `EtatCivil` varchar(250) NOT NULL,
   `NombreEnfant` int(10) unsigned NOT NULL,
-  `ID` int(10) unsigned NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+  `ID` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`CodeCandidat`),
+  KEY `ID` (`ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `candidat`
+-- Contenu de la table `candidat`
 --
 
 INSERT INTO `candidat` (`CodeCandidat`, `NomCandidat`, `PrenomCandidat`, `Age`, `GenreCandidat`, `LieuxEtude`, `NiveauEtude`, `DiplomePrep`, `EtatCivil`, `NombreEnfant`, `ID`) VALUES
-(1, 'Gimenz', 'Patrick', 22, 'vache', 'Grenoble', 'CAP', 'Master Macrame', 'Decede', 12, 9),
+(1, 'Gimenz', 'Jeremy', 22, '0', 'Grenoble', '0', '1', '4', 12, 9),
 (2, 'Boyle', 'Suzanne', 19, 'tortue', 'Suez', 'BAC +2', 'Master Droit', 'En couple', 0, 10),
 (3, 'Michel', 'Jean-Jacque', 26, 'homme', 'Vienne', 'BAC+7', 'L1 jardinage', 'Celibataire', 1, 11),
 (4, 'Robert', 'Christian', 11, 'chien', 'Paris', 'MatSup', 'CNRS', 'Union libre', 4, 12);
@@ -203,30 +210,33 @@ INSERT INTO `candidat` (`CodeCandidat`, `NomCandidat`, `PrenomCandidat`, `Age`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `carnetdebord`
+-- Structure de la table `carnetdebord`
 --
 
 CREATE TABLE IF NOT EXISTS `carnetdebord` (
-  `CodeEntree` int(10) unsigned NOT NULL,
+  `CodeEntree` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Date` date NOT NULL,
   `Sujet` varchar(250) NOT NULL,
   `Commentaire` text NOT NULL,
-  `CodeChercheur` int(10) unsigned NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `CodeChercheur` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`CodeEntree`),
+  KEY `CodeChercheur` (`CodeChercheur`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categorieactivite`
+-- Structure de la table `categorieactivite`
 --
 
 CREATE TABLE IF NOT EXISTS `categorieactivite` (
-  `CodeCategorieActivite` int(10) unsigned NOT NULL,
-  `NomCategorie` varchar(250) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+  `CodeCategorieActivite` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `NomCategorie` varchar(250) NOT NULL,
+  PRIMARY KEY (`CodeCategorieActivite`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
 --
--- Dumping data for table `categorieactivite`
+-- Contenu de la table `categorieactivite`
 --
 
 INSERT INTO `categorieactivite` (`CodeCategorieActivite`, `NomCategorie`) VALUES
@@ -252,16 +262,17 @@ INSERT INTO `categorieactivite` (`CodeCategorieActivite`, `NomCategorie`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categorielieu`
+-- Structure de la table `categorielieu`
 --
 
 CREATE TABLE IF NOT EXISTS `categorielieu` (
   `CodeCategorieLieux` int(10) unsigned NOT NULL,
-  `NomCategorie` varchar(250) NOT NULL
+  `NomCategorie` varchar(250) NOT NULL,
+  PRIMARY KEY (`CodeCategorieLieux`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `categorielieu`
+-- Contenu de la table `categorielieu`
 --
 
 INSERT INTO `categorielieu` (`CodeCategorieLieux`, `NomCategorie`) VALUES
@@ -271,18 +282,20 @@ INSERT INTO `categorielieu` (`CodeCategorieLieux`, `NomCategorie`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chercheur`
+-- Structure de la table `chercheur`
 --
 
 CREATE TABLE IF NOT EXISTS `chercheur` (
-  `CodeChercheur` int(10) unsigned NOT NULL,
+  `CodeChercheur` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `NomChercheur` varchar(250) NOT NULL,
   `PrenomChercheur` varchar(250) NOT NULL,
-  `ID` int(11) unsigned NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `ID` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`CodeChercheur`),
+  KEY `ID` (`ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `chercheur`
+-- Contenu de la table `chercheur`
 --
 
 INSERT INTO `chercheur` (`CodeChercheur`, `NomChercheur`, `PrenomChercheur`, `ID`) VALUES
@@ -291,16 +304,17 @@ INSERT INTO `chercheur` (`CodeChercheur`, `NomChercheur`, `PrenomChercheur`, `ID
 -- --------------------------------------------------------
 
 --
--- Table structure for table `compagnie`
+-- Structure de la table `compagnie`
 --
 
 CREATE TABLE IF NOT EXISTS `compagnie` (
   `NomCompagnie` varchar(250) NOT NULL,
-  `CodeCompagnie` int(10) unsigned NOT NULL
+  `CodeCompagnie` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`CodeCompagnie`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `compagnie`
+-- Contenu de la table `compagnie`
 --
 
 INSERT INTO `compagnie` (`NomCompagnie`, `CodeCompagnie`) VALUES
@@ -314,16 +328,17 @@ INSERT INTO `compagnie` (`NomCompagnie`, `CodeCompagnie`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dispositif`
+-- Structure de la table `dispositif`
 --
 
 CREATE TABLE IF NOT EXISTS `dispositif` (
   `CodeDispositif` int(10) unsigned NOT NULL,
-  `NomDispositif` varchar(250) NOT NULL
+  `NomDispositif` varchar(250) NOT NULL,
+  PRIMARY KEY (`CodeDispositif`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `dispositif`
+-- Contenu de la table `dispositif`
 --
 
 INSERT INTO `dispositif` (`CodeDispositif`, `NomDispositif`) VALUES
@@ -339,17 +354,19 @@ INSERT INTO `dispositif` (`CodeDispositif`, `NomDispositif`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lieu`
+-- Structure de la table `lieu`
 --
 
 CREATE TABLE IF NOT EXISTS `lieu` (
   `CodeLieux` int(10) unsigned NOT NULL,
   `NomLieux` varchar(250) NOT NULL,
-  `CodeCategorieLieux` int(10) unsigned NOT NULL
+  `CodeCategorieLieux` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`CodeLieux`),
+  KEY `CodeCategorieLieux` (`CodeCategorieLieux`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `lieu`
+-- Contenu de la table `lieu`
 --
 
 INSERT INTO `lieu` (`CodeLieux`, `NomLieux`, `CodeCategorieLieux`) VALUES
@@ -380,11 +397,11 @@ INSERT INTO `lieu` (`CodeLieux`, `NomLieux`, `CodeCategorieLieux`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `messages`
+-- Structure de la table `messages`
 --
 
 CREATE TABLE IF NOT EXISTS `messages` (
-  `IDMessage` int(10) unsigned NOT NULL,
+  `IDMessage` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `DateEnvoi` date NOT NULL,
   `Sujet` varchar(250) NOT NULL,
   `ContenuMessage` text NOT NULL,
@@ -393,11 +410,14 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `IDExpediteur` int(10) unsigned NOT NULL,
   `IDRecepteur` int(10) unsigned NOT NULL,
   `userExpediteur` int(10) NOT NULL,
-  `userRecepteur` int(10) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `userRecepteur` int(10) NOT NULL,
+  PRIMARY KEY (`IDMessage`),
+  KEY `IDExpediteur` (`IDExpediteur`),
+  KEY `IDRecepteur` (`IDRecepteur`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `messages`
+-- Contenu de la table `messages`
 --
 
 INSERT INTO `messages` (`IDMessage`, `DateEnvoi`, `Sujet`, `ContenuMessage`, `recepteurLu`, `expediteurLu`, `IDExpediteur`, `IDRecepteur`, `userExpediteur`, `userRecepteur`) VALUES
@@ -407,22 +427,28 @@ INSERT INTO `messages` (`IDMessage`, `DateEnvoi`, `Sujet`, `ContenuMessage`, `re
 -- --------------------------------------------------------
 
 --
--- Table structure for table `occupation`
+-- Structure de la table `occupation`
 --
 
 CREATE TABLE IF NOT EXISTS `occupation` (
-  `CodeOccupation` bigint(20) unsigned NOT NULL,
+  `CodeOccupation` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `HeureDebut` datetime NOT NULL,
   `HeureFin` datetime NOT NULL,
   `CodeCandidat` int(10) unsigned NOT NULL,
   `CodeLieux` int(10) unsigned NOT NULL,
   `CodeActivite` int(10) unsigned NOT NULL,
   `CodeCompagnie` int(10) unsigned NOT NULL,
-  `CodeDispositif` int(10) unsigned NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+  `CodeDispositif` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`CodeOccupation`),
+  KEY `CodeCandidat` (`CodeCandidat`),
+  KEY `CodeLieux` (`CodeLieux`),
+  KEY `CodeCompagnie` (`CodeCompagnie`),
+  KEY `CodeDispositif` (`CodeDispositif`),
+  KEY `CodeActivite` (`CodeActivite`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
 --
--- Dumping data for table `occupation`
+-- Contenu de la table `occupation`
 --
 
 INSERT INTO `occupation` (`CodeOccupation`, `HeureDebut`, `HeureFin`, `CodeCandidat`, `CodeLieux`, `CodeActivite`, `CodeCompagnie`, `CodeDispositif`) VALUES
@@ -432,29 +458,37 @@ INSERT INTO `occupation` (`CodeOccupation`, `HeureDebut`, `HeureFin`, `CodeCandi
 (9, '2016-05-11 01:15:00', '2016-05-11 03:15:00', 1, 1, 10, 0, 0),
 (10, '2016-05-13 00:45:00', '2016-05-13 18:45:00', 1, 1, 10, 0, 0),
 (11, '2016-05-10 05:45:00', '2016-05-10 07:45:00', 1, 1, 10, 0, 0),
-(12, '2016-05-14 01:15:00', '2016-05-14 03:15:00', 1, 1, 10, 0, 0);
+(12, '2016-05-14 01:15:00', '2016-05-14 03:15:00', 1, 1, 10, 0, 0),
+(13, '2016-05-09 08:15:00', '2016-05-09 18:15:00', 1, 1, 213, 0, 0),
+(14, '2016-05-10 09:15:00', '2016-05-10 14:15:00', 1, 1, 510, 0, 0),
+(15, '2016-05-14 06:30:00', '2016-05-14 14:30:00', 1, 1, 261, 0, 0),
+(16, '2016-05-11 05:15:00', '2016-05-11 05:16:00', 1, 1, 715, 0, 0),
+(17, '2016-05-15 00:15:00', '2016-05-15 22:15:00', 1, 1, 330, 0, 0),
+(18, '2016-05-11 07:00:00', '2016-05-11 09:00:00', 1, 1, 10, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Structure de la table `users`
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `ID` int(10) unsigned NOT NULL,
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `login` varchar(255) NOT NULL,
   `typeUser` varchar(25) NOT NULL,
   `password` varchar(60) NOT NULL,
-  `email` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+  `email` varchar(255) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
 --
--- Dumping data for table `users`
+-- Contenu de la table `users`
 --
 
 INSERT INTO `users` (`ID`, `login`, `typeUser`, `password`, `email`) VALUES
-(8, 'halo', 'halo', '$2y$10$OrGBnea9ldqvuZdFWOIPcOn6euVk1HkT3XdbysUOxfrsIdg8HA74i', 'halo@haloha.com'),
-(9, 'test', 'candidat', '$2y$10$WKx74nNCFSWYaEAdKvNqi.7ccJgsVoHWFiWcMfaEYzfvxgN.gGWnG', 'test@test.com'),
+(1, 'chercheur', 'chercheur', 'chercheur', 'chercheur@mail.com'),
+(2, 'admin', 'admin', 'admin', 'admin@mail.com'),
+(9, 'test', 'candidat', '$2y$10$WKx74nNCFSWYaEAdKvNqi.7ccJgsVoHWFiWcMfaEYzfvxgN.gGWnG', 'test2@test.com'),
 (10, 'toto', 'candidat', '$2y$10$LlXoTfeYdi1Zq24LhA3dau8PPXpNUsy1xyESVQj/B7RXAzqUhnQPS', 'toto@toto.com'),
 (11, 'boule', 'candidat', '$2y$10$70jLgRkEiNnFGZGPNo7f0OsvW1.nbgGNGo2OtBzIR.lwWSpSyuOVe', 'boule@boule.com'),
 (12, 'bill', 'candidat', '$2y$10$FcO8VR4QeUKeGX7NozVv6u21KrRoEjZgmYeMduAXLAhEVbFEroAYO', 'bill@bill.com'),
@@ -462,197 +496,47 @@ INSERT INTO `users` (`ID`, `login`, `typeUser`, `password`, `email`) VALUES
 (14, 'admin', 'admin', '$2y$10$JAGmVUjMotic8.HQp/2YKuwNt/TdjzPD3x4eP.Xb.kbFBUCAjJFbC', 'admin@test.com');
 
 --
--- Indexes for dumped tables
+-- Contraintes pour les tables exportées
 --
 
 --
--- Indexes for table `activite`
---
-ALTER TABLE `activite`
-  ADD PRIMARY KEY (`CodeActivite`),
-  ADD KEY `CodeCategorie` (`CodeCategorie`);
-
---
--- Indexes for table `actualites`
---
-ALTER TABLE `actualites`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `administrateur`
---
-ALTER TABLE `administrateur`
-  ADD PRIMARY KEY (`CodeAdmin`),
-  ADD KEY `ID` (`ID`);
-
---
--- Indexes for table `candidat`
---
-ALTER TABLE `candidat`
-  ADD PRIMARY KEY (`CodeCandidat`),
-  ADD KEY `ID` (`ID`);
-
---
--- Indexes for table `carnetdebord`
---
-ALTER TABLE `carnetdebord`
-  ADD PRIMARY KEY (`CodeEntree`),
-  ADD KEY `CodeChercheur` (`CodeChercheur`);
-
---
--- Indexes for table `categorieactivite`
---
-ALTER TABLE `categorieactivite`
-  ADD PRIMARY KEY (`CodeCategorieActivite`);
-
---
--- Indexes for table `categorielieu`
---
-ALTER TABLE `categorielieu`
-  ADD PRIMARY KEY (`CodeCategorieLieux`);
-
---
--- Indexes for table `chercheur`
---
-ALTER TABLE `chercheur`
-  ADD PRIMARY KEY (`CodeChercheur`),
-  ADD KEY `ID` (`ID`);
-
---
--- Indexes for table `compagnie`
---
-ALTER TABLE `compagnie`
-  ADD PRIMARY KEY (`CodeCompagnie`);
-
---
--- Indexes for table `dispositif`
---
-ALTER TABLE `dispositif`
-  ADD PRIMARY KEY (`CodeDispositif`);
-
---
--- Indexes for table `lieu`
---
-ALTER TABLE `lieu`
-  ADD PRIMARY KEY (`CodeLieux`),
-  ADD KEY `CodeCategorieLieux` (`CodeCategorieLieux`);
-
---
--- Indexes for table `messages`
---
-ALTER TABLE `messages`
-  ADD PRIMARY KEY (`IDMessage`),
-  ADD KEY `IDExpediteur` (`IDExpediteur`),
-  ADD KEY `IDRecepteur` (`IDRecepteur`);
-
---
--- Indexes for table `occupation`
---
-ALTER TABLE `occupation`
-  ADD PRIMARY KEY (`CodeOccupation`),
-  ADD KEY `CodeCandidat` (`CodeCandidat`),
-  ADD KEY `CodeLieux` (`CodeLieux`),
-  ADD KEY `CodeCompagnie` (`CodeCompagnie`),
-  ADD KEY `CodeDispositif` (`CodeDispositif`),
-  ADD KEY `CodeActivite` (`CodeActivite`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`ID`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `actualites`
---
-ALTER TABLE `actualites`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `administrateur`
---
-ALTER TABLE `administrateur`
-  MODIFY `CodeAdmin` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `candidat`
---
-ALTER TABLE `candidat`
-  MODIFY `CodeCandidat` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT for table `carnetdebord`
---
-ALTER TABLE `carnetdebord`
-  MODIFY `CodeEntree` int(10) unsigned NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `categorieactivite`
---
-ALTER TABLE `categorieactivite`
-  MODIFY `CodeCategorieActivite` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
---
--- AUTO_INCREMENT for table `chercheur`
---
-ALTER TABLE `chercheur`
-  MODIFY `CodeChercheur` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `messages`
---
-ALTER TABLE `messages`
-  MODIFY `IDMessage` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `occupation`
---
-ALTER TABLE `occupation`
-  MODIFY `CodeOccupation` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `activite`
+-- Contraintes pour la table `activite`
 --
 ALTER TABLE `activite`
   ADD CONSTRAINT `activite_ibfk_1` FOREIGN KEY (`CodeCategorie`) REFERENCES `categorieactivite` (`CodeCategorieActivite`);
 
 --
--- Constraints for table `administrateur`
+-- Contraintes pour la table `administrateur`
 --
 ALTER TABLE `administrateur`
   ADD CONSTRAINT `administrateur_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `users` (`ID`);
 
 --
--- Constraints for table `candidat`
+-- Contraintes pour la table `candidat`
 --
 ALTER TABLE `candidat`
   ADD CONSTRAINT `candidat_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `users` (`ID`);
 
 --
--- Constraints for table `carnetdebord`
+-- Contraintes pour la table `carnetdebord`
 --
 ALTER TABLE `carnetdebord`
   ADD CONSTRAINT `carnetdebord_ibfk_1` FOREIGN KEY (`CodeChercheur`) REFERENCES `chercheur` (`CodeChercheur`);
 
 --
--- Constraints for table `chercheur`
+-- Contraintes pour la table `chercheur`
 --
 ALTER TABLE `chercheur`
   ADD CONSTRAINT `chercheur_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `users` (`ID`);
 
 --
--- Constraints for table `lieu`
+-- Contraintes pour la table `lieu`
 --
 ALTER TABLE `lieu`
   ADD CONSTRAINT `lieu_ibfk_1` FOREIGN KEY (`CodeCategorieLieux`) REFERENCES `categorielieu` (`CodeCategorieLieux`);
 
 --
--- Constraints for table `occupation`
+-- Contraintes pour la table `occupation`
 --
 ALTER TABLE `occupation`
   ADD CONSTRAINT `occupation_ibfk_1` FOREIGN KEY (`CodeCandidat`) REFERENCES `candidat` (`CodeCandidat`),
