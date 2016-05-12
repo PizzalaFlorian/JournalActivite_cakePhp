@@ -1,3 +1,6 @@
+<?php
+	echo $this->element('sidebarChercheur');
+?>
 <!-- Content -->
 <div id="content">
 	<div class="inner">

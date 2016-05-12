@@ -2,7 +2,14 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
+
 use fonctionperso\chercheur\chercheurAccueil;
+use fonctionperso\chercheur\chercheurDonnees;
+use fonctionperso\activite\activite;
+use fonctionperso\lieu\lieux;
+use fonctionperso\dispositif\dispositif;
+use fonctionperso\compagnie\compagnie;
 
 /**
  * Chercheur Controller
@@ -19,13 +26,32 @@ class ChercheurController extends AppController
         require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "chercheur" . DS ."chercheurAccueil.php");
 
     }
-
+    public function aide(){
+         $this->viewBuilder()->layout('cherLayout');
+    }
+    public function carnetDeBord(){
+         $this->viewBuilder()->layout('cherLayout');
+    }
+    public function tables(){
+         $this->viewBuilder()->layout('cherLayout');
+    }
+    public function donnees(){
+         $this->viewBuilder()->layout('cherLayout');
+         require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "chercheur" . DS ."chercheurAccueil.php");
+         require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "chercheur" . DS ."chercheurDonnees.php");
+         require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "activite" . DS ."activite.php");
+         require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "lieu" . DS ."lieux.php");
+         require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "dispositif" . DS ."dispositif.php");
+         require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "compagnie" . DS ."compagnie.php");
+    }
     public function modif()
     {
         $this->viewBuilder()->layout('cherLayout');
-        $chercheur = $this->Chercheur->get($S_SESSION['Auth']['User']['ID'], [
-            'contain' => []
-        ]);
+        $chercheur = TableRegistry::get('chercheur')
+            ->find()
+            ->where(['ID' => $_SESSION['Auth']['User']['ID']])
+            ->first();
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $chercheur = $this->Chercheur->patchEntity($chercheur, $this->request->data);
             if ($this->Chercheur->save($chercheur)) {
