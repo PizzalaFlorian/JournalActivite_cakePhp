@@ -21,7 +21,7 @@
 			<h2>Téléchargement des données:</h2>
 			<?php echo $this->Html->link(
             'Téléchargement des données',
-            ['controller' => 'chercheur', 'action' => 'testExcel', '_full' => true]
+            ['controller' => 'chercheur', 'action' => 'telechargerCandidatExcel', '_full' => true]
        		 ); 
        		?>
 			Format: .xsl (Compatible Excel 2003)<br/>
