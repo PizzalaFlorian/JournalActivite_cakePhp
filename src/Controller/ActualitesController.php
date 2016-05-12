@@ -18,6 +18,8 @@ class ActualitesController extends AppController
      */
     public function index()
     {
+        //fonction lié au actualité dans actualité.php
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "actualite" . DS ."actualite.php");
         $actualites = $this->paginate($this->Actualites);
 
         $this->set(compact('actualites'));

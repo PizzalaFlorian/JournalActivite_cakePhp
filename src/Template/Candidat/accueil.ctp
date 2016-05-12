@@ -14,3 +14,23 @@
 		</center>
 	</div>
 </div>
+
+<div class="actualites index large-9 medium-8 columns content">
+    <h3>News</h3>
+    <table cellpadding="0" cellspacing="0">
+        <tbody>
+            <?php foreach ($actualites as $actualite): ?>
+            <tr>
+                <td>
+                        <?= h(transformeDate($actualite->Date)) ?>
+                </td>
+                <td>
+                        <?= $this->Html->link(h(substr($actualite->Sujet, 0, 30)), ['controller' => 'actualites','action' => 'view', $actualite->ID]) ?>
+                </td>
+                <td>
+                        <?= h(substr($actualite->Contenue, 0, 100)) ?>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>

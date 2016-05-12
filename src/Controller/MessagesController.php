@@ -37,6 +37,8 @@ class MessagesController extends AppController
     // ==== MESSAGERIE ==== //
         //fonction lié a la messagerie dans messagerie.php
         require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "messagerie" . DS ."messagerie.php");
+        //fonction lié au actualité dans actualité.php
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "actualite" . DS ."actualite.php");
         // on assigne un id pour les messageries
         switch ($_SESSION['Auth']['User']['typeUser']) {
             case 'chercheur':       $monID = 1;                                                 break;
@@ -187,8 +189,10 @@ class MessagesController extends AppController
     public function repondre($id = null)
     {
         // on verifie que l'utilisateur accède bien a un message dont il est le destinataire ou le recepteur
+
         $monID = $_SESSION['Auth']['User']['ID'];
         $message = $this->Messages->get($id, ['contain' => [] ]);
+
         if(($message->IDExpediteur == $monID) || ($message->IDRecepteur == $monID)){
             //cherche la fonction afficheContenu de messagerie
             require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "messagerie" . DS ."messagerie.php");
