@@ -43,34 +43,32 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <h1><a href="">Chercheur</a></h1>
             </li>
         </ul>
-        <div class="top-fixed">
-            <div class="top-bar-section">
-                <ul class="right">
-                    <!-- <li><a target="_blank" href="http://book.cakephp.org/3.0/">Documentation</a></li>
-                    <li><a target="_blank" href="http://api.cakephp.org/3.0/">API</a></li> -->
-                    <li>
-                        <?= $this->Html->link(
-                                'Deconnexion',
-                                ['controller' => 'users', 'action' => 'logout', '_full' => true]) 
-                        ?>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <?= $this->Flash->render() ?>
-    <div class="container clearfix">
-    <div class="left-bar">
-        <nav id="actions-sidebar">
-            <ul class="side-nav">
-                <?= $this->fetch('sidebarChercheur') ?>
+       
+        <div class="top-bar-section">
+            <ul class="right">
+                <!-- <li><a target="_blank" href="http://book.cakephp.org/3.0/">Documentation</a></li>
+                <li><a target="_blank" href="http://api.cakephp.org/3.0/">API</a></li> -->
+                <li>
+                    <?= $this->Html->link(
+                            'Deconnexion',
+                            ['controller' => 'users', 'action' => 'logout', '_full' => true]) 
+                    ?>
+                </li>
             </ul>
-        </nav> 
-    </div>    
+        </div>
+       
+    </nav>
+   <?= $this->Flash->render() ?>
+    <div class="container clearfix">
+            <nav class="large-2 medium-3 columns"id="actions-sidebar">
+                <ul class="side-nav">
+                    <?= $this->fetch('sidebarChercheur') ?>
+                </ul>
+            </nav> 
         <div class="candidat large-10 medium-9 colums content " id="contentCandida">
             <?= $this->fetch('content') ?>
         </div>
-    </div>   
+    </div>  
      
     
     

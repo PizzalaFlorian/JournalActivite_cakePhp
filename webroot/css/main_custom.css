@@ -12,17 +12,3 @@
 .hidden{
 	display: none;
 }
-
-.top-fixed{
-	position: fixed !important;
-	top: 0;
-    left: 0;
-    width: 100%;
-}
-
-.left-bar{
-	position: fixed !important;
-	top: 45px;
-    left: 0;
-    width: 224px;
-}
