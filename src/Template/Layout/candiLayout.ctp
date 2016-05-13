@@ -58,11 +58,14 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </nav>
     <?= $this->Flash->render() ?>
     <div class="container clearfix">
-        <nav class="large-2 medium-3 columns" id="actions-sidebar">
-            <ul class="side-nav">
-                <?= $this->fetch('sidebarCandidat') ?>
-            </ul>
-        </nav> 
+        <div class="left-bar">
+            <nav id="actions-sidebar">
+                <ul class="side-nav">
+                    <?= $this->fetch('sidebarCandidat') ?>
+                </ul>
+            </nav> 
+        </div> 
+           
         <div class="candidat large-10 medium-9 colums content " id="contentCandida">
             <?= $this->fetch('content') ?>
         </div>
