@@ -1,11 +1,13 @@
 <?php
 	echo $this->element('sidebarChercheur');
+	echo $this->Html->script("https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js");
+	echo $this->Html->script('chercheurTables');
 ?>
 <!-- Content -->
 <div id="content">
 
 	<div class="inner">
-	<?php include("../modele/chercheurTables.modele.php"); ?>
+	
 		<!--
 		Insert content here			
 		-->		
@@ -15,7 +17,7 @@
 		<h2>La liste des catégories d'activités</h2>
 		<a href="#" id="afficherCat">Afficher la liste des catégories d'activités</a><br/>
 		<section class="allAfficheListe" id ="afficheCat">
-			<?php echo tableauCategorie($bdd);?>
+			<?php echo tableauCategorie();?>
 		</section>
 		<a href="#" id="modCat">Modifier la liste des catégories d'activités</a><br/>
 		<section id="modifCat" class="allModdifListe">
@@ -33,7 +35,7 @@
 				<fieldset>
 					<legend>Modifier une catégorie d'activité:</legend>
 						<label>Sélectionez une catégorie d'activité: </label>
-						<?php echo selectCategorieVide($bdd,"categorieModifierActivite","id_ancien");?>
+						<?php echo selectCategorieVide("categorieModifierActivite","id_ancien");?>
 						<div id="modif_cat">
 						</div>
 						<input type="submit" name="mod_categorie" value="Modifier"><br/>
@@ -44,7 +46,7 @@
 				<fieldset>
 					<legend>Supprimer une catégorie d'activité:</legend>
 						<label>Sélectionez une catégorie d'activité:  </label>
-						<?php echo selectCategorie($bdd,"categorieActivite","code_categorie");?>
+						<?php echo selectCategorie("categorieActivite","code_categorie");?>
 						<input type="submit" name="sup_categorie" value="Supprimer">
 				</fieldset>		
 			</form>
@@ -52,7 +54,7 @@
 		<h2>La liste des activités</h2>
 		<a href="#" id="afficherAct">Afficher la liste des activités</a><br/>
 		<section class="allAfficheListe" id ="afficheAct">
-			<?php echo tableauActivite($bdd); ?>
+			<?php echo tableauActivite(); ?>
 		</section>
 		<a href="#" id="modAct">Modifier la liste des activités</a><br/>
 		<section id="modifAct" class="allModdifListe">
@@ -66,7 +68,7 @@
 						<div id="idActiviteAjax"></div>
 						<input type="number" name="id" id="ajoutCodeActivite"/><br/>
 						<label>Sélectionez une catégorie pour l'activité: </label>
-						<?php echo selectCategorie($bdd,"categorieActivite","cat_activite");?>
+						<?php echo selectCategorie("categorieActivite","cat_activite");?>
 						<label>Description de l'activité</label>
 						<textarea name="desc"></textarea>
 						<input type="submit" name="add_activite" value="Ajouter">
@@ -77,7 +79,7 @@
 				<fieldset>
 					<legend>Modifier une activité:</legend>
 						<label>Sélectionez une activité: </label>
-						<?php echo selectActiviteModif($bdd,"modifierActivite","id_old");?>
+						<?php echo selectActiviteModif("modifierActivite","id_old");?>
 						<div id="mod_act"></div>
 						<input type="submit" name="mod_activite" value="Modifier"><br/>
 				</fieldset>
@@ -87,7 +89,7 @@
 				<fieldset>
 					<legend>Supprimer une activité:</legend>
 						<label>Sélectionez une activité:  </label>
-						<?php echo selectActiviteVide($bdd,"supprActivite","id");?>
+						<?php echo selectActiviteVide("supprActivite","id");?>
 						<div id="activiteSupprAjax"></div>
 						<input type="submit" name="sup_activite" value="Supprimer">
 				</fieldset>		
@@ -97,7 +99,7 @@
 		<h2>La liste des dispositifs</h2>
 		<a href="#" id="afficherDisp">Afficher la liste des dispositifs</a><br/>
 		<section class="allAfficheListe" id ="afficheDisp">
-			<?php echo tableauDispositif($bdd)?>
+			<?php echo tableauDispositif()?>
 		</section>
 		<a href="#" id="modDisp">Modifier la liste des dispositifs</a><br/>
 		<section id="modifDisp" class="allModdifListe">
@@ -118,7 +120,7 @@
 				<fieldset>
 					<legend>Modifier un dispositif:</legend>
 						<label>Sélectionez un dispositif: </label>
-						<?php echo selectDispositif($bdd,"modifierDispostif","id_old");?>
+						<?php echo selectDispositif("modifierDispostif","id_old");?>
 						<div id="mod_disp"></div>
 						<input type="submit" name="mod_dispositif" value="Modifier"><br/>
 				</fieldset>
@@ -128,7 +130,7 @@
 				<fieldset>
 					<legend>Supprimer un dispositif:</legend>
 						<label>Sélectionez un dispositif:  </label>
-						<?php echo selectDispositif($bdd,"supprDispositif","id");?>
+						<?php echo selectDispositif("supprDispositif","id");?>
 						<div id="dispositifSupprAjax"></div>
 						<input type="submit" name="sup_dispositif" value="Supprimer">
 				</fieldset>		
@@ -137,7 +139,7 @@
 		<h2>La liste des lieux et des transports</h2>
 		<a href="#" id="afficherLieu">Afficher la liste des lieux et des transports</a><br/>
 		<section id="afficheLieu" class="allAfficheListe">
-			<?php echo tableauLieu($bdd)?>
+			<?php echo tableauLieu()?>
 		</section>
 		<a href="#" id="modLieu">Modifier la liste des lieux et des transports</a><br/>
 		<section id="modifLieu" class="allModdifListe">
@@ -163,7 +165,7 @@
 				<fieldset>
 					<legend>Modifier un lieu & transport:</legend>
 						<label>Sélectionez un lieu: </label>
-						<?php echo selectLieuVide($bdd,"modifierLieu","id_old");?>
+						<?php echo selectLieuVide("modifierLieu","id_old");?>
 						<div id="mod_lieu"></div>
 						<input type="submit" name="mod_lieu" value="Modifier"><br/>
 				</fieldset>
@@ -173,7 +175,7 @@
 				<fieldset>
 					<legend>Supprimer un lieu & transport:</legend>
 						<label>Sélectionez un lieu:  </label>
-						<?php echo selectLieuVide($bdd,"supprLieu","id");?>
+						<?php echo selectLieuVide("supprLieu","id");?>
 						<div id="lieuSupprAjax"></div>
 						<input type="submit" name="sup_lieu" value="Supprimer">
 				</fieldset>		
@@ -183,7 +185,7 @@
 		<h2>La liste des personnes présentes</h2>
 		<a href="#" id="afficherCompagnie">Afficher la liste des personnes présentes</a><br/>
 		<section id="afficheCompagnie" class="allAfficheListe">
-			<?php echo tableauCompagnie($bdd)?>
+			<?php echo tableauCompagnie()?>
 		</section>
 		<a href="#" id="modCompagnie">Modifier la liste des personnes présentes</a><br/>
 		<section id="modifCompagnie" class="allModdifListe">
@@ -204,7 +206,7 @@
 				<fieldset>
 					<legend>Modifier une compagnie:</legend>
 						<label>Sélectionez une compaagnie: </label>
-						<?php echo selectCompagnieVide($bdd,"modifierCompagnie","id_old");?>
+						<?php echo selectCompagnieVide("modifierCompagnie","id_old");?>
 						<div id="mod_compagnie"></div>
 						<input type="submit" name="mod_compagnie" value="Modifier"><br/>
 				</fieldset>
@@ -214,7 +216,7 @@
 				<fieldset>
 					<legend>Supprimer une compagnie:</legend>
 						<label>Sélectionez une compagnie:  </label>
-						<?php echo selectCompagnieVide($bdd,"supprCompagnie","id");?>
+						<?php echo selectCompagnieVide("supprCompagnie","id");?>
 						<div id="compagnieSupprAjax"></div>
 						<input type="submit" name="sup_compagnie" value="Supprimer">
 				</fieldset>		

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 12 Mai 2016 à 11:05
+-- Généré le :  Ven 13 Mai 2016 à 09:58
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -19,8 +19,9 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `bddcake`
 --
-CREATE DATABASE IF NOT EXISTS `bddCake` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `bddCake`;
+CREATE DATABASE IF NOT EXISTS `bddcake` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `bddcake`;
+
 -- --------------------------------------------------------
 
 --
@@ -202,7 +203,7 @@ CREATE TABLE IF NOT EXISTS `candidat` (
 --
 
 INSERT INTO `candidat` (`CodeCandidat`, `NomCandidat`, `PrenomCandidat`, `Age`, `GenreCandidat`, `LieuxEtude`, `NiveauEtude`, `DiplomePrep`, `EtatCivil`, `NombreEnfant`, `ID`) VALUES
-(1, 'Gimenz', 'Jeremy', 22, 'homme', 'Grenoble', 'Bac +1', 'Master', 'Marié(e)', 12, 9),
+(1, 'Gimenz', 'Jeremy', 22, 'homme', 'Grenoble', 'Bac +1', 'Licence', 'Marié(e)', 12, 9),
 (2, 'Boyle', 'Suzanne', 19, 'tortue', 'Suez', 'BAC +2', 'Master Droit', 'En couple', 0, 10),
 (3, 'Michel', 'Jean-Jacque', 26, 'homme', 'Vienne', 'BAC+7', 'L1 jardinage', 'Celibataire', 1, 11),
 (4, 'Robert', 'Christian', 11, 'chien', 'Paris', 'MatSup', 'CNRS', 'Union libre', 4, 12);

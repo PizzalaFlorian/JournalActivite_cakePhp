@@ -6,6 +6,7 @@ use Cake\ORM\TableRegistry;
 
 use fonctionperso\chercheur\chercheurAccueil;
 use fonctionperso\chercheur\chercheurDonnees;
+use fonctionperso\chercheur\chercheurTable;
 use fonctionperso\activite\activite;
 use fonctionperso\lieu\lieux;
 use fonctionperso\dispositif\dispositif;
@@ -34,7 +35,13 @@ class ChercheurController extends AppController
          $this->viewBuilder()->layout('cherLayout');
     }
     public function tables(){
-         $this->viewBuilder()->layout('cherLayout');
+        $this->viewBuilder()->layout('cherLayout');
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "chercheur" . DS ."chercheurTables.php");
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "activite" . DS ."activite.php");
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "activite" . DS ."categorieactivite.php");
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "dispositif" . DS ."dispositif.php");
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "compagnie" . DS ."compagnie.php");
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "lieu" . DS ."lieux.php");
     }
     public function donnees(){
          $this->viewBuilder()->layout('cherLayout');
@@ -77,12 +84,7 @@ class ChercheurController extends AppController
     }
 
     public function telechargerCandidatExcel(){
-        //  $path = ROOT .DS. "webroot". DS . "files" . DS .'journal.xls';
-        // $this->response->file($path, array(
-        //     'download' => true,
-        //     'name' => 'journal.xls',
-        // ));
-        // return $this->response;
+       
     }
 
     public function downloadExcel(){
