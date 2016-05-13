@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `bddcake`
 --
-CREATE DATABASE IF NOT EXISTS `bddcake` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS `bddCake` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `bddcake`;
 
 -- --------------------------------------------------------

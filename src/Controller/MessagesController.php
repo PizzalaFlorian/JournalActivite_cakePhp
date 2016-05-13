@@ -4,7 +4,9 @@ namespace App\Controller;
 use App\Controller\AppController;
 use vendor\fonctionperso\messagerie\messagerie;
 use Cake\ORM\TableRegistry;
-//*******************************
+use Cake\Mailer\Email;
+//use Cake\Network\Email\Email;
+////*******************************
 //
 // note : 
 //        -   messages pour tout les chercheurs : 1
@@ -181,6 +183,20 @@ class MessagesController extends AppController
             $message->userExpediteur = $message->IDExpediteur;
             $message->userRecepteur = $message->IDRecepteur;
             if ($this->Messages->save($message)) {
+                if($message->IDRecepteur == 1){
+// ========================== Modif mail =============================//
+                    //ce morceau marche mais pour des raison remplissage de mail je le coupe x)
+
+
+                $email = new Email('default');
+                $email
+                    ->to('pierre.garnesson@gmail.com')
+                    ->subject($message->Sujet)
+                    ->send($message->ContenuMessage);
+                }
+
+
+// ========================== Modif mail =============================//
                 $this->Flash->success(__('Votre message à bien été envoyé.'));
                 return $this->redirect(['action' => 'index']);
             } else {

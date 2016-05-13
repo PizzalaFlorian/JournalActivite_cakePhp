@@ -175,38 +175,40 @@ return [
      * appropriate file to src/Mailer/Transport.  Transports should be named
      * 'YourTransport.php', where 'Your' is the name of the transport.
      */
-    'EmailTransport' => [
-        'default' => [
-            'className' => 'Mail',
-            // The following keys are used in SMTP transports
-            'host' => 'localhost',
-            'port' => 25,
-            'timeout' => 30,
-            'username' => 'user',
-            'password' => 'secret',
-            'client' => null,
-            'tls' => null,
-            'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
-        ],
-    ],
 
-    /**
-     * Email delivery profiles
-     *
-     * Delivery profiles allow you to predefine various properties about email
-     * messages from your application and give the settings a name. This saves
-     * duplication across your application and makes maintenance and development
-     * easier. Each profile accepts a number of keys. See `Cake\Mailer\Email`
-     * for more information.
-     */
-    'Email' => [
-        'default' => [
-            'transport' => 'default',
-            'from' => 'you@localhost',
-            //'charset' => 'utf-8',
-            //'headerCharset' => 'utf-8',
-        ],
-    ],
+            'EmailTransport' => [
+                'default' => [
+                    'className' => 'Mail',
+                    // The following keys are used in SMTP transports
+                    'host' => 'localhost',
+                    'port' => 25,
+                    'timeout' => 30,
+                    'username' => '',
+                    'password' => '',
+                    'client' => null,
+                    'tls' => null,
+                ],
+                'appli' => [
+                  'className' => 'Smtp',
+                  // The following keys are used in SMTP transports
+                  'host' => 'smtp.gmail.com',
+                  'port' => 587,
+                  'username' => 'applitimesmanagement@gmail.com',
+                  'password' => 'myappliTimesManagement',
+                  'timeout' => 30,
+                  'client' => null,
+                  'tls' => true, 
+                ],
+            ],
+
+            'Email' => [
+                    'default' => [
+                        'transport' => 'appli',
+                        'from' => 'test.test@lol.com',
+                        //'charset' => 'utf-8',
+                        //'headerCharset' => 'utf-8',
+                    ],
+                ],
 
     /**
      * Connection information used by the ORM to connect
