@@ -43,17 +43,19 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <h1><a href="">Candidat</a></h1>
             </li>
         </ul>
-        <div class="top-bar-section">
-            <ul class="right">
-                <!-- <li><a target="_blank" href="http://book.cakephp.org/3.0/">Documentation</a></li>
-                <li><a target="_blank" href="http://api.cakephp.org/3.0/">API</a></li> -->
-                <li>
-                    <?= $this->Html->link(
-                            'Deconnexion',
-                            ['controller' => 'users', 'action' => 'logout', '_full' => true]) 
-                    ?>
-                </li>
-            </ul>
+        <div class="top-fixed">
+            <div class="top-bar-section">
+                <ul class="right">
+                    <!-- <li><a target="_blank" href="http://book.cakephp.org/3.0/">Documentation</a></li>
+                    <li><a target="_blank" href="http://api.cakephp.org/3.0/">API</a></li> -->
+                    <li>
+                        <?= $this->Html->link(
+                                'Deconnexion',
+                                ['controller' => 'users', 'action' => 'logout', '_full' => true]) 
+                        ?>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
     <?= $this->Flash->render() ?>
