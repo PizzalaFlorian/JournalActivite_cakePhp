@@ -12,3 +12,8 @@
 .hidden{
 	display: none;
 }
+
+.content h4{
+	color :#116d76 !important;
+	border-bottom: 2px solid #116d76 !important;
+}

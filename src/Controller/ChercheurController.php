@@ -28,9 +28,11 @@ class ChercheurController extends AppController
         require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "chercheur" . DS ."chercheurAccueil.php");
 
     }
+
     public function aide(){
          $this->viewBuilder()->layout('cherLayout');
     }
+
     public function carnetDeBord(){
          $this->viewBuilder()->layout('cherLayout');
     }

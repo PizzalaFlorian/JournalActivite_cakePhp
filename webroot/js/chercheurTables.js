@@ -19,7 +19,7 @@ $(document).ready(function(){
 /*Ajax pour la modification d'activite*/	
 	$("#modifierActivite").change(function(){
 		$.ajax({
-		   url : '../modele/modifier_activite.php',
+		   url : '../chercheur/modifierActivite',
 		   type : 'POST',
 		   data : 'code=' + $(this).val() + '&nom='+$("#modifierActivite option:selected").text(),
 		   dataType : 'html', // On désire recevoir du HTML
@@ -127,7 +127,7 @@ $(document).ready(function(){
 	//ajax pour l'ajout du code activite
 	$("#ajoutCodeActivite").bind('keyup click',function(){
 		$.ajax({
-		   url : '../modele/idActiviteAjax.php',
+		   url : '../chercheur/idActiviteAjax',
 		   type : 'POST',
 		   data : 'code=' + $('#ajoutCodeActivite').val(),
 		   dataType : 'html', // On désire recevoir du HTML
@@ -142,7 +142,7 @@ $(document).ready(function(){
 	  $("#mod_act").on('keyup click','#new_id_activite',function(){
 		console.log("Boum");
 		$.ajax({
-		   url : '../modele/idActiviteModifAjax.php',
+		   url : '../chercheur/idActiviteModifAjax',
 		   type : 'POST',
 		   data : 'code=' + $('#new_id_activite').val() + '&old_code=' + $("#old_id_activite").val(),
 		   dataType : 'html', // On désire recevoir du HTML
@@ -263,7 +263,7 @@ $(document).ready(function(){
 	//ajax pour la suppression d'un dispositif
 	$("#supprActivite").change(function(){
 		$.ajax({
-		   url : '../modele/supprActiviteAjax.php',
+		   url : '../chercheur/supprActiviteAjax',
 		   type : 'POST',
 		   data : 'code=' + $(this).val() + '&nom='+$("#supprActivite option:selected").text(),
 		   dataType : 'html', // On désire recevoir du HTML
