@@ -1,10 +1,8 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Categorieactivite'), ['action' => 'index']) ?></li>
-    </ul>
-</nav>
-<div class="categorieactivite form large-9 medium-8 columns content">
+<?php
+    echo $this->element('sidebarChercheur');
+?>
+<div class="categorieactivite form large-12 medium-11 columns content">
+<?= $this->Html->link(__('Retour'), ['action' => 'index']) ?>
     <?= $this->Form->create($categorieactivite) ?>
     <fieldset>
         <legend><?= __('Add Categorieactivite') ?></legend>

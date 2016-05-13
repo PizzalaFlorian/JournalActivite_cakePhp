@@ -1,16 +1,15 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
-                __('Delete'),
+<?php
+    echo $this->element('sidebarChercheur');
+    echo $this->Form->postLink(
+                __('Supprimer cette Categorie'),
                 ['action' => 'delete', $categorieactivite->CodeCategorieActivite],
                 ['confirm' => __('Are you sure you want to delete # {0}?', $categorieactivite->CodeCategorieActivite)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Categorieactivite'), ['action' => 'index']) ?></li>
-    </ul>
-</nav>
-<div class="categorieactivite form large-9 medium-8 columns content">
+            );
+    echo '<br>';
+    echo $this->Html->link(__('Retour'), ['action' => 'index']); 
+?>
+   
+<div class="categorieactivite form large-12 medium-11 columns content">
     <?= $this->Form->create($categorieactivite) ?>
     <fieldset>
         <legend><?= __('Edit Categorieactivite') ?></legend>

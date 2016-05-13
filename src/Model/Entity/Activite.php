@@ -24,7 +24,6 @@ class Activite extends Entity
      * @var array
      */
     protected $_accessible = [
-        '*' => true,
-        'CodeActivite' => false,
+        '*' => true
     ];
 }

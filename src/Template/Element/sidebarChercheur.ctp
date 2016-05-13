@@ -2,6 +2,7 @@
 
     $this->start('sidebarChercheur');
 ?>
+<li class="heading"><?= __('Menu') ?></li>
 <li> 
     <?php 
         echo $this->Html->link(
@@ -13,7 +14,7 @@
 <li> 
     <?php 
         echo $this->Html->link(
-            'Données',
+            'Extraction Données',
             ['controller' => 'chercheur', 'action' => 'donnees', '_full' => true]
         );
     ?>
@@ -21,8 +22,48 @@
 <li> 
     <?php 
         echo $this->Html->link(
-            'Tables',
-            ['controller' => 'chercheur', 'action' => 'tables', '_full' => true]
+            'Table Activite',
+            ['controller' => 'activite', 'action' => 'index', '_full' => true]
+        ); 
+    ?> 
+</li>
+<li> 
+    <?php 
+        echo $this->Html->link(
+            'Table Categorie Activite',
+            ['controller' => 'categorieactivite', 'action' => 'index', '_full' => true]
+        ); 
+    ?> 
+</li>
+<li> 
+    <?php 
+        echo $this->Html->link(
+            'Table Lieux',
+            ['controller' => 'lieu', 'action' => 'index', '_full' => true]
+        ); 
+    ?> 
+</li>
+<li> 
+    <?php 
+        echo $this->Html->link(
+            'Table Categorie Lieux',
+            ['controller' => 'categorielieu', 'action' => 'index', '_full' => true]
+        ); 
+    ?> 
+</li>
+<li> 
+    <?php 
+        echo $this->Html->link(
+            'Table Dispositif',
+            ['controller' => 'dispositif', 'action' => 'index', '_full' => true]
+        ); 
+    ?> 
+</li>
+<li> 
+    <?php 
+        echo $this->Html->link(
+            'Table Compagnie',
+            ['controller' => 'compagnie', 'action' => 'index', '_full' => true]
         ); 
     ?> 
 </li>
