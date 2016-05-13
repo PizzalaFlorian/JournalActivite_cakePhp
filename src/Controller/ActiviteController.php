@@ -18,6 +18,11 @@ class ActiviteController extends AppController
      */
     public function index()
     {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+
         $activite = $this->paginate($this->Activite);
 
         $this->set(compact('activite'));
@@ -33,6 +38,12 @@ class ActiviteController extends AppController
      */
     public function view($id = null)
     {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+
+
         $activite = $this->Activite->get($id, [
             'contain' => []
         ]);
@@ -48,6 +59,11 @@ class ActiviteController extends AppController
      */
     public function add()
     {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+
         $activite = $this->Activite->newEntity();
         if ($this->request->is('post')) {
             $activite = $this->Activite->patchEntity($activite, $this->request->data);
@@ -71,6 +87,12 @@ class ActiviteController extends AppController
      */
     public function edit($id = null)
     {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+
+
         $activite = $this->Activite->get($id, [
             'contain' => []
         ]);
@@ -96,6 +118,12 @@ class ActiviteController extends AppController
      */
     public function delete($id = null)
     {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+
+
         $this->request->allowMethod(['post', 'delete']);
         $activite = $this->Activite->get($id);
         if ($this->Activite->delete($activite)) {
