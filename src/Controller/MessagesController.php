@@ -32,7 +32,7 @@ class MessagesController extends AppController
         switch ($_SESSION['Auth']['User']['typeUser']) {
             case 'chercheur':       $monController = "chercheur";        $monAction="accueil";                 break;
             case 'candidat':        $monController = "candidat";         $monAction="accueil";                 break;
-            case 'admin':           $monController = "";                 $monAction="";                 break;
+            case 'admin':           $monController = "";                 $monAction="";                        break;
         }
 
         //$this->set(compact('actualites'));

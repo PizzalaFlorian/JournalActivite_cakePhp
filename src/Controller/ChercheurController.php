@@ -27,6 +27,11 @@ class ChercheurController extends AppController
         $this->viewBuilder()->layout('cherLayout');
         require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "chercheur" . DS ."chercheurAccueil.php");
 
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "actualite" . DS ."actualite.php");
+        $this->loadModel('Actualites');
+        $actualites = $this->Actualites->find('all');
+        $this->set(compact('actualites'));
+        $this->set('_serialize', ['actualites']);
     }
 
     public function aide(){

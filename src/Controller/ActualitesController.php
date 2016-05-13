@@ -71,7 +71,6 @@ class ActualitesController extends AppController
      */
     public function edit($id = null)
     {
-        var_dump($_SESSION['Auth']['User']);
         // on verifie que l'utilisateur est de type chercheur ou admin
         if(($_SESSION['Auth']['User']['typeUser'] == 'chercheur') || ($_SESSION['Auth']['User']['typeUser'] =='admin')){
             $actualite = $this->Actualites->get($id, ['contain' => [] ]);
@@ -123,6 +122,14 @@ class ActualitesController extends AppController
     }
     public function nouveau(){
         if(($_SESSION['Auth']['User']['typeUser'] == 'chercheur') || ($_SESSION['Auth']['User']['typeUser'] =='admin')){
+            switch ($_SESSION['Auth']['User']['typeUser']) {
+                case 'chercheur':       $monController = "chercheur";        $monAction="accueil";                 break;
+                case 'candidat':        $monController = "candidat";         $monAction="accueil";                 break;
+                case 'admin':           $monController = "";                 $monAction="";                        break;
+            }
+
+
+
             $actualite = $this->Actualites->newEntity();
             if ($this->request->is('post')) {
                 $actualite = $this->Actualites->patchEntity($actualite, $this->request->data);
@@ -133,6 +140,8 @@ class ActualitesController extends AppController
                     $this->Flash->error(__('The actualite could not be saved. Please, try again.'));
                 }
             }
+            $this->set(compact('monController'));
+            $this->set(compact('monAction'));
             $this->set(compact('actualite'));
             $this->set('_serialize', ['actualite']);
         } else {
