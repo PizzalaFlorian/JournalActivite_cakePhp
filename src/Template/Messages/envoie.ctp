@@ -4,7 +4,6 @@
 <div class="messages index large-12 medium-11 columns content">
     <div class="navbar">
         <fieldset>
-            <?= $this->Html->link(__('Nouveau Message'), ['action' => 'nouveau']) ?> <br/>
             <?= $this->Html->link(__('Messagerie'), ['controller' => 'messages']) ?> <br/>
         </fieldset>
     </div>
