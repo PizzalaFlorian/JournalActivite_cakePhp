@@ -78,3 +78,9 @@ sftp-config.json
 /app/Config/core.php
 /app/Config/database.php
 /vendors/*
+
+tmp/cache/models/myapp_cake_model_default_chercheur
+tmp/cache/models/myapp_cake_model_debug_kit_requests
+tmp/cache/models/myapp_cake_model_default_candidat
+tmp/cache/models/myapp_cake_model_default_occupation
+*.sqlite
