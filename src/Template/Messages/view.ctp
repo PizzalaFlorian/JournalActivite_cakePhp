@@ -1,12 +1,14 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Répondre'), ['action' => 'repondre', $message->IDMessage]) ?> </li>
-        <li><?= $this->Form->postLink(__('Supprimer'), ['action' => 'delete', $message->IDMessage], ['confirm' => __('Etes vous sur de vouloir supprimer ce message?', $message->IDMessage)]) ?> </li>
-        <li><?= $this->Html->link(__('Messagerie'), ['action' => 'index']) ?></li>
-    </ul>
-</nav>
-<div class="messages view large-9 medium-8 columns content">
+<?php
+    echo $this->element($sideBar);
+?>
+<div class="messages view large-12 medium-11 columns content">
+    <div class="navbar">
+        <fieldset>
+            <?= $this->Html->link(__('Répondre'), ['action' => 'repondre', $message->IDMessage]) ?> <br/>
+            <?= $this->Html->link(__('Supprimer'), ['action' => 'delete', $message->IDMessage], ['confirm' => __('Etes vous sur de vouloir supprimer ce message?', $message->IDMessage)]) ?> <br/>
+            <?= $this->Html->link(__('Retour'), ['controller' => 'messages']) ?>
+        </fieldset>
+    </div>
     <table class="vertical-table">
         <tr>
             <th><?= __('Sujet :') ?></th>

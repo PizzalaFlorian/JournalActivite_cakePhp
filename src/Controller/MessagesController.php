@@ -30,9 +30,19 @@ class MessagesController extends AppController
     public function index()
     {
         switch ($_SESSION['Auth']['User']['typeUser']) {
-            case 'chercheur':       $monController = "chercheur";        $monAction="accueil";                 break;
-            case 'candidat':        $monController = "candidat";         $monAction="accueil";                 break;
-            case 'admin':           $monController = "";                 $monAction="";                        break;
+            case 'chercheur':       $monController = "chercheur";        
+                                    $monAction="accueil";       
+                                    $this->viewBuilder()->layout('cherLayout');
+                                    $sideBar = "sidebarChercheur";          
+                                break;
+            case 'candidat':        $monController = "candidat";         
+                                    $monAction="accueil";       
+                                    $this->viewBuilder()->layout('candiLayout');
+                                    $sideBar = "sidebarCandidat";           
+                                break;
+            case 'admin':           $monController = "";                 
+                                    $monAction="";                        
+                                break;
         }
 
         //$this->set(compact('actualites'));
@@ -54,6 +64,7 @@ class MessagesController extends AppController
         $messages = $this->paginate($this->Messages->findAllByIdrecepteur($monID));
         $this->set(compact('monController'));
         $this->set(compact('monAction'));
+        $this->set(compact('sideBar'));
         $this->set(compact('messages'));
         $this->set('_serialize', ['messages']);
     }
@@ -68,13 +79,22 @@ class MessagesController extends AppController
     public function view($id = null)
     {
         switch ($_SESSION['Auth']['User']['typeUser']) {
-            case 'candidat':    $monID = $_SESSION['Auth']['User']['ID'];       break;
-            case 'chercheur':   $monID = '1';                                   break;
-            case 'admin':       $monID = '0';                                   break;
+            case 'candidat':    $monID = $_SESSION['Auth']['User']['ID'];  
+                                $this->viewBuilder()->layout('candiLayout'); 
+                                $sideBar = "sidebarCandidat";      
+                            break;
+            case 'chercheur':   $monID = '1';                              
+                                $this->viewBuilder()->layout('cherLayout');
+                                $sideBar = "sidebarChercheur";
+
+                            break;
+            case 'admin':       $monID = '0';                                   
+                            break;
         }
         $message = $this->Messages->get($id, ['contain' => [] ]);
         if(($message->IDExpediteur == $monID) || ($message->IDRecepteur == $monID)){
             $this->set('message', $message);
+            $this->set(compact('sideBar'));
             $this->set('_serialize', ['message']);    
         } else {
             // Si la page demandé n'est pas disponible pour l'utilisateur, on demande une nouvel authentification
@@ -122,9 +142,12 @@ class MessagesController extends AppController
         $operationInterdite = "true";
         $message = $this->Messages->get($id, ['contain' => [] ]);
         switch ($_SESSION['Auth']['User']['typeUser']) {
-            case 'candidat':    $monID = $_SESSION['Auth']['User']['ID'];       break;
-            case 'chercheur':   $monID = '1';                                   break;
-            case 'admin':       $monID = '0';                                   break;
+            case 'candidat':    $monID = $_SESSION['Auth']['User']['ID'];     
+                            break;
+            case 'chercheur':   $monID = '1';                                 
+                            break;
+            case 'admin':       $monID = '0';                                   
+                            break;
         }
         if($monID == $message->IDExpediteur){
             $operationInterdite = "false";
@@ -173,6 +196,16 @@ class MessagesController extends AppController
 //  
     public function nouveau()
     {
+        switch ($_SESSION['Auth']['User']['typeUser']) {
+            case 'candidat':    $this->viewBuilder()->layout('candiLayout');
+                                $sideBar = "sidebarCandidat";      
+                            break;
+            case 'chercheur':   $this->viewBuilder()->layout('cherLayout');
+                                $sideBar = "sidebarChercheur";    
+                            break;
+            case 'admin':       $monID = '0';                                   
+                            break;
+        }
         $message = $this->Messages->newEntity();
         if ($this->request->is('post')) {
             $message = $this->Messages->patchEntity($message, $this->request->data);
@@ -205,6 +238,7 @@ class MessagesController extends AppController
         }
         $this->set(compact('message'));
         $this->set(compact('users'));
+        $this->set(compact('sideBar'));
         $this->set('_serialize', ['message']);
     }
 
@@ -213,9 +247,16 @@ class MessagesController extends AppController
         // on verifie que l'utilisateur accède bien a un message dont il est le destinataire ou le recepteur
 
         switch ($_SESSION['Auth']['User']['typeUser']) {
-            case 'candidat':    $monID = $_SESSION['Auth']['User']['ID'];       break;
-            case 'chercheur':   $monID = '1';                                   break;
-            case 'admin':       $monID = '0';                                   break;
+            case 'candidat':    $monID = $_SESSION['Auth']['User']['ID'];   
+                                $sideBar = "sidebarCandidat";
+                                $this->viewBuilder()->layout('candiLayout');     
+                            break;
+            case 'chercheur':   $monID = '1';                               
+                                $this->viewBuilder()->layout('cherLayout');
+                                $sideBar = "sidebarChercheur";    
+                            break;
+            case 'admin':       $monID = '0';                                   
+                            break;
         }
         $message = $this->Messages->get($id, ['contain' => [] ]);
 
@@ -253,7 +294,7 @@ class MessagesController extends AppController
             //prépare les variables pour le template
             $this->set(compact('pseudo'));
             $this->set(compact('pseudoID'));
-            //$this->set('_serialize', ['pseudo']);
+            $this->set(compact('sideBar'));
             $this->set(compact('message'));
             $this->set('_serialize', ['message']);
         } else {
@@ -262,5 +303,38 @@ class MessagesController extends AppController
             $this->Flash->error(__('Veuillez vous reconnecter.'));
             return $this->redirect(['controller' => 'users', 'action' => 'logout']);
         }
+    }
+
+    public function envoie()
+    {
+        switch ($_SESSION['Auth']['User']['typeUser']) {
+            case 'chercheur':       $monController = "chercheur";        
+                                    $monAction="accueil";  
+                                    $this->viewBuilder()->layout('cherLayout');
+                                    $sideBar = "sidebarChercheur";              
+                                break;
+            case 'candidat':        $monController = "candidat";         
+                                    $monAction="accueil";           
+                                    $this->viewBuilder()->layout('candiLayout');
+                                    $sideBar = "sidebarCandidat";               
+                                break;
+            case 'admin':           $monController = "";                 
+                                    $monAction="";                        
+                                break;
+        }
+
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "messagerie" . DS ."messagerie.php");
+        switch ($_SESSION['Auth']['User']['typeUser']) {
+            case 'chercheur':       $monID = 1;                                                 break;
+            case 'candidat':        $monID = $_SESSION['Auth']['User']['ID'];                   break;
+            case 'admin':           $monID = 0;                                                 break;
+        }
+        // recuperation des messages en fonction de l'id
+        $messages = $this->paginate($this->Messages->findAllByIdexpediteur($monID));
+        $this->set(compact('monController'));
+        $this->set(compact('monAction'));
+        $this->set(compact('sideBar'));
+        $this->set(compact('messages'));
+        $this->set('_serialize', ['messages']);
     }
 }

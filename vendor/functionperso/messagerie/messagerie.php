@@ -14,4 +14,12 @@
 	function afficheContenu($contenu){
 		return $contenuFormaté = str_replace("\n", "\n>", $contenu);
 	}
+	function whoIsID($ID){
+		switch ($ID) {
+            case '1':				$user = "Chercheur";					break;
+            case '2':				$user = "Administrateur";				break;
+            default:				$user = "Candidat ".$ID;				break;
+        }
+        return $user;
+	}
 ?>

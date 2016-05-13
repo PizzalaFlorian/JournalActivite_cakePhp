@@ -1,12 +1,13 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Nouveau Message'), ['action' => 'nouveau']) ?></li>
-        <li><?= $this->Html->link(__('Messagerie'), ['controller' => 'messages']) ?></li>
-        <li><?= $this->Html->link(__('Retour'), ['controller' => "$monController", 'action' => "$monAction"]) ?></li>
-    </ul>
-</nav>
-<div class="messages index large-9 medium-8 columns content">
+<?php
+    echo $this->element($sideBar);
+?>
+<div class="messages index large-12 medium-11 columns content">
+    <div class="navbar">
+        <fieldset>
+            <?= $this->Html->link(__('Nouveau Message'), ['action' => 'nouveau']) ?> <br/>
+            <?= $this->Html->link(__('Messagerie'), ['controller' => 'messages']) ?> <br/>
+        </fieldset>
+    </div>
     <h3>Mes <?= __('Messages') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
@@ -31,13 +32,10 @@
                 </td>
                 <!-- NOM DE L'EXPEDITEUR -->
                 <td class="<?php echo $lu; ?>">
-                    Chercheur
+                    <?php echo whoIsID($message->IDRecepteur); ?>
                 </td>
                 <!-- ACTIONS -->
                 <td class="actions">
-                    <!-- REPONDRE -->  
-                    <?= $this->Html->link(__('Répondre'), ['action' => 'repondre', $message->IDMessage]) ?>
-                    <br/>
                     <!-- SUPPRIMER -->      
                     <?= $this->Form->postLink(__('Supprimer'), ['action' => 'delete', $message->IDMessage], ['confirm' => __('Êtes-vous sûr de vouloir supprimer ce message?', $message->IDMessage)]) ?>
                 </td>
