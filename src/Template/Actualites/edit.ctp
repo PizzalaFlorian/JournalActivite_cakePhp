@@ -7,7 +7,7 @@
                 ['confirm' => __('Are you sure you want to delete # {0}?', $actualite->ID)]
             )
         ?></li>
-        <li><?= $this->Html->link(__('List Actualites'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Retour acceuil'), ['controller' => "$monController",'action' => "$monAction"]) ?></li>
     </ul>
 </nav>
 <div class="actualites form large-9 medium-8 columns content">

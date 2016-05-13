@@ -73,16 +73,23 @@ class ActualitesController extends AppController
     {
         // on verifie que l'utilisateur est de type chercheur ou admin
         if(($_SESSION['Auth']['User']['typeUser'] == 'chercheur') || ($_SESSION['Auth']['User']['typeUser'] =='admin')){
+            switch ($_SESSION['Auth']['User']['typeUser']) {
+                case 'chercheur':       $monController = "chercheur";        $monAction="accueil";                 break;
+                case 'candidat':        $monController = "candidat";         $monAction="accueil";                 break;
+                case 'admin':           $monController = "";                 $monAction="";                        break;
+            }
             $actualite = $this->Actualites->get($id, ['contain' => [] ]);
             if ($this->request->is(['patch', 'post', 'put'])) {
                 $actualite = $this->Actualites->patchEntity($actualite, $this->request->data);
                 if ($this->Actualites->save($actualite)) {
                     $this->Flash->success(__('La modification a été sauvegardé.'));
-                    return $this->redirect(['action' => 'index']);
+                    return $this->redirect(['controller' => $monController, 'action' => $monAction]);
                 } else {
                     $this->Flash->error(__('Une erreur est survenue. Veuillez réessayer.'));
                 }
             }
+            $this->set(compact('monController'));
+            $this->set(compact('monAction'));
             $this->set(compact('actualite'));
             $this->set('_serialize', ['actualite']);
         } else {
@@ -102,6 +109,11 @@ class ActualitesController extends AppController
      */
     public function delete($id = null)
     {
+        switch ($_SESSION['Auth']['User']['typeUser']) {
+            case 'chercheur':       $monController = "chercheur";        $monAction="accueil";                 break;
+            case 'candidat':        $monController = "candidat";         $monAction="accueil";                 break;
+            case 'admin':           $monController = "";                 $monAction="";                        break;
+        }
         // on verifie que l'utilisateur est de type chercheur ou admin
         if(($_SESSION['Auth']['User']['typeUser'] == 'chercheur') || ($_SESSION['Auth']['User']['typeUser'] =='admin')){
             $this->request->allowMethod(['post', 'delete']);
@@ -111,7 +123,7 @@ class ActualitesController extends AppController
             } else {
                 $this->Flash->error(__('L\'actualité n\'a pas pu être supprimer. Veuillez réessayer.'));
             }
-            return $this->redirect(['controller' => 'candidat', 'action' => 'accueil']);
+            return $this->redirect(['controller' => $monController, 'action' => $monAction]);
         } else {
             // Si la page demandé n'est pas disponible pour l'utilisateur, on demande une nouvel authentification
             $this->Flash->error(__('Une erreur d\'Authentification est survenue.'));
@@ -127,15 +139,12 @@ class ActualitesController extends AppController
                 case 'candidat':        $monController = "candidat";         $monAction="accueil";                 break;
                 case 'admin':           $monController = "";                 $monAction="";                        break;
             }
-
-
-
             $actualite = $this->Actualites->newEntity();
             if ($this->request->is('post')) {
                 $actualite = $this->Actualites->patchEntity($actualite, $this->request->data);
                 if ($this->Actualites->save($actualite)) {
                     $this->Flash->success(__('The actualite has been saved.'));
-                    return $this->redirect(['controller' => 'candidat', 'action' => 'accueil']);
+                    return $this->redirect(['controller' => $monController, 'action' => $monAction]);
                 } else {
                     $this->Flash->error(__('The actualite could not be saved. Please, try again.'));
                 }

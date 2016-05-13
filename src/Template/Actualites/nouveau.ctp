@@ -1,7 +1,7 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
-        <?= $this->Html->link(__('Retour acceuil'), ['controller' => 'candidat','action' => 'acceuil']) ?>
+        <?= $this->Html->link(__('Retour acceuil'), ['controller' => "$monController",'action' => "$monAction"]) ?>
     </ul>
 </nav>
 <div class="actualites form large-9 medium-8 columns content">
