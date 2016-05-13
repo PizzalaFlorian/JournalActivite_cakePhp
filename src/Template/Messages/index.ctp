@@ -1,13 +1,16 @@
 <?php
     echo $this->element($sideBar);
+    echo $this->Html->css('messagerie');
 ?>
+<nav id="messagerieMenu" class="large-2 medium-3 columns">
+    <div><?= $this->Form->postLink(__('Nouveau Message'), ['action' => 'nouveau']) ?></div>
+    <div><?= $this->Html->link(__('Messages envoyé'), ['action' => 'envoie']) ?></div>
+</nav>
+
+
+
+
 <div class="messages index large-12 medium-11 columns content">
-    <div class="navbar">
-        <fieldset>
-            <?= $this->Html->link(__('Nouveau Message'), ['action' => 'nouveau']) ?> <br/>
-            <?= $this->Html->link(__('Messages envoyé'), ['action' => 'envoie']) ?> <br/>
-        </fieldset>
-    </div>
     <h3>Mes <?= __('Messages') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>

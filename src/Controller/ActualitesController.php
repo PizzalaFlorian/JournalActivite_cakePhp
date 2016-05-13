@@ -37,13 +37,24 @@ class ActualitesController extends AppController
     {
         // les chemin d'acces sont different en fonction du type d'user, on les definit ici
         switch ($_SESSION['Auth']['User']['typeUser']) {
-            case 'chercheur':       $monController = "chercheur";        $monAction="accueil";                 break;
-            case 'candidat':        $monController = "candidat";         $monAction="accueil";                 break;
-            case 'admin':           $monController = "";                 $monAction="";                 break;
+            case 'candidat':    $monController = "candidat";
+                                $monAction="accueil";
+                                $this->viewBuilder()->layout('candiLayout'); 
+                                $sideBar = "sidebarCandidat";      
+                            break;
+            case 'chercheur':   $monController = "chercheur";
+                                $monAction="accueil";
+                                $this->viewBuilder()->layout('cherLayout');
+                                $sideBar = "sidebarChercheur";
+
+                            break;
+            case 'admin':       $monID = '0';                                   
+                            break;
         }
         $actualite = $this->Actualites->get($id, [
             'contain' => []
         ]);
+        $this->set(compact('sideBar'));
         $this->set(compact('monController'));
         $this->set(compact('monAction'));
         $this->set('actualite', $actualite);
