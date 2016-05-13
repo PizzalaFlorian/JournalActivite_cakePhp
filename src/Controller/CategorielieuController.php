@@ -54,6 +54,12 @@ class CategorielieuController extends AppController
      */
     public function add()
     {
+        $this->viewBuilder()->layout('cherLayout');
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+
         $categorielieu = $this->Categorielieu->newEntity();
         if ($this->request->is('post')) {
             $categorielieu = $this->Categorielieu->patchEntity($categorielieu, $this->request->data);
@@ -77,6 +83,12 @@ class CategorielieuController extends AppController
      */
     public function edit($id = null)
     {
+        $this->viewBuilder()->layout('cherLayout');
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+
         $categorielieu = $this->Categorielieu->get($id, [
             'contain' => []
         ]);
@@ -102,6 +114,11 @@ class CategorielieuController extends AppController
      */
     public function delete($id = null)
     {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+
         $this->request->allowMethod(['post', 'delete']);
         $categorielieu = $this->Categorielieu->get($id);
         if ($this->Categorielieu->delete($categorielieu)) {

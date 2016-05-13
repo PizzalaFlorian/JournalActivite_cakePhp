@@ -12928,3 +12928,48 @@ Stack Trace:
 #16 {main}
 
 
+2016-05-13 14:26:08 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'CodeLieux' in 'field list'
+Request URL: /categorielieu/add
+Referer URL: http://localhost:8765/categorielieu
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Database\Statement\MysqlStatement.php(36): PDOStatement->execute(NULL)
+#1 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Database\Statement\StatementDecorator.php(171): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Database\Log\LoggingStatement.php(56): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Database\Connection.php(272): Cake\Database\Log\LoggingStatement->execute()
+#4 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Database\Query.php(188): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Query.php(921): Cake\Database\Query->execute()
+#6 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(272): Cake\ORM\Query->_execute()
+#7 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\ORM\Query.php(871): Cake\ORM\Query->_all()
+#8 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Datasource\QueryTrait.php(395): Cake\ORM\Query->all()
+#9 C:\wamp\www\journalCake\JournalActivite_cakePhp\src\Template\Categorielieu\add.ctp(9): Cake\ORM\Query->first()
+#10 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\View.php(992): include('C:\\wamp\\www\\jou...')
+#11 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\View.php(952): Cake\View\View->_evaluate('C:\\wamp\\www\\jou...', Array)
+#12 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\View\View.php(587): Cake\View\View->_render('C:\\wamp\\www\\jou...')
+#13 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Controller\Controller.php(611): Cake\View\View->render(NULL, NULL)
+#14 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(120): Cake\Controller\Controller->render()
+#15 C:\wamp\www\journalCake\JournalActivite_cakePhp\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CategorielieuController))
+#16 C:\wamp\www\journalCake\JournalActivite_cakePhp\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#17 {main}
+
+
+2016-05-13 14:44:50 Error: [Cake\Core\Exception\MissingPluginException] Plugin Cake/localised could not be found.
+Exception Attributes: array (
+  'plugin' => 'Cake/localised',
+)
+Stack Trace:
+#0 C:\wamp\www\journalCake\JournalActivite_cakePhp\config\bootstrap.php(223): Cake\Core\Plugin::load('Cake/localised')
+#1 C:\wamp\www\journalCake\JournalActivite_cakePhp\webroot\index.php(27): require('C:\\wamp\\www\\jou...')
+#2 {main}
+
+
+2016-05-13 14:44:52 Error: [Cake\Core\Exception\MissingPluginException] Plugin Cake/localised could not be found.
+Exception Attributes: array (
+  'plugin' => 'Cake/localised',
+)
+Stack Trace:
+#0 C:\wamp\www\journalCake\JournalActivite_cakePhp\config\bootstrap.php(223): Cake\Core\Plugin::load('Cake/localised')
+#1 C:\wamp\www\journalCake\JournalActivite_cakePhp\webroot\index.php(27): require('C:\\wamp\\www\\jou...')
+#2 {main}
+
+

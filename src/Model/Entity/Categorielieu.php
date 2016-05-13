@@ -22,7 +22,6 @@ class Categorielieu extends Entity
      * @var array
      */
     protected $_accessible = [
-        '*' => true,
-        'CodeCategorieLieux' => false,
+        '*' => true
     ];
 }

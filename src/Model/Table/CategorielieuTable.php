@@ -38,8 +38,8 @@ class CategorielieuTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('CodeCategorieLieux')
-            ->allowEmpty('CodeCategorieLieux', 'create');
+            ->requirePresence('CodeCategorieLieux', 'create')
+            ->notEmpty('CodeCategorieLieux');
 
         $validator
             ->requirePresence('NomCategorie', 'create')
