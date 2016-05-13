@@ -38,8 +38,8 @@ class ActiviteTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('CodeActivite')
-            ->allowEmpty('CodeActivite', 'create');
+            ->requirePresence('CodeActivite', 'create')
+            ->notEmpty('CodeActivite');
 
         $validator
             ->requirePresence('NomActivite', 'create')

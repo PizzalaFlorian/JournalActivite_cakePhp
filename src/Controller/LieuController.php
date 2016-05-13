@@ -18,6 +18,12 @@ class LieuController extends AppController
      */
     public function index()
     {
+        $this->viewBuilder()->layout('cherLayout');
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+
         $lieu = $this->paginate($this->Lieu);
 
         $this->set(compact('lieu'));
@@ -33,6 +39,11 @@ class LieuController extends AppController
      */
     public function view($id = null)
     {
+        $this->viewBuilder()->layout('cherLayout');
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
         $lieu = $this->Lieu->get($id, [
             'contain' => []
         ]);
@@ -48,8 +59,15 @@ class LieuController extends AppController
      */
     public function add()
     {
+        $this->viewBuilder()->layout('cherLayout');
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+         //debug($this->request);
         $lieu = $this->Lieu->newEntity();
-        if ($this->request->is('post')) {
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            debug($this->request->data);
             $lieu = $this->Lieu->patchEntity($lieu, $this->request->data);
             if ($this->Lieu->save($lieu)) {
                 $this->Flash->success(__('The lieu has been saved.'));
@@ -70,7 +88,12 @@ class LieuController extends AppController
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function edit($id = null)
-    {
+    {   
+        $this->viewBuilder()->layout('cherLayout');
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
         $lieu = $this->Lieu->get($id, [
             'contain' => []
         ]);
@@ -96,6 +119,10 @@ class LieuController extends AppController
      */
     public function delete($id = null)
     {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
         $this->request->allowMethod(['post', 'delete']);
         $lieu = $this->Lieu->get($id);
         if ($this->Lieu->delete($lieu)) {

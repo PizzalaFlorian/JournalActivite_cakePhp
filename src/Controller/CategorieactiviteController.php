@@ -18,6 +18,11 @@ class CategorieactiviteController extends AppController
      */
     public function index()
     {
+        $this->viewBuilder()->layout('cherLayout');
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
         $categorieactivite = $this->paginate($this->Categorieactivite);
 
         $this->set(compact('categorieactivite'));
@@ -33,6 +38,11 @@ class CategorieactiviteController extends AppController
      */
     public function view($id = null)
     {
+        $this->viewBuilder()->layout('cherLayout');
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
         $categorieactivite = $this->Categorieactivite->get($id, [
             'contain' => []
         ]);
@@ -48,6 +58,11 @@ class CategorieactiviteController extends AppController
      */
     public function add()
     {
+        $this->viewBuilder()->layout('cherLayout');
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
         $categorieactivite = $this->Categorieactivite->newEntity();
         if ($this->request->is('post')) {
             $categorieactivite = $this->Categorieactivite->patchEntity($categorieactivite, $this->request->data);
@@ -71,6 +86,11 @@ class CategorieactiviteController extends AppController
      */
     public function edit($id = null)
     {
+        $this->viewBuilder()->layout('cherLayout');
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
         $categorieactivite = $this->Categorieactivite->get($id, [
             'contain' => []
         ]);
@@ -96,6 +116,11 @@ class CategorieactiviteController extends AppController
      */
     public function delete($id = null)
     {
+        $this->viewBuilder()->layout('cherLayout');
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
         $this->request->allowMethod(['post', 'delete']);
         $categorieactivite = $this->Categorieactivite->get($id);
         if ($this->Categorieactivite->delete($categorieactivite)) {

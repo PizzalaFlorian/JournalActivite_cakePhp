@@ -38,8 +38,8 @@ class LieuTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('CodeLieux')
-            ->allowEmpty('CodeLieux', 'create');
+            ->requirePresence('CodeLieux', 'create')
+            ->notEmpty('CodeLieux');
 
         $validator
             ->requirePresence('NomLieux', 'create')

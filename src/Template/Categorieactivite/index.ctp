@@ -1,11 +1,9 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Categorieactivite'), ['action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="categorieactivite index large-9 medium-8 columns content">
+<?php
+    echo $this->element('sidebarChercheur');
+?>
+<div class="categorieactivite index large-12 medium-11 columns content">
     <h3><?= __('Categorieactivite') ?></h3>
+    <?= $this->Html->link(__('Ajouter une categorie'), ['action' => 'add']) ?>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
@@ -20,9 +18,8 @@
                 <td><?= $this->Number->format($categorieactivite->CodeCategorieActivite) ?></td>
                 <td><?= h($categorieactivite->NomCategorie) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $categorieactivite->CodeCategorieActivite]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $categorieactivite->CodeCategorieActivite]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $categorieactivite->CodeCategorieActivite], ['confirm' => __('Are you sure you want to delete # {0}?', $categorieactivite->CodeCategorieActivite)]) ?>
+                    <?= $this->Html->link(__('Modifier'), ['action' => 'edit', $categorieactivite->CodeCategorieActivite]) ?>
+                    <?= $this->Form->postLink(__('Supprimer'), ['action' => 'delete', $categorieactivite->CodeCategorieActivite], ['confirm' => __('Are you sure you want to delete # {0}?', $categorieactivite->CodeCategorieActivite)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

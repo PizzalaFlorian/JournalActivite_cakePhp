@@ -18,6 +18,12 @@ class CategorielieuController extends AppController
      */
     public function index()
     {
+         $this->viewBuilder()->layout('cherLayout');
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+
         $categorielieu = $this->paginate($this->Categorielieu);
 
         $this->set(compact('categorielieu'));
