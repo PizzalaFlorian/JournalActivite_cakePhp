@@ -2,7 +2,8 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
+use Cake\ORM\TableRegistry;
+    
 /**
  * Activite Controller
  *
@@ -129,15 +130,91 @@ class ActiviteController extends AppController
             $this->redirect(['controller'=>'candidat','action' => 'accueil']);
         if($_SESSION['Auth']['User']['typeUser'] == 'admin')
             $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
-
-
         $this->request->allowMethod(['post', 'delete']);
         $activite = $this->Activite->get($id);
+
+
+        $table = TableRegistry::get('occupation')
+            ->find()
+            ->where(['CodeActivite'=>$activite->CodeActivite])
+            ->first();
+
+        if(isset($table['CodeActivite'])){
+             $this->Flash->error(__('Cette activitée a été utilisée par des candidats, veuillez choisir une action.'));
+            return $this->redirect(['action' => 'reaffect',$activite->CodeActivite]);
+        }   
+      
         if ($this->Activite->delete($activite)) {
             $this->Flash->success(__('The activite has been deleted.'));
         } else {
             $this->Flash->error(__('The activite could not be deleted. Please, try again.'));
         }
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function reaffect($id = null)
+    {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+
+        $this->viewBuilder()->layout('cherLayout');
+        $activite = $this->Activite->get($id);
+        $list_activite = TableRegistry::get('activite')
+            ->find()
+            ->toArray();
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            //debug($this->request->data);
+            //debug($activite);
+
+            $occupation = TableRegistry::get('occupation')
+                ->query();
+            $occupation    
+                ->update()
+                ->set(['CodeActivite' => $this->request->data['CodeActivite']])
+                ->where(['CodeActivite' => $activite->CodeActivite])
+                ->execute();
+
+            $this->Flash->success(__('Les occupations ont été réaffectées'));
+            $this->redirect(['action' => 'index']);
+        }
+        $this->set('activite', $activite);
+        $this->set('list_activite', $list_activite);
+        $this->set('_serialize', ['activite']);    
+    }
+
+    public function deleteAll($id = null)
+    {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+        $activite = $this->Activite->get($id);
+
+        if ($this->request->is(['patch', 'post', 'put','delete'])) {
+           // debug($activite['CodeActivite']);
+
+            $occupation = TableRegistry::get('occupation')
+                ->query();
+            $occupation
+                ->delete()
+                ->where(['CodeActivite' => $activite['CodeActivite']])
+                ->execute();
+
+            $target = TableRegistry::get('activite')
+                ->query();
+            $target
+                ->delete()
+                ->where(['CodeActivite' => $activite['CodeActivite']])
+                ->execute();
+
+            $this->Flash->success(__('l\'activitée Les occupations ont été supprimées'));
+            $this->redirect(['action' => 'index']);
+        }
+
+        $this->set('activite', $activite);
+        $this->set('_serialize', ['activite']); 
     }
 }
