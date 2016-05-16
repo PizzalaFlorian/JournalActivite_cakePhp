@@ -1,16 +1,14 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
-                __('Delete'),
+<?php
+    echo $this->element('sidebarChercheur');
+    echo $this->Form->postLink(
+                __('Supprimer ce dispositif'),
                 ['action' => 'delete', $dispositif->CodeDispositif],
                 ['confirm' => __('Are you sure you want to delete # {0}?', $dispositif->CodeDispositif)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Dispositif'), ['action' => 'index']) ?></li>
-    </ul>
-</nav>
-<div class="dispositif form large-9 medium-8 columns content">
+            );
+    echo '<br/>';
+    echo $this->Html->link(__('Retourner a la liste des dispositifs'), ['action' => 'index']);
+?>
+<div class="dispositif form large-12 medium-11 columns content">
     <?= $this->Form->create($dispositif) ?>
     <fieldset>
         <legend><?= __('Edit Dispositif') ?></legend>

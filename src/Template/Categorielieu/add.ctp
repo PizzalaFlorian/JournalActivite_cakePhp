@@ -1,6 +1,6 @@
 <?php
     echo $this->element('sidebarChercheur');
-    echo $this->Html->link(__('Retour'), ['action' => 'index']);
+    echo $this->Html->link(__('Retourner a la liste des categories'), ['action' => 'index']);
     
     use Cake\ORM\TableRegistry;
     $max = TableRegistry::get('categorielieu')

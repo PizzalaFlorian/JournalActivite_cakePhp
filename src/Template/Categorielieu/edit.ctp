@@ -6,7 +6,7 @@
                 ['confirm' => __('Are you sure you want to delete # {0}?', $categorielieu->CodeCategorieLieux)]
             );
     echo '<br>';
-    echo $this->Html->link(__('Retour'), ['action' => 'index']);
+    echo $this->Html->link(__('Retourner a la liste des categories'), ['action' => 'index']);
 ?>
 <div class="categorielieu form large-12 medium-11 columns content">
     <?= $this->Form->create($categorielieu) ?>

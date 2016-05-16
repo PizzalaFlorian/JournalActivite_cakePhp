@@ -3,7 +3,7 @@
 ?>
 
 <div class="activite form large-10 medium-11 columns content">
-<?= $this->Html->link(__('Retour'), ['action' => 'index']) ?>
+<?= $this->Html->link(__('Retourner a la liste des activitées'), ['action' => 'index']) ?>
     <?= $this->Form->create($activite) ?>
     <fieldset>
         <legend><?= __('Add Activite') ?></legend>
@@ -14,7 +14,7 @@
             echo '<div class="input select required">';
             echo $this->Form->label('CodeCategorie');
             echo '<select name="CodeCategorie">';
-            $liste_categorie = get_liste_categorie_activite();
+            $liste_categorie = get_CategorieActivite();
             foreach ($liste_categorie as $categorie) {
                 if($activite['CodeCategorie'] == $categorie['CodeCategorieActivite'])
                     echo '<option value="'.$categorie['CodeCategorieActivite'].'" selected>'.$categorie['CodeCategorieActivite'].

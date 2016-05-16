@@ -11,7 +11,7 @@
                 ['confirm' => __('Are you sure you want to delete # {0}?', $lieu->CodeLieux)]
             );
     echo '<br>';
-    echo $this->Html->link(__('Retour'), ['action' => 'index']);
+    echo $this->Html->link(__('Retourner a la liste des lieux'), ['action' => 'index']);
 ?>
 <div class="lieu form large-12 medium-11 columns content">
     <?= $this->Form->create($lieu) ?>

@@ -62,7 +62,7 @@ class ActiviteController extends AppController
     public function add()
     {
         $this->viewBuilder()->layout('cherLayout');
-        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "activite" . DS ."listeCategorie.php");
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "activite" . DS ."categorieactivite.php");
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
             $this->redirect(['controller'=>'candidat','action' => 'accueil']);
         if($_SESSION['Auth']['User']['typeUser'] == 'admin')
@@ -93,7 +93,7 @@ class ActiviteController extends AppController
     public function edit($id = null)
     {
         $this->viewBuilder()->layout('cherLayout');
-        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "activite" . DS ."listeCategorie.php");
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "activite" . DS ."categorieactivite.php");
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
             $this->redirect(['controller'=>'candidat','action' => 'accueil']);
         if($_SESSION['Auth']['User']['typeUser'] == 'admin')

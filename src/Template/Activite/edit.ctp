@@ -19,7 +19,7 @@
             echo '<div class="input select required">';
             echo $this->Form->label('CodeCategorie');
             echo '<select name="CodeCategorie">';
-            $liste_categorie = get_liste_categorie_activite();
+            $liste_categorie = get_CategorieActivite();
             foreach ($liste_categorie as $categorie) {
                 if($activite['CodeCategorie'] == intval($categorie['CodeCategorieActivite']))
                     echo '<option value="'.$categorie['CodeCategorieActivite'].'" selected>'.$categorie['CodeCategorieActivite'].' '.$categorie['NomCategorie'].'</option>';

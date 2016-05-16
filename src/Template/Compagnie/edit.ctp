@@ -1,16 +1,14 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
-                __('Delete'),
+<?php
+    echo $this->element('sidebarChercheur');
+    echo $this->Form->postLink(
+                __('Supprimer cette compagnie'),
                 ['action' => 'delete', $compagnie->CodeCompagnie],
                 ['confirm' => __('Are you sure you want to delete # {0}?', $compagnie->CodeCompagnie)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Compagnie'), ['action' => 'index']) ?></li>
-    </ul>
-</nav>
-<div class="compagnie form large-9 medium-8 columns content">
+            );
+    echo '<br/>';
+    echo $this->Html->link(__('Retourner a la liste des compagnies'), ['action' => 'index']);
+?>
+<div class="compagnie form large-12 medium-11 columns content">
     <?= $this->Form->create($compagnie) ?>
     <fieldset>
         <legend><?= __('Edit Compagnie') ?></legend>

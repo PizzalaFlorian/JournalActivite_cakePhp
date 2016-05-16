@@ -11,7 +11,7 @@
 ?>
 
 <div class="lieu index large-12 medium-11 columns content">
-<?= $this->Html->link(__('Retour'), ['action' => 'index']) ?>
+<?= $this->Html->link(__('Retourner a la liste des lieux'), ['action' => 'index']) ?>
     <?= $this->Form->create($lieu) ?>
     <fieldset>
         <legend><?= __('Add Lieu') ?></legend>

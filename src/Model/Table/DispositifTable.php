@@ -38,8 +38,8 @@ class DispositifTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('CodeDispositif')
-            ->allowEmpty('CodeDispositif', 'create');
+            ->requirePresence('CodeDispositif', 'create')
+            ->notEmpty('CodeDispositif');
 
         $validator
             ->requirePresence('NomDispositif', 'create')

@@ -2,7 +2,7 @@
     echo $this->element('sidebarChercheur');
 ?>
 <div class="categorieactivite form large-12 medium-11 columns content">
-<?= $this->Html->link(__('Retour'), ['action' => 'index']) ?>
+<?= $this->Html->link(__('Retourner a la liste des categories'), ['action' => 'index']) ?>
     <?= $this->Form->create($categorieactivite) ?>
     <fieldset>
         <legend><?= __('Add Categorieactivite') ?></legend>

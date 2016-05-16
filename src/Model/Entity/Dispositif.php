@@ -22,7 +22,6 @@ class Dispositif extends Entity
      * @var array
      */
     protected $_accessible = [
-        '*' => true,
-        'CodeDispositif' => false,
+        '*' => true
     ];
 }

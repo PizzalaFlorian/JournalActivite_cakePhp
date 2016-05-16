@@ -18,6 +18,12 @@ class CompagnieController extends AppController
      */
     public function index()
     {
+        $this->viewBuilder()->layout('cherLayout');
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+
         $compagnie = $this->paginate($this->Compagnie);
 
         $this->set(compact('compagnie'));
@@ -33,6 +39,12 @@ class CompagnieController extends AppController
      */
     public function view($id = null)
     {
+        $this->viewBuilder()->layout('cherLayout');
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+
         $compagnie = $this->Compagnie->get($id, [
             'contain' => []
         ]);
@@ -48,6 +60,12 @@ class CompagnieController extends AppController
      */
     public function add()
     {
+        $this->viewBuilder()->layout('cherLayout');
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+
         $compagnie = $this->Compagnie->newEntity();
         if ($this->request->is('post')) {
             $compagnie = $this->Compagnie->patchEntity($compagnie, $this->request->data);
@@ -71,6 +89,13 @@ class CompagnieController extends AppController
      */
     public function edit($id = null)
     {
+
+        $this->viewBuilder()->layout('cherLayout');
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+
         $compagnie = $this->Compagnie->get($id, [
             'contain' => []
         ]);

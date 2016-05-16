@@ -19,6 +19,7 @@
                 <td><?= h($categorieactivite->NomCategorie) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('Modifier'), ['action' => 'edit', $categorieactivite->CodeCategorieActivite]) ?>
+                    <br>
                     <?= $this->Form->postLink(__('Supprimer'), ['action' => 'delete', $categorieactivite->CodeCategorieActivite], ['confirm' => __('Are you sure you want to delete # {0}?', $categorieactivite->CodeCategorieActivite)]) ?>
                 </td>
             </tr>

@@ -18,6 +18,12 @@ class DispositifController extends AppController
      */
     public function index()
     {
+         $this->viewBuilder()->layout('cherLayout');
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+
         $dispositif = $this->paginate($this->Dispositif);
 
         $this->set(compact('dispositif'));
@@ -48,8 +54,15 @@ class DispositifController extends AppController
      */
     public function add()
     {
+         $this->viewBuilder()->layout('cherLayout');
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+
         $dispositif = $this->Dispositif->newEntity();
         if ($this->request->is('post')) {
+            //debug($this->request->data);
             $dispositif = $this->Dispositif->patchEntity($dispositif, $this->request->data);
             if ($this->Dispositif->save($dispositif)) {
                 $this->Flash->success(__('The dispositif has been saved.'));
@@ -71,6 +84,12 @@ class DispositifController extends AppController
      */
     public function edit($id = null)
     {
+         $this->viewBuilder()->layout('cherLayout');
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+
         $dispositif = $this->Dispositif->get($id, [
             'contain' => []
         ]);

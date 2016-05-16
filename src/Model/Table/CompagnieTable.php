@@ -42,8 +42,8 @@ class CompagnieTable extends Table
             ->notEmpty('NomCompagnie');
 
         $validator
-            ->integer('CodeCompagnie')
-            ->allowEmpty('CodeCompagnie', 'create');
+            ->requirePresence('CodeCompagnie', 'create')
+            ->notEmpty('CodeCompagnie');
 
         return $validator;
     }

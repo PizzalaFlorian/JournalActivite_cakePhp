@@ -22,7 +22,6 @@ class Compagnie extends Entity
      * @var array
      */
     protected $_accessible = [
-        '*' => true,
-        'CodeCompagnie' => false,
+        '*' => true
     ];
 }
