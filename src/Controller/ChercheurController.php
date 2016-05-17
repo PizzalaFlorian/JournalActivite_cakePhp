@@ -205,6 +205,12 @@ class ChercheurController extends AppController
      */
     public function index()
     {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
+        $this->viewBuilder()->layout('adminLayout');
         $chercheur = $this->paginate($this->Chercheur);
 
         $this->set(compact('chercheur'));
@@ -240,16 +246,32 @@ class ChercheurController extends AppController
         if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
             $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
 
+        $this->viewBuilder()->layout('adminLayout');
+
+        $user = TableRegistry::get('users')->newEntity();
         $chercheur = $this->Chercheur->newEntity();
         if ($this->request->is('post')) {
-            $chercheur = $this->Chercheur->patchEntity($chercheur, $this->request->data);
-            if ($this->Chercheur->save($chercheur)) {
-                $this->Flash->success(__('The chercheur has been saved.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The chercheur could not be saved. Please, try again.'));
+             if(isset($this->request->data['login'])){
+                $user = TableRegistry::get('users')->patchEntity($user, $this->request->data);
+                if (TableRegistry::get('users')->save($user)) {
+                    $this->Flash->success(__('l\'utilisateur a été ajouter, veuillez remplir le formulaire du chercheur désormais'));
+                } else {
+                $this->Flash->error(__('The user could not be saved. Please, try again.'));
+                }
+            }
+            if(isset($this->request->data['NomChercheur'])){
+                $chercheur = $this->Chercheur->patchEntity($chercheur, $this->request->data);
+                if ($this->Chercheur->save($chercheur)) {
+                    $this->Flash->success(__('The chercheur has been saved.'));
+                    return $this->redirect(['action' => 'index']);
+                } else {
+                    $this->Flash->error(__('The chercheur could not be saved. Please, try again.'));
+                }
             }
         }
+        $this->set('user',$user);
+        $this->set(compact('user'));
+        $this->set('_serialize', ['user']);
         $this->set(compact('chercheur'));
         $this->set('_serialize', ['chercheur']);
     }
@@ -263,6 +285,13 @@ class ChercheurController extends AppController
      */
     public function edit($id = null)
     {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
+        $this->viewBuilder()->layout('adminLayout');
+
         $chercheur = $this->Chercheur->get($id, [
             'contain' => []
         ]);
@@ -288,10 +317,23 @@ class ChercheurController extends AppController
      */
     public function delete($id = null)
     {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
         $this->request->allowMethod(['post', 'delete']);
         $chercheur = $this->Chercheur->get($id);
+
+            
         if ($this->Chercheur->delete($chercheur)) {
             $this->Flash->success(__('The chercheur has been deleted.'));
+            $occupation = TableRegistry::get('users')
+                ->query();
+            $occupation
+                ->delete()
+                ->where(['ID' => $chercheur['ID']])
+                ->execute();
         } else {
             $this->Flash->error(__('The chercheur could not be deleted. Please, try again.'));
         }

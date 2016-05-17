@@ -1,17 +1,29 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Chercheur'), ['action' => 'index']) ?></li>
-    </ul>
-</nav>
-<div class="chercheur form large-9 medium-8 columns content">
+<?php
+    echo $this->element('sidebarAdmin');
+?>
+<div class="chercheur form large-11 medium-12 columns content">
+    <?= $this->Html->link(__('Retour'), ['action' => 'index']) ?>
+    <?= $this->Form->create($user) ?>
+    <fieldset>
+        <legend><?= __('Ajouter l\' Utilisateur') ?></legend>
+        <?php
+            echo $this->Form->input('login');
+            echo $this->Form->input('typeUser',['default'=>'chercheur']);
+            echo $this->Form->input('password');
+            echo $this->Form->input('email');
+        ?>
+    </fieldset>
+    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->end() ?>
+    <br>
+    <br>
     <?= $this->Form->create($chercheur) ?>
     <fieldset>
-        <legend><?= __('Add Chercheur') ?></legend>
+        <legend><?= __('Ajouter le Chercheur') ?></legend>
         <?php
-            echo $this->Form->input('NomChercheur');
             echo $this->Form->input('PrenomChercheur');
-            echo $this->Form->input('ID');
+            echo $this->Form->input('NomChercheur');
+            echo $this->Form->input('ID',['default'=>$user->ID]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
