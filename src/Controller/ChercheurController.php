@@ -268,7 +268,7 @@ class ChercheurController extends AppController
                     $email
                         ->to($this->request->data['email'])
                         ->subject("Confirmation de compte")
-                        ->send("Bonjour,\nVoici vos identifiant de votre compte chercheur : \nLogin : ".$this->request->data['login']."\nMot de passe : ".$this->request->data['password']."\nCordialement\nMoi");
+                        ->send("Bonjour,\nVoici vos identifiant de votre compte chercheur : \nLogin : ".$this->request->data['login']."\nMot de passe : ".$this->request->data['password']."\nCordialement\n");
                     
 
                 } else {
