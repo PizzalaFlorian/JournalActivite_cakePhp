@@ -81,6 +81,7 @@ class MessagesController extends AppController
      */
     public function view($id = null)
     {
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "messagerie" . DS ."messagerie.php");
         switch ($_SESSION['Auth']['User']['typeUser']) {
             case 'candidat':    $monID = $_SESSION['Auth']['User']['ID'];  
                                 $this->viewBuilder()->layout('candiLayout'); 
@@ -96,6 +97,10 @@ class MessagesController extends AppController
         }
         $message = $this->Messages->get($id, ['contain' => [] ]);
         if(($message->IDExpediteur == $monID) || ($message->IDRecepteur == $monID)){
+            if(($message->IDRecepteur == $monID)&&($message->recepteurLu == 0)){
+                $message->recepteurLu = 1;
+                $this->Messages->save($message);
+            }
             $this->set('message', $message);
             $this->set(compact('sideBar'));
             $this->set('_serialize', ['message']);    
@@ -294,6 +299,11 @@ class MessagesController extends AppController
                 case 'chercheur':   $pseudo = "Chercheur";             $pseudoID = '1';                  break;
                 case 'admin':       $pseudo = "Administrateur";        $pseudoID = '0';                  break;
             }
+            // met a jours "lu / non lu" 
+            if(($message->IDRecepteur == $monID)&&($message->recepteurLu == 0)){
+                $message->recepteurLu = 1;
+                $this->Messages->save($message);
+            }
             //prépare les variables pour le template
             $this->set(compact('pseudo'));
             $this->set(compact('pseudoID'));
@@ -333,7 +343,8 @@ class MessagesController extends AppController
             case 'admin':           $monID = 0;                                                 break;
         }
         // recuperation des messages en fonction de l'id
-        $messages = $this->paginate($this->Messages->findAllByIdexpediteur($monID));
+        $messages = $this->paginate($this->Messages->find('all', ['conditions' => ['Idexpediteur' => $monID], 'order' => array('DateEnvoi DESC') ]));
+
         $this->set(compact('monController'));
         $this->set(compact('monAction'));
         $this->set(compact('sideBar'));

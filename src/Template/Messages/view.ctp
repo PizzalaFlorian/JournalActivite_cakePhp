@@ -16,7 +16,7 @@
         </tr>
         <tr>
             <th><?= __('De :') ?></th>
-            <td><?= $this->Number->format($message->IDExpediteur) ?></td>
+            <td><?php echo whoIsID($message->IDExpediteur); ?></td>
         </tr>
         <tr>
             <th><?= __('Date :') ?></th>

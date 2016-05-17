@@ -15,10 +15,6 @@
                 <?php echo "<option value=".$pseudoID.">".$pseudo."</option>"; ?>
             </select>
         </div>
-        <div class="input text required">
-            <label for="date">Date : </label>
-            <input id="date" type="text" value="<?php echo date('d/m/Y'); ?>" maxlength="250" required="required" name="Date" disabled="disabled">
-        </div>
         <?php echo $this->Form->input('Sujet', array('label' => 'Sujet :', 'value' => 'Re: '.$message->Sujet)); ?>
         <?php
             echo $this->Form->textarea('ContenuMessage', array(

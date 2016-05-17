@@ -1,6 +1,6 @@
 <?php
 	function message_Lu($message){
-		if($message->Lu){
+		if($message->recepteurLu){
 			$resultat = "";
 		}else{
 			$resultat = "nonLu";
