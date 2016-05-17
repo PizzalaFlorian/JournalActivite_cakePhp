@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * Dispositif Controller
@@ -84,7 +85,7 @@ class DispositifController extends AppController
      */
     public function edit($id = null)
     {
-         $this->viewBuilder()->layout('cherLayout');
+        $this->viewBuilder()->layout('cherLayout');
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
             $this->redirect(['controller'=>'candidat','action' => 'accueil']);
         if($_SESSION['Auth']['User']['typeUser'] == 'admin')
@@ -115,13 +116,93 @@ class DispositifController extends AppController
      */
     public function delete($id = null)
     {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+
         $this->request->allowMethod(['post', 'delete']);
         $dispositif = $this->Dispositif->get($id);
+
+        $table = TableRegistry::get('occupation')
+            ->find()
+            ->where(['CodeDispositif'=>$dispositif->CodeDispositif])
+            ->first();
+
+        if(isset($table['CodeDispositif'])){
+             $this->Flash->error(__('Ce dispositif a été utilisée par des candidats, veuillez choisir une action.'));
+            return $this->redirect(['action' => 'reaffect',$dispositif->CodeDispositif]);
+        }
+
         if ($this->Dispositif->delete($dispositif)) {
             $this->Flash->success(__('The dispositif has been deleted.'));
         } else {
             $this->Flash->error(__('The dispositif could not be deleted. Please, try again.'));
         }
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function reaffect($id = null)
+    {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+
+        $this->viewBuilder()->layout('cherLayout');
+        $dispositif = $this->Dispositif->get($id);
+        
+        $list_dispositif = TableRegistry::get('dispositif')
+            ->find()
+            ->toArray();
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            
+            $occupation = TableRegistry::get('occupation')
+                ->query();
+            $occupation    
+                ->update()
+                ->set(['CodeDispositif' => $this->request->data['CodeDispositif']])
+                ->where(['CodeDispositif' => $dispositif->CodeDispositif])
+                ->execute();
+
+            $this->Flash->success(__('Les occupations ont été réaffectées'));
+            $this->redirect(['action' => 'index']);
+        }
+        $this->set('dispositif', $dispositif);
+        $this->set('list_dispositif', $list_dispositif);
+        $this->set('_serialize', ['dispositif']);    
+    }
+
+    public function deleteAll($id = null)
+    {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+         $dispositif = $this->Dispositif->get($id);
+
+        if ($this->request->is(['patch', 'post', 'put','delete'])) {
+           // debug($activite['CodeDispositif']);
+
+            $occupation = TableRegistry::get('occupation')
+                ->query();
+            $occupation
+                ->delete()
+                ->where(['CodeDispositif' => $dispositif['CodeDispositif']])
+                ->execute();
+
+            $target = TableRegistry::get('dispositif')
+                ->query();
+            $target
+                ->delete()
+                ->where(['CodeDispositif' => $dispositif['CodeDispositif']])
+                ->execute();
+
+            $this->Flash->success(__('le dispositif et les occupations ont été supprimées'));
+            $this->redirect(['action' => 'index']);
+        }
+
+        $this->set('_serialize', ['dispositif']); 
     }
 }
