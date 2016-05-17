@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * Compagnie Controller
@@ -121,13 +122,95 @@ class CompagnieController extends AppController
      */
     public function delete($id = null)
     {
+
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+
         $this->request->allowMethod(['post', 'delete']);
         $compagnie = $this->Compagnie->get($id);
+
+        $table = TableRegistry::get('occupation')
+            ->find()
+            ->where(['CodeCompagnie'=>$compagnie->CodeCompagnie])
+            ->first();
+
+        if(isset($table['CodeCompagnie'])){
+             $this->Flash->error(__('Cette compagnie a été utilisée par des candidats, veuillez choisir une action.'));
+            return $this->redirect(['action' => 'reaffect',$compagnie->CodeCompagnie]);
+        }  
+
         if ($this->Compagnie->delete($compagnie)) {
             $this->Flash->success(__('The compagnie has been deleted.'));
         } else {
             $this->Flash->error(__('The compagnie could not be deleted. Please, try again.'));
         }
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function reaffect($id = null)
+    {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+
+        $this->viewBuilder()->layout('cherLayout');
+        $compagnie = $this->Compagnie->get($id);
+
+        $list_compagnie = TableRegistry::get('compagnie')
+            ->find()
+            ->toArray();
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            
+            $occupation = TableRegistry::get('occupation')
+                ->query();
+            $occupation    
+                ->update()
+                ->set(['CodeCompagnie' => $this->request->data['CodeCompagnie']])
+                ->where(['CodeCompagnie' => $compagnie->CodeCompagnie])
+                ->execute();
+
+            $this->Flash->success(__('Les occupations ont été réaffectées'));
+            $this->redirect(['action' => 'index']);
+        }
+        $this->set('compagnie', $compagnie);
+        $this->set('list_compagnie', $list_compagnie);
+        $this->set('_serialize', ['dispositif']);    
+    }
+
+    public function deleteAll($id = null)
+    {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+
+        $compagnie = $this->Compagnie->get($id);
+
+        if ($this->request->is(['patch', 'post', 'put','delete'])) {
+           // debug($activite['CodeDispositif']);
+
+            $occupation = TableRegistry::get('occupation')
+                ->query();
+            $occupation
+                ->delete()
+                ->where(['CodeCompagnie' => $compagnie['CodeCompagnie']])
+                ->execute();
+
+            $target = TableRegistry::get('compagnie')
+                ->query();
+            $target
+                ->delete()
+                ->where(['CodeCompagnie' => $compagnie['CodeCompagnie']])
+                ->execute();
+
+            $this->Flash->success(__('la compagnie et les occupations ont été supprimées'));
+            $this->redirect(['action' => 'index']);
+        }
+
+        $this->set('_serialize', ['compagnie']); 
     }
 }

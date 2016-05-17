@@ -1,5 +1,6 @@
 <?php
     echo $this->element('sidebarChercheur');
+    use Cake\ORM\TableRegistry;
 ?>
 <div class="compagnie index large-12 medium-11 columns content">
     <h3><?= __('Compagnie') ?></h3>
@@ -9,6 +10,7 @@
             <tr>
                 <th><?= $this->Paginator->sort('NomCompagnie') ?></th>
                 <th><?= $this->Paginator->sort('CodeCompagnie') ?></th>
+                <th><?= $this->Paginator->sort('Nombre occurence') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -17,10 +19,26 @@
             <tr>
                 <td><?= h($compagnie->NomCompagnie) ?></td>
                 <td><?= $this->Number->format($compagnie->CodeCompagnie) ?></td>
+                <td>
+                <?php 
+                    $count = TableRegistry::get('occupation')
+                    ->find()
+                    ->select(array('count'=>'COUNT(*)'))
+                    ->where(['CodeCompagnie'=>$compagnie->CodeCompagnie])
+                    ->group('CodeCompagnie')
+                    ->first();
+                    echo $this->Number->format($count['count']);
+                ?> 
+                </td>
                 <td class="actions">
                     <?= $this->Html->link(__('Modifier'), ['action' => 'edit', $compagnie->CodeCompagnie]) ?>
                     <br>
                     <?= $this->Form->postLink(__('Supprimer'), ['action' => 'delete', $compagnie->CodeCompagnie], ['confirm' => __('Are you sure you want to delete # {0}?', $compagnie->CodeCompagnie)]) ?>
+                    <br>
+                    <?= $this->Html->link(
+                        'Reaffecter',
+                        [ 'action' => 'reaffect', $compagnie->CodeCompagnie]
+                    ) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
