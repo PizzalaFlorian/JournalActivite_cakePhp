@@ -31,7 +31,7 @@
                 </td>
                 <!-- NOM DE L'EXPEDITEUR -->
                 <td>
-                    <?php echo whoIsID($message->IDRecepteur); ?>
+                    <?php echo whoIsID($message->userRecepteur); ?>
                 </td>
                 <!-- ACTIONS -->
                 <td class="actions">
