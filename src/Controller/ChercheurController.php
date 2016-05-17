@@ -12,6 +12,7 @@ use fonctionperso\lieu\lieux;
 use fonctionperso\dispositif\dispositif;
 use fonctionperso\compagnie\compagnie;
 use phpoffice\phpexcel\Classes\PHPExcel;
+use Cake\Mailer\Email;
 
 /**
  * Chercheur Controller
@@ -262,6 +263,14 @@ class ChercheurController extends AppController
                 $user = TableRegistry::get('users')->patchEntity($user, $this->request->data);
                 if (TableRegistry::get('users')->save($user)) {
                     $this->Flash->success(__('l\'utilisateur a été ajouter, veuillez remplir le formulaire du chercheur désormais'));
+
+                    $email = new Email('default');
+                    $email
+                        ->to($this->request->data['email'])
+                        ->subject("Confirmation de compte")
+                        ->send("Bonjour,\nVoici vos identifiant de votre compte chercheur : \nLogin : ".$this->request->data['login']."\nMot de passe : ".$this->request->data['password']."\nCordialement\nMoi");
+                    
+
                 } else {
                 $this->Flash->error(__('The user could not be saved. Please, try again.'));
                 }
