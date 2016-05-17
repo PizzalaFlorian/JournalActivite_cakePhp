@@ -80,7 +80,10 @@
                     
                     <label class="label_evenement" for="new_event_compagnie">			Compagnie :</label>
                     <select type="text" class="lab" name="new_event_compagnie" id="new_event_compagnie">
-						<option id="0"> - - - - - </option>
+						<?php
+                                foreach($liste_compagnie as $id => $object){
+                                echo'<option id="'.$object->CodeCompagnie.'">'.$object->NomCompagnie.'</option>';}
+                        ?>
 					</select><br />
 						
                     <label class="label_evenement" for="new_event_dispositif">			Dispositif :</label>
