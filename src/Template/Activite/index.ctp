@@ -35,7 +35,9 @@
                 </td>
                 <td class="actions">
                     <?= $this->Html->link(__('Modifier'), ['action' => 'edit', $activite->CodeActivite]) ?>
+                    <br>
                     <?= $this->Form->postLink(__('Supprimer'), ['action' => 'delete', $activite->CodeActivite], ['confirm' => __('Are you sure you want to delete # {0}?', $activite->CodeActivite)]) ?>
+                    <br>
                     <?= $this->Html->link(
                         'Reaffecter',
                         [ 'action' => 'reaffect', $activite->CodeActivite]

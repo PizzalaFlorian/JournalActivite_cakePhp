@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * Categorielieu Controller
@@ -121,11 +122,87 @@ class CategorielieuController extends AppController
 
         $this->request->allowMethod(['post', 'delete']);
         $categorielieu = $this->Categorielieu->get($id);
+
+        $table = TableRegistry::get('lieu')
+            ->find()
+            ->where(['CodeCategorieLieux'=>$categorielieu->CodeCategorieLieux])
+            ->first();
+
+        if(isset($table['CodeCategorieLieux'])){
+             $this->Flash->error(__('Cette categorire contient des lieu, veuillez choisir une action.'));
+            return $this->redirect(['action' => 'reaffect',$categorielieu->CodeCategorieLieux]);
+        }
+
         if ($this->Categorielieu->delete($categorielieu)) {
             $this->Flash->success(__('The categorielieu has been deleted.'));
         } else {
             $this->Flash->error(__('The categorielieu could not be deleted. Please, try again.'));
         }
         return $this->redirect(['action' => 'index']);
+    }
+
+     public function reaffect($id = null)
+    {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+
+        $this->viewBuilder()->layout('cherLayout');
+        $categorielieu = $this->Categorielieu->get($id);
+
+        $list_categorie = TableRegistry::get('categorielieu')
+            ->find()
+            ->toArray();
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            
+            $lieux = TableRegistry::get('lieu')
+                ->query();
+            $lieux    
+                ->update()
+                ->set(['CodeCategorieLieux' => $this->request->data['CodeCategorieLieux']])
+                ->where(['CodeCategorieLieux' => $categorielieu->CodeCategorieLieux])
+                ->execute();
+
+            $this->Flash->success(__('Les occupations ont été réaffectées'));
+            $this->redirect(['action' => 'index']);
+        }
+        $this->set('categorielieu', $categorielieu);
+        $this->set('list_categorie', $list_categorie);
+        $this->set('_serialize', ['categorielieu']);    
+    }
+
+    public function deleteAll($id = null)
+    {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+        $categorielieu = $this->Categorielieu->get($id);
+
+        if ($this->request->is(['patch', 'post', 'put','delete'])) {
+           // debug($activite['CodeActivite']);
+
+            $activite = TableRegistry::get('activite')
+                ->query();
+            $activite
+                ->delete()
+                ->where(['CodeCategorieLieux' => $categorielieu['CodeCategorieLieux']])
+                ->execute();
+
+            $target = TableRegistry::get('categorielieu')
+                ->query();
+            $target
+                ->delete()
+                ->where(['CodeCategorieLieux' => $categorielieu['CodeCategorieLieux']])
+                ->execute();
+
+            $this->Flash->success(__('la catégorie et Les activitées ont été supprimées'));
+            $this->redirect(['action' => 'index']);
+        }
+
+        $this->set('categorielieu', $categorielieu);
+        $this->set('_serialize', ['categorielieu']);  
     }
 }

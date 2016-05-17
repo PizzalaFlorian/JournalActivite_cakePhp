@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * Categorieactivite Controller
@@ -123,11 +124,90 @@ class CategorieactiviteController extends AppController
             $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
         $this->request->allowMethod(['post', 'delete']);
         $categorieactivite = $this->Categorieactivite->get($id);
+
+        $table = TableRegistry::get('activite')
+            ->find()
+            ->where(['CodeCategorie'=>$categorieactivite->CodeCategorieActivite])
+            ->first();
+
+        if(isset($table['CodeCategorie'])){
+             $this->Flash->error(__('Cette categorire contient des activitées, veuillez choisir une action.'));
+            return $this->redirect(['action' => 'reaffect',$categorieactivite->CodeCategorieActivite]);
+        }
+
+
         if ($this->Categorieactivite->delete($categorieactivite)) {
             $this->Flash->success(__('The categorieactivite has been deleted.'));
         } else {
             $this->Flash->error(__('The categorieactivite could not be deleted. Please, try again.'));
         }
         return $this->redirect(['action' => 'index']);
+    }
+
+     public function reaffect($id = null)
+    {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+
+        $this->viewBuilder()->layout('cherLayout');
+        $categorieactivite = $this->Categorieactivite->get($id);
+
+        $list_categorie = TableRegistry::get('categorieactivite')
+            ->find()
+            ->toArray();
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            //debug($this->request->data);
+            //debug($activite);
+
+            $activite = TableRegistry::get('activite')
+                ->query();
+            $activite    
+                ->update()
+                ->set(['CodeCategorie' => $this->request->data['CodeCategorieActivite']])
+                ->where(['CodeCategorie' => $categorieactivite->CodeCategorieActivite])
+                ->execute();
+
+            $this->Flash->success(__('Les occupations ont été réaffectées'));
+            $this->redirect(['action' => 'index']);
+        }
+        $this->set('categorieactivite', $categorieactivite);
+        $this->set('list_categorie', $list_categorie);
+        $this->set('_serialize', ['categorieactivite']);    
+    }
+
+    public function deleteAll($id = null)
+    {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+        $categorieactivite = $this->Categorieactivite->get($id);
+
+        if ($this->request->is(['patch', 'post', 'put','delete'])) {
+           // debug($activite['CodeActivite']);
+
+            $activite = TableRegistry::get('activite')
+                ->query();
+            $activite
+                ->delete()
+                ->where(['CodeCategorie' => $categorieactivite['CodeCategorieActivite']])
+                ->execute();
+
+            $target = TableRegistry::get('categorieactivite')
+                ->query();
+            $target
+                ->delete()
+                ->where(['CodeCategorieActivite' => $categorieactivite['CodeCategorieActivite']])
+                ->execute();
+
+            $this->Flash->success(__('la catégorie et Les activitées ont été supprimées'));
+            $this->redirect(['action' => 'index']);
+        }
+
+        $this->set('categorieactivite', $categorieactivite);
+        $this->set('_serialize', ['categorieactivite']);  
     }
 }

@@ -1,6 +1,7 @@
 <?php
     echo $this->element('sidebarChercheur');
 ?>
+<h3><?php echo $activite['NomActivite']; ?></h3>
 <div class="activite form large-12 medium-11 columns content">
 	<h4>Annuler</h4>
 	<?php 
@@ -9,7 +10,7 @@
 	<h4>Réaffecter</h4>	
 		<?= $this->Form->create($activite) ?>
 	    <fieldset>
-	        <legend><?= __('Réaffectation des occupations liées a cette activitée') ?></legend>
+	        <legend><?= __('Réaffectation les occupations de '.$activite['NomActivite'].' dans :') ?></legend>
 	        <?php
 	            echo '<select name="CodeActivite">';
 	            foreach ($list_activite as $acti) {

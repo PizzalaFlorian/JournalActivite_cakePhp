@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * Lieu Controller
@@ -123,13 +124,91 @@ class LieuController extends AppController
             $this->redirect(['controller'=>'candidat','action' => 'accueil']);
         if($_SESSION['Auth']['User']['typeUser'] == 'admin')
             $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+
         $this->request->allowMethod(['post', 'delete']);
         $lieu = $this->Lieu->get($id);
+
+        $table = TableRegistry::get('occupation')
+            ->find()
+            ->where(['CodeLieux'=>$lieu->CodeLieux])
+            ->first();
+
+        if(isset($table['CodeLieux'])){
+             $this->Flash->error(__('Ce lieu a été utilisée par des candidats, veuillez choisir une action.'));
+            return $this->redirect(['action' => 'reaffect',$lieu->CodeLieux]);
+        }
+
         if ($this->Lieu->delete($lieu)) {
             $this->Flash->success(__('The lieu has been deleted.'));
         } else {
             $this->Flash->error(__('The lieu could not be deleted. Please, try again.'));
         }
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function reaffect($id = null)
+    {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+
+        $this->viewBuilder()->layout('cherLayout');
+        $lieu = $this->Lieu->get($id);
+
+        $list_lieux = TableRegistry::get('lieu')
+            ->find()
+            ->toArray();
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            //debug($this->request->data);
+            //debug($activite);
+
+            $occupation = TableRegistry::get('occupation')
+                ->query();
+            $occupation    
+                ->update()
+                ->set(['CodeLieux' => $this->request->data['CodeLieux']])
+                ->where(['CodeLieux' => $lieu->CodeLieux])
+                ->execute();
+
+            $this->Flash->success(__('Les occupations ont été réaffectées'));
+            $this->redirect(['action' => 'index']);
+        }
+        $this->set('lieu', $lieu);
+        $this->set('list_lieux', $list_lieux);
+        $this->set('_serialize', ['lieu']);    
+    }
+
+    public function deleteAll($id = null)
+    {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+         $lieu = $this->Lieu->get($id);
+
+        if ($this->request->is(['patch', 'post', 'put','delete'])) {
+           // debug($activite['CodeActivite']);
+
+            $occupation = TableRegistry::get('occupation')
+                ->query();
+            $occupation
+                ->delete()
+                ->where(['CodeLieux' => $lieu['CodeLieux']])
+                ->execute();
+
+            $target = TableRegistry::get('lieu')
+                ->query();
+            $target
+                ->delete()
+                ->where(['CodeLieux' => $lieu['CodeLieux']])
+                ->execute();
+
+            $this->Flash->success(__('l\'activitée Les occupations ont été supprimées'));
+            $this->redirect(['action' => 'index']);
+        }
+
+        $this->set('_serialize', ['lieu']);  
     }
 }
