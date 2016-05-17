@@ -248,6 +248,13 @@ class ChercheurController extends AppController
 
         $this->viewBuilder()->layout('adminLayout');
 
+        $char = 'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMOPQRSTUVWXYZ';
+            $password = str_shuffle($char);
+            $password = substr ( $password , 0, 7 );
+
+            $login = str_shuffle($char);
+            $login = substr ( $login , 0, 7 );
+
         $user = TableRegistry::get('users')->newEntity();
         $chercheur = $this->Chercheur->newEntity();
         if ($this->request->is('post')) {
@@ -270,6 +277,8 @@ class ChercheurController extends AppController
             }
         }
         $this->set('user',$user);
+        $this->set('login',$login);
+        $this->set('password',$password);
         $this->set(compact('user'));
         $this->set('_serialize', ['user']);
         $this->set(compact('chercheur'));
