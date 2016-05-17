@@ -23,6 +23,36 @@ use fonctionperso\dispositif\dispositif;
 class CandidatController extends AppController
 {
 
+    public function certificat(){
+        $this->viewBuilder()->layout('pdf/default');
+        $filename = 'certificat';
+
+        $candidat = TableRegistry::get('candidat')
+            ->find()
+            ->where(['ID' => $_SESSION['Auth']['User']['ID']])
+            ->first();
+
+        $occupation = TableRegistry::get('occupation')
+            ->find()
+            ->select(array(
+                'count'=>'Count(*)',
+                'debut'=>'min(HeureDebut)',
+                'max'=>'max(HeureDebut)'
+                ))
+            ->where(['CodeCandidat' => $candidat['CodeCandidat']])
+            ->group('CodeCandidat')
+            ->toArray();
+
+        $this->set('filename',$filename);
+        $this->set('candidat',$candidat);
+        $this->set('occupation',$occupation);
+        $path = ROOT . DS .'webroot'. DS . 'files' . DS . 'pdf' . DS . $filename . '.pdf';
+        $this->response->file($path, array(
+            'download' => true,
+            'name' => $filename. '.pdf'
+        ));
+    return $this->response;        
+    }
     public function accueil()
     {
 
