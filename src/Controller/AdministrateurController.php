@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use fonctionperso\chercheur\chercheurAccueil;
+use fonctionperso\chercheur\chercheurDonnees;
 
 /**
  * Administrateur Controller
@@ -10,7 +12,17 @@ use App\Controller\AppController;
  */
 class AdministrateurController extends AppController
 {
+    public function accueil(){
+        $this->viewBuilder()->layout('adminLayout');
 
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "chercheur" . DS ."chercheurAccueil.php");
+
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "actualite" . DS ."actualite.php");
+        $this->loadModel('Actualites');
+        $actualites = $this->Actualites->find('all');
+        $this->set(compact('actualites'));
+        $this->set('_serialize', ['actualites']);
+    }
     /**
      * Index method
      *

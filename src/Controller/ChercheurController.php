@@ -235,6 +235,11 @@ class ChercheurController extends AppController
      */
     public function add()
     {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
         $chercheur = $this->Chercheur->newEntity();
         if ($this->request->is('post')) {
             $chercheur = $this->Chercheur->patchEntity($chercheur, $this->request->data);
