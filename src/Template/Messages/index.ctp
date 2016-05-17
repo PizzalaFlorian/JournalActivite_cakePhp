@@ -3,8 +3,8 @@
     echo $this->Html->css('messagerie');
 ?>
 <nav id="messagerieMenu" class="large-2 medium-3 columns">
-    <div><?= $this->Form->postLink(__('Nouveau Message'), ['action' => 'nouveau']) ?></div>
-    <div><?= $this->Html->link(__('Messages envoyé'), ['action' => 'envoie']) ?></div>
+    <div><?= $this->Html->link(__('Nouveau Message'), ['action' => 'nouveau']) ?></div>
+    <div><?= $this->Html->link(__('Messages envoyés'), ['action' => 'envoie']) ?></div>
 </nav>
 
 
@@ -15,7 +15,7 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th><?= $this->Paginator->sort('DateEnvoi') ?></th>
+                <th><?= $this->Paginator->sort('Reçu le') ?></th>
                 <th><?= $this->Paginator->sort('Sujet') ?></th>
                 <th><?= $this->Paginator->sort('Expediteur') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>

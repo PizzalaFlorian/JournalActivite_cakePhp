@@ -29,7 +29,7 @@ class ChercheurController extends AppController
 
         require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "actualite" . DS ."actualite.php");
         $this->loadModel('Actualites');
-        $actualites = $this->Actualites->find('all');
+        $actualites = $this->Actualites->find('all' ,array( 'order' => array('Date DESC') ));
         $this->set(compact('actualites'));
         $this->set('_serialize', ['actualites']);
     }

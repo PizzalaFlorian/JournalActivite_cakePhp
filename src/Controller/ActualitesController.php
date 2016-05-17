@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\I18n\Time;
 
 /**
  * Actualites Controller
@@ -91,6 +92,8 @@ class ActualitesController extends AppController
             }
             $actualite = $this->Actualites->get($id, ['contain' => [] ]);
             if ($this->request->is(['patch', 'post', 'put'])) {
+                //modification de la date
+                $this->request->data['Date'] = Time::now(); 
                 $actualite = $this->Actualites->patchEntity($actualite, $this->request->data);
                 if ($this->Actualites->save($actualite)) {
                     $this->Flash->success(__('La modification a été sauvegardé.'));
@@ -152,7 +155,10 @@ class ActualitesController extends AppController
             }
             $actualite = $this->Actualites->newEntity();
             if ($this->request->is('post')) {
+                // ajoute de l'heure du post
+                $this->request->data['Date'] = Time::now();
                 $actualite = $this->Actualites->patchEntity($actualite, $this->request->data);
+
                 if ($this->Actualites->save($actualite)) {
                     $this->Flash->success(__('The actualite has been saved.'));
                     return $this->redirect(['controller' => $monController, 'action' => $monAction]);
