@@ -5,6 +5,7 @@ use App\Controller\AppController;
 use vendor\fonctionperso\messagerie\messagerie;
 use Cake\ORM\TableRegistry;
 use Cake\Mailer\Email;
+use Cake\I18n\Time;
 //use Cake\Network\Email\Email;
 ////*******************************
 //
@@ -61,7 +62,9 @@ class MessagesController extends AppController
             case 'admin':           $monID = 0;                                                 break;
         }
         // recuperation des messages en fonction de l'id
-        $messages = $this->paginate($this->Messages->findAllByIdrecepteur($monID));
+        //$messages = $this->paginate($this->Messages->findAllByIdrecepteur("$monID" ,array( 'order' => array('DateEnvoi DESC') )));
+        $messages = $this->paginate($this->Messages->find('all', ['conditions' => ['Idrecepteur' => $monID], 'order' => array('DateEnvoi DESC') ]));
+
         $this->set(compact('monController'));
         $this->set(compact('monAction'));
         $this->set(compact('sideBar'));
@@ -209,7 +212,7 @@ class MessagesController extends AppController
         $message = $this->Messages->newEntity();
         if ($this->request->is('post')) {
             $message = $this->Messages->patchEntity($message, $this->request->data);
-            $message->DateEnvoi = date('Y-m-d');
+            $message->DateEnvoi = Time::now(); 
             $message->recepteurLu = "0";
             $message->expediteurLu = "0";
             $message->IDExpediteur = $_SESSION['Auth']['User']['ID'];
@@ -269,7 +272,7 @@ class MessagesController extends AppController
                 
                 $newMessage = $this->Messages->newEntity();
                 $newMessage = $this->Messages->patchEntity($newMessage, $this->request->data);
-                $newMessage->DateEnvoi = date('Y-m-d');
+                $newMessage->DateEnvoi = Time::now(); 
                 $newMessage->recepteurLu = "0";
                 $newMessage->expediteurLu = "0";
                 $newMessage->IDExpediteur = $monID;

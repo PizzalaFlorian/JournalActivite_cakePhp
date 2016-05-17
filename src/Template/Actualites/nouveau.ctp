@@ -9,7 +9,6 @@
     <fieldset>
         <legend><?= __('Création Actualité') ?></legend>
         <?php
-            echo $this->Form->input('Date', array('value' => date('d/m/Y')));
             echo $this->Form->input('Sujet');
             echo $this->Form->input('Contenue');
         ?>

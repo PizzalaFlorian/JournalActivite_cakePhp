@@ -15,7 +15,6 @@
     <fieldset>
         <legend><?= __('Edit Actualite') ?></legend>
         <?php
-            echo $this->Form->input('Date');
             echo $this->Form->input('Sujet');
             echo $this->Form->input('Contenue');
         ?>
