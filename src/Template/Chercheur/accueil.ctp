@@ -9,7 +9,7 @@
 		Insert content here			
 		-->		
 		<center>
-			<h1>Bienvennue <?php echo nomChercheur();?></h1>
+			<h1>Bienvenue <?php echo nomChercheur();?></h1>
 
 		</center>
 		
