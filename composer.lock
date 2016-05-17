@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "063ed71aad65b5a9b9b92dc1bf0ae851",
-    "content-hash": "94a5a5dfaf2338c44296d7cbaff52167",
+    "hash": "284630cb408fc12abcf2765a30a5f390",
+    "content-hash": "a8ee93bf904d9c27b219fb1425eb294c",
     "packages": [
         {
             "name": "aura/installer-default",
@@ -128,16 +128,16 @@
         },
         {
             "name": "cakephp/cakephp",
-            "version": "3.2.8",
+            "version": "3.2.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cakephp.git",
-                "reference": "c263b386982abd22d38d171ebdc56ab64881030a"
+                "reference": "b98b14de4fea83f20023143ab7712fcfda23da8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/c263b386982abd22d38d171ebdc56ab64881030a",
-                "reference": "c263b386982abd22d38d171ebdc56ab64881030a",
+                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/b98b14de4fea83f20023143ab7712fcfda23da8e",
+                "reference": "b98b14de4fea83f20023143ab7712fcfda23da8e",
                 "shasum": ""
             },
             "require": {
@@ -196,7 +196,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2016-04-25 01:54:25"
+            "time": "2016-05-17 02:15:10"
         },
         {
             "name": "cakephp/chronos",
@@ -303,22 +303,22 @@
         },
         {
             "name": "cakephp/migrations",
-            "version": "1.5.7",
+            "version": "1.5.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/migrations.git",
-                "reference": "379b7d531e06d7c972ae9161ba49615119ea3057"
+                "reference": "113deb01d3791d4632f6505ab4517c78075d4189"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/migrations/zipball/379b7d531e06d7c972ae9161ba49615119ea3057",
-                "reference": "379b7d531e06d7c972ae9161ba49615119ea3057",
+                "url": "https://api.github.com/repos/cakephp/migrations/zipball/113deb01d3791d4632f6505ab4517c78075d4189",
+                "reference": "113deb01d3791d4632f6505ab4517c78075d4189",
                 "shasum": ""
             },
             "require": {
                 "cakephp/cakephp": "~3.1",
                 "php": ">=5.4",
-                "robmorgan/phinx": "0.5.1"
+                "robmorgan/phinx": "0.5.3"
             },
             "require-dev": {
                 "cakephp/bake": "@stable",
@@ -349,7 +349,7 @@
                 "cakephp",
                 "migrations"
             ],
-            "time": "2016-03-02 07:47:34"
+            "time": "2016-05-06 21:13:07"
         },
         {
             "name": "cakephp/plugin-installer",
@@ -390,6 +390,47 @@
             ],
             "description": "A composer installer for CakePHP 3.0+ plugins.",
             "time": "2016-04-28 03:01:34"
+        },
+        {
+            "name": "laurentbrieu/tcpdf",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LaurentBrieu/TCPDF.git",
+                "reference": "1352a46982eaf61cdeeae25c8440467a5127c2d2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LaurentBrieu/TCPDF/zipball/1352a46982eaf61cdeeae25c8440467a5127c2d2",
+                "reference": "1352a46982eaf61cdeeae25c8440467a5127c2d2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "TCPDF": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Laurent Brieu",
+                    "email": "contact@laurentbrieu.com"
+                }
+            ],
+            "description": "Composer wrapper for TCPDF PHP library",
+            "homepage": "https://github.com/LaurentBrieu/TCPDF",
+            "keywords": [
+                "TCPDF",
+                "pdf"
+            ],
+            "time": "2014-06-25 08:31:59"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -542,16 +583,16 @@
         },
         {
             "name": "robmorgan/phinx",
-            "version": "v0.5.1",
+            "version": "v0.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/robmorgan/phinx.git",
-                "reference": "9e41ae609670645546e08e3907a68b3b8fb60f31"
+                "reference": "4e7fee7792f4bf3dbf55ee29001850ba26c86a88"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/robmorgan/phinx/zipball/9e41ae609670645546e08e3907a68b3b8fb60f31",
-                "reference": "9e41ae609670645546e08e3907a68b3b8fb60f31",
+                "url": "https://api.github.com/repos/robmorgan/phinx/zipball/4e7fee7792f4bf3dbf55ee29001850ba26c86a88",
+                "reference": "4e7fee7792f4bf3dbf55ee29001850ba26c86a88",
                 "shasum": ""
             },
             "require": {
@@ -599,11 +640,11 @@
                 "migrations",
                 "phinx"
             ],
-            "time": "2015-12-30 21:16:52"
+            "time": "2016-03-07 14:09:22"
         },
         {
             "name": "symfony/config",
-            "version": "v3.0.5",
+            "version": "v3.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
@@ -656,7 +697,7 @@
         },
         {
             "name": "symfony/console",
-            "version": "v3.0.5",
+            "version": "v3.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
@@ -716,7 +757,7 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v3.0.5",
+            "version": "v3.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
@@ -824,7 +865,7 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.0.5",
+            "version": "v3.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
@@ -875,16 +916,16 @@
     "packages-dev": [
         {
             "name": "cakephp/bake",
-            "version": "1.2.3",
+            "version": "1.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/bake.git",
-                "reference": "86e44e4a257b5c5e73f2c2bedd91bc0b92aa4f6f"
+                "reference": "a98e988b154b30e20a5cfe917dcda5ae918bec85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/bake/zipball/86e44e4a257b5c5e73f2c2bedd91bc0b92aa4f6f",
-                "reference": "86e44e4a257b5c5e73f2c2bedd91bc0b92aa4f6f",
+                "url": "https://api.github.com/repos/cakephp/bake/zipball/a98e988b154b30e20a5cfe917dcda5ae918bec85",
+                "reference": "a98e988b154b30e20a5cfe917dcda5ae918bec85",
                 "shasum": ""
             },
             "require": {
@@ -917,7 +958,7 @@
                 "bake",
                 "cakephp"
             ],
-            "time": "2016-03-11 14:52:08"
+            "time": "2016-05-05 01:13:34"
         },
         {
             "name": "cakephp/debug_kit",
@@ -1270,7 +1311,7 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v3.0.5",
+            "version": "v3.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
@@ -1335,6 +1376,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "laurentbrieu/tcpdf": 20,
         "psy/psysh": 0
     },
     "prefer-stable": true,
