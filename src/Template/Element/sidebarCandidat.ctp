@@ -29,6 +29,14 @@
 <li> 
     <?php 
         echo $this->Html->link(
+            'Générer certificat',
+            ['controller' => 'candidat', 'action' => 'certificat/1.pdf', '_full' => true]
+        ); 
+    ?> 
+</li>
+<li> 
+    <?php 
+        echo $this->Html->link(
             'Messagerie',
             ['controller' => 'messages', 'action' => 'index', '_full' => true]
         ); 

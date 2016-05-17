@@ -37,7 +37,7 @@ class CandidatController extends AppController
             ->select(array(
                 'count'=>'Count(*)',
                 'debut'=>'min(HeureDebut)',
-                'max'=>'max(HeureDebut)'
+                'fin'=>'max(HeureDebut)'
                 ))
             ->where(['CodeCandidat' => $candidat['CodeCandidat']])
             ->group('CodeCandidat')
@@ -46,12 +46,13 @@ class CandidatController extends AppController
         $this->set('filename',$filename);
         $this->set('candidat',$candidat);
         $this->set('occupation',$occupation);
+        
         $path = ROOT . DS .'webroot'. DS . 'files' . DS . 'pdf' . DS . $filename . '.pdf';
         $this->response->file($path, array(
             'download' => true,
             'name' => $filename. '.pdf'
         ));
-    return $this->response;        
+        return $this->response;        
     }
     public function accueil()
     {
