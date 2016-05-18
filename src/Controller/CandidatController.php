@@ -161,6 +161,13 @@ class CandidatController extends AppController
      */
     public function index()
     {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
+        $this->viewBuilder()->layout('adminLayout');
+
         $candidat = $this->paginate($this->Candidat);
 
         $this->set(compact('candidat'));
@@ -176,6 +183,14 @@ class CandidatController extends AppController
      */
     public function view($id = null)
     {
+
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
+         $this->viewBuilder()->layout('adminLayout');
+
         $candidat = $this->Candidat->get($id, [
             'contain' => []
         ]);
@@ -196,7 +211,7 @@ class CandidatController extends AppController
             $candidat = $this->Candidat->patchEntity($candidat, $this->request->data);
             if ($this->Candidat->save($candidat)) {
                 $this->Flash->success(__('The candidat has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'accueil']);
             } else {
                 $this->Flash->error(__('The candidat could not be saved. Please, try again.'));
             }
@@ -214,6 +229,11 @@ class CandidatController extends AppController
      */
     public function edit($id = null)
     {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
         $candidat = $this->Candidat->get($id, [
             'contain' => []
         ]);

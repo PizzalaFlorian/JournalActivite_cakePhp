@@ -4,6 +4,7 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\ORM\TableRegistry;
+use Cake\Mailer\Email;
 /**
  * Users Controller
  *
@@ -19,6 +20,13 @@ class UsersController extends AppController
      */
     public function index()
     {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
+        $this->viewBuilder()->layout('adminLayout');
+
         $users = $this->paginate($this->Users);
 
         $this->set(compact('users'));
@@ -34,6 +42,12 @@ class UsersController extends AppController
      */
     public function view($id = null)
     {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
+         $this->viewBuilder()->layout('adminLayout');
         $user = $this->Users->get($id, [
             'contain' => []
         ]);
@@ -51,10 +65,21 @@ class UsersController extends AppController
     {
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
+
+            if($this->request->data['password']!=$this->request->data['comfirmez_password']){
+                $this->Flash->error(__('Vos mots de passes sont différent.'));
+                return $this->redirect(['action' => 'modif']);
+            }
+
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                $email = new Email('default');
+                $email
+                    ->to($this->request->data['email'])
+                    ->subject("Confirmation de compte")
+                    ->send("Bonjour,\nVoici vos identifiant de votre compte : \nLogin : ".$this->request->data['login']."\nMot de passe : ".$this->request->data['password']."\nCordialement\n");
+                return $this->redirect(['controller'=>'candidat','action' => 'add']);
             } else {
                 $this->Flash->error(__('The user could not be saved. Please, try again.'));
             }
@@ -72,10 +97,18 @@ class UsersController extends AppController
      */
     public function edit($id = null)
     {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
+        $this->viewBuilder()->layout('adminLayout');
+
         $user = $this->Users->get($id, [
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
@@ -161,18 +194,45 @@ class UsersController extends AppController
                 $this->Auth->setUser($user);
                
                 //return $this->redirect($this->Auth->redirectUrl());
-                if($user['typeUser']=='candidat')
-                    return $this->redirect([
-                        'controller' => 'candidat',
-                        'action' => 'accueil']);
-                if($user['typeUser']=='chercheur')
-                    return $this->redirect([
-                        'controller' => 'chercheur',
-                        'action' => 'accueil']);
-                if($user['typeUser']=='admin')
+                if($user['typeUser']=='candidat'){
+
+                    $candidat = TableRegistry::get('candidat')
+                        ->find()
+                        ->where(['ID' => $user->ID])
+                        ->first();
+
+                    if(isset($candidat['CodeCandidat'])){
+                        return $this->redirect([
+                            'controller' => 'candidat',
+                            'action' => 'accueil']);
+                    }
+                    else{
+                        return $this->redirect([
+                            'controller' => 'candidat',
+                            'action' => 'add']);
+                    }
+                }
+                if($user['typeUser']=='chercheur'){
+                     $chercheur = TableRegistry::get('chercheur')
+                        ->find()
+                        ->where(['ID' => $user->ID])
+                        ->first();
+                    if(isset($chercheur['CodeChercheur'])){
+                        return $this->redirect([
+                            'controller' => 'chercheur',
+                            'action' => 'accueil']);
+                    } else {
+                         return $this->redirect([
+                            'controller' => 'chercheur',
+                            'action' => 'add']);
+                    }
+
+                }
+                if($user['typeUser']=='admin'){
                     return $this->redirect([
                         'controller' => 'administrateur',
                         'action' => 'accueil']);
+                }
 
             }
             $this->Flash->error(__('Invalid login or password, try again'));

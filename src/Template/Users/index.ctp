@@ -1,11 +1,13 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="users index large-9 medium-8 columns content">
-    <h3><?= __('Users') ?></h3>
+<?php
+    echo $this->element('sidebarAdmin');
+?>
+<div class="users index large-11 medium-12 columns content">
+    <h3><?= __('Utilisateurs') ?></h3>
+    <?= $this->Html->link(__('Inviter un Candidat'), ['controller'=>'administrateur','action' => 'createCandidat']) ?>
+    <br>
+    <?= $this->Html->link(__('Inviter une liste de Candidats'), ['controller'=>'administrateur','action' => 'createCandidatList']) ?>
+    <br>
+    <?= $this->Html->link(__('Inviter un chercheur'), ['controller'=>'administrateur','action' => 'createChercheur']) ?>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
@@ -24,7 +26,6 @@
                 <td><?= h($user->typeUser) ?></td>
                 <td><?= h($user->email) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $user->ID]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->ID]) ?>
                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->ID], ['confirm' => __('Are you sure you want to delete # {0}?', $user->ID)]) ?>
                 </td>

@@ -244,52 +244,22 @@ class ChercheurController extends AppController
     {
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
             $this->redirect(['controller'=>'candidat','action' => 'accueil']);
-        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
-            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
 
-        $this->viewBuilder()->layout('adminLayout');
-
-        $char = 'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMOPQRSTUVWXYZ';
-            $password = str_shuffle($char);
-            $password = substr ( $password , 0, 7 );
-
-            $login = str_shuffle($char);
-            $login = substr ( $login , 0, 7 );
-
-        $user = TableRegistry::get('users')->newEntity();
         $chercheur = $this->Chercheur->newEntity();
         if ($this->request->is('post')) {
-             if(isset($this->request->data['login'])){
-                $user = TableRegistry::get('users')->patchEntity($user, $this->request->data);
-                if (TableRegistry::get('users')->save($user)) {
-                    $this->Flash->success(__('l\'utilisateur a été ajouter, veuillez remplir le formulaire du chercheur désormais'));
 
-                    $email = new Email('default');
-                    $email
-                        ->to($this->request->data['email'])
-                        ->subject("Confirmation de compte")
-                        ->send("Bonjour,\nVoici vos identifiant de votre compte chercheur : \nLogin : ".$this->request->data['login']."\nMot de passe : ".$this->request->data['password']."\nCordialement\n");
-                    
-
-                } else {
-                $this->Flash->error(__('The user could not be saved. Please, try again.'));
-                }
+            $chercheur = $this->Chercheur->patchEntity($chercheur, $this->request->data);
+            if ($this->Chercheur->save($chercheur)) {
+                $this->Flash->success(__('The chercheur has been saved.'));
+                return $this->redirect(['action' => 'accueil']);
+            } else {
+                $this->Flash->error(__('The chercheur could not be saved. Please, try again.'));
             }
-            if(isset($this->request->data['NomChercheur'])){
-                $chercheur = $this->Chercheur->patchEntity($chercheur, $this->request->data);
-                if ($this->Chercheur->save($chercheur)) {
-                    $this->Flash->success(__('The chercheur has been saved.'));
-                    return $this->redirect(['action' => 'index']);
-                } else {
-                    $this->Flash->error(__('The chercheur could not be saved. Please, try again.'));
-                }
-            }
+            
         }
-        $this->set('user',$user);
-        $this->set('login',$login);
-        $this->set('password',$password);
-        $this->set(compact('user'));
-        $this->set('_serialize', ['user']);
+        
         $this->set(compact('chercheur'));
         $this->set('_serialize', ['chercheur']);
     }

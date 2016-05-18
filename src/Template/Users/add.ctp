@@ -1,17 +1,12 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
-    </ul>
-</nav>
-<div class="users form large-9 medium-8 columns content">
+<div class="users form large-11 medium-12 columns content">
     <?= $this->Form->create($user) ?>
     <fieldset>
-        <legend><?= __('Add User') ?></legend>
+        <legend><?= __('Inscription') ?></legend>
         <?php
             echo $this->Form->input('login');
-            echo $this->Form->input('typeUser');
+            echo $this->Form->input('typeUser',['type'=>'hidden','value'=>'candidat']);
             echo $this->Form->input('password');
+            echo $this->Form->input('comfirmez password',['type'=>'password','required'=>true]);
             echo $this->Form->input('email');
         ?>
     </fieldset>

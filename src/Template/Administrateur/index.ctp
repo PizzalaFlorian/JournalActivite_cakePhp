@@ -1,11 +1,9 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Administrateur'), ['action' => 'add']) ?></li>
-    </ul>
-</nav>
+<?php
+    echo $this->element('sidebarAdmin');
+?>
 <div class="administrateur index large-9 medium-8 columns content">
     <h3><?= __('Administrateur') ?></h3>
+    <?= $this->Html->link(__('New Administrateur'), ['action' => 'add']) ?>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>

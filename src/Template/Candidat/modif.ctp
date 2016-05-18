@@ -12,9 +12,9 @@
     <fieldset>
         <legend><?= __('Vos informations personnelles') ?></legend>
         <?php
-            echo $this->Form->input('NomCandidat');
-            echo $this->Form->input('PrenomCandidat');
-            echo $this->Form->input('Age');
+            echo $this->Form->input('NomCandidat',['required'=>'true']);
+            echo $this->Form->input('PrenomCandidat',['required'=>'true']);
+            echo $this->Form->input('Age',['required'=>'true']);
         ?>
         <div class="input select required">
         <?php
@@ -27,7 +27,7 @@
         ?>
         </div>
         <?php
-            echo $this->Form->input('LieuxEtude');
+            echo $this->Form->input('LieuxEtude',['required'=>'true']);
         ?>
         <div class="input select required">
         <?php
@@ -84,7 +84,7 @@
         ?>
         </div>
         <?php
-            echo $this->Form->input('NombreEnfant');
+            echo $this->Form->input('NombreEnfant',['required'=>'true']);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

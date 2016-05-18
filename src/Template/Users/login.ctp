@@ -1,3 +1,6 @@
+<?php
+	use Cake\Routing\Router;
+?>
 <div class='hidden'><?= $this->layout = 'loginlayout' ?></div>
 <div id='loginSite'>
 	<h1>Connexion</h1>
@@ -10,4 +13,5 @@
     </fieldset>
 <?= $this->Form->button(__('Se Connecter')); ?>
 <?= $this->Form->end() ?>
+<?= $this->Html->link('S\'inscrire', '/users/add', array('class' => 'button'))  ?>
 </div>
