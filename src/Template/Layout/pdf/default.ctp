@@ -36,6 +36,11 @@
 // On indique à TCPDF que le fichier doit être enregistré sur le serveur ($filename étant une variable que vous aurez pris soin de définir dans l'action de votre controller)
     //$pdf->Output(APP . 'files' . DS . 'pdf' . DS . $filename . '.pdf', 'F');
     //$pdf->Output(APP . 'files' . DS . 'pdf' . DS . $filename . '.pdf', 'FI');
-    $pdf->Output(ROOT . DS .'webroot'. DS . 'files' . DS . 'pdf' . DS . $filename . '.pdf', 'FI');
+   // header('Content-type: application/pdf');
+   // header('Content-Disposition: attachment; filename="'.$filename.'.pdf"');
+    
+
+    $pdf->Output($filename . '.pdf', 'D');
+    
     
 ?>

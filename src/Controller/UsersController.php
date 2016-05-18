@@ -101,12 +101,23 @@ class UsersController extends AppController
             ->first();
 
         if ($this->request->is(['patch', 'post', 'put'])) {
+
+            if(!strcmp($this->request->data['nouveau_password'],$this->request->data['comfirmez_password'])){
+                if($this->request->data['nouveau_password']!='' && $this->request->data['comfirmez_password']!=''){
+                    $this->request->data['password'] = $this->request->data['nouveau_password'];
+                } 
+            }
+            else {
+                $this->Flash->error(__('Vos mots de passes sont différent.'));
+                return $this->redirect(['action' => 'modif']);
+            }
+
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+                $this->Flash->success(__('Vos informations ont bien été modifiées.'));
                     return $this->redirect(['action' => 'modif']);
             } else {
-                $this->Flash->error(__('The user could not be saved. Please, try again.'));
+                $this->Flash->error(__('Vos données sont incompatibles ou incomplètes, veuillez réessayer.'));
             }
         }
         $this->set(compact('user'));

@@ -6,7 +6,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
-
+use Cake\ORM\Rule\IsUnique;
 /**
  * Users Model
  *
@@ -71,6 +71,7 @@ class UsersTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->isUnique(['login']));
+        $rules->add($rules->isUnique(['email']));
         $rules->add($rules->isUnique(['ID']));
         return $rules;
     }

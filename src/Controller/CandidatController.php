@@ -32,7 +32,7 @@ class CandidatController extends AppController
             ->where(['ID' => $_SESSION['Auth']['User']['ID']])
             ->first();
 
-        $occupation = TableRegistry::get('occupation')
+        $stats_occupation = TableRegistry::get('occupation')
             ->find()
             ->select(array(
                 'count'=>'Count(*)',
@@ -41,18 +41,15 @@ class CandidatController extends AppController
                 ))
             ->where(['CodeCandidat' => $candidat['CodeCandidat']])
             ->group('CodeCandidat')
-            ->toArray();
+            ->first();
 
         $this->set('filename',$filename);
         $this->set('candidat',$candidat);
-        $this->set('occupation',$occupation);
+        $this->set('debut',$stats_occupation['debut']);
+        $this->set('fin',$stats_occupation['fin']);
+        $this->set('count',$stats_occupation['count']);
         
-        $path = ROOT . DS .'webroot'. DS . 'files' . DS . 'pdf' . DS . $filename . '.pdf';
-        $this->response->file($path, array(
-            'download' => true,
-            'name' => $filename. '.pdf'
-        ));
-        return $this->response;        
+        //$this->redirect(['controller'=>'candidat','action' => 'accueil']);     
     }
     public function accueil()
     {

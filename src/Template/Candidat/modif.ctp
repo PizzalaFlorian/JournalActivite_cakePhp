@@ -10,7 +10,7 @@
 <div class="candidat form large-9 medium-8 columns content">
     <?= $this->Form->create($candidat) ?>
     <fieldset>
-        <legend><?= __('Edit Candidat') ?></legend>
+        <legend><?= __('Vos informations personnelles') ?></legend>
         <?php
             echo $this->Form->input('NomCandidat');
             echo $this->Form->input('PrenomCandidat');
