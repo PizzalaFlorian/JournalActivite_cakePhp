@@ -258,21 +258,21 @@ $(function(){
 					});
 					
 			// Modif pierre - je pense que ça vien de la demos ...
-                    // agenda_id=$("#agenda_id").val();
-                    // if(new_titre!=""){
-                        // $("#"+event_id+'_title').html(new_titre);
-                    // }
-                    // if(new_lieu!=""){
-                        // $("#"+event_id+'_lieu').html(new_lieu);
-                    // }
-                    // new_ti=new_titre.replace(/ /gi,"&nbsp;");
-                    // new_li=new_lieu.replace(/ /gi,"&nbsp;");
-                    // $("#"+event_id).removeClass("select_agenda_red");
-                    // class_color_agenda=$("#"+agenda_id+"_agenda_id").html();
-                    // $("#"+event_id).addClass(class_color_agenda);
-                    // $("#ajax_load").load(getBaseURL()+"/admin/ajax/specifyevent/id/"+event_id+"/titre/"+new_ti+"/lieu/"+new_li+"/ag/"+agenda_id);
+      //                agenda_id=$("#agenda_id").val();
+      //                if(new_titre!=""){
+      //                    $("#"+event_id+'_title').html(new_titre);
+      //                }
+      //                if(new_lieu!=""){
+      //                    $("#"+event_id+'_lieu').html(new_lieu);
+      //                }
+      //                new_ti=new_titre.replace(/ /gi,"&nbsp;");
+      //                new_li=new_lieu.replace(/ /gi,"&nbsp;");
+      //                $("#"+event_id).removeClass("select_agenda_red");
+      //                class_color_agenda=$("#"+agenda_id+"_agenda_id").html();
+      //                $("#"+event_id).addClass(class_color_agenda);
+      //                $("#ajax_load").load(getBaseURL()+"/admin/ajax/specifyevent/id/"+event_id+"/titre/"+new_ti+"/lieu/"+new_li+"/ag/"+agenda_id);
 				
-					// $("#ajax_load").html("Evenement cr&eacute&eacute..");
+					 // $("#ajax_load").html("Evenement cr&eacute&eacute..");
 					// RAZ des champs du formulaire
 					$("#new_event_categorieActivite").val("");  
 					$("#new_event_categorieLieu").val("");
@@ -608,10 +608,18 @@ $(function(){
                     $(location).attr('href',url_details);
                 },*/
                 'Modifier': function() {
-//=================================================================================================================================
-
-//=================================================================================================================================
-                    $(this).dialog('destroy');
+                    $.ajax({  
+                        url : '../occupation/edit/'+id_event,
+                        type : 'POST',
+                        data : id_event,
+                        dataType : 'html', 
+                        success : function(code_html, statut){ 
+                            contenu = code_html;
+                            $("#ui-dialog-title-dialog").html("Détail")
+                            //console.log("copy");
+                            $("#dialog").html(contenu);
+                        }
+                    });
                 },
                 'Supprimer': function() {
                     $(this).html("Veuillez Confirmer la suppression"+id_event);
