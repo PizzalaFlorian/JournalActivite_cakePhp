@@ -12,6 +12,12 @@ use Cake\ORM\TableRegistry;
 class ActiviteController extends AppController
 {
 
+    public function recupNomActivite($id=null){
+         $activite = $this->Activite->get($id, [
+            'contain' => []
+        ]);
+         echo $activite->NomActivite;
+    }
     /**
      * Index method
      *

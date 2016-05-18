@@ -241,6 +241,34 @@ $(function(){
 					
 					// envoie a controleur/CandidatRenseigneActivites.ctrl.php pour ajout BDD
                     //TODO
+                     $.ajax({  
+                                url : '../activite/recupNomActivite/'+new_activit,
+                                type : 'POST',
+                                data : new_activit,
+                                dataType : 'html', 
+                                success : function(code_html, statut){ 
+                                    contenu = code_html;
+                                    var event_date_titre = $('<div>'+contenu+'</div>')
+                                    .appendTo(event)
+                                    .attr('class','calendar_event_title')
+                                    .attr('id',event_id+'_title');
+                                }
+                    });   
+
+                    $.ajax({  
+                                url : '../lieu/recupNomLieu/'+new_lieu,
+                                type : 'POST',
+                                data : new_lieu,
+                                dataType : 'html', 
+                                success : function(code_html, statut){ 
+                                    contenu = code_html;
+                                    var event_date_lieu = $('<div>'+contenu+'</div>')
+                                        .appendTo(event)
+                                        .attr('class','calendar_event_lieu')
+                                        .attr('id',event_id+'_lieu');
+                                }
+                    });
+                     
 					$.ajax({
 						url: "../occupation/add",
 						type : 'POST',
@@ -254,7 +282,7 @@ $(function(){
 						success : function(rep, statut){
 							 //console.log("Ajout finis");
 							 //console.log(rep);				// affichage requete SQL
-						}
+                        }
 					});
 					
 			// Modif pierre - je pense que ça vien de la demos ...
@@ -345,15 +373,18 @@ $(function(){
         .appendTo(event_date)
         .attr('id',event_id+'_date_fin_minute');
 
-        var event_date_titre = $('<div>(Sans titre)</div>')
-        .appendTo(event)
-        .attr('class','calendar_event_title')
-        .attr('id',event_id+'_title');
+        //TODO TITLE
+             
 
-        var event_date_lieu = $('<div>(Inconnu)</div>')
-        .appendTo(event)
-        .attr('class','calendar_event_lieu')
-        .attr('id',event_id+'_lieu');
+        // var event_date_titre = $('<div>'+new_activit+'</div>')
+        // .appendTo(event)
+        // .attr('class','calendar_event_title')
+        // .attr('id',event_id+'_title');
+
+        // var event_date_lieu = $('<div>(Inconnu)</div>')
+        // .appendTo(event)
+        // .attr('class','calendar_event_lieu')
+        // .attr('id',event_id+'_lieu');
 
         event.corner();
         $(".calendar_event_date").corner("top cc:#fff");

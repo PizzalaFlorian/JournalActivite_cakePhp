@@ -12,6 +12,12 @@ use Cake\ORM\TableRegistry;
 class LieuController extends AppController
 {
 
+    public function recupNomLieu($id=null){
+         $lieu = $this->Lieu->get($id, [
+            'contain' => []
+        ]);
+         echo $lieu->NomLieux;
+    }
     /**
      * Index method
      *
