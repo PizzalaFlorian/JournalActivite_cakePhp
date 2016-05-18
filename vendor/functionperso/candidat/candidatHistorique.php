@@ -1007,7 +1007,6 @@ function premiere_date_moins_un($CodeCandidat){
 }
 
 function date_des_jours($CodeCandidat){
-
 	$table = TableRegistry::get('occupation')
             ->find()
             ->select(

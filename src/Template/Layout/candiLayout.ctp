@@ -63,7 +63,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                     <?= $this->fetch('sidebarCandidat') ?>
                 </ul>
             </nav> 
-        <div class="candidat large-10 medium-9 colums content " id="contentCandida">
+        <div class="candidat large-10 medium-9 colums content " id="contentCandidat">
             <?= $this->fetch('content') ?>
         </div>
     </div>   

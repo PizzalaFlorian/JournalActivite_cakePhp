@@ -195,12 +195,11 @@ class UsersController extends AppController
                
                 //return $this->redirect($this->Auth->redirectUrl());
                 if($user['typeUser']=='candidat'){
-
+                    debug($user);
                     $candidat = TableRegistry::get('candidat')
                         ->find()
-                        ->where(['ID' => $user->ID])
+                        ->where(['ID' => $_SESSION['Auth']['User']['ID']])
                         ->first();
-
                     if(isset($candidat['CodeCandidat'])){
                         return $this->redirect([
                             'controller' => 'candidat',
@@ -215,7 +214,7 @@ class UsersController extends AppController
                 if($user['typeUser']=='chercheur'){
                      $chercheur = TableRegistry::get('chercheur')
                         ->find()
-                        ->where(['ID' => $user->ID])
+                        ->where(['ID' => $_SESSION['Auth']['User']['ID']])
                         ->first();
                     if(isset($chercheur['CodeChercheur'])){
                         return $this->redirect([
