@@ -161,7 +161,7 @@ class UsersController extends AppController
                 if($user['typeUser']=='admin')
                     return $this->redirect([
                         'controller' => 'administrateur',
-                        'action' => 'index']);
+                        'action' => 'accueil']);
 
             }
             $this->Flash->error(__('Invalid login or password, try again'));

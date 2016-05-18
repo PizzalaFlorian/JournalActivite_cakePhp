@@ -29,8 +29,40 @@
 <li> 
     <?php 
         echo $this->Html->link(
+            'Gestion Admin',
+            ['controller' => 'administrateur', 'action' => 'index', '_full' => true]
+        ); 
+    ?> 
+</li>
+<li> 
+    <?php 
+        echo $this->Html->link(
+            'Aide',
+            ['controller' => 'administrateur', 'action' => 'aide', '_full' => true]
+        ); 
+    ?> 
+</li>
+<li> 
+    <?php 
+        echo $this->Html->link(
             'Messagerie',
             ['controller' => 'messages', 'action' => 'index', '_full' => true]
+        ); 
+    ?> 
+</li>
+<li> 
+    <?php 
+        echo $this->Html->link(
+            'Mon Compte',
+            ['controller' => 'administrateur', 'action' => 'modif', '_full' => true]
+        ); 
+    ?> 
+</li>
+<li> 
+    <?php 
+        echo $this->Html->link(
+            'Deconnexion',
+            ['controller' => 'users', 'action' => 'logout', '_full' => true]
         ); 
     ?> 
 </li>
