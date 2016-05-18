@@ -5,7 +5,7 @@
     <?= $this->Html->link(__('Retour'), ['action' => 'index']) ?>
     <?= $this->Form->create($user) ?>
     <fieldset>
-        <legend><?= __('Inviter le Candiat') ?></legend>
+        <legend><?= __('Inviter le Candidat') ?></legend>
         <?php
             echo $this->Form->input('login',['type'=>'hidden','value'=>$login]);
             echo $this->Form->input('typeUser',['type'=>'hidden','value'=>'candidat']);

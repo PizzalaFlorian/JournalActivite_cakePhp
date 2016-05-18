@@ -42,12 +42,23 @@ class CandidatController extends AppController
             ->where(['CodeCandidat' => $candidat['CodeCandidat']])
             ->group('CodeCandidat')
             ->first();
-
+        if(isset($stats_occupation['debut']))
+            $debut = $stats_occupation['debut'];
+        else
+            $debut = 'jamais';
+        if(isset($stats_occupation['fin']))
+            $fin = $stats_occupation['fin'];
+        else
+            $fin = 'jamais';
+        if(isset($stats_occupation['count']))
+            $count = $stats_occupation['count'];
+        else
+            $count = '0';
         $this->set('filename',$filename);
         $this->set('candidat',$candidat);
-        $this->set('debut',$stats_occupation['debut']);
-        $this->set('fin',$stats_occupation['fin']);
-        $this->set('count',$stats_occupation['count']);
+        $this->set('debut',$debut);
+        $this->set('fin',$fin);
+        $this->set('count',$count);
         
         //$this->redirect(['controller'=>'candidat','action' => 'accueil']);     
     }

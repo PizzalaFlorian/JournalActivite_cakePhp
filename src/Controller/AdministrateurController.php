@@ -48,7 +48,6 @@ class AdministrateurController extends AppController
         if($this->request->is('post')){
             $user = TableRegistry::get('users')->patchEntity($user, $this->request->data);
             if (TableRegistry::get('users')->save($user)) {
-                $this->Flash->success(__('l\'utilisateur a été inviter'));
 
                 $email = new Email('default');
                 $email
@@ -121,6 +120,68 @@ class AdministrateurController extends AppController
         $this->set('password',$password);
         $this->set(compact('user'));
         $this->set('_serialize', ['user']);
+
+    }
+
+    public function createCandidatList(){
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
+         $this->viewBuilder()->layout('adminLayout');
+
+        $liste = null;
+        if($this->request->is('post')){
+            $liste_email = explode (';',$this->request->data['liste_email']);
+            foreach ($liste_email as $email) {
+                if(!empty($email)){
+                    //debug($email);
+
+                    $char = 'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMOPQRSTUVWXYZ';
+                    $password = str_shuffle($char);
+                    $password = substr ( $password , 0, 7 );
+
+                    $login = str_shuffle($char);
+                    $login = substr ( $login , 0, 7 );
+                    $test = TableRegistry::get('users')
+                        ->find()
+                        ->where(['login'=>$login])
+                        ->first();
+                    while(isset($test['email'])){
+                        $login = str_shuffle($char);
+                        $login = substr ( $login , 0, 9 );
+                        $test = TableRegistry::get('users')
+                            ->find()
+                            ->where(['login'=>$login])
+                            ->first();
+                    }
+                    
+                    $newuser = TableRegistry::get('users')->newEntity();
+                    $newuser->password = $password;
+                    $newuser->login = $login;
+                    $newuser->typeUser = 'candidat';
+                    $newuser->email = $email;
+                    
+                    if (TableRegistry::get('users')->save($newuser)) {
+                        $this->Flash->success(__('l\'utilisateur '.$email.' a été inviter'));
+
+                        $message = new Email('default');
+                        $message
+                            ->to($email)
+                            ->subject("Confirmation de compte")
+                            ->send("Bonjour,\nVous avez été invitées a participer a notre étude sur les activitées des étudiants. Voici vos identifiant de votre compte candidat : \nLogin : ".$login."\nMot de passe : ".$password."\n Nous vous invitons désormais a venir finir votre inscription en ligne sur notre site.\nCordialement\n");
+                        
+                        
+                    } else {
+                    $this->Flash->error(__('Erreur lors de l\'enregistrement de '.$email.', veuillez réessayer.'));
+                    }
+
+                }
+            }
+            return $this->redirect(['controller'=>'users','action' => 'index']);
+        }
+            $this->set('liste',$liste);
 
     }
 

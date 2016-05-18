@@ -11,7 +11,7 @@
         <?= $this->Form->input('login') ?>
         <?= $this->Form->input('password') ?>
     </fieldset>
-<?= $this->Form->button(__('Se Connecter')); ?>
+<center><?php echo $this->Form->button(__('Se Connecter')).' '.$this->Html->link('S\'inscrire', '/users/add', array('class' => 'button'));  ?></center>
 <?= $this->Form->end() ?>
-<?= $this->Html->link('S\'inscrire', '/users/add', array('class' => 'button'))  ?>
+
 </div>
