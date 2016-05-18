@@ -1,7 +1,7 @@
 $(function(){
 	$( ".RA_activ" ).change(function() {
 		var test = $(this).find("option:selected").attr('id');
-		console.log(test);
+		//   console.log(test);
 	});
 	
     function getBaseURL() {
@@ -237,7 +237,7 @@ $(function(){
                     var new_event_heure_debut=jour_deb+" "+$("#new_event_heure_debut").val();
 					var new_event_heure_fin=jour_deb+" "+$("#new_event_heure_fin").val();
 					
-					console.log(new_activit);
+					//console.log(new_activit);
 					
 					// envoie a controleur/CandidatRenseigneActivites.ctrl.php pour ajout BDD
                     //TODO
@@ -252,8 +252,8 @@ $(function(){
 								'&CodeDispositif=' + new_dispositif,
 						dataType : 'html',
 						success : function(rep, statut){
-							 console.log("Ajout finis");
-							console.log(rep);				// affichage requete SQL
+							 //console.log("Ajout finis");
+							 //console.log(rep);				// affichage requete SQL
 						}
 					});
 					
@@ -482,6 +482,7 @@ $(function(){
             //        $("#"+id_event+"_date").corner("top");
             }
         });
+        //TODO
         event.click(function(e){
             var object_clicked = $(this);
             var id_event=object_clicked.attr("id");
@@ -507,20 +508,21 @@ $(function(){
                     var titre_eve=$("#"+id_event+"_title").html();
                     var lieu_eve=$("#"+id_event+"_lieu").html();
 
-                    var contenu = "<p>";
-                    contenu += "<b>Durée : </b>"+heure_depart+":"+min_depart+" à ";
+                    var contenu = "<p>lol</p>";
+                    /*contenu += "<b>Durée : </b>"+heure_depart+":"+min_depart+" à ";
                     contenu += heure_fin+":"+min_fin+"<br />";
-                    contenu += "<b>Lieu : </b>"+lieu_eve+"<br />";
+                    contenu += "<b>Lieu toto : </b>"+lieu_eve+"<br />";
                     contenu += "</p>";
-                    $("#ui-dialog-title-dialog").html(titre_eve);
+                    $("#ui-dialog-title-dialog").html(titre_eve);*/
                     $("#dialog").html(contenu);
                 },
                 buttons: {
-                    'Voir détails': function() {
+                    // on affiche le detail, pas besoin d'un bouton pour faire la même chose
+                    /*'Voir détails': function() {
                         $(this).dialog('destroy');
                         var url_details=getBaseURL()+"/admin/evenements/voir/id/"+id_event;
                         $(location).attr('href',url_details);
-                    },
+                    },*/
                     'Modifier': function() {
                         $(this).dialog('destroy');
                     },
@@ -538,8 +540,7 @@ $(function(){
                             buttons: {
                                 'Supprimer': function() {
                                     $(this).dialog('destroy');
- //                                   $("#ajax_load").load(getBaseURL()+"/admin/ajax/supprimerevent/id/"+id_event);
- $("#ajax_load").html("Evenement correctement supprim&eacute;.");
+
                                     $("#"+id_event).hide("highlight",{
                                         direction: "vertical",
                                         color: "#A60000"
@@ -586,26 +587,34 @@ $(function(){
                 var min_fin=$("#"+id_event+"_date_fin_minute").html();
                 var titre_eve=$("#"+id_event+"_title").html();
                 var lieu_eve=$("#"+id_event+"_lieu").html();
-
-                var contenu = "<p>";
-                contenu += "<b>Durée : </b>"+heure_depart+":"+min_depart+" à ";
-                contenu += heure_fin+":"+min_fin+"<br />";
-                contenu += "<b>Lieu : </b>"+lieu_eve+"<br />";
-                contenu += "</p>";
-                $("#ui-dialog-title-dialog").html(titre_eve);             
-                $("#dialog").html(contenu);
+                var contenu = "";
+                $.ajax({  
+                    url : '../occupation/view/'+id_event,
+                    type : 'POST',
+                    data : id_event,
+                    dataType : 'html', 
+                    success : function(code_html, statut){ 
+                        contenu = code_html;
+                        $("#ui-dialog-title-dialog").html("Détail")
+                        //console.log("copy");
+                        $("#dialog").html(contenu);
+                    }
+                });
             },
             buttons: {
-                'Voir détails': function() {
+                /*'Voir détails': function() {
                     $(this).dialog('destroy');
                     var url_details=getBaseURL()+"/admin/evenements/voir/id/"+id_event;
                     $(location).attr('href',url_details);
-                },
+                },*/
                 'Modifier': function() {
+//=================================================================================================================================
+
+//=================================================================================================================================
                     $(this).dialog('destroy');
                 },
                 'Supprimer': function() {
-                    $(this).html("Veuillez Confirmer la suppression");
+                    $(this).html("Veuillez Confirmer la suppression"+id_event);
                     $("#dialog").dialog('destroy');
                     $("#dialog").dialog({
                         bgiframe: true,
@@ -618,8 +627,14 @@ $(function(){
                         buttons: {
                             'Supprimer': function() {
                                 $(this).dialog('destroy');
-//                                $("#ajax_load").load(getBaseURL()+"/admin/ajax/supprimerevent/id/"+id_event);
-$("#ajax_load").html("Evenement correctement supprim&eacute;.");
+                                $.ajax({  
+                                        url : '../occupation/delete/'+id_event,
+                                        type : 'POST',
+                                        data : id_event,
+                                        dataType : 'html', 
+                                        success : function(code_html, statut){ 
+                                        }
+                                    });
                                 $("#"+id_event).hide("highlight",{
                                     direction: "vertical",
                                     color: "#A60000"

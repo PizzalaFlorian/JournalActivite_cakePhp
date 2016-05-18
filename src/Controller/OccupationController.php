@@ -32,10 +32,23 @@ class OccupationController extends AppController
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function view($id = null)
-    {
-        $occupation = $this->Occupation->get($id, [
-            'contain' => []
-        ]);
+    {   
+        $this->loadModel('Lieu');
+        $this->loadModel('Activite');
+        $this->loadModel('Compagnie');
+        $this->loadModel('Dispositif');
+
+        $occupation = $this->Occupation->get($id, ['contain' => []]);
+
+        $monLieu        = $this->Lieu->get($occupation->CodeLieux);
+        $monActivite    = $this->Activite->get($occupation->CodeActivite);
+        $monCompagnie   = $this->Compagnie->get($occupation->CodeCompagnie);
+        $monDispositif  = $this->Dispositif->get($occupation->CodeDispositif);
+        
+        $this->set(compact('monLieu'));
+        $this->set(compact('monActivite'));
+        $this->set(compact('monCompagnie'));
+        $this->set(compact('monDispositif'));
 
         $this->set('occupation', $occupation);
         $this->set('_serialize', ['occupation']);
