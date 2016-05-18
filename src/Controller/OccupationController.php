@@ -150,6 +150,22 @@ class OccupationController extends AppController
      */
     public function edit($id = null)
     {
+        $this->loadModel('Lieu');
+        $this->loadModel('Categorielieu');
+        $this->loadModel('Activite');
+        $this->loadModel('Categorieactivite');
+        $this->loadModel('Compagnie');
+        $this->loadModel('Dispositif');
+
+        $maCategorielieu        = $this->Categorielieu->find('all');
+        $maCategorieactivite    = $this->Categorieactivite->find('all');
+
+        $monLieu        = $this->Lieu->find('all', ['conditions' => ['CodeCategorieLieux' => 1] ]);
+        $monActivite    = $this->Activite->find('all', ['conditions' => ['CodeCategorie' => 1] ]);
+        $monCompagnie   = $this->Compagnie->find('all');
+        $monDispositif  = $this->Dispositif->find('all');
+
+
         $occupation = $this->Occupation->get($id, [
             'contain' => []
         ]);
@@ -162,6 +178,14 @@ class OccupationController extends AppController
                 $this->Flash->error(__('The occupation could not be saved. Please, try again.'));
             }
         }
+
+        $this->set(compact('maCategorielieu'));
+        $this->set(compact('maCategorieactivite'));
+        $this->set(compact('monLieu'));
+        $this->set(compact('monActivite'));
+        $this->set(compact('monCompagnie'));
+        $this->set(compact('monDispositif'));
+
         $this->set(compact('occupation'));
         $this->set('_serialize', ['occupation']);
     }
