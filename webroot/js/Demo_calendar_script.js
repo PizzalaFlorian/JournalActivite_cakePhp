@@ -698,7 +698,11 @@ $(function(){
                 //         }
                 //     });
                 // },
-                'Supprimer': function() {
+                
+                'Annuler': function() {
+                    $(this).dialog('destroy');
+                },
+                'Tout Supprimer': function() {
                     $(this).html("Veuillez Confirmer la suppression"+id_event);
                     $("#dialog").dialog('destroy');
                     $("#dialog").dialog({
@@ -730,6 +734,9 @@ $(function(){
                             }
                         }
                     });
+
+                },
+                'Modifier': function(){
 
                 }
             }
