@@ -4,10 +4,16 @@
 <div class="occupation form large-9 medium-8 columns content">
     <?= $this->Form->create($occupation) ?>
     <fieldset>
-        <?php
-            echo $this->Form->input('HeureDebut');
-            echo $this->Form->input('HeureFin');
-        ?>
+
+        <div class="input number required"> 
+            <label for="CodeCategorieActivite">Heure de début :</label>
+            <input id="new_event_heure_debut" type="text" value="<?php echo $occupation->HeureDebut; ?>" />
+        </div>
+        <div class="input number required"> 
+            <label for="CodeCategorieActivite">heure de fin :</label>            
+            <input id="new_event_heure_fin" type="text" value="<?php echo $occupation->HeureFin; ?>" />
+        </div>
+
         <div class="input number required">
             <label for="CodeCategorieActivite">Categorie d'activité' :</label>
             <select id="Activite" class="RA_target" type="text" name="CodeCategorieActivite">
@@ -90,6 +96,5 @@
             </select>
         </div>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
 </div>

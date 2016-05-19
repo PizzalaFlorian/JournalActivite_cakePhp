@@ -228,7 +228,7 @@ $(function(){
                 'Enregistrer': function() {
 					// console.log($("#new_event_lieu").find("option:selected").attr('id'));
                     $(this).dialog('destroy');
-					
+	//=================================================================================================================
 					//recolte des champs du formulaire
                     var new_activit=$("#new_event_codeActivite").find("option:selected").attr('id');
 					var new_lieu=$("#new_event_lieu").find("option:selected").attr('id');
@@ -737,7 +737,27 @@ $(function(){
 
                 },
                 'Modifier': function(){
+                    var new_activit=$("#CodeActivite").find("option:selected").attr('value');
+                    var new_lieu=$("#CodeLieux").find("option:selected").attr('value');
+                    var new_compagnie=$("#CodeCompagnie").find("option:selected").attr('value');
+                    var new_dispositif=$("#CodeDispositif").find("option:selected").attr('value');
+                    var new_event_heure_debut=jour_deb+" "+$("#new_event_heure_debut").val();
+                    var new_event_heure_fin=jour_deb+" "+$("#new_event_heure_fin").val();
+                    $.ajax({
+                        url: "../occupation/edit",
+                        type :  'POST',
+                        data :  'CodeOccupation=' + id_event +
+                                '&HeureDebut=' + new_event_heure_debut + 
+                                '&HeureFin=' + new_event_heure_fin  + 
+                                '&CodeLieux=' + new_lieu  + 
+                                '&CodeActivite=' + new_activit  + 
+                                '&CodeCompagnie=' + new_compagnie  + 
+                                '&CodeDispositif=' + new_dispositif,
+                        dataType : 'html',
+                        success : function(rep, statut){ 
 
+                        }
+                    });
                 }
             }
 
@@ -747,7 +767,7 @@ $(function(){
 
 
 
-
+//=============================================================================================================
 
 
 
