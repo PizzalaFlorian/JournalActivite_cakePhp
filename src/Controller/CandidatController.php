@@ -23,7 +23,16 @@ use fonctionperso\dispositif\dispositif;
 class CandidatController extends AppController
 {
 
-    public function certificat(){
+    public function generate(){
+        $this->viewBuilder()->layout('candiLayout');
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            return $this->redirect(['action' => 'certificat/'.$this->request->data['Code_Etudiant']]);
+        }
+
+    }
+
+    public function certificat($id=null){
         $this->viewBuilder()->layout('pdf/default');
         $filename = 'certificat';
 
@@ -37,11 +46,24 @@ class CandidatController extends AppController
             ->select(array(
                 'count'=>'Count(*)',
                 'debut'=>'min(HeureDebut)',
-                'fin'=>'max(HeureDebut)'
+                'fin'=>'max(HeureFin)'
                 ))
             ->where(['CodeCandidat' => $candidat['CodeCandidat']])
             ->group('CodeCandidat')
             ->first();
+
+        $stats_occupation2 = TableRegistry::get('occupation')
+            ->find()
+            ->select(array(
+                'nbjour'=>'count(distinct(HeureDebut))'
+                ))
+            ->where(['CodeCandidat' => $candidat['CodeCandidat']])
+            ->group('HeureDebut')
+            ->first();
+        if(isset($stats_occupation2['nbjour']))
+            $nbjour = $stats_occupation2['nbjour'];
+        else
+            $nbjour = '0';
         if(isset($stats_occupation['debut']))
             $debut = $stats_occupation['debut'];
         else
@@ -54,11 +76,22 @@ class CandidatController extends AppController
             $count = $stats_occupation['count'];
         else
             $count = '0';
+
+        $char = 'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMOPQRSTUVWXYZ';
+        $code = str_shuffle($char);
+        $code = substr ( $code , 0, 12 );
+
+        $codeEtu = explode('.', $id);
+
+        $this->set('codeEtu',$codeEtu[0]);
         $this->set('filename',$filename);
         $this->set('candidat',$candidat);
         $this->set('debut',$debut);
         $this->set('fin',$fin);
         $this->set('count',$count);
+        $this->set('nbjour',$nbjour);
+        $this->set('annee',date('j/m/Y'));
+        $this->set('code',$code);
         
         //$this->redirect(['controller'=>'candidat','action' => 'accueil']);     
     }

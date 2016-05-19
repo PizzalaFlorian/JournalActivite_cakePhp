@@ -3,7 +3,7 @@
     require_once (ROOT . DS . 'vendor/laurentbrieu/tcpdf/src/TCPDF/TCPDF.php');
 
 // Création d'un document TCPDF avec les variables par défaut
-    $pdf = new TCPDF('L', 'mm', PDF_PAGE_FORMAT, TRUE, 'UTF-8', FALSE);
+    $pdf = new TCPDF('P', 'mm', PDF_PAGE_FORMAT, TRUE, 'UTF-8', FALSE);
 // Spécification de certains paramètres de TCPDF (içi on spécifie l'auteur par défaut)
     $pdf->SetCreator(PDF_CREATOR);
  
