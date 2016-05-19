@@ -1,7 +1,6 @@
 <?php
 	use Cake\Routing\Router;
 ?>
-<div class='hidden'><?= $this->layout = 'loginlayout' ?></div>
 <div id='loginSite'>
 	<h1>Connexion</h1>
 	<?= $this->Flash->render('auth') ?>
