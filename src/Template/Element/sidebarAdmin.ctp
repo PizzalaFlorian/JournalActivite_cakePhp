@@ -13,6 +13,14 @@
 <li> 
     <?php 
         echo $this->Html->link(
+            'Gestion Site Web',
+            ['controller' => 'administrateur', 'action' => 'siteweb', '_full' => true]
+        );
+    ?>
+</li>
+<li> 
+    <?php 
+        echo $this->Html->link(
             'Gestion Utilisateurs',
             ['controller' => 'users', 'action' => 'index', '_full' => true]
         );

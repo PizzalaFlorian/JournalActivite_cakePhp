@@ -6,6 +6,7 @@ use Cake\ORM\TableRegistry;
 use fonctionperso\chercheur\chercheurAccueil;
 use fonctionperso\chercheur\chercheurDonnees;
 use Cake\Mailer\Email;
+use Cake\Filesystem\File;
 
 /**
  * Administrateur Controller
@@ -14,6 +15,69 @@ use Cake\Mailer\Email;
  */
 class AdministrateurController extends AppController
 {
+
+    public function butExperience(){
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
+         $this->viewBuilder()->layout('adminLayout');
+        
+        if($this->request->is('post')){
+            //debug($this->request->data);
+            $file = new File(ROOT.'/webroot/files/but_experience.ctp');
+            $file->write($this->request->data['message']);
+            $file->close();
+            $this->Flash->success(__('le message a été modifier'));
+        }
+
+    }
+
+    public function emailCandidat(){
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
+         $this->viewBuilder()->layout('adminLayout');
+        
+        if($this->request->is('post')){
+            //debug($this->request->data);
+            $file = new File(ROOT.'/webroot/files/email_auto_candidat.ctp');
+            $file->write($this->request->data['message']);
+            $file->close();
+            $this->Flash->success(__('le message a été modifier'));
+        }
+
+    }
+
+    public function emailChercheur(){
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
+         $this->viewBuilder()->layout('adminLayout');
+        
+        if($this->request->is('post')){
+            //debug($this->request->data);
+            $file = new File(ROOT.'/webroot/files/email_auto_chercheur.ctp');
+            $file->write($this->request->data['message']);
+            $file->close();
+            $this->Flash->success(__('le message a été modifier'));
+        }
+
+    }
+
+    public function siteweb(){
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
+         $this->viewBuilder()->layout('adminLayout');
+    }
 
     public function createChercheur(){
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
@@ -48,15 +112,16 @@ class AdministrateurController extends AppController
         if($this->request->is('post')){
             $user = TableRegistry::get('users')->patchEntity($user, $this->request->data);
             if (TableRegistry::get('users')->save($user)) {
+                $this->Flash->success(__('l\'utilisateur a été inviter'));
 
+                $messageChercheur = file_get_contents(ROOT.'/webroot/files/email_auto_chercheur.ctp');
                 $email = new Email('default');
                 $email
                     ->to($this->request->data['email'])
                     ->subject("Confirmation de compte")
-                    ->send("Bonjour,\nVoici vos identifiant de votre compte chercheur : \nLogin : ".$this->request->data['login']."\nMot de passe : ".$this->request->data['password']."\n
-                        Nous vous invitons a finir de constituer votre profil en ligne sur notre site\nCordialement\n");
+                    ->send($messageChercheur."\n--------------------------------------------------------------------------------\nVoici vos identifiant de votre compte chercheur : \nLogin : ".$this->request->data['login']."\nMot de passe : ".$this->request->data['password']."\n--------------------------------------------------------------------------------\n");
                 
-                return $this->redirect(['controller'=>'chercheur','action' => 'index']);
+                return $this->redirect(['controller'=>'users','action' => 'index']);
             } else {
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
             }
@@ -103,14 +168,14 @@ class AdministrateurController extends AppController
             $user = TableRegistry::get('users')->patchEntity($user, $this->request->data);
             if (TableRegistry::get('users')->save($user)) {
                 $this->Flash->success(__('l\'utilisateur a été inviter'));
-
+                $messageCandidat = file_get_contents(ROOT.'/webroot/files/email_auto_candidat.ctp');
                 $email = new Email('default');
                 $email
                     ->to($this->request->data['email'])
                     ->subject("Confirmation de compte")
-                    ->send("Bonjour,\nVous avez été invitées a participer a notre étude sur les activitées des étudiants. Voici vos identifiant de votre compte candidat : \nLogin : ".$this->request->data['login']."\nMot de passe : ".$this->request->data['password']."\n Nous vous invitons désormais a venir finir votre inscription en ligne sur notre site.\nCordialement\n");
+                    ->send($messageCandidat."\n--------------------------------------------------------------------------------\nVoici vos identifiant de votre compte candidat : \nLogin : ".$this->request->data['login']."\nMot de passe : ".$this->request->data['password']."\n--------------------------------------------------------------------------------\n");
                 
-                return $this->redirect(['controller'=>'candidat','action' => 'index']);
+                return $this->redirect(['controller'=>'users','action' => 'index']);
             } else {
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
             }
@@ -164,13 +229,13 @@ class AdministrateurController extends AppController
                     $newuser->email = $email;
                     
                     if (TableRegistry::get('users')->save($newuser)) {
-                        $this->Flash->success(__('l\'utilisateur '.$email.' a été inviter'));
-
+                        //$this->Flash->success(__('l\'utilisateur '.$email.' a été inviter'));
+                        $messageCandidat = file_get_contents(ROOT.'/webroot/files/email_auto_candidat.ctp');
                         $message = new Email('default');
                         $message
                             ->to($email)
                             ->subject("Confirmation de compte")
-                            ->send("Bonjour,\nVous avez été invitées a participer a notre étude sur les activitées des étudiants. Voici vos identifiant de votre compte candidat : \nLogin : ".$login."\nMot de passe : ".$password."\n Nous vous invitons désormais a venir finir votre inscription en ligne sur notre site.\nCordialement\n");
+                            ->send($messageCandidat."\n--------------------------------------------------------------------------------\nVoici vos identifiant de votre compte candidat : \nLogin : ".$this->request->data['login']."\nMot de passe : ".$this->request->data['password']."\n--------------------------------------------------------------------------------\n");
                         
                         
                     } else {
