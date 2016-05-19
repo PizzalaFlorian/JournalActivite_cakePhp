@@ -63,7 +63,6 @@ class OccupationController extends AppController
     {
         $occupation = $this->Occupation->newEntity();
         if ($this->request->is('post')) {
-            debug($this->request->data);
             if(is_string($this->request->data['HeureDebut'])){
                 $sep_date_time = explode(' ', $this->request->data['HeureDebut']);
 
@@ -121,6 +120,7 @@ class OccupationController extends AppController
                 $occupation = $this->Occupation->patchEntity($occupation, $newData);
 
                 if ($this->Occupation->save($occupation)) {
+                    echo $occupation->CodeOccupation;
                     $this->Flash->success(__('The occupation has been saved.'));
                 } else {
                     $this->Flash->error(__('The occupation could not be saved. Please, try again.'));

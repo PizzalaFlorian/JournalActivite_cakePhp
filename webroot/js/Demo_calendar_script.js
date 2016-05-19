@@ -32,7 +32,7 @@ $(function(){
     var td_width=$(".calendar_td").width();
     $(".calendar_event").css({
         "width" : td_width*0.85,
-        "margin-left" : (td_width-(td_width*0.85))/2
+        "margin-left" : (td_width-(td_width*0.85))/2,
     });
 
     /*  Déplacement event */
@@ -240,34 +240,21 @@ $(function(){
 					//console.log(new_activit);
 					
 					// envoie a controleur/CandidatRenseigneActivites.ctrl.php pour ajout BDD
-                    //TODO
-                     $.ajax({  
-                                url : '../activite/recupNomActivite/'+new_activit,
-                                type : 'POST',
-                                data : new_activit,
-                                dataType : 'html', 
-                                success : function(code_html, statut){ 
-                                    contenu = code_html;
-                                    var event_date_titre = $('<div>'+contenu+'</div>')
-                                    .appendTo(event)
-                                    .attr('class','calendar_event_title')
-                                    .attr('id',event_id+'_title');
-                                }
-                    });   
+                    //TODO   
 
-                    $.ajax({  
-                                url : '../lieu/recupNomLieu/'+new_lieu,
-                                type : 'POST',
-                                data : new_lieu,
-                                dataType : 'html', 
-                                success : function(code_html, statut){ 
-                                    contenu = code_html;
-                                    var event_date_lieu = $('<div>'+contenu+'</div>')
-                                        .appendTo(event)
-                                        .attr('class','calendar_event_lieu')
-                                        .attr('id',event_id+'_lieu');
-                                }
-                    });
+                    // $.ajax({  
+                    //             url : '../lieu/recupNomLieu/'+new_lieu,
+                    //             type : 'POST',
+                    //             data : new_lieu,
+                    //             dataType : 'html', 
+                    //             success : function(code_html, statut){ 
+                    //                 contenu = code_html;
+                    //                 var event_date_lieu = $('<div>'+contenu+'</div>')
+                    //                     .appendTo(event)
+                    //                     .attr('class','calendar_event_lieu')
+                    //                     .attr('id',event_id+'_lieu');
+                    //             }
+                    // });
                      
 					$.ajax({
 						url: "../occupation/add",
@@ -279,9 +266,78 @@ $(function(){
 								'&CodeCompagnie=' + new_compagnie  + 
 								'&CodeDispositif=' + new_dispositif,
 						dataType : 'html',
-						success : function(rep, statut){
-							 //console.log("Ajout finis");
-							 //console.log(rep);				// affichage requete SQL
+						success : function(rep, statut){         
+
+                            var event_id = rep;
+
+                            console.log('event',new_event_heure_debut);
+                            var tab_debut = new_event_heure_debut.split(' ');
+                            var h_debut =  tab_debut[1].split(':');
+
+                            var tab_fin = new_event_heure_fin.split(' ');
+                            var h_fin =  tab_fin[1].split(':');
+
+                            var depSec = (parseInt(h_debut[0]) * 60 + parseInt(h_debut[1])) * 60;
+                            var finSec = (parseInt(h_fin[0]) * 60 + parseInt(h_fin[1])) * 60;
+                            var dureeSec = finSec - depSec;
+                            
+                            var margin_top_o = (((depSec/60)/60)*4)*10;
+                            var height_o = (((dureeSec/60)/60)*4)*10; 
+                            console.log('height',height_o);
+                            console.log('event id',rep);
+                            var rename_event = $('#1')
+                             .attr( 'id',event_id );
+                            var event_modif_height = $('#'+event_id)
+                            .css( "height",height_o+"px");
+
+                            var event_modif_height = $('#'+event_id)
+                            .css( "marginTop",margin_top_o+"px");
+                            
+                            var event_date = $('<div></div>')
+                            .appendTo(event)
+                            .attr('class','calendar_event_date')
+                            .attr('div',event_id+'_calendar_event_date');
+
+                            var event_date_heure_debut = $('<span>'+h_debut[0]+'</span>')
+                            .appendTo(event_date)
+                            .attr('id',event_id+'_date_debut_heure');
+
+                            $('<span>:</span>')
+                            .appendTo(event_date);
+
+                            var event_date_minute_debut = $('<span>'+h_debut[1]+'</span>')
+                            .appendTo(event_date)
+                            .attr('id',event_id+'_date_debut_minute');
+
+                            $('<span> - </span>')
+                            .appendTo(event_date);
+
+                            var event_date_heure_fin = $('<span>'+h_fin[0]+'</span>')
+                            .appendTo(event_date)
+                            .attr('id',event_id+'_date_fin_heure');
+
+                            $('<span>:</span>')
+                            .appendTo(event_date);
+                            
+                            var event_date_minute_fin = $('<span>'+h_fin[1]+'</span>')
+                            .appendTo(event_date)
+                            .attr('id',event_id+'_date_fin_minute');
+
+                            $.ajax({  
+                                url : '../activite/recupNomActivite/'+new_activit,
+                                type : 'POST',
+                                data : new_activit,
+                                dataType : 'html', 
+                                success : function(code_html, statut){ 
+                                    contenu = code_html;
+                                    var event_date_titre = $('#1_title')
+                                    .remove();
+                                    var event_date_titre = $('<div>'+contenu+'</div>')
+                                    .appendTo(event)
+                                    .attr('class','calendar_event_title')
+                                    .attr('id',event_id+'_title');
+                                }
+                            });
                         }
 					});
 					
@@ -332,7 +388,7 @@ $(function(){
                 
             }
         });
-
+        
         $("#ajax_load").html("");
         var event = $('<div></div>')
         .appendTo($(this))
@@ -343,59 +399,49 @@ $(function(){
             marginTop:margin_top+"px"
         });
 
-        var event_date = $('<div></div>')
-        .appendTo(event)
-        .attr('class','calendar_event_date')
-        .attr('div',event_id+'_calendar_event_date');
+        var event_date_titre = $('<div>'+'(en cours de sauvegarde)'+'</div>')
+            .appendTo(event)
+            .attr('class','calendar_event_title')
+            .attr('id',event_id+'_title');
+        // var event_date = $('<div></div>')
+        // .appendTo(event)
+        // .attr('class','calendar_event_date')
+        // .attr('div',event_id+'_calendar_event_date');
 
-        var event_date_heure_debut = $('<span>'+nouvelle_heure_depart.getHours()+'</span>')
-        .appendTo(event_date)
-        .attr('id',event_id+'_date_debut_heure');
+        // var event_date_heure_debut = $('<span>'+nouvelle_heure_depart.getHours()+'</span>')
+        // .appendTo(event_date)
+        // .attr('id',event_id+'_date_debut_heure');
 
-        $('<span>:</span>')
-        .appendTo(event_date);
+        // $('<span>:</span>')
+        // .appendTo(event_date);
 
-        var event_date_minute_debut = $('<span>'+nouvelle_heure_depart.getMinutes()+'</span>')
-        .appendTo(event_date)
-        .attr('id',event_id+'_date_debut_minute');
+        // var event_date_minute_debut = $('<span>'+nouvelle_heure_depart.getMinutes()+'</span>')
+        // .appendTo(event_date)
+        // .attr('id',event_id+'_date_debut_minute');
 
-        $('<span> - </span>')
-        .appendTo(event_date);
+        // $('<span> - </span>')
+        // .appendTo(event_date);
 
-        var event_date_heure_fin = $('<span>'+nouvelle_heure_fin.getHours()+'</span>')
-        .appendTo(event_date)
-        .attr('id',event_id+'_date_fin_heure');
+        // var event_date_heure_fin = $('<span>'+nouvelle_heure_fin.getHours()+'</span>')
+        // .appendTo(event_date)
+        // .attr('id',event_id+'_date_fin_heure');
 
-        $('<span>:</span>')
-        .appendTo(event_date);
+        // $('<span>:</span>')
+        // .appendTo(event_date);
         
-        var event_date_minute_fin = $('<span>'+nouvelle_heure_fin.getMinutes()+'</span>')
-        .appendTo(event_date)
-        .attr('id',event_id+'_date_fin_minute');
-
-        //TODO TITLE
+        // var event_date_minute_fin = $('<span>'+nouvelle_heure_fin.getMinutes()+'</span>')
+        // .appendTo(event_date)
+        // .attr('id',event_id+'_date_fin_minute');
              
-
-        // var event_date_titre = $('<div>'+new_activit+'</div>')
-        // .appendTo(event)
-        // .attr('class','calendar_event_title')
-        // .attr('id',event_id+'_title');
-
-        // var event_date_lieu = $('<div>(Inconnu)</div>')
-        // .appendTo(event)
-        // .attr('class','calendar_event_lieu')
-        // .attr('id',event_id+'_lieu');
-
         event.corner();
         $(".calendar_event_date").corner("top cc:#fff");
         var td_width=$(".calendar_td").width();
         event.css({
             "width" : td_width*0.85,
-            "margin-left" : (td_width-(td_width*0.85))/2
+            "margin-left" : (td_width-(td_width*0.85))/2,
         });
-        
+    
 
-        
         /*application des interactions avec l'event*/
         event.draggable({
             containment: "parent",
