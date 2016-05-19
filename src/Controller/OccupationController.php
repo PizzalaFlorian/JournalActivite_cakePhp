@@ -121,7 +121,7 @@ class OccupationController extends AppController
 
                 if ($this->Occupation->save($occupation)) {
                     echo $occupation->CodeOccupation;
-                    $this->Flash->success(__('The occupation has been saved.'));
+                    //$this->Flash->success(__('The occupation has been saved.'));
                 } else {
                     $this->Flash->error(__('The occupation could not be saved. Please, try again.'));
                 }
@@ -202,7 +202,7 @@ class OccupationController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $occupation = $this->Occupation->get($id);
         if ($this->Occupation->delete($occupation)) {
-            $this->Flash->success(__('The occupation has been deleted.'));
+            //$this->Flash->success(__('The occupation has been deleted.'));
         } else {
             $this->Flash->error(__('The occupation could not be deleted. Please, try again.'));
         }
