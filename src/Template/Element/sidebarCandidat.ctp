@@ -30,7 +30,7 @@
     <?php 
         echo $this->Html->link(
             'Générer certificat',
-            ['controller' => 'candidat', 'action' => 'certificat/1.pdf', '_full' => true]
+            ['controller' => 'candidat', 'action' => 'generate', '_full' => true]
         ); 
     ?> 
 </li>
