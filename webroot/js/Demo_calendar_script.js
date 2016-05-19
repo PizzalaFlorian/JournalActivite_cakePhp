@@ -687,7 +687,7 @@ $(function(){
                 'Modifier': function() {
                     $.ajax({  
                         url : '../occupation/edit/'+id_event,
-                        type : 'POST',
+                        type : 'GET',
                         data : id_event,
                         dataType : 'html', 
                         success : function(code_html, statut){ 

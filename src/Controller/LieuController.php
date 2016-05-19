@@ -217,4 +217,12 @@ class LieuController extends AppController
 
         $this->set('_serialize', ['lieu']);  
     }
+
+    public function request(){
+        $id = $this->request->data['value'];
+        $lieux = $this->Lieu->find('all', ['conditions' => ['CodeCategorieLieux' => $id]]);
+        $this->set(compact('lieux'));
+        $this->set('_serialize', ['lieux']); 
+
+    }
 }

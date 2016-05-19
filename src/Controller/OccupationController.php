@@ -157,18 +157,22 @@ class OccupationController extends AppController
         $this->loadModel('Compagnie');
         $this->loadModel('Dispositif');
 
-        $maCategorielieu        = $this->Categorielieu->find('all');
-        $maCategorieactivite    = $this->Categorieactivite->find('all');
-
-        $monLieu        = $this->Lieu->find('all', ['conditions' => ['CodeCategorieLieux' => 1] ]);
-        $monActivite    = $this->Activite->find('all', ['conditions' => ['CodeCategorie' => 1] ]);
-        $monCompagnie   = $this->Compagnie->find('all');
-        $monDispositif  = $this->Dispositif->find('all');
-
-
         $occupation = $this->Occupation->get($id, [
             'contain' => []
         ]);
+
+        $maCategorielieu        = $this->Categorielieu->find('all');
+        $maCategorieactivite    = $this->Categorieactivite->find('all');
+
+        //contient la categorieactivité/lieu de l'activité /lieux inscrite dans l'occupation($id)
+        $CatActiviteOccupation  = $this->Categorieactivite->get($this->Activite->get($occupation->CodeActivite)->CodeCategorie);
+        $CatLieuxOccupation     = $this->Categorielieu->get($this->Lieu->get($occupation->CodeLieux)->CodeCategorieLieux);
+
+        $monLieu        = $this->Lieu->find('all', ['conditions' => ['CodeCategorieLieux' => $CatLieuxOccupation->CodeCategorieLieux] ]);
+        $monActivite    = $this->Activite->find('all', ['conditions' => ['CodeCategorie' => $CatActiviteOccupation->CodeCategorieActivite] ]);
+        $monCompagnie   = $this->Compagnie->find('all');
+        $monDispositif  = $this->Dispositif->find('all');
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $occupation = $this->Occupation->patchEntity($occupation, $this->request->data);
             if ($this->Occupation->save($occupation)) {
@@ -181,6 +185,8 @@ class OccupationController extends AppController
 
         $this->set(compact('maCategorielieu'));
         $this->set(compact('maCategorieactivite'));
+        $this->set(compact('CatActiviteOccupation'));
+        $this->set(compact('CatLieuxOccupation'));
         $this->set(compact('monLieu'));
         $this->set(compact('monActivite'));
         $this->set(compact('monCompagnie'));

@@ -223,4 +223,11 @@ class ActiviteController extends AppController
         $this->set('activite', $activite);
         $this->set('_serialize', ['activite']); 
     }
+    
+    public function request(){
+        $id = $this->request->data['value'];
+        $activites = $this->Activite->find('all', ['conditions' => ['CodeCategorie' => $id]]);
+        $this->set(compact('activites'));
+        $this->set('_serialize', ['activites']); 
+    }
 }

@@ -12,11 +12,8 @@
             <label for="CodeCategorieActivite">Categorie d'activité' :</label>
             <select id="Activite" class="RA_target" type="text" name="CodeCategorieActivite">
             <?php
-                $required = "";
                 foreach ($maCategorieactivite as $catActivite) {
-                    if($catActivite->CodeCategorieActivite == $CatActiviteOccupation->CodeCategorieActivite){$required = 'selected';}
-                    echo "<option value=".$catActivite->CodeCategorieActivite." $required>".$catActivite->NomCategorie."</option>";
-                    $required = "";
+                    echo "<option value=".$catActivite->CodeCategorieActivite.">".$catActivite->NomCategorie."</option>";
                 }
             ?>
             </select>
@@ -25,11 +22,8 @@
             <label for="CodeActivite">Activité :</label>
             <select id="CodeActivite" class="Activite" type="text" name="CodeActivite">
             <?php
-                $required = "";
-                foreach ($monActivite as $activite) {
-                    if($activite->CodeActivite == $occupation->CodeActivite){$required = 'selected';}
-                    echo "<option value=".$activite->CodeActivite." $required>".$activite->NomActivite."</option>";
-                    $required = "";
+                foreach ($monActivite as $lieu) {
+                    echo "<option value=".$lieu->CodeActivite.">".$lieu->NomActivite."</option>";
                 }
             ?>
             </select>
@@ -39,11 +33,8 @@
             <label for="CodeCategorieLieux">Categorie de lieux :</label>
             <select id="Lieu" class="RA_target" type="text" name="CodeCategorieLieux">
             <?php
-                $required = "";
                 foreach ($maCategorielieu as $catLieu) {
-                    if($catLieu->CodeCategorieLieux == $CatLieuxOccupation->CodeCategorieLieux){$required = 'selected';}
-                    echo "<option value=".$catLieu->CodeCategorieLieux." $required>".$catLieu->NomCategorie."</option>";
-                    $required = "";
+                    echo "<option value=".$catLieu->CodeCategorieLieux.">".$catLieu->NomCategorie."</option>";
                 }
             ?>
             </select>
@@ -52,11 +43,8 @@
             <label for="codeLieux">Lieux :</label>
             <select id="CodeLieux" class="Lieu" type="text" name="CodeLieux">
             <?php
-                $required = "";
                 foreach ($monLieu as $lieu) {
-                    if($lieu->CodeLieux == $occupation->CodeLieux){$required = 'selected';}
-                    echo "<option value=".$lieu->CodeLieux." $required>".$lieu->NomLieux."==".$lieu->CodeLieux."-".$occupation->CodeLieux."</option>";
-                    $required = "";
+                    echo "<option value=".$lieu->CodeLieux.">".$lieu->NomLieux."</option>";
                 }
             ?>
             </select>
@@ -66,11 +54,8 @@
             <label for="CodeCompagnie">Compagnie :</label>
             <select id="CodeCompagnie" type="text" name="CodeCompagnie">
             <?php
-                $required = "";
                 foreach ($monCompagnie as $compagnie) {
-                    if($compagnie->CodeCompagnie == $occupation->CodeCompagnie){$required = 'selected';}
-                    echo "<option value=".$compagnie->CodeCompagnie." $required>".$compagnie->NomCompagnie."</option>";
-                    $required = "";
+                    echo "<option value=".$compagnie->CodeCompagnie.">".$compagnie->NomCompagnie."</option>";
                 }
             ?>
             </select>
@@ -80,11 +65,8 @@
             <label for="CodeDispositif">Dispositif :</label>
             <select id="CodeDispositif" type="text" name="CodeDispositif">
             <?php
-                $required = "";
                 foreach ($monDispositif as $dispositif) {
-                    if($dispositif->CodeDispositif == $occupation->CodeDispositif){$required = 'selected';}
-                    echo "<option value=".$dispositif->CodeDispositif." $required>".$dispositif->NomDispositif."</option>";
-                    $required = "";
+                    echo "<option value=".$dispositif->CodeDispositif.">".$dispositif->NomDispositif."</option>";
                 }
             ?>
             </select>
