@@ -210,7 +210,7 @@ INSERT INTO `candidat` (`CodeCandidat`, `NomCandidat`, `PrenomCandidat`, `Age`, 
 
 CREATE TABLE IF NOT EXISTS `carnetdebord` (
   `CodeEntree` int(10) unsigned NOT NULL,
-  `Date` date NOT NULL,
+  `Date` datetime NOT NULL,
   `Sujet` varchar(250) NOT NULL,
   `Commentaire` text NOT NULL,
   `CodeChercheur` int(10) unsigned NOT NULL

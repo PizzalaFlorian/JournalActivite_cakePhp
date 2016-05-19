@@ -22,6 +22,24 @@
 <li> 
     <?php 
         echo $this->Html->link(
+            'Carnet de bord',
+            ['controller' => 'carnetdebord', 'action' => 'index', '_full' => true]
+        ); 
+    ?> 
+</li>
+
+<li> 
+    <?php 
+        echo $this->Html->link(
+            'Messages',
+            ['controller' => 'messages', 'action' => 'index', '_full' => true]
+        ); 
+    ?> 
+</li>
+<li class="heading"><?= __('Tables') ?></li>
+<li> 
+    <?php 
+        echo $this->Html->link(
             'Table Activite',
             ['controller' => 'activite', 'action' => 'index', '_full' => true]
         ); 
@@ -67,31 +85,7 @@
         ); 
     ?> 
 </li>
-<li> 
-    <?php 
-        echo $this->Html->link(
-            'Carnet de bord',
-            ['controller' => 'chercheur', 'action' => 'carnetDeBord', '_full' => true]
-        ); 
-    ?> 
-</li>
-
-<li> 
-    <?php 
-        echo $this->Html->link(
-            'Messages',
-            ['controller' => 'messages', 'action' => 'index', '_full' => true]
-        ); 
-    ?> 
-</li>
-<li> 
-    <?php 
-        echo $this->Html->link(
-            'Aide',
-            ['controller' => 'chercheur', 'action' => 'aide', '_full' => true]
-        ); 
-    ?> 
-</li>
+<li class="heading"><?= __('Mes infos') ?></li>
 <li> 
     <?php 
         echo $this->Html->link(
@@ -108,7 +102,14 @@
         ); 
     ?> 
 </li>
-
+<li> 
+    <?php 
+        echo $this->Html->link(
+            'Aide',
+            ['controller' => 'chercheur', 'action' => 'aide', '_full' => true]
+        ); 
+    ?> 
+</li>
 <li> 
     <?php 
         echo $this->Html->link(
