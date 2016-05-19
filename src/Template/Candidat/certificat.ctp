@@ -5,8 +5,9 @@
     tr {
     	text-align: center;
     }
-    #bot{
+    p{
     	text-align: center;
+    	border-bottom: 1px solid black;
     }
 </style>
 <table border="1" cellpadding="1" width="100%">
@@ -31,6 +32,8 @@
 </table>
 
 <p>Certifiant que le candidat as participé sur la période du <b><?php echo $debut; ?></b> au 
-<b><?php echo $fin; ?></b>, pour un totale de <b><?= $count ?></b> occupations mentionnée(s)</p>
+<b><?php echo $fin; ?></b>,
+<br>
+pour un totale de <b><?= $count ?></b> occupations mentionnée(s)</p>
 
 <p> à la date du <?php echo $annee; ?> - Code génération <?php echo $code; ?></p>

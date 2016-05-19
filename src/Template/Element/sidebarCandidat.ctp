@@ -29,14 +29,6 @@
 <li> 
     <?php 
         echo $this->Html->link(
-            'Générer certificat',
-            ['controller' => 'candidat', 'action' => 'generate', '_full' => true]
-        ); 
-    ?> 
-</li>
-<li> 
-    <?php 
-        echo $this->Html->link(
             'Messagerie',
             ['controller' => 'messages', 'action' => 'index', '_full' => true]
         ); 
@@ -69,7 +61,14 @@
         ); 
     ?> 
 </li>
-
+<li> 
+    <?php 
+        echo $this->Html->link(
+            'Générer certificat participation',
+            ['controller' => 'candidat', 'action' => 'generate', '_full' => true]
+        ); 
+    ?> 
+</li>
 <li> 
     <?php 
         echo $this->Html->link(

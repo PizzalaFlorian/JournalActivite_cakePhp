@@ -34,6 +34,7 @@ class CandidatController extends AppController
 
     public function certificat($id=null){
         $this->viewBuilder()->layout('pdf/default');
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "CodeBarre" . DS ."codebarre.inc.php");
         $filename = 'certificat';
 
         $candidat = TableRegistry::get('candidat')
