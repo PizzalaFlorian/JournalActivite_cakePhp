@@ -666,8 +666,8 @@ $(function(){
                 var lieu_eve=$("#"+id_event+"_lieu").html();
                 var contenu = "";
                 $.ajax({  
-                    url : '../occupation/view/'+id_event,
-                    type : 'POST',
+                    url : '../occupation/edit/'+id_event,
+                    type : 'GET',
                     data : id_event,
                     dataType : 'html', 
                     success : function(code_html, statut){ 
@@ -679,25 +679,25 @@ $(function(){
                 });
             },
             buttons: {
-                /*'Voir détails': function() {
-                    $(this).dialog('destroy');
-                    var url_details=getBaseURL()+"/admin/evenements/voir/id/"+id_event;
-                    $(location).attr('href',url_details);
-                },*/
-                'Modifier': function() {
-                    $.ajax({  
-                        url : '../occupation/edit/'+id_event,
-                        type : 'GET',
-                        data : id_event,
-                        dataType : 'html', 
-                        success : function(code_html, statut){ 
-                            contenu = code_html;
-                            $("#ui-dialog-title-dialog").html("Détail")
-                            //console.log("copy");
-                            $("#dialog").html(contenu);
-                        }
-                    });
-                },
+                // 'Voir détails': function() {
+                //     $(this).dialog('destroy');
+                //     var url_details=getBaseURL()+"/admin/evenements/voir/id/"+id_event;
+                //     $(location).attr('href',url_details);
+                // },
+                // 'Modifier': function() {
+                //     $.ajax({  
+                //         url : '../occupation/edit/'+id_event,
+                //         type : 'GET',
+                //         data : id_event,
+                //         dataType : 'html', 
+                //         success : function(code_html, statut){ 
+                //             contenu = code_html;
+                //             $("#ui-dialog-title-dialog").html("Détail")
+                //             //console.log("copy");
+                //             $("#dialog").html(contenu);
+                //         }
+                //     });
+                // },
                 'Supprimer': function() {
                     $(this).html("Veuillez Confirmer la suppression"+id_event);
                     $("#dialog").dialog('destroy');
