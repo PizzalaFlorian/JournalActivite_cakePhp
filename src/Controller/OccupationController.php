@@ -23,7 +23,6 @@ class OccupationController extends AppController
         $this->set(compact('occupation'));
         $this->set('_serialize', ['occupation']);
     }
-
     /**
      * View method
      *
@@ -150,6 +149,8 @@ class OccupationController extends AppController
      */
     public function edit($id = null)
     {
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "occupation" . DS ."occupation.php");
+        
         $this->loadModel('Lieu');
         $this->loadModel('Categorielieu');
         $this->loadModel('Activite');
@@ -157,61 +158,92 @@ class OccupationController extends AppController
         $this->loadModel('Compagnie');
         $this->loadModel('Dispositif');
 
-        $occupation = $this->Occupation->get($id, [
+        $occupation = $this->Occupation->get(15925, [
             'contain' => []
         ]);
 
-        $maCategorielieu        = $this->Categorielieu->find('all');
-        $maCategorieactivite    = $this->Categorieactivite->find('all');
 
-        //contient la categorieactivité/lieu de l'activité /lieux inscrite dans l'occupation($id)
-        $CatActiviteOccupation  = $this->Categorieactivite->get($this->Activite->get($occupation->CodeActivite)->CodeCategorie);
-        $CatLieuxOccupation     = $this->Categorielieu->get($this->Lieu->get($occupation->CodeLieux)->CodeCategorieLieux);
-
-        $monLieu        = $this->Lieu->find('all', ['conditions' => ['CodeCategorieLieux' => $CatLieuxOccupation->CodeCategorieLieux] ]);
-        $monActivite    = $this->Activite->find('all', ['conditions' => ['CodeCategorie' => $CatActiviteOccupation->CodeCategorieActivite] ]);
-        $monCompagnie   = $this->Compagnie->find('all');
-        $monDispositif  = $this->Dispositif->find('all');
-
+        // ENREGISTREMENT //
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $occupation = $this->Occupation->patchEntity($occupation, $this->request->data);
-            if ($this->Occupation->save($occupation)) {
-                $this->Flash->success(__('The occupation has been saved.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The occupation could not be saved. Please, try again.'));
+            if(is_string($this->request->data['HeureDebut'])){
+
+
+                $occupation = $this->Occupation->get($this->request->data['CodeOccupation'], [
+                    'contain' => []
+                ]);
+                // $occupation->CodeLieux = $this->request->data['CodeLieux'];
+                // $occupation->CodeActivite = $this->request->data['CodeActivite'];
+                // $occupation->CodeDispositif = $this->request->data['CodeDispositif'];
+                // $occupation->CodeCompagnie = $this->request->data['CodeCompagnie'];
+
+                // $lol = $this->request->data;
+                // $lol->HeureDebut = $occupation->HeureDebut;
+                // $lol->HeureFin = $occupation->HeureFin;
+
+
+                if ($this->Occupation->save($occupation)) {
+                    echo $occupation->CodeOccupation;
+                    $this->Flash->success(__('The occupation has been saved.'));
+                    //return $this->redirect(['action' => 'index']);
+                } else {
+                    $this->Flash->error(__('The occupation could not be saved. Please, try again.'));
+                    //return $this->redirect(['action' => 'index']);
+                }
+            } else { 
+                $occupation = $this->Occupation->patchEntity($occupation, $this->request->data);
+            
+                if ($this->Occupation->save($occupation)) {
+                    $this->Flash->success(__('The occupation has been saved.'));
+                    return $this->redirect(['action' => 'index']);
+                } else {
+                    $this->Flash->error(__('The occupation could not be saved. Please, try again.'));
+                }
             }
+
         }
+        else{
+            // TRAITEMENT POUR TEMPLATE //
+            $maCategorielieu        = $this->Categorielieu->find('all');
+            $maCategorieactivite    = $this->Categorieactivite->find('all');
 
-        $this->set(compact('maCategorielieu'));
-        $this->set(compact('maCategorieactivite'));
-        $this->set(compact('CatActiviteOccupation'));
-        $this->set(compact('CatLieuxOccupation'));
-        $this->set(compact('monLieu'));
-        $this->set(compact('monActivite'));
-        $this->set(compact('monCompagnie'));
-        $this->set(compact('monDispositif'));
+            //contient la categorieactivité/lieu de l'activité /lieux inscrite dans l'occupation($id)
+            $CatActiviteOccupation  = $this->Categorieactivite->get($this->Activite->get($occupation->CodeActivite)->CodeCategorie);
+            $CatLieuxOccupation     = $this->Categorielieu->get($this->Lieu->get($occupation->CodeLieux)->CodeCategorieLieux);
 
-        $this->set(compact('occupation'));
-        $this->set('_serialize', ['occupation']);
-    }
+            $monLieu        = $this->Lieu->find('all', ['conditions' => ['CodeCategorieLieux' => $CatLieuxOccupation->CodeCategorieLieux] ]);
+            $monActivite    = $this->Activite->find('all', ['conditions' => ['CodeCategorie' => $CatActiviteOccupation->CodeCategorieActivite] ]);
+            $monCompagnie   = $this->Compagnie->find('all');
+            $monDispositif  = $this->Dispositif->find('all');
 
-    /**
-     * Delete method
-     *
-     * @param string|null $id Occupation id.
-     * @return \Cake\Network\Response|null Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function delete($id = null)
-    {
-        $this->request->allowMethod(['post', 'delete']);
-        $occupation = $this->Occupation->get($id);
-        if ($this->Occupation->delete($occupation)) {
-            //$this->Flash->success(__('The occupation has been deleted.'));
-        } else {
-            $this->Flash->error(__('The occupation could not be deleted. Please, try again.'));
+            $this->set(compact('maCategorielieu'));
+            $this->set(compact('maCategorieactivite'));
+            $this->set(compact('CatActiviteOccupation'));
+            $this->set(compact('CatLieuxOccupation'));
+            $this->set(compact('monLieu'));
+            $this->set(compact('monActivite'));
+            $this->set(compact('monCompagnie'));
+            $this->set(compact('monDispositif'));
+
+            $this->set(compact('occupation'));
+            $this->set('_serialize', ['occupation']);
         }
-        return $this->redirect(['action' => 'index']);
     }
+    // /**
+    //  * Delete method
+    //  *
+    //  * @param string|null $id Occupation id.
+    //  * @return \Cake\Network\Response|null Redirects to index.
+    //  * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+    //  */
+    // public function delete($id = null)
+    // {
+    //     $this->request->allowMethod(['post', 'delete']);
+    //     $occupation = $this->Occupation->get($id);
+    //     if ($this->Occupation->delete($occupation)) {
+    //         //$this->Flash->success(__('The occupation has been deleted.'));
+    //     } else {
+    //         $this->Flash->error(__('The occupation could not be deleted. Please, try again.'));
+    //     }
+    //     return $this->redirect(['action' => 'index']);
+    // }
 }

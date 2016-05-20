@@ -7,11 +7,11 @@
 
         <div class="input number required"> 
             <label for="CodeCategorieActivite">Heure de début :</label>
-            <input id="new_event_heure_debut" type="text" value="<?php echo $occupation->HeureDebut; ?>" />
+            <input id="new_event_heure_debut" type="text" value="<?php echo retourneHeure($occupation->HeureDebut); ?>" />
         </div>
         <div class="input number required"> 
             <label for="CodeCategorieActivite">heure de fin :</label>            
-            <input id="new_event_heure_fin" type="text" value="<?php echo $occupation->HeureFin; ?>" />
+            <input id="new_event_heure_fin" type="text" value="<?php echo retourneHeure($occupation->HeureFin); ?>" />
         </div>
 
         <div class="input number required">
@@ -61,7 +61,7 @@
                 $required = "";
                 foreach ($monLieu as $lieu) {
                     if($lieu->CodeLieux == $occupation->CodeLieux){$required = 'selected';}
-                    echo "<option value=".$lieu->CodeLieux." $required>".$lieu->NomLieux."==".$lieu->CodeLieux."-".$occupation->CodeLieux."</option>";
+                    echo "<option value=".$lieu->CodeLieux." $required>".$lieu->NomLieux."</option>";
                     $required = "";
                 }
             ?>

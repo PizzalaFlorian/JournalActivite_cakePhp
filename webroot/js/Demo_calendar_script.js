@@ -643,6 +643,7 @@ $(function(){
     $(".calendar_event").click(function(e){
         var object_clicked = $(this);
         var id_event=object_clicked.attr("id");
+        var jour_deb = $(this).attr('id');
         
         $("#dialog").dialog({
             bgiframe: true,
@@ -755,7 +756,9 @@ $(function(){
                                 '&CodeDispositif=' + new_dispositif,
                         dataType : 'html',
                         success : function(rep, statut){ 
-
+                            
+                            console.log(rep);
+                    
                         }
                     });
                 }
