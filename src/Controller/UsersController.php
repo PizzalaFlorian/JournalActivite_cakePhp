@@ -239,9 +239,65 @@ class UsersController extends AppController
         }
     }
 
-
     public function logout()
     {
         return $this->redirect($this->Auth->logout());
+    }
+
+    public function suppressioncompte(){
+        $this->viewBuilder()->layout('candiLayout');
+        $sideBar = "sidebarCandidat"; 
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            if($this->request->data['published'] == '1'){
+                // Chargement des Models
+                    $this->loadModel('Occupation');
+                    $this->loadModel('Candidat');
+                // récupération du candidat
+                    $idUser = $_SESSION['Auth']['User']['ID'];
+                    $query = $this->Candidat->find('all', ['conditions' => ['Candidat.ID' => $idUser]]);
+                    $candidat = $query->first();
+                // suppression des occupations
+                    // récupération des Occupation de l'utilisateur
+                        $occupations = $this->Occupation->find('all', ['conditions' => ['Occupation.CodeCandidat' => $candidat->CodeCandidat]]);
+                        //Si une erreur a lieu, passe à true
+                        $error = false;     
+                        foreach($occupations as $occupation){
+                            if($this->Occupation->delete($occupation)){
+                            } else {
+                                $error = true;
+                            }
+                        }
+                        if($error){ 
+                            // Si une erreur est survenue, on renvoie vers le contact de l'administrateur
+                            $this->Flash->error(__('Une erreur est survenue, veuillez contacter l\'administrateur'));
+                            echo "je stop la";
+                        }
+                        else{
+                            // Si aucune erreur, on passe à la suppression du compte
+                            //$this->Flash->success(__('Vos données on bien été supprimées'));
+                            //echo "les données ont bien été supprimer";
+                            // echo "suppression des occupations\n";
+                            // suppression du candidat
+                                if($this->Candidat->delete($candidat)){
+                                    // suppression de l'user
+                                        $user = $this->Users->get($idUser);
+                                        if($this->Users->delete($user)){
+                                            $this->Flash->success(__('Toutes vos données on bien été supprimées'));
+                                            $this->Flash->success(__('Votre compte à bien été supprimées'));
+                                            return $this->redirect(['controller' => 'users', 'action' => 'logout']);
+                                        }
+                                        else{
+                                            $this->Flash->error(__('Une erreur est survenue, veuillez contacter l\'administrateur'));
+                                        }
+                                } else {
+                                    $this->Flash->error(__('Une erreur est survenue, veuillez contacter l\'administrateur'));
+                                }
+                        }
+            } else{
+                echo "vous n'avez pas cocher la case suppression du compte";
+            }
+        }
+        $this->set(compact('sideBar'));
+        $this->set('_serialize', ['message']);
     }
 }
