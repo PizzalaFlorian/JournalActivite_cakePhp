@@ -4,7 +4,12 @@
 <div class="messages view large-12 medium-11 columns content">
     <div class="navbar">
         <fieldset>
-            <?= $this->Html->link(__('Répondre'), ['action' => 'repondre', $message->IDMessage]) ?> <br/>
+            <?php 
+                // si l'utilisateur a été supprimer, aucune possibilité de repondre
+                if(!(($message->userExpediteur == 4)||($message->userRecepteur == 4))){ 
+            ?>
+                <?= $this->Html->link(__('Répondre'), ['action' => 'repondre', $message->IDMessage]) ?> <br/>
+            <?php } ?>
             <?= $this->Html->link(__('Supprimer'), ['action' => 'delete', $message->IDMessage], ['confirm' => __('Etes vous sur de vouloir supprimer ce message?', $message->IDMessage)]) ?> <br/>
             <?= $this->Html->link(__('Retour'), ['controller' => 'messages']) ?>
         </fieldset>
@@ -16,7 +21,11 @@
         </tr>
         <tr>
             <th><?= __('De :') ?></th>
-            <td><?php echo whoIsID($message->IDExpediteur); ?></td>
+            <td><?php echo whoIsID($message->userExpediteur); ?></td>
+        </tr>
+        <tr>
+            <th><?= __('à :') ?></th>
+            <td><?php echo whoIsID($message->userRecepteur); ?></td>
         </tr>
         <tr>
             <th><?= __('Date :') ?></th>

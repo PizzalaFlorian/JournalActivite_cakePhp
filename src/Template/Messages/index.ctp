@@ -40,8 +40,13 @@
                 <!-- ACTIONS -->
                 <td class="actions">
                     <!-- REPONDRE -->  
-                    <?= $this->Html->link(__('Répondre'), ['action' => 'repondre', $message->IDMessage]) ?>
-                    <br/>
+                    <?php 
+                        // si l'utilisateur a été supprimer, aucune possibilité de repondre
+                        if(!($message->userExpediteur == 4)){ 
+                    ?>
+                        <?= $this->Html->link(__('Répondre'), ['action' => 'repondre', $message->IDMessage]) ?>
+                        <br/>
+                        <?php } ?>
                     <!-- SUPPRIMER -->      
                     <?= $this->Form->postLink(__('Supprimer'), ['action' => 'delete', $message->IDMessage], ['confirm' => __('Êtes-vous sûr de vouloir supprimer ce message?', $message->IDMessage)]) ?>
                 </td>

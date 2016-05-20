@@ -252,6 +252,7 @@ class UsersController extends AppController
                 // Chargement des Models
                     $this->loadModel('Occupation');
                     $this->loadModel('Candidat');
+                    $this->loadModel('Messages');
                 // récupération du candidat
                     $idUser = $_SESSION['Auth']['User']['ID'];
                     $query = $this->Candidat->find('all', ['conditions' => ['Candidat.ID' => $idUser]]);
@@ -274,9 +275,19 @@ class UsersController extends AppController
                         }
                         else{
                             // Si aucune erreur, on passe à la suppression du compte
-                            //$this->Flash->success(__('Vos données on bien été supprimées'));
-                            //echo "les données ont bien été supprimer";
-                            // echo "suppression des occupations\n";
+                            //Suppression des messages
+                                $messages = $this->Messages->find('all', ['conditions' => ['Messages.IDExpediteur' => $idUser]]);
+                                foreach ($messages as $message) {
+                                    $message->IDExpediteur = 0;         // Le messages est considéré comme supprimer
+                                    $message->userExpediteur = 4;       // Categorie : Utilisateur Supprimer
+                                    $this->Messages->save($message);    // mets a jours les messages
+                                }
+                                $messages = $this->Messages->find('all', ['conditions' => ['Messages.IDRecepteur' => $idUser]]);
+                                foreach ($messages as $message) {
+                                    $message->IDRecepteur = 0;          // Le messages est considéré comme supprimer
+                                    $message->userRecepteur = 4;        // Categorie : Utilisateur Supprimer
+                                    $this->Messages->save($message);    // mets a jours les messages
+                                }
                             // suppression du candidat
                                 if($this->Candidat->delete($candidat)){
                                     // suppression de l'user

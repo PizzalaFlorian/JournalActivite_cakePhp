@@ -18,6 +18,7 @@
 		switch ($ID) {
             case '1':				$user = "Chercheur";					break;
             case '2':				$user = "Administrateur";				break;
+            case '4':				$user = "Utilisateur Supprimé";			break;
             default:				$user = "Candidat ".$ID;				break;
         }
         return $user;
