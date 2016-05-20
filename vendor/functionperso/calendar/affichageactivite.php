@@ -31,7 +31,7 @@
 		$codeCandidat = renvoyerCodeCandidatfromCodetilisateur($id);
 		echo "<div id='tableAgenda'>";
 		foreach($weekquery as $key => $value){
-			echo '<td valign="top" class="other_day calendar_td" id="'.$value.'">';
+			echo '<td valign="top" class="other_day calendar_td ui-droppable" id="'.$value.'">';
 			echo afficheColone($codeCandidat,$value,$key);
 			echo'</td>';
 		}

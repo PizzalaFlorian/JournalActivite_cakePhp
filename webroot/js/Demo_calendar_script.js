@@ -27,7 +27,7 @@ $(function(){
     /*###########################              MODULE AGENDA                     #############*/
     /*########################################################################################*/
 
-
+    
     /* Taille des events */
     var td_width=$(".calendar_td").width();
     $(".calendar_event").css({
@@ -35,11 +35,40 @@ $(function(){
         "margin-left" : (td_width-(td_width*0.85))/2,
     });
 
+    /*drop zone*/
+    $('.ui-droppable').droppable({
+        drop : function(){
+             // cette alerte s'exécutera une fois le bloc déposé
+            
+            jour_drop = $(this).attr('id');
+            console.log('drop chez moi',jour_drop);
+            // var drag_event_heure_debut=jour_deb+" "+$("#"+id_event+"_date_debut_heure").val()+":"+$("#"+id_event+"_date_debut_minute").val()+":00";
+            // var drag_event_heure_fin=jour_deb+" "+$("#"+id_event+"_date_fin_heure").val()+":"+$("#"+id_event+"_date_fin_minute").val()+":00";
+            // //DATA CHANGE DRAG
+            // $(".ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-resizable").dialog('destroy');
+            // $.ajax({  
+            //         url : '../occupation/editHeure/'+id_event,
+            //         type : 'POST',
+            //         data :  'CodeOccupation=' + id_event +
+            //                 '&HeureDebut=' + drag_event_heure_debut + 
+            //                 '&HeureFin=' + drag_event_heure_fin,
+            //         dataType : 'html', 
+            //         success : function(code_html, statut){ 
+            //         }
+            //     });
+
+            // $("#dialog").dialog('destroy');
+            // $("#ui-dialog-title-dialog").dialog('destroy');
+            // $("#gen_new_content").dialog('destroy');
+            // $(".ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-resizable").dialog('destroy');
+        }
+    });
     /*  Déplacement event */
     //TODO
     $(".calendar_event").draggable({
-        containment: "parent",
-        grid: [10, 10],
+        //containment: "parent",
+        containment: "window",
+       // grid: [10, 10],
         delay: 100,
         drag: function(event, ui) {
             var object_drop = $(this);
@@ -112,7 +141,8 @@ $(function(){
             $("#"+id_event+"_date_fin_minute").html(nouvelle_heure_fin.getMinutes());
 
             console.log('Jai bougé');
-            var jour_deb = $(this).closest('td').attr('id');
+            //var jour_deb = $(this).closest('td').attr('id');
+            var jour_deb = jour_drop;
             var drag_event_heure_debut=jour_deb+" "+nouvelle_heure_depart.getHours()+":"+nouvelle_heure_depart.getMinutes()+":00";
             var drag_event_heure_fin=jour_deb+" "+nouvelle_heure_fin.getHours()+":"+nouvelle_heure_fin.getMinutes()+":00";
             //DATA CHANGE DRAG
@@ -259,7 +289,7 @@ $(function(){
         $("#gen_new_content").dialog({
             bgiframe: true,
             resizable: true,
-            height:800,
+            height:700,
             width:500,
             modal: true,
             beforeclose: function(event, ui) {
@@ -480,8 +510,10 @@ $(function(){
 
         /*application des interactions avec l'event*/
         event.draggable({
-            containment: "parent",
-            grid: [10, 10],
+            //containment: "parent",
+            containment: "window",
+
+            // grid: [10, 10],
             delay: 100,
             drag: function(event, ui) {
                 var object_drop = $(this);
@@ -607,7 +639,7 @@ $(function(){
             $("#dialog").dialog({
                 bgiframe: true,
                 resizable: true,
-                height:800,
+                height:700,
                 width:500,
                 modal: true,
                 overlay: {
@@ -794,7 +826,7 @@ $(function(){
         $("#dialog").dialog({
             bgiframe: true,
             resizable: true,
-            height:800,
+            height:700,
             width:500,
             modal: true,
             overlay: {
