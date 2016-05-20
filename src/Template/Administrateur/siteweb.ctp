@@ -29,4 +29,20 @@
         );
     ?>
 
+    <h4>Candidat - Droit d'accès</h4>
+    <?php 
+        echo $this->Html->link(
+            'Modifier le corp du message informant au utilisateur, que l\'application collecte ou traite des données personnelles',
+            ['controller' => 'administrateur', 'action' => 'droitAcces', '_full' => true]
+        );
+    ?>
+
+    <h4>Candidat - Droit d'opposition </h4>
+    <?php 
+        echo $this->Html->link(
+            'Modifier le corp du message de droit d\'opposition a ce que les données concernant un utilisateur soient utilisées',
+            ['controller' => 'administrateur', 'action' => 'droitopposition', '_full' => true]
+        );
+    ?>
+
 </div>

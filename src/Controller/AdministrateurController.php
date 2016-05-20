@@ -391,4 +391,22 @@ class AdministrateurController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+
+    public function droitopposition(){
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
+         $this->viewBuilder()->layout('adminLayout');
+        
+        if($this->request->is('post')){
+            //debug($this->request->data);
+            $file = new File(ROOT.'/webroot/files/message_suppression_données_utilisateur.ctp');
+            $file->write($this->request->data['message']);
+            $file->close();
+            $this->Flash->success(__('le message a été modifier'));
+        }
+
+    }
 }
