@@ -14,10 +14,10 @@
 		$bdd->query($requete);
 	}
 	//retourne l'heure et les minute de l'occupation passez en parametre
-	// input 	: une occupation
+	// input 	: une occupation->date
 	// output 	: une chaine de caractère au format HH:MM
 	function retourneHeure($occupation) {
-		$time = explode($occupation->
-
-}
+		$time = explode(' ',$occupation);
+		return $time[1];
+	}
 ?>
