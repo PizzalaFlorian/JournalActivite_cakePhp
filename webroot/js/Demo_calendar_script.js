@@ -723,6 +723,7 @@ $(function(){
                                         data : id_event,
                                         dataType : 'html', 
                                         success : function(code_html, statut){ 
+                                            console.log("ok");
                                         }
                                     });
                                 $("#"+id_event).hide("highlight",{

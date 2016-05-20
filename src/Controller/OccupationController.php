@@ -235,15 +235,15 @@ class OccupationController extends AppController
     //  * @return \Cake\Network\Response|null Redirects to index.
     //  * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
     //  */
-    // public function delete($id = null)
-    // {
-    //     $this->request->allowMethod(['post', 'delete']);
-    //     $occupation = $this->Occupation->get($id);
-    //     if ($this->Occupation->delete($occupation)) {
-    //         //$this->Flash->success(__('The occupation has been deleted.'));
-    //     } else {
-    //         $this->Flash->error(__('The occupation could not be deleted. Please, try again.'));
-    //     }
-    //     return $this->redirect(['action' => 'index']);
-    // }
+    public function delete($id = null)
+    {
+        $this->request->allowMethod(['post', 'delete']);
+        $occupation = $this->Occupation->get($id);
+        if ($this->Occupation->delete($occupation)) {
+            //$this->Flash->success(__('The occupation has been deleted.'));
+        } else {
+            $this->Flash->error(__('The occupation could not be deleted. Please, try again.'));
+        }
+        return $this->redirect(['action' => 'index']);
+    }
 }
