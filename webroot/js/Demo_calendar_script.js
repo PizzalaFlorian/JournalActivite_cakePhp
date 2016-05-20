@@ -644,45 +644,32 @@ $(function(){
                             
                             var margin_top_o = (((depSec/60)/60)*4)*10;
                             var height_o = (((dureeSec/60)/60)*4)*10; 
-                            console.log('height',height_o);
-                            console.log('event id',rep);
-                            var rename_event = $('#1')
-                             .attr( 'id',event_id );
+
+                            // console.log('height',height_o);
+                            // console.log('event id',rep);
+
                             var event_modif_height = $('#'+event_id)
                             .css( "height",height_o+"px");
 
                             var event_modif_height = $('#'+event_id)
                             .css( "marginTop",margin_top_o+"px");
+                                                        
+                            // console.log('up');
                             
-                            var event_date = $('<div></div>')
-                            .appendTo(event)
-                            .attr('class','calendar_event_date')
-                            .attr('div',event_id+'_calendar_event_date');
-
-                            var event_date_heure_debut = $('<span>'+h_debut[0]+'</span>')
-                            .appendTo(event_date)
-                            .attr('id',event_id+'_date_debut_heure');
-
-                            $('<span>:</span>')
-                            .appendTo(event_date);
-
-                            var event_date_minute_debut = $('<span>'+h_debut[1]+'</span>')
-                            .appendTo(event_date)
-                            .attr('id',event_id+'_date_debut_minute');
-
-                            $('<span> - </span>')
-                            .appendTo(event_date);
-
-                            var event_date_heure_fin = $('<span>'+h_fin[0]+'</span>')
-                            .appendTo(event_date)
-                            .attr('id',event_id+'_date_fin_heure');
-
-                            $('<span>:</span>')
-                            .appendTo(event_date);
+                            // console.log('#'+event_id+"_date_debut_heure");
+                            // console.log("heure debut",'<span>'+h_debut[0]+'</span>');
+                            var modif_event_date_heure_debut = $('#'+event_id+"_date_debut_heure")
+                            .replaceWith('<span>'+h_debut[0]+'</span>');
                             
-                            var event_date_minute_fin = $('<span>'+h_fin[1]+'</span>')
-                            .appendTo(event_date)
-                            .attr('id',event_id+'_date_fin_minute');
+                            var modif_event_date_minute_debut = $('#'+event_id+"_date_debut_minute")
+                            .replaceWith('<span>'+h_debut[1]+'</span>');
+                            
+
+                            var modif_event_date_heure_fin = $('#'+event_id+"_date_fin_heure")
+                            .replaceWith('<span>'+h_fin[0]+'</span>');
+                            
+                            var modif_event_date_minute_fin = $('#'+event_id+"_date_fin_minute")
+                            .replaceWith('<span>'+h_fin[1]+'</span>');
 
                             $.ajax({  
                                 url : '../activite/recupNomActivite/'+new_activit,
@@ -691,12 +678,15 @@ $(function(){
                                 dataType : 'html', 
                                 success : function(code_html, statut){ 
                                     contenu = code_html;
-                                    var event_date_titre = $('#1_title')
-                                    .remove();
-                                    var event_date_titre = $('<div>'+contenu+'</div>')
-                                    .appendTo(event)
-                                    .attr('class','calendar_event_title')
-                                    .attr('id',event_id+'_title');
+                                    // var event_date_titre = $('#'+event_id+'_activite')
+                                    // .remove();
+                                    // var event_date_titre = $('<div>'+contenu+'</div>')
+                                    // .appendTo(event)
+                                    // .attr('class','calendar_event_activite')
+                                    // .attr('id',event_id+'_activite');
+
+                                    var modif_event_date_titre = $('#'+event_id+"_activite")
+                                    .replaceWith('<div>'+contenu+'</div>');
                                 }
                             });
                         
@@ -739,15 +729,13 @@ $(function(){
 
     });
 
-
-
     /*info event*/
     $(".calendar_event").click(function(e){
         var object_clicked = $(this);
         var id_event=object_clicked.attr("id");
         
         //TEST recup heure //
-            var jour_deb = $(this).closest('td').attr('id');
+        var jour_deb = $(this).closest('td').attr('id');
            
         $("#dialog").dialog({
             bgiframe: true,
@@ -824,45 +812,32 @@ $(function(){
                             
                             var margin_top_o = (((depSec/60)/60)*4)*10;
                             var height_o = (((dureeSec/60)/60)*4)*10; 
-                            console.log('height',height_o);
-                            console.log('event id',rep);
-                            var rename_event = $('#1')
-                             .attr( 'id',event_id );
+
+                            // console.log('height',height_o);
+                            // console.log('event id',rep);
+
                             var event_modif_height = $('#'+event_id)
                             .css( "height",height_o+"px");
 
                             var event_modif_height = $('#'+event_id)
                             .css( "marginTop",margin_top_o+"px");
                             
-                            var event_date = $('<div></div>')
-                            .appendTo(event)
-                            .attr('class','calendar_event_date')
-                            .attr('div',event_id+'_calendar_event_date');
-
-                            var event_date_heure_debut = $('<span>'+h_debut[0]+'</span>')
-                            .appendTo(event_date)
-                            .attr('id',event_id+'_date_debut_heure');
-
-                            $('<span>:</span>')
-                            .appendTo(event_date);
-
-                            var event_date_minute_debut = $('<span>'+h_debut[1]+'</span>')
-                            .appendTo(event_date)
-                            .attr('id',event_id+'_date_debut_minute');
-
-                            $('<span> - </span>')
-                            .appendTo(event_date);
-
-                            var event_date_heure_fin = $('<span>'+h_fin[0]+'</span>')
-                            .appendTo(event_date)
-                            .attr('id',event_id+'_date_fin_heure');
-
-                            $('<span>:</span>')
-                            .appendTo(event_date);
+                            // console.log('down');
                             
-                            var event_date_minute_fin = $('<span>'+h_fin[1]+'</span>')
-                            .appendTo(event_date)
-                            .attr('id',event_id+'_date_fin_minute');
+                            // console.log('#'+event_id+"_date_debut_heure");
+                            // console.log("heure debut",'<span>'+h_debut[0]+'</span>');
+
+                            var modif_event_date_heure_debut = $('#'+event_id+"_date_debut_heure")
+                            .replaceWith('<span>'+h_debut[0]+'</span>');
+                            
+                            var modif_event_date_minute_debut = $('#'+event_id+"_date_debut_minute")
+                            .replaceWith('<span>'+h_debut[1]+'</span>');
+                            
+                            var modif_event_date_heure_fin = $('#'+event_id+"_date_fin_heure")
+                            .replaceWith('<span>'+h_fin[0]+'</span>');
+                            
+                            var modif_event_date_minute_fin = $('#'+event_id+"_date_fin_minute")
+                            .replaceWith('<span>'+h_fin[1]+'</span>');
 
                             $.ajax({  
                                 url : '../activite/recupNomActivite/'+new_activit,
@@ -871,12 +846,15 @@ $(function(){
                                 dataType : 'html', 
                                 success : function(code_html, statut){ 
                                     contenu = code_html;
-                                    var event_date_titre = $('#1_title')
-                                    .remove();
-                                    var event_date_titre = $('<div>'+contenu+'</div>')
-                                    .appendTo(event)
-                                    .attr('class','calendar_event_title')
-                                    .attr('id',event_id+'_title');
+                                    // var event_date_titre = $('#'+event_id+'_activite')
+                                    // .remove();
+                                    // var event_date_titre = $('<div>'+contenu+'</div>')
+                                    // .appendTo(event)
+                                    // .attr('class','calendar_event_activite')
+                                    // .attr('id',event_id+'_activite');
+
+                                    var modif_event_date_titre = $('#'+event_id+"_activite")
+                                    .replaceWith('<div>'+contenu+'</div>');
                                 }
                             });
                                             

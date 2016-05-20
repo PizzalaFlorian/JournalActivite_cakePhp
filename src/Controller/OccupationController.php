@@ -166,7 +166,7 @@ class OccupationController extends AppController
         // ENREGISTREMENT //
         if ($this->request->is(['patch', 'post', 'put'])) {
                 
-            debug($this->request->data);
+            //debug($this->request->data);
 
             $occupation_update = TableRegistry::get('occupation')
                 ->query();
