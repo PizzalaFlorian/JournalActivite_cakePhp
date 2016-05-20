@@ -6,12 +6,12 @@
     <fieldset>
 
         <div class="input number required"> 
-            <label for="CodeCategorieActivite">Heure de début :</label>
-            <input id="new_event_heure_debut" type="text" value="<?php echo retourneHeure($occupation->HeureDebut); ?>" />
+            <label for="HeureDebut">Heure de début :</label>
+            <input id="edit_event_heure_debut" type="text" value="<?php echo retourneHeure($occupation->HeureDebut); ?>" />
         </div>
         <div class="input number required"> 
-            <label for="CodeCategorieActivite">heure de fin :</label>            
-            <input id="new_event_heure_fin" type="text" value="<?php echo retourneHeure($occupation->HeureFin); ?>" />
+            <label for="HeureFin">heure de fin :</label>            
+            <input id="edit_event_heure_fin" type="text" value="<?php echo retourneHeure($occupation->HeureFin); ?>" />
         </div>
 
         <div class="input number required">
