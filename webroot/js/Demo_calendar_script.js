@@ -110,8 +110,30 @@ $(function(){
             $("#"+id_event+"_date_debut_minute").html(nouvelle_heure_depart.getMinutes());
             $("#"+id_event+"_date_fin_heure").html(nouvelle_heure_fin.getHours());
             $("#"+id_event+"_date_fin_minute").html(nouvelle_heure_fin.getMinutes());
+
+            console.log('Jai bougé');
+            var jour_deb = $(this).closest('td').attr('id');
+            var drag_event_heure_debut=jour_deb+" "+nouvelle_heure_depart.getHours()+":"+nouvelle_heure_depart.getMinutes()+":00";
+            var drag_event_heure_fin=jour_deb+" "+nouvelle_heure_fin.getHours()+":"+nouvelle_heure_fin.getMinutes()+":00";
+            //DATA CHANGE DRAG
+            $(".ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-resizable").dialog('destroy');
+            $.ajax({  
+                    url : '../occupation/editHeure/'+id_event,
+                    type : 'POST',
+                    data :  'CodeOccupation=' + id_event +
+                            '&HeureDebut=' + drag_event_heure_debut + 
+                            '&HeureFin=' + drag_event_heure_fin,
+                    dataType : 'html', 
+                    success : function(code_html, statut){ 
+                    }
+                });
+
+            $("#dialog").dialog('destroy');
+            $("#ui-dialog-title-dialog").dialog('destroy');
+            $("#gen_new_content").dialog('destroy');
+            $(".ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-resizable").dialog('destroy');
         //    $("#ajax_load").load(getBaseURL()+"/admin/ajax/evenement/id/"+id_event+"/d/"+depart_en_sec+"/f/"+fin_en_sec);
-        $("#ajax_load").html("Modifications enregistr&eacute;es.");
+       // $("#ajax_load").html("Modifications enregistr&eacute;es.");
         }
     });
 
@@ -127,8 +149,32 @@ $(function(){
             var height_css=object_drop.css("height");
             var height_css_value=parseInt(height_css.replace(".px",""));
             var duree_en_sec=(((height_css_value/10)/4)*60)*60;
+
+            console.log("changement de taille");
+            var jour_deb = $(this).closest('td').attr('id');
+            var drag_event_heure_fin=jour_deb+" "+$("#"+id_event+"_date_fin_heure").html()+":"+$("#"+id_event+"_date_fin_minute").html()+":00";
+            
+            $("#dialog").dialog('destroy');
+            $("#ui-dialog-title-dialog").dialog('destroy');
+            $("#gen_new_content").dialog('destroy');
+            $(".ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-resizable").dialog('destroy');
+
+            $.ajax({  
+                    url : '../occupation/editHeureFin/'+id_event,
+                    type : 'POST',
+                    data :  'CodeOccupation=' + id_event +
+                            '&HeureFin=' + drag_event_heure_fin,
+                    dataType : 'html', 
+                    success : function(code_html, statut){ 
+                    }
+                });
+
+            $("#dialog").dialog('destroy');
+            $("#ui-dialog-title-dialog").dialog('destroy');
+            $("#gen_new_content").dialog('destroy');
+            $(".ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-resizable").dialog('destroy');
  //           $("#ajax_load").load(getBaseURL()+"/admin/ajax/evenementresize/id/"+id_event+"/dur/"+duree_en_sec);
- $("#ajax_load").html("Heure de fin correctement modifi&eacute;e.");
+ //$("#ajax_load").html("Heure de fin correctement modifi&eacute;e.");
         },
         resize: function(event,ui) {
             var object_drop = $(this);
@@ -147,6 +193,7 @@ $(function(){
     
             $("#"+id_event+"_date_fin_heure").html(new_heure.getHours());
             $("#"+id_event+"_date_fin_minute").html(new_heure.getMinutes());
+
         }
     });
 
@@ -236,26 +283,7 @@ $(function(){
                     var new_dispositif=$("#new_event_dispositif").find("option:selected").attr('id');
                     var new_event_heure_debut=jour_deb+" "+$("#new_event_heure_debut").val();
 					var new_event_heure_fin=jour_deb+" "+$("#new_event_heure_fin").val();
-					
-					//console.log(new_activit);
-					
-					// envoie a controleur/CandidatRenseigneActivites.ctrl.php pour ajout BDD
-                    //TODO   
-
-                    // $.ajax({  
-                    //             url : '../lieu/recupNomLieu/'+new_lieu,
-                    //             type : 'POST',
-                    //             data : new_lieu,
-                    //             dataType : 'html', 
-                    //             success : function(code_html, statut){ 
-                    //                 contenu = code_html;
-                    //                 var event_date_lieu = $('<div>'+contenu+'</div>')
-                    //                     .appendTo(event)
-                    //                     .attr('class','calendar_event_lieu')
-                    //                     .attr('id',event_id+'_lieu');
-                    //             }
-                    // });
-                     
+					 
 					$.ajax({
 						url: "../occupation/add",
 						type : 'POST',
@@ -524,8 +552,9 @@ $(function(){
                 $("#"+id_event+"_date_debut_minute").html(nouvelle_heure_depart.getMinutes());
                 $("#"+id_event+"_date_fin_heure").html(nouvelle_heure_fin.getHours());
                 $("#"+id_event+"_date_fin_minute").html(nouvelle_heure_fin.getMinutes());
+
         //        $("#ajax_load").load(getBaseURL()+"/admin/ajax/evenement/id/"+id_event+"/d/"+depart_en_sec+"/f/"+fin_en_sec);
-        $("#ajax_load").html("Modifications enregistr&eacute;.");
+        //$("#ajax_load").html("Modifications enregistr&eacute;.");
             }
         });
         event.resizable({
@@ -538,7 +567,7 @@ $(function(){
                 var height_css_value=parseInt(height_css.replace(".px",""));
                 var duree_en_sec=(((height_css_value/10)/4)*60)*60;
  //               $("#ajax_load").load(getBaseURL()+"/admin/ajax/evenementresize/id/"+id_event+"/dur/"+duree_en_sec);
- $("#ajax_load").html("Heure de fin modifi&eacute;e.");
+ //$("#ajax_load").html("Heure de fin modifi&eacute;e.");
             },
             resize: function(event,ui) {
                 var object_drop = $(this);

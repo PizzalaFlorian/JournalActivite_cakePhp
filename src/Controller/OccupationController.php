@@ -140,6 +140,40 @@ class OccupationController extends AppController
         $this->set('_serialize', ['occupation']);
     }
 
+    public function editHeure($id = null)
+    {
+        //accès candidat
+        $this->autoRender = false;
+         if ($this->request->is(['patch', 'post', 'put'])) {
+            $occupation_update = TableRegistry::get('occupation')
+                ->query();
+            $occupation_update    
+                ->update()
+                ->set([
+                    'HeureDebut' => $this->request->data['HeureDebut'],
+                    'HeureFin' => $this->request->data['HeureFin'],
+                    ])
+                ->where(['CodeOccupation' => $this->request->data['CodeOccupation']])
+                ->execute();
+         }
+    }
+
+    public function editHeureFin($id = null)
+    {
+        //accès candidat
+        $this->autoRender = false;
+         if ($this->request->is(['patch', 'post', 'put'])) {
+            $occupation_update = TableRegistry::get('occupation')
+                ->query();
+            $occupation_update    
+                ->update()
+                ->set([
+                    'HeureFin' => $this->request->data['HeureFin']
+                    ])
+                ->where(['CodeOccupation' => $this->request->data['CodeOccupation']])
+                ->execute();
+         }
+    }
     /**
      * Edit method
      *
@@ -185,15 +219,6 @@ class OccupationController extends AppController
 
             $this->autoRender = false;
             echo $occupation->CodeOccupation;
-            // if ($this->Occupation->save($occupation)) {
-            //     $this->autoRender = false;
-            //     echo $occupation->CodeOccupation;
-            //     $this->Flash->success(__('The occupation has been saved.'));
-            //     //return $this->redirect(['action' => 'index']);
-            // } else {
-            //     $this->Flash->error(__('The occupation could not be saved. Please, try again.'));
-            //     //return $this->redirect(['action' => 'index']);
-            // } 
         }
         if ($this->request->is(['get'])){
             // TRAITEMENT POUR TEMPLATE //
