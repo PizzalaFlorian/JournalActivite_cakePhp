@@ -1,5 +1,6 @@
 <?php
     echo $this->element('sidebarChercheur');
+    echo $this->Html->css('main_custom');
     use Cake\ORM\TableRegistry;
 ?>
 <div class="carnetdebord view large-11 medium-12 columns content">
@@ -24,11 +25,11 @@
         </tr>
     </table>
     <div class="row">
-        <h4><?= __('Commentaire') ?></h4>
+        <h4>Texte</h4>
         <?= $this->Text->autoParagraph(h($carnetdebord->Commentaire)); ?>
     </div>
      <br>
     <?= $this->Html->link(__('Modifier'), ['action' => 'edit', $carnetdebord->CodeEntree]) ?>
     <br>
-    <?= $this->Form->postLink(__('Supprimer'), ['action' => 'delete', $carnetdebord->CodeEntree], ['confirm' => __('Are you sure you want to delete # {0}?', $carnetdebord->Sujet)]) ?>
+    <?= $this->Form->postLink(__('Supprimer'), ['action' => 'delete', $carnetdebord->CodeEntree], ['confirm' => __('Êtes vous sur de vouloir supprimée l\'entrée : {0}?', $carnetdebord->Sujet)]) ?>
 </div>

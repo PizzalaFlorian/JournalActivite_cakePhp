@@ -4,7 +4,7 @@
 <div class="actualites index large-12 medium-11 columns content">
     <h3>Actualités</h3>
     <?= $this->Html->link(__('Créer une Actualité'), ['controller' => 'actualites','action' => 'nouveau']) ?>
-        <div style='HEIGHT: 180px; overflow:auto' size=2  multiple >
+        <div style='HEIGHT: 300px; overflow:auto' size=2  multiple >
             <table cellpadding="0" cellspacing="0">
                 <tbody>
                     <?php foreach ($actualites as $actualite): ?>

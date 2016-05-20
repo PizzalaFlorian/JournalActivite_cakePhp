@@ -35,7 +35,7 @@
                     <br>
                     <?= $this->Html->link(__('Modifier'), ['action' => 'edit', $carnetdebord->CodeEntree]) ?>
                     <br>
-                    <?= $this->Form->postLink(__('Supprimer'), ['action' => 'delete', $carnetdebord->CodeEntree], ['confirm' => __('Are you sure you want to delete # {0}?', $carnetdebord->CodeEntree)]) ?>
+                    <?= $this->Form->postLink(__('Supprimer'), ['action' => 'delete', $carnetdebord->CodeEntree], ['confirm' => __('Êtes vous sur de vouloir supprimée l\'entrée : {0}?', $carnetdebord->Sujet)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
