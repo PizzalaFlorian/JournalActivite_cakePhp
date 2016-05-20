@@ -12,6 +12,13 @@ use Cake\ORM\TableRegistry;
 class CompagnieController extends AppController
 {
 
+    public function recupNomCompagnie($id=null){
+        //accès candidat
+         $compagnie = $this->Compagnie->get($id, [
+            'contain' => []
+        ]);
+         echo $compagnie->NomCompagnie;
+    }
     /**
      * Index method
      *

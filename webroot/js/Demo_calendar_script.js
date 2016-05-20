@@ -846,14 +846,32 @@ $(function(){
                                 dataType : 'html', 
                                 success : function(code_html, statut){ 
                                     contenu = code_html;
-                                    // var event_date_titre = $('#'+event_id+'_activite')
-                                    // .remove();
-                                    // var event_date_titre = $('<div>'+contenu+'</div>')
-                                    // .appendTo(event)
-                                    // .attr('class','calendar_event_activite')
-                                    // .attr('id',event_id+'_activite');
 
                                     var modif_event_date_titre = $('#'+event_id+"_activite")
+                                    .replaceWith('<div>'+contenu+'</div>');
+                                }
+                            });
+
+                             $.ajax({  
+                                url : '../compagnie/recupNomCompagnie/'+new_compagnie,
+                                type : 'POST',
+                                data : new_compagnie,
+                                dataType : 'html', 
+                                success : function(code_html, statut){ 
+                                    contenu = code_html;
+                                    var modif_compagnie = $('#'+event_id+"_compagnie")
+                                    .replaceWith('<div>'+contenu+'</div>');
+                                }
+                            });
+
+                            $.ajax({  
+                                url : '../dispositif/recupNomDispositif/'+new_dispositif,
+                                type : 'POST',
+                                data : new_dispositif,
+                                dataType : 'html', 
+                                success : function(code_html, statut){ 
+                                    contenu = code_html;
+                                    var modif_dispositif = $('#'+event_id+"_dispositif")
                                     .replaceWith('<div>'+contenu+'</div>');
                                 }
                             });

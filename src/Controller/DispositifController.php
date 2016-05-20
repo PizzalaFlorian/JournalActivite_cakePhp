@@ -12,6 +12,13 @@ use Cake\ORM\TableRegistry;
 class DispositifController extends AppController
 {
 
+    public function recupNomDispositif($id=null){
+        //accès candidat
+         $dispositif = $this->Dispositif->get($id, [
+            'contain' => []
+        ]);
+         echo $dispositif->NomDispositif;
+    }
     /**
      * Index method
      *
