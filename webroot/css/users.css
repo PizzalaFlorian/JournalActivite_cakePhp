@@ -1,0 +1,21 @@
+#suppression_donnees_utilisateur {
+		text-align:justify;
+}
+#message_suppression_title {
+    color: #be140b;
+    margin-bottom: 20px;
+    padding-bottom: 0.5rem;
+    font-size: 1.6875rem;
+}
+#message_suppression_donnees_utilisateur {
+	margin : 15px;
+	float:center;
+	text-align:justify;
+	text-justify: auto;
+}
+#button {
+	text-align:center;
+}
+#radioButon {
+	text-align:center;
+}

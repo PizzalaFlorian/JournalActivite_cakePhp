@@ -86,6 +86,14 @@
         ); 
     ?> 
 </li>
+<li> 
+    <?php 
+        echo $this->Html->link(
+            'Supprimer mon compte',
+            ['controller' => 'users', 'action' => 'suppressioncompte', '_full' => true]
+        ); 
+    ?> 
+</li>
 <?php
     $this->end();
 ?>
