@@ -36,6 +36,10 @@ $(function(){
     });
 
     /*drop zone*/
+    $(".calendar_event").mousedown(function(){
+        drag_id = $(this).attr('id');
+        console.log("mouse dowm",drag_id);
+    });
     $('.ui-droppable').droppable({
         drop : function(){
              // cette alerte s'exécutera une fois le bloc déposé
@@ -67,8 +71,9 @@ $(function(){
     //TODO
     $(".calendar_event").draggable({
         //containment: "parent",
-        containment: "window",
-       // grid: [10, 10],
+        containment: $("#containment_tr"),
+        //revert:'valid',
+        grid: [$(".calendar_td").width()+(td_width-(td_width*0.85))/8, 1],
         delay: 100,
         drag: function(event, ui) {
             var object_drop = $(this);
@@ -511,9 +516,9 @@ $(function(){
         /*application des interactions avec l'event*/
         event.draggable({
             //containment: "parent",
-            containment: "window",
-
-            // grid: [10, 10],
+            containment: $("#containment_tr"),
+            //revert:'valid',
+            grid: [$(".calendar_td").width()+(td_width-(td_width*0.85))/8, 1],
             delay: 100,
             drag: function(event, ui) {
                 var object_drop = $(this);
@@ -632,7 +637,7 @@ $(function(){
         event.click(function(e){
             var object_clicked = $(this);
             var id_event=object_clicked.attr("id");
-
+            console.log('jai clique',id_event);
             //TEST recup heure //
             var jour_deb = $(this).closest('td').attr('id');
             
@@ -819,7 +824,7 @@ $(function(){
     $(".calendar_event").click(function(e){
         var object_clicked = $(this);
         var id_event=object_clicked.attr("id");
-        
+        console.log('jai clique calendar event',id_event);
         //TEST recup heure //
         var jour_deb = $(this).closest('td').attr('id');
            

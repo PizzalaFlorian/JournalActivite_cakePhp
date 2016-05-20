@@ -118,7 +118,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr id="containment_tr">
                             <td class="info_horaires">
                                 <div class='info_horaires_content'>00h00</div>
                                 <div class='info_horaires_content'>01h00</div>
@@ -145,10 +145,12 @@
                                 <div class='info_horaires_content'>22h00</div>
                                 <div class='info_horaires_content'>23h00</div>                                    
                             </td>
+                            
                             <?php
 								//var_dump($_SESSION);
 								print_table($queryWeek,$_SESSION['Auth']['User']['ID']);
                             ?>
+                           
                         </tr>
                     </tbody>
                 </table>
