@@ -158,50 +158,44 @@ class OccupationController extends AppController
         $this->loadModel('Compagnie');
         $this->loadModel('Dispositif');
 
-        $occupation = $this->Occupation->get(15925, [
+        $occupation = $this->Occupation->get($id, [
             'contain' => []
         ]);
 
 
         // ENREGISTREMENT //
         if ($this->request->is(['patch', 'post', 'put'])) {
-            if(is_string($this->request->data['HeureDebut'])){
+                
+            debug($this->request->data);
 
+            $occupation_update = TableRegistry::get('occupation')
+                ->query();
+            $occupation_update    
+                ->update()
+                ->set([
+                    'HeureDebut' => $this->request->data['HeureDebut'],
+                    'HeureFin' => $this->request->data['HeureFin'],
+                    'CodeLieux' => $this->request->data['CodeLieux'],
+                    'CodeActivite' => $this->request->data['CodeActivite'],
+                    'CodeCompagnie' => $this->request->data['CodeCompagnie'],
+                    'CodeDispositif' => $this->request->data['CodeDispositif']
+                    ])
+                ->where(['CodeOccupation' => $this->request->data['CodeOccupation']])
+                ->execute();
 
-                $occupation = $this->Occupation->get($this->request->data['CodeOccupation'], [
-                    'contain' => []
-                ]);
-                // $occupation->CodeLieux = $this->request->data['CodeLieux'];
-                // $occupation->CodeActivite = $this->request->data['CodeActivite'];
-                // $occupation->CodeDispositif = $this->request->data['CodeDispositif'];
-                // $occupation->CodeCompagnie = $this->request->data['CodeCompagnie'];
-
-                // $lol = $this->request->data;
-                // $lol->HeureDebut = $occupation->HeureDebut;
-                // $lol->HeureFin = $occupation->HeureFin;
-
-
-                if ($this->Occupation->save($occupation)) {
-                    echo $occupation->CodeOccupation;
-                    $this->Flash->success(__('The occupation has been saved.'));
-                    //return $this->redirect(['action' => 'index']);
-                } else {
-                    $this->Flash->error(__('The occupation could not be saved. Please, try again.'));
-                    //return $this->redirect(['action' => 'index']);
-                }
-            } else { 
-                $occupation = $this->Occupation->patchEntity($occupation, $this->request->data);
-            
-                if ($this->Occupation->save($occupation)) {
-                    $this->Flash->success(__('The occupation has been saved.'));
-                    return $this->redirect(['action' => 'index']);
-                } else {
-                    $this->Flash->error(__('The occupation could not be saved. Please, try again.'));
-                }
-            }
-
+            $this->autoRender = false;
+            echo $occupation->CodeOccupation;
+            // if ($this->Occupation->save($occupation)) {
+            //     $this->autoRender = false;
+            //     echo $occupation->CodeOccupation;
+            //     $this->Flash->success(__('The occupation has been saved.'));
+            //     //return $this->redirect(['action' => 'index']);
+            // } else {
+            //     $this->Flash->error(__('The occupation could not be saved. Please, try again.'));
+            //     //return $this->redirect(['action' => 'index']);
+            // } 
         }
-        else{
+        if ($this->request->is(['get'])){
             // TRAITEMENT POUR TEMPLATE //
             $maCategorielieu        = $this->Categorielieu->find('all');
             $maCategorieactivite    = $this->Categorieactivite->find('all');
@@ -224,9 +218,12 @@ class OccupationController extends AppController
             $this->set(compact('monCompagnie'));
             $this->set(compact('monDispositif'));
 
+            // $this->set(compact('occupation'));
+            // $this->set('_serialize', ['occupation']);
+        }
+            $this->set('occupation',$occupation);
             $this->set(compact('occupation'));
             $this->set('_serialize', ['occupation']);
-        }
     }
     // /**
     //  * Delete method

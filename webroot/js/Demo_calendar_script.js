@@ -564,6 +564,9 @@ $(function(){
             var object_clicked = $(this);
             var id_event=object_clicked.attr("id");
 
+            //TEST recup heure //
+            var jour_deb = $(this).closest('td').attr('id');
+            
             $("#dialog").dialog({
                 bgiframe: true,
                 resizable: true,
@@ -585,13 +588,19 @@ $(function(){
                     var titre_eve=$("#"+id_event+"_title").html();
                     var lieu_eve=$("#"+id_event+"_lieu").html();
 
-                    var contenu = "<p>lol</p>";
-                    /*contenu += "<b>Durée : </b>"+heure_depart+":"+min_depart+" à ";
-                    contenu += heure_fin+":"+min_fin+"<br />";
-                    contenu += "<b>Lieu toto : </b>"+lieu_eve+"<br />";
-                    contenu += "</p>";
-                    $("#ui-dialog-title-dialog").html(titre_eve);*/
-                    $("#dialog").html(contenu);
+                    var contenu = "";
+                    $.ajax({  
+                        url : '../occupation/edit/'+id_event,
+                        type : 'GET',
+                        data : id_event,
+                        dataType : 'html', 
+                        success : function(code_html, statut){ 
+                            contenu = code_html;
+                            $("#ui-dialog-title-dialog").html("Détail")
+                            //console.log("copy");
+                            $("#dialog").html(contenu);
+                        }
+                    });
                 },
                 buttons: {
                     // on affiche le detail, pas besoin d'un bouton pour faire la même chose
@@ -600,9 +609,102 @@ $(function(){
                         var url_details=getBaseURL()+"/admin/evenements/voir/id/"+id_event;
                         $(location).attr('href',url_details);
                     },*/
-                    'Modifier': function() {
-                        $(this).dialog('destroy');
-                    },
+                    'Modifier': function(){
+                    var new_activit=$("#CodeActivite").find("option:selected").attr('value');
+                    var new_lieu=$("#CodeLieux").find("option:selected").attr('value');
+                    var new_compagnie=$("#CodeCompagnie").find("option:selected").attr('value');
+                    var new_dispositif=$("#CodeDispositif").find("option:selected").attr('value');
+                    var new_event_heure_debut=jour_deb+" "+$("#edit_event_heure_debut").val();
+                    var new_event_heure_fin=jour_deb+" "+$("#edit_event_heure_fin").val();
+                    $.ajax({
+                        url: "../occupation/edit/"+id_event,
+                        type :  'POST',
+                        data :  'CodeOccupation=' + id_event +
+                                '&HeureDebut=' + new_event_heure_debut + 
+                                '&HeureFin=' + new_event_heure_fin  + 
+                                '&CodeLieux=' + new_lieu  + 
+                                '&CodeActivite=' + new_activit  + 
+                                '&CodeCompagnie=' + new_compagnie  + 
+                                '&CodeDispositif=' + new_dispositif,
+                        dataType : 'html',
+                        success : function(rep, statut){ 
+                            
+                            var event_id = rep;
+
+                            console.log('event',new_event_heure_debut);
+                            var tab_debut = new_event_heure_debut.split(' ');
+                            var h_debut =  tab_debut[1].split(':');
+
+                            var tab_fin = new_event_heure_fin.split(' ');
+                            var h_fin =  tab_fin[1].split(':');
+
+                            var depSec = (parseInt(h_debut[0]) * 60 + parseInt(h_debut[1])) * 60;
+                            var finSec = (parseInt(h_fin[0]) * 60 + parseInt(h_fin[1])) * 60;
+                            var dureeSec = finSec - depSec;
+                            
+                            var margin_top_o = (((depSec/60)/60)*4)*10;
+                            var height_o = (((dureeSec/60)/60)*4)*10; 
+                            console.log('height',height_o);
+                            console.log('event id',rep);
+                            var rename_event = $('#1')
+                             .attr( 'id',event_id );
+                            var event_modif_height = $('#'+event_id)
+                            .css( "height",height_o+"px");
+
+                            var event_modif_height = $('#'+event_id)
+                            .css( "marginTop",margin_top_o+"px");
+                            
+                            var event_date = $('<div></div>')
+                            .appendTo(event)
+                            .attr('class','calendar_event_date')
+                            .attr('div',event_id+'_calendar_event_date');
+
+                            var event_date_heure_debut = $('<span>'+h_debut[0]+'</span>')
+                            .appendTo(event_date)
+                            .attr('id',event_id+'_date_debut_heure');
+
+                            $('<span>:</span>')
+                            .appendTo(event_date);
+
+                            var event_date_minute_debut = $('<span>'+h_debut[1]+'</span>')
+                            .appendTo(event_date)
+                            .attr('id',event_id+'_date_debut_minute');
+
+                            $('<span> - </span>')
+                            .appendTo(event_date);
+
+                            var event_date_heure_fin = $('<span>'+h_fin[0]+'</span>')
+                            .appendTo(event_date)
+                            .attr('id',event_id+'_date_fin_heure');
+
+                            $('<span>:</span>')
+                            .appendTo(event_date);
+                            
+                            var event_date_minute_fin = $('<span>'+h_fin[1]+'</span>')
+                            .appendTo(event_date)
+                            .attr('id',event_id+'_date_fin_minute');
+
+                            $.ajax({  
+                                url : '../activite/recupNomActivite/'+new_activit,
+                                type : 'POST',
+                                data : new_activit,
+                                dataType : 'html', 
+                                success : function(code_html, statut){ 
+                                    contenu = code_html;
+                                    var event_date_titre = $('#1_title')
+                                    .remove();
+                                    var event_date_titre = $('<div>'+contenu+'</div>')
+                                    .appendTo(event)
+                                    .attr('class','calendar_event_title')
+                                    .attr('id',event_id+'_title');
+                                }
+                            });
+                        
+                    
+                        }
+                    });
+                    $(this).dialog('destroy');
+                },
                     'Supprimer': function() {
                         $(this).html("Veuillez Confirmer la suppression");
                         $(this).dialog('destroy');
@@ -643,12 +745,14 @@ $(function(){
     $(".calendar_event").click(function(e){
         var object_clicked = $(this);
         var id_event=object_clicked.attr("id");
-        var jour_deb = $(this).attr('id');
         
+        //TEST recup heure //
+            var jour_deb = $(this).closest('td').attr('id');
+           
         $("#dialog").dialog({
             bgiframe: true,
             resizable: true,
-            height:400,
+            height:800,
             width:500,
             modal: true,
             overlay: {
@@ -685,25 +789,106 @@ $(function(){
                 //     var url_details=getBaseURL()+"/admin/evenements/voir/id/"+id_event;
                 //     $(location).attr('href',url_details);
                 // },
-                // 'Modifier': function() {
-                //     $.ajax({  
-                //         url : '../occupation/edit/'+id_event,
-                //         type : 'GET',
-                //         data : id_event,
-                //         dataType : 'html', 
-                //         success : function(code_html, statut){ 
-                //             contenu = code_html;
-                //             $("#ui-dialog-title-dialog").html("Détail")
-                //             //console.log("copy");
-                //             $("#dialog").html(contenu);
-                //         }
-                //     });
-                // },
+                  'Modifier': function(){
+                    var new_activit=$("#CodeActivite").find("option:selected").attr('value');
+                    var new_lieu=$("#CodeLieux").find("option:selected").attr('value');
+                    var new_compagnie=$("#CodeCompagnie").find("option:selected").attr('value');
+                    var new_dispositif=$("#CodeDispositif").find("option:selected").attr('value');
+                    var new_event_heure_debut=jour_deb+" "+$("#edit_event_heure_debut").val()+":00";
+                    var new_event_heure_fin=jour_deb+" "+$("#edit_event_heure_fin").val()+":00";
+                    $.ajax({
+                        url: "../occupation/edit/"+id_event,
+                        type :  'POST',
+                        data :  'CodeOccupation=' + id_event +
+                                '&HeureDebut=' + new_event_heure_debut + 
+                                '&HeureFin=' + new_event_heure_fin  + 
+                                '&CodeLieux=' + new_lieu  + 
+                                '&CodeActivite=' + new_activit  + 
+                                '&CodeCompagnie=' + new_compagnie  + 
+                                '&CodeDispositif=' + new_dispositif,
+                        dataType : 'html',
+                        success : function(rep, statut){ 
+                            
+                            var event_id = rep;
+
+                            console.log('event',new_event_heure_debut);
+                            var tab_debut = new_event_heure_debut.split(' ');
+                            var h_debut =  tab_debut[1].split(':');
+
+                            var tab_fin = new_event_heure_fin.split(' ');
+                            var h_fin =  tab_fin[1].split(':');
+
+                            var depSec = (parseInt(h_debut[0]) * 60 + parseInt(h_debut[1])) * 60;
+                            var finSec = (parseInt(h_fin[0]) * 60 + parseInt(h_fin[1])) * 60;
+                            var dureeSec = finSec - depSec;
+                            
+                            var margin_top_o = (((depSec/60)/60)*4)*10;
+                            var height_o = (((dureeSec/60)/60)*4)*10; 
+                            console.log('height',height_o);
+                            console.log('event id',rep);
+                            var rename_event = $('#1')
+                             .attr( 'id',event_id );
+                            var event_modif_height = $('#'+event_id)
+                            .css( "height",height_o+"px");
+
+                            var event_modif_height = $('#'+event_id)
+                            .css( "marginTop",margin_top_o+"px");
+                            
+                            var event_date = $('<div></div>')
+                            .appendTo(event)
+                            .attr('class','calendar_event_date')
+                            .attr('div',event_id+'_calendar_event_date');
+
+                            var event_date_heure_debut = $('<span>'+h_debut[0]+'</span>')
+                            .appendTo(event_date)
+                            .attr('id',event_id+'_date_debut_heure');
+
+                            $('<span>:</span>')
+                            .appendTo(event_date);
+
+                            var event_date_minute_debut = $('<span>'+h_debut[1]+'</span>')
+                            .appendTo(event_date)
+                            .attr('id',event_id+'_date_debut_minute');
+
+                            $('<span> - </span>')
+                            .appendTo(event_date);
+
+                            var event_date_heure_fin = $('<span>'+h_fin[0]+'</span>')
+                            .appendTo(event_date)
+                            .attr('id',event_id+'_date_fin_heure');
+
+                            $('<span>:</span>')
+                            .appendTo(event_date);
+                            
+                            var event_date_minute_fin = $('<span>'+h_fin[1]+'</span>')
+                            .appendTo(event_date)
+                            .attr('id',event_id+'_date_fin_minute');
+
+                            $.ajax({  
+                                url : '../activite/recupNomActivite/'+new_activit,
+                                type : 'POST',
+                                data : new_activit,
+                                dataType : 'html', 
+                                success : function(code_html, statut){ 
+                                    contenu = code_html;
+                                    var event_date_titre = $('#1_title')
+                                    .remove();
+                                    var event_date_titre = $('<div>'+contenu+'</div>')
+                                    .appendTo(event)
+                                    .attr('class','calendar_event_title')
+                                    .attr('id',event_id+'_title');
+                                }
+                            });
+                                            
+                        }
+                    });
+                   $(this).dialog('destroy'); 
+                },
                 
                 'Annuler': function() {
                     $(this).dialog('destroy');
                 },
-                'Tout Supprimer': function() {
+                'Supprimer': function() {
                     $(this).html("Veuillez Confirmer la suppression"+id_event);
                     $("#dialog").dialog('destroy');
                     $("#dialog").dialog({
@@ -737,32 +922,8 @@ $(function(){
                         }
                     });
 
-                },
-                'Modifier': function(){
-                    var new_activit=$("#CodeActivite").find("option:selected").attr('value');
-                    var new_lieu=$("#CodeLieux").find("option:selected").attr('value');
-                    var new_compagnie=$("#CodeCompagnie").find("option:selected").attr('value');
-                    var new_dispositif=$("#CodeDispositif").find("option:selected").attr('value');
-                    var new_event_heure_debut=jour_deb+" "+$("#new_event_heure_debut").val();
-                    var new_event_heure_fin=jour_deb+" "+$("#new_event_heure_fin").val();
-                    $.ajax({
-                        url: "../occupation/edit",
-                        type :  'POST',
-                        data :  'CodeOccupation=' + id_event +
-                                '&HeureDebut=' + new_event_heure_debut + 
-                                '&HeureFin=' + new_event_heure_fin  + 
-                                '&CodeLieux=' + new_lieu  + 
-                                '&CodeActivite=' + new_activit  + 
-                                '&CodeCompagnie=' + new_compagnie  + 
-                                '&CodeDispositif=' + new_dispositif,
-                        dataType : 'html',
-                        success : function(rep, statut){ 
-                            
-                            console.log(rep);
-                    
-                        }
-                    });
                 }
+              
             }
 
         });
