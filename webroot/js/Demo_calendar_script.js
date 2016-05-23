@@ -38,7 +38,7 @@ $(function(){
     /*drop zone*/
     $(".calendar_event").mousedown(function(){
         drag_id = $(this).attr('id');
-        console.log("mouse dowm",drag_id);
+        //console.log("mouse dowm",drag_id);
     });
     $('.ui-droppable').droppable({
         drop : function(){
@@ -834,26 +834,247 @@ $(function(){
                     $(this).dialog('destroy');
                 },
                 open: function(event, ui) {
-                    var heure_depart=$("#"+event_id+"_date_debut_heure").html();
-                    var min_depart=$("#"+event_id+"_date_debut_minute").html();
-                    var heure_fin=$("#"+event_id+"_date_fin_heure").html();
-                    var min_fin=$("#"+event_id+"_date_fin_minute").html();
-                    var titre_eve=$("#"+event_id+"_title").html();
-                    var lieu_eve=$("#"+event_id+"_lieu").html();
-                    $("#ui-dialog-title-dialog").html("Détail");
-                    var contenu = "";
-                    $("#dialog").html("veuillez patienter pendant le chargement des données");
-                    $.ajax({  
-                        url : '../occupation/edit/'+event_id,
-                        type : 'GET',
-                        data : event_id,
-                        dataType : 'html', 
-                        success : function(code_html, statut){ 
-                            contenu = code_html;
-                            //console.log("copy");
-                            $("#dialog").html(contenu);
+                    var heure_debut=$("#"+event_id+"_date_debut_heure").html();
+                var minute_debut=$("#"+event_id+"_date_debut_minute").html();
+                var heure_fin=$("#"+event_id+"_date_fin_heure").html();
+                var minute_fin=$("#"+event_id+"_date_fin_minute").html();
+                var titre_eve=$("#"+event_id+"_title").html();
+                var lieu_eve=$("#"+event_id+"_lieu").html();
+                var contenu = "";
+                $("#ui-dialog-title-dialog").html("Détail");
+                $("#dialog").html("veuillez patienter pendant le chargement des données");
+                $.ajax({  
+                    url : '../occupation/edit/'+event_id,
+                    type : 'GET',
+                    data : event_id,
+                    dataType : 'html', 
+                    success : function(code_html, statut){ 
+                        contenu = code_html;
+                
+                        $("#dialog").html(contenu);
+                        var width_select = $("#edit_heure_debut").width();
+                        $("#edit_heure_debut").css({
+                        "width" : width_select*0.2});
+                        $("#edit_minute_debut").css({
+                                        "width" : width_select*0.2});
+                        $("#edit_heure_fin").css({
+                                        "width" : width_select*0.2});
+                        $("#edit_minute_fin").css({
+                                        "width" : width_select*0.2});
+                        var liste_heure_debut = '';
+                        for (var i = 0; i<24;i++){
+                            var value = 0;
+                            if(i<10)
+                                value = '0'+i;
+                            if(i>=10){
+                                value = i;
+                            }
+                            if(i== parseInt(heure_debut)){
+                                liste_heure_debut = liste_heure_debut + '<option id="h_debut" selected>'+value+'</option>';
+                            }
+                            else
+                                liste_heure_debut = liste_heure_debut + '<option id="h_debut">'+value+'</option>';
                         }
-                    });
+
+                        var liste_minute_debut = '';
+                        for (var i = 0; i<60;i++){
+                            var value = 0;
+                            if(i<10)
+                                value = '0'+i;
+                            if(i>=10){
+                                value = i;
+                            }
+                            if(i== parseInt(minute_debut)){
+                                liste_minute_debut = liste_minute_debut + '<option id="m_debut" selected>'+value+'</option>';
+                            }
+                            else
+                                liste_minute_debut = liste_minute_debut + '<option id="m_debut">'+value+'</option>';
+                        }
+
+                        var liste_heure_fin = '';
+                        for (var i = parseInt(heure_debut); i<24;i++){
+                            var value = 0;
+                            if(i<10)
+                                value = '0'+i;
+                            if(i>=10){
+                                value = i;
+                            }
+                            if(i== parseInt(heure_fin)){
+                                liste_heure_fin = liste_heure_fin + '<option selected>'+value+'</option>';
+                            }
+                            else
+                                liste_heure_fin = liste_heure_fin + '<option>'+value+'</option>';
+                        }
+
+                        var liste_minute_fin = '';
+                        if(heure_fin == heure_debut){
+                            for (var i = parseInt(minute_debut); i<60;i++){
+                                var value = 0;
+                                if(i<10)
+                                    value = '0'+i;
+                                if(i>=10){
+                                    value = i;
+                                }
+                                if(i== parseInt(minute_fin)){
+                                    liste_minute_fin = liste_minute_fin + '<option selected>'+value+'</option>';
+                                }
+                                else
+                                    liste_minute_fin = liste_minute_fin + '<option>'+value+'</option>';
+                            }
+                        }
+                        else{
+                            for (var i = 0; i<60;i++){
+                                var value = 0;
+                                if(i<10)
+                                    value = '0'+i;
+                                if(i>=10){
+                                    value = i;
+                                }
+                                if(i== parseInt(minute_fin)){
+                                    liste_minute_fin = liste_minute_fin + '<option selected>'+value+'</option>';
+                                }
+                                else
+                                    liste_minute_fin = liste_minute_fin + '<option>'+value+'</option>';
+                            }
+                        }
+                        $("#edit_heure_debut").html(liste_heure_debut);
+                        $("#edit_minute_debut").html(liste_minute_debut);
+                        $("#edit_heure_fin").html(liste_heure_fin);
+                        $("#edit_minute_fin").html(liste_minute_fin);
+
+                        $("#edit_heure_fin").change(function(e){
+                            heure_fin = $("#edit_heure_fin option:selected").html();
+                            var liste_minute_fin_modif = '';
+                            if(heure_fin <= heure_debut){
+                                for (var i = (parseInt(minute_debut) + 1); i<60;i++){
+                                    var value = 0;
+                                    if(i<10)
+                                        value = '0'+i;
+                                    if(i>=10){
+                                        value = i;
+                                    }
+                                    if(i== parseInt(minute_fin)){
+                                        liste_minute_fin_modif = liste_minute_fin_modif + '<option selected>'+value+'</option>';
+                                    }
+                                    else
+                                        liste_minute_fin_modif = liste_minute_fin_modif + '<option>'+value+'</option>';
+                                }
+                            }
+                            else{
+                                for (var i = 0; i<60;i++){
+                                    var value = 0;
+                                    if(i<10)
+                                        value = '0'+i;
+                                    if(i>=10){
+                                        value = i;
+                                    }
+                                    if(i== parseInt(minute_fin)){
+                                        liste_minute_fin_modif = liste_minute_fin_modif + '<option selected>'+value+'</option>';
+                                    }
+                                    else
+                                        liste_minute_fin_modif = liste_minute_fin_modif + '<option>'+value+'</option>';
+                                }
+                            }
+                            $("#edit_minute_fin").html(liste_minute_fin_modif);
+                        });
+                        $("#edit_minute_fin").change(function(e){
+                            minute_fin = $("#edit_minute_fin option:selected").html();
+                        });
+                        $("#edit_heure_debut").change(function(e){
+                            console.log("click edit heure",$("#edit_heure_debut option:selected").html());
+                            var heure_debut_modif = $("#edit_heure_debut option:selected").html();
+                            heure_debut = heure_debut_modif
+                            var liste_heure_fin_modif = '';
+                            for (var i = parseInt(heure_debut_modif); i<24;i++){
+                                var value = 0;
+                                if(i<10)
+                                    value = '0'+i;
+                                if(i>=10){
+                                    value = i;
+                                }
+                                if(i== parseInt(heure_fin)){
+                                    liste_heure_fin_modif = liste_heure_fin_modif + '<option selected>'+value+'</option>';
+                                }
+                                else
+                                    liste_heure_fin_modif = liste_heure_fin_modif + '<option>'+value+'</option>';
+                            }
+
+                            var liste_minute_fin_modif = '';
+                            if(heure_fin <= heure_debut_modif){
+                                for (var i = (parseInt(minute_debut) + 1); i<60;i++){
+                                    var value = 0;
+                                    if(i<10)
+                                        value = '0'+i;
+                                    if(i>=10){
+                                        value = i;
+                                    }
+                                    if(i== parseInt(minute_fin)){
+                                        liste_minute_fin_modif = liste_minute_fin_modif + '<option selected>'+value+'</option>';
+                                    }
+                                    else
+                                        liste_minute_fin_modif = liste_minute_fin_modif + '<option>'+value+'</option>';
+                                }
+                            }
+                            else{
+                                for (var i = 0; i<60;i++){
+                                    var value = 0;
+                                    if(i<10)
+                                        value = '0'+i;
+                                    if(i>=10){
+                                        value = i;
+                                    }
+                                    if(i== parseInt(minute_fin)){
+                                        liste_minute_fin_modif = liste_minute_fin_modif + '<option selected>'+value+'</option>';
+                                    }
+                                    else
+                                        liste_minute_fin_modif = liste_minute_fin_modif + '<option>'+value+'</option>';
+                                }
+                            }
+                            $("#edit_heure_fin").html(liste_heure_fin_modif);
+                            $("#edit_minute_fin").html(liste_minute_fin_modif);
+
+                        });
+
+                        $("#edit_minute_debut").change(function(e){
+                            console.log("click edit minute",$("#edit_minute_debut option:selected").html());
+                            var minute_debut_modif = $("#edit_minute_debut option:selected").html();
+
+                            var liste_minute_fin_modif2 = '';
+                            if(heure_fin <= heure_debut){
+                                for (var i = (parseInt(minute_debut_modif) + 1); i<60;i++){
+                                    var value = 0;
+                                    if(i<10)
+                                        value = '0'+i;
+                                    if(i>=10){
+                                        value = i;
+                                    }
+                                    if(i== parseInt(minute_fin)){
+                                        liste_minute_fin_modif2 = liste_minute_fin_modif2 + '<option selected>'+value+'</option>';
+                                    }
+                                    else
+                                        liste_minute_fin_modif2 = liste_minute_fin_modif2 + '<option>'+value+'</option>';
+                                }
+                            }
+                            else{
+                                for (var i = 0; i<60;i++){
+                                    var value = 0;
+                                    if(i<10)
+                                        value = '0'+i;
+                                    if(i>=10){
+                                        value = i;
+                                    }
+                                    if(i== parseInt(minute_fin)){
+                                        liste_minute_fin_modif2 = liste_minute_fin_modif2 + '<option selected>'+value+'</option>';
+                                    }
+                                    else
+                                        liste_minute_fin_modif2 = liste_minute_fin_modif2 + '<option>'+value+'</option>';
+                                }
+                            }
+                            $("#edit_minute_fin").html(liste_minute_fin_modif2);
+
+                        });
+                    }
+                });
                 },
                 buttons: {
                     'Modifier': function(){
@@ -865,8 +1086,8 @@ $(function(){
                     var nom_compagnie=$("#CodeCompagnie").find("option:selected").html();
                     var new_dispositif=$("#CodeDispositif").find("option:selected").attr('value');
                     var nom_dispositif=$("#CodeDispositif").find("option:selected").html();
-                    var new_event_heure_debut=jour_deb+" "+$("#edit_event_heure_debut").val()+":00";
-                    var new_event_heure_fin=jour_deb+" "+$("#edit_event_heure_fin").val()+":00";
+                    var new_event_heure_debut=jour_deb+" "+$("#edit_heure_debut").find("option:selected").html()+":"+$("#edit_minute_debut").find("option:selected").html()+":00";
+                    var new_event_heure_fin=jour_deb+" "+$("#edit_heure_fin").find("option:selected").html()+":"+$("#edit_minute_fin").find("option:selected").html()+":00";
 
                     console.log('event',new_event_heure_debut);
                     var tab_debut = new_event_heure_debut.split(' ');
@@ -986,10 +1207,10 @@ $(function(){
                 $(this).dialog('destroy');
             },
             open: function(event, ui) {    
-                var heure_depart=$("#"+event_id+"_date_debut_heure").html();
-                var min_depart=$("#"+event_id+"_date_debut_minute").html();
+                var heure_debut=$("#"+event_id+"_date_debut_heure").html();
+                var minute_debut=$("#"+event_id+"_date_debut_minute").html();
                 var heure_fin=$("#"+event_id+"_date_fin_heure").html();
-                var min_fin=$("#"+event_id+"_date_fin_minute").html();
+                var minute_fin=$("#"+event_id+"_date_fin_minute").html();
                 var titre_eve=$("#"+event_id+"_title").html();
                 var lieu_eve=$("#"+event_id+"_lieu").html();
                 var contenu = "";
@@ -1002,9 +1223,229 @@ $(function(){
                     dataType : 'html', 
                     success : function(code_html, statut){ 
                         contenu = code_html;
-                        
-                        //console.log("copy");
+                
                         $("#dialog").html(contenu);
+                        var width_select = $("#edit_heure_debut").width();
+                        $("#edit_heure_debut").css({
+                        "width" : width_select*0.2});
+                        $("#edit_minute_debut").css({
+                                        "width" : width_select*0.2});
+                        $("#edit_heure_fin").css({
+                                        "width" : width_select*0.2});
+                        $("#edit_minute_fin").css({
+                                        "width" : width_select*0.2});
+                        var liste_heure_debut = '';
+                        for (var i = 0; i<24;i++){
+                            var value = 0;
+                            if(i<10)
+                                value = '0'+i;
+                            if(i>=10){
+                                value = i;
+                            }
+                            if(i== parseInt(heure_debut)){
+                                liste_heure_debut = liste_heure_debut + '<option id="h_debut" selected>'+value+'</option>';
+                            }
+                            else
+                                liste_heure_debut = liste_heure_debut + '<option id="h_debut">'+value+'</option>';
+                        }
+
+                        var liste_minute_debut = '';
+                        for (var i = 0; i<60;i++){
+                            var value = 0;
+                            if(i<10)
+                                value = '0'+i;
+                            if(i>=10){
+                                value = i;
+                            }
+                            if(i== parseInt(minute_debut)){
+                                liste_minute_debut = liste_minute_debut + '<option id="m_debut" selected>'+value+'</option>';
+                            }
+                            else
+                                liste_minute_debut = liste_minute_debut + '<option id="m_debut">'+value+'</option>';
+                        }
+
+                        var liste_heure_fin = '';
+                        for (var i = parseInt(heure_debut); i<24;i++){
+                            var value = 0;
+                            if(i<10)
+                                value = '0'+i;
+                            if(i>=10){
+                                value = i;
+                            }
+                            if(i== parseInt(heure_fin)){
+                                liste_heure_fin = liste_heure_fin + '<option selected>'+value+'</option>';
+                            }
+                            else
+                                liste_heure_fin = liste_heure_fin + '<option>'+value+'</option>';
+                        }
+
+                        var liste_minute_fin = '';
+                        if(heure_fin == heure_debut){
+                            for (var i = parseInt(minute_debut); i<60;i++){
+                                var value = 0;
+                                if(i<10)
+                                    value = '0'+i;
+                                if(i>=10){
+                                    value = i;
+                                }
+                                if(i== parseInt(minute_fin)){
+                                    liste_minute_fin = liste_minute_fin + '<option selected>'+value+'</option>';
+                                }
+                                else
+                                    liste_minute_fin = liste_minute_fin + '<option>'+value+'</option>';
+                            }
+                        }
+                        else{
+                            for (var i = 0; i<60;i++){
+                                var value = 0;
+                                if(i<10)
+                                    value = '0'+i;
+                                if(i>=10){
+                                    value = i;
+                                }
+                                if(i== parseInt(minute_fin)){
+                                    liste_minute_fin = liste_minute_fin + '<option selected>'+value+'</option>';
+                                }
+                                else
+                                    liste_minute_fin = liste_minute_fin + '<option>'+value+'</option>';
+                            }
+                        }
+                        $("#edit_heure_debut").html(liste_heure_debut);
+                        $("#edit_minute_debut").html(liste_minute_debut);
+                        $("#edit_heure_fin").html(liste_heure_fin);
+                        $("#edit_minute_fin").html(liste_minute_fin);
+
+                        $("#edit_heure_fin").change(function(e){
+                            heure_fin = $("#edit_heure_fin option:selected").html();
+                            var liste_minute_fin_modif = '';
+                            if(heure_fin <= heure_debut){
+                                for (var i = (parseInt(minute_debut) + 1); i<60;i++){
+                                    var value = 0;
+                                    if(i<10)
+                                        value = '0'+i;
+                                    if(i>=10){
+                                        value = i;
+                                    }
+                                    if(i== parseInt(minute_fin)){
+                                        liste_minute_fin_modif = liste_minute_fin_modif + '<option selected>'+value+'</option>';
+                                    }
+                                    else
+                                        liste_minute_fin_modif = liste_minute_fin_modif + '<option>'+value+'</option>';
+                                }
+                            }
+                            else{
+                                for (var i = 0; i<60;i++){
+                                    var value = 0;
+                                    if(i<10)
+                                        value = '0'+i;
+                                    if(i>=10){
+                                        value = i;
+                                    }
+                                    if(i== parseInt(minute_fin)){
+                                        liste_minute_fin_modif = liste_minute_fin_modif + '<option selected>'+value+'</option>';
+                                    }
+                                    else
+                                        liste_minute_fin_modif = liste_minute_fin_modif + '<option>'+value+'</option>';
+                                }
+                            }
+                            $("#edit_minute_fin").html(liste_minute_fin_modif);
+                        });
+                        $("#edit_minute_fin").change(function(e){
+                            minute_fin = $("#edit_minute_fin option:selected").html();
+                        });
+                        $("#edit_heure_debut").change(function(e){
+                            console.log("click edit heure",$("#edit_heure_debut option:selected").html());
+                            var heure_debut_modif = $("#edit_heure_debut option:selected").html();
+                            heure_debut = heure_debut_modif
+                            var liste_heure_fin_modif = '';
+                            for (var i = parseInt(heure_debut_modif); i<24;i++){
+                                var value = 0;
+                                if(i<10)
+                                    value = '0'+i;
+                                if(i>=10){
+                                    value = i;
+                                }
+                                if(i== parseInt(heure_fin)){
+                                    liste_heure_fin_modif = liste_heure_fin_modif + '<option selected>'+value+'</option>';
+                                }
+                                else
+                                    liste_heure_fin_modif = liste_heure_fin_modif + '<option>'+value+'</option>';
+                            }
+
+                            var liste_minute_fin_modif = '';
+                            if(heure_fin <= heure_debut_modif){
+                                for (var i = (parseInt(minute_debut) + 1); i<60;i++){
+                                    var value = 0;
+                                    if(i<10)
+                                        value = '0'+i;
+                                    if(i>=10){
+                                        value = i;
+                                    }
+                                    if(i== parseInt(minute_fin)){
+                                        liste_minute_fin_modif = liste_minute_fin_modif + '<option selected>'+value+'</option>';
+                                    }
+                                    else
+                                        liste_minute_fin_modif = liste_minute_fin_modif + '<option>'+value+'</option>';
+                                }
+                            }
+                            else{
+                                for (var i = 0; i<60;i++){
+                                    var value = 0;
+                                    if(i<10)
+                                        value = '0'+i;
+                                    if(i>=10){
+                                        value = i;
+                                    }
+                                    if(i== parseInt(minute_fin)){
+                                        liste_minute_fin_modif = liste_minute_fin_modif + '<option selected>'+value+'</option>';
+                                    }
+                                    else
+                                        liste_minute_fin_modif = liste_minute_fin_modif + '<option>'+value+'</option>';
+                                }
+                            }
+                            $("#edit_heure_fin").html(liste_heure_fin_modif);
+                            $("#edit_minute_fin").html(liste_minute_fin_modif);
+
+                        });
+
+                        $("#edit_minute_debut").change(function(e){
+                            console.log("click edit minute",$("#edit_minute_debut option:selected").html());
+                            var minute_debut_modif = $("#edit_minute_debut option:selected").html();
+
+                            var liste_minute_fin_modif2 = '';
+                            if(heure_fin <= heure_debut){
+                                for (var i = (parseInt(minute_debut_modif) + 1); i<60;i++){
+                                    var value = 0;
+                                    if(i<10)
+                                        value = '0'+i;
+                                    if(i>=10){
+                                        value = i;
+                                    }
+                                    if(i== parseInt(minute_fin)){
+                                        liste_minute_fin_modif2 = liste_minute_fin_modif2 + '<option selected>'+value+'</option>';
+                                    }
+                                    else
+                                        liste_minute_fin_modif2 = liste_minute_fin_modif2 + '<option>'+value+'</option>';
+                                }
+                            }
+                            else{
+                                for (var i = 0; i<60;i++){
+                                    var value = 0;
+                                    if(i<10)
+                                        value = '0'+i;
+                                    if(i>=10){
+                                        value = i;
+                                    }
+                                    if(i== parseInt(minute_fin)){
+                                        liste_minute_fin_modif2 = liste_minute_fin_modif2 + '<option selected>'+value+'</option>';
+                                    }
+                                    else
+                                        liste_minute_fin_modif2 = liste_minute_fin_modif2 + '<option>'+value+'</option>';
+                                }
+                            }
+                            $("#edit_minute_fin").html(liste_minute_fin_modif2);
+
+                        });
                     }
                 });
             },
@@ -1018,8 +1459,8 @@ $(function(){
                     var nom_compagnie=$("#CodeCompagnie").find("option:selected").html();
                     var new_dispositif=$("#CodeDispositif").find("option:selected").attr('value');
                     var nom_dispositif=$("#CodeDispositif").find("option:selected").html();
-                    var new_event_heure_debut=jour_deb+" "+$("#edit_event_heure_debut").val()+":00";
-                    var new_event_heure_fin=jour_deb+" "+$("#edit_event_heure_fin").val()+":00";
+                    var new_event_heure_debut=jour_deb+" "+$("#edit_heure_debut").find("option:selected").html()+":"+$("#edit_minute_debut").find("option:selected").html()+":00";
+                    var new_event_heure_fin=jour_deb+" "+$("#edit_heure_fin").find("option:selected").html()+":"+$("#edit_minute_fin").find("option:selected").html()+":00";
 
                     console.log('event',new_event_heure_debut);
                     var tab_debut = new_event_heure_debut.split(' ');

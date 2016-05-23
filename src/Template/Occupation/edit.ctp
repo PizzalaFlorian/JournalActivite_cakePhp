@@ -5,13 +5,17 @@
     <?= $this->Form->create($occupation) ?>
     <fieldset>
 
-        <div class="input number required"> 
+        <div class="input select required"> 
             <label for="HeureDebut">Heure de début :</label>
-            <input id="edit_event_heure_debut" type="text" value="<?php echo retourneHeure($occupation->HeureDebut); ?>" />
+            <!-- <input id="edit_event_heure_debut" type="text" value="<?php echo retourneHeure($occupation->HeureDebut); ?>" /> -->
+            <select id="edit_heure_debut"><option id="edit_h_debut"><?php echo retourneHeure($occupation->HeureDebut); ?></option>
+            </select><select id="edit_minute_debut"><option id="edit_m_debut"><?php echo retourneMinute($occupation->HeureDebut); ?></select>
         </div>
-        <div class="input number required"> 
+        <div class="input select required"> 
             <label for="HeureFin">heure de fin :</label>            
-            <input id="edit_event_heure_fin" type="text" value="<?php echo retourneHeure($occupation->HeureFin); ?>" />
+            <!-- <input id="edit_event_heure_fin" type="text" value="<?php echo retourneHeure($occupation->HeureFin); ?>" /> -->
+            <select id="edit_heure_fin"><option id="edit_h_fin"><?php echo retourneHeure($occupation->HeureFin); ?></option>
+            </select><select id="edit_minute_fin"><option id="edit_m_fin"><?php echo retourneMinute($occupation->HeureFin); ?></select>
         </div>
 
         <div class="input number required">

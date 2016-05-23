@@ -18,6 +18,12 @@
 	// output 	: une chaine de caractère au format HH:MM
 	function retourneHeure($occupation) {
 		$time = explode(' ',$occupation);
-		return $time[1];
+		$time_split = explode(':',$time[1]);
+		return $time_split[0];
+	}
+	function retourneMinute($occupation) {
+		$time = explode(' ',$occupation);
+		$time_split = explode(':',$time[1]);
+		return $time_split[1];
 	}
 ?>
