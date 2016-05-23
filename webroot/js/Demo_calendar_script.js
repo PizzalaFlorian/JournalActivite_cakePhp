@@ -1121,18 +1121,21 @@ $(function(){
                     var modif_event_date_minute_fin = $('#'+event_id+"_date_fin_minute")
                     .replaceWith('<span>'+h_fin[1]+'</span>');
 
-                    var modif_event_date_titre = $('#'+event_id+"_activite")
-                    .replaceWith('<div id="'+event_id+'_activite">'+nom_activit+'</div>');
-                    
-                    var modif_compagnie = $('#'+event_id+"_compagnie")
-                    .replaceWith('<div id="'+event_id+'_compagnie">'+nom_compagnie+'</div>');
-            
-                    var modif_dispositif = $('#'+event_id+"_dispositif")
-                    .replaceWith('<div id="'+event_id+'_dispositif">'+nom_dispositif+'</div>');
-                    
-                    var modif_lieu = $('#'+event_id+"_lieu")
-                    .replaceWith('<div id="'+event_id+'_lieu">'+nom_lieu+'</div>')
-
+                    if(height_o>=60){
+                        var modif_event_date_titre = $('#'+event_id+"_activite")
+                        .replaceWith('<div id="'+event_id+'_activite">'+nom_activit+'</div>');
+                    }
+                    if(height_o>=140){
+                        var modif_lieu = $('#'+event_id+"_lieu")
+                        .replaceWith('<div id="'+event_id+'_lieu">'+nom_lieu+'</div>')
+                    }
+                    if(height_o>=180){
+                        var modif_compagnie = $('#'+event_id+"_compagnie")
+                        .replaceWith('<div id="'+event_id+'_compagnie">'+nom_compagnie+'</div>');
+                
+                        var modif_dispositif = $('#'+event_id+"_dispositif")
+                        .replaceWith('<div id="'+event_id+'_dispositif">'+nom_dispositif+'</div>');
+                    }
                     $.ajax({
                         url: "../occupation/edit/"+event_id,
                         type :  'POST',
@@ -1498,17 +1501,21 @@ $(function(){
                     var modif_event_date_minute_fin = $('#'+event_id+"_date_fin_minute")
                     .replaceWith('<span>'+minute_fin+'</span>');
 
-                    var modif_event_date_titre = $('#'+event_id+"_activite")
-                    .replaceWith('<div id="'+event_id+'_activite">'+nom_activit+'</div>');
-                    
-                    var modif_compagnie = $('#'+event_id+"_compagnie")
-                    .replaceWith('<div id="'+event_id+'_compagnie">'+nom_compagnie+'</div>');
-            
-                    var modif_dispositif = $('#'+event_id+"_dispositif")
-                    .replaceWith('<div id="'+event_id+'_dispositif">'+nom_dispositif+'</div>');
-                    
-                    var modif_lieu = $('#'+event_id+"_lieu")
-                    .replaceWith('<div id="'+event_id+'_lieu">'+nom_lieu+'</div>');
+                    if(height_o>=60){
+                        var modif_event_date_titre = $('#'+event_id+"_activite")
+                        .replaceWith('<div id="'+event_id+'_activite">'+nom_activit+'</div>');
+                    }
+                    if(height_o>=140){
+                        var modif_lieu = $('#'+event_id+"_lieu")
+                        .replaceWith('<div id="'+event_id+'_lieu">'+nom_lieu+'</div>')
+                    }
+                    if(height_o>=180){
+                        var modif_compagnie = $('#'+event_id+"_compagnie")
+                        .replaceWith('<div id="'+event_id+'_compagnie">'+nom_compagnie+'</div>');
+                
+                        var modif_dispositif = $('#'+event_id+"_dispositif")
+                        .replaceWith('<div id="'+event_id+'_dispositif">'+nom_dispositif+'</div>');
+                    }
 
                     $.ajax({
                         url: "../occupation/edit/"+event_id,
