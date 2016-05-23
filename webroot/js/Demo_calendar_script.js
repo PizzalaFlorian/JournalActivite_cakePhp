@@ -261,8 +261,228 @@ $(function(){
 		$("#new_event_day").val( jour_deb);
 		$("#new_event_heure_debut").val( heure_debut+':'+minute_debut+':00');
         $("#new_event_heure_fin").val( heure_fin+':'+minute_fin+':00');
-				
-				
+        var width_select = $("#new_heure_debut").width();
+        $("#new_heure_debut").css({
+                        "width" : width_select*0.5});
+        $("#new_minute_debut").css({
+                        "width" : width_select*0.5});
+        $("#new_heure_fin").css({
+                        "width" : width_select*0.5});
+        $("#new_minute_fin").css({
+                        "width" : width_select*0.5});
+        var liste_heure_debut = '';
+        for (var i = 0; i<24;i++){
+            var value = 0;
+            if(i<10)
+                value = '0'+i;
+            if(i>=10){
+                value = i;
+            }
+            if(i== parseInt(heure_debut)){
+                liste_heure_debut = liste_heure_debut + '<option id="h_debut" selected>'+value+'</option>';
+            }
+            else
+                liste_heure_debut = liste_heure_debut + '<option id="h_debut">'+value+'</option>';
+        }
+
+        var liste_minute_debut = '';
+        for (var i = 0; i<60;i++){
+            var value = 0;
+            if(i<10)
+                value = '0'+i;
+            if(i>=10){
+                value = i;
+            }
+            if(i== parseInt(minute_debut)){
+                liste_minute_debut = liste_minute_debut + '<option id="m_debut" selected>'+value+'</option>';
+            }
+            else
+                liste_minute_debut = liste_minute_debut + '<option id="m_debut">'+value+'</option>';
+        }
+
+        var liste_heure_fin = '';
+        for (var i = parseInt(heure_debut); i<24;i++){
+            var value = 0;
+            if(i<10)
+                value = '0'+i;
+            if(i>=10){
+                value = i;
+            }
+            if(i== parseInt(heure_fin)){
+                liste_heure_fin = liste_heure_fin + '<option selected>'+value+'</option>';
+            }
+            else
+                liste_heure_fin = liste_heure_fin + '<option>'+value+'</option>';
+        }
+
+        var liste_minute_fin = '';
+        if(heure_fin == heure_debut){
+            for (var i = parseInt(minute_debut); i<60;i++){
+                var value = 0;
+                if(i<10)
+                    value = '0'+i;
+                if(i>=10){
+                    value = i;
+                }
+                if(i== parseInt(minute_fin)){
+                    liste_minute_fin = liste_minute_fin + '<option selected>'+value+'</option>';
+                }
+                else
+                    liste_minute_fin = liste_minute_fin + '<option>'+value+'</option>';
+            }
+        }
+        else{
+            for (var i = 0; i<60;i++){
+                var value = 0;
+                if(i<10)
+                    value = '0'+i;
+                if(i>=10){
+                    value = i;
+                }
+                if(i== parseInt(minute_fin)){
+                    liste_minute_fin = liste_minute_fin + '<option selected>'+value+'</option>';
+                }
+                else
+                    liste_minute_fin = liste_minute_fin + '<option>'+value+'</option>';
+            }
+        }
+        $("#new_heure_debut").html(liste_heure_debut);
+        $("#new_minute_debut").html(liste_minute_debut);
+        $("#new_heure_fin").html(liste_heure_fin);
+        $("#new_minute_fin").html(liste_minute_fin);
+		
+        /*responsive time */
+        $("#new_heure_fin").change(function(e){
+            heure_fin = $("#new_heure_fin option:selected").html();
+            var liste_minute_fin_modif = '';
+            if(heure_fin <= heure_debut){
+                for (var i = (parseInt(minute_debut) + 1); i<60;i++){
+                    var value = 0;
+                    if(i<10)
+                        value = '0'+i;
+                    if(i>=10){
+                        value = i;
+                    }
+                    if(i== parseInt(minute_fin)){
+                        liste_minute_fin_modif = liste_minute_fin_modif + '<option selected>'+value+'</option>';
+                    }
+                    else
+                        liste_minute_fin_modif = liste_minute_fin_modif + '<option>'+value+'</option>';
+                }
+            }
+            else{
+                for (var i = 0; i<60;i++){
+                    var value = 0;
+                    if(i<10)
+                        value = '0'+i;
+                    if(i>=10){
+                        value = i;
+                    }
+                    if(i== parseInt(minute_fin)){
+                        liste_minute_fin_modif = liste_minute_fin_modif + '<option selected>'+value+'</option>';
+                    }
+                    else
+                        liste_minute_fin_modif = liste_minute_fin_modif + '<option>'+value+'</option>';
+                }
+            }
+            $("#new_minute_fin").html(liste_minute_fin_modif);
+        });
+        $("#new_minute_fin").change(function(e){
+            minute_fin = $("#new_minute_fin option:selected").html();
+        });
+        $("#new_heure_debut").change(function(e){
+            console.log("click new heure",$("#new_heure_debut option:selected").html());
+            var heure_debut_modif = $("#new_heure_debut option:selected").html();
+            heure_debut = heure_debut_modif
+            var liste_heure_fin_modif = '';
+            for (var i = parseInt(heure_debut_modif); i<24;i++){
+                var value = 0;
+                if(i<10)
+                    value = '0'+i;
+                if(i>=10){
+                    value = i;
+                }
+                if(i== parseInt(heure_fin)){
+                    liste_heure_fin_modif = liste_heure_fin_modif + '<option selected>'+value+'</option>';
+                }
+                else
+                    liste_heure_fin_modif = liste_heure_fin_modif + '<option>'+value+'</option>';
+            }
+
+            var liste_minute_fin_modif = '';
+            if(heure_fin <= heure_debut_modif){
+                for (var i = (parseInt(minute_debut) + 1); i<60;i++){
+                    var value = 0;
+                    if(i<10)
+                        value = '0'+i;
+                    if(i>=10){
+                        value = i;
+                    }
+                    if(i== parseInt(minute_fin)){
+                        liste_minute_fin_modif = liste_minute_fin_modif + '<option selected>'+value+'</option>';
+                    }
+                    else
+                        liste_minute_fin_modif = liste_minute_fin_modif + '<option>'+value+'</option>';
+                }
+            }
+            else{
+                for (var i = 0; i<60;i++){
+                    var value = 0;
+                    if(i<10)
+                        value = '0'+i;
+                    if(i>=10){
+                        value = i;
+                    }
+                    if(i== parseInt(minute_fin)){
+                        liste_minute_fin_modif = liste_minute_fin_modif + '<option selected>'+value+'</option>';
+                    }
+                    else
+                        liste_minute_fin_modif = liste_minute_fin_modif + '<option>'+value+'</option>';
+                }
+            }
+            $("#new_heure_fin").html(liste_heure_fin_modif);
+            $("#new_minute_fin").html(liste_minute_fin_modif);
+
+        });
+
+        $("#new_minute_debut").change(function(e){
+            console.log("click new minute",$("#new_minute_debut option:selected").html());
+            var minute_debut_modif = $("#new_minute_debut option:selected").html();
+
+            var liste_minute_fin_modif2 = '';
+            if(heure_fin <= heure_debut){
+                for (var i = (parseInt(minute_debut_modif) + 1); i<60;i++){
+                    var value = 0;
+                    if(i<10)
+                        value = '0'+i;
+                    if(i>=10){
+                        value = i;
+                    }
+                    if(i== parseInt(minute_fin)){
+                        liste_minute_fin_modif2 = liste_minute_fin_modif2 + '<option selected>'+value+'</option>';
+                    }
+                    else
+                        liste_minute_fin_modif2 = liste_minute_fin_modif2 + '<option>'+value+'</option>';
+                }
+            }
+            else{
+                for (var i = 0; i<60;i++){
+                    var value = 0;
+                    if(i<10)
+                        value = '0'+i;
+                    if(i>=10){
+                        value = i;
+                    }
+                    if(i== parseInt(minute_fin)){
+                        liste_minute_fin_modif2 = liste_minute_fin_modif2 + '<option selected>'+value+'</option>';
+                    }
+                    else
+                        liste_minute_fin_modif2 = liste_minute_fin_modif2 + '<option>'+value+'</option>';
+                }
+            }
+            $("#new_minute_fin").html(liste_minute_fin_modif2);
+
+        });
         /*creation de l'event dans la bdd*/
         //TODO ?//
         var url_create=getBaseURL()+"/admin/ajax/evenementcreation/ds/"+day_start+"/de/"+day_end+"/ag/"+agenda_first_id;
@@ -298,8 +518,8 @@ $(function(){
 					var new_lieu=$("#new_event_lieu").find("option:selected").attr('id');
                     var new_compagnie=$("#new_event_compagnie").find("option:selected").attr('id');
                     var new_dispositif=$("#new_event_dispositif").find("option:selected").attr('id');
-                    var new_event_heure_debut=jour_deb+" "+$("#new_event_heure_debut").val();
-					var new_event_heure_fin=jour_deb+" "+$("#new_event_heure_fin").val();
+                    var new_event_heure_debut=jour_deb+" "+$("#new_heure_debut option:selected").html()+":"+$("#new_minute_debut option:selected").html()+":00";
+					var new_event_heure_fin=jour_deb+" "+$("#new_heure_fin option:selected").html()+":"+$("#new_minute_fin option:selected").html()+":00";
 					
                     //var event_id = rep;
 
@@ -356,7 +576,7 @@ $(function(){
                     .appendTo(event_date)
                     .attr('id',event_id+'_date_fin_minute');
 
-                    var event_date_titre = $('#1_title')
+                    var event_date_titre = $('#'+event_id+'_title')
                                     .remove();
                     var event_date_titre = $('<div>'+nom_activit+'</div>')
                     .appendTo(event)
@@ -364,12 +584,12 @@ $(function(){
                     .attr('id',event_id+'_title');
 
                     event.corner();
-                            $(".calendar_event_date").corner("top cc:#fff");
-                            var td_width=$(".calendar_td").width();
-                            event.css({
-                                "width" : td_width*0.85,
-                                "margin-left" : (td_width-(td_width*0.85))/2,
-                            });
+                    $(".calendar_event_date").corner("top cc:#fff");
+                    var td_width=$(".calendar_td").width();
+                    event.css({
+                        "width" : td_width*0.85,
+                        "margin-left" : (td_width-(td_width*0.85))/2,
+                    });
 
 					$.ajax({
 						url: "../occupation/add",
@@ -456,35 +676,6 @@ $(function(){
             .appendTo(event)
             .attr('class','calendar_event_title')
             .attr('id',event_id+'_title');
-        // var event_date = $('<div></div>')
-        // .appendTo(event)
-        // .attr('class','calendar_event_date')
-        // .attr('div',event_id+'_calendar_event_date');
-
-        // var event_date_heure_debut = $('<span>'+nouvelle_heure_depart.getHours()+'</span>')
-        // .appendTo(event_date)
-        // .attr('id',event_id+'_date_debut_heure');
-
-        // $('<span>:</span>')
-        // .appendTo(event_date);
-
-        // var event_date_minute_debut = $('<span>'+nouvelle_heure_depart.getMinutes()+'</span>')
-        // .appendTo(event_date)
-        // .attr('id',event_id+'_date_debut_minute');
-
-        // $('<span> - </span>')
-        // .appendTo(event_date);
-
-        // var event_date_heure_fin = $('<span>'+nouvelle_heure_fin.getHours()+'</span>')
-        // .appendTo(event_date)
-        // .attr('id',event_id+'_date_fin_heure');
-
-        // $('<span>:</span>')
-        // .appendTo(event_date);
-        
-        // var event_date_minute_fin = $('<span>'+nouvelle_heure_fin.getMinutes()+'</span>')
-        // .appendTo(event_date)
-        // .attr('id',event_id+'_date_fin_minute');
              
         event.corner();
         $(".calendar_event_date").corner("top cc:#fff");

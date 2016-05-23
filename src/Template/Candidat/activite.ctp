@@ -44,10 +44,14 @@
                     <input type="hidden" id="new_event_day"/>
                     
                     <label class="label_evenement" for="new_event_heure_debut">			Heure de début :</label>
-					<input type="text" id="new_event_heure_debut"/>
+					<!-- <input type="text" id="new_event_heure_debut"/> -->
+                    <select name="heure_debut" id="new_heure_debut"></select>
+                    <select name="minute_debut" id="new_minute_debut"></select>
 					
 					<label class="label_evenement" for="new_event_heure_fin">			Heure de fin :</label>
-					<input type="text" id="new_event_heure_fin"/>
+					<!-- <input type="text" id="new_event_heure_fin"/> -->
+                    <select name="heure_fin" id="new_heure_fin"></select>
+                    <select name="minute_fin" id="new_minute_fin"></select>
                     
                     <label class="label_evenement" for="new_event_categorieActivite">	Categorie Activitée :</label>
                     <select type="text" class="lab RA_target" name="new_event_categorieActivite" id="new_event_categorieActivite">
