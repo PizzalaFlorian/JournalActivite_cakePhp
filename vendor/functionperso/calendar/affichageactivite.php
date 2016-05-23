@@ -162,12 +162,10 @@
 				$string = $string.'</div>';
 			}
 			else if($Dm > 60 && $Dm <= 100){
-				$string = $string.'<div class="calendar_event_activite" id="'.$occupation['CodeOccupation'].'_activite">'.convertCodeToNomActivite($occupation['CodeActivite']).'</div>
-				</div>';
+				$string = $string.'<div class="calendar_event_activite" id="'.$occupation['CodeOccupation'].'_activite">'.convertCodeToNomActivite($occupation['CodeActivite']).'</div></div>';
 			}
 			else if($Dm > 100 && $Dm <= 140){
 				$string = $string.'<div class="calendar_event_activite" id="'.$occupation['CodeOccupation'].'_activite">'.convertCodeToNomActivite($occupation['CodeActivite']).'</div>
-				<div class="calendar_event_lieu" id="'.$occupation['CodeOccupation'].'_lieu">'.convertCodeToNomLieu($occupation['CodeLieux']).'</div>
 				</div>';
 			}
 			else if($Dm > 140 && $Dm <= 180){

@@ -149,7 +149,7 @@ div.calendar_event_date{
     background-color:rgb(163,41,41);
 }
 div.calendar_event_lieu{
-    display:none;
+    /*display:none;*/
 }
 div.calendar_event_titre{
 
