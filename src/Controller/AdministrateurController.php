@@ -15,7 +15,19 @@ use Cake\Filesystem\File;
  */
 class AdministrateurController extends AppController
 {
+	
+	public function gestionDonnees(){
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
 
+        $this->viewBuilder()->layout('adminLayout');
+			
+        $test = "hello world";
+        $this->set(compact('test'));
+    }
+	
     public function butExperience(){
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
             $this->redirect(['controller'=>'candidat','action' => 'accueil']);
@@ -425,17 +437,5 @@ class AdministrateurController extends AppController
             $this->Flash->success(__('le message a été modifier'));
         }
 
-    }
-	
-	public function gestionDonnees(){
-        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
-            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
-        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
-            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
-
-         $this->viewBuilder()->layout('adminLayout');
-        
-        $test = "hello world";
-        $this->set(compact('test'));
     }
 }

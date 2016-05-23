@@ -1,6 +1,7 @@
 <?php
     $this->start('sidebarAdmin');
 ?>
+
 <li class="heading"><?= __('Menu') ?></li>
 <li> 
     <?php 
