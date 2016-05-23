@@ -53,6 +53,14 @@
 <li> 
     <?php 
         echo $this->Html->link(
+            'Gestion des données',
+            ['controller' => 'administrateur', 'action' => 'GestionDonnees', '_full' => true]
+        ); 
+    ?> 
+</li>
+<li> 
+    <?php 
+        echo $this->Html->link(
             'Aide',
             ['controller' => 'administrateur', 'action' => 'aide', '_full' => true]
         ); 

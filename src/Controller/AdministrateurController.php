@@ -426,4 +426,16 @@ class AdministrateurController extends AppController
         }
 
     }
+	
+	public function gestionDonnees(){
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
+         $this->viewBuilder()->layout('adminLayout');
+        
+        $test = "hello world";
+        $this->set(compact('test'));
+    }
 }
