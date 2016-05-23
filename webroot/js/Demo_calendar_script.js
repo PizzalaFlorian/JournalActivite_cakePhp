@@ -270,7 +270,7 @@ $(function(){
             url: url_create,
             async: false
         }).responseText; */
-        var event_id=1;
+        var event_id=0;
         /*Initialisation - dialog de remplissage*/
         $("#gen_new_content").dialog({
             bgiframe: true,
@@ -318,8 +318,8 @@ $(function(){
                     var height_o = (((dureeSec/60)/60)*4)*10; 
                     console.log('height',height_o);
                     
-                    var rename_event = $('#1')
-                     .attr( 'id',event_id );
+                    // var rename_event = $('#0')
+                    //  .attr( 'id',event_id );
                     var event_modif_height = $('#'+event_id)
                     .css( "height",height_o+"px");
 
@@ -384,13 +384,13 @@ $(function(){
 						success : function(rep, statut){         
 
                             var event_id = rep;
-                            $('#1_title').attr('id',event_id+'_title');
-                            $('#1').attr('id',event_id);
-                            $('#1_calendar_event_date').attr('id',event_id+'_calendar_event_date');
-                            $('#1_date_debut_heure').attr('id',event_id+'_date_debut_heure');
-                            $('#1_date_debut_minute').attr('id',event_id+'_date_debut_minute');
-                            $('#1_date_fin_heure').attr('id',event_id+'_date_fin_heure');
-                            $('#1_date_fin_minute').attr('id',event_id+'_date_fin_minute');
+                            $('#0_title').attr('id',event_id+'_title');
+                            $('#0').attr('id',event_id);
+                            $('#0_calendar_event_date').attr('id',event_id+'_calendar_event_date');
+                            $('#0_date_debut_heure').attr('id',event_id+'_date_debut_heure');
+                            $('#0_date_debut_minute').attr('id',event_id+'_date_debut_minute');
+                            $('#0_date_fin_heure').attr('id',event_id+'_date_fin_heure');
+                            $('#0_date_fin_minute').attr('id',event_id+'_date_fin_minute');
                         }
 					});
 					
