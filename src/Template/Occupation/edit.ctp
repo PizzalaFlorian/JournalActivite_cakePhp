@@ -1,7 +1,7 @@
 <?php
     echo $this->Html->script('occupation');
 ?>
-<div class="occupation form large-9 medium-8 columns content">
+<div>
     <?= $this->Form->create($occupation) ?>
     <fieldset>
 

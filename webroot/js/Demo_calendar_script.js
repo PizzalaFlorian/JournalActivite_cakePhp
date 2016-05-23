@@ -263,13 +263,13 @@ $(function(){
         $("#new_event_heure_fin").val( heure_fin+':'+minute_fin+':00');
         var width_select = $("#new_heure_debut").width();
         $("#new_heure_debut").css({
-                        "width" : width_select*0.5});
+                        "width" : width_select});
         $("#new_minute_debut").css({
-                        "width" : width_select*0.5});
+                        "width" : width_select});
         $("#new_heure_fin").css({
-                        "width" : width_select*0.5});
+                        "width" : width_select});
         $("#new_minute_fin").css({
-                        "width" : width_select*0.5});
+                        "width" : width_select});
         var liste_heure_debut = '';
         for (var i = 0; i<24;i++){
             var value = 0;
@@ -492,12 +492,17 @@ $(function(){
         }).responseText; */
         var event_id=0;
         /*Initialisation - dialog de remplissage*/
+        //ADD EVENT
         $("#gen_new_content").dialog({
             bgiframe: true,
             resizable: true,
             height:700,
             width:500,
             modal: true,
+            overlay: {
+                    backgroundColor: '#000',
+                    opacity: 0.5
+                },
             beforeclose: function(event, ui) {
                 $(this).dialog('destroy');
                 $("#new_event_categorieActivite").val("");  //Note il faudra surement ici inclure les valeurs
@@ -506,6 +511,8 @@ $(function(){
                 $("#new_event_compagnie").val("");
                 $("#new_event_dispositif").val("");
 				$("#new_event_codeActivite").val("");
+
+                $("#0").remove();
             },
             buttons: {
                 'Enregistrer': function() {
@@ -769,15 +776,14 @@ $(function(){
         });
         event.resizable({
             handles: 's',
-            grid: [0, 10],
+            grid: [0, 5],
             stop: function(event, ui) {
                 var object_drop = $(this);
                 var event_id=object_drop.attr("id");
                 var height_css=object_drop.css("height");
                 var height_css_value=parseInt(height_css.replace(".px",""));
                 var duree_en_sec=(((height_css_value/10)/4)*60)*60;
- //               $("#ajax_load").load(getBaseURL()+"/admin/ajax/evenementresize/id/"+event_id+"/dur/"+duree_en_sec);
- //$("#ajax_load").html("Heure de fin modifi&eacute;e.");
+
             },
             resize: function(event,ui) {
                 var object_drop = $(this);
@@ -817,7 +823,7 @@ $(function(){
             $("#dialog").dialog({
                 bgiframe: true,
                 resizable: true,
-                height:700,
+                height:720,
                 width:500,
                 modal: true,
                 overlay: {
@@ -834,8 +840,9 @@ $(function(){
                     var min_fin=$("#"+event_id+"_date_fin_minute").html();
                     var titre_eve=$("#"+event_id+"_title").html();
                     var lieu_eve=$("#"+event_id+"_lieu").html();
-
+                    $("#ui-dialog-title-dialog").html("Détail");
                     var contenu = "";
+                    $("#dialog").html("veuillez patienter pendant le chargement des données");
                     $.ajax({  
                         url : '../occupation/edit/'+event_id,
                         type : 'GET',
@@ -843,7 +850,6 @@ $(function(){
                         dataType : 'html', 
                         success : function(code_html, statut){ 
                             contenu = code_html;
-                            $("#ui-dialog-title-dialog").html("Détail")
                             //console.log("copy");
                             $("#dialog").html(contenu);
                         }
@@ -851,7 +857,7 @@ $(function(){
                 },
                 buttons: {
                     'Modifier': function(){
-                     var new_activit=$("#CodeActivite").find("option:selected").attr('value');
+                    var new_activit=$("#CodeActivite").find("option:selected").attr('value');
                     var nom_activit=$("#CodeActivite").find("option:selected").html();
                     var new_lieu=$("#CodeLieux").find("option:selected").attr('value');
                     var nom_lieu=$("#CodeLieux").find("option:selected").html();
@@ -987,6 +993,8 @@ $(function(){
                 var titre_eve=$("#"+event_id+"_title").html();
                 var lieu_eve=$("#"+event_id+"_lieu").html();
                 var contenu = "";
+                $("#ui-dialog-title-dialog").html("Détail");
+                $("#dialog").html("veuillez patienter pendant le chargement des données");
                 $.ajax({  
                     url : '../occupation/edit/'+event_id,
                     type : 'GET',
@@ -994,7 +1002,7 @@ $(function(){
                     dataType : 'html', 
                     success : function(code_html, statut){ 
                         contenu = code_html;
-                        $("#ui-dialog-title-dialog").html("Détail")
+                        
                         //console.log("copy");
                         $("#dialog").html(contenu);
                     }
