@@ -243,9 +243,14 @@ $(function(){
             buffer_compagnie = $('#'+event_id+'_compagnie').html();
             buffer_dispositif = $('#'+event_id+'_dispositif').html();
         });
-        $("#sp").click(function(e){
+        e.preventDefault();
+        return false;
+    });
+
+    $("#sp").click(function(e){
             console.log("Supprimer");
             $("#supp").html("Veuillez Confirmer la suppression");
+            var event_id = event_right_cliked;
             //$("#dialog").dialog('destroy');
             $("#supp").dialog({
                 bgiframe: true,
@@ -281,9 +286,6 @@ $(function(){
                 }
             });
         });
-        e.preventDefault();
-        return false;
-    });
 
     $(document).click(function(e){
         $("#click-menue").hide();
@@ -445,6 +447,10 @@ $(function(){
             .attr('id',event_id+'_dispositif');
         }
 
+        var tmp = $('<div>'+'Sauvegarde en cours'+'</div>')
+        .appendTo(event)
+        .attr('id',event_id+'_tmp');
+
         event.corner();
         $(".calendar_event_date").corner("top cc:#fff");
         var td_width=$(".calendar_td").width();
@@ -465,6 +471,7 @@ $(function(){
                         console.log(code_html);
                         var event_id = code_html;
                         $('#0_main').attr('id',event_id);
+                        $('#0_tmp').remove();
                         $('#0_activite').attr('id',event_id+'_activite');
                         $('#0_lieu').attr('id',event_id+'_lieu');
                         $('#0_compagnie').attr('id',event_id+'_compagnie');
@@ -477,7 +484,45 @@ $(function(){
             }
         });
     
-
+         $("#sp").click(function(e){
+            var event_id = event_right_cliked;
+            console.log("Supprimer");
+            $("#supp").html("Veuillez Confirmer la suppression");
+            //$("#dialog").dialog('destroy');
+            $("#supp").dialog({
+                bgiframe: true,
+                resizable: true,
+                height:200,
+                modal: true,
+                beforeclose: function(event, ui) {
+                    $(this).dialog('destroy');
+                },
+                buttons: {
+                    'Supprimer': function() {
+                        $(this).dialog('destroy');
+                        $("#supp").html("");
+                        $.ajax({  
+                                url : '../occupation/delete/'+event_id,
+                                type : 'POST',
+                                data : event_id,
+                                dataType : 'html', 
+                                success : function(code_html, statut){ 
+                                    console.log("ok");
+                                }
+                            });
+                        $("#"+event_id).hide("highlight",{
+                            direction: "vertical",
+                            color: "#A60000"
+                        },2000);
+                        $("#"+event_id).remove();
+                    },
+                    'Annuler': function() {
+                        $(this).dialog('destroy');
+                        $("#supp").html("");
+                    }
+                }
+            });
+        });
         /*application des interactions avec l'event*/
         event.draggable({
             //containment: "parent",
@@ -1327,6 +1372,10 @@ $(function(){
                     .attr('class','calendar_event_title')
                     .attr('id',event_id+'_title');
 
+                    var tmp = $('<div>'+'Sauvegarde en cours'+'</div>')
+                    .appendTo(event)
+                    .attr('id',event_id+'_tmp');
+
                     event.corner();
                     $(".calendar_event_date").corner("top cc:#fff");
                     var td_width=$(".calendar_td").width();
@@ -1349,6 +1398,7 @@ $(function(){
 
                             var event_id = rep;
                             $('#0_title').attr('id',event_id+'_title');
+                            $('#0_tmp').remove();
                             $('#0').attr('id',event_id);
                             $('#0_calendar_event_date').attr('id',event_id+'_calendar_event_date');
                             $('#0_date_debut_heure').attr('id',event_id+'_date_debut_heure');
@@ -1429,6 +1479,45 @@ $(function(){
             "margin-left" : (td_width-(td_width*0.85))/2,
         });
     
+         $("#sp").click(function(e){
+            var event_id = event_right_cliked;
+            console.log("Supprimer");
+            $("#supp").html("Veuillez Confirmer la suppression");
+            //$("#dialog").dialog('destroy');
+            $("#supp").dialog({
+                bgiframe: true,
+                resizable: true,
+                height:200,
+                modal: true,
+                beforeclose: function(event, ui) {
+                    $(this).dialog('destroy');
+                },
+                buttons: {
+                    'Supprimer': function() {
+                        $(this).dialog('destroy');
+                        $("#supp").html("");
+                        $.ajax({  
+                                url : '../occupation/delete/'+event_id,
+                                type : 'POST',
+                                data : event_id,
+                                dataType : 'html', 
+                                success : function(code_html, statut){ 
+                                    console.log("ok");
+                                }
+                            });
+                        $("#"+event_id).hide("highlight",{
+                            direction: "vertical",
+                            color: "#A60000"
+                        },2000);
+                        $("#"+event_id).remove();
+                    },
+                    'Annuler': function() {
+                        $(this).dialog('destroy');
+                        $("#supp").html("");
+                    }
+                }
+            });
+        });
 
         /*application des interactions avec l'event*/
         event.draggable({
@@ -1875,6 +1964,11 @@ $(function(){
                         var modif_dispositif = $('#'+event_id+"_dispositif")
                         .replaceWith('<div id="'+event_id+'_dispositif">'+nom_dispositif+'</div>');
                     }
+
+                     var tmp = $('<div>'+'Sauvegarde en cours'+'</div>')
+                    .appendTo(event)
+                    .attr('id',event_id+'_tmp');
+
                     $.ajax({
                         url: "../occupation/edit/"+event_id,
                         type :  'POST',
@@ -1889,6 +1983,7 @@ $(function(){
                         success : function(rep, statut){ 
                             
                             console.log('modif success');
+                            $("#"+event_id+"_tmp").remove();
                         }
                     });
                     $(this).dialog('destroy');
@@ -2230,6 +2325,10 @@ $(function(){
                         .replaceWith('<div id="'+event_id+'_dispositif">'+nom_dispositif+'</div>');
                     }
 
+                    var tmp = $('<div>'+'Sauvegarde en cours'+'</div>')
+                    .appendTo(event)
+                    .attr('id',event_id+'_tmp');
+
                     $.ajax({
                         url: "../occupation/edit/"+event_id,
                         type :  'POST',
@@ -2242,7 +2341,8 @@ $(function(){
                                 '&CodeDispositif=' + new_dispositif,
                         dataType : 'html',
                         success : function(rep, statut){ 
-                            console.log('modif success');                      
+                            console.log('modif success'); 
+                            $("#"+event_id+"_tmp").remove();                     
                         }
                     });
                    $(this).dialog('destroy'); 
