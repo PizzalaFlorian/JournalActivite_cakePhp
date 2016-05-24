@@ -94,6 +94,13 @@
         ); 
     ?> 
 </li>
+    <div>
+		<?= $this->Html->link(
+				'Contact', 
+				['controller' => 'messages', 'action' => 'contact']
+			);
+	?>
+	</div>
 <?php
     $this->end();
 ?>

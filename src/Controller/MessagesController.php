@@ -41,8 +41,10 @@ class MessagesController extends AppController
                                     $this->viewBuilder()->layout('candiLayout');
                                     $sideBar = "sidebarCandidat";           
                                 break;
-            case 'admin':           $monController = "";                 
-                                    $monAction="";                        
+            case 'admin':      $monController = "administrateur";                 
+                                    $monAction="accueil";          
+                                    $this->viewBuilder()->layout('adminLayout');
+                                    $sideBar = "sidebarAdmin"; 									
                                 break;
         }
 
@@ -55,11 +57,11 @@ class MessagesController extends AppController
         // on assigne un id pour les messageries
         switch ($_SESSION['Auth']['User']['typeUser']) {
             // les messages des chercheurs ont l'id 1
-            case 'chercheur':       $monID = 1;                                                 break;
+            case 'chercheur':       $monID = 1;                                                			 	break;
             // les messages des utilisateurs ont leur propre id
-            case 'candidat':        $monID = $_SESSION['Auth']['User']['ID'];                   break;
+            case 'candidat':        $monID = $_SESSION['Auth']['User']['ID'];                   	break;
             // les messages de admin auront l'id 0
-            case 'admin':           $monID = 0;                                                 break;
+            case 'admin':           $monID = 2;                                                 				break;
         }
         // recuperation des messages en fonction de l'id
         //$messages = $this->paginate($this->Messages->findAllByIdrecepteur("$monID" ,array( 'order' => array('DateEnvoi DESC') )));
@@ -92,7 +94,9 @@ class MessagesController extends AppController
                                 $sideBar = "sidebarChercheur";
 
                             break;
-            case 'admin':       $monID = '0';                                   
+            case 'admin':       $monID = '2';
+                                $this->viewBuilder()->layout('adminLayout');
+                                $sideBar = "sidebarAdmin";			
                             break;
         }
         $message = $this->Messages->get($id, ['contain' => [] ]);
@@ -154,7 +158,7 @@ class MessagesController extends AppController
                             break;
             case 'chercheur':   $monID = '1';                                 
                             break;
-            case 'admin':       $monID = '0';                                   
+            case 'admin':       $monID = '2';                                   
                             break;
         }
         if($monID == $message->IDExpediteur){
@@ -211,7 +215,9 @@ class MessagesController extends AppController
             case 'chercheur':   $this->viewBuilder()->layout('cherLayout');
                                 $sideBar = "sidebarChercheur";    
                             break;
-            case 'admin':       $monID = '0';                                   
+            case 'admin':      $monID = '2';               
+									$this->viewBuilder()->layout('adminLayout');
+									$sideBar = "sidebarAdmin";			
                             break;
         }
         $message = $this->Messages->newEntity();
@@ -263,7 +269,9 @@ class MessagesController extends AppController
                                 $this->viewBuilder()->layout('cherLayout');
                                 $sideBar = "sidebarChercheur";    
                             break;
-            case 'admin':       $monID = '0';                                   
+            case 'admin':       $monID = '2';
+									$this->viewBuilder()->layout('adminLayout');
+									$sideBar = "sidebarAdmin";				
                             break;
         }
         $message = $this->Messages->get($id, ['contain' => [] ]);
@@ -297,7 +305,7 @@ class MessagesController extends AppController
             switch ($users->typeUser) {
                 case 'candidat':    $pseudo = "Candidat ".$users->ID;  $pseudoID = $users->ID;           break;
                 case 'chercheur':   $pseudo = "Chercheur";             $pseudoID = '1';                  break;
-                case 'admin':       $pseudo = "Administrateur";        $pseudoID = '0';                  break;
+                case 'admin':       $pseudo = "Administrateur";        $pseudoID = '2';                  break;
             }
             // met a jours "lu / non lu" 
             if(($message->IDRecepteur == $monID)&&($message->recepteurLu == 0)){
@@ -331,8 +339,10 @@ class MessagesController extends AppController
                                     $this->viewBuilder()->layout('candiLayout');
                                     $sideBar = "sidebarCandidat";               
                                 break;
-            case 'admin':           $monController = "";                 
-                                    $monAction="";                        
+            case 'admin':           $monController = "administrateur";                 
+                                    $monAction="accueil";   
+									$this->viewBuilder()->layout('adminLayout');
+									$sideBar = "sidebarAdmin";										
                                 break;
         }
 
@@ -340,7 +350,7 @@ class MessagesController extends AppController
         switch ($_SESSION['Auth']['User']['typeUser']) {
             case 'chercheur':       $monID = 1;                                                 break;
             case 'candidat':        $monID = $_SESSION['Auth']['User']['ID'];                   break;
-            case 'admin':           $monID = 0;                                                 break;
+            case 'admin':           $monID = 2;                                                 break;
         }
         // recuperation des messages en fonction de l'id
         $messages = $this->paginate($this->Messages->find('all', ['conditions' => ['Idexpediteur' => $monID], 'order' => array('DateEnvoi DESC') ]));
@@ -351,4 +361,63 @@ class MessagesController extends AppController
         $this->set(compact('messages'));
         $this->set('_serialize', ['messages']);
     }
+	public function contact(){
+		$this->viewBuilder()->layout('candiLayout'); 
+		$sideBar = "sidebarCandidat";      
+		$message = $this->Messages->newEntity();
+		if(!isset($_SESSION['Auth']['User']['ID'])){
+			$email = "<div class=input text required\">\n<label for=\"email\">Adresse e-mail</label>\n<input id=\"email\" type=\"text\" maxlength=\"250\" required=\"required\" name=\"email\">\n</div>";
+		}
+		else{
+			$email = "";
+		}
+		if ($this->request->is('post')) {
+            $message = $this->Messages->patchEntity($message, $this->request->data);
+			$messageContact = $this->Messages->newEntity();
+			
+			$messageContact->Sujet = $message->Sujet;
+			$messageContact->ContenuMessage = $message->ContenuMessage;
+            $messageContact->DateEnvoi = Time::now(); 
+            $messageContact->recepteurLu = "0";
+            $messageContact->expediteurLu = "0";
+			$messageContact->userRecepteur = "2";
+			$messageContact->IDRecepteur = "2";
+			$messageContact->userExpediteur = $message->IDExpediteur;
+			
+			if(isset($_SESSION['Auth']['User']['ID'])){
+				$messageContact->IDExpediteur = $_SESSION['Auth']['User']['ID'];
+				$messageContact->userExpediteur = $_SESSION['Auth']['User']['ID'];
+			}
+			else{
+				$messageContact->IDExpediteur = $message->email;
+				$messageContact->userExpediteur = $message->email;
+			}
+			//var_dump($messageContact);
+           if ($this->Messages->save($messageContact)) {
+                if($message->IDRecepteur == 1){
+// ========================== Modif mail =============================//
+                    //ce morceau marche mais pour des raison remplissage de mail je le coupe x)
+
+
+                $email = new Email('default');
+                $email
+                    ->to('pierre.garnesson@gmail.com')
+                    ->subject($message->Sujet)
+                    ->send($message->ContenuMessage);
+                }
+
+
+// ========================== Modif mail =============================//
+                $this->Flash->success(__('Votre message à bien été envoyé.'));
+                return $this->redirect(['action' => 'index']);
+            } else {
+                $this->Flash->error(__('Echec de l\'envoie. Veuillez réessayer.'));
+            }
+        }
+		
+		$this->set(compact('sideBar'));
+		$this->set(compact('email'));
+        $this->set(compact('message'));
+        $this->set('_serialize', ['message']);
+	}
 }
