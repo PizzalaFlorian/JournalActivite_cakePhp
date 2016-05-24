@@ -22,9 +22,9 @@
 	*/
 
 //========= Script AJOUT User + Candidat ==============//
-   /*
+   
 
-   for($i = 50; $i<300; $i++)
+   for($i = 50; $i<53; $i++)
 	{
 		$requete = "INSERT INTO `bddCake`.`users` (`ID`, `login`, `typeUser`, `password`, `email`) VALUES ('".$i."', 'user".$i."', 'candidat', 'user".$i."', 'user@user.com');";
 		$bdd->query($requete);
@@ -33,11 +33,11 @@
 	}
     echo "<br/>End <br/>";
 
-    */
+    
 
 //========= Script AJOUT occupation ==============//
     
-   	for($id = 50; $id<300; $id++){
+   	for($id = 50; $id<53; $id++){
 	    for($i = 2;$i < 9; $i++){
 			$requete = "INSERT INTO `bddCake`.`occupation` (`CodeOccupation`, `HeureDebut`, `HeureFin`, `CodeCandidat`, `CodeLieux`, `CodeActivite`, `CodeCompagnie`, `CodeDispositif`) VALUES ('', '2016-05-".$i." 00:00:00', '2016-05-".$i." 08:00:00', '".$id."', '1', '10', '0', '0');";
 			$bdd->query($requete);
