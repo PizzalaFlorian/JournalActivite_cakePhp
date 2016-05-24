@@ -4,7 +4,24 @@
 * Dual licensed under the MIT (MIT-LICENSE.txt) and GPL (GPL-LICENSE.txt) licenses.
 */
 
-
+#click-menue, #paste-menue {
+    position: absolute;
+    display: none;
+    /*padding: 10px;*/
+    width : 100px;
+    background: white;
+    border: 1px solid grey;
+    z-index: 11;
+    font-size: 14px !important ;
+}
+.button-click-menue {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align : center;
+}
+.button-click-menue:hover {
+    background: #4B68FA !important;
+}
 /* Layout helpers
 ----------------------------------*/
 
@@ -136,7 +153,7 @@
 }
 
 .ui-widget-header {
-    background: rgb(255, 255, 204);
+    background: #DCE4DA;
     border: 1px solid #9FB1A3;
 }
 

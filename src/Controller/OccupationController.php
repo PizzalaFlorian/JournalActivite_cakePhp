@@ -140,6 +140,95 @@ class OccupationController extends AppController
         $this->set('_serialize', ['occupation']);
     }
 
+    public function copier()
+    {
+
+        $occupation = $this->Occupation->newEntity();
+        if ($this->request->is('post')) {
+            //debug($this->request->data);
+            $old = TableRegistry::get('occupation')
+                    ->find()
+                    ->where(['CodeOccupation'=>$this->request->data['CodeOccupation']])
+                    ->first();
+
+            if(is_string($this->request->data['HeureDebut'])){
+                $sep_date_time = explode(' ', $this->request->data['HeureDebut']);
+
+                $date   = explode('-',$sep_date_time[0]);
+                $year   = $date[0];
+                $month  = $date[1];
+                $day    = $date[2];
+
+                $time   = explode(':',$sep_date_time[1]);
+                $hour   = $time[0];
+                $minute = $time[1];
+
+                $HeureDebut = [
+                    'year'  => $year,
+                    'month' => $month,
+                    'day'   => $day,
+                    'hour'  => $hour,
+                    'minute'=> $minute
+                ];
+
+                $sep_date_timefin = explode(' ', $this->request->data['HeureFin']);
+
+                $datefin   = explode('-',$sep_date_timefin[0]);
+                $yearfin   = $datefin[0];
+                $monthfin  = $datefin[1];
+                $dayfin    = $datefin[2];
+
+                $timefin   = explode(':',$sep_date_timefin[1]);
+                $hourfin   = $timefin[0];
+                $minutefin = $timefin[1];
+
+                $HeureFin = [
+                    'year'  => $yearfin,
+                    'month' => $monthfin,
+                    'day'   => $dayfin,
+                    'hour'  => $hourfin,
+                    'minute'=> $minutefin
+                ];
+
+                $res = TableRegistry::get('candidat')
+                    ->find()
+                    ->where(['ID'=>$_SESSION['Auth']['User']['ID']])
+                    ->first();
+
+                $newData = [
+                'HeureDebut' => $HeureDebut,
+                'HeureFin' => $HeureFin,
+                'CodeCandidat' => $res['CodeCandidat'],
+                'CodeLieux' => $old['CodeLieux'],
+                'CodeActivite' => $old['CodeActivite'],
+                'CodeCompagnie' => $old['CodeCompagnie'],
+                'CodeDispositif' => $old['CodeDispositif']
+                ];
+                                
+                $occupation = $this->Occupation->patchEntity($occupation, $newData);
+
+                if ($this->Occupation->save($occupation)) {
+                    echo $occupation->CodeOccupation;
+                    //$this->Flash->success(__('The occupation has been saved.'));
+                } else {
+                    $this->Flash->error(__('The occupation could not be saved. Please, try again.'));
+                }
+            }
+            else{ 
+                $occupation = $this->Occupation->patchEntity($occupation, $this->request->data);
+            
+                if ($this->Occupation->save($occupation)) {
+                    //$this->Flash->success(__('The occupation has been saved.'));
+                    return $this->redirect(['action' => 'index']);
+                } else {
+                    $this->Flash->error(__('The occupation could not be saved. Please, try again.'));
+                }
+            }
+        }
+        $this->set(compact('occupation'));
+        $this->set('_serialize', ['occupation']);
+    }
+
     public function editHeure($id = null)
     {
         //accès candidat

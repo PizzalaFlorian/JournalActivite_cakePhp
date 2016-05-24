@@ -37,7 +37,16 @@
     echo $this->Html->css('Demo_calendar_style');
     echo $this->Html->css('Demo_calendar_jquery');
 ?>
-
+    <div id="click-menue">
+    <div class="button-click-menue" id="cp">  Copier  </div>
+    <div class="button-click-menue" id="md">  Modifier  </div>
+    <div class="button-click-menue" id="sp">  Supprimer  </div>
+    <div id="supp"></div>
+    </div>
+    <div id="paste-menue">
+    <div class="button-click-menue" id="cl">Coller</div>
+    <div class="button-click-menue" id="vd">Vider le presse papier</div>
+    </div>
 	<div id="content">
             <div id="gen_new_content" title="Nouvel événement">
                 <form action="">
