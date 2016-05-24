@@ -312,15 +312,20 @@ $(function(){
             $("#paste-menue").css({top:e.pageY,left:e.pageX}).show();
         }
         $("#click-menue").hide();
-        var column_target = $(this);
-        var jour_deb = $(this).attr('id');
-         $("#cl").click(function(e){
-            console.log("coller");
-            
-            //var event_id = "cp_"+buffer_event_id;
-            //var jour_deb = $(this).closest('td').attr('id');
-            console.log("new jour : ",jour_deb);
+        column_target = $(this);
+        jour_deb = $(this).attr('id');
+         
+        e.preventDefault();
+        return false;
+    }); /*fin cp-cl*/
+    //COLLER//
+    $("#cl").click(function(e){
+        console.log("coller dans ",jour_deb);
         
+        //var event_id = "cp_"+buffer_event_id;
+        //var jour_deb = $(this).closest('td').attr('id');
+        console.log("new jour : ",jour_deb);
+    
         var agenda_first_id=0;
         var position_choisie=e.pageY-$(this).position().top;
 
@@ -989,12 +994,8 @@ $(function(){
 
             });
         });
-        });
+    });//FIN COLLER
 
-        e.preventDefault();
-        return false;
-    }); /*fin cp-cl*/
-    
     /*nouvel event*/
     $(".calendar_td").dblclick(function(e){
         var jour_deb = $(this).attr('id');
