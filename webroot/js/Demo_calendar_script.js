@@ -230,7 +230,7 @@ $(function(){
         $("#click-menue").css({top:e.pageY,left:e.pageX}).show();
         $("#paste-menue").hide();
         $("#cp").click(function(e){
-            console.log("copier");
+            console.log("copier out",event_id);
             buffer_event_id = event_id;
             buffer_height =  $('#'+event_id).css('height');
             buffer_margin = $('#'+event_id).css('margin-top');
@@ -308,7 +308,7 @@ $(function(){
             buffer_compagnie = '';
             buffer_dispositif = '';
         });
-        if(buffer_activite.length){
+        if(buffer_event_id != null){
             $("#paste-menue").css({top:e.pageY,left:e.pageX}).show();
         }
         $("#click-menue").hide();
@@ -1398,7 +1398,7 @@ $(function(){
 						success : function(rep, statut){         
 
                             var event_id = rep;
-                            $('#0_title').attr('id',event_id+'_title');
+                            $('#0_title').attr('id',event_id+'_activite');
                             $('#0_tmp').remove();
                             $('#0').attr('id',event_id);
                             $('#0_calendar_event_date').attr('id',event_id+'_calendar_event_date');
@@ -1479,7 +1479,21 @@ $(function(){
             "width" : td_width*0.85,
             "margin-left" : (td_width-(td_width*0.85))/2,
         });
-    
+        $("#cp").click(function(e){
+            console.log("copier",event_id);
+            buffer_event_id = event_id;
+            buffer_height =  $('#'+event_id).css('height');
+            buffer_margin = $('#'+event_id).css('margin-top');
+            buffer_heure_debut = $('#'+event_id+'_date_debut_heure').html();
+            buffer_minute_debut = $('#'+event_id+'_date_debut_minute').html();
+            buffer_heure_fin = $('#'+event_id+'_date_fin_heure').html();
+            buffer_minute_fin = $('#'+event_id+'_date_fin_minute').html();
+            buffer_activite = $('#'+event_id+'_activite').html();
+            buffer_lieu = $('#'+event_id+'_lieu').html();
+            buffer_compagnie = $('#'+event_id+'_compagnie').html();
+            buffer_dispositif = $('#'+event_id+'_dispositif').html();
+        });
+
          $("#sp").click(function(e){
             var event_id = event_right_cliked;
             console.log("Supprimer");
