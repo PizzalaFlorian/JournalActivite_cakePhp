@@ -22,53 +22,7 @@ class AdministrateurController extends AppController
         if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
             $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
 		
-		// switch ($this->request->data['action']) {
-		
-		// Chargement des Models
-			// $this->loadModel('Occupation');
-			// $this->loadModel('Candidat');
-			// $this->loadModel('Messages');
         $this->viewBuilder()->layout('adminLayout');
-			//switch case sur l'action
-			
-			// recupertion de données
-			
-			// supression occupation
-				// $occupations =  get
-			// suppression de tout
-			 // $messages = $this->Messages->find('all', ['conditions' => ['Messages.IDExpediteur' => $idUser]]);
-                                // foreach ($messages as $message) {
-                                    // $message->IDExpediteur = 0;         // Le messages est considéré comme supprimer
-                                    // $message->userExpediteur = 4;       // Categorie : Utilisateur Supprimer
-                                    // $this->Messages->save($message);    // mets a jours les messages
-                                // }
-                                // $messages = $this->Messages->find('all', ['conditions' => ['Messages.IDRecepteur' => $idUser]]);
-                                // foreach ($messages as $message) {
-                                    // $message->IDRecepteur = 0;          // Le messages est considéré comme supprimer
-                                    // $message->userRecepteur = 4;        // Categorie : Utilisateur Supprimer
-                                    // $this->Messages->save($message);    // mets a jours les messages
-                                // }
-                            // suppression du candidat
-                                // if($this->Candidat->delete($candidat)){
-                                    // suppression de l'user
-                                        // $user = $this->Users->get($idUser);
-                                        // if($this->Users->delete($user)){
-                                            // $this->Flash->success(__('Toutes vos données on bien été supprimées'));
-                                            // $this->Flash->success(__('Votre compte à bien été supprimées'));
-                                            // return $this->redirect(['controller' => 'users', 'action' => 'logout']);
-                                        // }
-                                        // else{
-                                            // $this->Flash->error(__('Une erreur est survenue, veuillez contacter l\'administrateur'));
-                                        // }
-                                // } else {
-                                    // $this->Flash->error(__('Une erreur est survenue, veuillez contacter l\'administrateur'));
-                                // }
-			
-			
-			
-			
-        // $test = "hello world";
-        // $this->set(compact('test'));
     }
 	
     public function butExperience(){
@@ -498,50 +452,46 @@ class AdministrateurController extends AppController
 			}
 	}
 	
-	
 	public function supprCandidat(){
 		$this->loadModel('Occupation');
 		$this->loadModel('Candidat');
 		$this->loadModel('Messages');
 		$this->loadModel('Users');
 		$occupations = $this->Occupation->find('all');
-		$errorOccupation = false;
+		$error = false;
 		foreach($occupations as $occupation){
 			if(!($this->Occupation->delete($occupation))){
 				$this->Flash->error(__('Une erreur est survenue lors de la suppression de l\'occupation n°'.$occupation->CodeOccupation));
-				$errorOccupation = true;
+				$error = true;
 			}
 		}
-		if(!$errorOccupation){
+		if(!$error){
 			$this->Flash->success(__('Toutes les Occupations ont bien été supprimées'));
 			$messages = $this->Messages->find('all');
-			$errorMessage = false;
 			foreach($messages as $message){
 				if(!($this->Messages->delete($message))){
 					$this->Flash->error(__('Une erreur est survenue lors de la suppression du message n°'.$message->IDMessage));
-					$errorMessage = true;
+					$error = true;
 				}
 			}
-			if(!$errorMessage){
+			if(!$error){
 				$this->Flash->success(__('Tous les Messages ont bien été supprimées'));
 				$candidats = $this->Candidat->find('all');
-				$errorCandidat = false;
 				foreach($candidats as $candidat){
 					if(!($this->Candidat->delete($candidat))){
 						$this->Flash->error(__('Une erreur est survenue lors de la suppression du Candidat n°'.$candidat->CodeCandidat));
-						$errorCandidat = true;	
+						$error = true;	
 					}
 				}
-				if(!$errorCandidat){
+				if(!$error){
 					$users = $this->Users->find('all', ['conditions' => ['Users.typeUser' => 'candidat']]);
-					$errorUsers = false;
 					foreach($users as $user){
 						if(!($this->Users->delete($user))){
 							$this->Flash->error(__('Une erreur est survenue lors de la suppression de l\'user n°'.$user->ID));
-							$errorCandidat = true;	
+							$error = true;	
 						}
 					}
-					if(!$errorUsers){
+					if(!$error){
 						$this->Flash->success(__('Tous les Candidats ont bien été supprimées'));
 					}
 				} 
