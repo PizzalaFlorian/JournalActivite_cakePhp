@@ -97,7 +97,7 @@
     <div>
 		<?= $this->Html->link(
 				'Contact', 
-				['controller' => 'messages', 'action' => 'contact']
+				['controller' => 'contacts', 'action' => 'contact']
 			);
 	?>
 	</div>

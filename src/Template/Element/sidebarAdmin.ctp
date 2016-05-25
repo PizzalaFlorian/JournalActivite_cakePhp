@@ -71,7 +71,7 @@
     <?php 
         echo $this->Html->link(
             'Messagerie',
-            ['controller' => 'messages', 'action' => 'index', '_full' => true]
+            ['controller' => 'contacts', 'action' => 'index', '_full' => true]
         ); 
     ?> 
 </li>

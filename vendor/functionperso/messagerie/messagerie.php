@@ -23,4 +23,9 @@
         }
         return $user;
 	}
+	function message($contenue, $expediteur){
+		$email = "Bonjour,\nVous avez reçut un nouveau message de $expediteur.\n\n";
+		$email = $email.$contenue;
+		return $email;
+	}
 ?>
