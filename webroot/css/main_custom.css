@@ -43,5 +43,9 @@
 #loginSite{
 	margin-left: 30% !important;
 	width:100%;
-	text-align: center !important
+	text-align: center !important;
+}
+
+#loginSite input{
+	text-align: center !important;
 }
