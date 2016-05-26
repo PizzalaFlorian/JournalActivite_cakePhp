@@ -3,8 +3,8 @@
     use Cake\ORM\TableRegistry;
 ?>
 <div class="carnetdebord index large-11 medium-12 columns content">
-    <h3><?= __('Carnet de bord') ?></h3>
-    <?= $this->Html->link(__('Nouvelle entrée'), ['action' => 'add']) ?>
+    <h3 class="center"><?= __('Carnet de bord') ?></h3>
+    <?= $this->Html->link(__('Nouvelle entrée'), ['action' => 'add'],array('class' => 'button')) ?>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>

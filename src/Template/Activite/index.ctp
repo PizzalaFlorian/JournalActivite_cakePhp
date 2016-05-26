@@ -4,8 +4,8 @@
 ?>
 <div class="activite index large-12 medium-11 columns content">
 
-    <h3><?= __('Activite') ?></h3>
-    <?= $this->Html->link(__('Ajouter une activite'), ['action' => 'add']) ?>
+    <h3 class="center"><?= __('Table des Activitées') ?></h3>
+    <?= $this->Html->link(__('Ajouter une activite'), ['action' => 'add'],array('class' => 'button')) ?>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
