@@ -21,3 +21,21 @@
 .contact{
 	text-align: center;
 }
+
+.side-nav li {
+	margin-bottom:0 !important;
+}
+
+.side-nav li:hover {
+	margin-bottom:0 !important;
+	background: #DFD7D7;
+	border-radius: 10px 10px 10px 10px;
+}
+
+.souligne_red {
+	border-bottom: 2px solid #be140b;
+}
+
+.content{
+	padding-top: 0 !important;
+}

@@ -1,6 +1,7 @@
 <?php
     echo $this->element($sideBar);
 ?>
+<div id="content">
 <div class="messages view large-12 medium-11 columns content">
     <div class="navbar">
         <fieldset>
@@ -36,4 +37,5 @@
         <h4><?= __('') ?></h4>
         <?= $this->Text->autoParagraph(h($message->ContenuMessage)); ?>
     </div>
+</div>
 </div>

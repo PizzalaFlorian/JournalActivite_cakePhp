@@ -41,5 +41,7 @@ class AppView extends View
         $this->loadHelper('Form');
         $this->loadHelper('Flash');
 
+        echo $this->Html->css('main_custom');
+
     }
 }

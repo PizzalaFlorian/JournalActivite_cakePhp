@@ -6,8 +6,8 @@
             ->where(['ID' => $_SESSION['Auth']['User']['ID']])
             ->first();
 ?>
-
-<div class="candidat form large-9 medium-8 columns content">
+<div id="content">
+<div class="candidat form large-11 medium-10 columns content">
     <?= $this->Form->create($candidat) ?>
     <fieldset>
         <legend><?= __('Vos informations personnelles') ?></legend>
@@ -89,4 +89,5 @@
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
+</div>
 </div>

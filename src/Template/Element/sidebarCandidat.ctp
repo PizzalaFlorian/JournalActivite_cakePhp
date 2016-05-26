@@ -1,6 +1,7 @@
 <?php
 
     $this->start('sidebarCandidat');
+    echo $this->Html->css('main_custom');
 ?>
 <li> 
     <?php 
@@ -94,13 +95,14 @@
         ); 
     ?> 
 </li>
-    <div>
-		<?= $this->Html->link(
+<li>
+	<?php 
+        echo $this->Html->link(
 				'Contact', 
 				['controller' => 'contacts', 'action' => 'contact']
 			);
 	?>
-	</div>
+</li>
 <?php
     $this->end();
 ?>

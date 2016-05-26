@@ -1,6 +1,7 @@
 <?php
 
     $this->start('sidebarChercheur');
+    echo $this->Html->css('main_custom');
 ?>
 <li class="heading"><?= __('Menu') ?></li>
 <li> 

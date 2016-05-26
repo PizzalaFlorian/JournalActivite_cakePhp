@@ -2,6 +2,7 @@
     echo $this->element($sideBar);
     echo $this->Html->css('messagerie');
 ?>
+<div id="content">
 <nav id="messagerieMenu" class="large-2 medium-3 columns">
     <div><?= $this->Html->link(__('Nouveau Message'), ['action' => 'nouveau']) ?></div>
     <div><?= $this->Html->link(__('Messages envoyés'), ['action' => 'envoie']) ?></div>
@@ -62,4 +63,5 @@
         </ul>
         <p><?= $this->Paginator->counter() ?></p>
     </div>
+</div>
 </div>
