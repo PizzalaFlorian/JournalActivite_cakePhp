@@ -29,7 +29,7 @@ class AppController extends Controller
 {
 
 
-public function initialize()
+	public function initialize()
     {
 		parent::initialize();
 		$this->loadComponent('RequestHandler');
@@ -57,8 +57,11 @@ public function initialize()
 		]);
 
 	}
-	
-
+	// public function beforeFilter(Event $event)
+	// {
+		// parent::beforeFilter($event);
+		// $this->Auth->allow('contact',['storage' => 'Session']);
+	// }
     /**
      * Initialization hook method.
      *
