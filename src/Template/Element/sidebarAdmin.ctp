@@ -63,16 +63,16 @@
 <li> 
     <?php 
         echo $this->Html->link(
-            'Aide',
-            ['controller' => 'administrateur', 'action' => 'aide', '_full' => true]
+            'Configuration Messagerie',
+            ['controller' => 'administrateur', 'action' => 'GestionDonnees', '_full' => true]
         ); 
     ?> 
 </li>
 <li> 
     <?php 
         echo $this->Html->link(
-            'Messagerie',
-            ['controller' => 'contacts', 'action' => 'index', '_full' => true]
+            'Aide',
+            ['controller' => 'administrateur', 'action' => 'aide', '_full' => true]
         ); 
     ?> 
 </li>
