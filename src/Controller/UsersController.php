@@ -311,5 +311,4 @@ class UsersController extends AppController
         $this->set(compact('sideBar'));
         $this->set('_serialize', ['message']);
     }
-
 }

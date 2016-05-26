@@ -55,7 +55,9 @@ public function initialize()
 			'authError' => 'Vous croyez vraiment que vous pouvez faire cela?',
 			'storage' => 'Session'
 		]);
+
 	}
+	
 
     /**
      * Initialization hook method.
