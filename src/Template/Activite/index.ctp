@@ -12,7 +12,7 @@
                 <th><?= $this->Paginator->sort('CodeActivite') ?></th>
                 <th><?= $this->Paginator->sort('NomActivite') ?></th>
                 <th><?= $this->Paginator->sort('CodeCategorie') ?></th>
-                <th><?= $this->Paginator->sort('Nombre occurence') ?></th>
+                <th><?= $this->Paginator->sort('Nombre occurences') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -44,8 +44,7 @@
                     echo $this->Form->postLink(
                         $this->Html->image('supprimer.ico', array('title' => "Supprimer")),
                         array('action' => 'delete', $activite->CodeActivite),
-                        array('escape' => false),
-                        array('confirm' => __('Are you sure you want to delete # {0}?', $activite->CodeActivite))
+                        array('escape' => false,'confirm' => __('Are you sure you want to delete # {0}?', $activite->CodeActivite))
                     ); 
                      
                     echo $this->Html->link(

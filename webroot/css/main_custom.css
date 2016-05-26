@@ -72,3 +72,8 @@ td a img {
 	width:30px;
 	margin-left: 5px;
 }
+
+td a img:hover{
+	background: #DFD7D7;
+	border-radius: 10px 10px 10px 10px;
+}

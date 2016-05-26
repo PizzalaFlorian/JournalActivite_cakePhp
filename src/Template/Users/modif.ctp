@@ -18,6 +18,6 @@
             echo $this->Form->input('email');
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Modifier')) ?>
     <?= $this->Form->end() ?>
 </div>

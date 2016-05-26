@@ -3,14 +3,14 @@
      use Cake\ORM\TableRegistry;
 ?>
 <div class="dispositif index large-12 medium-11 columns content">
-    <h3><?= __('Dispositif') ?></h3>
-    <?= $this->Html->link(__('Nouveau Dispositif'), ['action' => 'add']) ?>
+    <h3 class="center"><?= __('Table des Dispositifs') ?></h3>
+    <?= $this->Html->link(__('Nouveau Dispositif'), ['action' => 'add'],['class'=>'button']) ?>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
                 <th><?= $this->Paginator->sort('CodeDispositif') ?></th>
                 <th><?= $this->Paginator->sort('NomDispositif') ?></th>
-                <th><?= $this->Paginator->sort('Nombre occurence') ?></th>
+                <th><?= $this->Paginator->sort('Nombre occurences') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -31,14 +31,25 @@
                 ?>    
                 </td>
                 <td class="actions">
-                    <?= $this->Html->link(__('Modifier'), ['action' => 'edit', $dispositif->CodeDispositif]) ?>
-                    <br>
-                    <?= $this->Form->postLink(__('Supprimer'), ['action' => 'delete', $dispositif->CodeDispositif], ['confirm' => __('Are you sure you want to delete # {0}?', $dispositif->CodeDispositif)]) ?>
-                     <br>
-                    <?= $this->Html->link(
-                        'Reaffecter',
-                        [ 'action' => 'reaffect', $dispositif->CodeDispositif]
-                    ) ?>
+                    <?php 
+                    echo $this->Html->link(
+                        $this->Html->image('modifier.ico', array('title' => "Modifier")), 
+                        array('action' => 'edit', $dispositif->CodeDispositif),
+                        array('escape' => false) 
+                    );
+                     
+                    echo $this->Form->postLink(
+                        $this->Html->image('supprimer.ico', array('title' => "Supprimer")),
+                        array('action' => 'delete', $dispositif->CodeDispositif),
+                        array('escape' => false,'confirm' => __('Êtes vous sur de vouloir supprimer # {0}?', $dispositif->NomDispositif))
+                    ); 
+                     
+                    echo $this->Html->link(
+                        $this->Html->image('reaffecter.ico', array('title' => "Réaffecter")), 
+                        array('action' => 'reaffect', $dispositif->CodeDispositif),
+                        array('escape' => false) 
+                    ); 
+                    ?>
                 </td>
             </tr>
             <?php endforeach; ?>

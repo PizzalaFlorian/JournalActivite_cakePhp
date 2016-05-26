@@ -13,12 +13,12 @@
 <div class="chercheur form large-11 medium-12 columns content">
     <?= $this->Form->create($chercheur) ?>
     <fieldset>
-        <legend><?= __('Edit Chercheur') ?></legend>
+        <legend><?= __('Modifier les informations du chercheur') ?></legend>
         <?php
             echo $this->Form->input('NomChercheur');
             echo $this->Form->input('PrenomChercheur');
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Modifier')) ?>
     <?= $this->Form->end() ?>
 </div>

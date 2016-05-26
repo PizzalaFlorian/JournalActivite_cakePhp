@@ -14,8 +14,7 @@
         echo $this->Form->postLink(
                 __('Supprimer'),
                 ['action' => 'delete', $actualite->ID],
-                array("class"=>"button"),
-                ['confirm' => __('Are you sure you want to delete # {0}?', $actualite->ID)]
+                array("class"=>"button",'confirm' => __('Are you sure you want to delete # {0}?', $actualite->ID))
             ).' ';
         echo $this->Html->link(__('Retour acceuil'),
          ['controller' => "$monController",'action' => "$monAction"],

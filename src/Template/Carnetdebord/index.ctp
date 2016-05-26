@@ -45,8 +45,7 @@
                     echo $this->Form->postLink(
                          $this->Html->image('supprimer.ico', array('title' => "Supprimer")),
                      ['action' => 'delete', $carnetdebord->CodeEntree],
-                     array('escape' => false),
-                      ['confirm' => __('Êtes vous sur de vouloir supprimée l\'entrée : {0}?', $carnetdebord->Sujet)]); 
+                     array('escape' => false,'confirm' => __('Êtes vous sur de vouloir supprimée l\'entrée : {0}?', $carnetdebord->Sujet))); 
                     ?>
                 </td>
             </tr>

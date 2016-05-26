@@ -41,8 +41,7 @@
                     echo $this->Form->postLink(
                         $this->Html->image('supprimer.ico', array('title' => "Supprimer")),
                         array('action' => 'delete', $categorieactivite->CodeCategorieActivite),
-                        array('escape' => false),
-                        array('confirm' => __('Êtes vous sur de vouloir supprimer # {0}?', $categorieactivite->NomCategorie))
+                        array('escape' => false,'confirm' => __('Êtes vous sur de vouloir supprimer # {0}?', $categorieactivite->NomCategorie))
                     ); 
                      
                     echo $this->Html->link(

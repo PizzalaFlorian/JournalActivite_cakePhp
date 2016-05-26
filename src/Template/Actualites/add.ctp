@@ -14,6 +14,6 @@
             echo $this->Form->input('Date');
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Ajouter')) ?>
     <?= $this->Form->end() ?>
 </div>

@@ -1,7 +1,7 @@
 <?php
     echo $this->element('sidebarChercheur');
 ?>
-<h3><?php echo $activite['NomActivite']; ?></h3>
+<h3 class="center"><?php echo $activite['NomActivite']; ?></h3>
 <div class="activite form large-12 medium-11 columns content">
 	<?php 
 		 echo $this->Html->link(__('Annuler et retourner a la liste des activitées'), ['action' => 'index'],array("class"=>"button"));
@@ -23,7 +23,7 @@
 	            echo '</select>';
 	        ?>
 	    </fieldset>
-	    <center><?= $this->Form->button(__('Submit')) ?></center>
+	    <center><?= $this->Form->button(__('Réaffecter')) ?></center>
 	    <?= $this->Form->end() ?> 
 	<br>
 	<br>    
