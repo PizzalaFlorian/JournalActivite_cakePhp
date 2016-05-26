@@ -55,7 +55,7 @@ class AppController extends Controller
 			'authError' => 'Vous croyez vraiment que vous pouvez faire cela?',
 			'storage' => 'Session'
 		]);
-
+		$this->Auth->allow('contacts');
 	}
 	// public function beforeFilter(Event $event)
 	// {

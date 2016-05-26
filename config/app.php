@@ -204,7 +204,7 @@ return [
             'Email' => [
                     'default' => [
                         'transport' => 'appli',
-                        'from' => 'test.test@lol.com',
+                        'from' => 'applitimesmanagement@gmail.com',
                         //'charset' => 'utf-8',
                         //'headerCharset' => 'utf-8',
                     ],
