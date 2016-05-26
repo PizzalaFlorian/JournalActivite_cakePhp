@@ -3,9 +3,8 @@
     echo $this->Html->css('messagerie');
 ?>
 <div id="content">
-<nav id="messagerieMenu" class="large-2 medium-3 columns">
-    <div><?= $this->Html->link(__('Nouveau Message'), ['action' => 'nouveau']) ?></div>
-    <div><?= $this->Html->link(__('Messages envoyés'), ['action' => 'envoie']) ?></div>
+<nav id="messagerieMenu" class="large-10 medium-10 columns">
+    <div><?php echo $this->Html->link(__('Nouveau Message'), ['action' => 'nouveau'],array('class' => 'button')).' '.$this->Html->link(__('Messages envoyés'), ['action' => 'envoie'],array('class' => 'button')); ?></div>
 </nav>
 
 

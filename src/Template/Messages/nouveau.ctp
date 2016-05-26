@@ -3,11 +3,7 @@
 ?>
 <div id="content">
     <div class="messages form large-12 medium-11 columns content">
-        <div class="navbar">
-            <fieldset>
-                <?= $this->Html->link(__('Retour'), ['controller' => 'messages']) ?>
-            </fieldset>
-        </div>
+        <?= $this->Html->link(__('Retour'), ['controller' => 'messages'],array('class' => 'button')) ?>
         <?= $this->Form->create($message) ?>
         <fieldset>
             <legend><?= __('Nouveau message') ?></legend>

@@ -49,3 +49,13 @@
 #loginSite input{
 	text-align: center !important;
 }
+
+.small_button {
+	background-color: #008CBA;
+	color:#fff; 
+}
+
+.small_button:hover {
+	background-color: #007095;
+	color:#fff; 
+}
