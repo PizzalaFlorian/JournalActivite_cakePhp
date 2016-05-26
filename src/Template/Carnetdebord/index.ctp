@@ -31,11 +31,23 @@
                 ?>
                 </td>
                 <td class="actions">
-                    <?= $this->Html->link(__('Lire'), ['action' => 'view', $carnetdebord->CodeEntree]) ?>
-                    <br>
-                    <?= $this->Html->link(__('Modifier'), ['action' => 'edit', $carnetdebord->CodeEntree]) ?>
-                    <br>
-                    <?= $this->Form->postLink(__('Supprimer'), ['action' => 'delete', $carnetdebord->CodeEntree], ['confirm' => __('Êtes vous sur de vouloir supprimée l\'entrée : {0}?', $carnetdebord->Sujet)]) ?>
+                    <?php 
+                    echo $this->Html->link(
+                         $this->Html->image('open.png', array('title' => "Lire")),
+                        ['action' => 'view', $carnetdebord->CodeEntree],
+                        array('escape' => false)
+                        ); 
+                    echo $this->Html->link(
+                        $this->Html->image('modifier.ico', array('title' => "Modifier")),
+                     ['action' => 'edit', $carnetdebord->CodeEntree],
+                     array('escape' => false)
+                     ); 
+                    echo $this->Form->postLink(
+                         $this->Html->image('supprimer.ico', array('title' => "Supprimer")),
+                     ['action' => 'delete', $carnetdebord->CodeEntree],
+                     array('escape' => false),
+                      ['confirm' => __('Êtes vous sur de vouloir supprimée l\'entrée : {0}?', $carnetdebord->Sujet)]); 
+                    ?>
                 </td>
             </tr>
             <?php endforeach; ?>

@@ -90,6 +90,9 @@ class ActualitesController extends AppController
                 case 'candidat':        $monController = "candidat";         $monAction="accueil";                 break;
                 case 'admin':           $monController = "";                 $monAction="";                        break;
             }
+
+            $this->viewBuilder()->layout('cherLayout');
+            
             $actualite = $this->Actualites->get($id, ['contain' => [] ]);
             if ($this->request->is(['patch', 'post', 'put'])) {
                 //modification de la date

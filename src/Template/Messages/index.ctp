@@ -43,12 +43,24 @@
                     <?php 
                         // si l'utilisateur a été supprimer, aucune possibilité de repondre
                         if(!($message->userExpediteur == 4)){ 
+                            echo $this->Html->link(
+                             $this->Html->image('open.png', array('title' => "Lire")),
+                            ['action' => 'view', $message->IDMessage],
+                            array('escape' => false)
+                            );
+                            echo $this->Html->link(
+                            $this->Html->image('repondre.ico', array('title' => "Répondre")),
+                             ['action' => 'repondre', $message->IDMessage],
+                              array('escape' => false)
+                             ); 
+                        
+                            echo $this->Form->postLink(
+                             $this->Html->image('supprimer.ico', array('title' => "Supprimer")),
+                             ['action' => 'delete', $message->IDMessage],
+                              array('escape' => false),
+                             ['confirm' => __('Êtes-vous sûr de vouloir supprimer ce message?', $message->IDMessage)]); 
+                        }
                     ?>
-                        <?= $this->Html->link(__('Répondre'), ['action' => 'repondre', $message->IDMessage]) ?>
-                        <br/>
-                        <?php } ?>
-                    <!-- SUPPRIMER -->      
-                    <?= $this->Form->postLink(__('Supprimer'), ['action' => 'delete', $message->IDMessage], ['confirm' => __('Êtes-vous sûr de vouloir supprimer ce message?', $message->IDMessage)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

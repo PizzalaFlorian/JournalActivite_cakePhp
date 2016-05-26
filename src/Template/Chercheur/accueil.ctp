@@ -35,8 +35,20 @@
                                 <?= h(substr($actualite->Contenue, 0, 50)) ?>...
                         </td>
                         <td class="actions">
-                            <?= $this->Html->link(__('Editer'), ['controller' => 'actualites','action' => 'edit', $actualite->ID]) ?><br />
-                            <?= $this->Form->postLink(__('Supprimer'), ['controller' => 'actualites','action' => 'delete', $actualite->ID], ['confirm' => __('Etes vous sur de vouloir supprimer cette actualité ?', $actualite->ID)]) ?>
+                            <?php
+                                echo $this->Html->link(
+                                    $this->Html->image('modifier.ico', array('title' => "Modifier")), 
+                                    array('controller' => 'actualites','action' => 'edit', $actualite->ID),
+                                    array('escape' => false) 
+                                );
+
+                                echo $this->Form->postLink(
+                                    $this->Html->image('supprimer.ico', array('title' => "Supprimer")),
+                                    array('controller' => 'actualites','action' => 'delete', $actualite->ID),
+                                    array('escape' => false),
+                                    array('confirm' => __('Etes vous sur de vouloir supprimer cette actualité ?', $actualite->ID))
+                                );
+                            ?>
                         </td>
                     </tr>
                     <?php endforeach; ?>

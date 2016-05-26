@@ -3,8 +3,8 @@
     use Cake\ORM\TableRegistry;
 ?>
 <div class="categorieactivite index large-12 medium-11 columns content">
-    <h3><?= __('Categorieactivite') ?></h3>
-    <?= $this->Html->link(__('Ajouter une categorie'), ['action' => 'add']) ?>
+    <h3 class="center"><?= __('Table des categories d\'activitées') ?></h3>
+    <?= $this->Html->link(__('Ajouter une categorie'), ['action' => 'add'],array("class"=>"button")) ?>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
@@ -31,14 +31,26 @@
                 ?>
                 </td>
                 <td class="actions">
-                    <?= $this->Html->link(__('Modifier'), ['action' => 'edit', $categorieactivite->CodeCategorieActivite]) ?>
-                    <br>
-                    <?= $this->Form->postLink(__('Supprimer'), ['action' => 'delete', $categorieactivite->CodeCategorieActivite], ['confirm' => __('Are you sure you want to delete # {0}?', $categorieactivite->CodeCategorieActivite)]) ?>
-                    <br>
-                    <?= $this->Html->link(
-                        'Reaffecter',
-                        [ 'action' => 'reaffect', $categorieactivite->CodeCategorieActivite]
-                    ) ?>
+                    <?php 
+                    echo $this->Html->link(
+                        $this->Html->image('modifier.ico', array('title' => "Modifier")), 
+                        array('action' => 'edit', $categorieactivite->CodeCategorieActivite),
+                        array('escape' => false) 
+                    );
+                     
+                    echo $this->Form->postLink(
+                        $this->Html->image('supprimer.ico', array('title' => "Supprimer")),
+                        array('action' => 'delete', $categorieactivite->CodeCategorieActivite),
+                        array('escape' => false),
+                        array('confirm' => __('Êtes vous sur de vouloir supprimer # {0}?', $categorieactivite->NomCategorie))
+                    ); 
+                     
+                    echo $this->Html->link(
+                        $this->Html->image('reaffecter.ico', array('title' => "Réaffecter")), 
+                        array('action' => 'reaffect', $categorieactivite->CodeCategorieActivite),
+                        array('escape' => false) 
+                    ); 
+                    ?>
                 </td>
             </tr>
             <?php endforeach; ?>

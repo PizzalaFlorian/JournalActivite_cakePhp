@@ -3,11 +3,8 @@
     echo $this->Html->css('main_custom');
     use Cake\ORM\TableRegistry;
 ?>
+<div id="content">
 <div class="carnetdebord view large-11 medium-12 columns content">
-    <h3><?= h($carnetdebord->Sujet) ?></h3>
-    <?= $this->Html->link(__('Retour'), ['action' => 'index']) ?>
-   
-
     <table class="vertical-table">
         <tr>
             <th><?= __('Auteur') ?></th>
@@ -23,13 +20,19 @@
             <th><?= __('Date') ?></th>
             <td><?= h($carnetdebord->Date) ?></td>
         </tr>
+        <tr>
+            <th><?= __('Titre') ?></th>
+            <td><?= h($carnetdebord->Sujet) ?></td>
+        </tr>
     </table>
     <div class="row">
         <h4>Texte</h4>
         <?= $this->Text->autoParagraph(h($carnetdebord->Commentaire)); ?>
     </div>
-     <br>
-    <?= $this->Html->link(__('Modifier'), ['action' => 'edit', $carnetdebord->CodeEntree]) ?>
-    <br>
-    <?= $this->Form->postLink(__('Supprimer'), ['action' => 'delete', $carnetdebord->CodeEntree], ['confirm' => __('Êtes vous sur de vouloir supprimée l\'entrée : {0}?', $carnetdebord->Sujet)]) ?>
+     <?php 
+        echo $this->Html->link(__('Retour'), ['action' => 'index'],array("class"=>"button")).' '; 
+        echo $this->Html->link(__('Modifier'), ['action' => 'edit', $carnetdebord->CodeEntree],array("class"=>"button")).' ';
+        echo $this->Form->postLink(__('Supprimer'), ['action' => 'delete', $carnetdebord->CodeEntree],array("class"=>"button"), ['confirm' => __('Êtes vous sur de vouloir supprimée l\'entrée : {0}?', $carnetdebord->Sujet)]); 
+    ?>
+</div>
 </div>

@@ -1,18 +1,11 @@
 <?php
     echo $this->element('sidebarChercheur');
-    echo $this->Form->postLink(
-                __('Supprimer cette activite'),
-                ['action' => 'delete', $activite->CodeActivite],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $activite->CodeActivite)]
-            );
-    echo '<br>';
-    echo $this->Html->link(__('Retourner a la liste des activitées'), ['action' => 'index']);
 ?>
 
 <div class="activite form large-12 medium-11 columns content">
     <?= $this->Form->create($activite) ?>
     <fieldset>
-        <legend><?= __('Edit Activite') ?></legend>
+        <legend><?= __('Modifier l\'Activitée') ?></legend>
         <?php
             echo $this->Form->input('NomActivite');
             echo $this->Form->input('DescriptifActivite');
@@ -31,4 +24,12 @@
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
+    <?php echo $this->Html->link(__('Retour'), ['action' => 'index'],array("class"=>"button"))
+            .' '.
+            $this->Form->postLink(
+                __('Supprimer cette activite'),
+                ['action' => 'delete', $activite->CodeActivite],array("class"=>"button"),
+                ['confirm' => __('Êtes vous sur de vouloir supprimée l\'activitée : {0}?', $activite->NomActivite)]
+            );
+    ?>
 </div>

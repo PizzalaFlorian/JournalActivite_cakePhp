@@ -3,9 +3,8 @@
 ?>
 <h3><?php echo $activite['NomActivite']; ?></h3>
 <div class="activite form large-12 medium-11 columns content">
-	<h4>Annuler</h4>
 	<?php 
-		 echo $this->Html->link(__('Annuler et retourner a la liste des activitées'), ['action' => 'index']);
+		 echo $this->Html->link(__('Annuler et retourner a la liste des activitées'), ['action' => 'index'],array("class"=>"button"));
 	?>
 	<h4>Réaffecter</h4>	
 		<?= $this->Form->create($activite) ?>
@@ -31,6 +30,6 @@
 	<h4>Supprimer</h4>
 	<?php 
 		 
-		 echo $this->Form->postLink(__('Supprimer cette activitée et toutes les occupations associées'), ['action' => 'deleteAll',$activite->CodeActivite], ['confirm' => __('êtes vous sur de vouloir supprimée toutes ces occupations de la base de données ?')]);
+		 echo $this->Form->postLink(__('Supprimer cette activitée et toutes les occupations associées'), ['action' => 'deleteAll',$activite->CodeActivite],array("class"=>"button"), ['confirm' => __('êtes vous sur de vouloir supprimée toutes ces occupations de la base de données ?')]);
 	?>
 </div>
