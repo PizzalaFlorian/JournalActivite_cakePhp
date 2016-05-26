@@ -34,14 +34,26 @@
                 ?>    
                 </td>
                 <td class="actions">
-                    <?= $this->Html->link(__('Modifier'), ['action' => 'edit', $activite->CodeActivite]) ?>
-                    <br>
-                    <?= $this->Form->postLink(__('Supprimer'), ['action' => 'delete', $activite->CodeActivite], ['confirm' => __('Are you sure you want to delete # {0}?', $activite->CodeActivite)]) ?>
-                    <br>
-                    <?= $this->Html->link(
-                        'Reaffecter',
-                        [ 'action' => 'reaffect', $activite->CodeActivite]
-                    ) ?>
+                    <?php 
+                    echo $this->Html->link(
+                        $this->Html->image('modifier.ico', array('title' => "Modifier")), 
+                        array('action' => 'edit', $activite->CodeActivite),
+                        array('escape' => false) 
+                    );
+                     
+                    echo $this->Form->postLink(
+                        $this->Html->image('supprimer.ico', array('title' => "Supprimer")),
+                        array('action' => 'delete', $activite->CodeActivite),
+                        array('escape' => false),
+                        array('confirm' => __('Are you sure you want to delete # {0}?', $activite->CodeActivite))
+                    ); 
+                     
+                    echo $this->Html->link(
+                        $this->Html->image('reaffecter.ico', array('title' => "Réaffecter")), 
+                        array('action' => 'reaffect', $activite->CodeActivite),
+                        array('escape' => false) 
+                    ); 
+                    ?>
                 </td>
             </tr>
             <?php endforeach; ?>
