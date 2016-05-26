@@ -39,3 +39,9 @@
 .content{
 	padding-top: 0 !important;
 }
+
+#loginSite{
+	margin-left: 30% !important;
+	width:100%;
+	text-align: center !important
+}

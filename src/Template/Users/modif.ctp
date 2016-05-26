@@ -9,7 +9,7 @@
 <div class="users form large-11 medium-12 columns content">
     <?= $this->Form->create($user) ?>
     <fieldset>
-        <legend><?= __('Edit User') ?></legend>
+        <legend><?= __('Modifier votre compte') ?></legend>
         <?php
             echo $this->Form->input('login');
             echo $this->Form->input('password',['type'=>'hidden']);
