@@ -146,45 +146,10 @@ class ContactsController extends AppController
         // }
         // return $this->redirect(['action' => 'index']);
     // }
-	public function contacts()
-    {   
-        $contact = $this->Contacts->newEntity();
-		
-        if ($this->request->is('post')) {
-            $contact->sujet = $this->request->data['sujet'];
-			$contact->contenu = $this->request->data['contenu'];
-			$contact->expediteur = $this->request->data['expediteur'];
-			$contact->dateEnvoie = Time::now(); 
-
-			
-			if(!empty($contact->expediteur)){
-				// ========================== Envoie mail =============================//
-					$this->loadModel('Users');
-					require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "contacts" . DS ."contacts.php");
-					
-					$administrateurs = $this->paginate($this->Users->find('all', ['conditions' => ['typeUser' => 'admin'] ]));
-					foreach($administrateurs as $admin){
-
-						$email = new Email('default');
-						$email
-							->to($admin->email)
-							->subject($contact->sujet)
-							->send(message($contact));
-					}
-					$this->Flash->success(__('Votre message à bien été envoyé.'));
-			}
-			var_dump($contact);
-				// ========================== Envoie mail =============================//
-                //return $this->redirect(['action' => 'contacts']);
-        }
-		$this->set(compact('sideBar'));
-		$this->set(compact('monEmail'));
-        $this->set(compact('contact'));
-        $this->set('_serialize', ['contact']);
-    }
 
 	public function contact()
     {   
+		session_start();
 		//var_dump($this->request->session());
 		if(isset($_SESSION['Auth']['User']['ID'])){
 			$monEmail = false;
@@ -206,12 +171,10 @@ class ContactsController extends AppController
 			// $newContact->sujet =  $contact->sujet;
 			// $newContact->contenue =  $contact->contenue;
 			$contact->dateEnvoie = Time::now(); 
+			$contact->expediteur = $this->request->data['expediteur'];
 			// $newContact->lu = 0; 
 			if(isset($_SESSION['Auth']['User']['ID'])){
 				$contact->expediteur = $_SESSION['Auth']['User']['email'];
-			}
-			if(isset($this->request->data['email'])){
-				$contact->expediteur = $this->request->data['email'];
 			}
 			if(!empty($contact->expediteur)){
 				// ========================== Envoie mail =============================//

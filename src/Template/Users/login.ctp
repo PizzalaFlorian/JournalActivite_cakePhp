@@ -18,7 +18,7 @@
 		<div class="contact">
 			<?= $this->Html->link(
 						'Contact', 
-						['controller' => 'contacts', 'action' => 'contacts'],
+						['controller' => 'contacts', 'action' => 'contact'],
 						array('class' => 'button')
 					);
 			?>

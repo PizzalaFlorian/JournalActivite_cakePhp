@@ -4,6 +4,14 @@
 	}
 ?>
 <div class="messages form large-12 medium-11 columns content">
+	<?php 
+		if($monEmail){
+			echo $this->Html->link(
+				'Retour',
+				['controller' => 'Users', 'action' => 'login', '_full' => true]
+			); 
+		}
+    ?> 
     <div class="navbar">
     </div>
     <?= $this->Form->create($contact) ?>
