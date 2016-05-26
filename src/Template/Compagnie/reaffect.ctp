@@ -1,11 +1,10 @@
 <?php
     echo $this->element('sidebarChercheur');
 ?>
-<h3><?php echo $compagnie['NomCompagnie']; ?></h3>
+<h3 class="center"><?php echo $compagnie['NomCompagnie']; ?></h3>
 <div class="compagnie form large-12 medium-11 columns content">
-	<h4>Annuler</h4>
 	<?php 
-		 echo $this->Html->link(__('Annuler et retourner a la liste des compagnie'), ['action' => 'index']);
+		 echo $this->Html->link(__('Annuler et retourner a la liste des compagnie'), ['action' => 'index'],['class'=>'button']);
 	?>
 	<h4>Réaffecter</h4>	
 		<?= $this->Form->create($compagnie) ?>
@@ -24,13 +23,13 @@
 	            echo '</select>';
 	        ?>
 	    </fieldset>
-	    <center><?= $this->Form->button(__('Submit')) ?></center>
+	    <center><?= $this->Form->button(__('Réaffecter')) ?></center>
 	    <?= $this->Form->end() ?> 
 	<br>
 	<br>    
 	<h4>Supprimer</h4>
 	<?php 
 		 
-		 echo $this->Form->postLink(__('Supprimer cette compagnie et toutes les occupations associées'), ['action' => 'deleteAll',$compagnie->CodeCompagnie], ['confirm' => __('êtes vous sur de vouloir supprimée toutes ces occupations de la base de données ?')]);
+		 echo $this->Form->postLink(__('Supprimer cette compagnie et toutes les occupations associées'), ['action' => 'deleteAll',$compagnie->CodeCompagnie], ['class'=>'button','confirm' => __('êtes vous sur de vouloir supprimée toutes ces occupations de la base de données ?')]);
 	?>
 </div>

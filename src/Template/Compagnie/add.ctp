@@ -8,10 +8,9 @@
             ->first();
 ?>
 <div class="compagnie form large-12 medium-11 columns content">
-    <?= $this->Html->link(__('Retourner a la liste des compagnie'), ['action' => 'index']) ?>
     <?= $this->Form->create($compagnie) ?>
     <fieldset>
-        <legend><?= __('Add Compagnie') ?></legend>
+        <legend><?= __('Ajouter une compagnie') ?></legend>
         <?php
             echo $this->Form->input('CodeCompagnie',
                 [
@@ -22,6 +21,7 @@
             echo $this->Form->input('NomCompagnie');
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Html->link(__('Retourner a la liste des compagnie'), ['action' => 'index'],['class'=>'button']) ?>
+    <?= $this->Form->button(__('Ajouter')) ?>
     <?= $this->Form->end() ?>
 </div>

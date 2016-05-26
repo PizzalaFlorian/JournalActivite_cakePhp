@@ -1,15 +1,15 @@
 <?php
     echo $this->element('sidebarChercheur');
 ?>
-<div class="chercheur form large-9 medium-8 columns content">
+<div class="chercheur form large-10 medium-9 columns content">
     <?= $this->Form->create($chercheur) ?>
     <fieldset>
-        <legend><?= __('Edit Chercheur') ?></legend>
+        <legend><?= __('Modifier mes informations') ?></legend>
         <?php
             echo $this->Form->input('NomChercheur');
             echo $this->Form->input('PrenomChercheur');
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Modifier')) ?>
     <?= $this->Form->end() ?>
 </div>

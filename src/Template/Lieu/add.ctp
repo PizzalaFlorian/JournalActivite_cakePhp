@@ -10,11 +10,10 @@
             ->first();
 ?>
 
-<div class="lieu index large-12 medium-11 columns content">
-<?= $this->Html->link(__('Retourner a la liste des lieux'), ['action' => 'index']) ?>
+<div class="lieu index large-10 medium-11 columns content">
     <?= $this->Form->create($lieu) ?>
     <fieldset>
-        <legend><?= __('Add Lieu') ?></legend>
+        <legend><?= __('Ajouter un Lieu ou un Transport') ?></legend>
         <?php
             echo $this->Form->input('CodeLieux',['type'=>'number','required'=>'true','default'=>$lieu['code']+1]);
             echo $this->Form->input('NomLieux');
@@ -29,6 +28,7 @@
             echo '</select></div>';
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?php echo $this->Html->link(__('Retour'), ['action' => 'index'],array("class"=>"button")).' ';
+        echo $this->Form->button(__('Ajouter')); ?>
     <?= $this->Form->end() ?>
 </div>

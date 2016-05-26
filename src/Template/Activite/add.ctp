@@ -3,10 +3,9 @@
 ?>
 
 <div class="activite form large-10 medium-11 columns content">
-<?= $this->Html->link(__('Retourner a la liste des activitées'), ['action' => 'index']) ?>
     <?= $this->Form->create($activite) ?>
     <fieldset>
-        <legend><?= __('Add Activite') ?></legend>
+        <legend><?= __('Ajouter une Activitée') ?></legend>
         <?php
             echo $this->Form->input('CodeActivite',['type'=>'number']);
             echo $this->Form->input('NomActivite');
@@ -26,7 +25,7 @@
             echo '</select></div>';
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?php echo $this->Html->link(__('Retour'), ['action' => 'index'],array("class"=>"button")).' '.$this->Form->button(__('Ajouter')); ?>
     <?= $this->Form->end() ?>
 
 </div>

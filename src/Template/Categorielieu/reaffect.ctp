@@ -2,11 +2,10 @@
     echo $this->element('sidebarChercheur');
     use Cake\ORM\TableRegistry;
 ?>
-<h3><?php echo $categorielieu['NomCategorie']; ?></h3>
+<h3 class="center"><?php echo $categorielieu['NomCategorie']; ?></h3>
 <div class="categorielieu form large-12 medium-11 columns content">
-	<h4>Annuler</h4>
 	<?php 
-		 echo $this->Html->link(__('Annuler et retourner a la liste des categories de lieux'), ['action' => 'index']);
+		 echo $this->Html->link(__('Annuler et retourner a la liste des categories de lieux'), ['action' => 'index'],array("class"=>"button"));
 	?>
 	<h4>Réaffecter</h4>	
 		<?= $this->Form->create($categorielieu) ?>
@@ -25,7 +24,7 @@
 	            echo '</select>';
 	        ?>
 	    </fieldset>
-	    <center><?= $this->Form->button(__('Submit')) ?></center>
+	    <center><?= $this->Form->button(__('Réaffecter')) ?></center>
 	    <?= $this->Form->end() ?> 
 	<br>
 	<br>    
@@ -50,7 +49,7 @@
             }     
 		 }
 		if($flag == 0){
-		 echo $this->Form->postLink(__('Supprimer cette categorie et toutes les lieux associées'), ['action' => 'deleteAll',$categorielieu->CodeCategorieLieux], ['confirm' => __('êtes vous sur de vouloir supprimée toutes ces lieux de la base de données ?')]);
+		 echo $this->Form->postLink(__('Supprimer cette categorie et toutes les lieux associées'), ['action' => 'deleteAll',$categorielieu->CodeCategorieLieux], ['class'=>'button','confirm' => __('êtes vous sur de vouloir supprimée toutes ces lieux de la base de données ?')]);
 		}
 		else {
 			echo 'Suppression impossible, veuillez réaffecter ou supprimer les lieux utilisées de la base de données avant de réalisé cette opération';

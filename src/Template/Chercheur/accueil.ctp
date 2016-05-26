@@ -45,8 +45,7 @@
                                 echo $this->Form->postLink(
                                     $this->Html->image('supprimer.ico', array('title' => "Supprimer")),
                                     array('controller' => 'actualites','action' => 'delete', $actualite->ID),
-                                    array('escape' => false),
-                                    array('confirm' => __('Etes vous sur de vouloir supprimer cette actualité ?', $actualite->ID))
+                                    array('escape' => false,'confirm' => __('Etes vous sur de vouloir supprimer cette actualité ?', $actualite->ID))
                                 );
                             ?>
                         </td>

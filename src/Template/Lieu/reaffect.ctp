@@ -3,9 +3,8 @@
 ?>
 <h3><?php echo $lieu['NomLieux']; ?></h3>
 <div class="activite form large-12 medium-11 columns content">
-	<h4>Annuler</h4>
 	<?php 
-		 echo $this->Html->link(__('Annuler et retourner a la liste des lieux'), ['action' => 'index']);
+		 echo $this->Html->link(__('Annuler et retourner a la liste des lieux'), ['action' => 'index'],array("class"=>"button"));
 	?>
 	<h4>Réaffecter</h4>	
 		<?= $this->Form->create($lieu) ?>
@@ -24,12 +23,12 @@
 	            echo '</select>';
 	        ?>
 	    </fieldset>
-	    <center><?= $this->Form->button(__('Submit')) ?></center>
+	    <center><?= $this->Form->button(__('Réaffecter')) ?></center>
 	    <?= $this->Form->end() ?> 
 	<br>
 	<br>    
 	<h4>Supprimer</h4>
 	<?php 
-		 echo $this->Form->postLink(__('Supprimer ce lieu et toutes les occupations associées'), ['action' => 'deleteAll',$lieu->CodeLieux], ['confirm' => __('êtes vous sur de vouloir supprimée toutes ces occupations de la base de données ?')]);
+		 echo $this->Form->postLink(__('Supprimer ce lieu et toutes les occupations associées'), ['action' => 'deleteAll',$lieu->CodeLieux], ["class"=>"button",'confirm' => __('êtes vous sur de vouloir supprimée toutes ces occupations de la base de données ?')]);
 	?>
 </div>

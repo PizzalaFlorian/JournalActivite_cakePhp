@@ -41,7 +41,7 @@
 <li> 
     <?php 
         echo $this->Html->link(
-            'Table Activite',
+            'Table Activitées',
             ['controller' => 'activite', 'action' => 'index', '_full' => true]
         ); 
     ?> 
@@ -49,7 +49,7 @@
 <li> 
     <?php 
         echo $this->Html->link(
-            'Table Categorie Activite',
+            'Table Categories Activitées',
             ['controller' => 'categorieactivite', 'action' => 'index', '_full' => true]
         ); 
     ?> 
@@ -65,7 +65,7 @@
 <li> 
     <?php 
         echo $this->Html->link(
-            'Table Categorie Lieux',
+            'Table Categories Lieux',
             ['controller' => 'categorielieu', 'action' => 'index', '_full' => true]
         ); 
     ?> 
@@ -73,7 +73,7 @@
 <li> 
     <?php 
         echo $this->Html->link(
-            'Table Dispositif',
+            'Table Dispositifs',
             ['controller' => 'dispositif', 'action' => 'index', '_full' => true]
         ); 
     ?> 
@@ -81,7 +81,7 @@
 <li> 
     <?php 
         echo $this->Html->link(
-            'Table Compagnie',
+            'Table Compagnies',
             ['controller' => 'compagnie', 'action' => 'index', '_full' => true]
         ); 
     ?> 

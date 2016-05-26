@@ -10,6 +10,6 @@
             echo $this->Form->input('email');
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('S\'inscrire')) ?>
     <?= $this->Form->end() ?>
 </div>

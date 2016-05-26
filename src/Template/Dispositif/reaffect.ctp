@@ -1,11 +1,10 @@
 <?php
     echo $this->element('sidebarChercheur');
 ?>
-<h3><?php echo $dispositif['NomDispositif']; ?></h3>
+<h3 class="center"><?php echo $dispositif['NomDispositif']; ?></h3>
 <div class="dispositif form large-12 medium-11 columns content">
-	<h4>Annuler</h4>
 	<?php 
-		 echo $this->Html->link(__('Annuler et retourner a la liste des activitées'), ['action' => 'index']);
+		 echo $this->Html->link(__('Annuler et retourner a la liste des activitées'), ['action' => 'index'],['class'=>'button']);
 	?>
 	<h4>Réaffecter</h4>	
 		<?= $this->Form->create($dispositif) ?>
@@ -31,6 +30,6 @@
 	<h4>Supprimer</h4>
 	<?php 
 		 
-		 echo $this->Form->postLink(__('Supprimer ce dispositif et toutes les occupations associées'), ['action' => 'deleteAll',$dispositif->CodeDispositif], ['confirm' => __('êtes vous sur de vouloir supprimée toutes ces occupations de la base de données ?')]);
+		 echo $this->Form->postLink(__('Supprimer ce dispositif et toutes les occupations associées'), ['action' => 'deleteAll',$dispositif->CodeDispositif], ['class'=>'button','confirm' => __('êtes vous sur de vouloir supprimée toutes ces occupations de la base de données ?')]);
 	?>
 </div>

@@ -20,8 +20,7 @@
             .' '.
             $this->Form->postLink(
                 __('Supprimer cette entrée du carnet de bord'),
-                ['action' => 'delete', $carnetdebord->CodeEntree],array("class"=>"button"),
-                ['confirm' => __('Êtes vous sur de vouloir supprimée l\'entrée : {0}?', $carnetdebord->Sujet)]
+                ['action' => 'delete', $carnetdebord->CodeEntree],array("class"=>"button",'confirm' => __('Êtes vous sur de vouloir supprimer l\'entrée : {0}?', $carnetdebord->Sujet))
             );
     ?>
 </div>

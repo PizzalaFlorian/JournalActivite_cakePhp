@@ -1,6 +1,6 @@
 <?php
     echo $this->element('sidebarChercheur');
-    echo $this->Html->link(__('Retourner a la liste des dispositifs'), ['action' => 'index']);
+
 
     use Cake\ORM\TableRegistry;
     $max = TableRegistry::get('dispositif')
@@ -18,6 +18,7 @@
             echo $this->Form->input('NomDispositif');
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Html->link(__('Retourner a la liste des dispositifs'), ['action' => 'index'],['class'=>'button']) ?>
+    <?= $this->Form->button(__('Ajouter')) ?>
     <?= $this->Form->end() ?>
 </div>

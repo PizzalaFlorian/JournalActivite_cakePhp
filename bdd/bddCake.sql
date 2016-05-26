@@ -470,7 +470,7 @@ INSERT INTO `users` (`ID`, `login`, `typeUser`, `password`, `email`) VALUES
 (11, 'boule', 'candidat', '$2y$10$70jLgRkEiNnFGZGPNo7f0OsvW1.nbgGNGo2OtBzIR.lwWSpSyuOVe', 'boule@boule.com'),
 (12, 'bill', 'candidat', '$2y$10$FcO8VR4QeUKeGX7NozVv6u21KrRoEjZgmYeMduAXLAhEVbFEroAYO', 'bill@bill.com'),
 (13, 'trouve', 'chercheur', '$2y$10$R6pvPppREa26Cq8/lbK5q.lKs0LPWrXmi/FMFrZuolnothfh9wQQS', 'trouve@test.com'),
-(14, 'admin', 'admin', '$2y$10$JAGmVUjMotic8.HQp/2YKuwNt/TdjzPD3x4eP.Xb.kbFBUCAjJFbC', 'admin@test.com');
+(14, 'admin2', 'admin', '$2y$10$JAGmVUjMotic8.HQp/2YKuwNt/TdjzPD3x4eP.Xb.kbFBUCAjJFbC', 'admin@test.com');
 
 --
 -- Indexes for dumped tables
