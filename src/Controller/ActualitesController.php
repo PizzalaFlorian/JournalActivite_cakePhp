@@ -163,10 +163,10 @@ class ActualitesController extends AppController
                 $actualite = $this->Actualites->patchEntity($actualite, $this->request->data);
 
                 if ($this->Actualites->save($actualite)) {
-                    $this->Flash->success(__('The actualite has been saved.'));
+                    $this->Flash->success(__('L\'actualité a été sauvegardée.'));
                     return $this->redirect(['controller' => $monController, 'action' => $monAction]);
                 } else {
-                    $this->Flash->error(__('The actualite could not be saved. Please, try again.'));
+                    $this->Flash->error(__('Erreure lors de la sauvegarde, Veuillez-réessayer.'));
                 }
             }
             $this->set(compact('monController'));

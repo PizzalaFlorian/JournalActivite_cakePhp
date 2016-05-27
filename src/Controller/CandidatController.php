@@ -150,10 +150,10 @@ class CandidatController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $candidat = $this->Candidat->patchEntity($candidat, $this->request->data);
             if ($this->Candidat->save($candidat)) {
-                $this->Flash->success(__('The candidat has been saved.'));
+                $this->Flash->success(__('Le candidat a été sauvegardé.'));
                 return $this->redirect(['action' => 'modif']);
             } else {
-                $this->Flash->error(__('The candidat could not be saved. Please, try again.'));
+                $this->Flash->error(__('Erreur lors de la sauvegarde du candidat, Veuillez réessayer.'));
             }
         }
         $this->set(compact('candidat'));
@@ -272,10 +272,10 @@ class CandidatController extends AppController
         if ($this->request->is('post')) {
             $candidat = $this->Candidat->patchEntity($candidat, $this->request->data);
             if ($this->Candidat->save($candidat)) {
-                $this->Flash->success(__('The candidat has been saved.'));
+                $this->Flash->success(__('Le candidat a été ajouté.'));
                 return $this->redirect(['action' => 'accueil']);
             } else {
-                $this->Flash->error(__('The candidat could not be saved. Please, try again.'));
+                $this->Flash->error(__('Erreur lors de l\'ajout du candidat.'));
             }
         }
         $this->set(compact('candidat'));
@@ -304,10 +304,10 @@ class CandidatController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $candidat = $this->Candidat->patchEntity($candidat, $this->request->data);
             if ($this->Candidat->save($candidat)) {
-                $this->Flash->success(__('The candidat has been saved.'));
+                $this->Flash->success(__('Le candidat as bien été modifié.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The candidat could not be saved. Please, try again.'));
+                $this->Flash->error(__('Erreur lors de la modification du candidat.'));
             }
         }
         $this->set(compact('candidat'));
@@ -326,9 +326,9 @@ class CandidatController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $candidat = $this->Candidat->get($id);
         if ($this->Candidat->delete($candidat)) {
-            $this->Flash->success(__('The candidat has been deleted.'));
+            $this->Flash->success(__('Le candidat as été supprimé.'));
         } else {
-            $this->Flash->error(__('The candidat could not be deleted. Please, try again.'));
+            $this->Flash->error(__('Erreur lors de la suppression du candidat.'));
         }
         return $this->redirect(['action' => 'index']);
     }

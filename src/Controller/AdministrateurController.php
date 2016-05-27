@@ -132,7 +132,7 @@ class AdministrateurController extends AppController
                 
                 return $this->redirect(['controller'=>'users','action' => 'index']);
             } else {
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+            $this->Flash->error(__('Erreur lors de l\'enregistrement de l\'utilisateur, veuillez réessayer.'));
             }
         }
         $this->set('user',$user);
@@ -186,7 +186,7 @@ class AdministrateurController extends AppController
                 
                 return $this->redirect(['controller'=>'users','action' => 'index']);
             } else {
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+            $this->Flash->error(__('Erreur lors de l\'enregistrement, veuillez réessayer.'));
             }
         }
         $this->set('user',$user);
@@ -373,16 +373,16 @@ class AdministrateurController extends AppController
                 $administrateur->ID = $user->ID;
                 //$administrateur->CodeAdmin = $count['max']+1;
                 if ($this->Administrateur->save($administrateur)) {
-                    $this->Flash->success(__('The administrateur has been saved.'));
+                    $this->Flash->success(__('L\'administrateur a bien été ajouté.'));
                     return $this->redirect(['action' => 'index']);
                 } else {
-                    $this->Flash->error(__('The administrateur could not be saved. Please, try again.'));
+                    $this->Flash->error(__('Erreur lors de l\'enregistrement de l\'administrateur, veuillez réessayer.'));
                 }
                 
 
                 //return $this->redirect(['controller'=>'users','action' => 'index']);
             } else {
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+            $this->Flash->error(__('L\'utilisateur n\'a pas été enregistré, veuillez réessayer.'));
             }
         }
         $this->set('user',$user);
@@ -417,10 +417,10 @@ class AdministrateurController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $administrateur = $this->Administrateur->patchEntity($administrateur, $this->request->data);
             if ($this->Administrateur->save($administrateur)) {
-                $this->Flash->success(__('The administrateur has been saved.'));
+                $this->Flash->success(__('La modification a été enregistrée.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The administrateur could not be saved. Please, try again.'));
+                $this->Flash->error(__('Erreur lors de l\'enregistrement de la modification.'));
             }
         }
         $this->set(compact('administrateur'));
@@ -444,9 +444,9 @@ class AdministrateurController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $administrateur = $this->Administrateur->get($id);
         if ($this->Administrateur->delete($administrateur)) {
-            $this->Flash->success(__('The administrateur has been deleted.'));
+            $this->Flash->success(__('L\'administrateur as été supprimé.'));
         } else {
-            $this->Flash->error(__('The administrateur could not be deleted. Please, try again.'));
+            $this->Flash->error(__('Erreur lors de la suppression de l\'administrateur.'));
         }
         return $this->redirect(['action' => 'index']);
     }

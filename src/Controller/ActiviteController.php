@@ -80,10 +80,10 @@ class ActiviteController extends AppController
            // debug($this->request->data);
             $activite = $this->Activite->patchEntity($activite, $this->request->data);
             if ($this->Activite->save($activite)) {
-                $this->Flash->success(__('The activite has been saved.'));
+                $this->Flash->success(__('L\'activitée a été sauvegardée.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The activite could not be saved. Please, try again.'));
+                $this->Flash->error(__('Erreur lors de la sauvegarde, veuillez réessayer.'));
             }
         }
         $this->set(compact('activite'));
@@ -113,10 +113,10 @@ class ActiviteController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $activite = $this->Activite->patchEntity($activite, $this->request->data);
             if ($this->Activite->save($activite)) {
-                $this->Flash->success(__('The activite has been saved.'));
+                $this->Flash->success(__('L\'activitée as bien été sauvegardée.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The activite could not be saved. Please, try again.'));
+                $this->Flash->error(__('Erreur lors de la sauvegarde, veuillez réessayer.'));
             }
         }
         $this->set(compact('activite'));
@@ -151,9 +151,9 @@ class ActiviteController extends AppController
         }   
       
         if ($this->Activite->delete($activite)) {
-            $this->Flash->success(__('The activite has been deleted.'));
+            $this->Flash->success(__('L\'activitée a été supprimée.'));
         } else {
-            $this->Flash->error(__('The activite could not be deleted. Please, try again.'));
+            $this->Flash->error(__('Erreure lors de la suppression, veuillez réessayer.'));
         }
         return $this->redirect(['action' => 'index']);
     }
