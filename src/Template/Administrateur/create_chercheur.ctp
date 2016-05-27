@@ -2,7 +2,6 @@
     echo $this->element('sidebarAdmin');
 ?>
 <div class="administrateur index large-11 medium-12 columns content">
-    <?= $this->Html->link(__('Retour'), ['action' => 'index']) ?>
     <?= $this->Form->create($user) ?>
  
     <fieldset>
@@ -14,7 +13,8 @@
             echo $this->Form->input('email');
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Html->link(__('Retour'), ['action' => 'index'],['class'=>'button']) ?>
+    <?= $this->Form->button(__('Inviter')) ?>
     <?= $this->Form->end() ?>
     <br>
 </div>

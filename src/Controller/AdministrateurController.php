@@ -331,16 +331,66 @@ class AdministrateurController extends AppController
         if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
             $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
 
-        $administrateur = $this->Administrateur->newEntity();
-        if ($this->request->is('post')) {
-            $administrateur = $this->Administrateur->patchEntity($administrateur, $this->request->data);
-            if ($this->Administrateur->save($administrateur)) {
-                $this->Flash->success(__('The administrateur has been saved.'));
-                return $this->redirect(['action' => 'index']);
+        $this->viewBuilder()->layout('adminLayout');
+
+        $char = 'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMOPQRSTUVWXYZ';
+            $password = str_shuffle($char);
+            $password = substr ( $password , 0, 7 );
+
+            $login = str_shuffle($char);
+            $login = substr ( $login , 0, 7 );
+            $test = TableRegistry::get('users')
+                ->find()
+                ->where(['login'=>$login])
+                ->first();
+            while(isset($test['email'])){
+                $login = str_shuffle($char);
+                $login = substr ( $login , 0, 7 );
+                $test = TableRegistry::get('users')
+                    ->find()
+                    ->where(['login'=>$login])
+                    ->first();
+            }
+            
+
+        $user = TableRegistry::get('users')->newEntity();
+        
+        if($this->request->is('post')){
+            $user = TableRegistry::get('users')->patchEntity($user, $this->request->data);
+            if (TableRegistry::get('users')->save($user)) {
+                $this->Flash->success(__('l\'utilisateur a été inviter'));
+
+                //$messageChercheur = file_get_contents(ROOT.'/webroot/files/email_auto_chercheur.ctp');
+                $email = new Email('default');
+                $email
+                    ->to($this->request->data['email'])
+                    ->subject("Confirmation de compte")
+                    ->send('Voici vos identifiant administrateur de l\'application'."\n--------------------------------------------------------------------------------\nVoici vos identifiant de votre compte: \nLogin : ".$this->request->data['login']."\nMot de passe : ".$this->request->data['password']."\n--------------------------------------------------------------------------------\n");
+                
+                $administrateur = $this->Administrateur->newEntity();
+                //if ($this->request->is('post')) {
+                //$administrateur = $this->Administrateur->patchEntity($administrateur, $this->request->data);
+                $administrateur->ID = $user->ID;
+                //$administrateur->CodeAdmin = $count['max']+1;
+                if ($this->Administrateur->save($administrateur)) {
+                    $this->Flash->success(__('The administrateur has been saved.'));
+                    return $this->redirect(['action' => 'index']);
+                } else {
+                    $this->Flash->error(__('The administrateur could not be saved. Please, try again.'));
+                }
+                
+
+                //return $this->redirect(['controller'=>'users','action' => 'index']);
             } else {
-                $this->Flash->error(__('The administrateur could not be saved. Please, try again.'));
+            $this->Flash->error(__('The user could not be saved. Please, try again.'));
             }
         }
+        $this->set('user',$user);
+        $this->set('login',$login);
+        $this->set('password',$password);
+        $this->set(compact('user'));
+        $this->set('_serialize', ['user']);
+
         $this->set(compact('administrateur'));
         $this->set('_serialize', ['administrateur']);
     }

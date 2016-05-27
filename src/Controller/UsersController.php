@@ -276,8 +276,8 @@ class UsersController extends AppController
                 $email = new Email('default');
                 $email
                     ->to($this->request->data['Email'])
-                    ->subject("Confirmation de compte")
-                    ->send("Voici vos nouveaux identifiant, veuillez les changer dès votre prochaine connexion"."\n--------------------------------------------------------------------------------\nVoici vos identifiant de votre compte candidat : \nLogin : ".$user['login']."\nMot de passe : ".$password."\n--------------------------------------------------------------------------------\n");
+                    ->subject("Nouveau Mot de passe")
+                    ->send("Voici vos nouveaux identifiant, veuillez les changer dès votre prochaine connexion"."\n--------------------------------------------------------------------------------\nVoici vos identifiant de votre compte : \nLogin : ".$user['login']."\nMot de passe : ".$password."\n--------------------------------------------------------------------------------\n");
                 
                 return $this->redirect(['controller'=>'users','action' => 'login']);
             }      

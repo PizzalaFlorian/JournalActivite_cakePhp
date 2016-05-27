@@ -1,14 +1,16 @@
 <?php
     echo $this->element('sidebarAdmin');
+    use Cake\ORM\TableRegistry;
 ?>
-<div class="administrateur index large-9 medium-8 columns content">
-    <h3><?= __('Administrateur') ?></h3>
-    <?= $this->Html->link(__('New Administrateur'), ['action' => 'add']) ?>
+<div class="administrateur index large-12 medium-11 columns content">
+    <h3 class="center"><?= __('Table des Administrateurs') ?></h3>
+    <?= $this->Html->link(__('Inviter un nouvel administrateur'), ['action' => 'add'],['class'=>'button']) ?>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
                 <th><?= $this->Paginator->sort('CodeAdmin') ?></th>
                 <th><?= $this->Paginator->sort('ID') ?></th>
+                <th><?= $this->Paginator->sort('Email') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -17,10 +19,23 @@
             <tr>
                 <td><?= $this->Number->format($administrateur->CodeAdmin) ?></td>
                 <td><?= $this->Number->format($administrateur->ID) ?></td>
+                <td>
+                    <?php 
+                        $info = TableRegistry::get('users')
+                        ->find()
+                        ->where(['ID'=>$administrateur->ID])
+                        ->first();
+                        echo $info['email'];
+                    ?>
+                </td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $administrateur->CodeAdmin]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $administrateur->CodeAdmin]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $administrateur->CodeAdmin], ['confirm' => __('Are you sure you want to delete # {0}?', $administrateur->CodeAdmin)]) ?>
+                    <?php 
+                        echo $this->Form->postLink(
+                            $this->Html->image('supprimer.ico', array('title' => "Supprimer")),
+                            array('action' => 'delete', $administrateur->CodeAdmin),
+                            array('escape' => false,"confirm"=>__('Êtes-vous sur de vouloir supprimer # {0}?', $administrateur->CodeAdmin))
+                        ); 
+                    ?>
                 </td>
             </tr>
             <?php endforeach; ?>

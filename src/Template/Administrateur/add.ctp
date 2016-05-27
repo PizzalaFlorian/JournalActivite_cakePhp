@@ -1,17 +1,19 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Administrateur'), ['action' => 'index']) ?></li>
-    </ul>
-</nav>
-<div class="administrateur form large-9 medium-8 columns content">
-    <?= $this->Form->create($administrateur) ?>
+<?php
+    echo $this->element('sidebarAdmin');
+?>
+<div class="administrateur index large-11 medium-12 columns content">
+    <?= $this->Form->create($user) ?>
     <fieldset>
-        <legend><?= __('Add Administrateur') ?></legend>
+        <legend><?= __('Inviter un administrateur') ?></legend>
         <?php
-            echo $this->Form->input('ID');
+            echo $this->Form->input('login',['type'=>'hidden','value'=>$login]);
+            echo $this->Form->input('typeUser',['type'=>'hidden','value'=>'admin']);
+            echo $this->Form->input('password',['type'=>'hidden','value'=>$password]);
+            echo $this->Form->input('email');
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Html->link(__('Retour'), ['action' => 'index'],['class'=>'button']) ?>
+    <?= $this->Form->button(__('Inviter')) ?>
     <?= $this->Form->end() ?>
+    <br>
 </div>
