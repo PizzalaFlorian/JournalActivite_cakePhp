@@ -168,8 +168,69 @@ class UsersController extends AppController
      */
     public function delete($id = null)
     {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
         $this->request->allowMethod(['post', 'delete']);
         $user = $this->Users->get($id);
+
+        $candidat = TableRegistry::get('candidat')
+            ->find()
+            ->where(['ID' => $user->ID])
+            ->first();
+        if(isset($candidat)){
+            $occupation = TableRegistry::get('occupation')
+                ->query();
+            $occupation
+                ->delete()
+                ->where(['CodeCandidat' => $candidat['CodeCandidat']])
+                ->execute();
+
+            $candi = TableRegistry::get('candidat')
+                ->query();
+            $candi
+                ->delete()
+                ->where(['ID' => $user->ID])
+                ->execute();
+        }
+        else {
+            $chercheur = TableRegistry::get('chercheur')
+                ->find()
+                ->where(['ID' => $user->ID])
+                ->first();
+            if(isset($chercheur)){
+                $cdb = TableRegistry::get('carnetdebord')
+                    ->query();
+                $cbd
+                    ->update()
+                    ->set(['CodeChercheur' => 1])
+                    ->where(['CodeChercheur' => $chercheur['CodeChercheur']])
+                    ->execute();
+
+                $cher = TableRegistry::get('chercheur')
+                    ->query();
+                $cher
+                    ->delete()
+                    ->where(['ID' => $user->ID])
+                    ->execute();
+            }
+            else{
+                $admin = TableRegistry::get('administrateur')
+                    ->find()
+                    ->where(['ID' => $user->ID])
+                    ->first();
+                if(isset($admin)){
+                    $ad = TableRegistry::get('administrateur')
+                        ->query();
+                    $ad
+                        ->delete()
+                        ->where(['ID' => $user->ID])
+                        ->execute();
+                }
+            }
+        }
         if ($this->Users->delete($user)) {
             $this->Flash->success(__('L\'utilisateur as été supprimer.'));
         } else {
