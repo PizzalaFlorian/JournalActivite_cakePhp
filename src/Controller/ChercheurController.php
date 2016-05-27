@@ -312,15 +312,15 @@ class ChercheurController extends AppController
 
         $this->request->allowMethod(['post', 'delete']);
         $chercheur = $this->Chercheur->get($id);
-
+        $save_id = $chercheur->ID;
             
         if ($this->Chercheur->delete($chercheur)) {
             $this->Flash->success(__('Le chercheur as été supprimé.'));
-            $occupation = TableRegistry::get('users')
+            $user = TableRegistry::get('users')
                 ->query();
-            $occupation
+            $user
                 ->delete()
-                ->where(['ID' => $chercheur['ID']])
+                ->where(['ID' => $save_id])
                 ->execute();
         } else {
             $this->Flash->error(__('Erreur lors de la suppression.'));

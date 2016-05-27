@@ -443,8 +443,16 @@ class AdministrateurController extends AppController
 
         $this->request->allowMethod(['post', 'delete']);
         $administrateur = $this->Administrateur->get($id);
+        $save_id = $administrateur->ID;
+        
         if ($this->Administrateur->delete($administrateur)) {
             $this->Flash->success(__('L\'administrateur as été supprimé.'));
+            $ad = TableRegistry::get('administrateur')
+                        ->query();
+            $ad
+                ->delete()
+                ->where(['ID' => $save_id])
+                ->execute();
         } else {
             $this->Flash->error(__('Erreur lors de la suppression de l\'administrateur.'));
         }

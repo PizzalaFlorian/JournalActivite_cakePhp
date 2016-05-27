@@ -323,10 +323,28 @@ class CandidatController extends AppController
      */
     public function delete($id = null)
     {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
         $this->request->allowMethod(['post', 'delete']);
         $candidat = $this->Candidat->get($id);
+        $occupation = TableRegistry::get('occupation')
+            ->query();
+        $occupation
+            ->delete()
+            ->where(['CodeCandidat' => $candidat['CodeCandidat']])
+            ->execute();
+        $save_id = $candidat->ID;
         if ($this->Candidat->delete($candidat)) {
             $this->Flash->success(__('Le candidat as été supprimé.'));
+             $candi = TableRegistry::get('users')
+            ->query();
+            $candi
+                ->delete()
+                ->where(['ID' => $save_id])
+                ->execute();
         } else {
             $this->Flash->error(__('Erreur lors de la suppression du candidat.'));
         }
