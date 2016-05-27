@@ -1,13 +1,5 @@
 <?php
     echo $this->element('sidebarAdmin');
-    echo $this->Html->link(__('Annuler et retourner a la liste des chercheurs'), ['action' => 'index']);
-    echo '<br>';
-    echo $this->Form->postLink(
-                __('Supprimer ce chercheur'),
-                ['action' => 'delete', $chercheur->CodeChercheur],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $chercheur->CodeChercheur)]
-            );
-      
 ?>
 
 <div class="chercheur form large-11 medium-12 columns content">
@@ -21,4 +13,13 @@
     </fieldset>
     <?= $this->Form->button(__('Modifier')) ?>
     <?= $this->Form->end() ?>
+    <?php 
+        echo $this->Html->link(__('Retour'), ['action' => 'index'],['class'=>'button']).' ';
+    
+        echo $this->Form->postLink(
+                __('Supprimer ce chercheur'),
+                ['action' => 'delete', $chercheur->CodeChercheur],
+                ['class'=>'button',"confirm"=>__('Êtes-vous sur de vouloir supprimer # {0}?', $chercheur->PrenomChercheur.' '.$chercheur->NomChercheur)]
+            );
+    ?>
 </div>

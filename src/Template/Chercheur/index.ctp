@@ -3,7 +3,7 @@
 ?>
 
 <div class="chercheur index large-11 medium-12 columns content">
-    <h3><?= __('Chercheur') ?></h3>
+    <h3 class="center"><?= __('Table des Chercheurs') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
@@ -20,9 +20,19 @@
                 <td><?= h($chercheur->PrenomChercheur) ?></td>
                 <td><?= h($chercheur->NomChercheur) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('Modifier'), ['action' => 'edit', $chercheur->CodeChercheur]) ?>
-                    <br>
-                    <?= $this->Form->postLink(__('Supprimer'), ['action' => 'delete', $chercheur->CodeChercheur], ['confirm' => __('Are you sure you want to delete # {0}?', $chercheur->CodeChercheur)]) ?>
+                    <?php 
+                        echo $this->Html->link(
+                            $this->Html->image('modifier.ico', array('title' => "Modifier")), 
+                            array('action' => 'edit', $chercheur->CodeChercheur),
+                            array('escape' => false) 
+                        );
+                         
+                        echo $this->Form->postLink(
+                            $this->Html->image('supprimer.ico', array('title' => "Supprimer")),
+                            array('action' => 'delete', $chercheur->CodeChercheur),
+                            array('escape' => false,"confirm"=>__('Êtes-vous sur de vouloir supprimer # {0}?', $chercheur->PrenomChercheur.' '.$chercheur->NomChercheur))
+                        ); 
+                    ?>
                 </td>
             </tr>
             <?php endforeach; ?>

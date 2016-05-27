@@ -10,7 +10,7 @@
 }*/
 
 .dark-blue-box{
-	
+
 	border: 2px solid #1798A5;
 	border-radius: 10px 10px 10px 10px;
 	margin-top: 15px;
@@ -51,7 +51,7 @@
 
 .side-nav li:hover:not(.heading){
 	margin-bottom:0 !important;
-	background: #DFD7D7;
+	background: #D7DCDF;
 	border-radius: 10px 10px 10px 10px;
 }
 
@@ -95,4 +95,8 @@ td a img {
 td a img:hover{
 	background: #DFD7D7;
 	border-radius: 10px 10px 10px 10px;
+}
+
+#actions-sidebar {
+	background: #E8EDF0 !important;
 }

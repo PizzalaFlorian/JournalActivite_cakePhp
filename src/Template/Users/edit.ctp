@@ -1,19 +1,12 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $user->ID],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $user->ID)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
-    </ul>
-</nav>
-<div class="users form large-9 medium-8 columns content">
+<?php
+    echo $this->element('sidebarAdmin');
+?>
+
+
+<div class="users form large-12 medium-11 columns content">
     <?= $this->Form->create($user) ?>
     <fieldset>
-        <legend><?= __('Edit User') ?></legend>
+        <legend><?= __('Modifier l\'utilisateur') ?></legend>
         <?php
             echo $this->Form->input('login');
             echo $this->Form->input('typeUser');
@@ -23,4 +16,10 @@
     </fieldset>
     <?= $this->Form->button(__('Modifier')) ?>
     <?= $this->Form->end() ?>
+<?php echo $this->Html->link(__('Retour'), ['action' => 'index'],['class'=>'button']).' '.$this->Form->postLink(
+                __('Supprimer'),
+                ['action' => 'delete', $user->ID],
+                ['class'=>'button','confirm' => __('Êtes-vous sur de vouloir supprimer # {0}?', $user->email)]
+            );
+        ?>
 </div>

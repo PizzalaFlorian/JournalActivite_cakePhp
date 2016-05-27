@@ -6,7 +6,7 @@
 	<div class="users login large-5 medium-5 columns content">
 		<div class="dark-blue-box">
 			<h1>Connexion</h1>
-			<?= $this->Flash->render('auth') ?>
+			<!-- <?= $this->Flash->render('auth') ?> -->
 			<?= $this->Form->create('user') ?>
 		    <fieldset>
 		        <legend><?= __("Merci de rentrer vos login et mot de passe") ?></legend>

@@ -296,6 +296,8 @@ class CandidatController extends AppController
         if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
             $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
 
+        $this->viewBuilder()->layout('adminLayout');
+        
         $candidat = $this->Candidat->get($id, [
             'contain' => []
         ]);

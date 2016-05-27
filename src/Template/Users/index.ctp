@@ -2,12 +2,12 @@
     echo $this->element('sidebarAdmin');
 ?>
 <div class="users index large-11 medium-12 columns content">
-    <h3><?= __('Utilisateurs') ?></h3>
-    <?= $this->Html->link(__('Inviter un Candidat'), ['controller'=>'administrateur','action' => 'createCandidat']) ?>
-    <br>
-    <?= $this->Html->link(__('Inviter une liste de Candidats'), ['controller'=>'administrateur','action' => 'createCandidatList']) ?>
-    <br>
-    <?= $this->Html->link(__('Inviter un Chercheur'), ['controller'=>'administrateur','action' => 'createChercheur']) ?>
+    <h3 class="center"><?= __('Table des Utilisateurs') ?></h3>
+    <?php
+        echo $this->Html->link(__('Inviter un Candidat'), ['controller'=>'administrateur','action' => 'createCandidat'],['class'=>'button']).' ';
+        echo $this->Html->link(__('Inviter une liste de Candidats'), ['controller'=>'administrateur','action' => 'createCandidatList'],['class'=>'button']).' ';
+        echo $this->Html->link(__('Inviter un Chercheur'), ['controller'=>'administrateur','action' => 'createChercheur'],['class'=>'button']); 
+    ?>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
@@ -24,8 +24,19 @@
                 <td><?= h($user->typeUser) ?></td>
                 <td><?= h($user->email) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->ID]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->ID], ['confirm' => __('Are you sure you want to delete # {0}?', $user->email)]) ?>
+                    <?php 
+                        echo $this->Html->link(
+                            $this->Html->image('modifier.ico', array('title' => "Modifier")), 
+                            array('action' => 'edit', $user->ID),
+                            array('escape' => false) 
+                        );
+                         
+                        echo $this->Form->postLink(
+                            $this->Html->image('supprimer.ico', array('title' => "Supprimer")),
+                            array('action' => 'delete', $user->ID),
+                            array('escape' => false,"confirm"=>__('Êtes-vous sur de vouloir supprimer # {0}?', $user->email))
+                        ); 
+                    ?>
                 </td>
             </tr>
             <?php endforeach; ?>

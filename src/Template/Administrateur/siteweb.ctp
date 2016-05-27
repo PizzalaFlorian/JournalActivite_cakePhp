@@ -2,8 +2,9 @@
 	echo $this->element('sidebarAdmin');
 	echo $this->Html->css('main_custom');
 ?>
+<div id="content">
 <div class="actualites index large-12 medium-11 columns content">
-	<h3>Outils de gestion du site web</h3>
+	<h3 class="center">Outils de gestion du site web</h3>
 
 	<h4>But de l'experience</h4>
 	<?php 
@@ -45,4 +46,5 @@
         );
     ?>
 
+</div>
 </div>
