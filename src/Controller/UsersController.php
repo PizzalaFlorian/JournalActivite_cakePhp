@@ -74,7 +74,7 @@ class UsersController extends AppController
 
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+                $this->Flash->success(__('L\utilisateur as bien été ajouté.'));
                 $email = new Email('default');
                 $email
                     ->to($this->request->data['email'])
@@ -82,7 +82,7 @@ class UsersController extends AppController
                     ->send("Bonjour,\nVoici vos identifiant de votre compte : \nLogin : ".$this->request->data['login']."\nMot de passe : ".$this->request->data['password']."\nCordialement\n");
                 return $this->redirect(['controller'=>'candidat','action' => 'add']);
             } else {
-                $this->Flash->error(__('The user could not be saved. Please, try again.'));
+                $this->Flash->error(__('Erreure lors de l\'ajout.'));
             }
         }
         $this->set(compact('user'));
@@ -112,10 +112,10 @@ class UsersController extends AppController
 
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+                $this->Flash->success(__('L\'utilisateur as bien été modifier.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The user could not be saved. Please, try again.'));
+                $this->Flash->error(__('Erreur lors de la modification.'));
             }
         }
         $this->set(compact('user'));
@@ -171,9 +171,9 @@ class UsersController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $user = $this->Users->get($id);
         if ($this->Users->delete($user)) {
-            $this->Flash->success(__('The user has been deleted.'));
+            $this->Flash->success(__('L\'utilisateur as été supprimer.'));
         } else {
-            $this->Flash->error(__('The user could not be deleted. Please, try again.'));
+            $this->Flash->error(__('Erreur lors de la suppression.'));
         }
         return $this->redirect(['action' => 'index']);
     }

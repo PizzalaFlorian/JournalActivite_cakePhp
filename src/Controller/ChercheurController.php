@@ -190,10 +190,10 @@ class ChercheurController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $chercheur = $this->Chercheur->patchEntity($chercheur, $this->request->data);
             if ($this->Chercheur->save($chercheur)) {
-                $this->Flash->success(__('The chercheur has been saved.'));
+                $this->Flash->success(__('Vos informations personnelles ont bien été modifiées.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The chercheur could not be saved. Please, try again.'));
+                $this->Flash->error(__('Erreur lors de la modification des informations personnelles.'));
             }
         }
         $this->set(compact('chercheur'));
@@ -252,10 +252,10 @@ class ChercheurController extends AppController
 
             $chercheur = $this->Chercheur->patchEntity($chercheur, $this->request->data);
             if ($this->Chercheur->save($chercheur)) {
-                $this->Flash->success(__('The chercheur has been saved.'));
+                $this->Flash->success(__('Le chercheur as bien été ajouté.'));
                 return $this->redirect(['action' => 'accueil']);
             } else {
-                $this->Flash->error(__('The chercheur could not be saved. Please, try again.'));
+                $this->Flash->error(__('Erreur lors de l\'ajout du chercheur.'));
             }
             
         }
@@ -286,10 +286,10 @@ class ChercheurController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $chercheur = $this->Chercheur->patchEntity($chercheur, $this->request->data);
             if ($this->Chercheur->save($chercheur)) {
-                $this->Flash->success(__('The chercheur has been saved.'));
+                $this->Flash->success(__('Le chercheur as bien été modifié.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The chercheur could not be saved. Please, try again.'));
+                $this->Flash->error(__('Erreur lors de la modification du chercheur.'));
             }
         }
         $this->set(compact('chercheur'));
@@ -315,7 +315,7 @@ class ChercheurController extends AppController
 
             
         if ($this->Chercheur->delete($chercheur)) {
-            $this->Flash->success(__('The chercheur has been deleted.'));
+            $this->Flash->success(__('Le chercheur as été supprimé.'));
             $occupation = TableRegistry::get('users')
                 ->query();
             $occupation
@@ -323,7 +323,7 @@ class ChercheurController extends AppController
                 ->where(['ID' => $chercheur['ID']])
                 ->execute();
         } else {
-            $this->Flash->error(__('The chercheur could not be deleted. Please, try again.'));
+            $this->Flash->error(__('Erreur lors de la suppression.'));
         }
         return $this->redirect(['action' => 'index']);
     }

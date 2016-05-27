@@ -78,10 +78,10 @@ class CompagnieController extends AppController
         if ($this->request->is('post')) {
             $compagnie = $this->Compagnie->patchEntity($compagnie, $this->request->data);
             if ($this->Compagnie->save($compagnie)) {
-                $this->Flash->success(__('The compagnie has been saved.'));
+                $this->Flash->success(__('La comapgnie as bien été ajoutée.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The compagnie could not be saved. Please, try again.'));
+                $this->Flash->error(__('Erreur lors de l\'ajout de la compagnie.'));
             }
         }
         $this->set(compact('compagnie'));
@@ -110,10 +110,10 @@ class CompagnieController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $compagnie = $this->Compagnie->patchEntity($compagnie, $this->request->data);
             if ($this->Compagnie->save($compagnie)) {
-                $this->Flash->success(__('The compagnie has been saved.'));
+                $this->Flash->success(__('La compagnie as bien été modifiée.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The compagnie could not be saved. Please, try again.'));
+                $this->Flash->error(__('Erreur lors de la modification.'));
             }
         }
         $this->set(compact('compagnie'));
@@ -149,9 +149,9 @@ class CompagnieController extends AppController
         }  
 
         if ($this->Compagnie->delete($compagnie)) {
-            $this->Flash->success(__('The compagnie has been deleted.'));
+            $this->Flash->success(__('La compagnie as bien été supprimée.'));
         } else {
-            $this->Flash->error(__('The compagnie could not be deleted. Please, try again.'));
+            $this->Flash->error(__('Erreur lors de la suppression.'));
         }
         return $this->redirect(['action' => 'index']);
     }

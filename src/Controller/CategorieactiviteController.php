@@ -68,10 +68,10 @@ class CategorieactiviteController extends AppController
         if ($this->request->is('post')) {
             $categorieactivite = $this->Categorieactivite->patchEntity($categorieactivite, $this->request->data);
             if ($this->Categorieactivite->save($categorieactivite)) {
-                $this->Flash->success(__('The categorieactivite has been saved.'));
+                $this->Flash->success(__('La catégorie as bien été ajoutée.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The categorieactivite could not be saved. Please, try again.'));
+                $this->Flash->error(__('Erreur lors de l\'ajout.'));
             }
         }
         $this->set(compact('categorieactivite'));
@@ -98,10 +98,10 @@ class CategorieactiviteController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $categorieactivite = $this->Categorieactivite->patchEntity($categorieactivite, $this->request->data);
             if ($this->Categorieactivite->save($categorieactivite)) {
-                $this->Flash->success(__('The categorieactivite has been saved.'));
+                $this->Flash->success(__('La catégorie as bien été modififiée.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The categorieactivite could not be saved. Please, try again.'));
+                $this->Flash->error(__('Erreur lors de la modification.'));
             }
         }
         $this->set(compact('categorieactivite'));
@@ -137,9 +137,9 @@ class CategorieactiviteController extends AppController
 
 
         if ($this->Categorieactivite->delete($categorieactivite)) {
-            $this->Flash->success(__('The categorieactivite has been deleted.'));
+            $this->Flash->success(__('La catégorie as bien été supprimée.'));
         } else {
-            $this->Flash->error(__('The categorieactivite could not be deleted. Please, try again.'));
+            $this->Flash->error(__('Erreur lors de la suppression.'));
         }
         return $this->redirect(['action' => 'index']);
     }

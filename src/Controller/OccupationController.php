@@ -122,17 +122,17 @@ class OccupationController extends AppController
                     echo $occupation->CodeOccupation;
                     //$this->Flash->success(__('The occupation has been saved.'));
                 } else {
-                    $this->Flash->error(__('The occupation could not be saved. Please, try again.'));
+                    $this->Flash->error(__('Erreur lors de l\'ajout de l\'occupation.'));
                 }
             }
             else{ 
                 $occupation = $this->Occupation->patchEntity($occupation, $this->request->data);
             
                 if ($this->Occupation->save($occupation)) {
-                    $this->Flash->success(__('The occupation has been saved.'));
+                    $this->Flash->success(__('L\'occupation as été ajoutée.'));
                     return $this->redirect(['action' => 'index']);
                 } else {
-                    $this->Flash->error(__('The occupation could not be saved. Please, try again.'));
+                    $this->Flash->error(__('Erreur lors de l\'ajout de l\'occupation.'));
                 }
             }
         }
@@ -211,7 +211,7 @@ class OccupationController extends AppController
                     echo $occupation->CodeOccupation;
                     //$this->Flash->success(__('The occupation has been saved.'));
                 } else {
-                    $this->Flash->error(__('The occupation could not be saved. Please, try again.'));
+                    $this->Flash->error(__('Erreure lors de la copie.'));
                 }
             }
             else{ 
@@ -221,7 +221,7 @@ class OccupationController extends AppController
                     //$this->Flash->success(__('The occupation has been saved.'));
                     return $this->redirect(['action' => 'index']);
                 } else {
-                    $this->Flash->error(__('The occupation could not be saved. Please, try again.'));
+                    $this->Flash->error(__('Erreure lors de la copie.'));
                 }
             }
         }
@@ -353,7 +353,7 @@ class OccupationController extends AppController
         if ($this->Occupation->delete($occupation)) {
             //$this->Flash->success(__('The occupation has been deleted.'));
         } else {
-            $this->Flash->error(__('The occupation could not be deleted. Please, try again.'));
+            $this->Flash->error(__('Erreure lors de la suppression.'));
         }
         return $this->redirect(['action' => 'index']);
     }

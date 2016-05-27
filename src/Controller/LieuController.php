@@ -77,10 +77,10 @@ class LieuController extends AppController
             debug($this->request->data);
             $lieu = $this->Lieu->patchEntity($lieu, $this->request->data);
             if ($this->Lieu->save($lieu)) {
-                $this->Flash->success(__('The lieu has been saved.'));
+                $this->Flash->success(__('Le lieu as été ajouté.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The lieu could not be saved. Please, try again.'));
+                $this->Flash->error(__('Erreur lors de l\'ajout.'));
             }
         }
         $this->set(compact('lieu'));
@@ -107,10 +107,10 @@ class LieuController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $lieu = $this->Lieu->patchEntity($lieu, $this->request->data);
             if ($this->Lieu->save($lieu)) {
-                $this->Flash->success(__('The lieu has been saved.'));
+                $this->Flash->success(__('Le lieu as été modifié.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The lieu could not be saved. Please, try again.'));
+                $this->Flash->error(__('Erreur lors de la modification.'));
             }
         }
         $this->set(compact('lieu'));
@@ -145,9 +145,9 @@ class LieuController extends AppController
         }
 
         if ($this->Lieu->delete($lieu)) {
-            $this->Flash->success(__('The lieu has been deleted.'));
+            $this->Flash->success(__('Le lieu as été supprimée.'));
         } else {
-            $this->Flash->error(__('The lieu could not be deleted. Please, try again.'));
+            $this->Flash->error(__('Erreur lors de la suppression.'));
         }
         return $this->redirect(['action' => 'index']);
     }

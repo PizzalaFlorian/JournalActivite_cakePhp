@@ -73,10 +73,10 @@ class DispositifController extends AppController
             //debug($this->request->data);
             $dispositif = $this->Dispositif->patchEntity($dispositif, $this->request->data);
             if ($this->Dispositif->save($dispositif)) {
-                $this->Flash->success(__('The dispositif has been saved.'));
+                $this->Flash->success(__('Le dispositif as bien été ajouter.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The dispositif could not be saved. Please, try again.'));
+                $this->Flash->error(__('Erreur lors de l\'ajout du dispositif.'));
             }
         }
         $this->set(compact('dispositif'));
@@ -104,10 +104,10 @@ class DispositifController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $dispositif = $this->Dispositif->patchEntity($dispositif, $this->request->data);
             if ($this->Dispositif->save($dispositif)) {
-                $this->Flash->success(__('The dispositif has been saved.'));
+                $this->Flash->success(__('Le dispositif as été modifié.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The dispositif could not be saved. Please, try again.'));
+                $this->Flash->error(__('Erreur lors de la modification.'));
             }
         }
         $this->set(compact('dispositif'));
@@ -142,9 +142,9 @@ class DispositifController extends AppController
         }
 
         if ($this->Dispositif->delete($dispositif)) {
-            $this->Flash->success(__('The dispositif has been deleted.'));
+            $this->Flash->success(__('Le dispositif as été supprimée.'));
         } else {
-            $this->Flash->error(__('The dispositif could not be deleted. Please, try again.'));
+            $this->Flash->error(__('Erreur lors de la suppression.'));
         }
         return $this->redirect(['action' => 'index']);
     }

@@ -166,7 +166,7 @@ class ActualitesController extends AppController
                     $this->Flash->success(__('L\'actualité a été sauvegardée.'));
                     return $this->redirect(['controller' => $monController, 'action' => $monAction]);
                 } else {
-                    $this->Flash->error(__('Erreure lors de la sauvegarde, Veuillez-réessayer.'));
+                    $this->Flash->error(__('Erreur lors de la sauvegarde, Veuillez-réessayer.'));
                 }
             }
             $this->set(compact('monController'));

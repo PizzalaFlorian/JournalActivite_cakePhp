@@ -153,7 +153,7 @@ class ActiviteController extends AppController
         if ($this->Activite->delete($activite)) {
             $this->Flash->success(__('L\'activitée a été supprimée.'));
         } else {
-            $this->Flash->error(__('Erreure lors de la suppression, veuillez réessayer.'));
+            $this->Flash->error(__('Erreur lors de la suppression, veuillez réessayer.'));
         }
         return $this->redirect(['action' => 'index']);
     }

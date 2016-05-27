@@ -65,10 +65,10 @@ class CategorielieuController extends AppController
         if ($this->request->is('post')) {
             $categorielieu = $this->Categorielieu->patchEntity($categorielieu, $this->request->data);
             if ($this->Categorielieu->save($categorielieu)) {
-                $this->Flash->success(__('The categorielieu has been saved.'));
+                $this->Flash->success(__('La catégorie as été sauvegardée.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The categorielieu could not be saved. Please, try again.'));
+                $this->Flash->error(__('Erreur lors de la sauvegarde.'));
             }
         }
         $this->set(compact('categorielieu'));
@@ -96,10 +96,10 @@ class CategorielieuController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $categorielieu = $this->Categorielieu->patchEntity($categorielieu, $this->request->data);
             if ($this->Categorielieu->save($categorielieu)) {
-                $this->Flash->success(__('The categorielieu has been saved.'));
+                $this->Flash->success(__('La catégorie as bien été modifiée.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('The categorielieu could not be saved. Please, try again.'));
+                $this->Flash->error(__('Erreur lors de la modification.'));
             }
         }
         $this->set(compact('categorielieu'));
@@ -134,9 +134,9 @@ class CategorielieuController extends AppController
         }
 
         if ($this->Categorielieu->delete($categorielieu)) {
-            $this->Flash->success(__('The categorielieu has been deleted.'));
+            $this->Flash->success(__('La catégorie as bien été supprimée.'));
         } else {
-            $this->Flash->error(__('The categorielieu could not be deleted. Please, try again.'));
+            $this->Flash->error(__('Erreur lors de la suppression.'));
         }
         return $this->redirect(['action' => 'index']);
     }
