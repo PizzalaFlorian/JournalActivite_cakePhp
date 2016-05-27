@@ -9,6 +9,12 @@
 	text-align:center;
 }*/
 
+.dark-blue-box{
+	
+	border: 2px solid #1798A5;
+	border-radius: 10px 10px 10px 10px;
+	margin-top: 15px;
+}
 .grey-box{
 	border: 2px solid #838282;
 	color: #5A5858;
@@ -58,7 +64,7 @@
 }
 
 #loginSite{
-	margin-left: 30% !important;
+	margin-left: 29% !important;
 	width:100%;
 	text-align: center !important;
 }
