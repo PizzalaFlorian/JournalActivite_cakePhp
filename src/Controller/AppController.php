@@ -52,7 +52,6 @@ class AppController extends Controller
                 'controller' => 'Candidat',
                 'action' => 'index'
             ],
-			'authError' => 'Vous croyez vraiment que vous pouvez faire cela?',
 			'storage' => 'Session'
 		]);
 		$this->Auth->allow('contact');

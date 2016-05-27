@@ -235,7 +235,7 @@ class UsersController extends AppController
                 }
 
             }
-            $this->Flash->error(__('Invalid login or password, try again'));
+            $this->Flash->error(__('Erreure, login ou Mot de passe invalide'));
         }
     }
 
