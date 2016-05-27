@@ -1,5 +1,5 @@
 <?php
-
+    use Cake\ORM\TableRegistry;
     $this->start('sidebarChercheur');
     echo $this->Html->css('main_custom');
 ?>
@@ -31,10 +31,24 @@
 
 <li> 
     <?php 
-        echo $this->Html->link(
-            'Messages',
-            ['controller' => 'messages', 'action' => 'index', '_full' => true]
-        ); 
+        $count = TableRegistry::get('messages')
+                        ->find()
+                        ->select(array('count'=>'COUNT(*)'))
+                        ->where(['IDRecepteur'=>1,'recepteurLU'=>0])
+                        ->group('IDRecepteur')
+                        ->first();
+        if(isset($count['count'])){
+            echo $this->Html->link(
+                'Messages ('.$count['count'].')',
+                ['controller' => 'messages', 'action' => 'index', '_full' => true]
+            );
+        }   
+        else{      
+            echo $this->Html->link(
+                'Messages',
+                ['controller' => 'messages', 'action' => 'index', '_full' => true]
+            ); 
+        }
     ?> 
 </li>
 <li class="heading"><?= __('Tables') ?></li>

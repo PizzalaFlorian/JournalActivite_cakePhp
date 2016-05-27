@@ -1,5 +1,5 @@
 <?php
-
+    use Cake\ORM\TableRegistry;
     $this->start('sidebarCandidat');
     echo $this->Html->css('main_custom');
 ?>
@@ -29,10 +29,24 @@
 </li>
 <li> 
     <?php 
-        echo $this->Html->link(
-            'Messagerie',
-            ['controller' => 'messages', 'action' => 'index', '_full' => true]
-        ); 
+        $count = TableRegistry::get('messages')
+                        ->find()
+                        ->select(array('count'=>'COUNT(*)'))
+                        ->where(['IDRecepteur'=>$_SESSION['Auth']['User']['ID'],'recepteurLU'=>0])
+                        ->group('IDRecepteur')
+                        ->first();
+        if(isset($count['count'])){
+            echo $this->Html->link(
+                'Messages ('.$count['count'].')',
+                ['controller' => 'messages', 'action' => 'index', '_full' => true]
+            );
+        }   
+        else{      
+            echo $this->Html->link(
+                'Messages',
+                ['controller' => 'messages', 'action' => 'index', '_full' => true]
+            ); 
+        }
     ?> 
 </li>
 
@@ -98,7 +112,7 @@
 <li>
 	<?php 
         echo $this->Html->link(
-				'Contact', 
+				'Contacter un administrateur', 
 				['controller' => 'contacts', 'action' => 'contact']
 			);
 	?>
