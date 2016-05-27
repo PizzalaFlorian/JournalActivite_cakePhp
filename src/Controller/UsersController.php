@@ -5,6 +5,7 @@ use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\ORM\TableRegistry;
 use Cake\Mailer\Email;
+use Cake\Auth\DefaultPasswordHasher;
 /**
  * Users Controller
  *
@@ -242,6 +243,43 @@ class UsersController extends AppController
     public function logout()
     {
         return $this->redirect($this->Auth->logout());
+    }
+
+    public function reset(){
+        if($this->request->is('post')){
+
+            $char = 'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMOPQRSTUVWXYZ';
+            
+            $password = str_shuffle($char);
+            $password = substr ( $password , 0, 10 );
+
+            $user = TableRegistry::get('users')
+                ->find()
+                ->where(['email'=>$this->request->data['Email']])
+                ->first();
+
+            if(!isset($user)){
+                $this->Flash->error(__('Cette adresse email n\'est pas présente dans notre base de donnée.'));
+            } 
+            else{
+                $update_user = TableRegistry::get('users')
+                ->query();
+                $update_user    
+                    ->update()
+                    ->set(['password' => (new DefaultPasswordHasher)->hash($password)])
+                    ->where(['email' => $this->request->data['Email']])
+                    ->execute();
+
+                $this->Flash->success(__('Votre mot de passe a bien été modifié. Veuillez consulter votre adresse email.'));
+                $email = new Email('default');
+                $email
+                    ->to($this->request->data['Email'])
+                    ->subject("Confirmation de compte")
+                    ->send("Voici vos nouveaux identifiant, veuillez les changer dès votre prochaine connexion"."\n--------------------------------------------------------------------------------\nVoici vos identifiant de votre compte candidat : \nLogin : ".$user['login']."\nMot de passe : ".$password."\n--------------------------------------------------------------------------------\n");
+                
+                return $this->redirect(['controller'=>'users','action' => 'login']);
+            }      
+        }
     }
 
     public function suppressioncompte(){

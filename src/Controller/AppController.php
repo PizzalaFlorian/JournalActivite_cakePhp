@@ -54,7 +54,8 @@ class AppController extends Controller
             ],
 			'storage' => 'Session'
 		]);
-		$this->Auth->allow('contact');
+        $this->Auth->allow('contact');
+		$this->Auth->allow('reset');
 	}
 	// public function beforeFilter(Event $event)
 	// {
