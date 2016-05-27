@@ -209,7 +209,7 @@ class UsersController extends AppController
                     else{
                         return $this->redirect([
                             'controller' => 'candidat',
-                            'action' => 'add']);
+                            'action' => 'cnil']);
                     }
                 }
                 if($user['typeUser']=='chercheur'){

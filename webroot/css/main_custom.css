@@ -9,6 +9,19 @@
 	text-align:center;
 }*/
 
+.grey-box{
+	border: 2px solid #838282;
+	color: #5A5858;
+	text-align:justify;
+	padding: 20px;
+	width:50%;
+	margin-left: 25%;
+}
+
+.grey-box a:hover{
+	border-bottom: 1px solid #1798A5;
+}
+
 .hidden{
 	display: none;
 }
@@ -65,7 +78,7 @@
 }
 
 .center{
-	text-align: center;
+	text-align: center !important;
 }
 
 td a img {

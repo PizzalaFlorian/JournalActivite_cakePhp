@@ -22,6 +22,23 @@ use fonctionperso\dispositif\dispositif;
  */
 class CandidatController extends AppController
 {
+    public function cnil(){
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            if(isset($this->request->data['published'])){
+                return $this->redirect([
+                            'controller' => 'candidat',
+                            'action' => 'add']);
+            }
+            else{
+                $this->Flash->error(__('Veuillez cocher la case "J\'ai pris connaissances de mes droits, et autorise les chercheurs a utilisés mes données" pour pouvoir poursuivre.'));
+            }
+        }
+    }
 
     public function generate(){
         $this->viewBuilder()->layout('candiLayout');

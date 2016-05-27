@@ -82,6 +82,6 @@
             echo $this->Form->input('ID',['type'=>'hidden','value'=>$_SESSION['Auth']['User']['ID']]);
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Terminer l\'inscription')) ?>
     <?= $this->Form->end() ?>
 </div>
