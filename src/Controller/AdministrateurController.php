@@ -508,4 +508,9 @@ class AdministrateurController extends AppController
 		}
 		$this->redirect(['controller'=>'administrateur','action' => 'gestionDonnees']);
 	}
+
+    public function aide()
+    {
+        $this->viewBuilder()->layout('adminLayout');
+    }
 }

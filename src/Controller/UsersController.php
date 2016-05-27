@@ -129,6 +129,8 @@ class UsersController extends AppController
             $this->viewBuilder()->layout('candiLayout');
         if($_SESSION['Auth']['User']['typeUser']=='chercheur')
             $this->viewBuilder()->layout('cherLayout');
+        if($_SESSION['Auth']['User']['typeUser']=='admin')
+            $this->viewBuilder()->layout('adminLayout');
         $user = TableRegistry::get('users')
             ->find()
             ->where(['ID' => $_SESSION['Auth']['User']['ID']])

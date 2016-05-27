@@ -5,6 +5,8 @@
         echo $this->element('sidebarCandidat');
     if($_SESSION['Auth']['User']['typeUser']=='chercheur')
         echo $this->element('sidebarChercheur');
+    if($_SESSION['Auth']['User']['typeUser']=='admin')
+        echo $this->element('sidebarAdmin');
 ?>
 <div class="users form large-11 medium-12 columns content">
     <?= $this->Form->create($user) ?>

@@ -80,7 +80,7 @@
     <?php 
         echo $this->Html->link(
             'Mon Compte',
-            ['controller' => 'administrateur', 'action' => 'modif', '_full' => true]
+            ['controller' => 'users', 'action' => 'modif', '_full' => true]
         ); 
     ?> 
 </li>
