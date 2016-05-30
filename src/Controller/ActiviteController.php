@@ -11,17 +11,26 @@ use Cake\ORM\TableRegistry;
  */
 class ActiviteController extends AppController
 {
-
+    /**
+     * [recupNomActivite renvoie le nom de l'activite en fonction de son code.
+     *  Fonction utilisée par le candidat lors d'opérations sur le remplissage de ses activitées]
+     * @param  [int] $id [code de l'activité]
+     * @return [string]     [nom de l'activité, affiché dans le template lié]
+     */
     public function recupNomActivite($id=null){
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+
          $activite = $this->Activite->get($id, [
             'contain' => []
         ]);
          echo $activite->NomActivite;
     }
     /**
-     * Index method
-     *
-     * @return \Cake\Network\Response|null
+     * [index affiche la liste des activiée. Fonction du chercheur]
+     * @return [none]
      */
     public function index()
     {
@@ -38,33 +47,10 @@ class ActiviteController extends AppController
     }
 
     /**
-     * View method
-     *
-     * @param string|null $id Activite id.
-     * @return \Cake\Network\Response|null
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function view($id = null)
-    {
-        $this->viewBuilder()->layout('cherLayout');
-        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
-            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
-        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
-            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
-
-
-        $activite = $this->Activite->get($id, [
-            'contain' => []
-        ]);
-
-        $this->set('activite', $activite);
-        $this->set('_serialize', ['activite']);
-    }
-
-    /**
-     * Add method
-     *
-     * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
+     * [add ajoute une activité a la base de donnée. Fonction Chercheur.]
+     * @post [objet] [objet activitée fournis par le formulaire, contient un code, un nom,
+     *                une description,un code categorie]
+     * @return   [redirection sur index si réussite]
      */
     public function add()
     {
@@ -91,10 +77,10 @@ class ActiviteController extends AppController
     }
 
     /**
-     * Edit method
+     * Edit method [modifie une activité, Fonction chercheur]
      *
      * @param string|null $id Activite id.
-     * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
+     * @return \Cake\Network\Response|void Redirects on successful index, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function edit($id = null)
@@ -124,7 +110,11 @@ class ActiviteController extends AppController
     }
 
     /**
-     * Delete method
+     * Delete method [Supprime une activité, Fonction chercheur]
+     *
+     * Warning ! [le code effectue une vérification qu'il n'y as pas d'occupation liée a cette activitée, 
+     * si l'utilisateur comfirme la suppression, alors ces activiées sont aussi supprimées de la base de 
+     * données.]
      *
      * @param string|null $id Activite id.
      * @return \Cake\Network\Response|null Redirects to index.
@@ -158,6 +148,13 @@ class ActiviteController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
+    /**
+     * [reaffect Remplace le code activitée des occupation dont le code activitée est égal au $id, par un nouveau
+     * code occupation donnée en POST. Fonction chercheur]
+     * @param  [int] $id [Ancien code Activitée]
+     * @post [int] $this->request->data['CodeActivite'] [Nouveau code Activité]
+     * @return [redirection]     [Redirection vers l'index si réussite, sinon affiche un message d'erreur]
+     */
     public function reaffect($id = null)
     {
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
@@ -191,6 +188,12 @@ class ActiviteController extends AppController
         $this->set('_serialize', ['activite']);    
     }
 
+    /**
+     * [deleteAll Supprime toutes les occupations comportant un code activité égale a celui fourni en $id.
+     Fonction chercheur]
+     * @param  [int] $id [Code Activité]
+     * @return [redirection]     [Renvoie a l'index]
+     */
     public function deleteAll($id = null)
     {
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
@@ -217,13 +220,17 @@ class ActiviteController extends AppController
                 ->execute();
 
             $this->Flash->success(__('l\'activité et Les occupations ont été supprimées'));
-            $this->redirect(['action' => 'index']);
+            return $this->redirect(['action' => 'index']);
         }
 
         $this->set('activite', $activite);
         $this->set('_serialize', ['activite']); 
     }
     
+    /**
+     * [request Renvoie la liste des activités liée a une catégorie. Fonction candidat]
+     * @return [html] [renvoie une liste des activitée liée a une catégorie]
+     */
     public function request(){
         $id = $this->request->data['value'];
         $activites = $this->Activite->find('all', ['conditions' => ['CodeCategorie' => $id]]);
