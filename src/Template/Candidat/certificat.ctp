@@ -1,6 +1,7 @@
 <style>
     th {
         font-weight: bold;
+        background-color: #BABABA;
     }
     tr {
     	text-align: center;

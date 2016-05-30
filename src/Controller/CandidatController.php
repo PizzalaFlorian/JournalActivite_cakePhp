@@ -15,6 +15,7 @@ use fonctionperso\lieu\categorielieu;
 use fonctionperso\compagnie\compagnie;
 use fonctionperso\dispositif\dispositif;
 
+
 /**
  * Candidat Controller
  *
@@ -49,14 +50,12 @@ class CandidatController extends AppController
         $this->viewBuilder()->layout('candiLayout');
 
         if ($this->request->is(['patch', 'post', 'put'])) {
+            $_SESSION['code']=$this->request->data['Code_Etudiant'];
             return $this->redirect(['action' => 'certificat/'.$this->request->data['Code_Etudiant']]);
         }
 
     }
 
-    public function geneCode($string = null){
-        echo '<img src="'.ROOT .DS. "vendor" . DS  . "functionperso" . DS . "CodeBarre" . DS ."codebarre.inc.php".'?string='.$string.'"/>';
-    }
     public function certificat($id=null){
         if($_SESSION['Auth']['User']['typeUser'] == 'admin')
             $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
@@ -64,7 +63,6 @@ class CandidatController extends AppController
             $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
 
         $this->viewBuilder()->layout('pdf/default');
-        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "CodeBarre" . DS ."codebarre.inc.php");
         $filename = 'certificat';
 
         $candidat = TableRegistry::get('candidat')
