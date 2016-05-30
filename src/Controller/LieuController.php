@@ -13,6 +13,10 @@ class LieuController extends AppController
 {
 
     public function recupNomLieu($id=null){
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
          $lieu = $this->Lieu->get($id, [
             'contain' => []
         ]);

@@ -73,6 +73,12 @@ class UsersController extends AppController
             }
 
             $user = $this->Users->patchEntity($user, $this->request->data);
+
+            if($user->typeUser == "chercheur" || $user->typeUser == "admin"){
+                $this->Flash->error(__('Les insertions SQL c\'est mal.'));
+                $this->redirect(['controller'=>'users','action' => 'login']);
+            }
+
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('L\utilisateur as bien été ajouté.'));
                 $email = new Email('default');
@@ -373,6 +379,12 @@ class UsersController extends AppController
     }
 
     public function suppressioncompte(){
+
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
         $this->viewBuilder()->layout('candiLayout');
         $sideBar = "sidebarCandidat"; 
         if ($this->request->is(['patch', 'post', 'put'])) {

@@ -13,6 +13,10 @@ class CompagnieController extends AppController
 {
 
     public function recupNomCompagnie($id=null){
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
         //accès candidat
          $compagnie = $this->Compagnie->get($id, [
             'contain' => []

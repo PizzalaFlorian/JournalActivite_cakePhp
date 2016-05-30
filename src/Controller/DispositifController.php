@@ -13,6 +13,10 @@ class DispositifController extends AppController
 {
 
     public function recupNomDispositif($id=null){
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
         //accès candidat
          $dispositif = $this->Dispositif->get($id, [
             'contain' => []
@@ -47,6 +51,12 @@ class DispositifController extends AppController
      */
     public function view($id = null)
     {
+
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+        
         $dispositif = $this->Dispositif->get($id, [
             'contain' => []
         ]);

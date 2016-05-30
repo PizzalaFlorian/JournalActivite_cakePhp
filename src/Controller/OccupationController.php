@@ -18,6 +18,14 @@ class OccupationController extends AppController
      */
     public function index()
     {
+
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
         $occupation = $this->paginate($this->Occupation);
 
         $this->set(compact('occupation'));
@@ -32,6 +40,11 @@ class OccupationController extends AppController
      */
     public function view($id = null)
     {   
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
         $this->loadModel('Lieu');
         $this->loadModel('Activite');
         $this->loadModel('Compagnie');
@@ -60,6 +73,12 @@ class OccupationController extends AppController
      */
     public function add()
     {
+
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
         $occupation = $this->Occupation->newEntity();
         if ($this->request->is('post')) {
             if(is_string($this->request->data['HeureDebut'])){
@@ -142,6 +161,11 @@ class OccupationController extends AppController
 
     public function copier()
     {
+
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
 
         $occupation = $this->Occupation->newEntity();
         if ($this->request->is('post')) {
@@ -231,6 +255,12 @@ class OccupationController extends AppController
 
     public function editHeure($id = null)
     {
+
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
         //accès candidat
         $this->autoRender = false;
          if ($this->request->is(['patch', 'post', 'put'])) {
@@ -249,6 +279,12 @@ class OccupationController extends AppController
 
     public function editHeureFin($id = null)
     {
+
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
         //accès candidat
         $this->autoRender = false;
          if ($this->request->is(['patch', 'post', 'put'])) {
@@ -272,6 +308,12 @@ class OccupationController extends AppController
      */
     public function edit($id = null)
     {
+
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
         require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "occupation" . DS ."occupation.php");
         
         $this->loadModel('Lieu');
@@ -348,6 +390,11 @@ class OccupationController extends AppController
     //  */
     public function delete($id = null)
     {
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+        
         $this->request->allowMethod(['post', 'delete']);
         $occupation = $this->Occupation->get($id);
         if ($this->Occupation->delete($occupation)) {
