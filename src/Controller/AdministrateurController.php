@@ -588,8 +588,8 @@ class AdministrateurController extends AppController
     public function messagerie(){
                 
         $this->viewBuilder()->layout('adminLayout');
-        $test = "test";
-        $this->set(compact('test'));
-        $this->set('_serialize', ['test']);
+        $id = $_SESSION['Auth']['User']['email'];
+        $this->set(compact('id'));
+
     }
 }
