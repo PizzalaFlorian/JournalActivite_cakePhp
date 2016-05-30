@@ -495,6 +495,11 @@ class AdministrateurController extends AppController
     }
 
 	public function supprOccupation(){
+            if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+            if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+                $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
 			$this->loadModel('Occupation');
 			$occupations = $this->Occupation->find('all');
 			$error = false;
@@ -511,6 +516,10 @@ class AdministrateurController extends AppController
 	}
 	
 	public function supprCandidat(){
+         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
 		$this->loadModel('Occupation');
 		$this->loadModel('Candidat');
 		$this->loadModel('Messages');
@@ -569,6 +578,10 @@ class AdministrateurController extends AppController
 
     public function aide()
     {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
         $this->viewBuilder()->layout('adminLayout');
     }
 }

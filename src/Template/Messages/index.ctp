@@ -5,7 +5,16 @@
 ?>
 <div id="content">
 <nav id="messagerieMenu" class="large-10 medium-10 columns">
-    <div><?php echo $this->Html->link(__('Nouveau Message'), ['action' => 'nouveau'],array('class' => 'button')).' '.$this->Html->link(__('Messages envoyés'), ['action' => 'envoie'],array('class' => 'button')); ?></div>
+    <div><?php echo $this->Html->link(__('Nouveau Message'), ['action' => 'nouveau'],array('class' => 'button')).' '.$this->Html->link(__('Messages envoyés'), ['action' => 'envoie'],array('class' => 'button')); ?>
+        <?php 
+        echo $this->Html->link(
+                'Contacter un administrateur', 
+                ['controller' => 'contacts', 'action' => 'contact'],
+                ['class'=>'button']
+            );
+        ?>
+
+    </div>
 </nav>
 
 

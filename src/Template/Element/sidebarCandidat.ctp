@@ -109,14 +109,6 @@
         ); 
     ?> 
 </li>
-<li>
-	<?php 
-        echo $this->Html->link(
-				'Contacter un administrateur', 
-				['controller' => 'contacts', 'action' => 'contact']
-			);
-	?>
-</li>
 <?php
     $this->end();
 ?>

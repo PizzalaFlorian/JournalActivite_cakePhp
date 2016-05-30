@@ -41,6 +41,11 @@ class CandidatController extends AppController
     }
 
     public function generate(){
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
         $this->viewBuilder()->layout('candiLayout');
 
         if ($this->request->is(['patch', 'post', 'put'])) {
@@ -50,6 +55,11 @@ class CandidatController extends AppController
     }
 
     public function certificat($id=null){
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
         $this->viewBuilder()->layout('pdf/default');
         require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "CodeBarre" . DS ."codebarre.inc.php");
         $filename = 'certificat';
@@ -115,6 +125,10 @@ class CandidatController extends AppController
     }
     public function accueil()
     {
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
 
         $this->viewBuilder()->layout('candiLayout');
         require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "candidat" . DS ."toolboxcandidat.php");
@@ -131,16 +145,30 @@ class CandidatController extends AppController
 
     public function butExperience()
     {
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
         $this->viewBuilder()->layout('candiLayout');
     }
 
     public function compte()
     {
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
         $this->viewBuilder()->layout('candiLayout');
     }
 
     public function modif()
     {
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
         $this->viewBuilder()->layout('candiLayout');
         $candidat = TableRegistry::get('candidat')
             ->find()
@@ -161,12 +189,21 @@ class CandidatController extends AppController
     }
     public function historique()
     {
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
         $this->viewBuilder()->layout('candiLayout');
         require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "candidat" . DS ."candidatHistorique.php");
     }
 
     public function aide()
     {
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+
         $this->viewBuilder()->layout('candiLayout');
     }
 
@@ -174,6 +211,11 @@ class CandidatController extends AppController
 
     public function activite()
     {
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+        
         $this->viewBuilder()->layout('candiLayout');
 
         require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "calendar" . DS ."affichageactivite.php");
