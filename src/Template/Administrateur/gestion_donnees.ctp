@@ -5,15 +5,15 @@
 ?>
 
 <div class="actualites index large-12 medium-11 columns content">
-	<h4>Sauvegarde de la base de données</h4>
+	<!-- <h4>Sauvegarde de la base de données</h4>
 	<div class="monAction"><?php 
         echo $this->Html->link(
             'Sauvegarde de la base de données au format .SQL',
-            ['controller' => 'administrateur', 'action' => '???', '_full' => true]
+            ['controller' => 'administrateur', 'action' => 'downloadBdd', '_full' => true]
         );
     ?>
 	</div>
-	<br/>
+	<br/> -->
 	<h4>Suppression des données 'Candidats' de la base de données</h4>
 	<div class="description">
 		Cette action entraine la destruction des données des candidats.<br/>

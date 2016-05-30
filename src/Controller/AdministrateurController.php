@@ -15,7 +15,7 @@ use Cake\Filesystem\File;
  */
 class AdministrateurController extends AppController
 {
-	
+    	
 	public function gestionDonnees(){
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
             $this->redirect(['controller'=>'candidat','action' => 'accueil']);
