@@ -4,3 +4,7 @@ li{
 .monAction{
 	text-align:center;
 }
+
+*::-moz-placeholder {
+	color: #101010 !important;
+}
