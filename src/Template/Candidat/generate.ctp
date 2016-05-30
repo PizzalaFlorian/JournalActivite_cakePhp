@@ -1,5 +1,6 @@
 <?php
     echo $this->element('sidebarCandidat');
+    echo $this->Html->css('main_custom');
 ?>
 
 <div class="candidat form large-11 medium-12 columns content">

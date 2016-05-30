@@ -1,5 +1,6 @@
 <?php
     echo $this->element('sidebarChercheur'); 
+    echo $this->Html->css('main_custom');
 ?>
    
 <div class="categorieactivite form large-12 medium-11 columns content">

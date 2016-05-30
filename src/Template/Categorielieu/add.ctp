@@ -1,5 +1,6 @@
 <?php
     echo $this->element('sidebarChercheur');
+    echo $this->Html->css('main_custom');
     
     use Cake\ORM\TableRegistry;
     $max = TableRegistry::get('categorielieu')

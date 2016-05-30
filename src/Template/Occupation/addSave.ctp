@@ -1,5 +1,6 @@
 <?php
     echo $this->Html->script('occupation');
+    echo $this->Html->css('main_custom');
 ?>
 <div class="occupation form large-9 medium-8 columns content">
     <?= $this->Form->create($occupation) ?>

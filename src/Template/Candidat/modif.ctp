@@ -1,6 +1,7 @@
 <?php
     use Cake\ORM\TableRegistry;
     echo $this->element('sidebarCandidat');
+    echo $this->Html->css('main_custom');
     $candidat = TableRegistry::get('candidat')
             ->find()
             ->where(['ID' => $_SESSION['Auth']['User']['ID']])

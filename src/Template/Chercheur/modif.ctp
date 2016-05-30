@@ -1,5 +1,6 @@
 <?php
     echo $this->element('sidebarChercheur');
+    echo $this->Html->css('main_custom');
 ?>
 <div class="chercheur form large-10 medium-9 columns content">
     <?= $this->Form->create($chercheur) ?>

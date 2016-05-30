@@ -36,6 +36,7 @@
     echo $this->Html->css('occupation');
     echo $this->Html->css('Demo_calendar_style');
     echo $this->Html->css('Demo_calendar_jquery');
+    echo $this->Html->css('main_custom');
 ?>
     <div id="click-menue">
     <div class="button-click-menue" id="cp">  Copier  </div>

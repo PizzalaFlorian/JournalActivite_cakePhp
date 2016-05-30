@@ -1,5 +1,6 @@
 <?php
     echo $this->Html->script('occupation');
+    echo $this->Html->css('main_custom');
 ?>
 <div>
     <?= $this->Form->create($occupation) ?>

@@ -2,6 +2,7 @@
     if(!$monEmail){
 		echo $this->element($sideBar);
 	}
+	echo $this->Html->css('main_custom');
 ?>
 <div class="messages form large-12 medium-11 columns content">
 	<?php 

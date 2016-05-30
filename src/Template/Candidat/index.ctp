@@ -1,5 +1,6 @@
 <?php
     echo $this->element('sidebarAdmin');
+    echo $this->Html->css('main_custom');
 ?>
 <div class="candidat index large-11 medium-12 columns content">
     <h3 class="center"><?= __('Table des Candidats') ?></h3>

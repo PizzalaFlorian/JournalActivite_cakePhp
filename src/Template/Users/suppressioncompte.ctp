@@ -1,6 +1,7 @@
 <?php
     echo $this->element($sideBar);
     echo $this->Html->css('users');
+    echo $this->Html->css('main_custom');
 ?>
 <div id="suppression_donnees_utilisateur">
 	<div id="message_suppression_title">Suppression de Compte</div>

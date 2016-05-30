@@ -1,5 +1,6 @@
 <?php
     echo $this->element('sidebarChercheur');
+    echo $this->Html->css('main_custom');
 ?>
 <div class="carnetdebord form large-11 medium-12 columns content">
     <?= $this->Form->create($carnetdebord) ?>

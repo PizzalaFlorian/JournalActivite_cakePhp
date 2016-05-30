@@ -1,5 +1,6 @@
 <?php
     echo $this->element('sidebarChercheur');
+    echo $this->Html->css('main_custom');
 ?>
 <h3 class="center"><?php echo $dispositif['NomDispositif']; ?></h3>
 <div class="dispositif form large-12 medium-11 columns content">

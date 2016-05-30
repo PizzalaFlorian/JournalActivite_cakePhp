@@ -1,4 +1,5 @@
 <?php
+    echo $this->Html->css('main_custom');
     if($_SESSION['Auth']['User']['typeUser'] == 'chercheur'){
      echo $this->element('sidebarChercheur');
     }

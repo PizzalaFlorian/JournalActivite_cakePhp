@@ -231,6 +231,8 @@ $(function(){
         $("#paste-menue").hide();
         $("#cp").click(function(e){
             console.log("copier out",event_id);
+            console.log("height",buffer_height);
+            console.log("margin",buffer_margin);
             buffer_event_id = event_id;
             buffer_height =  $('#'+event_id).css('height');
             buffer_margin = $('#'+event_id).css('margin-top');

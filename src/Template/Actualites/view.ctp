@@ -1,5 +1,6 @@
 <?php
     echo $this->element($sideBar);
+    echo $this->Html->css('main_custom');
 ?>
 <div class="actualites view large-9 medium-8 columns content">
     <h3><?= h($actualite->Sujet) ?></h3>

@@ -1,5 +1,6 @@
 <?php
 	echo $this->element('sidebarCandidat');
+    echo $this->Html->css('main_custom');
 ?>
 
 <!-- Content -->

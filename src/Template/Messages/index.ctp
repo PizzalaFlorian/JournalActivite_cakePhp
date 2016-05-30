@@ -1,6 +1,7 @@
 <?php
     echo $this->element($sideBar);
     echo $this->Html->css('messagerie');
+    echo $this->Html->css('main_custom');
 ?>
 <div id="content">
 <nav id="messagerieMenu" class="large-10 medium-10 columns">

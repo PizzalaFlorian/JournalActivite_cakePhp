@@ -1,7 +1,6 @@
-<!-- <?php
-    use Cake\ORM\TableRegistry;
-    echo $this->element('sidebarCandidat');
-?> -->
+<?php
+    echo $this->Html->css('main_custom');
+?>
 <div class="candidat form large-11 medium-12 columns content">
     <?= $this->Form->create($candidat) ?>
     <fieldset>

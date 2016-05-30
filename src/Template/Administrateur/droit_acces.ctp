@@ -1,5 +1,6 @@
 <?php
 	echo $this->element('sidebarAdmin');
+    echo $this->Html->css('main_custom');
 ?>
 
 <div class="actualites index large-12 medium-11 columns content">

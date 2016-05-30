@@ -1,6 +1,7 @@
 <?php
     use Cake\ORM\TableRegistry;
     echo $this->element('sidebarChercheur');
+    echo $this->Html->css('main_custom');
     $liste_categorie = TableRegistry::get('categorielieu')
             ->find()
             ->toArray();

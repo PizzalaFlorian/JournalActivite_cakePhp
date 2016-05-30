@@ -1,3 +1,7 @@
+<?php
+    echo $this->Html->css('main_custom');
+?>
+
 <div class="chercheur form large-11 medium-12 columns content">
     <?= $this->Form->create($chercheur) ?>
     <fieldset>
