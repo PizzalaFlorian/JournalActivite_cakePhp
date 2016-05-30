@@ -40,6 +40,11 @@ class CategorielieuController extends AppController
      */
     public function view($id = null)
     {
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+        
         $categorielieu = $this->Categorielieu->get($id, [
             'contain' => []
         ]);
