@@ -233,13 +233,17 @@ class MessagesController extends AppController
                 if($message->IDRecepteur == 1){
 // ========================== Modif mail =============================//
                     //ce morceau marche mais pour des raison remplissage de mail je le coupe x)
-
-
-                $email = new Email('default');
-                $email
-                    ->to('pierre.garnesson@gmail.com')
-                    ->subject($message->Sujet)
-                    ->send($message->ContenuMessage);
+                    $this->loadModel('Users');
+                    
+                    require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "messagerie" . DS ."messagerie.php");
+                    $chercheurs = $this->paginate($this->Users->find('all', ['conditions' => ['typeUser' => 'chercheur'] ]));
+                    foreach($chercheurs as $chercheur){
+                        $email = new Email('default');
+                        $email
+                            ->to($chercheur->email)
+                            ->subject($message->Sujet)
+                            ->send(message($message->ContenuMessage,$message->IDExpediteur));
+                    }
                 }
 
 
