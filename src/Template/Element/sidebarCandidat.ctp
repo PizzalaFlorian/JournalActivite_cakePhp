@@ -92,20 +92,19 @@
         ); 
     ?> 
 </li>
-
 <li> 
     <?php 
         echo $this->Html->link(
-            'Deconnexion',
-            ['controller' => 'users', 'action' => 'logout', '_full' => true]
+            'Supprimer mon compte',
+            ['controller' => 'users', 'action' => 'suppressioncompte', '_full' => true]
         ); 
     ?> 
 </li>
 <li> 
     <?php 
         echo $this->Html->link(
-            'Supprimer mon compte',
-            ['controller' => 'users', 'action' => 'suppressioncompte', '_full' => true]
+            'Deconnexion',
+            ['controller' => 'users', 'action' => 'logout', '_full' => true]
         ); 
     ?> 
 </li>

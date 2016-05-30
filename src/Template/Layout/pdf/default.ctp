@@ -19,6 +19,12 @@
     $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
     $pdf->SetFooterMargin(5);
  
+//test img
+
+        $img_file = APP . 'webroot/img/logo-uga.png';
+        $TCPDF->Image($img_file, 0, 0, 225, 305, '', '', '', false, 300, '', false, false, 0);
+
+
 // On indique que le dépassement d'une page entraine automatiquement la création d'un saut de page et d'une nouvelle page
     $pdf->SetAutoPageBreak(TRUE, 5);
  

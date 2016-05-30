@@ -11,6 +11,6 @@
             echo $this->Form->input('Code Etudiant',['required'=>'true']);
         ?>
         </fieldset>
-    	<?= $this->Form->button(__('Submit')) ?>
+    	<?= $this->Form->button(__('Générer mon certificat')) ?>
     	<?= $this->Form->end() ?>
 </div>
