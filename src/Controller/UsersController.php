@@ -411,7 +411,7 @@ class UsersController extends AppController
                         if($error){ 
                             // Si une erreur est survenue, on renvoie vers le contact de l'administrateur
                             $this->Flash->error(__('Une erreur est survenue, veuillez contacter l\'administrateur'));
-                            echo "je stop la";
+                            //echo "je stop la";
                         }
                         else{
                             // Si aucune erreur, on passe à la suppression du compte

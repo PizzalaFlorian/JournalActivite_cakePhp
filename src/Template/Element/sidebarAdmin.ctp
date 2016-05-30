@@ -64,7 +64,7 @@
     <?php 
         echo $this->Html->link(
             'Configuration Messagerie',
-            ['controller' => 'administrateur', 'action' => 'GestionDonnees', '_full' => true]
+            ['controller' => 'administrateur', 'action' => 'Messagerie', '_full' => true]
         ); 
     ?> 
 </li>

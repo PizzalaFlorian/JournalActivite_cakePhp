@@ -584,4 +584,12 @@ class AdministrateurController extends AppController
             $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
         $this->viewBuilder()->layout('adminLayout');
     }
+
+    public function messagerie(){
+                
+        $this->viewBuilder()->layout('adminLayout');
+        $test = "test";
+        $this->set(compact('test'));
+        $this->set('_serialize', ['test']);
+    }
 }
