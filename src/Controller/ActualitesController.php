@@ -63,18 +63,6 @@ class ActualitesController extends AppController
     }
 
     /**
-     * Add method
-     *
-     * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
-     */
-    public function add()
-    {
-        // ============== //
-        // A suppr : on utilise nouveau pour creer des actualité
-        // ============== //
-    }
-
-    /**
      * Edit method
      *
      * @param string|null $id Actualite id.
@@ -149,10 +137,15 @@ class ActualitesController extends AppController
         }
 
     }
+
+    /**
+     * [nouveau Creer une nouvelle actualitée. Fonction Administrateur]
+     * @return [type] [description]
+     */
     public function nouveau(){
         if(($_SESSION['Auth']['User']['typeUser'] == 'chercheur') || ($_SESSION['Auth']['User']['typeUser'] =='admin')){
             switch ($_SESSION['Auth']['User']['typeUser']) {
-                case 'chercheur':       $monController = "chercheur";        $monAction="accueil";                 break;
+                case 'chercheur':       $monController = "";        $monAction="";                 break;
                 case 'candidat':        $monController = "candidat";         $monAction="accueil";                 break;
                 case 'admin':           $monController = "";                 $monAction="";                        break;
             }
