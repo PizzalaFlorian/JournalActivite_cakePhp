@@ -19,12 +19,6 @@
     $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
     $pdf->SetFooterMargin(5);
  
-//test img
-
-        $img_file = APP . 'webroot/img/logo-uga.png';
-        $TCPDF->Image($img_file, 0, 0, 225, 305, '', '', '', false, 300, '', false, false, 0);
-
-
 // On indique que le dépassement d'une page entraine automatiquement la création d'un saut de page et d'une nouvelle page
     $pdf->SetAutoPageBreak(TRUE, 5);
  
@@ -35,6 +29,46 @@
     $pdf->setColor('text', 0, 0, 0);
 // On ajoute une page
     $pdf->AddPage();
+    $pdf->Image(ROOT.'/webroot/img/logo-uga.png',
+    $x = 10,
+    $y = 10,
+    $w = 30,
+    $h = 15,
+    $type = '',
+    $link = '',
+    $align = '',
+    $resize = false,
+    $dpi = 300,
+    $palign = '',
+    $ismask = false,
+    $imgmask = false,
+    $border = 0,
+    $fitbox = false,
+    $hidden = false,
+    $fitonpage = false,
+    $alt = false,
+    $altimgs = array() 
+    );
+    $pdf->Image(ROOT.'/webroot/img/logo-LSE.jpg',
+    $x = 180,
+    $y = 10,
+    $w = 20,
+    $h = 20,
+    $type = '',
+    $link = '',
+    $align = '',
+    $resize = false,
+    $dpi = 300,
+    $palign = '',
+    $ismask = false,
+    $imgmask = false,
+    $border = 0,
+    $fitbox = false,
+    $hidden = false,
+    $fitonpage = false,
+    $alt = false,
+    $altimgs = array() 
+    );
 // voilà l'astuce, on récupère la vue HTML créée par CakePHP pour alimenter notre fichier PDF
     $pdf->writeHTML($this->fetch('content'), TRUE, FALSE, TRUE, FALSE, '');
 // on ferme la page

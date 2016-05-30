@@ -54,6 +54,9 @@ class CandidatController extends AppController
 
     }
 
+    public function geneCode($string = null){
+        echo '<img src="'.ROOT .DS. "vendor" . DS  . "functionperso" . DS . "CodeBarre" . DS ."codebarre.inc.php".'?string='.$string.'"/>';
+    }
     public function certificat($id=null){
         if($_SESSION['Auth']['User']['typeUser'] == 'admin')
             $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
