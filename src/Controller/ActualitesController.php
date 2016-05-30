@@ -139,15 +139,15 @@ class ActualitesController extends AppController
     }
 
     /**
-     * [nouveau Creer une nouvelle actualitée. Fonction Administrateur]
+     * [nouveau Creer une nouvelle actualitée. Fonction Chercheur & Administrateur]
      * @return [type] [description]
      */
     public function nouveau(){
         if(($_SESSION['Auth']['User']['typeUser'] == 'chercheur') || ($_SESSION['Auth']['User']['typeUser'] =='admin')){
             switch ($_SESSION['Auth']['User']['typeUser']) {
                 case 'chercheur':       $monController = "chercheur";        $monAction="accueil";                 break;
-                case 'candidat':        $monController = "candidat";         $monAction="accueil";                 break;
-                case 'admin':           $monController = "";                 $monAction="";                        break;
+                case 'candidat':        $monController = "";         $monAction="";                 break;
+                case 'admin':           $monController = "Administrateur";                 $monAction="acceuil";                        break;
             }
             $actualite = $this->Actualites->newEntity();
             if ($this->request->is('post')) {
