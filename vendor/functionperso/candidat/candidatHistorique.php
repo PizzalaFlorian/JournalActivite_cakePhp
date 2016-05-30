@@ -30,6 +30,14 @@ function afficher_temps($temps){
 	return $res;
 }
 
+
+function afficher_temps_f($temps){
+	$tmp = explode(":", $temps);
+	$h = $tmp[0];
+	$m = $tmp[1];
+	return "$h"."h $m"."m";
+}
+
 function duree_totale($CodeCandidat){
 	$data = TableRegistry::get('occupation')
             ->find()
@@ -69,7 +77,8 @@ function stat_all_activite($CodeCandidat,$dure_total){
     foreach ($table as $data) {
     	$dure = $data['temps'];
 		$nom =  $data['NomActivite'];
-		echo "$dure : $nom <br/>";
+		$temps_formate = afficher_temps_f($dure);
+		echo "$temps_formate : $nom <br/>";
     }
     
 }
@@ -102,8 +111,40 @@ function stat_jour_activite($jour,$CodeCandidat,$dure_total){
     foreach ($table as $data) {
     	$dure = $data['temps'];
 		$nom =  $data['NomActivite'];
-		echo "$dure : $nom <br/>";
+		$temps_formate = afficher_temps_f($dure);
+		echo "$temps_formate : $nom <br/>";
     }
+	$table2 = TableRegistry::get('occupation')
+	            ->find()
+	            ->select(array(
+	            	'dure' => 'SUM(TIME_TO_SEC(TIMEDIFF(occupation.HeureFin,occupation.HeureDebut)))',
+	            	'temps'=>'SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(occupation.HeureFin,occupation.HeureDebut))))'
+	            	)
+	            )
+				->where(['CodeCandidat' => $CodeCandidat,
+	            		 'DATE(HeureDebut)' => $jour
+	            ])
+				->toArray();
+	$total = $table2[0]['dure'];
+	if ($table2[0]['dure'] < 86330) {
+		temps_inoccupe(86400 - $table2[0]['dure']);
+	}
+	
+}
+
+/*Fonction pour retourner le temps inocupé*/
+function temps_inoccupe($dure){
+	$heure = (int)($dure / 3600);
+	$reste = $dure % 3600;
+	$minute = (int)($reste / 60);
+	$seconde = $reste % 60;
+	if ($minute < 10)
+		$minute = "0$minute";
+	if ($seconde < 10)
+		$seconde = "0$seconde";
+	if ($heure < 10)
+		$heure = "0$heure";
+	echo "$heure"."h $minute"."m : Non renseigné";
 }
 
 
@@ -144,7 +185,6 @@ $(document).ready(function(){
             name: 'Temps',
             data: [
 		<?php
-
 			$table = TableRegistry::get('occupation')
 	            ->find()
 	            ->select(array(
@@ -167,19 +207,39 @@ $(document).ready(function(){
 	            ->order(['dure'=>'DESC'])
 	            ->toArray();
 	    //debug($table);
-
+		$table2 = TableRegistry::get('occupation')
+	            ->find()
+	            ->select(array(
+	            	'dure' => 'SUM(TIME_TO_SEC(TIMEDIFF(occupation.HeureFin,occupation.HeureDebut)))',
+	            	'temps'=>'SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(occupation.HeureFin,occupation.HeureDebut))))'
+	            	)
+	            )
+				->where(['CodeCandidat' => $CodeCandidat,
+	            		 'DATE(HeureDebut)' => $jour
+	            ])
+				->toArray();
+		$nonrenseigne = 86400 - $table2[0]['dure'];
 		$i =0;
+		$autre = 0;
 		foreach ($table as $data) {
 	    	$dure = $data['dure'];
 			$nom =  $data['NomActivite'];
 			if ($i == 0)
 				echo "{ name: '".$nom."',y: ".$dure."}\n";
 			elseif ($i == 1)
-				echo ",{ name: '".$nom.".',y: ".$dure.", sliced: true, selected : true}\n";
-			else
+				echo ",{ name: '".$nom."',y: ".$dure.", sliced: true, selected : true}\n";
+			elseif ($i < 8)
 				echo ",{ name: '".$nom."',y: ".$dure."}\n";
+			else 
+				$autre+= $dure;
 			$i++;
 	    }
+		if ($autre > 0)
+			echo  ",{ name: 'Autre',y: ".$autre."}\n";
+		if ($table2[0]['dure'] < 86330) {
+			echo ",{ name: 'NON RENSEIGNE',y: ". $nonrenseigne ." }";
+		}
+		
 		?>	
             ]
         }]
@@ -243,7 +303,6 @@ $(document).ready(function(){
             name: 'Temps',
             data: [
 		<?php
-
 			$table = TableRegistry::get('occupation')
 	            ->find()
 	            ->select(array(
@@ -266,6 +325,7 @@ $(document).ready(function(){
 	            ->order(['dure'=>'DESC'])
 	            ->toArray();	
 			$i = 0; 
+			$autre = 0;
 			foreach($table as $data){
 				$dure = $data['dure'];
 				$nom =  $data['NomActivite'];
@@ -273,10 +333,14 @@ $(document).ready(function(){
 					echo "{ name: '$nom',y: $dure}\n";
 				elseif ($i == 1)
 					echo ",{ name: '$nom',y: $dure, sliced: true, selected : true}\n";
-				else
+				elseif ($i < 8)
 					echo ",{ name: '$nom',y: $dure}\n";
+				else 
+					$autre += $dure;
 				$i++;
 			}
+			if ($autre > 0)
+				echo ",{ name: 'Autre',y: $autre}";
 		?>	
             ]
         }]
@@ -314,7 +378,8 @@ function stat_all_compagnie($CodeCandidat,$dure_total){
     foreach ($table as $data) {
     	$dure = $data['temps'];
 		$nom =  $data['NomCompagnie'];
-		echo "$dure : $nom <br/>";
+		$temps_formate = afficher_temps_f($dure);
+		echo "$temps_formate : $nom <br/>";
     }
 }
 
@@ -348,7 +413,8 @@ function stat_jour_compagnie($jour,$CodeCandidat,$dure_total){
     foreach ($table as $data) {
     	$dure = $data['temps'];
 		$nom =  $data['NomCompagnie'];
-		echo "$dure : $nom <br/>";
+		$temps_formate = afficher_temps_f($dure);
+		echo "$temps_formate : $nom <br/>";
     }
 }
 
@@ -543,7 +609,8 @@ function stat_all_dispositif($CodeCandidat,$dure_total){
     foreach ($table as $data) {
     	$dure = $data['temps'];
 		$nom =  $data['NomDispositif'];
-		echo "$dure : $nom <br/>";
+		$temps_formate = afficher_temps_f($dure);
+		echo "$temps_formate : $nom <br/>";
     }
 }
 
@@ -577,7 +644,8 @@ function stat_jour_dispositif($jour,$CodeCandidat,$dure_total){
 			foreach ($table as $data) {
 				$dure = $data['temps'];
 				$nom =  $data['NomDispositif'];
-				echo "$dure : $nom <br/>";
+				$temps_formate = afficher_temps_f($dure);
+				echo "$temps_formate : $nom <br/>";
 			}
 }
 
@@ -768,7 +836,8 @@ function stat_all_lieu($CodeCandidat,$dure_total){
     foreach ($table as $data) {
     	$dure = $data['temps'];
 		$nom =  $data['NomLieux'];
-		echo "$dure : $nom <br/>";
+		$temps_formate = afficher_temps_f($dure);
+		echo "$temps_formate : $nom <br/>";
     }
 }
 
@@ -826,7 +895,8 @@ function stat_jour_lieu($jour,$CodeCandidat,$dure_total){
 			foreach ($table as $data) {
 				$dure = $data['temps'];
 				$nom =  $data['NomLieux'];
-				echo "$dure : $nom <br/>";
+				$temps_formate = afficher_temps_f($dure);
+				echo "$temps_formate : $nom <br/>";
 			}
 }
 
