@@ -7,11 +7,12 @@
     <?= $this->Form->create($liste) ?>
     <fieldset>
         <legend><?= __('Inviter une liste de Candidat') ?></legend>
+        <p>Veuillez entrer une liste d'email de candidat séparé par des points virgules ";"</p>
         <?php
             echo $this->Form->input('liste email',['type'=>'textarea']);
         ?>
     </fieldset>
-    <?= $this->Html->link(__('Retour'), ['action' => 'index'],['class'=>'button']) ?>
+    <?= $this->Html->link(__('Retour'), ['controller'=>'users','action' => 'index'],['class'=>'button']) ?>
     <?= $this->Form->button(__('Inviter')) ?>
     <?= $this->Form->end() ?>
     <br>

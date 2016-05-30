@@ -15,7 +15,12 @@ use Cake\Filesystem\File;
  */
 class AdministrateurController extends AppController
 {
-    	
+    /**
+     * [gestionDonnees page de gestion des données. Propose a l'administrateur de pouvoir vider la base des candidats,
+     * et celle des occupations.]
+     * @accès Administrateur
+     * @return [aucun]
+     */
 	public function gestionDonnees(){
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
             $this->redirect(['controller'=>'candidat','action' => 'accueil']);
@@ -25,6 +30,12 @@ class AdministrateurController extends AppController
         $this->viewBuilder()->layout('adminLayout');
     }
 	
+    /**
+     * [butExperience Page d'edition d'un fichier texte expliquant le but de l'expérience.]
+     * @accès Administrateur
+     * @file [webroot/files/but_experience.ctp]
+     * @return [aucun]
+     */
     public function butExperience(){
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
             $this->redirect(['controller'=>'candidat','action' => 'accueil']);
@@ -43,6 +54,13 @@ class AdministrateurController extends AppController
 
     }
 
+    /**
+     * [emailCandidat Page de modification du corp de l'email envoyer a un étudiant lors de son 
+     * inscription sur le site .]
+     * @Accès Administrateur
+     * @file [/webroot/files/email_auto_candidat.ctp]
+     * @return [aucun]
+     */
     public function emailCandidat(){
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
             $this->redirect(['controller'=>'candidat','action' => 'accueil']);
@@ -61,6 +79,14 @@ class AdministrateurController extends AppController
 
     }
 
+
+    /**
+     * [emailChercheur Page de modification du corp du message afficher dans l'email envoyer au chercheur lors
+     * de son inscription sur le site web. ATTENTION seul un administrateur peu réalisé cette inscription.]
+     * @accès Administrateur
+     * @file [webroot/files/email_auto_chercheur.ctp]
+     * @return [aucun]
+     */
     public function emailChercheur(){
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
             $this->redirect(['controller'=>'candidat','action' => 'accueil']);
@@ -79,6 +105,12 @@ class AdministrateurController extends AppController
 
     }
 
+    /**
+     * [siteweb Page regroupant les liens vers toutes les fonctions permettant de personnaliser les différents écrans
+     * et messages délivrés par le site web. Fonction administrateur]
+     * @accès Administrateur
+     * @return [aucun]
+     */
     public function siteweb(){
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
             $this->redirect(['controller'=>'candidat','action' => 'accueil']);
@@ -88,6 +120,14 @@ class AdministrateurController extends AppController
          $this->viewBuilder()->layout('adminLayout');
     }
 
+
+    /**
+     * [createChercheur Creer un user de type chercheur, creer un login et mot de passe par défault de manière aléatoire,
+     * et envoie ces information par email au chercheur.
+     * Cette page demande un email valide pour fonctionner. Le chercheur a sa première connection complètera son profil en remplissant et créant son profil chercheur.]
+     * @accès Administrateur
+     * @return [redirection] [Redirection sur users index]
+     */
     public function createChercheur(){
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
             $this->redirect(['controller'=>'candidat','action' => 'accueil']);
@@ -143,6 +183,12 @@ class AdministrateurController extends AppController
 
     }
 
+    /**
+     * [createCandidat page de creation d'un compte user de type candidat. Invitation et envoie des logins et mot de
+     * passe généré aléatoirement par email.]
+     * @accès Administrateur
+     * @return [aucun]
+     */
     public function createCandidat(){
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
             $this->redirect(['controller'=>'candidat','action' => 'accueil']);
@@ -197,6 +243,12 @@ class AdministrateurController extends AppController
 
     }
 
+    /**
+     * [createCandidatList Page permettant la création et l'invitation d'une liste de candidat. La fonction demande de poster un ensemble d'adresse email séparer par des points virgule. A chaque adresse un compte utilisateur de type 
+     * candidat sera creer et une invitation sera envoyer a l'email du candidat, contenant son login et mot de passe.]
+     * @accès Administrateur
+     * @return [Redirection] [redirection vers user index]
+     */
     public function createCandidatList(){
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
             $this->redirect(['controller'=>'candidat','action' => 'accueil']);
@@ -259,6 +311,11 @@ class AdministrateurController extends AppController
 
     }
 
+
+    /**
+     * [accueil description]
+     * @return [type] [description]
+     */
     public function accueil(){
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
             $this->redirect(['controller'=>'candidat','action' => 'accueil']);

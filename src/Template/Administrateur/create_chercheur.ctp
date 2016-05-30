@@ -14,7 +14,7 @@
             echo $this->Form->input('email');
         ?>
     </fieldset>
-    <?= $this->Html->link(__('Retour'), ['action' => 'index'],['class'=>'button']) ?>
+    <?= $this->Html->link(__('Retour'), ['controller'=>'users','action' => 'index'],['class'=>'button']) ?>
     <?= $this->Form->button(__('Inviter')) ?>
     <?= $this->Form->end() ?>
     <br>
