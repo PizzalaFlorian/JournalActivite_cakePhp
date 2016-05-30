@@ -10,6 +10,7 @@
     echo $this->Html->script('timeline');
     echo $this->Html->script('skel.min');
     echo $this->Html->script('util');
+	echo $this->Html->css('timeline');
 
     $candidat = TableRegistry::get('candidat')
             ->find()
