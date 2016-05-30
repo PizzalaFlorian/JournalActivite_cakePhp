@@ -145,7 +145,7 @@ class ActualitesController extends AppController
     public function nouveau(){
         if(($_SESSION['Auth']['User']['typeUser'] == 'chercheur') || ($_SESSION['Auth']['User']['typeUser'] =='admin')){
             switch ($_SESSION['Auth']['User']['typeUser']) {
-                case 'chercheur':       $monController = "";        $monAction="";                 break;
+                case 'chercheur':       $monController = "chercheur";        $monAction="accueil";                 break;
                 case 'candidat':        $monController = "candidat";         $monAction="accueil";                 break;
                 case 'admin':           $monController = "";                 $monAction="";                        break;
             }
