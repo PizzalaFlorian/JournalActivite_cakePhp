@@ -115,7 +115,7 @@ class ActualitesController extends AppController
     public function delete($id = null)
     {
         switch ($_SESSION['Auth']['User']['typeUser']) {
-            case 'chercheur':       $monController = "chercheur";        $monAction="accueil";                 break;
+            case 'chercheur':       $monController = "";        $monAction="";                 break;
             case 'candidat':        $monController = "candidat";         $monAction="accueil";                 break;
             case 'admin':           $monController = "";                 $monAction="";                        break;
         }
