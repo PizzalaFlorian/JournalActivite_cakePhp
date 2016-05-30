@@ -313,8 +313,9 @@ class AdministrateurController extends AppController
 
 
     /**
-     * [accueil description]
-     * @return [type] [description]
+     * [accueil Page d'acceil des administrateur]
+     * @accès Administrateur
+     * @return [Aucun]
      */
     public function accueil(){
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
@@ -333,7 +334,7 @@ class AdministrateurController extends AppController
         $this->set('_serialize', ['actualites']);
     }
     /**
-     * Index method
+     * Index method [liste des admin du site]
      *
      * @return \Cake\Network\Response|null
      */
@@ -353,31 +354,9 @@ class AdministrateurController extends AppController
     }
 
     /**
-     * View method
-     *
-     * @param string|null $id Administrateur id.
-     * @return \Cake\Network\Response|null
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function view($id = null)
-    {
-        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
-            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
-        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
-            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
-
-         $this->viewBuilder()->layout('adminLayout');
-
-        $administrateur = $this->Administrateur->get($id, [
-            'contain' => []
-        ]);
-
-        $this->set('administrateur', $administrateur);
-        $this->set('_serialize', ['administrateur']);
-    }
-
-    /**
-     * Add method
+     * Add method [invite un adminsitrateur en creer un user de type administrateur et l'administrateur liée.
+     * Les identifiants sont envoyer a l'email renseigné]
+     * @accès Administrateur
      *
      * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
      */
@@ -453,40 +432,8 @@ class AdministrateurController extends AppController
     }
 
     /**
-     * Edit method
-     *
-     * @param string|null $id Administrateur id.
-     * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function edit($id = null)
-    {
-        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
-            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
-        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
-            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
-
-         $this->viewBuilder()->layout('adminLayout');
-
-        $administrateur = $this->Administrateur->get($id, [
-            'contain' => []
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $administrateur = $this->Administrateur->patchEntity($administrateur, $this->request->data);
-            if ($this->Administrateur->save($administrateur)) {
-                $this->Flash->success(__('La modification a été enregistrée.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('Erreur lors de l\'enregistrement de la modification.'));
-            }
-        }
-        $this->set(compact('administrateur'));
-        $this->set('_serialize', ['administrateur']);
-    }
-
-    /**
      * Delete method
-     *
+     * @accès Administrateur
      * @param string|null $id Administrateur id.
      * @return \Cake\Network\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
@@ -516,6 +463,13 @@ class AdministrateurController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
+
+    /**
+     * [droitopposition Page de modification du message récapitulant les droits d'opposition du candidat]
+     * @accès Administrateur
+     * @file [webroot/files/message_suppression_données_utilisateur.ctp]
+     * @return [Aucun]
+     */
     public function droitopposition(){
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
             $this->redirect(['controller'=>'candidat','action' => 'accueil']);
@@ -533,6 +487,14 @@ class AdministrateurController extends AppController
         }
 
     }
+
+
+    /**
+     * [droitAcces Page de modification du message récapitulant les droits d'accès a l'information du candidat]
+     * @accès Administrateur
+     * @file [webroot/files/message_collecte_données_utilisateur.ctp]
+     * @return [Aucun]
+     */
     public function droitAcces(){
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
             $this->redirect(['controller'=>'candidat','action' => 'accueil']);
@@ -551,6 +513,13 @@ class AdministrateurController extends AppController
 
     }
 
+
+    /**
+     * [supprOccupation Fonction permettant de supprimer l'intégralitée des occupations de la base de donnée]
+     * @accès Administrateur
+     * @warning [long a s'executer] 
+     * @return [Redirection] [redirection administrateur gestionDonnee]
+     */
 	public function supprOccupation(){
             if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
             $this->redirect(['controller'=>'candidat','action' => 'accueil']);
@@ -572,6 +541,13 @@ class AdministrateurController extends AppController
 			}
 	}
 	
+
+    /**
+     * [supprCandidat Fonction permettant de supprimer tout les candidats présent dans la base de donnée]
+     * @accès Administrateur
+     * @warning [long a s'executer] 
+     * @return [Redirection] [redirection administrateur gestionDonnee]
+     */
 	public function supprCandidat(){
          if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
             $this->redirect(['controller'=>'candidat','action' => 'accueil']);
@@ -633,6 +609,12 @@ class AdministrateurController extends AppController
 		$this->redirect(['controller'=>'administrateur','action' => 'gestionDonnees']);
 	}
 
+
+    /**
+     * [aide Page d'aide en ligne sur l'utilisation du site web pour l'administrateur]
+     * @accès Administrateur
+     * @return [type] [description]
+     */
     public function aide()
     {
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
