@@ -176,7 +176,7 @@ class MessagesController extends AppController
             $operationInterdite = "false";
             $message->IDRecepteur = 0;
             if ($this->Messages->save($message)) {
-               $this->Flash->success(__('Le message à bien été supprimé.'));
+                $this->Flash->success(__('Le message à bien été supprimé.'));
                 //return $this->redirect(['action' => '']);
             } else {
                 $this->Flash->error(__('Erreur: Le message n\'a pas pu être supprimer, veuillez réessayer.'));
@@ -234,7 +234,7 @@ class MessagesController extends AppController
 // ========================== Modif mail =============================//
                     //ce morceau marche mais pour des raison remplissage de mail je le coupe x)
                     $this->loadModel('Users');
-                    
+
                     require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "messagerie" . DS ."messagerie.php");
                     $chercheurs = $this->paginate($this->Users->find('all', ['conditions' => ['typeUser' => 'chercheur'] ]));
                     foreach($chercheurs as $chercheur){

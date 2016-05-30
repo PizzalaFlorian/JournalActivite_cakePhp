@@ -233,6 +233,33 @@ class UsersController extends AppController
         }
         if ($this->Users->delete($user)) {
             $this->Flash->success(__('L\'utilisateur as été supprimer.'));
+            //suppression des messages de l'utilisateur
+            $this->loadModel('Messages');
+            $messages = $this->Messages->find('all', ['conditions' => ['Messages.IDExpediteur' => $user->ID]]);
+            foreach ($messages as $message) {
+                $message->IDExpediteur = 0;             // Le messages est considéré comme supprimer
+                $message->userExpediteur = 4;           // Categorie : Utilisateur Supprimer
+                if($message->IDRecepteur == 0 ){
+                    $this->Messages->delete($message);  // Supprime le message si il faut le supprimer
+                }
+                else{
+                    $this->Messages->save($message);    // mets a jours les messages
+                }
+            }
+            $messages = $this->Messages->find('all', ['conditions' => ['Messages.IDRecepteur' => $user->ID]]);
+            foreach ($messages as $message) {
+                $message->IDRecepteur = 0;              // Le messages est considéré comme supprimer
+                $message->userRecepteur = 4;            // Categorie : Utilisateur Supprimer
+                if($message->IDExpediteur == 0 ){
+                    $this->Messages->delete($message);  // Supprime le message si il faut le supprimer
+                }
+                else{
+                    $this->Messages->save($message);    // mets a jours les messages
+                }
+            }
+
+
+
         } else {
             $this->Flash->error(__('Erreur lors de la suppression.'));
         }
