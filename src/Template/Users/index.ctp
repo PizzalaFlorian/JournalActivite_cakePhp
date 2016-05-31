@@ -2,12 +2,13 @@
     echo $this->element('sidebarAdmin');
     echo $this->Html->css('main_custom');
 ?>
-<div class="users index large-11 medium-12 columns content">
+<div class="users index large-12 medium-12 columns content">
     <h3 class="center"><?= __('Table des Utilisateurs') ?></h3>
     <?php
         echo $this->Html->link(__('Inviter un Candidat'), ['controller'=>'administrateur','action' => 'createCandidat'],['class'=>'button']).' ';
         echo $this->Html->link(__('Inviter une liste de Candidats'), ['controller'=>'administrateur','action' => 'createCandidatList'],['class'=>'button']).' ';
-        echo $this->Html->link(__('Inviter un Chercheur'), ['controller'=>'administrateur','action' => 'createChercheur'],['class'=>'button']); 
+        echo $this->Html->link(__('Inviter un Chercheur'), ['controller'=>'administrateur','action' => 'createChercheur'],['class'=>'button']).' '; 
+        echo $this->Html->link(__('Inviter un Administrateur'), ['controller'=>'administrateur','action' => 'add'],['class'=>'button']);
     ?>
     <table cellpadding="0" cellspacing="0">
         <thead>

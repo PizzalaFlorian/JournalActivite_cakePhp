@@ -5,7 +5,7 @@
 ?>
 <div class="administrateur index large-12 medium-11 columns content">
     <h3 class="center"><?= __('Table des Administrateurs') ?></h3>
-    <?= $this->Html->link(__('Inviter un nouvel administrateur'), ['action' => 'add'],['class'=>'button']) ?>
+    <?= $this->Html->link(__('Inviter un Administrateur'), ['action' => 'add'],['class'=>'button']) ?>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>

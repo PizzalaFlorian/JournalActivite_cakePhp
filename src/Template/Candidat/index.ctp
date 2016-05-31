@@ -4,6 +4,10 @@
 ?>
 <div class="candidat index large-11 medium-12 columns content">
     <h3 class="center"><?= __('Table des Candidats') ?></h3>
+    <?php
+        echo $this->Html->link(__('Inviter un Candidat'), ['controller'=>'administrateur','action' => 'createCandidat'],['class'=>'button']).' ';
+        echo $this->Html->link(__('Inviter une liste de Candidats'), ['controller'=>'administrateur','action' => 'createCandidatList'],['class'=>'button']).' ';
+    ?>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
