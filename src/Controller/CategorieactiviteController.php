@@ -14,7 +14,7 @@ class CategorieactiviteController extends AppController
 
     /**
      * Index method
-     *
+     * @Accès Chercheur
      * @return \Cake\Network\Response|null
      */
     public function index()
@@ -32,7 +32,7 @@ class CategorieactiviteController extends AppController
 
     /**
      * View method
-     *
+     * @Accès Chercheur
      * @param string|null $id Categorieactivite id.
      * @return \Cake\Network\Response|null
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
@@ -54,7 +54,7 @@ class CategorieactiviteController extends AppController
 
     /**
      * Add method
-     *
+     * @Accès Chercheur
      * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
      */
     public function add()
@@ -80,7 +80,7 @@ class CategorieactiviteController extends AppController
 
     /**
      * Edit method
-     *
+     * @Accès Chercheur
      * @param string|null $id Categorieactivite id.
      * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
@@ -110,7 +110,7 @@ class CategorieactiviteController extends AppController
 
     /**
      * Delete method
-     *
+     * @Accès Chercheur
      * @param string|null $id Categorieactivite id.
      * @return \Cake\Network\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
@@ -144,6 +144,14 @@ class CategorieactiviteController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
+
+    /**
+     * [reaffect Réaafectation des données de de la catégorie passer en $id dans la catégorie passer dans le post]7
+     * @Accès Chercheur
+     * @param  [int] $id [ancien code catégorie]
+     * @post [int] $this->request->data['CodeCategorieActivite'] [Code de la nouvelle catégorie]
+     * @return [Redirection]     [Redirection vers Categorie]
+     */
      public function reaffect($id = null)
     {
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
@@ -171,13 +179,19 @@ class CategorieactiviteController extends AppController
                 ->execute();
 
             $this->Flash->success(__('Les occupations ont été réaffectées'));
-            $this->redirect(['action' => 'index']);
+            return $this->redirect(['action' => 'index']);
         }
         $this->set('categorieactivite', $categorieactivite);
         $this->set('list_categorie', $list_categorie);
         $this->set('_serialize', ['categorieactivite']);    
     }
 
+    /**
+     * [deleteAll Supprime l'intégralité des activités qui possède la code activitée passer en $POST]
+     * @param  [int] $id [Inutulisé]
+     * @post [int] $this->request->data['CodeCategorieActivite'] [Code de la nouvelle catégorie]
+     * @return [Redirection]     [Redirection vers Categorie]
+     */
     public function deleteAll($id = null)
     {
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
@@ -204,7 +218,7 @@ class CategorieactiviteController extends AppController
                 ->execute();
 
             $this->Flash->success(__('la catégorie et Les activitées ont été supprimées'));
-            $this->redirect(['action' => 'index']);
+            return $this->redirect(['action' => 'index']);
         }
 
         $this->set('categorieactivite', $categorieactivite);

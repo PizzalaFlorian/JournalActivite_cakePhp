@@ -63,7 +63,7 @@
 <li> 
     <?php 
         echo $this->Html->link(
-            'Table Categories Activitées',
+            'Table Categories Activités',
             ['controller' => 'categorieactivite', 'action' => 'index', '_full' => true]
         ); 
     ?> 

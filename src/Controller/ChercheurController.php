@@ -23,7 +23,11 @@ class ChercheurController extends AppController
 {
 
 
-
+    /**
+     * [accueil Page d'accueil des chercheur]
+     * @accès chercheur
+     * @return [aucun]
+     */
     public function accueil(){
 
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
@@ -41,6 +45,10 @@ class ChercheurController extends AppController
         $this->set('_serialize', ['actualites']);
     }
 
+    /**
+     * [aide Page d'aide en ligne pour les chercheur]
+     * @return [aucun]
+     */
     public function aide(){
 
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
@@ -51,31 +59,6 @@ class ChercheurController extends AppController
          $this->viewBuilder()->layout('cherLayout');
     }
 
-    public function carnetDeBord(){
-
-        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
-            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
-        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
-            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
-
-         $this->viewBuilder()->layout('cherLayout');
-    }
-
-    public function tables(){
-
-        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
-            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
-        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
-            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
-
-        $this->viewBuilder()->layout('cherLayout');
-        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "chercheur" . DS ."chercheurTables.php");
-        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "activite" . DS ."activite.php");
-        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "activite" . DS ."categorieactivite.php");
-        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "dispositif" . DS ."dispositif.php");
-        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "compagnie" . DS ."compagnie.php");
-        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "lieu" . DS ."lieux.php");
-    }
     public function donnees(){
 
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')

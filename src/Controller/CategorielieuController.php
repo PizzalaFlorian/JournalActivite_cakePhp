@@ -14,7 +14,7 @@ class CategorielieuController extends AppController
 
     /**
      * Index method
-     *
+     * @Accès chercheur
      * @return \Cake\Network\Response|null
      */
     public function index()
@@ -33,7 +33,7 @@ class CategorielieuController extends AppController
 
     /**
      * View method
-     *
+     * @Accès chercheur
      * @param string|null $id Categorielieu id.
      * @return \Cake\Network\Response|null
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
@@ -55,7 +55,7 @@ class CategorielieuController extends AppController
 
     /**
      * Add method
-     *
+     * @Accès chercheur
      * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
      */
     public function add()
@@ -82,7 +82,7 @@ class CategorielieuController extends AppController
 
     /**
      * Edit method
-     *
+     * @Accès chercheur
      * @param string|null $id Categorielieu id.
      * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
@@ -113,7 +113,7 @@ class CategorielieuController extends AppController
 
     /**
      * Delete method
-     *
+     * @Accès chercheur
      * @param string|null $id Categorielieu id.
      * @return \Cake\Network\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
@@ -146,7 +146,16 @@ class CategorielieuController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-     public function reaffect($id = null)
+    
+    /**
+     * [reaffect Reaffectation des lieu appartenant a la catatégorie de lieu passer en $id vers la catégorie passer
+     * en $POST]
+     * @Accès Chercheur
+     * @param  [int] $id [Ancienne catégorie]
+     * @post [int] $this->request->data['CodeCategorieLieux'] [Nouvelle catégorie]
+     * @return [Redirection]     [Redirection vers catégorieLieu Index]
+     */
+    public function reaffect($id = null)
     {
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
             $this->redirect(['controller'=>'candidat','action' => 'accueil']);
@@ -171,13 +180,21 @@ class CategorielieuController extends AppController
                 ->execute();
 
             $this->Flash->success(__('Les occupations ont été réaffectées'));
-            $this->redirect(['action' => 'index']);
+            return $this->redirect(['action' => 'index']);
         }
         $this->set('categorielieu', $categorielieu);
         $this->set('list_categorie', $list_categorie);
         $this->set('_serialize', ['categorielieu']);    
     }
 
+
+    /**
+     * [deleteAll Supprime toutes les lieux et les occupation utilisant ces lieux, qui sont liée a la catégorie d'activitée passer en $POST ]
+     * @Accès Chercheur
+     * @param  [int] $id [Inutiliser]
+     * @post [int] $this->request->data['CodeCategorieLieux'] [catégorie a supprimer]
+     * @return [Redirection]     [Redirection vers catégorieLieu Index]
+     */
     public function deleteAll($id = null)
     {
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
@@ -189,9 +206,9 @@ class CategorielieuController extends AppController
         if ($this->request->is(['patch', 'post', 'put','delete'])) {
            // debug($activite['CodeActivite']);
 
-            $activite = TableRegistry::get('activite')
+            $lieu = TableRegistry::get('lieu')
                 ->query();
-            $activite
+            $lieu
                 ->delete()
                 ->where(['CodeCategorieLieux' => $categorielieu['CodeCategorieLieux']])
                 ->execute();

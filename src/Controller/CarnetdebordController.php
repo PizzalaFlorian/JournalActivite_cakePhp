@@ -13,8 +13,8 @@ class CarnetdebordController extends AppController
 {
 
     /**
-     * Index method
-     *
+     * Index method [liste des entrée du carnet de bord]
+     * @Accès chercheur
      * @return \Cake\Network\Response|null
      */
     public function index()
@@ -32,8 +32,8 @@ class CarnetdebordController extends AppController
     }
 
     /**
-     * View method
-     *
+     * View method [Lecture d'une entrée]
+     * @Accès Chercheur.
      * @param string|null $id Carnetdebord id.
      * @return \Cake\Network\Response|null
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
@@ -56,7 +56,7 @@ class CarnetdebordController extends AppController
 
     /**
      * Add method
-     *
+     * @Accès chercheur
      * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
      */
     public function add()
@@ -90,7 +90,7 @@ class CarnetdebordController extends AppController
 
     /**
      * Edit method
-     *
+     * @Accès chercheur
      * @param string|null $id Carnetdebord id.
      * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
@@ -121,7 +121,7 @@ class CarnetdebordController extends AppController
 
     /**
      * Delete method
-     *
+     * @Accès chercheur
      * @param string|null $id Carnetdebord id.
      * @return \Cake\Network\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
