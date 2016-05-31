@@ -625,10 +625,99 @@ class AdministrateurController extends AppController
     }
 
     public function messagerie(){
-                
-        $this->viewBuilder()->layout('adminLayout');
-        $id = $_SESSION['Auth']['User']['email'];
-        $this->set(compact('id'));
+        //$ligne = fgets($fp,255);
+        /*while(($ligne = fgets($fp,255)) != false){
+            
+            if($ligne == "'appli' => [\n"){
+                echo "<br/>hi";
+            }
+            //(fgets($fp,255) != "                'appli' => [")&&(
+        }*/   
+        if($this->request->is('post')){
+            
+            //var_dump($this->request->data);
+            //Récupération des données a enregistrer
+            $port       = $this->request->data['port'];
+            $username   = $this->request->data['username'];
+            $password   = $this->request->data['password'];
+            $host       = $this->request->data['host'];
+            if($this->request->data['secure'] = "tls"){
+                $tls = "true";
+            }
+            else{
+                $tls = "false";
+            }
 
+            $fp = fopen("config/app.php","r"); //lecture
+            $app = "";
+            while(($ligne = fgets($fp,255)) != false)
+            {
+                $app = $app.$ligne;
+                if($ligne == "'appli' => [\n"){
+                    $app = $app.fgets($fp,255);
+                    fgets($fp,255);                 // saut de la lecture de host
+                    fgets($fp,255);                 // saut de la lecture de port
+                    fgets($fp,255);                 // saut de la lecture de username
+                    fgets($fp,255);                 // saut de la lecture de password
+                    $app = $app."\t\t\t\t'host'\t\t=> '$host',\n";
+                    $app = $app."\t\t\t\t'port'\t\t=> $port,\n";
+                    $app = $app."\t\t\t\t'username'\t=> '$username',\n";
+                    $app = $app."\t\t\t\t'password'\t=> '$password',\n";
+                    $app = $app.fgets($fp,255);
+                    $app = $app.fgets($fp,255); 
+                    fgets($fp,255);                 // saut de la lecture de tls
+                    $app = $app."\t\t\t\t'tls'\t\t=> '$tls',\n";
+                }
+            }
+            //var_dump($this->request->data);
+            fclose($fp);
+            // ouverture de config/app en ecriture
+            $fp = fopen("config/app.php","w");
+            fwrite($fp, $app);
+            fclose($fp);
+            $this->redirect(['controller'=>'administrateur','action' => 'messagerie']);
+        }
+
+
+        $fp = fopen("config/app.php","r"); //lecture
+        //parcourt su fichier app.php afin de trouver la partie "SMTP"
+        while((($ligne = fgets($fp,255)) != "'appli' => [\n") && ($ligne  != false))
+        {}
+        // récupération des données concernant le serveur smtp
+        fgets($fp,255);
+        $host       = substr(fgets($fp, 255), 0, -3);
+        //echo fgets($fp, 255);
+        $port       = substr(fgets($fp, 255), 0, -2);
+        $username   = substr(fgets($fp, 255), 0, -3);
+        $password   = substr(fgets($fp, 255), 0, -3);
+        fclose($fp);
+        //mise en forme des données
+        $host = explode('=>',$host);
+        $host = $host[1];
+        $host = str_replace(" '", "", $host);
+
+        $port = explode('=>',$port);
+        $port = $port[1];
+        $port = str_replace("  ", "", $port);       
+
+        $username = explode('=>',$username);
+        $username = $username[1];
+        $username = str_replace(" '", "", $username);  
+
+        $password = explode('=>',$password);
+        $password = $password[1];
+        $password = str_replace(" '", "", $password);  
+        // echo "fin lecture";
+        // echo "<br/>host : ".$host;
+        // echo "<br/>port : ".$port;
+        // echo "<br/>username : ".$username;
+        // echo "<br/>password : ".$password;
+
+        $this->viewBuilder()->layout('adminLayout');
+        //$id = $_SESSION['Auth']['User']['email'];
+        $this->set(compact('host'));
+        $this->set(compact('port'));
+        $this->set(compact('username'));
+        $this->set(compact('password'));
     }
 }
