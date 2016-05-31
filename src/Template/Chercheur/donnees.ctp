@@ -31,12 +31,12 @@
             'Téléchargement des occupations entrées par les candidats',
             ['controller' => 'chercheur', 'action' => 'telechargerDonnees', '_full' => true]
        		 ); 
-       		?> Format: .csv , séparateur: ; <br/>
+       		?> Format: .csv , séparateur: " ; " <br/>
 			<?php echo $this->Html->link(
             'Téléchargement des données des candidats',
             ['controller' => 'chercheur', 'action' => 'telechargerCandidat', '_full' => true]
        		 ); 
-       		?> Format: .csv , séparateur: ; <br/>
+       		?> Format: .csv , séparateur: " ; " <br/>
 			
 			
 			

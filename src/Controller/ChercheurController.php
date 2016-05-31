@@ -59,6 +59,12 @@ class ChercheurController extends AppController
          $this->viewBuilder()->layout('cherLayout');
     }
 
+
+    /**
+     * [donnees Page de visualisation et de téléchargement des données]
+     * @Accès Chercheur
+     * @return [aucun]
+     */
     public function donnees(){
 
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
@@ -75,6 +81,13 @@ class ChercheurController extends AppController
          require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "compagnie" . DS ."compagnie.php");
     }
 
+
+    /**
+     * [telechargerCandidat Fonction de création et de téléchargement d'un fichier csv reprenant les information
+     * anonymisée des candidats]
+     * @Accès chercheur
+     * @return [candidat.csv] [Fichier csv des candidat]
+     */
     public function telechargerCandidat(){
         /*générer un fichier csv avec les données de la table candidat*/
         //créer un fichier
@@ -109,6 +122,12 @@ class ChercheurController extends AppController
         return $this->response;        
     }
 
+    /**
+     * [telechargerCandidatExcel Création d'un fichier candidat et des occupation sous
+     * format excel. Génération dans la template via un pluggin excel]
+     * @accès chercheur
+     * @return [journal.xls] [Fichier Excel des candidat et des occupations]
+     */
     public function telechargerCandidatExcel(){
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
             $this->redirect(['controller'=>'candidat','action' => 'accueil']);
@@ -117,6 +136,11 @@ class ChercheurController extends AppController
        
     }
 
+    /**
+     * [downloadExcel Télécharge le fichier Excel générer précédement]
+     * @accès chercheur
+     * @return [journal.xls] [Fichier Excel des candidat et des occupations]
+     */
     public function downloadExcel(){
 
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
@@ -132,6 +156,12 @@ class ChercheurController extends AppController
         return $this->response;
     }
 
+
+    /**
+     * [telechargerDonnees Création et téléchargment d'un fichier CSV contenant les occupations]
+     * @accès Chercheur
+     * @return [donnees.csv] [Fichier csv des occupations]
+     */
     public function telechargerDonnees(){
 
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
@@ -174,6 +204,12 @@ class ChercheurController extends AppController
         return $this->response;
     }
 
+
+    /**
+     * [telechargerLegende Création et téléchargement d'un fichier txt contenant la liste des codes et les leurs despcription (codes activités, codes lieux ...)]
+     * @Accès chercheur
+     * @return [legende.txt] [Fichier Legende]
+     */
     public function telechargerLegende(){
 
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
@@ -209,10 +245,10 @@ class ChercheurController extends AppController
         // 3 : quand on a fini de l'utiliser, on ferme le fichier
         fclose($fichierLegende);
         //header('Location: legende.txt');
-        $path = ROOT .DS. "webroot". DS . "files" . DS .'journal.xls';
+        $path = ROOT .DS. "webroot". DS . "files" . DS .'legende.txt';
         $this->response->file($path, array(
             'download' => true,
-            'name' => 'journal.xls',
+            'name' => 'legende.txt',
         ));
         return $this->response;
 

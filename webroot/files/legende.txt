@@ -1,7 +1,7 @@
 
 -----------------------------------------------------------------------------
 
-Les codes correspondant aux noms dans la base de données au 2016-05-12 13:20
+Les codes correspondant aux noms dans la base de données au 2016-05-31 08:21
 
 -----------------------------------------------------------------------------
 Les codes des activités :
@@ -122,24 +122,29 @@ Exercices physiques )
 -----------------------------------------------------------------------------
 Les codes des lieux :
 Code du Lieu: Nom du Lieu:
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+1  Chez soi (domicile personnel de l'étudiant) 
+2  Chez ses parents / un membre de sa famille 
+3  Chez un / des autres étudiants 
+4  Chez un / des amis 
+5  Dans une salle de cours, TD, TP, amphithéâtre
+6  Dans une salle d'étude 
+7  Bibliothèque 
+8  Restaurant universitaire
+9  Autre lieu en lien avec les études (administration, CIO,…)
+10  Autre lieu de restauration (restaurant, bar, café…) 
+11  Terrain et équipement de sport
+12  Lieu de divertissement (cinéma, théâtre, salle de concert) 
+13  Commerces bâtiments publiques (Mairie, administrations, écoles,...) 
+14  Voie publique (rue, route, autoroutes)
+15  Autre lieu 
+16  Voiture personnelle 
+17  Covoiturage
+18  Deux roues à moteur (moto, scooters…) 
+19  Vélo 
+20  Train
+21  Transports en commun (bus, tram, métro)
+22  Avion 
+23  Autre transport
 
 -----------------------------------------------------------------------------
 Les codes des compagnies :

@@ -45,7 +45,7 @@
 			$resultat = "Code du Lieu: Nom du Lieu:\n";
 
 			$table = null;
-			$table = TableRegistry::get('categorieactivite')
+			$table = TableRegistry::get('lieu')
 		    	->find()
 		    	->toArray();
 
