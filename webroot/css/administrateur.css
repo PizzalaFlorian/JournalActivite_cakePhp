@@ -8,3 +8,13 @@ li{
 *::-moz-placeholder {
 	color: #101010 !important;
 }
+.buttonradio{
+	font-size: 80%;
+	padding-left: 100px;
+}
+.submit{
+	float:right;
+}
+.paragraphe{
+	padding-bottom: 100px;
+}
