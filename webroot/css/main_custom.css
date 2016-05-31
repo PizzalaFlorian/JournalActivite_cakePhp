@@ -9,6 +9,14 @@
 	text-align:center;
 }*/
 
+.cd-horizontal-timeline{
+	margin-top:10px !important;
+}
+
+.events-content{
+	margin:0 !important;
+}
+
 .dark-blue-box{
 
 	border: 2px solid #1798A5;
