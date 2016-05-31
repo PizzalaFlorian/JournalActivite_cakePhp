@@ -12,6 +12,11 @@ use Cake\Mailer\Email;
  */
 class ContactsController extends AppController
 {
+	
+	/**
+	 * [contact Fonction permettant d'envoyer un mail a un administrateur]
+	 * @return [Aucun]
+	 */
 	public function contact()
     {   
 		session_start();

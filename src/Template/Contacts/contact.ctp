@@ -4,15 +4,7 @@
 	}
 	echo $this->Html->css('main_custom');
 ?>
-<div class="messages form large-12 medium-11 columns content">
-	<?php 
-		if($monEmail){
-			echo $this->Html->link(
-				'Retour',
-				['controller' => 'Users', 'action' => 'login', '_full' => true]
-			); 
-		}
-    ?> 
+<div class="messages form large-12 medium-11 columns content"> 
     <div class="navbar">
     </div>
     <?= $this->Form->create($contact) ?>
@@ -40,6 +32,15 @@
 			<textarea id="contenu" rows="5" required="required" name="contenu"></textarea>
 		</div>
     </fieldset>
+    <?php 
+		if($monEmail){
+			echo $this->Html->link(
+				'Retour',
+				['controller' => 'Users', 'action' => 'login', '_full' => true],
+				['class'=>'button']
+			); 
+		}
+    ?> 
     <?= $this->Form->button(__('Envoyer')) ?>
     <?= $this->Form->end() ?>
 </div>
