@@ -31,18 +31,18 @@
 <li> 
     <?php 
         echo $this->Html->link(
-            'Gestion Chercheur',
-            ['controller' => 'chercheur', 'action' => 'index', '_full' => true]
-        );
-    ?>
-</li>
-<li> 
-    <?php 
-        echo $this->Html->link(
             'Gestion Candidat',
             ['controller' => 'candidat', 'action' => 'index', '_full' => true]
         ); 
     ?> 
+</li>
+<li> 
+    <?php 
+        echo $this->Html->link(
+            'Gestion Chercheur',
+            ['controller' => 'chercheur', 'action' => 'index', '_full' => true]
+        );
+    ?>
 </li>
 <li> 
     <?php 
