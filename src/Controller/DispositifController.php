@@ -12,6 +12,12 @@ use Cake\ORM\TableRegistry;
 class DispositifController extends AppController
 {
 
+    /**
+     * [recupNomDispositif Renvoie le nom du dispositif dont le code est passer en $id]
+     * @accès Candidat
+     * @param  [int] $id [CodeDispositif]
+     * @return [html]     [NomDispositif]
+     */
     public function recupNomDispositif($id=null){
         if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
             $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
@@ -25,7 +31,7 @@ class DispositifController extends AppController
     }
     /**
      * Index method
-     *
+     * @Accès Chercheur
      * @return \Cake\Network\Response|null
      */
     public function index()
@@ -44,7 +50,7 @@ class DispositifController extends AppController
 
     /**
      * View method
-     *
+     * @Accès Chercheur
      * @param string|null $id Dispositif id.
      * @return \Cake\Network\Response|null
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
@@ -67,7 +73,7 @@ class DispositifController extends AppController
 
     /**
      * Add method
-     *
+     * @Accès Chercheur
      * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
      */
     public function add()
@@ -95,7 +101,7 @@ class DispositifController extends AppController
 
     /**
      * Edit method
-     *
+     * @Accès Chercheur
      * @param string|null $id Dispositif id.
      * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
@@ -126,7 +132,7 @@ class DispositifController extends AppController
 
     /**
      * Delete method
-     *
+     * @Accès Chercheur
      * @param string|null $id Dispositif id.
      * @return \Cake\Network\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
@@ -159,6 +165,13 @@ class DispositifController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
+    /**
+     * [reaffect Réaafectation des occupation utilisant le dispositif de code $id vers le dispositif passé en $POST]
+     * @accès chercheur
+     * @param  [int] $id [Ancien dispositif]
+     * @post [int] $this->request->data['CodeDispositif'] [Nouveau Dispositif]
+     * @return [redirection]     [Dispositif Index]
+     */
     public function reaffect($id = null)
     {
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
@@ -184,13 +197,18 @@ class DispositifController extends AppController
                 ->execute();
 
             $this->Flash->success(__('Les occupations ont été réaffectées'));
-            $this->redirect(['action' => 'index']);
+            return $this->redirect(['action' => 'index']);
         }
         $this->set('dispositif', $dispositif);
         $this->set('list_dispositif', $list_dispositif);
         $this->set('_serialize', ['dispositif']);    
     }
 
+    /**
+     * [deleteAll Suppression du dispositif et de toutes les occuptions l'utilisant]
+     * @accès chercheur
+     * @return [Redirection]     [Dispositif index]
+     */
     public function deleteAll($id = null)
     {
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
@@ -217,7 +235,7 @@ class DispositifController extends AppController
                 ->execute();
 
             $this->Flash->success(__('le dispositif et les occupations ont été supprimées'));
-            $this->redirect(['action' => 'index']);
+            return $this->redirect(['action' => 'index']);
         }
 
         $this->set('_serialize', ['dispositif']); 

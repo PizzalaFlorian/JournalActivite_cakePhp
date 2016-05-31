@@ -12,6 +12,12 @@ use Cake\ORM\TableRegistry;
 class LieuController extends AppController
 {
 
+    /**
+     * [recupNomLieu Renvoie le nom du lieu dont le code est passé en $id]
+     * @accès Candidat
+     * @param  [int] $id [CodeLieux]
+     * @return [html]     [NomLieu]
+     */
     public function recupNomLieu($id=null){
         if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
             $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
@@ -24,7 +30,7 @@ class LieuController extends AppController
     }
     /**
      * Index method
-     *
+     * @accès chercheur
      * @return \Cake\Network\Response|null
      */
     public function index()
@@ -43,7 +49,7 @@ class LieuController extends AppController
 
     /**
      * View method
-     *
+     * @accès chercheur
      * @param string|null $id Lieu id.
      * @return \Cake\Network\Response|null
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
@@ -65,7 +71,7 @@ class LieuController extends AppController
 
     /**
      * Add method
-     *
+     * @accès chercheur
      * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
      */
     public function add()
@@ -93,7 +99,7 @@ class LieuController extends AppController
 
     /**
      * Edit method
-     *
+     * @accès chercheur
      * @param string|null $id Lieu id.
      * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
@@ -123,7 +129,7 @@ class LieuController extends AppController
 
     /**
      * Delete method
-     *
+     * @accès chercheur
      * @param string|null $id Lieu id.
      * @return \Cake\Network\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
@@ -156,6 +162,13 @@ class LieuController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
+    /**
+     * [reaffect Réafectation des occupation ayant lieu dans le lieu de code $id vers le lieu passé dans $POST]
+     * @accès Chercheur
+     * @param  [int] $id [Ancien CodeLieu]
+     * @post [int] $this->request->data['CodeLieux'] [nouvau code lieu]
+     * @return [Redirection]     [Redirection Lieu Index]
+     */
     public function reaffect($id = null)
     {
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
@@ -183,13 +196,18 @@ class LieuController extends AppController
                 ->execute();
 
             $this->Flash->success(__('Les occupations ont été réaffectées'));
-            $this->redirect(['action' => 'index']);
+            return $this->redirect(['action' => 'index']);
         }
         $this->set('lieu', $lieu);
         $this->set('list_lieux', $list_lieux);
         $this->set('_serialize', ['lieu']);    
     }
 
+    /**
+     * [deleteAll Supprime le lieu et toutes les occupation liée]
+     * @accès Chercheur
+     * @return [type]     [description]
+     */
     public function deleteAll($id = null)
     {
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
@@ -216,7 +234,7 @@ class LieuController extends AppController
                 ->execute();
 
             $this->Flash->success(__('l\'activitée Les occupations ont été supprimées'));
-            $this->redirect(['action' => 'index']);
+            return $this->redirect(['action' => 'index']);
         }
 
         $this->set('_serialize', ['lieu']);  

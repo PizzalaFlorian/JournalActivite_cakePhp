@@ -104,6 +104,8 @@ $(function(){
 
             /*placement de l'evenement*/
             var marg_css=object_drop.css("margin-top");
+            console.log("new margin 2",marg_css);
+
             var marg_css_value=parseInt(marg_css.replace(".px",""));
             var margin_top=marg_css_value+current_position;
             if(margin_top<0)margin_top=0;
@@ -174,7 +176,8 @@ $(function(){
             console.log("changement de taille");
             var jour_deb = $(this).closest('td').attr('id');
             var drag_event_heure_fin=jour_deb+" "+$("#"+event_id+"_date_fin_heure").html()+":"+$("#"+event_id+"_date_fin_minute").html()+":00";
-            
+            var drag_event_heure_fin=jour_deb+" "+new_heure.getHours()+":"+new_heure.getMinutes()+":00";
+
             $("#dialog").dialog('destroy');
             $("#ui-dialog-title-dialog").dialog('destroy');
             $("#gen_new_content").dialog('destroy');
@@ -231,11 +234,20 @@ $(function(){
         $("#paste-menue").hide();
         $("#cp").click(function(e){
             console.log("copier out",event_id);
-            console.log("height",buffer_height);
-            console.log("margin",buffer_margin);
             buffer_event_id = event_id;
             buffer_height =  $('#'+event_id).css('height');
-            buffer_margin = $('#'+event_id).css('margin-top');
+            if($('#'+event_id).css('top') != null){
+                var hdeb = parseInt($('#'+event_id+'_date_debut_heure').html());
+                var mdeb = parseInt($('#'+event_id+'_date_debut_minute').html());
+                var $depSec = hdeb*60*60 + mdeb*60; 
+                var $margin_top = ((($depSec/60)/60)*4)*10;
+                buffer_margin = $margin_top+"px";
+            } 
+            else {
+                buffer_margin = $('#'+event_id).css('margin-top');
+            }
+            console.log("height",buffer_height);
+            console.log("margin",buffer_margin);
             buffer_heure_debut = $('#'+event_id+'_date_debut_heure').html();
             buffer_minute_debut = $('#'+event_id+'_date_debut_minute').html();
             buffer_heure_fin = $('#'+event_id+'_date_fin_heure').html();
@@ -580,6 +592,8 @@ $(function(){
 
                 /*placement de l'evenement*/
                 var marg_css=object_drop.css("margin-top");
+                console.log("new margin 3",marg_css);
+
                 var marg_css_value=parseInt(marg_css.replace(".px",""));
                 var margin_top=marg_css_value+current_position;
                 if(margin_top<0)margin_top=0;
@@ -606,7 +620,21 @@ $(function(){
                 $("#"+event_id+"_date_debut_minute").html(nouvelle_heure_depart.getMinutes());
                 $("#"+event_id+"_date_fin_heure").html(nouvelle_heure_fin.getHours());
                 $("#"+event_id+"_date_fin_minute").html(nouvelle_heure_fin.getMinutes());
-
+                var jour_deb = jour_drop;
+                var drag_event_heure_debut=jour_deb+" "+nouvelle_heure_depart.getHours()+":"+nouvelle_heure_depart.getMinutes()+":00";
+                var drag_event_heure_fin=jour_deb+" "+nouvelle_heure_fin.getHours()+":"+nouvelle_heure_fin.getMinutes()+":00";
+                //DATA CHANGE DRAG
+                $(".ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-resizable").dialog('destroy');
+                $.ajax({  
+                        url : '../occupation/editHeure/'+event_id,
+                        type : 'POST',
+                        data :  'CodeOccupation=' + event_id +
+                                '&HeureDebut=' + drag_event_heure_debut + 
+                                '&HeureFin=' + drag_event_heure_fin,
+                        dataType : 'html', 
+                        success : function(code_html, statut){ 
+                        }
+                    });
         //        $("#ajax_load").load(getBaseURL()+"/admin/ajax/evenement/id/"+event_id+"/d/"+depart_en_sec+"/f/"+fin_en_sec);
         //$("#ajax_load").html("Modifications enregistr&eacute;.");
             }
@@ -620,6 +648,18 @@ $(function(){
                 var height_css=object_drop.css("height");
                 var height_css_value=parseInt(height_css.replace(".px",""));
                 var duree_en_sec=(((height_css_value/10)/4)*60)*60;
+                var jour_deb = $(this).closest('td').attr('id');
+                var drag_event_heure_fin=jour_deb+" "+$("#"+event_id+"_date_fin_heure").html()+":"+$("#"+event_id+"_date_fin_minute").html()+":00";
+
+                $.ajax({  
+                    url : '../occupation/editHeureFin/'+event_id,
+                    type : 'POST',
+                    data :  'CodeOccupation=' + event_id +
+                            '&HeureFin=' + drag_event_heure_fin,
+                    dataType : 'html', 
+                    success : function(code_html, statut){ 
+                    }
+                });
 
             },
             resize: function(event,ui) {
@@ -646,6 +686,7 @@ $(function(){
 
                 $("#"+event_id+"_date_fin_heure").html(new_heure.getHours());
                 $("#"+event_id+"_date_fin_minute").html(new_heure.getMinutes());
+
             //        $("#"+event_id+"_date").corner("top");
             }
         });
@@ -1482,10 +1523,14 @@ $(function(){
             "margin-left" : (td_width-(td_width*0.85))/2,
         });
         $("#cp").click(function(e){
-            console.log("copier",event_id);
+            var event_id = event_right_cliked
+            console.log("copier from new event_id",event_id);
             buffer_event_id = event_id;
             buffer_height =  $('#'+event_id).css('height');
-            buffer_margin = $('#'+event_id).css('margin-top');
+            console.log('copy from new top',$('#'+event_id).css('top'))
+            buffer_margin = $('#'+event_id).css('top');
+            console.log("copier from new height",buffer_height);
+            console.log("copier from new margin",buffer_margin);
             buffer_heure_debut = $('#'+event_id+'_date_debut_heure').html();
             buffer_minute_debut = $('#'+event_id+'_date_debut_minute').html();
             buffer_heure_fin = $('#'+event_id+'_date_fin_heure').html();
@@ -1586,6 +1631,7 @@ $(function(){
 
                 /*placement de l'evenement*/
                 var marg_css=object_drop.css("margin-top");
+                console.log("new margin 1",marg_css);
                 var marg_css_value=parseInt(marg_css.replace(".px",""));
                 var margin_top=marg_css_value+current_position;
                 if(margin_top<0)margin_top=0;
@@ -1613,6 +1659,22 @@ $(function(){
                 $("#"+event_id+"_date_fin_heure").html(nouvelle_heure_fin.getHours());
                 $("#"+event_id+"_date_fin_minute").html(nouvelle_heure_fin.getMinutes());
 
+                var jour_deb = jour_drop;
+                var drag_event_heure_debut=jour_deb+" "+nouvelle_heure_depart.getHours()+":"+nouvelle_heure_depart.getMinutes()+":00";
+                var drag_event_heure_fin=jour_deb+" "+nouvelle_heure_fin.getHours()+":"+nouvelle_heure_fin.getMinutes()+":00";
+                //DATA CHANGE DRAG
+                $(".ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-resizable").dialog('destroy');
+                $.ajax({  
+                        url : '../occupation/editHeure/'+event_id,
+                        type : 'POST',
+                        data :  'CodeOccupation=' + event_id +
+                                '&HeureDebut=' + drag_event_heure_debut + 
+                                '&HeureFin=' + drag_event_heure_fin,
+                        dataType : 'html', 
+                        success : function(code_html, statut){ 
+                        }
+                    });
+
         //        $("#ajax_load").load(getBaseURL()+"/admin/ajax/evenement/id/"+event_id+"/d/"+depart_en_sec+"/f/"+fin_en_sec);
         //$("#ajax_load").html("Modifications enregistr&eacute;.");
             }
@@ -1626,6 +1688,18 @@ $(function(){
                 var height_css=object_drop.css("height");
                 var height_css_value=parseInt(height_css.replace(".px",""));
                 var duree_en_sec=(((height_css_value/10)/4)*60)*60;
+                var jour_deb = $(this).closest('td').attr('id');
+                var drag_event_heure_fin=jour_deb+" "+$("#"+event_id+"_date_fin_heure").html()+":"+$("#"+event_id+"_date_fin_minute").html()+":00";
+
+                $.ajax({  
+                    url : '../occupation/editHeureFin/'+event_id,
+                    type : 'POST',
+                    data :  'CodeOccupation=' + event_id +
+                            '&HeureFin=' + drag_event_heure_fin,
+                    dataType : 'html', 
+                    success : function(code_html, statut){ 
+                    }
+                });
 
             },
             resize: function(event,ui) {
