@@ -254,6 +254,12 @@ class ChercheurController extends AppController
 
     }
 
+
+    /**
+     * [modif Page permettant au chercheur de modifier ses infos, ici nom et prénom]
+     * @Accès chercheur
+     * @return [Redirection acceuil]
+     */
     public function modif()
     {
 
@@ -272,7 +278,7 @@ class ChercheurController extends AppController
             $chercheur = $this->Chercheur->patchEntity($chercheur, $this->request->data);
             if ($this->Chercheur->save($chercheur)) {
                 $this->Flash->success(__('Vos informations personnelles ont bien été modifiées.'));
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'accueil']);
             } else {
                 $this->Flash->error(__('Erreur lors de la modification des informations personnelles.'));
             }
@@ -282,7 +288,7 @@ class ChercheurController extends AppController
     }
     /**
      * Index method
-     *
+     * @Accès Administrateur
      * @return \Cake\Network\Response|null
      */
     public function index()
@@ -301,7 +307,7 @@ class ChercheurController extends AppController
 
     /**
      * View method
-     *
+     * @Accès Administrateur
      * @param string|null $id Chercheur id.
      * @return \Cake\Network\Response|null
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
@@ -323,7 +329,7 @@ class ChercheurController extends AppController
 
     /**
      * Add method
-     *
+     * @Accès Administrateur
      * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
      */
     public function add()
@@ -352,7 +358,7 @@ class ChercheurController extends AppController
 
     /**
      * Edit method
-     *
+     * @Accès Administrateur
      * @param string|null $id Chercheur id.
      * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
@@ -384,7 +390,7 @@ class ChercheurController extends AppController
 
     /**
      * Delete method
-     *
+     * @Accès Administrateur
      * @param string|null $id Chercheur id.
      * @return \Cake\Network\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
@@ -399,9 +405,41 @@ class ChercheurController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $chercheur = $this->Chercheur->get($id);
         $save_id = $chercheur->ID;
+        $save_code = $chercheur->CodeChercheur;
             
         if ($this->Chercheur->delete($chercheur)) {
             $this->Flash->success(__('Le chercheur as été supprimé.'));
+            $cdb = TableRegistry::get('carnetdebord')
+                    ->query();
+                $cbd
+                    ->update()
+                    ->set(['CodeChercheur' => 1])
+                    ->where(['CodeChercheur' => $save_code])
+                    ->execute();
+
+            $this->loadModel('Messages');
+            $messages = $this->Messages->find('all', ['conditions' => ['Messages.IDExpediteur' => $save_id]]);
+            foreach ($messages as $message) {
+                $message->IDExpediteur = 0;             // Le messages est considéré comme supprimer
+                $message->userExpediteur = 4;           // Categorie : Utilisateur Supprimer
+                if($message->IDRecepteur == 0 ){
+                    $this->Messages->delete($message);  // Supprime le message si il faut le supprimer
+                }
+                else{
+                    $this->Messages->save($message);    // mets a jours les messages
+                }
+            }
+            $messages = $this->Messages->find('all', ['conditions' => ['Messages.IDRecepteur' => $save_id]]);
+            foreach ($messages as $message) {
+                $message->IDRecepteur = 0;              // Le messages est considéré comme supprimer
+                $message->userRecepteur = 4;            // Categorie : Utilisateur Supprimer
+                if($message->IDExpediteur == 0 ){
+                    $this->Messages->delete($message);  // Supprime le message si il faut le supprimer
+                }
+                else{
+                    $this->Messages->save($message);    // mets a jours les messages
+                }
+            }
             $user = TableRegistry::get('users')
                 ->query();
             $user
