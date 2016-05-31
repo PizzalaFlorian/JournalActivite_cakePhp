@@ -12,63 +12,8 @@ class OccupationController extends AppController
 {
 
     /**
-     * Index method
-     *
-     * @return \Cake\Network\Response|null
-     */
-    public function index()
-    {
-
-        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
-            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
-        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
-            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
-        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
-            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
-
-        $occupation = $this->paginate($this->Occupation);
-
-        $this->set(compact('occupation'));
-        $this->set('_serialize', ['occupation']);
-    }
-    /**
-     * View method
-     *
-     * @param string|null $id Occupation id.
-     * @return \Cake\Network\Response|null
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function view($id = null)
-    {   
-        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
-            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
-        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
-            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
-
-        $this->loadModel('Lieu');
-        $this->loadModel('Activite');
-        $this->loadModel('Compagnie');
-        $this->loadModel('Dispositif');
-
-        $occupation = $this->Occupation->get($id, ['contain' => []]);
-
-        $monLieu        = $this->Lieu->get($occupation->CodeLieux);
-        $monActivite    = $this->Activite->get($occupation->CodeActivite);
-        $monCompagnie   = $this->Compagnie->get($occupation->CodeCompagnie);
-        $monDispositif  = $this->Dispositif->get($occupation->CodeDispositif);
-        
-        $this->set(compact('monLieu'));
-        $this->set(compact('monActivite'));
-        $this->set(compact('monCompagnie'));
-        $this->set(compact('monDispositif'));
-
-        $this->set('occupation', $occupation);
-        $this->set('_serialize', ['occupation']);
-    }
-
-    /**
      * Add method
-     *
+     * @Accès Candidat
      * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
      */
     public function add()
@@ -159,6 +104,11 @@ class OccupationController extends AppController
         $this->set('_serialize', ['occupation']);
     }
 
+    /**
+     * [copier Creer une copie d'une occupation dont les paramatres sont passé dans $POST]
+     * @accès Candidat
+     * @return [Aucun]
+     */
     public function copier()
     {
 
@@ -253,6 +203,11 @@ class OccupationController extends AppController
         $this->set('_serialize', ['occupation']);
     }
 
+    /**
+     * [editHeure Modifie l'heure d'une occupation dont le code est passé en $POST]
+     * accès Candidat
+     * @return [Aucun]
+     */
     public function editHeure($id = null)
     {
 
@@ -277,6 +232,12 @@ class OccupationController extends AppController
          }
     }
 
+
+    /**
+     * [editHeureFin Modifie l'heure de fin d'une occupation dont les infos sont passé en $POST]
+     * @accès Candidat
+     * @return [Aucun]
+     */
     public function editHeureFin($id = null)
     {
 
@@ -301,7 +262,7 @@ class OccupationController extends AppController
     }
     /**
      * Edit method
-     *
+     * @accès Candidat
      * @param string|null $id Occupation id.
      * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
@@ -381,6 +342,7 @@ class OccupationController extends AppController
             $this->set(compact('occupation'));
             $this->set('_serialize', ['occupation']);
     }
+    
     // /**
     //  * Delete method
     //  *

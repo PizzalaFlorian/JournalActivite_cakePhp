@@ -16,7 +16,7 @@ class UsersController extends AppController
 
     /**
      * Index method
-     *
+     * @accès Admin
      * @return \Cake\Network\Response|null
      */
     public function index()
@@ -36,7 +36,7 @@ class UsersController extends AppController
 
     /**
      * View method
-     *
+     * @Accès Admin
      * @param string|null $id User id.
      * @return \Cake\Network\Response|null
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
@@ -59,7 +59,7 @@ class UsersController extends AppController
 
     /**
      * Add method
-     *
+     * @accès Everyone (accèsible depuis l'exterieur pour s'inscrire)
      * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
      */
     public function add()
@@ -97,7 +97,7 @@ class UsersController extends AppController
 
     /**
      * Edit method
-     *
+     * @accès Admin
      * @param string|null $id User id.
      * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
@@ -128,7 +128,11 @@ class UsersController extends AppController
         $this->set('_serialize', ['user']);
     }
 
-
+    /**
+     * [modif Page de modification des information de users (login, mot de passe, adresse email)]
+     * @accès Tout les users
+     * @return [Aucun]
+     */
     public function modif()
     {
         if($_SESSION['Auth']['User']['typeUser']=='candidat')
@@ -167,7 +171,7 @@ class UsersController extends AppController
     }
     /**
      * Delete method
-     *
+     * @accès Administrateur
      * @param string|null $id User id.
      * @return \Cake\Network\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
@@ -341,6 +345,10 @@ class UsersController extends AppController
         return $this->redirect($this->Auth->logout());
     }
 
+    /**
+     * [reset Change le mot de passe d'un utilisateur et le lui envoie par email]
+     * @return [email] [Nouveau mot de passe]
+     */
     public function reset(){
         if($this->request->is('post')){
 

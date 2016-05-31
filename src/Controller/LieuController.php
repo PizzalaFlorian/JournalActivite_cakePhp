@@ -240,6 +240,11 @@ class LieuController extends AppController
         $this->set('_serialize', ['lieu']);  
     }
 
+    /**
+     * [request Renvoie la liste des lieu liée a la catégorie]
+     * @accès Candidat
+     * @return [Html] [liste de lieu]
+     */
     public function request(){
         $id = $this->request->data['value'];
         $lieux = $this->Lieu->find('all', ['conditions' => ['CodeCategorieLieux' => $id]]);
