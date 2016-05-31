@@ -12,6 +12,12 @@ use Cake\ORM\TableRegistry;
 class CompagnieController extends AppController
 {
 
+    /**
+     * [recupNomCompagnie Renvoie le nom de la compagnie dont le code est passé en $id]
+     * @Accès Candidat
+     * @param  [int] $id [CodeCompagnie]
+     * @return [html]     [NomCompagnie]
+     */
     public function recupNomCompagnie($id=null){
         if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
             $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
@@ -25,7 +31,7 @@ class CompagnieController extends AppController
     }
     /**
      * Index method
-     *
+     * @Accès Chercheur
      * @return \Cake\Network\Response|null
      */
     public function index()
@@ -44,7 +50,7 @@ class CompagnieController extends AppController
 
     /**
      * View method
-     *
+     * @Accès chercheur
      * @param string|null $id Compagnie id.
      * @return \Cake\Network\Response|null
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
@@ -67,7 +73,7 @@ class CompagnieController extends AppController
 
     /**
      * Add method
-     *
+     * @Accès chercheur
      * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
      */
     public function add()
@@ -94,7 +100,7 @@ class CompagnieController extends AppController
 
     /**
      * Edit method
-     *
+     * @Accès chercheur
      * @param string|null $id Compagnie id.
      * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
@@ -126,7 +132,7 @@ class CompagnieController extends AppController
 
     /**
      * Delete method
-     *
+     * @Accès chercheur
      * @param string|null $id Compagnie id.
      * @return \Cake\Network\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
@@ -160,6 +166,14 @@ class CompagnieController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
+
+    /**
+     * [reaffect Réaffectation des occupation présantant le code compagnie $id vers la compagnie passer en $POST]
+     * @accès chercheur
+     * @param  [int] $id [Ancienne compagnie]
+     * @post [int] $this->request->data['CodeCompagnie'] [Nouvelle compagnie]
+     * @return [Redirection]     [Compagnie Index]
+     */
     public function reaffect($id = null)
     {
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
@@ -185,13 +199,20 @@ class CompagnieController extends AppController
                 ->execute();
 
             $this->Flash->success(__('Les occupations ont été réaffectées'));
-            $this->redirect(['action' => 'index']);
+            return $this->redirect(['action' => 'index']);
         }
         $this->set('compagnie', $compagnie);
         $this->set('list_compagnie', $list_compagnie);
         $this->set('_serialize', ['dispositif']);    
     }
 
+
+    /**
+     * [deleteAll Suppression de la compagnie et de toutes les activités utilisant la compagnie passer en argument]
+     * @Accès chercheur
+     * @param  [int] $id [CodeCompagnie]
+     * @return [Redirection]     [Compagnie index]
+     */
     public function deleteAll($id = null)
     {
         if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
@@ -219,7 +240,7 @@ class CompagnieController extends AppController
                 ->execute();
 
             $this->Flash->success(__('la compagnie et les occupations ont été supprimées'));
-            $this->redirect(['action' => 'index']);
+            return $this->redirect(['action' => 'index']);
         }
 
         $this->set('_serialize', ['compagnie']); 
