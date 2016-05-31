@@ -52,7 +52,7 @@ Main Components
   position: relative;
   height: 100px;
   width: 90%;
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
 }
 .cd-horizontal-timeline .events-wrapper {
@@ -297,7 +297,7 @@ Main Components
   animation-direction: reverse;
 }
 .cd-horizontal-timeline .events-content li > * {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
 }
 .cd-horizontal-timeline .events-content h2 {

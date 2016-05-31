@@ -9,6 +9,12 @@
 	text-align:center;
 }*/
 
+#content{
+	margin:0 !important;
+	margin-right: 0 !important;
+	padding-top: 10px !important;
+}
+
 .cd-horizontal-timeline{
 	margin-top:10px !important;
 }
