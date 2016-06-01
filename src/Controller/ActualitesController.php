@@ -74,9 +74,9 @@ class ActualitesController extends AppController
         // on verifie que l'utilisateur est de type chercheur ou admin
         if(($_SESSION['Auth']['User']['typeUser'] == 'chercheur') || ($_SESSION['Auth']['User']['typeUser'] =='admin')){
             switch ($_SESSION['Auth']['User']['typeUser']) {
-                case 'chercheur':       $monController = "chercheur";        $monAction="accueil";                 break;
-                case 'candidat':        $monController = "candidat";         $monAction="accueil";                 break;
-                case 'admin':           $monController = "";                 $monAction="";                        break;
+                case 'chercheur':       $monController = "chercheur";                       $monAction="accueil";       break;
+                case 'candidat':        $monController = "";                                $monAction="";              break;
+                case 'admin':           $monController = "administrateur";                  $monAction="accueil";       break;
             }
 
             $this->viewBuilder()->layout('cherLayout');
@@ -115,9 +115,9 @@ class ActualitesController extends AppController
     public function delete($id = null)
     {
         switch ($_SESSION['Auth']['User']['typeUser']) {
-            case 'chercheur':       $monController = "";        $monAction="";                 break;
-            case 'candidat':        $monController = "candidat";         $monAction="accueil";                 break;
-            case 'admin':           $monController = "";                 $monAction="";                        break;
+            case 'chercheur':       $monController = "chercheur";                       $monAction="accueil";       break;
+            case 'candidat':        $monController = "";                                $monAction="";              break;
+            case 'admin':           $monController = "administrateur";                  $monAction="accueil";       break;
         }
         // on verifie que l'utilisateur est de type chercheur ou admin
         if(($_SESSION['Auth']['User']['typeUser'] == 'chercheur') || ($_SESSION['Auth']['User']['typeUser'] =='admin')){
