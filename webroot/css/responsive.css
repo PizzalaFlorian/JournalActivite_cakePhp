@@ -1,0 +1,64 @@
+/*Fichier css pour que le site soit un peu moins moche sous mobile*/
+
+@media only screen and (max-width: 500px) {
+    .content {
+        padding: 2px;
+    }
+}
+
+@media only screen and (min-width: 641px) {
+    #menu_responsive{
+        display: none;
+    }
+}
+
+
+@media only screen and (max-width: 640px) {
+    
+    #contentCandidat{
+        padding: 0px;
+    }
+    
+    
+    #contentCandidat{
+        height: auto;
+        overflow: scroll !important;
+    }
+    
+     #actions-sidebar{
+        display: none;
+    }
+    
+    .top-bar-section{
+        display: none;   
+    }
+    
+    
+    #menu_responsive{
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        z-index: 9000;
+    }
+    
+    .img_menu{
+        width: 35px;
+        height: auto;
+    }
+    
+    #loginSite{
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+    }
+    
+    
+    .calendar_event{
+        font-size: 2vw !important;
+    }
+    
+    .ui-dialog{
+        width:100% !important;
+    }
+    
+    
+}

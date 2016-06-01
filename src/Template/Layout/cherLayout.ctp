@@ -29,13 +29,18 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
     <?= $this->Html->css('base.css') ?>
     <?= $this->Html->css('cake.css') ?>
-
+    <?= $this->Html->css('responsive.css') ?>
+    
+    <?= $this->Html->script('jquery-1.7.min.js') ?>
+    <?= $this->Html->script('menu.js') ?>
+    
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
     
 </head>
 <body>
+    <div id="menu_responsive"><?php echo $this->Html->image('menu.png', array('alt' => 'menu', 'class'=> 'img_menu'));?></div>
     <nav class="top-bar expanded" data-topbar role="navigation">
         <ul class="title-area large-2 medium-3 columns">
             <li class="name">
