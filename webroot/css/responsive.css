@@ -19,12 +19,6 @@
         padding: 0px;
     }
     
-    
-    #contentCandidat{
-        height: auto;
-        overflow: scroll !important;
-    }
-    
      #actions-sidebar{
         display: none;
     }
