@@ -684,7 +684,7 @@ class AdministrateurController extends AppController
         while((($ligne = fgets($fp,255)) != "'appli' => [\n") && ($ligne  != false))
         {}
         // récupération des données concernant le serveur smtp
-        fgets($fp,255);
+        fgets($fp,255);fgets($fp,255);
         $host       = substr(fgets($fp, 255), 0, -3);
         //echo fgets($fp, 255);
         $port       = substr(fgets($fp, 255), 0, -2);
@@ -707,11 +707,11 @@ class AdministrateurController extends AppController
         $password = explode('=>',$password);
         $password = $password[1];
         $password = str_replace(" '", "", $password);  
-        // echo "fin lecture";
-        // echo "<br/>host : ".$host;
-        // echo "<br/>port : ".$port;
-        // echo "<br/>username : ".$username;
-        // echo "<br/>password : ".$password;
+        echo "fin lecture";
+        echo "<br/>host : ".$host;
+        echo "<br/>port : ".$port;
+        echo "<br/>username : ".$username;
+        echo "<br/>password : ".$password;
 
         $this->viewBuilder()->layout('adminLayout');
         //$id = $_SESSION['Auth']['User']['email'];

@@ -188,7 +188,7 @@ return [
                     'client' => null,
                     'tls' => null,
                 ],
-                'appli' => [
+'appli' => [
                   'className' => 'Smtp',
                   // The following keys are used in SMTP transports
                   'host' => 'smtp.gmail.com',
