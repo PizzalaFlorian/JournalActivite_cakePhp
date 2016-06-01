@@ -707,11 +707,11 @@ class AdministrateurController extends AppController
         $password = explode('=>',$password);
         $password = $password[1];
         $password = str_replace(" '", "", $password);  
-        echo "fin lecture";
-        echo "<br/>host : ".$host;
-        echo "<br/>port : ".$port;
-        echo "<br/>username : ".$username;
-        echo "<br/>password : ".$password;
+        // echo "fin lecture";
+        // echo "<br/>host : ".$host;
+        // echo "<br/>port : ".$port;
+        // echo "<br/>username : ".$username;
+        // echo "<br/>password : ".$password;
 
         $this->viewBuilder()->layout('adminLayout');
         //$id = $_SESSION['Auth']['User']['email'];
