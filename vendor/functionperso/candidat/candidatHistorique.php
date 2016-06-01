@@ -31,6 +31,17 @@ function afficher_temps($temps){
 }
 
 
+function aucune_activite($CodeCandidat){
+		$data = TableRegistry::get('occupation')
+            ->find()
+            ->select(array('dure' => 'COUNT(*)'))
+            ->where(['CodeCandidat' => $CodeCandidat])
+            ->group(['CodeCandidat'])
+            ->first();
+        return isset($data);    
+}
+
+
 function afficher_temps_f($temps){
 	$tmp = explode(":", $temps);
 	$h = $tmp[0];

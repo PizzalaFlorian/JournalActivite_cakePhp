@@ -17,13 +17,22 @@
             ->where(['ID' => $_SESSION['Auth']['User']['ID']])
             ->first();
     $CodeCandidat = $candidat['CodeCandidat'];
-    $dure_total = duree_totale($candidat['CodeCandidat']);
+    
 ?>
 
 <!-- Content -->
 
 <div class="inner">
 	<h1 class="center">Mon historique</h1>	
+	<?php
+	if(!aucune_activite($CodeCandidat)){
+	?>
+	<center>Vous n'avez renseigné aucune activité pour l'instant.</center>
+	<?php	
+	}
+	else{
+		$dure_total = duree_totale($candidat['CodeCandidat']);
+	?>
 	<section class="cd-horizontal-timeline">
 		<div class="timeline">
 			<div class="events-wrapper">
@@ -73,5 +82,9 @@
 			</ol>
 		</div> <!-- .events-content -->
 	</section>
+	<?php
+	}
+	?>
+	
 </div>
 
