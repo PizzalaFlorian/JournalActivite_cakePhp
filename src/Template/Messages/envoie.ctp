@@ -34,8 +34,13 @@
                     </td>
                     <!-- ACTIONS -->
                     <td class="actions">
-                        <!-- SUPPRIMER -->      
-                        <?= $this->Form->postLink(__('Supprimer'), ['action' => 'delete', $message->IDMessage], ['confirm' => __('Êtes-vous sûr de vouloir supprimer ce message?', $message->IDMessage)]) ?>
+                        <!-- SUPPRIMER -->  
+                        <?php 
+                            echo $this->Form->postLink(
+                                $this->Html->image('supprimer.ico', array('title' => "Supprimer")),
+                                ['action' => 'delete', $message->IDMessage],
+                                array('escape' => false,'confirm' => __('Êtes-vous sûr de vouloir supprimer ce message?', $message->IDMessage)));
+                          ?>
                     </td>
                 </tr>
                 <?php endforeach; ?>

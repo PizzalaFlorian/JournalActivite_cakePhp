@@ -69,12 +69,11 @@
                              ['action' => 'repondre', $message->IDMessage],
                               array('escape' => false)
                              ); 
-                        
-                            echo $this->Form->postLink(
-                             $this->Html->image('supprimer.ico', array('title' => "Supprimer")),
-                             ['action' => 'delete', $message->IDMessage],
-                              array('escape' => false,'confirm' => __('Êtes-vous sûr de vouloir supprimer ce message?', $message->IDMessage))); 
                         }
+                        echo $this->Form->postLink(
+                         $this->Html->image('supprimer.ico', array('title' => "Supprimer")),
+                         ['action' => 'delete', $message->IDMessage],
+                          array('escape' => false,'confirm' => __('Êtes-vous sûr de vouloir supprimer ce message?', $message->IDMessage))); 
                     ?>
                 </td>
             </tr>
