@@ -634,39 +634,48 @@ class AdministrateurController extends AppController
             //(fgets($fp,255) != "                'appli' => [")&&(
         }*/   
         if($this->request->is('post')){
-            
-            //var_dump($this->request->data);
             //Récupération des données a enregistrer
             $port       = $this->request->data['port'];
             $username   = $this->request->data['username'];
             $password   = $this->request->data['password'];
             $host       = $this->request->data['host'];
-            if($this->request->data['secure'] = "tls"){
-                $tls = "true";
-            }
-            else{
-                $tls = "false";
-            }
+            $name_email = $this->request->data['name_email'];
+            $secure     = $this->request->data['secure'];
 
             $fp = fopen("config/app.php","r"); //lecture
             $app = "";
+
+            // ======= Ecriture dans le fichier APP.PHP ======= //
             while(($ligne = fgets($fp,255)) != false)
             {
                 $app = $app.$ligne;
-                if($ligne == "'appli' => [\n"){
+                if($ligne == "            'appli' => [\n"){
                     $app = $app.fgets($fp,255);
                     fgets($fp,255);                 // saut de la lecture de host
                     fgets($fp,255);                 // saut de la lecture de port
                     fgets($fp,255);                 // saut de la lecture de username
                     fgets($fp,255);                 // saut de la lecture de password
-                    $app = $app."\t\t\t\t'host'\t\t=> '$host',\n";
-                    $app = $app."\t\t\t\t'port'\t\t=> $port,\n";
-                    $app = $app."\t\t\t\t'username'\t=> '$username',\n";
-                    $app = $app."\t\t\t\t'password'\t=> '$password',\n";
-                    $app = $app.fgets($fp,255);
+                    if($secure == 'ssl'){
+                        $host = 'ssl://'.$host;
+                    }
+                    $app = $app."\t\t\t\t'host' => '$host',\n";
+                    $app = $app."\t\t\t\t'port' => $port,\n";
+                    $app = $app."\t\t\t\t'username' => '$username',\n";
+                    $app = $app."\t\t\t\t'password' => '$password',\n";
                     $app = $app.fgets($fp,255); 
                     fgets($fp,255);                 // saut de la lecture de tls
-                    $app = $app."\t\t\t\t'tls'\t\t=> '$tls',\n";
+                    if($secure == 'tls'){
+                        $app = $app."\t\t\t\t'tls'=> true,\n";
+                    }
+                    else {
+                        $app = $app."\t\t\t\t'tls'=> null,\n";
+                    }
+                }
+                if($ligne == "        'Email' => [\n"){
+                    $app = $app.fgets($fp,255);
+                    $app = $app.fgets($fp,255);
+                    $app = $app."\t\t\t\t'from' => '$name_email',\n";
+                    fgets($fp,255);                 // saut de la lecture du nom de l'email
                 }
             }
             //var_dump($this->request->data);
@@ -678,46 +687,100 @@ class AdministrateurController extends AppController
             $this->redirect(['controller'=>'administrateur','action' => 'messagerie']);
         }
 
-
+        // ======= Lecture de APP.PHP ======= //
         $fp = fopen("config/app.php","r"); //lecture
         //parcourt su fichier app.php afin de trouver la partie "SMTP"
-        while((($ligne = fgets($fp,255)) != "'appli' => [\n") && ($ligne  != false))
+        while((($ligne = fgets($fp,255)) != "            'appli' => [\n") && ($ligne  != false))
         {}
         // récupération des données concernant le serveur smtp
-        fgets($fp,255);fgets($fp,255);
-        $host       = substr(fgets($fp, 255), 0, -3);
-        //echo fgets($fp, 255);
-        $port       = substr(fgets($fp, 255), 0, -2);
-        $username   = substr(fgets($fp, 255), 0, -3);
-        $password   = substr(fgets($fp, 255), 0, -3);
+        fgets($fp,255);
+        //fgets($fp,255);
+
+        $host       = fgets($fp, 255);
+        $port       = fgets($fp, 255);
+        $username   = fgets($fp, 255);
+        $password   = fgets($fp, 255);
+        fgets($fp, 255);                // Saut de la ligne TimeOut
+        $secure     = fgets($fp, 255);
+
+        // $host       = substr(fgets($fp, 255), 0, -3);
+        // $port       = substr(fgets($fp, 255), 0, -1);
+        // $username   = substr(fgets($fp, 255), 0, -3);
+        // $password   = substr(fgets($fp, 255), 0, -3);
+
+        // recherche du nom de l'email :
+        while((($ligne = fgets($fp,255)) != "        'Email' => [\n") && ($ligne  != false))
+        {}
+        fgets($fp,255);
+        fgets($fp,255);
+        $name_email = substr(fgets($fp, 255), 0, -3);
         fclose($fp);
+
+        // echo "<br/>host : ".$host;
+        // echo "<br/>port : ".$port;
+        // echo "<br/>username : ".$username;
+        // echo "<br/>password : ".$password;
+        // echo "<br/>name_email : ".$name_email;
+        // echo "<br/>secure : ".$secure;
+
+        // secure = true/false en fonction de la valeur de tls
+        $secure = explode('=>',$secure);
+        $secure = $secure[1];
+        $secure = str_replace(" ", "", $secure);
+        $secure = substr($secure, 0, -2);
+        if($secure == "true"){
+            $secure = 'tls';
+        }
+        else {
+            $secure = 'none';                       // par defaut à aucune (le test du SSL a lieux dans l'host)
+        }
+
         //mise en forme des données
         $host = explode('=>',$host);
         $host = $host[1];
         $host = str_replace(" '", "", $host);
+        $host = substr($host, 0, -3);
+        // Si utilisation d'une securité SSL (l'affichage se fait dans l'host de la forme suivante : 'ssl://smtp.gmail.com')
+        if(substr($host, 0, 6) == 'ssl://'){
+            $secure = 'ssl';                        // mise a jour de ssl
+            $host = substr($host, 6);               // on retire 'ssl://' du nom de l'host
+        }
 
         $port = explode('=>',$port);
         $port = $port[1];
-        $port = str_replace("  ", "", $port);       
+        $port = str_replace(" ", "", $port);  
+        $port = substr($port, 0, -2);  
 
         $username = explode('=>',$username);
         $username = $username[1];
         $username = str_replace(" '", "", $username);  
+        $username = substr($username, 0, -3);
 
         $password = explode('=>',$password);
         $password = $password[1];
         $password = str_replace(" '", "", $password);  
+        $password = substr($password, 0, -3);
+
+        // var_dump($name_email);
+        $name_email = explode('=>',$name_email);
+        $name_email = $name_email[1];
+        $name_email = str_replace(" '", "", $name_email);  
+
         // echo "fin lecture";
         // echo "<br/>host : ".$host;
         // echo "<br/>port : ".$port;
         // echo "<br/>username : ".$username;
         // echo "<br/>password : ".$password;
-
+        // echo "<br/>name_email : ".$name_email;
+        // echo "<br/>secure : ".$secure;
+        
         $this->viewBuilder()->layout('adminLayout');
         //$id = $_SESSION['Auth']['User']['email'];
         $this->set(compact('host'));
         $this->set(compact('port'));
         $this->set(compact('username'));
         $this->set(compact('password'));
+        $this->set(compact('name_email'));
+        $this->set(compact('secure'));
     }
 }
