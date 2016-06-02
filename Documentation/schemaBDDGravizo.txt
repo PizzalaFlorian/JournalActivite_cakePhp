@@ -2,36 +2,38 @@
 ![Schéma des données](
 http://g.gravizo.com/g?
 @startuml;
-object Activites;
-object Actualites;
-object Administrateurs;
+left to right direction;
+
+object Users;
 object Candidats;
 object Chercheurs;
-object Compagnies;
-object Dispositifs;
-object Lieux;
-object Messages;
-object Occupations;
-object Users;
-object CategorieActivites;
-object CategorieLieux;
-
+object Administrateurs;
 Users <|-- Candidats;
 Users <|-- Chercheurs;
 Users <|-- Administrateurs;
 
+object Compagnies : test;
+object Dispositifs;
+object Lieux;
+object Occupations;
+object Activites;
 Occupations o-- Candidats;
 Occupations o-- Activites;
 Occupations o-- Compagnies;
 Occupations o-- Dispositifs;
 Occupations o-- Lieux;
 
-CategorieLieux o-- Lieux;
-CategorieActivites o-- Activites;
+object CategorieActivites;
+object CategorieLieux;
+Lieux --o CategorieLieux;
+Activites --o CategorieActivites;
 
+object Messages;
 Messages o-- Users;
-Actualites o-- Administrateurs;
-Actualites o-- Chercheurs;
+
+object Actualites;
+Administrateurs  --o Actualites;
+Chercheurs  --o Actualites;
 
 CarnetDeBord o-- Chercheurs;
 @enduml;

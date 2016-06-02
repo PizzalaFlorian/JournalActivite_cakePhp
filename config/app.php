@@ -176,39 +176,36 @@ return [
      * 'YourTransport.php', where 'Your' is the name of the transport.
      */
 
-            'EmailTransport' => [
-                'default' => [
-                    'className' => 'Mail',
-                    // The following keys are used in SMTP transports
-                    'host' => 'localhost',
-                    'port' => 25,
-                    'timeout' => 30,
-                    'username' => '',
-                    'password' => '',
-                    'client' => null,
-                    'tls' => null,
-                ],
-'appli' => [
-                  'className' => 'Smtp',
-                  // The following keys are used in SMTP transports
-                  'host' => 'smtp.gmail.com',
-                  'port' => 587,
-                  'username' => 'applitimesmanagement@gmail.com',
-                  'password' => 'myappliTimesManagement',
-                  'timeout' => 30,
-                  'client' => null,
-                  'tls' => true, 
-                ],
+        'EmailTransport' => [
+            'default' => [
+                'className' => 'Mail',
+                // The following keys are used in SMTP transports
+                'host' => 'localhost',
+                'port' => 25,
+                'timeout' => 30,
+                'username' => '',
+                'password' => '',
+                'client' => null,
+                'tls' => null,
             ],
-
-            'Email' => [
-                    'default' => [
-                        'transport' => 'appli',
-                        'from' => 'applitimesmanagement@gmail.com',
-                        //'charset' => 'utf-8',
-                        //'headerCharset' => 'utf-8',
-                    ],
-                ],
+            'appli' => [
+                'className' => 'Smtp',
+				'host' => 'applitimesmanagement@gmail.com',
+				'port' => 345,
+				'username' => 'myappliTimesManagement',
+				'password' => 'myappliTimesManagement',
+                'timeout' => 30,
+				'tls'=> true,
+            ],
+        ],
+        'Email' => [
+            'default' => [
+                'transport' => 'appli',
+				'from' => 'noreply@monAppli.com',
+                //'charset' => 'utf-8',
+                //'headerCharset' => 'utf-8',
+            ],
+        ],
 
     /**
      * Connection information used by the ORM to connect
