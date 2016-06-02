@@ -625,14 +625,11 @@ class AdministrateurController extends AppController
     }
 
     public function messagerie(){
-        //$ligne = fgets($fp,255);
-        /*while(($ligne = fgets($fp,255)) != false){
-            
-            if($ligne == "'appli' => [\n"){
-                echo "<br/>hi";
-            }
-            //(fgets($fp,255) != "                'appli' => [")&&(
-        }*/   
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+       
         if($this->request->is('post')){
             //Récupération des données a enregistrer
             $port       = $this->request->data['port'];
