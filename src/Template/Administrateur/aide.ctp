@@ -49,20 +49,24 @@
 			<tr>
 				<td width="200">Inviter un candidat</td>
 				<td>
-					Créer un compte de type candidat et envoi un mail d'invitaion à l'adresse Email spécifié. Les informations du compte (Login / Mots de passe) sont transmit dans le mail.
+					Créer un compte de type candidat et envoi un mail d'invitaion à l'adresse Email spécifié. Les informations du compte (Login / Mots de passe) sont transmit dans le mail.<br/>
+					Le contenue de l'Email envoyé au candidat peut être modifier sur la page <?php echo $this->Html->link('Gestion site web/Invitation Candidat','/administrateur/email-candidat'); ?>.
 				</td>
 			</tr>
 			<tr>
 				<td width="200">Inviter une liste de candidats</td>
 				<td>
 					Créer un compte de type candidat et envoi un mail d'invitaion au adresse Email dans la liste transmise en paramêtre.
-					Les informations du compte (Login / Mots de passe) sont transmit dans le mail.
+					Les informations du compte (Login / Mots de passe) sont transmit dans le mail.<br/>
+					Le contenue de l'Email envoyé aux candidats peut être modifier sur la page <?php echo $this->Html->link('Gestion site web/Invitation Candidat','/administrateur/email-candidat'); ?>.
 				</td>
 			</tr>
 			<tr>
 				<td width="200">Inviter un chercheur</td>
 				<td>
-					Créer un compte de type chercheur et envoi un mail d'invitaion à l'adresse Email spécifié. Les informations du compte (Login / Mots de passe) sont transmit dans le mail.
+					Créer un compte de type chercheur et envoi un mail d'invitaion à l'adresse Email spécifié. Les informations du compte (Login / Mots de passe) sont transmit dans le mail.<br/>
+					Le contenue de l'Email envoyé au chercheur peut être modifier sur la page <?php echo $this->Html->link('Gestion site web/Invitation chercheur','/administrateur/email-chercheur'); ?>.
+					
 				</td>
 			</tr>
 			<tr>
@@ -81,14 +85,16 @@
 			<tr>
 				<td width="200">Inviter un candidat</td>
 				<td>
-					Créer un compte de type candidat et envoi un mail d'invitaion à l'adresse Email spécifié. Les informations du compte (Login / Mots de passe) sont transmit dans le mail.
+					Créer un compte de type candidat et envoi un mail d'invitaion à l'adresse Email spécifié. Les informations du compte (Login / Mots de passe) sont transmit dans le mail.<br/>
+					Le contenue de l'Email envoyé au candidat peut être modifier sur la page <?php echo $this->Html->link('Gestion site web/Invitation Candidat','/administrateur/email-candidat'); ?>.
 				</td>
 			</tr>
 			<tr>
 				<td width="200">Inviter une liste de candidats</td>
 				<td>
 					Créer un compte de type candidat et envoi un mail d'invitaion au adresse Email dans la liste transmise en paramêtre.
-					Les informations du compte (Login / Mots de passe) sont transmit dans le mail.
+					Les informations du compte (Login / Mots de passe) sont transmit dans le mail.<br/>
+					Le contenue de l'Email envoyé aux candidats peut être modifier sur la page <?php echo $this->Html->link('Gestion site web/Invitation Candidat','/administrateur/email-candidat'); ?>.
 				</td>
 			</tr>
 		</table>
@@ -101,7 +107,8 @@
 			<tr>
 				<td width="200">Inviter un chercheur</td>
 				<td>
-					Créer un compte de type chercheur et envoi un mail d'invitaion à l'adresse Email spécifié. Les informations du compte (Login / Mots de passe) sont transmit dans le mail.
+					Créer un compte de type chercheur et envoi un mail d'invitaion à l'adresse Email spécifié. Les informations du compte (Login / Mots de passe) sont transmit dans le mail.<br/>
+					Le contenue de l'Email envoyé au chercheur peut être modifier sur la page <?php echo $this->Html->link('Gestion site web/Invitation chercheur','/administrateur/email-chercheur'); ?>.
 				</td>
 			</tr>
 		</table>
