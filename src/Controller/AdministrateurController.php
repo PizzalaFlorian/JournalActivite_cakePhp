@@ -660,6 +660,7 @@ class AdministrateurController extends AppController
                     $app = $app."\t\t\t\t'username' => '$username',\n";
                     $app = $app."\t\t\t\t'password' => '$password',\n";
                     $app = $app.fgets($fp,255); 
+                    $app = $app.fgets($fp,255); 
                     fgets($fp,255);                 // saut de la lecture de tls
                     if($secure == 'tls'){
                         $app = $app."\t\t\t\t'tls'=> true,\n";
@@ -698,6 +699,7 @@ class AdministrateurController extends AppController
         $username   = fgets($fp, 255);
         $password   = fgets($fp, 255);
         fgets($fp, 255);                // Saut de la ligne TimeOut
+        fgets($fp, 255);                // Saut de la ligne client
         $secure     = fgets($fp, 255);
 
         // $host       = substr(fgets($fp, 255), 0, -3);

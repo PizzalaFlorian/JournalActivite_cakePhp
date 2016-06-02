@@ -24,7 +24,8 @@
         return $user;
 	}
 	function message($contenue, $expediteur){
-		$email = "Bonjour,\nVous avez reçut un nouveau message de $expediteur.\n\n";
+		$candidat = whoIsID($expediteur);
+		$email = "Bonjour,\nVous avez reçut un nouveau message de $candidat.\n\n";
 		$email = $email.$contenue;
 		return $email;
 	}
