@@ -1,15 +1,8 @@
-	$(document).ready(function(){
-		$('#legende').hide();
-		
-		$("#afficheLegende").click(function(event){
-			event.preventDefault();
-			$("#legende").slideToggle();
-		});
-		
-		
-		$("#generer_legende").click(function(event){
-			event.preventDefault();
-			$("#legende").slideToggle();
-		});
-		
+$(document).ready(function(){	
+	$(".aide").hide();
+	$(".description").click(function(event){
+		console.log("click");
+		//$("#aide").hide();
+		$("this").children('.aide').show("slow");
 	});
+});
