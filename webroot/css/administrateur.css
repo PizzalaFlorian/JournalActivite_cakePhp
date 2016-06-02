@@ -8,9 +8,3 @@ li{
 *::-moz-placeholder {
 	color: #101010 !important;
 }
-.aide{
-	display:none;
-}
-.aide:active{
-	display:none;
-}
