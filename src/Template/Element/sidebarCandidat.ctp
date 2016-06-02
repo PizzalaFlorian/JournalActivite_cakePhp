@@ -14,7 +14,7 @@
 <li> 
     <?php 
         echo $this->Html->link(
-            'Mes activités',
+            'Mes Activités',
             ['controller' => 'candidat', 'action' => 'activite', '_full' => true]
         );
     ?>
