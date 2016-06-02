@@ -2,7 +2,8 @@ $(document).ready(function(){
 	$(".aide").hide();
 	$(".description").click(function(event){
 		console.log("click");
+		console.log($(".this"));
 		//$("#aide").hide();
-		$("this").children('.aide').show("slow");
+		$("this").find(".aide").show("slow");
 	});
 });
