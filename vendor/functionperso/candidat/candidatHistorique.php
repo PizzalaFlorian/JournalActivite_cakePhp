@@ -628,7 +628,7 @@ function stat_all_dispositif($CodeCandidat,$dure_total){
 /*Renvoie les statistiques des dispositifs*/
 function stat_jour_dispositif($jour,$CodeCandidat,$dure_total){
 	
-		echo  "Combient de temps ai-je passé mon temps avec :<br/>";
+		echo  "Les dispositifs que j'ai utilisé :<br/>";
 				
 		$table = TableRegistry::get('occupation')
             ->find()

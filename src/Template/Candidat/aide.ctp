@@ -11,19 +11,31 @@
 		</center>
 		<br/> <a href="#" class="menu_aide">Ajouter une activité</a>	
 		<p>
-			Pour ajouter une activité allez sur l'onglet "Mes activités". Sélectionnez la semaine auquel vous voulez ajouter l'activité.
+			Pour ajouter une activité allez sur l'onglet "Mes activités". Sélectionnez la semaine auquelle vous voulez ajouter l'activité. <br/>
+			Faites un double clique sur le jour et vers l'heure auquels vous voulez ajouter l'activité. <br/>
+			Renseignez l'heure de début et l'heure de fin de l'activité.<br/>
+			Les Activités sont regroupés par ordre d'activité.<br/>
+			Pour ajouter une activité sélectionnez une catégorie d'activité, puis une activité. <br/>
+			Renseignez le lieu où vous vous trouvez, il y a deux catégories de lieux: les transports et les autres lieux, sélectionnez votre lieu. <br/>
+			Sélectionnez votre compagnie, c'est à dire les personnes avec qui vous êtes<br/>
+			Sélectionnez le dispositif que vous utilisez, puis cliquez sur "enregistrer" pour ajouter votre activité.
 		</p>
 		<br/> <a href="#" class="menu_aide">Modifier une activité</a>	
 		<p>
-			Pour modifier une activité allez sur l'onglet "Mes activités". Sélectionnez la semaine duquel vous voulez modifier l'activité.
+			Pour modifier une activité allez sur l'onglet "Mes activités". Sélectionnez la semaine de laquelle vous voulez modifier l'activité.<br/>
+			Faites un clique droit sur l'activité à modifier, puis cliquez sur supprimer ou faites un double clique sur l'activité à modifer.</br>
+			Faites vos modifications, puis cliquer surenregistrer pour sauvegarder vos modifications.<br/>
+			Pour modifier les horaires d'une activité vous pouvez aussi cliquer sur l'activité, garder le clique de la souris enfoncé, déplacer l'activité à l'aide de la souris dans le callendrier, puis relacher la souris à l'endroit où vous voulez déplacer l'activité.
 		</p>
 		<br/> <a href="#" class="menu_aide">Supprimer une activité</a>	
 		<p>
-			Pour supprimer une activité allez sur l'onglet "Mes activités". Sélectionnez la semaine duquel vous voulez supprimer l'activité.
+			Pour supprimer une activité allez sur l'onglet "Mes activités". Sélectionnez la semaine de quelle vous voulez supprimer l'activité.<br/>Faites un clique droit sur l'activité à supprimer.<br/> 
+			Cliquez sur supprimer.<br/> Confirmez la suppression de l'activité.
 		</p>
 		<br/> <a href="#" class="menu_aide">Dupliquer une activité</a>	
 		<p>
-			Pour dupliquer une activité allez sur l'onglet "Mes activités". Sélectionnez la semaine duquel vous voulez dupliquer l'activité.
+			Pour dupliquer une activité allez sur l'onglet "Mes activités". Sélectionnez la semaine de laquelle vous voulez dupliquer l'activité. <br/>Faites un clique droit sur l'activité à dupliquer, 
+			cliquez sur copier, déplacee la souris à l'endroit où vous souhaitez dupliquer l'activité, faites un clique droit, cliquez sur coller.
 		</p>
 		<br/> <a href="#" class="menu_aide">Voir et changer ses informations personnelles</a>
 		<p>
