@@ -203,7 +203,7 @@ class MessagesController extends AppController
 //envoie de message vers un utilisateur
 //
 //note : 
-// tout les etudiants : 1
+// tout les etudiants  : 1
 // tout les chercheurs : 2
 //  
     public function nouveau()
@@ -245,8 +245,6 @@ class MessagesController extends AppController
                             ->send(message($message->ContenuMessage,$message->IDExpediteur));
                     }
                 }
-
-
 // ========================== Modif mail =============================//
                 $this->Flash->success(__('Votre message à bien été envoyé.'));
                 return $this->redirect(['action' => 'index']);
@@ -260,6 +258,7 @@ class MessagesController extends AppController
         $this->set('_serialize', ['message']);
     }
 
+// fonction pour répondre a un message envoyé
     public function repondre($id = null)
     {
         // on verifie que l'utilisateur accède bien a un message dont il est le destinataire ou le recepteur
@@ -296,6 +295,23 @@ class MessagesController extends AppController
                 $newMessage->userExpediteur = $newMessage->IDExpediteur;
                 $newMessage->userRecepteur = $newMessage->IDRecepteur;
                 if ($this->Messages->save($newMessage)) {
+                    if($newMessage->IDRecepteur == 1){
+    // ========================== Modif mail =============================//
+                        //ce morceau marche mais pour des raison remplissage de mail je le coupe x)
+                        $this->loadModel('Users');
+
+                        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "messagerie" . DS ."messagerie.php");
+                        $chercheurs = $this->paginate($this->Users->find('all', ['conditions' => ['typeUser' => 'chercheur'] ]));
+                        foreach($chercheurs as $chercheur){
+                            $email = new Email('default');
+                            $email
+                                ->to($chercheur->email)
+                                ->subject($newMessage->Sujet)
+                                ->send(message($newMessage->ContenuMessage,$newMessage->IDExpediteur));
+                        }
+                    }
+    // ========================== Modif mail =============================//
+
                     $this->Flash->success(__('Votre message à bien été envoyé.'));
                     return $this->redirect(['action' => 'index']);
                 } else {
@@ -330,6 +346,7 @@ class MessagesController extends AppController
         }
     }
 
+// fonction : gestion des messages envoyé
     public function envoie()
     {
         switch ($_SESSION['Auth']['User']['typeUser']) {
@@ -365,6 +382,8 @@ class MessagesController extends AppController
         $this->set(compact('messages'));
         $this->set('_serialize', ['messages']);
     }
+
+// fonction : envoie d'un message de contact
 	public function contact(){
 		$this->viewBuilder()->layout('candiLayout'); 
 		$sideBar = "sidebarCandidat";      
