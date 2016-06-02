@@ -39,6 +39,7 @@
                     <?php endforeach; ?>
                 </tbody>
             </table>
+            <?= $this->Html->link(__('Créer une Actualité'), ['controller' => 'actualites','action' => 'nouveau'],array('class' => 'button')) ?>
         </div>
 </div>
 </div>

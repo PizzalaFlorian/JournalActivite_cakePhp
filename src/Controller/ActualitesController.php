@@ -147,7 +147,7 @@ class ActualitesController extends AppController
             switch ($_SESSION['Auth']['User']['typeUser']) {
                 case 'chercheur':       $monController = "chercheur";        $monAction="accueil";                 break;
                 case 'candidat':        $monController = "";         $monAction="";                 break;
-                case 'admin':           $monController = "Administrateur";                 $monAction="acceuil";                        break;
+                case 'admin':           $monController = "Administrateur";                 $monAction="accueil";                        break;
             }
             $actualite = $this->Actualites->newEntity();
             if ($this->request->is('post')) {
