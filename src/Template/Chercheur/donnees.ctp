@@ -43,7 +43,7 @@
 			<h2>Noms correspondants au codes:</h2>
 			<a href="#" id="afficheLegende">Afficher les noms correspondant aux codes</a><br/>
 			<?php echo $this->Html->link(
-            'Télécharger les noms correspondant au codes',
+            'Télécharger les noms correspondant aux codes',
             ['controller' => 'chercheur', 'action' => 'telechargerLegende', '_full' => true]
        		 ); 
        		?>
