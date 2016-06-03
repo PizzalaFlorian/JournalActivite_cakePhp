@@ -6,6 +6,9 @@
     tr {
     	text-align: center;
     }
+    h2{
+        text-align: center;
+    }
     p{
     	text-align: center;
     	border-bottom: 1px solid black;
@@ -44,3 +47,10 @@
 pour un totale de <b><?= $count ?></b> occupations mentionnée(s)</p>
 
 <p> à la date du <?php echo $annee; ?> - Code génération <?php echo $code; ?></p>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<center><h2> Ce document devra être déposé a l'accueil</h2></center>

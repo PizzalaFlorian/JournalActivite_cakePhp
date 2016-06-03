@@ -49,6 +49,19 @@
 			
 			return $resultat;
 		}
+
+		/* Renvoie la liste des dispositifs*/
+		function putListeDispositifCSV($fichierCSV,$delimiter){
+			$table = null;
+			$table = TableRegistry::get('dispositif')
+		    	->find()
+		    	->toArray();
+
+		    foreach($table as $data){
+				$res = array($data['CodeDispositif'],$data['NomDispositif']);
+           		fputcsv($fichierCSV,$res,$delimiter);
+			}
+		}
 		
 		/* Renvoie un select avec la liste des dispositifs */
 		function selectDispositif($id,$name){

@@ -52,6 +52,18 @@
 			
 			return $resultat;
 		}
+
+		function putListeCompagnieCSV($fichierCSV,$delimiter){
+			$table = null;
+			$table = TableRegistry::get('compagnie')
+		    	->find()
+		    	->toArray();
+
+		    foreach($table as $data){
+		    	$res = array($data['CodeCompagnie'],$data['NomCompagnie']);
+           		fputcsv($fichierCSV,$res,$delimiter);
+		    }
+		}
 		
 		/* Renvoie un select avec la liste des compagnies */
 		function selectCompagnieVide($id,$name){

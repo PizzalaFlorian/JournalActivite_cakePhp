@@ -254,6 +254,42 @@ class ChercheurController extends AppController
 
     }
 
+     public function telechargerLegendeCSV(){
+
+        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+        
+        $fichierLegende = fopen(ROOT .DS. "webroot". DS . "files" . DS .'legende.csv', 'a');
+        ftruncate($fichierLegende,0);
+        $delimiter = ";";
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "activite" . DS ."activite.php");
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "lieu" . DS ."lieux.php");
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "dispositif" . DS ."dispositif.php");
+        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "compagnie" . DS ."compagnie.php");
+
+        fputcsv($fichierLegende,array( "CodeActivite" , "Descriptif"),$delimiter);
+        putListeActiviteCSV($fichierLegende,$delimiter);
+        fputcsv($fichierLegende,array( "CodeLieux" , "Descriptif"),$delimiter);
+        putListeLieuCSV($fichierLegende,$delimiter);
+        fputcsv($fichierLegende,array( "CodeCompagnie" , "Descriptif"),$delimiter);
+        putListeCompagnieCSV($fichierLegende,$delimiter);
+        fputcsv($fichierLegende,array( "CodeDispositif" , "Descriptif"),$delimiter);
+        putListeDispositifCSV($fichierLegende,$delimiter);
+
+
+        // 3 : quand on a fini de l'utiliser, on ferme le fichier
+        fclose($fichierLegende);
+
+        $path = ROOT .DS. "webroot". DS . "files" . DS .'legende.csv';
+        $this->response->file($path, array(
+            'download' => true,
+            'name' => 'legende.csv',
+        ));
+        return $this->response;
+    }
+
 
     /**
      * [modif Page permettant au chercheur de modifier ses infos, ici nom et prénom]

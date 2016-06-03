@@ -55,6 +55,19 @@
 		 	return $resultat;
 		}	
 
+		/* Renvoie la liste des lieu*/
+	function putListeLieuCSV($fichierCSV,$delimiter){
+			$table = null;
+			$table = TableRegistry::get('lieu')
+		    	->find()
+		    	->toArray();
+
+		    foreach($table as $data){
+		    	$res = array($data['CodeLieux'],$data['NomLieux']);
+           		fputcsv($fichierCSV,$res,$delimiter);
+		    }
+		}
+
 	
 		/* Renvoie un select avec la liste des lieux */
 	function selectLieu($id,$name){

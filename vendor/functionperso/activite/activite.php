@@ -68,6 +68,19 @@
 
 		return $resultat;
 	}
+
+	/* Renvoie la liste des activités*/
+	function putListeActiviteCSV($fichierCSV,$delimiter){
+		$table = null;
+		$table = TableRegistry::get('activite')
+		    ->find()
+		    ->toArray();
+
+		foreach ($table as $data) {
+			$res = array($data['CodeActivite'],$data['NomActivite']);
+           		fputcsv($fichierCSV,$res,$delimiter);
+		}
+	}
 		
 	/* Renvoie un select avec la liste des activités */
 	function selectActivite($id,$name){
