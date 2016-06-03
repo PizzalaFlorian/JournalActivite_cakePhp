@@ -1,13 +1,15 @@
 <?php
     echo $this->Html->css('main_custom');
+    if($monController == 'chercheur'){
+     echo $this->element('sidebarChercheur');
+    }
+    if($monController == 'candidat'){
+     echo $this->element('sidebarCandidat');
+    }
+    if($monController == 'administrateur'){
+     echo $this->element('sidebarAdmin');
+    }
 ?>
-
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <?= $this->Html->link(__('Retour acceuil'), ['controller' => "$monController",'action' => "$monAction"]) ?>
-    </ul>
-</nav>
 <div class="actualites form large-9 medium-8 columns content">
     <?= $this->Form->create($actualite) ?>
     <fieldset>

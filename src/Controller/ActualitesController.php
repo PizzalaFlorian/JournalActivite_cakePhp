@@ -13,21 +13,6 @@ class ActualitesController extends AppController
 {
 
     /**
-     * Index method
-     *
-     * @return \Cake\Network\Response|null
-     */
-    public function index()
-    {
-        //fonction lié au actualité dans actualité.php
-        require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "actualite" . DS ."actualite.php");
-        $actualites = $this->paginate($this->Actualites);
-
-        $this->set(compact('actualites'));
-        $this->set('_serialize', ['actualites']);
-    }
-
-    /**
      * View method
      *
      * @param string|null $id Actualite id.
@@ -42,15 +27,18 @@ class ActualitesController extends AppController
                                 $monAction="accueil";
                                 $this->viewBuilder()->layout('candiLayout'); 
                                 $sideBar = "sidebarCandidat";      
-                            break;
+                break;
             case 'chercheur':   $monController = "chercheur";
                                 $monAction="accueil";
                                 $this->viewBuilder()->layout('cherLayout');
                                 $sideBar = "sidebarChercheur";
 
-                            break;
-            case 'admin':       $monID = '0';                                   
-                            break;
+                break;
+           case 'admin':        $monController = "administrateur";                  
+                                $monAction="accueil";
+                                $this->viewBuilder()->layout('adminLayout');
+                                $sideBar = "sidebarAdmin";       
+                break;
         }
         $actualite = $this->Actualites->get($id, [
             'contain' => []
@@ -73,13 +61,24 @@ class ActualitesController extends AppController
     {
         // on verifie que l'utilisateur est de type chercheur ou admin
         if(($_SESSION['Auth']['User']['typeUser'] == 'chercheur') || ($_SESSION['Auth']['User']['typeUser'] =='admin')){
-            switch ($_SESSION['Auth']['User']['typeUser']) {
-                case 'chercheur':       $monController = "chercheur";                       $monAction="accueil";       break;
-                case 'candidat':        $monController = "";                                $monAction="";              break;
-                case 'admin':           $monController = "administrateur";                  $monAction="accueil";       break;
-            }
 
-            $this->viewBuilder()->layout('cherLayout');
+            switch ($_SESSION['Auth']['User']['typeUser']) {
+                case 'chercheur':       $monController = "chercheur";                       
+                                        $monAction="accueil";
+                                        $this->viewBuilder()->layout('cherLayout');      
+                                        $sideBar = "sidebarChercheur";   
+                    break;
+                case 'candidat':        $monController = "";                                
+                                        $monAction="";
+                                        $this->viewBuilder()->layout('candiLayout');
+                                        $sideBar = "sidebarCandidat";             
+                    break;
+                case 'admin':           $monController = "administrateur";                  
+                                        $monAction="accueil";
+                                        $this->viewBuilder()->layout('adminLayout');
+                                        $sideBar = "sidebarAdmin";       
+                    break;
+            }
             
             $actualite = $this->Actualites->get($id, ['contain' => [] ]);
             if ($this->request->is(['patch', 'post', 'put'])) {
@@ -96,6 +95,7 @@ class ActualitesController extends AppController
             $this->set(compact('monController'));
             $this->set(compact('monAction'));
             $this->set(compact('actualite'));
+            $this->set(compact('sideBar'));
             $this->set('_serialize', ['actualite']);
         } else {
             // Si la page demandé n'est pas disponible pour l'utilisateur, on demande une nouvel authentification
@@ -115,9 +115,18 @@ class ActualitesController extends AppController
     public function delete($id = null)
     {
         switch ($_SESSION['Auth']['User']['typeUser']) {
-            case 'chercheur':       $monController = "chercheur";                       $monAction="accueil";       break;
-            case 'candidat':        $monController = "";                                $monAction="";              break;
-            case 'admin':           $monController = "administrateur";                  $monAction="accueil";       break;
+            case 'chercheur':       $monController = "chercheur";                       
+                                    $monAction="accueil";       
+                                    $sideBar = "sidebarChercheur";   
+                break;
+            case 'candidat':        $monController = "";                                
+                                    $monAction="";
+                                    $sideBar = "sidebarCandidat";             
+                break;
+            case 'admin':           $monController = "administrateur";                  
+                                    $monAction="accueil"; 
+                                    $sideBar = "sidebarAdmin";       
+                break;
         }
         // on verifie que l'utilisateur est de type chercheur ou admin
         if(($_SESSION['Auth']['User']['typeUser'] == 'chercheur') || ($_SESSION['Auth']['User']['typeUser'] =='admin')){
@@ -145,9 +154,21 @@ class ActualitesController extends AppController
     public function nouveau(){
         if(($_SESSION['Auth']['User']['typeUser'] == 'chercheur') || ($_SESSION['Auth']['User']['typeUser'] =='admin')){
             switch ($_SESSION['Auth']['User']['typeUser']) {
-                case 'chercheur':       $monController = "chercheur";        $monAction="accueil";                 break;
-                case 'candidat':        $monController = "";         $monAction="";                 break;
-                case 'admin':           $monController = "Administrateur";                 $monAction="accueil";                        break;
+                case 'chercheur':       $monController = "chercheur";                       
+                                        $monAction="accueil";
+                                        $this->viewBuilder()->layout('cherLayout');      
+                                        $sideBar = "sidebarChercheur";   
+                    break;
+                case 'candidat':        $monController = "";                                
+                                        $monAction="";
+                                        $this->viewBuilder()->layout('candiLayout');
+                                        $sideBar = "sidebarCandidat";             
+                    break;
+                case 'admin':           $monController = "administrateur";                  
+                                        $monAction="accueil";
+                                        $this->viewBuilder()->layout('adminLayout');
+                                        $sideBar = "sidebarAdmin";       
+                    break;
             }
             $actualite = $this->Actualites->newEntity();
             if ($this->request->is('post')) {
@@ -165,6 +186,7 @@ class ActualitesController extends AppController
             $this->set(compact('monController'));
             $this->set(compact('monAction'));
             $this->set(compact('actualite'));
+            $this->set(compact('sideBar'));
             $this->set('_serialize', ['actualite']);
         } else {
             // Si la page demandé n'est pas disponible pour l'utilisateur, on demande une nouvel authentification

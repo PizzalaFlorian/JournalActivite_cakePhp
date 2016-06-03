@@ -3,7 +3,7 @@
 ?>
 <div id="content">
 	<div class="candidat form large-12 medium-12 columns content">
-		<h3 class="center"> Chartre d'utilisation des données personnelles</h3>
+		<h3 class="center"> Charte d'utilisation des données personnelles</h3>
 
 		<p class="grey-box">
 		Les informations recueillies à partir de ce formulaire font l’objet d’un traitement informatique destiné à :
@@ -63,7 +63,7 @@
 				    </div>
 				</fieldset>
 				<div id="button">
-		        	<?= $this->Form->button(__('J\'approuve la chartre')) ?>
+		        	<?= $this->Form->button(__('J\'approuve la charte')) ?>
 	        	</div>
 		    <?= $this->Form->end() ?>
 		</div>
