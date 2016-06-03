@@ -9,7 +9,6 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th><?= $this->Paginator->sort('CodeEntree') ?></th>
                 <th><?= $this->Paginator->sort('Date') ?></th>
                 <th><?= $this->Paginator->sort('Sujet') ?></th>
                 <th><?= $this->Paginator->sort('Nom Chercheur') ?></th>
@@ -19,7 +18,6 @@
         <tbody>
             <?php foreach ($carnetdebord as $carnetdebord): ?>
             <tr>
-                <td><?= $this->Number->format($carnetdebord->CodeEntree) ?></td>
                 <td><?= h($carnetdebord->Date) ?></td>
                 <td><?= h($carnetdebord->Sujet) ?></td>
                 <td>
