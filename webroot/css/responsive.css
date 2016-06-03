@@ -60,6 +60,10 @@
         width:100% !important;
     }
 
+    #content{
+        margin-left:10px !important;
+    }
+
     .candidat {
         margin: 0 !important;
         width: 100%;
