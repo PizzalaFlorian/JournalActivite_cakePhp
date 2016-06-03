@@ -30,10 +30,10 @@
                                 <?= h($actualite->Date) ?>
                         </td>
                         <td>
-                                <?= $this->Html->link(h(substr($actualite->Sujet, 0, 30)), ['controller' => 'actualites','action' => 'view', $actualite->ID]) ?>
+                                <?= $this->Html->link(__(coupe($actualite->Sujet, 30)), ['controller' => 'actualites','action' => 'view', $actualite->ID]) ?>
                         </td>
                         <td>
-                                <?= h(substr($actualite->Contenue, 0, 50)) ?>...
+                                <?= $this->Html->link(__(coupe($actualite->Contenue, 50)), ['controller' => 'actualites','action' => 'view', $actualite->ID]) ?>
                         </td>
                         <td class="actions">
                             <?php
@@ -55,5 +55,6 @@
                 </tbody>
             </table>
         </div>
+        
         <?= $this->Html->link(__('Créer une Actualité'), ['controller' => 'actualites','action' => 'nouveau'],array('class' => 'button')) ?>
 </div>

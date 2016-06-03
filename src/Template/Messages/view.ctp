@@ -30,9 +30,15 @@
                 // si l'utilisateur a été supprimer, aucune possibilité de repondre
                 if(!(($message->userExpediteur == 4)||($message->userRecepteur == 4))){ 
             
-                echo $this->Html->link(__('Répondre'), ['action' => 'repondre', $message->IDMessage],array("class"=>"button")).' ';
-                echo $this->Html->link(__('Supprimer'), ['action' => 'delete', $message->IDMessage],array("class"=>"button",'confirm' => __('Etes vous sur de vouloir supprimer ce message?', $message->IDMessage))).' ';
-                echo $this->Html->link(__('Retour'), ['controller' => 'messages'],array("class"=>"button")).' '; 
+                    if($message->userExpediteur != $_SESSION['Auth']['User']['ID']) {
+                        if(($_SESSION['Auth']['User']['typeUser'] == 'chercheur')&&($message->userRecepteur != '1')){
+
+                        }else{
+                            echo $this->Html->link(__('Répondre'), ['action' => 'repondre', $message->IDMessage],array("class"=>"button")).' ';
+                        }
+                    }
+                    echo $this->Html->link(__('Supprimer'), ['action' => 'delete', $message->IDMessage],array("class"=>"button",'confirm' => __('Etes vous sur de vouloir supprimer ce message?', $message->IDMessage))).' ';
+                    echo $this->Html->link(__('Retour'), ['controller' => 'messages'],array("class"=>"button")).' '; 
                 }
     ?>
 </div>

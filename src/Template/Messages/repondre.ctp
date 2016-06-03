@@ -4,8 +4,8 @@
 ?>
 <div id="content">
     <div class="messages form large-12 medium-11 columns content">
-        <?= $this->Html->link(__('Retour'), ['controller' => 'messages'],array('class' => 'button')) ?>
         <?= $this->Form->create($message) ?>
+        <p>Ce message doit resté anonyme. Ne transmettez pas votre nom, prénom, ou votre identifiant. Votre numéro de candidat sera transféré automatiquement.</p>
         <fieldset>
             <div class="input text required">
                 <label for="idrecepteur">Répondre à :</label>
@@ -25,5 +25,6 @@
         </fieldset>
         <?= $this->Form->button(__('Envoyer')) ?>
         <?= $this->Form->end() ?>
+        <?= $this->Html->link(__('Retour'), ['controller' => 'messages'],array('class' => 'button')) ?>
     </div>
 </div>

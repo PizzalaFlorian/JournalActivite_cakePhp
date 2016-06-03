@@ -8,6 +8,10 @@
 #loginSite form input[type="login"]{
 	text-align:center;
 }*/
+.justify{
+	text-align:justify;
+}
+
 
 #content{
 	margin:0 !important;
