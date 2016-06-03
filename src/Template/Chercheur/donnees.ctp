@@ -40,7 +40,7 @@
 			
 			
 			
-			<h2>Noms correspondants au codes:</h2>
+			<h2>Noms correspondants aux codes:</h2>
 			<a href="#" id="afficheLegende">Afficher les noms correspondant aux codes</a><br/>
 			<?php echo $this->Html->link(
             'Télécharger les noms correspondant aux codes',
@@ -59,7 +59,7 @@
 			<h2>Les codes candidats : </h2>ce sont les codes des candidats, leur noms n'est pas communiqué aux chercheurs à cause de la confidentialité, si vous vous rendez compte qu'un candidat rentre des mauvaises données signalez le à l'administrateur qui se chargera de supprimer le candidat.  
 			</div>
 						
-			<h2>Apperçu des données:</h2>
+			<h2>Aperçu des données:</h2>
 			Les données sur les occupations rentrées par les candidats: 
 			<?php echo tableDonnees(); ?>
 			<hr/>
