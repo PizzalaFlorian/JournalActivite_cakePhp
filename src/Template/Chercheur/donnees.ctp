@@ -21,19 +21,19 @@
 			
 			<h2>Téléchargement des données:</h2>
 			<?php echo $this->Html->link(
-            'Téléchargement des données',
+            'Téléchargement des données (xsl)',
             ['controller' => 'chercheur', 'action' => 'telechargerCandidatExcel', '_full' => true]
        		 ); 
        		?>
 			Format: .xsl (Compatible Excel 2003)<br/>
 			Les données des candidats sont sur la feuille Candidat, les occupations des candidats sont sur la feuille Occupation dans le fichier Excel. <br/>
 			<?php echo $this->Html->link(
-            'Téléchargement des occupations entrées par les candidats',
+            'Téléchargement des occupations entrées par les candidats (csv)',
             ['controller' => 'chercheur', 'action' => 'telechargerDonnees', '_full' => true]
        		 ); 
        		?> Format: .csv , séparateur: " ; " <br/>
 			<?php echo $this->Html->link(
-            'Téléchargement des données des candidats',
+            'Téléchargement des données des candidats (csv)',
             ['controller' => 'chercheur', 'action' => 'telechargerCandidat', '_full' => true]
        		 ); 
        		?> Format: .csv , séparateur: " ; " <br/>
