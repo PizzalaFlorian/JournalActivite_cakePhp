@@ -25,9 +25,10 @@
     echo $this->element('sidebarCandidat');
 
     if($isMobile == true){
-        echo $this->Html->script('jquery.mobile-1.4.5');
-        echo $this->Html->script('jquery.mobile-1.4.5.min');
-        echo $this->Html->script('affichage.mobile');
+        echo $this->Html->script('jquery.mobile.custom');
+        echo $this->Html->script('jquery.mobile.custom.min');
+        echo $this->Html->script('calendar.mobile');
+
     }
     else{
         echo $this->Html->script('jquery-1.7.min');
