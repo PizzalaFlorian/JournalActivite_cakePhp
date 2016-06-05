@@ -24,13 +24,22 @@
 
     echo $this->element('sidebarCandidat');
 
-    echo $this->Html->script('jquery-1.7.min');
-    echo $this->Html->script('jquery-ui-1.7.2.custom.min');
+    if($isMobile == true){
+        echo $this->Html->script('jquery.mobile-1.4.5');
+        echo $this->Html->script('jquery.mobile-1.4.5.min');
+    }
+    else{
+        echo $this->Html->script('jquery-1.7.min');
+        echo $this->Html->script('jquery-ui-1.7.2.custom.min');
+        echo $this->Html->script('Demo_calendar_script');
+    }
+    // echo $this->Html->script('jquery-1.7.min');
+    // echo $this->Html->script('jquery-ui-1.7.2.custom.min');
     echo $this->Html->script('jquery.corner');
-    echo $this->Html->script('jquery.mobile.custom.min');
+    //echo $this->Html->script('jquery.mobile.custom.min');
     echo $this->Html->script('candidat.activite');
     echo $this->Html->script('candidat_Renseignement.activite');
-    echo $this->Html->script('Demo_calendar_script');
+    //echo $this->Html->script('Demo_calendar_script');
 
     echo $this->Html->css('modale');
     echo $this->Html->css('occupation');

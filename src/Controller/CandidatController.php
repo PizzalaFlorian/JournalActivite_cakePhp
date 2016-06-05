@@ -231,6 +231,12 @@ class CandidatController extends AppController
         require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "compagnie" . DS ."compagnie.php"); 
 
         require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "dispositif" . DS ."dispositif.php"); 
+        
+        $isMobile = false;
+        if($this->RequestHandler->isMobile()){
+           $isMobile = true;
+        }
+        $this->set('isMobile', $isMobile);
     }
 
     public function request()
