@@ -27,6 +27,7 @@
     if($isMobile == true){
         echo $this->Html->script('jquery.mobile-1.4.5');
         echo $this->Html->script('jquery.mobile-1.4.5.min');
+        echo $this->Html->script('affichage.mobile');
     }
     else{
         echo $this->Html->script('jquery-1.7.min');
@@ -137,7 +138,12 @@
                         <tr>
                             <th></th>
                             <?php
+                            if($isMobile){
+                                remplirEnteteCalendarMobile($Week);
+                            }
+                            else{
 								remplirEnteteCalendar($Week);
+                            }
                             ?>
                         </tr>
                     </thead>

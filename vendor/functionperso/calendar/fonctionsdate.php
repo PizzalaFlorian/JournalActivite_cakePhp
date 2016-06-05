@@ -101,7 +101,14 @@
 	}
 	
 	function remplirEnteteCalendar($week){
-		$dates = get_date_lundi_to_Sunday_from_week($week,date("Y"),0);
+		$dates = get_date_lundi_to_Sunday_from_week($week,date("Y"),0);		
+		for($i=0;$i<7;$i++){
+			echo '<th><a  href="">'.$dates[$i].'</a></th>';
+		}	
+	}
+
+	function remplirEnteteCalendarMobile($week){
+		$dates = get_date_lundi_to_Sunday_from_week($week,date("Y"),0,"d/m");		
 		for($i=0;$i<7;$i++){
 			echo '<th><a  href="">'.$dates[$i].'</a></th>';
 		}	

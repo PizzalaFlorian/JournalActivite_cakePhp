@@ -88,6 +88,14 @@
     .ui-dialog{
         width:100% !important;
     }
+
+    #select-14-button span{
+        display: none;
+    }
+
+    .ui-loader h1 {
+        display: none;
+    }
     
     
 }
