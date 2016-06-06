@@ -4,7 +4,12 @@
 	echo $this->Html->css('main_custom');
 
 	echo $this->Html->script("https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js");
-	echo $this->Html->script('highcharts');
+	if($isMobile){
+		echo $this->Html->script('highcharts.mobile');	
+	}
+	else{
+		echo $this->Html->script('highcharts');
+	}
 	echo $this->Html->script('jquery.mobile.custom.min');
 	echo $this->Html->script('modernizr');
     echo $this->Html->script('timeline');

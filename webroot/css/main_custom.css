@@ -16,6 +16,10 @@ p{
 	text-align: justify;
 }
 
+.ui-loader h1 {
+        display: none;
+    }
+
 #content{
 	margin:0 !important;
 	margin-right: 0 !important;
