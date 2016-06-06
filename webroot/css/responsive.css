@@ -113,5 +113,12 @@
         padding: 0 !important;
     }
  
+    nav ul li a:not(#layTitle){
+        text-align: center !important;
+        background: #fff;
+        border: 2px solid #D7DCDF;
+        border-radius: 10px 10px 10px 10px;
+    }
+
     
 }

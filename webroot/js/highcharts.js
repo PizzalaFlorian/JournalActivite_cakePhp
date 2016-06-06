@@ -3666,6 +3666,7 @@
             if (!q(b)) this.containerWidth = ja(c, "width");
             if (!q(a)) this.containerHeight =
                 ja(c, "height");
+            /**size**/
             this.chartWidth = t(0, b || this.containerWidth || 600);
             this.chartHeight = t(0, p(a, this.containerHeight > 19 ? this.containerHeight : 400))
         },

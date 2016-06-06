@@ -11,7 +11,8 @@
     echo $this->Html->script('skel.min');
     echo $this->Html->script('util');
 	echo $this->Html->css('timeline');
-
+	echo $this->Html->css('responsive');
+	
     $candidat = TableRegistry::get('candidat')
             ->find()
             ->where(['ID' => $_SESSION['Auth']['User']['ID']])

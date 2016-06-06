@@ -333,6 +333,17 @@ $(function(){
                         $('#0_date_debut_minute').attr('id',event_id+'_date_debut_minute');
                         $('#0_date_fin_heure').attr('id',event_id+'_date_fin_heure');
                         $('#0_date_fin_minute').attr('id',event_id+'_date_fin_minute');
+                        buffer_event_id = null;
+                        buffer_height =  '';
+                        buffer_margin = '';
+                        buffer_heure_debut = '';
+                        buffer_minute_debut = '';
+                        buffer_heure_fin = '';
+                        buffer_minute_fin = '';
+                        buffer_activite = '';
+                        buffer_lieu = '';
+                        buffer_compagnie = '';
+                        buffer_dispositif = '';
             }
         });
     
