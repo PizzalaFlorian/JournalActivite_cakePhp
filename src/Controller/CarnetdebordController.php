@@ -112,7 +112,7 @@ class CarnetdebordController extends AppController
                 $this->Flash->success(__('La modification a été effectuée.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('Erreur lors de la modification.'));
+                $this->Flash->error(__('Erreur lors de la modification, veuillez réessayer.'));
             }
         }
         $this->set(compact('carnetdebord'));
@@ -138,7 +138,7 @@ class CarnetdebordController extends AppController
         if ($this->Carnetdebord->delete($carnetdebord)) {
             $this->Flash->success(__('L\'entrée as été supprimée.'));
         } else {
-            $this->Flash->error(__('Echec de la suppression.'));
+            $this->Flash->error(__('Echec de la suppression, veuillez réessayer.'));
         }
         return $this->redirect(['action' => 'index']);
     }

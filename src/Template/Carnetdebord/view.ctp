@@ -32,7 +32,7 @@
      <?php 
         echo $this->Html->link(__('Retour'), ['action' => 'index'],array("class"=>"button")).' '; 
         echo $this->Html->link(__('Modifier'), ['action' => 'edit', $carnetdebord->CodeEntree],array("class"=>"button")).' ';
-        echo $this->Form->postLink(__('Supprimer'), ['action' => 'delete', $carnetdebord->CodeEntree],array("class"=>"button"), ['confirm' => __('Êtes vous sur de vouloir supprimée l\'entrée : {0}?', $carnetdebord->Sujet)]); 
+        echo $this->Form->postLink(__('Supprimer'), ['action' => 'delete', $carnetdebord->CodeEntree],array("class"=>"button"), ['confirm' => __('Etes vous sur de vouloir supprimer l\'entrée : {0}?', $carnetdebord->Sujet)]); 
     ?>
 </div>
 </div>
