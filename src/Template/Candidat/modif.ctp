@@ -88,7 +88,7 @@
             echo $this->Form->input('NombreEnfant',['required'=>'true']);
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Envoyer')) ?>
     <?= $this->Form->end() ?>
 </div>
 </div>

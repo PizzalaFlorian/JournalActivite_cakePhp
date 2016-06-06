@@ -79,13 +79,13 @@
                     <select name="heure_fin" id="new_heure_fin"></select>
                     <select name="minute_fin" id="new_minute_fin"></select>
                     
-                    <label class="label_evenement" for="new_event_categorieActivite">	Categorie Activitée :</label>
+                    <label class="label_evenement" for="new_event_categorieActivite">	Categorie Activité :</label>
                     <select type="text" class="lab RA_target" name="new_event_categorieActivite" id="new_event_categorieActivite">
 							<?php foreach($liste_CategorieActivite as $id => $object){
 									echo'<option id="'.$object->CodeCategorieActivite.'">'.$object->NomCategorie.'</option>';}
 							?>
 					</select><br />
-					<label class="label_evenement" for="new_event_codeActivite">				Activitée :</label>
+					<label class="label_evenement" for="new_event_codeActivite">				Activité :</label>
 					<select type="text" class="lab RA_activ" name="new_event_codeActivite" id="new_event_codeActivite">
 							<?php foreach($liste_ActiviteDefault as $id => $object){
 									echo'<option id="'.$object->CodeActivite.'">'.$object->NomActivite.'</option>';}
@@ -128,7 +128,7 @@
 
             <div id="gen_new_calendar" title="Nouvel agenda">
                 <form action="">
-                    <label class="label_evenement" for="new_event_activite">Activitée : </label><input type="text" class="lab" name="new_event_activite" id="new_event_activite" />
+                    <label class="label_evenement" for="new_event_activite">Activité : </label><input type="text" class="lab" name="new_event_activite" id="new_event_activite" />
                 </form>
             </div>
             <div id="create_event"></div>

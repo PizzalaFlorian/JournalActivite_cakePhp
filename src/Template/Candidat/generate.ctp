@@ -6,7 +6,7 @@
 <div class="candidat form large-11 medium-12 columns content">
     <?= $this->Form->create() ?>
 	<fieldset>
-        <legend><?= __('Rentrez votre code étudiant') ?></legend>
+        <legend><?= __('Entrez votre code étudiant') ?></legend>
          <?php
             echo $this->Form->input('Code Etudiant',['required'=>'true']);
         ?>

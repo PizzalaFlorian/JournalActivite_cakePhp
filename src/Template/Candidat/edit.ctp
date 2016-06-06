@@ -6,7 +6,7 @@
 <div class="candidat form large-11 medium-11 columns content">
     <?= $this->Form->create($candidat) ?>
     <fieldset>
-        <legend><?= __('Modifier le candidat') ?></legend>
+        <legend><?= __('Modifier un candidat') ?></legend>
         <?php
             echo $this->Form->input('NomCandidat',['required'=>'true']);
             echo $this->Form->input('PrenomCandidat',['required'=>'true']);
@@ -89,7 +89,7 @@
         echo $this->Html->link(__('Retour'), ['action' => 'index'],['class'=>'button']).' '.$this->Form->postLink(
                 __('Delete'),
                 ['action' => 'delete', $candidat->CodeCandidat],
-                ['class'=>'button',"confirm"=>__('Êtes-vous sur de vouloir supprimer # {0}?', $candidat->PrenomCandidat.' '.$candidat->NomCandidat)]
+                ['class'=>'button',"confirm"=>__('Etes-vous sur de vouloir supprimer # {0}?', $candidat->PrenomCandidat.' '.$candidat->NomCandidat)]
             );
      
         ?>

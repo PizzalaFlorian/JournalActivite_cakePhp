@@ -2,7 +2,7 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('Edit Candidat'), ['action' => 'edit', $candidat->CodeCandidat]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Candidat'), ['action' => 'delete', $candidat->CodeCandidat], ['confirm' => __('Are you sure you want to delete # {0}?', $candidat->CodeCandidat)]) ?> </li>
+        <li><?= $this->Form->postLink(__('Delete Candidat'), ['action' => 'delete', $candidat->CodeCandidat], ['confirm' => __('Etes-vous sur de vouloir supprimer # {0}?', $candidat->CodeCandidat)]) ?> </li>
         <li><?= $this->Html->link(__('List Candidat'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Candidat'), ['action' => 'add']) ?> </li>
     </ul>

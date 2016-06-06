@@ -5,7 +5,7 @@
     <?= $this->Form->create($candidat) ?>
     <fieldset>
         <legend><?= __('S\'inscrire') ?></legend>
-        <p> Vos informations nominatives ne seront jamais transmis aux chercheurs, ni aux autres participant a l'études. Cependant, il sera néccésaire que votre nom et prénom soit correctement rempli pour la génération du certificat de participation a l'étude. Merci de votre compréhension.</p>
+        <p> Vos informations nominatives ne seront jamais transmis aux chercheurs, ni aux autres participant à l'études. Cependant, il sera néccésaire que votre nom et prénom soit correctement remplit pour la génération du certificat de participation à l'étude. Merci de votre compréhension.</p>
         <?php
             echo $this->Form->input('NomCandidat',['required'=>'true']);
             echo $this->Form->input('PrenomCandidat',['required'=>'true']);

@@ -41,10 +41,10 @@
     </tbody>
 </table>
 
-<p>Certifiant que le candidat as participé sur la période du <b><?php echo $debut; ?></b> au 
+<p>Certifiant que le candidat a participé sur la période du <b><?php echo $debut; ?></b> au 
 <b><?php echo $fin; ?></b>,
 <br>
-pour un totale de <b><?= $count ?></b> occupations mentionnée(s)</p>
+pour un total de <b><?= $count ?></b> occupations mentionnée(s)</p>
 
 <p> à la date du <?php echo $annee; ?> - Code génération <?php echo $code; ?></p>
 <br>
@@ -53,4 +53,4 @@ pour un totale de <b><?= $count ?></b> occupations mentionnée(s)</p>
 <br>
 <br>
 <br>
-<center><h2> Ce document devra être déposé a l'accueil</h2></center>
+<center><h2> Ce document devra être déposé à l'accueil</h2></center>

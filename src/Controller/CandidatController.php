@@ -36,7 +36,7 @@ class CandidatController extends AppController
                             'action' => 'add']);
             }
             else{
-                $this->Flash->error(__('Veuillez cocher la case "J\'ai pris connaissances de mes droits, et autorise les chercheurs a utilisés mes données" pour pouvoir poursuivre.'));
+                $this->Flash->error(__('Veuillez cocher la case "J\'ai pris connaissances de mes droits, et autorise les chercheurs a utiliser mes données" pour pouvoir poursuivre.'));
             }
         }
     }
@@ -182,7 +182,7 @@ class CandidatController extends AppController
                 $this->Flash->success(__('Vos informations personnelles ont bien été modifié.'));
                 return $this->redirect(['action' => 'modif']);
             } else {
-                $this->Flash->error(__('Erreur lors de la modification de vos informations personnelles, Veuillez réessayer.'));
+                $this->Flash->error(__('Erreur lors de la modification de vos informations personnelles. Veuillez réessayer.'));
             }
         }
         $this->set(compact('candidat'));
@@ -353,7 +353,7 @@ class CandidatController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $candidat = $this->Candidat->patchEntity($candidat, $this->request->data);
             if ($this->Candidat->save($candidat)) {
-                $this->Flash->success(__('Le candidat as bien été modifié.'));
+                $this->Flash->success(__('Le candidat a bien été modifié.'));
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('Erreur lors de la modification du candidat.'));
@@ -387,7 +387,7 @@ class CandidatController extends AppController
             ->execute();
         $save_id = $candidat->ID;
         if ($this->Candidat->delete($candidat)) {
-            $this->Flash->success(__('Le candidat as été supprimé.'));
+            $this->Flash->success(__('Le candidat a été supprimé.'));
              $candi = TableRegistry::get('users')
             ->query();
             $candi
