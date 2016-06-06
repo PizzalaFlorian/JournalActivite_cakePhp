@@ -68,10 +68,10 @@ class CategorieactiviteController extends AppController
         if ($this->request->is('post')) {
             $categorieactivite = $this->Categorieactivite->patchEntity($categorieactivite, $this->request->data);
             if ($this->Categorieactivite->save($categorieactivite)) {
-                $this->Flash->success(__('La catégorie as bien été ajoutée.'));
+                $this->Flash->success(__('La catégorie a bien été ajoutée.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('Erreur lors de l\'ajout.'));
+                $this->Flash->error(__('Erreur lors de l\'ajout. Veuillez réessayer.'));
             }
         }
         $this->set(compact('categorieactivite'));
@@ -98,10 +98,10 @@ class CategorieactiviteController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $categorieactivite = $this->Categorieactivite->patchEntity($categorieactivite, $this->request->data);
             if ($this->Categorieactivite->save($categorieactivite)) {
-                $this->Flash->success(__('La catégorie as bien été modififiée.'));
+                $this->Flash->success(__('La catégorie a bien été modififiée.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('Erreur lors de la modification.'));
+                $this->Flash->error(__('Erreur lors de la modification. Veuillez réessayer.'));
             }
         }
         $this->set(compact('categorieactivite'));
@@ -131,15 +131,15 @@ class CategorieactiviteController extends AppController
             ->first();
 
         if(isset($table['CodeCategorie'])){
-             $this->Flash->error(__('Cette categorire contient des activitées, veuillez choisir une action.'));
+             $this->Flash->error(__('Cette categorire est liée à des activitées, veuillez choisir une action.'));
             return $this->redirect(['action' => 'reaffect',$categorieactivite->CodeCategorieActivite]);
         }
 
 
         if ($this->Categorieactivite->delete($categorieactivite)) {
-            $this->Flash->success(__('La catégorie as bien été supprimée.'));
+            $this->Flash->success(__('La catégorie a bien été supprimée.'));
         } else {
-            $this->Flash->error(__('Erreur lors de la suppression.'));
+            $this->Flash->error(__('Erreur lors de la suppression. Veuillez réessayer.'));
         }
         return $this->redirect(['action' => 'index']);
     }

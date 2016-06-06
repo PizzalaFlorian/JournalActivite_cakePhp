@@ -6,12 +6,12 @@
 <h3 class="center"><?php echo $categorieactivite['NomCategorie']; ?></h3>
 <div class="categorieactivite form large-12 medium-11 columns content">
 	<?php 
-		 echo $this->Html->link(__('Annuler et retourner a la liste des categories d\'activitées'), ['action' => 'index'],array("class"=>"button"));
+		 echo $this->Html->link(__('Annuler et retourner a la liste des categories d\'activités'), ['action' => 'index'],array("class"=>"button"));
 	?>
 	<h4>Réaffecter</h4>	
 		<?= $this->Form->create($categorieactivite) ?>
 	    <fieldset>
-	        <legend><?= __('Réaffectation les activitées de '.$categorieactivite['NomCategorie'].' dans') ?></legend>
+	        <legend><?= __('Réaffectation des activités de '.$categorieactivite['NomCategorie'].' dans') ?></legend>
 	        <?php
 	            echo '<select name="CodeCategorieActivite">';
 	            foreach ($list_categorie as $acti) {
@@ -45,15 +45,15 @@
                     ->first();
             if(isset($count['count'])){
             	$flag = 1;
-            	echo 'l\'activite "'.$activite->NomActivite.'" présente dans cette catégorie est utilisée '.$count['count'].' fois dans la base de données.';
+            	echo 'l\'activité "'.$activite->NomActivite.'" présente dans cette catégorie est utilisée '.$count['count'].' fois dans la base de données.';
             	echo '<br>';
             }     
 		 }
 		if($flag == 0){
-		 echo $this->Form->postLink(__('Supprimer cette categorie et toutes les activitées associées'), ['action' => 'deleteAll',$categorieactivite->CodeCategorieActivite],array("class"=>"button"), ['confirm' => __('êtes vous sur de vouloir supprimée toutes ces activitées de la base de données ?')]);
+		 echo $this->Form->postLink(__('Supprimer cette categorie et toutes les activités associées'), ['action' => 'deleteAll',$categorieactivite->CodeCategorieActivite],array("class"=>"button"), ['confirm' => __('Etes vous sur de vouloir supprimer toutes ces activités de la base de données ?')]);
 		}
 		else {
-			echo 'Suppression impossible, veuillez réaffecter ou supprimer les activitées utilisées de la base de données avant de réalisé cette opération';
+			echo 'Suppression impossible, veuillez réaffecter ou supprimer les activités utilisées de la base de données avant de réaliser cette opération';
 		}
 	?>
 </div>
