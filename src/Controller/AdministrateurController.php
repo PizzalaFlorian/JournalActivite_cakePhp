@@ -50,7 +50,7 @@ class AdministrateurController extends AppController
             $file = new File(ROOT.'/webroot/files/but_experience.ctp');
             $file->write($this->request->data['message']);
             $file->close();
-            $this->Flash->success(__('le message a été modifier'));
+            $this->Flash->success(__('le message a été modifié.'));
         }
 
     }
@@ -75,7 +75,7 @@ class AdministrateurController extends AppController
             $file = new File(ROOT.'/webroot/files/email_auto_candidat.ctp');
             $file->write($this->request->data['message']);
             $file->close();
-            $this->Flash->success(__('le message a été modifier'));
+            $this->Flash->success(__('Le message a été modifié.'));
         }
 
     }
@@ -101,7 +101,7 @@ class AdministrateurController extends AppController
             $file = new File(ROOT.'/webroot/files/email_auto_chercheur.ctp');
             $file->write($this->request->data['message']);
             $file->close();
-            $this->Flash->success(__('le message a été modifier'));
+            $this->Flash->success(__('Le message a été modifié.'));
         }
 
     }
@@ -162,13 +162,13 @@ class AdministrateurController extends AppController
         if($this->request->is('post')){
             $user = TableRegistry::get('users')->patchEntity($user, $this->request->data);
             if (TableRegistry::get('users')->save($user)) {
-                $this->Flash->success(__('l\'utilisateur a été inviter'));
+                $this->Flash->success(__('l\'utilisateur a été invité'));
 
                 $messageChercheur = file_get_contents(ROOT.'/webroot/files/email_auto_chercheur.ctp');
                 $email = new Email('default');
                 $email
                     ->to($this->request->data['email'])
-                    ->subject("Confirmation de compte")
+                    ->subject("Création de votre compte"
                     ->send($messageChercheur."\n--------------------------------------------------------------------------------\nVoici vos identifiant de votre compte chercheur : \nLogin : ".$this->request->data['login']."\nMot de passe : ".$this->request->data['password']."\n--------------------------------------------------------------------------------\n");
                 
                 return $this->redirect(['controller'=>'users','action' => 'index']);
@@ -223,7 +223,7 @@ class AdministrateurController extends AppController
         if($this->request->is('post')){
             $user = TableRegistry::get('users')->patchEntity($user, $this->request->data);
             if (TableRegistry::get('users')->save($user)) {
-                $this->Flash->success(__('l\'utilisateur a été inviter'));
+                $this->Flash->success(__('l\'utilisateur a été invité'));
                 $messageCandidat = file_get_contents(ROOT.'/webroot/files/email_auto_candidat.ctp');
                 $email = new Email('default');
                 $email
@@ -429,7 +429,7 @@ class AdministrateurController extends AppController
         if($this->request->is('post')){
             $user = TableRegistry::get('users')->patchEntity($user, $this->request->data);
             if (TableRegistry::get('users')->save($user)) {
-                $this->Flash->success(__('l\'utilisateur a été inviter'));
+                $this->Flash->success(__('l\'utilisateur a été invité'));
 
                 //$messageChercheur = file_get_contents(ROOT.'/webroot/files/email_auto_chercheur.ctp');
                 $email = new Email('default');
@@ -518,7 +518,7 @@ class AdministrateurController extends AppController
             $file = new File(ROOT.'/webroot/files/message_suppression_données_utilisateur.ctp');
             $file->write($this->request->data['message']);
             $file->close();
-            $this->Flash->success(__('le message a été modifier'));
+            $this->Flash->success(__('le message a été modifié'));
         }
 
     }
@@ -543,7 +543,7 @@ class AdministrateurController extends AppController
             $file = new File(ROOT.'/webroot/files/message_collecte_données_utilisateur.ctp');
             $file->write($this->request->data['message']);
             $file->close();
-            $this->Flash->success(__('le message a été modifier'));
+            $this->Flash->success(__('le message a été modifié'));
         }
 
     }

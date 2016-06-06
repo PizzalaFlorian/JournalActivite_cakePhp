@@ -7,7 +7,7 @@
     <?= $this->Form->create($liste, array('type' => 'file')) ?>
     <fieldset>
         <legend><?= __('Inviter une liste de Candidat') ?></legend>
-        <p>Veuillez séléctionné un fichier ou entrer une liste d'email de candidat séparé par des points virgules ";"</p>
+        <p>Veuillez séléctionner un fichier ou entrer une liste d'emails de candidats séparées par des points virgules ";"</p>
         <?php
             echo $this->Form->input('liste email',['type'=>'textarea']);
         ?>

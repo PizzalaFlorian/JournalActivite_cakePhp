@@ -34,7 +34,7 @@
                         echo $this->Form->postLink(
                             $this->Html->image('supprimer.ico', array('title' => "Supprimer")),
                             array('action' => 'delete', $administrateur->CodeAdmin),
-                            array('escape' => false,"confirm"=>__('Êtes-vous sur de vouloir supprimer # {0}?', $administrateur->CodeAdmin))
+                            array('escape' => false,"confirm"=>__('Etes-vous sur de vouloir supprimer # {0}?', $administrateur->CodeAdmin))
                         ); 
                     ?>
                 </td>
@@ -44,9 +44,9 @@
     </table>
     <div class="paginator">
         <ul class="pagination">
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
+            <?= $this->Paginator->prev('< ' . __('précedent')) ?>
             <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
+            <?= $this->Paginator->next(__('suivant') . ' >') ?>
         </ul>
         <p><?= $this->Paginator->counter() ?></p>
     </div>

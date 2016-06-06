@@ -4,7 +4,7 @@
         <li><?= $this->Form->postLink(
                 __('Delete'),
                 ['action' => 'delete', $administrateur->CodeAdmin],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $administrateur->CodeAdmin)]
+                ['confirm' => __('Etes-vous sur de vouloir supprimer # {0}?', $administrateur->CodeAdmin)]
             )
         ?></li>
         <li><?= $this->Html->link(__('List Administrateur'), ['action' => 'index']) ?></li>
@@ -13,11 +13,11 @@
 <div class="administrateur form large-9 medium-8 columns content">
     <?= $this->Form->create($administrateur) ?>
     <fieldset>
-        <legend><?= __('Edit Administrateur') ?></legend>
+        <legend><?= __('Edition Administrateur') ?></legend>
         <?php
             echo $this->Form->input('ID');
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Envoyer')) ?>
     <?= $this->Form->end() ?>
 </div>

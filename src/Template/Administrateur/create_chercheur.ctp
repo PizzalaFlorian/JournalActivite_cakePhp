@@ -6,7 +6,7 @@
     <?= $this->Form->create($user) ?>
  
     <fieldset>
-        <legend><?= __('Ajouter le chercheur') ?></legend>
+        <legend><?= __('Ajouter un chercheur') ?></legend>
         <?php
             echo $this->Form->input('login',['type'=>'hidden','value'=>$login]);
             echo $this->Form->input('typeUser',['type'=>'hidden','value'=>'chercheur']);

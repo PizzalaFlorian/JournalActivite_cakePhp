@@ -13,11 +13,11 @@
 	</div>
 	<h4 class="menu_aide">Gestion du site web</h4>
 	<div class="aide">
-		La page <?php echo $this->Html->link('Gestion du site web','/administrateur/siteweb'); ?> permet de modifier certain messages affiché, envoyé aux utilisateurs.<br/>
+		La page <?php echo $this->Html->link('Gestion du site web','/administrateur/siteweb'); ?> permet de modifier certain messages affichés, envoyés aux utilisateurs.<br/>
 		<table>
 			<tr>
 				<td width="200">But de l'experience</td>
-				<td>Modifie le texte rappellant le but de l'experience au candidat. Ce texte est affiché sur la page 'But de l'experience' des candidats, leurs résumant le buts de l'experience.</td>
+				<td>Modifie le texte rappellant le but de l'experience aux candidats. Ce texte est affiché sur la page 'But de l'experience' des candidats, leurs résumant le but de l'experience.</td>
 			</tr>
 			<tr>
 				<td width="200">Invitation Candidat</td>
@@ -29,14 +29,14 @@
 			</tr>
 			<tr>
 				<td width="200">Candidat - Droit d'accès</td>
-				<td>Modifie le corp du message informant les candidats que l'application collecte ou traite des données personnelles. Ce message s'affiche lors de la première connexion d'un candidat et lui bloquera l'accès tant qu'il n'aura pas été validé.<br/>
-				Les candidats ne voulant pas approuvé ce messages ne pourront pas utilisé l'application.<br/>
+				<td>Modifie le corp du message informant les candidats que l'application collecte ou traite des données personnelles. Ce message s'affiche lors de la première connexion d'un candidat et lui bloquera l'accès tant que celui ci ne l'aura pas validé.<br/>
+				Les candidats ne voulant pas approuver ce message ne pourront pas utiliser l'application.<br/>
 				</td>
 			</tr>
 			<tr>
 				<td width="200">Candidat - Droit d'opposition</td>
-				<td>Modifie le corp du message de droit d'opposition a ce que les données concernant un candidat soient utilisées. Ce message est affiché dans la page 'Supprimer mon compte' des candidats et les informe qu'il disposent d'un droit de rétractation à l'étude, ainsi que le droit de supprimer toute leurs données.<br/>
-				Si l'utilisateur décide de supprimer son compte, toute les données le concernant seront supprimé.<br/>
+				<td>Modifie le corp du message de droit d'opposition à ce que les données concernant un candidat soient utilisées. Ce message est affiché dans la page 'Supprimer mon compte' des candidats et les informe qu'ils disposent d'un droit de rétractation à l'étude, ainsi que le droit de supprimer toute leurs données.<br/>
+				Si l'utilisateur décide de supprimer son compte, toute les données le concernant seront supprimés.<br/>
 				</td>
 			</tr>
 		</table>
@@ -49,30 +49,30 @@
 			<tr>
 				<td width="200">Inviter un candidat</td>
 				<td>
-					Créer un compte de type candidat et envoi un mail d'invitaion à l'adresse Email spécifié. Les informations du compte (Login / Mots de passe) sont transmit dans le mail.<br/>
-					Le contenue de l'Email envoyé au candidat peut être modifier sur la page <?php echo $this->Html->link('Gestion site web/Invitation Candidat','/administrateur/email-candidat'); ?>.
+					Créer un compte de type candidat et envoi un mail d'invitation à l'adresse Email spécifié. Les informations du compte (Login / Mots de passe) sont transmit dans le mail.<br/>
+					Le contenu de l'Email envoyé au candidat peut être modifié sur la page <?php echo $this->Html->link('Gestion site web/Invitation Candidat','/administrateur/email-candidat'); ?>.
 				</td>
 			</tr>
 			<tr>
 				<td width="200">Inviter une liste de candidats</td>
 				<td>
-					Créer un compte de type candidat et envoi un mail d'invitaion au adresse Email dans la liste transmise en paramêtre.
-					Les informations du compte (Login / Mots de passe) sont transmit dans le mail.<br/>
-					Le contenue de l'Email envoyé aux candidats peut être modifier sur la page <?php echo $this->Html->link('Gestion site web/Invitation Candidat','/administrateur/email-candidat'); ?>.
+					Créer un compte de type candidat et envoi un mail d'invitaion aux adresses Emails dans la liste transmise en paramêtre.
+					Les informations du compte (Login / Mots de passe) sont transmit dans l'Email.<br/>
+					Le contenu de l'Email envoyé aux candidats peut être modifié sur la page <?php echo $this->Html->link('Gestion site web/Invitation Candidat','/administrateur/email-candidat'); ?>.
 				</td>
 			</tr>
 			<tr>
 				<td width="200">Inviter un chercheur</td>
 				<td>
-					Créer un compte de type chercheur et envoi un mail d'invitaion à l'adresse Email spécifié. Les informations du compte (Login / Mots de passe) sont transmit dans le mail.<br/>
-					Le contenue de l'Email envoyé au chercheur peut être modifier sur la page <?php echo $this->Html->link('Gestion site web/Invitation chercheur','/administrateur/email-chercheur'); ?>.
+					Créer un compte de type chercheur et envoi un mail d'invitaion à l'adresse Email spécifié. Les informations du compte (Login / Mots de passe) sont transmit dans l'Email.<br/>
+					Le contenu de l'Email envoyé au chercheur peut être modifié sur la page <?php echo $this->Html->link('Gestion site web/Invitation chercheur','/administrateur/email-chercheur'); ?>.
 					
 				</td>
 			</tr>
 			<tr>
 				<td width="200">Inviter un administrateur</td>
 				<td>
-					Créer un compte de type administrateur et envoi un mail d'invitaion à l'adresse Email spécifié. Les informations du compte (Login / Mots de passe) sont transmit dans le mail.
+					Créer un compte de type administrateur et envoi un Email d'invitaion à l'adresse Email spécifié. Les informations du compte (Login / Mots de passe) sont transmit dans le mail.
 				</td>
 			</tr>
 		</table>
@@ -85,16 +85,16 @@
 			<tr>
 				<td width="200">Inviter un candidat</td>
 				<td>
-					Créer un compte de type candidat et envoi un mail d'invitaion à l'adresse Email spécifié. Les informations du compte (Login / Mots de passe) sont transmit dans le mail.<br/>
-					Le contenue de l'Email envoyé au candidat peut être modifier sur la page <?php echo $this->Html->link('Gestion site web/Invitation Candidat','/administrateur/email-candidat'); ?>.
+					Créer un compte de type candidat et envoi un mail d'invitaion à l'adresse Email spécifié. Les informations du compte (Login / Mots de passe) sont transmit dans l'Email.<br/>
+					Le contenu de l'Email envoyé au candidat peut être modifié sur la page <?php echo $this->Html->link('Gestion site web/Invitation Candidat','/administrateur/email-candidat'); ?>.
 				</td>
 			</tr>
 			<tr>
 				<td width="200">Inviter une liste de candidats</td>
 				<td>
-					Créer un compte de type candidat et envoi un mail d'invitaion au adresse Email dans la liste transmise en paramêtre.
-					Les informations du compte (Login / Mots de passe) sont transmit dans le mail.<br/>
-					Le contenue de l'Email envoyé aux candidats peut être modifier sur la page <?php echo $this->Html->link('Gestion site web/Invitation Candidat','/administrateur/email-candidat'); ?>.
+					Créer un compte de type candidat et envoi un Email d'invitaion au adresse Email dans la liste transmise en paramètre.
+					Les informations du compte (Login / Mots de passe) sont transmit dans l'Email.<br/>
+					Le contenu de l'Email envoyé aux candidats peut être modifié sur la page <?php echo $this->Html->link('Gestion site web/Invitation Candidat','/administrateur/email-candidat'); ?>.
 				</td>
 			</tr>
 		</table>
@@ -102,13 +102,13 @@
 	<h4 class="menu_aide">Gestion des chercheurs</h4>
 	<div class="aide">
 		La page <?php echo $this->Html->link('Gestion des chercheurs','/chercheur'); ?> référence tout les chercheurs inscrit dans la base de données.<br/>
-		Pour chaque chercheur, l'administrateur à la possibilité de modifier, supprimer les données.
+		Pour chaque chercheurs, l'administrateur à la possibilité de modifier, supprimer les données.
 		<table>
 			<tr>
 				<td width="200">Inviter un chercheur</td>
 				<td>
-					Créer un compte de type chercheur et envoi un mail d'invitaion à l'adresse Email spécifié. Les informations du compte (Login / Mots de passe) sont transmit dans le mail.<br/>
-					Le contenue de l'Email envoyé au chercheur peut être modifier sur la page <?php echo $this->Html->link('Gestion site web/Invitation chercheur','/administrateur/email-chercheur'); ?>.
+					Créer un compte de type chercheur et envoi un Email d'invitaion à l'adresse Email spécifié. Les informations du compte (Login / Mots de passe) sont transmit dans l'Email.<br/>
+					Le contenu de l'Email envoyé au chercheur peut être modifié sur la page <?php echo $this->Html->link('Gestion site web/Invitation chercheur','/administrateur/email-chercheur'); ?>.
 				</td>
 			</tr>
 		</table>
@@ -121,7 +121,7 @@
 			<tr>
 				<td width="200">Inviter un administrateur</td>
 				<td>
-					Créer un compte de type administrateur et envoi un mail d'invitaion à l'adresse Email spécifié. Les informations du compte (Login / Mots de passe) sont transmit dans le mail.
+					Créer un compte de type administrateur et envoi un Email d'invitaion à l'adresse Email spécifié. Les informations du compte (Login / Mots de passe) sont transmit dans l'Email.
 				</td>
 			</tr>
 		</table>
@@ -165,13 +165,13 @@
 	<div class="aide">
 		<img> - image de gestion de messagerie - </img><br/>
 		La page <?php echo $this->Html->link('Configuration de la messagerie','/administrateur/messagerie'); ?> permet de connecter l'application au compte d'une messagerie afin que celle-ci puisse envoyer des emails aux utilisateurs de l'application.<br/>
-		Cas d'envoie d'emails : <br/>
+		Cas d'envoi d'email : <br/>
 		<ul>
 			<li>Création d'un compte</li>
-			<li>Envoie d'un Email aux chercheurs lors de la reception d'un message de la part d'un candidat</li>
-			<li>Envoie d'un Email aux administrateurs lors d'une demande de 'contacts'.
+			<li>Envoi d'un Email aux chercheurs lors de la reception d'un message de la part d'un candidat</li>
+			<li>Envoi d'un Email aux administrateurs lors d'une demande de 'contacts'.
 		</ul>	
-		Pour cela, l'application a besoin de connaitre les information concernant la messagerie, par exemple :<br/>
+		Pour cela, l'application a besoin de connaitre les informations concernant la messagerie, par exemple :<br/>
 		<ul>
 			<li>Le nom de l'Email de l'application (par exemple : noreply.monappli@.com)</li>
 			<li>Le nom du serveur de messagerie (par exemple : smtp.gmail.com pour une adresse gmail)</li>
