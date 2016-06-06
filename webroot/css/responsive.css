@@ -1,5 +1,9 @@
 /*Fichier css pour que le site soit un peu moins moche sous mobile*/
 
+.hiddenNotMobile {
+    display: none;
+}
+
 @media only screen and (max-width: 500px) {
     .content {
         padding: 2px;
@@ -14,6 +18,13 @@
 
 
 @media only screen and (max-width: 700px) {
+
+    .hiddenNotMobile {
+        display: inline;
+        padding: 5px !important;
+        margin-left: 25%;
+        margin-bottom: 10px;
+    }
     
     #contentCandidat{
         padding: 0px;
@@ -32,7 +43,7 @@
         position: absolute;
         top: 4px;
         right: 4px;
-        z-index: 9000;
+        z-index: 1;
     }
     
     .img_menu{
@@ -82,7 +93,7 @@
     }
 
     .calendar_event{
-        font-size: 2vw !important;
+        font-size: 1.5vw !important;
     }
     
     .ui-dialog{
@@ -96,5 +107,11 @@
     .ui-loader h1 {
         display: none;
     }
+    
+    select{
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+ 
     
 }

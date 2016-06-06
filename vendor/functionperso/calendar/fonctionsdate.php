@@ -154,6 +154,13 @@
 		$debut_fin_semaine = get_date_lundi_to_Sunday_from_week($W,$Y,1);
 		return "Semaine du ".$debut_fin_semaine[0] . " au " . $debut_fin_semaine [6];
 	}
+	
+		function ConvertNumSemaineToDateDebEtFinMobile($W,$Y)
+	{
+		//renvoie la date de début et fin de semaine en fonction du numéro de semaine et de l'année.
+		$debut_fin_semaine = get_date_lundi_to_Sunday_from_week($W,$Y,1,"d/m");
+		return "Semaine du ".$debut_fin_semaine[0] . " au " . $debut_fin_semaine [6];
+	}
 
 	function genererChoixSemaine($W,$Y)
 	{
@@ -169,6 +176,27 @@
 			}
 			else
 				$s=$s.'<OPTION value="'.$i.'" ><center>'.ConvertNumSemaineToDateDebEtFin($i,$Y).'</center></OPTION>';
+		}
+		$s=$s.'</SELECT>
+		</fieldset>
+		</form>';
+		return $s;
+	}
+	
+	function genererChoixSemaineMobile($W,$Y)
+	{
+		//propose toutes les semaines du début de l'année a la semaine courante
+		$s ='<form action="./activite" method="POST">
+		<fieldset>
+		<SELECT name="semaine" onchange="this.form.submit()">';
+		for($i=1;$i<=date("W");$i++)
+		{
+			if($i==$W)
+			{
+				$s=$s.'<OPTION value="'.$i.'" selected><center>'.ConvertNumSemaineToDateDebEtFinMobile($i,$Y).'</center></OPTION>';
+			}
+			else
+				$s=$s.'<OPTION value="'.$i.'" ><center>'.ConvertNumSemaineToDateDebEtFinMobile($i,$Y).'</center></OPTION>';
 		}
 		$s=$s.'</SELECT>
 		</fieldset>
