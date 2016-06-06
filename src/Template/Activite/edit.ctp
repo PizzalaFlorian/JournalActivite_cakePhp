@@ -6,7 +6,7 @@
 <div class="activite form large-12 medium-11 columns content">
     <?= $this->Form->create($activite) ?>
     <fieldset>
-        <legend><?= __('Modifier l\'Activitée') ?></legend>
+        <legend><?= __('Modifier l\'Activité') ?></legend>
         <?php
             echo $this->Form->input('NomActivite');
             echo $this->Form->input('DescriptifActivite');
@@ -28,8 +28,8 @@
     <?php echo $this->Html->link(__('Retour'), ['action' => 'index'],array("class"=>"button"))
             .' '.
             $this->Form->postLink(
-                __('Supprimer cette activite'),
-                ['action' => 'delete', $activite->CodeActivite],array("class"=>"button",'confirm' => __('Êtes vous sur de vouloir supprimer l\'activitée : {0}?', $activite->NomActivite))
+                __('Supprimer cette activité'),
+                ['action' => 'delete', $activite->CodeActivite],array("class"=>"button",'confirm' => __('Etes-vous sur de vouloir supprimer l\'activité : {0}?', $activite->NomActivite))
             );
     ?>
 </div>

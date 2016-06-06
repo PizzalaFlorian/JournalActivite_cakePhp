@@ -66,10 +66,10 @@ class ActiviteController extends AppController
            // debug($this->request->data);
             $activite = $this->Activite->patchEntity($activite, $this->request->data);
             if ($this->Activite->save($activite)) {
-                $this->Flash->success(__('L\'activité a été sauvegardée.'));
+                $this->Flash->success(__('L\'activité a bien été sauvegardée.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('Erreur lors de la sauvegarde, veuillez réessayer.'));
+                $this->Flash->error(__('Une erreur a eu lieu lors de la sauvegarde. Veuillez réessayer.'));
             }
         }
         $this->set(compact('activite'));
@@ -99,10 +99,10 @@ class ActiviteController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $activite = $this->Activite->patchEntity($activite, $this->request->data);
             if ($this->Activite->save($activite)) {
-                $this->Flash->success(__('L\'activité as bien été sauvegardée.'));
+                $this->Flash->success(__('L\'activité a bien été sauvegardée.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('Erreur lors de la sauvegarde, veuillez réessayer.'));
+                $this->Flash->error(__('Une erreur a eu lieu lors de la sauvegarde. Veuillez réessayer.'));
             }
         }
         $this->set(compact('activite'));
@@ -141,9 +141,9 @@ class ActiviteController extends AppController
         }   
       
         if ($this->Activite->delete($activite)) {
-            $this->Flash->success(__('L\'activité a été supprimée.'));
+            $this->Flash->success(__('L\'activité a bien été supprimée.'));
         } else {
-            $this->Flash->error(__('Erreur lors de la suppression, veuillez réessayer.'));
+            $this->Flash->error(__('Une erreur a eu lieu lors de la suppression, veuillez réessayer.'));
         }
         return $this->redirect(['action' => 'index']);
     }
@@ -219,7 +219,7 @@ class ActiviteController extends AppController
                 ->where(['CodeActivite' => $activite['CodeActivite']])
                 ->execute();
 
-            $this->Flash->success(__('l\'activité et Les occupations ont été supprimées'));
+            $this->Flash->success(__('l\'activité et les occupations ont été supprimées'));
             return $this->redirect(['action' => 'index']);
         }
 

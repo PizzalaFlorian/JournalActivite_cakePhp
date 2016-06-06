@@ -6,7 +6,7 @@
 <div class="activite index large-12 medium-11 columns content">
 
     <h3 class="center"><?= __('Table des Activités') ?></h3>
-    <?= $this->Html->link(__('Ajouter une activite'), ['action' => 'add'],array('class' => 'button')) ?>
+    <?= $this->Html->link(__('Ajouter une activité'), ['action' => 'add'],array('class' => 'button')) ?>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
@@ -45,7 +45,7 @@
                     echo $this->Form->postLink(
                         $this->Html->image('supprimer.ico', array('title' => "Supprimer")),
                         array('action' => 'delete', $activite->CodeActivite),
-                        array('escape' => false,'confirm' => __('Are you sure you want to delete # {0}?', $activite->CodeActivite))
+                        array('escape' => false,'confirm' => __('Etes-vous sur de vouloir supprimer l\'activité : {0}?', $activite->CodeActivite))
                     ); 
                      
                     echo $this->Html->link(

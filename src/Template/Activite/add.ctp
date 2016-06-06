@@ -6,7 +6,7 @@
 <div class="activite form large-10 medium-11 columns content">
     <?= $this->Form->create($activite) ?>
     <fieldset>
-        <legend><?= __('Ajouter une Activitée') ?></legend>
+        <legend><?= __('Ajouter une Activité') ?></legend>
         <?php
             echo $this->Form->input('CodeActivite',['type'=>'number']);
             echo $this->Form->input('NomActivite');
