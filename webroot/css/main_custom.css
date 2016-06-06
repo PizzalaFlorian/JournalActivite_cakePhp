@@ -12,6 +12,10 @@
 	text-align:justify;
 }
 
+p{
+	text-align: justify;
+}
+
 #content{
 	margin:0 !important;
 	margin-right: 0 !important;
@@ -66,7 +70,11 @@
 	padding: 0 !important;
 }
 
-.side-nav li:hover:not(.heading){
+.clickToggle{
+	display: none;
+}
+
+.side-nav li:hover:not(.heading), .menu_aide:hover{
 	margin-bottom:0 !important;
 	background: #D7DCDF;
 	border-radius: 10px 10px 10px 10px;
