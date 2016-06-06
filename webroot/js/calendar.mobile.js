@@ -55,7 +55,7 @@ $(function(){
     });
     
     /* cp -coller */
-    $(document).on('press', '.calendar_event,', function(e) {
+    $(document).on('click', '.calendar_event,', function(e) {
         var object_clicked = $(this);
         event_right_cliked = object_clicked.attr("id");
         var event_id=object_clicked.attr("id");
@@ -139,10 +139,11 @@ $(function(){
     });
 
     /* debut cp-cl*/
-    $(document).on('press', '.other_day,', function(e) {
+    $(document).on('click', '.other_day,', function(e) {
+        $("#click-menue").hide();
         $("#vd").click(function(e){
             console.log("vider");
-            buffer_event_id = '';
+            buffer_event_id = null;
             buffer_height =  '';
             buffer_margin = '';
             buffer_heure_debut = '';
@@ -157,7 +158,6 @@ $(function(){
         if(buffer_event_id != null){
             $("#paste-menue").css({top:e.pageY,left:e.pageX}).show();
         }
-        $("#click-menue").hide();
         column_target = $(this);
         jour_deb = $(this).attr('id');
          
