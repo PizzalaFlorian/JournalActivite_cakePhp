@@ -25,15 +25,17 @@
     echo $this->element('sidebarCandidat');
 
     if($isMobile == true){
-        echo $this->Html->script('jquery.mobile.custom');
-        echo $this->Html->script('jquery.mobile.custom.min');
+        //echo $this->Html->script('jquery.mobile.custom');
+        //echo $this->Html->script('jquery.mobile.custom.min');
+        // echo $this->Html->script('jquery-1.7.min');
+        // echo $this->Html->script('jquery-ui-1.7.2.custom.min');
         echo $this->Html->script('finger');
         echo $this->Html->script('calendar.mobile');
 
     }
     else{
-        echo $this->Html->script('jquery-1.7.min');
-        echo $this->Html->script('jquery-ui-1.7.2.custom.min');
+        // echo $this->Html->script('jquery-1.7.min');
+        // echo $this->Html->script('jquery-ui-1.7.2.custom.min');
         echo $this->Html->script('Demo_calendar_script');
     }
     // echo $this->Html->script('jquery-1.7.min');
@@ -50,6 +52,7 @@
     echo $this->Html->css('Demo_calendar_jquery');
     echo $this->Html->css('main_custom');
     echo $this->Html->css('responsive');
+    
 ?>
     <div id="click-menue">
     <div class="button-click-menue" id="cp">  Copier  </div>
@@ -132,8 +135,16 @@
             <!-- <div id="ajax_load" class="info_activation_module"></div> -->
             <div id="dialog" title="Suppression">Veuillez confirmer la suppression</div>
 
-            <?php echo genererChoixSemaine($Week,date("Y")); ?>
-            
+            <?php 
+                if($isMobile){
+                    echo genererChoixSemaineMobile($Week,date("Y"));
+                }
+                else{
+                    echo genererChoixSemaine($Week,date("Y")); 
+                }
+
+            ?>
+
             <div id="calendrier">
                 <table id="calendar_table">
                     <thead>

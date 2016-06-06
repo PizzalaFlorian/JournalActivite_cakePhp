@@ -209,7 +209,7 @@ class CandidatController extends AppController
     }
 
 
-
+   
     public function activite()
     {
         if($_SESSION['Auth']['User']['typeUser'] == 'admin')

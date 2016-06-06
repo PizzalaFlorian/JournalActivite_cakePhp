@@ -321,6 +321,7 @@ $(function(){
         var event_id=0;
         /*Initialisation - dialog de remplissage*/
         //ADD EVENT
+        //$.mobile.changePage( "#gen_new_content", { role: "dialog" } );
         $("#gen_new_content").dialog({
             bgiframe: true,
             resizable: true,
