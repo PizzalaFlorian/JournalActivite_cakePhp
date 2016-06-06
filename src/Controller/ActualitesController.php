@@ -86,7 +86,7 @@ class ActualitesController extends AppController
                 $this->request->data['Date'] = Time::now(); 
                 $actualite = $this->Actualites->patchEntity($actualite, $this->request->data);
                 if ($this->Actualites->save($actualite)) {
-                    $this->Flash->success(__('La modification a été sauvegardé.'));
+                    $this->Flash->success(__('La modification a été sauvegardée.'));
                     return $this->redirect(['controller' => $monController, 'action' => $monAction]);
                 } else {
                     $this->Flash->error(__('Une erreur est survenue. Veuillez réessayer.'));
@@ -135,7 +135,7 @@ class ActualitesController extends AppController
             if ($this->Actualites->delete($actualite)) {
                 $this->Flash->success(__('La suppression à réussi.'));
             } else {
-                $this->Flash->error(__('L\'actualité n\'a pas pu être supprimer. Veuillez réessayer.'));
+                $this->Flash->error(__('L\'actualité n\'a pas pu être supprimés. Veuillez réessayer.'));
             }
             return $this->redirect(['controller' => $monController, 'action' => $monAction]);
         } else {

@@ -17,16 +17,16 @@
         echo $this->Form->postLink(
                 __('Supprimer'),
                 ['action' => 'delete', $actualite->ID],
-                array("class"=>"button",'confirm' => __('Etes vous sur de vouloir supprimer cette actualité?', $actualite->ID))
+                array("class"=>"button",'confirm' => __('Etes-vous sûr de vouloir supprimer cette actualité?', $actualite->ID))
             ).' ';
-        echo $this->Html->link(__('Retour acceuil'),
+        echo $this->Html->link(__('Retour accueil'),
          ['controller' => "$monController",'action' => "$monAction"],
          array("class"=>"button"));
         ?>
 </div>
     <?= $this->Form->create($actualite) ?>
     <fieldset>
-        <legend><?= __('Modifier l\'Actualitée') ?></legend>
+        <legend><?= __('Modifier l\'Actualité') ?></legend>
         <?php
             echo $this->Form->input('Sujet');
             echo $this->Form->input('Contenue');
