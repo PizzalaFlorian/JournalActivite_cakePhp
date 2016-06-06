@@ -42,7 +42,7 @@ $(function(){
 
  
     /*nouvel event Ajout*/
-    $(".calendar_td").on({dbclick: function(event) {
+    $(".calendar_td").on('doubletap', function(e) {
        var jour_deb = $(this).attr('id');
 
         //$("#ajax_load").html('<p align="center"><img src="'+getBaseURL()+'/public/themes/admin/img/loading.gif" /></p>');
@@ -582,7 +582,7 @@ $(function(){
                 }
             });
             });
-    }});
+    });
          /*FIN Ajout*/
       
        

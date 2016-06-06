@@ -27,6 +27,7 @@
     if($isMobile == true){
         echo $this->Html->script('jquery.mobile.custom');
         echo $this->Html->script('jquery.mobile.custom.min');
+        echo $this->Html->script('finger');
         echo $this->Html->script('calendar.mobile');
 
     }
