@@ -45,7 +45,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <ul class="title-area large-2 medium-3 columns">
             <li class="name">
                 <!-- <h1><a href=""><?= $this->fetch('title') ?></a></h1> -->
-                <h1><a id="layTitle">Candidat</a></h1>
+                <h1><a id="layTitle" href="/candidat/accueil">Candidat</a></h1>
                 <div id="menu_responsive"><?php echo $this->Html->image('menu.png', array('alt' => 'menu', 'class'=> 'img_menu'));?></div>    
             </li>
         </ul>
