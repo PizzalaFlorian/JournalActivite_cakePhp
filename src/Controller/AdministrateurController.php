@@ -8,6 +8,7 @@ use fonctionperso\chercheur\chercheurDonnees;
 use Cake\Mailer\Email;
 use Cake\Filesystem\File;
 
+
 /**
  * Administrateur Controller
  *
@@ -255,11 +256,45 @@ class AdministrateurController extends AppController
         if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
             $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
 
-         $this->viewBuilder()->layout('adminLayout');
+        $this->viewBuilder()->layout('adminLayout');
 
         $liste = null;
         if($this->request->is('post')){
-            $liste_email = explode (';',$this->request->data['liste_email']);
+            //si un fichier est passé en paramèrtre
+            if(!empty($this->request['data']['file']['name'])){
+
+                //var_dump($this->request['data']['file']);
+
+                //echo "tmp/name : ".$this->request['data']['file']['tmp_name']."<br/>";
+                //echo "name : ".$this->request['data']['file']['name']."<br/>";
+
+                // on le copie dans tmp/tmp/listecandidat
+                if($uploadfile =  move_uploaded_file ($this->request['data']['file']['tmp_name'], 'tmp/tmp/listeCandidat'))
+                {
+                    //echo "ok";
+                    // on ouvre le fichier listeCandidat
+                    $fp = fopen("tmp/tmp/listeCandidat","r"); //lecture
+                    $app = "";
+                    // on le lit
+                    while(($ligne = fgets($fp,255)) != false)
+                    {
+                        $app = $app.$ligne;
+                    }
+                    fclose($fp);
+                    $app = str_replace("\n", "", $app);
+                    $app = str_replace("\t", "", $app);
+                    $app = str_replace(" ", "", $app);
+                    $liste_email = explode (';',$app);
+                }
+                else{
+                    //echo "error";
+                }
+            }
+            else{
+                $liste_email = explode (';',$this->request->data['liste_email']);
+            }
+            // var_dump($liste_email);
+            // var_dump($liste_email);
             foreach ($liste_email as $email) {
                 if(!empty($email)){
                     //debug($email);
@@ -296,7 +331,7 @@ class AdministrateurController extends AppController
                         $message
                             ->to($email)
                             ->subject("Confirmation de compte")
-                            ->send($messageCandidat."\n--------------------------------------------------------------------------------\nVoici vos identifiant de votre compte candidat : \nLogin : ".$this->request->data['login']."\nMot de passe : ".$this->request->data['password']."\n--------------------------------------------------------------------------------\n");
+                            ->send($messageCandidat."\n--------------------------------------------------------------------------------\nVoici vos identifiant de votre compte candidat : \nLogin : ".$login."\nMot de passe : ".$password."\n--------------------------------------------------------------------------------\n");
                         
                         
                     } else {
