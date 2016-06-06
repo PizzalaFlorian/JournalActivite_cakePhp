@@ -2,10 +2,11 @@
     echo $this->element($sideBar);
     echo $this->Html->css('messagerie');
     echo $this->Html->css('main_custom');
+    echo $this->Html->css('responsive');
 ?>
 <div id="content">
 <nav id="messagerieMenu" class="large-10 medium-10 columns">
-    <div>
+    <div class="center">
         <?php 
             if($monController == 'candidat'){
                 echo $this->Html->link(__('Nouveau Message'), ['action' => 'nouveau'],array('class' => 'button')).' ';
@@ -27,7 +28,7 @@
 
 
 <div class="messages index large-12 medium-11 columns content">
-    <h3>Mes <?= __('Messages') ?></h3>
+    <h3 class="center">Mes <?= __('Messages') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>

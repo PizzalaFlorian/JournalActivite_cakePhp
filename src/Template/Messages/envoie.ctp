@@ -2,12 +2,15 @@
     echo $this->element($sideBar);
     echo $this->Html->css('messagerie');
     echo $this->Html->css('main_custom');
+    echo $this->Html->css('responsive');
 ?>
 <div id="content">
     <div class="messages index large-12 medium-11 columns content">
         <div class="navbar">
-        <?= $this->Html->link(__('Messagerie'), ['controller' => 'messages'],array('class' => 'button')) ?> <br/>
-        <h3>Historique messages envoyés</h3>
+        <div class="center">    
+            <?= $this->Html->link(__('Retour à la Messagerie'), ['controller' => 'messages'],array('class' => 'button')) ?> <br/>
+        </div>
+        <h3 class="center">Historique messages envoyés</h3>
         <table cellpadding="0" cellspacing="0">
             <thead>
                 <tr>

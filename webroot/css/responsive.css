@@ -119,6 +119,13 @@
         border: 2px solid #D7DCDF;
         border-radius: 10px 10px 10px 10px;
     }
-
+    
+    #messagerieMenu div .button, .navbar .center .button {
+        padding: 5px !important;
+    }
+    
+    .container{
+	    overflow: visible;
+    }
     
 }
