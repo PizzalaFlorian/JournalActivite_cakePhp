@@ -737,21 +737,43 @@ $(function(){
     /*nouvel event*/
     $(".calendar_td").on('doubletap',function(e){
         var jour_deb = $(this).attr('id');
-
-        //$("#ajax_load").html('<p align="center"><img src="'+getBaseURL()+'/public/themes/admin/img/loading.gif" /></p>');
-        var agenda_first_id=0;
-        var position_choisie=e.pageY-$(this).position().top;
-
-        var to_round=Math.round(position_choisie);
-        var to_string=String(to_round);
-        var str_length=to_string.length-1;
-        var to_substr=to_string.substr(0,str_length);
-        var to_int=parseInt(to_substr);
-        if(!to_int){
-            to_int=0;
+        console.log(jour_deb);
+        heure_prec_brut = 'toto';
+        $.ajax({  
+            url : '../occupation/precedente/',
+            type : 'POST',
+            async: false,
+            data : 'jour_deb='+jour_deb,
+            dataType : 'html', 
+            success : function(code_html, statut){ 
+                heure_prec_brut = code_html;
+            },
+            error: function (request, status, error) {
+                console.log(request.responseText);
+            }
+        });
+        if(heure_prec_brut != 'none'){
+           
+            var reg=new RegExp("[ :]+", "g");
+            var tableau=heure_prec_brut.split(reg)
+          
+            var depSec = tableau[1]*60*60 + tableau[2]*60;
+            var margin_top = (((depSec/60)/60)*4)*10;
         }
-        var margin_top=to_int*10;
-
+        else{
+            var agenda_first_id=0;
+            var position_choisie=e.pageY-$(this).position().top;
+            /*here*/
+            var to_round=Math.round(position_choisie);
+            var to_string=String(to_round);
+            var str_length=to_string.length-1;
+            var to_substr=to_string.substr(0,str_length);
+            var to_int=parseInt(to_substr);
+            if(!to_int){
+                to_int=0;
+            }
+            var margin_top=to_int*10;
+        }
         var depart_en_sec=(((margin_top/10)/4-1)*60)*60;
         var depart_en_millisec=depart_en_sec*1000;
         var height_css_value=parseInt(80);

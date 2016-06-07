@@ -196,7 +196,8 @@ class CandidatController extends AppController
             $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
         $this->viewBuilder()->layout('candiLayout');
         require_once(ROOT .DS. "vendor" . DS  . "functionperso" . DS . "candidat" . DS ."candidatHistorique.php");
-          $isMobile = false;
+        
+        $isMobile = false;
         if($this->RequestHandler->isMobile()){
            $isMobile = true;
         }

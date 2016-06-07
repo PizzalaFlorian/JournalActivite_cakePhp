@@ -366,4 +366,37 @@ class OccupationController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+    
+    public function precedente(){
+        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+        
+        $candidat = TableRegistry::get('candidat')
+            ->find()
+            ->where(['ID' => $_SESSION['Auth']['User']['ID']])
+            ->first();
+       //debug($candidat);
+        $this->autoRender = false;
+         if ($this->request->is(['post'])) {
+            //debug($this->request->data);
+            //debug($id);
+            $last_occupation = TableRegistry::get('occupation')
+            ->find()
+            ->select(array(
+             'last'=>'max(HeureFin)'
+             ))
+            ->where(['CodeCandidat' => $candidat['CodeCandidat'],'HeureFin LIKE' => $this->request->data['jour_deb'].'%'])
+            ->order(['HeureFin' => 'DESC'])
+            ->toArray();
+            // var_dump($last_occupation);
+            if(isset($last_occupation[0]['last'])){
+                echo $last_occupation[0]['last'];
+            }
+            else {
+                echo 'none';
+            }
+         }
+    }
 }
