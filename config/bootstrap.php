@@ -221,3 +221,6 @@ Type::build('datetime')
     ->useImmutable();
 
 Plugin::load('Cake/Localized');
+
+/*Plugin pour la mimification css et js added by barna*/
+Plugin::load('AssetCompress', ['bootstrap' => true]);
