@@ -31,7 +31,7 @@
 <li> 
     <?php 
         echo $this->Html->link(
-            'Gestion Candidat',
+            'Gestion Candidats',
             ['controller' => 'candidat', 'action' => 'index', '_full' => true]
         ); 
     ?> 
@@ -39,7 +39,7 @@
 <li> 
     <?php 
         echo $this->Html->link(
-            'Gestion Chercheur',
+            'Gestion Chercheurs',
             ['controller' => 'chercheur', 'action' => 'index', '_full' => true]
         );
     ?>
@@ -47,7 +47,7 @@
 <li> 
     <?php 
         echo $this->Html->link(
-            'Gestion Admin',
+            'Gestion Administrateurs',
             ['controller' => 'administrateur', 'action' => 'index', '_full' => true]
         ); 
     ?> 
