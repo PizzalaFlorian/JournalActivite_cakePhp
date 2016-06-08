@@ -117,32 +117,6 @@ class MessagesController extends AppController
     }
 
     /**
-     * Add method
-     *
-     * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
-     */
-    public function add()
-    {
-        // ============== //
-        // A suppr : on utilise nouveau pour creer des message
-        // ============== //
-    }
-
-    /**
-     * Edit method
-     *
-     * @param string|null $id Message id.
-     * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function edit($id = null)
-    {
-        // ============== //
-        // A suppr : on edite pas son message
-        // ============== //
-    }
-
-    /**
      * Delete method
      *
      * @param string|null $id Message id.

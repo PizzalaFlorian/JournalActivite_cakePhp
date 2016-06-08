@@ -37,7 +37,7 @@
                             echo $this->Html->link(__('Répondre'), ['action' => 'repondre', $message->IDMessage],array("class"=>"button")).' ';
                         }
                     }
-                    echo $this->Html->link(__('Supprimer'), ['action' => 'delete', $message->IDMessage],array("class"=>"button",'confirm' => __('Etes vous sur de vouloir supprimer ce message?', $message->IDMessage))).' ';
+                    echo $this->Html->link(__('Supprimer'), ['action' => 'delete', $message->IDMessage],array("class"=>"button",'confirm' => __('Êtes-vous sur de vouloir supprimer ce message?', $message->IDMessage))).' ';
                     echo $this->Html->link(__('Retour'), ['controller' => 'messages'],array("class"=>"button")).' '; 
                 }
     ?>
