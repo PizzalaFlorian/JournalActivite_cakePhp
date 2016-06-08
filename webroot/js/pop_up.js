@@ -1,7 +1,8 @@
  $(function() {
     $( "#dialog-tuto-mobile" ).dialog({
-      resizable: false,
-      height:300,
+      resizable: true,
+      height:350,
+      width:100+'%',
       modal: true,
       buttons: {
         Fermer: function() {
@@ -13,12 +14,11 @@
         }
       }
     });
-  });
-  
-   $(function() {
+
     $( "#dialog-tuto-pc" ).dialog({
-      resizable: false,
-      height:300,
+      resizable: true,
+      height:450,
+      width:700,
       modal: true,
       buttons: {
         Fermer: function() {
@@ -29,5 +29,15 @@
           $( this ).dialog( "close" );
         }
       }
+    });
+    
+    $("#supprCookiePc").click(function(e){
+        $.removeCookie('pc_time_management');
+        location.reload(true);
+    });
+    
+    $("#supprCookieMobile").click(function(e){
+        $.removeCookie('mobile_time_management');
+        location.reload(true);
     });
   });

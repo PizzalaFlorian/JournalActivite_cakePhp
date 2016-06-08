@@ -129,3 +129,20 @@ td a img:hover{
 #actions-sidebar {
 	background: #E8EDF0 !important;
 }
+
+#choice_pc fieldset select{
+	margin: 0 !important;
+}
+
+#calendrier{
+	margin: 0 !important;	
+}
+
+#supprCookiePc{
+	margin: 2px !important;
+}
+
+#supprCookieMobile{
+	font-size: 0.8em;
+}
+}

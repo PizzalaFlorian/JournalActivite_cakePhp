@@ -48,23 +48,40 @@
 
 
     if($isMobile){
-        if(!isset($_COOKIE["mobile_time_management"]))
-        echo "
-        <div id='dialog-tuto-mobile'>
-            <h3 class='center'> Tuto Mobile </h3>
-        </div>
-        ";
+        if(!isset($_COOKIE["mobile_time_management"])){
+            echo "
+            <div id='dialog-tuto-mobile'>
+                <h3 class='center'> Tutoriel Mobile </h3>
+                <p class='center'><strong> Votre but ? </strong> Rempli votre agenda</p>
+                <p class='center'><strong> Comment ? </strong></p>
+                <p class='justify'>
+                <strong> double-tap : </strong> Ajoutez une occupation.<br>
+                <strong> tap : </strong> Touchez une occupation pour ouvrir le menu et modifier, supprimer ou même copier une occupation.<br>
+                </p>
+            </div>
+            ";
+        }
     }
     else{
-        if(!isset($_COOKIE["pc_time_management"]))
-        echo "
-        <div id='dialog-tuto-pc'>
-            <h3 class='center'> Tutoriel </h3>
-        </div>
-        ";
+        if(!isset($_COOKIE["pc_time_management"])){
+            echo "
+            <div id='dialog-tuto-pc'>
+                <h3 class='center'> Tutoriel </h3>
+                <p class='center'><strong> Votre but ? </strong> Rempli votre agenda</p>
+                <p class='center'><strong> Comment ? </strong></p>
+                <p class='justify'>
+                <strong> double-click : </strong> Ajoutez une occupation.<br>
+                <strong> click-droit : </strong> Utilisez le click droit sur une occupation pour modifier, supprimer ou même copier une occupation.<br>
+                <strong> click+resize : </strong> Attrappez le bord de fin d'une occupation pour la redimenssionner.<br>
+                <strong> click+drag : </strong> Cliquez sur une occupation et faites la glissez pour changer d'heure, ou même de jour.<br>
+                (Note: hors changement de jour, le changement de durée et d'horaire peu aussi être éffectuer sur le menue modifier via click-droit sur une occupation).
+                </p>
+    
+            </div>
+            ";
+            }
     }
 ?>
-
     <div id="click-menue">
     <div class="button-click-menue" id="cp">  Copier  </div>
     <div class="button-click-menue" id="md">  Modifier  </div>
@@ -149,9 +166,11 @@
             <?php 
                 if($isMobile){
                     echo genererChoixSemaineMobile($Week,date("Y"));
+                    echo "<div id='supprCookieMobile' class='center'><a>Afficher le tutoriel<a></div>";
                 }
                 else{
-                    echo genererChoixSemaine($Week,date("Y")); 
+                    echo genererChoixSemaine($Week,date("Y"));
+                    echo "<div id='supprCookiePc' class='center'><a>Afficher le tutoriel<a></div>";
                 }
 
             ?>
