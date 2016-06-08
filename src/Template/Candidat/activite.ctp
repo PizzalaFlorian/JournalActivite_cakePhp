@@ -25,26 +25,19 @@
     echo $this->element('sidebarCandidat');
 
     if($isMobile == true){
-        //echo $this->Html->script('jquery.mobile.custom');
-        //echo $this->Html->script('jquery.mobile.custom.min');
-        // echo $this->Html->script('jquery-1.7.min');
-        // echo $this->Html->script('jquery-ui-1.7.2.custom.min');
         echo $this->Html->script('finger');
         echo $this->Html->script('calendar.mobile');
 
     }
     else{
-        // echo $this->Html->script('jquery-1.7.min');
-        // echo $this->Html->script('jquery-ui-1.7.2.custom.min');
         echo $this->Html->script('Demo_calendar_script');
     }
-    // echo $this->Html->script('jquery-1.7.min');
-    // echo $this->Html->script('jquery-ui-1.7.2.custom.min');
     echo $this->Html->script('jquery.corner');
-    //echo $this->Html->script('jquery.mobile.custom.min');
     echo $this->Html->script('candidat.activite');
     echo $this->Html->script('candidat_Renseignement.activite');
-    //echo $this->Html->script('Demo_calendar_script');
+    echo $this->Html->script('jquery-cookie');
+    echo $this->Html->script('pop_up');
+
 
     echo $this->Html->css('modale');
     echo $this->Html->css('occupation');
@@ -52,8 +45,26 @@
     echo $this->Html->css('Demo_calendar_jquery');
     echo $this->Html->css('main_custom');
     echo $this->Html->css('responsive');
-    
+
+
+    if($isMobile){
+        if(!isset($_COOKIE["mobile_time_management"]))
+        echo "
+        <div id='dialog-tuto-mobile'>
+            <h3 class='center'> Tuto Mobile </h3>
+        </div>
+        ";
+    }
+    else{
+        if(!isset($_COOKIE["pc_time_management"]))
+        echo "
+        <div id='dialog-tuto-pc'>
+            <h3 class='center'> Tutoriel </h3>
+        </div>
+        ";
+    }
 ?>
+
     <div id="click-menue">
     <div class="button-click-menue" id="cp">  Copier  </div>
     <div class="button-click-menue" id="md">  Modifier  </div>
