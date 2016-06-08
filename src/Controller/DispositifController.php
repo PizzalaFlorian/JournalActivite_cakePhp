@@ -49,29 +49,6 @@ class DispositifController extends AppController
     }
 
     /**
-     * View method
-     * @Accès Chercheur
-     * @param string|null $id Dispositif id.
-     * @return \Cake\Network\Response|null
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function view($id = null)
-    {
-
-        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
-            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
-        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
-            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
-        
-        $dispositif = $this->Dispositif->get($id, [
-            'contain' => []
-        ]);
-
-        $this->set('dispositif', $dispositif);
-        $this->set('_serialize', ['dispositif']);
-    }
-
-    /**
      * Add method
      * @Accès Chercheur
      * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
@@ -89,10 +66,10 @@ class DispositifController extends AppController
             //debug($this->request->data);
             $dispositif = $this->Dispositif->patchEntity($dispositif, $this->request->data);
             if ($this->Dispositif->save($dispositif)) {
-                $this->Flash->success(__('Le dispositif as bien été ajouter.'));
+                $this->Flash->success(__('Le dispositif a bien été ajouté.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('Erreur lors de l\'ajout du dispositif.'));
+                $this->Flash->error(__('Erreur lors de l\'ajout du dispositif. Veuillez réessayer.'));
             }
         }
         $this->set(compact('dispositif'));
@@ -120,7 +97,7 @@ class DispositifController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $dispositif = $this->Dispositif->patchEntity($dispositif, $this->request->data);
             if ($this->Dispositif->save($dispositif)) {
-                $this->Flash->success(__('Le dispositif as été modifié.'));
+                $this->Flash->success(__('Le dispositif a été modifié.'));
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('Erreur lors de la modification.'));
@@ -158,9 +135,9 @@ class DispositifController extends AppController
         }
 
         if ($this->Dispositif->delete($dispositif)) {
-            $this->Flash->success(__('Le dispositif as été supprimée.'));
+            $this->Flash->success(__('Le dispositif a été supprimée.'));
         } else {
-            $this->Flash->error(__('Erreur lors de la suppression.'));
+            $this->Flash->error(__('Erreur lors de la suppression. Veuillez réessayer.'));
         }
         return $this->redirect(['action' => 'index']);
     }

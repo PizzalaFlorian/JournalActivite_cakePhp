@@ -19,7 +19,7 @@
             echo $this->Form->input('NomDispositif');
         ?>
     </fieldset>
-    <?= $this->Html->link(__('Retourner a la liste des dispositifs'), ['action' => 'index'],['class'=>'button']) ?>
+    <?= $this->Html->link(__('Retourner à la liste des dispositifs'), ['action' => 'index'],['class'=>'button']) ?>
     <?= $this->Form->button(__('Ajouter')) ?>
     <?= $this->Form->end() ?>
 </div>
