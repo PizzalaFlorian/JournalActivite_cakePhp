@@ -15,7 +15,7 @@ if (! empty($id) && ! empty($id_old)){
 	$requete = $bdd->query("SELECT COUNT(*) AS num FROM dispositif WHERE CodeDispositif = $id");
 	$data = $requete->fetch();
 	if ($data['num'] != 0 && $id != $id_old)
-		echo "<div class=\"msg_alert\">Cet id n'est pas disponible il est déjà affecté à un autre dispositif</div>";
+		echo "<div class=\"msg_alert\">Cet id n'est pas disponible, il est déjà affecté à un autre dispositif</div>";
 	$requete->closeCursor();
 }
 ?>

@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					'PrenomChercheur' => $prenom,
 					'ID' => $id
 				));
-				$msg = "<div class=\"msg_confirm\">Votre nom a bien été modifié modifié!</div>";
+				$msg = "<div class=\"msg_confirm\">Votre nom a bien été modifié!</div>";
 			}
 		}
 		if (isset($_POST['mod_login'])){
@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 						'Login' => $login,
 						'ID' => $id
 					));
-					$msg = "<div class=\"msg_confirm\">Votre login a bien été modifié modifié!</div>";
+					$msg = "<div class=\"msg_confirm\">Votre login a bien été modifié!</div>";
 				}
 			}
 		}
@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 						'MotDePasse' => $mdp,
 						'ID' => $id
 					));
-					$msg = "<div class=\"msg_confirm\">Votre mot de passe a bien été modifié modifié!</div>";
+					$msg = "<div class=\"msg_confirm\">Votre mot de passe a bien été modifié!</div>";
 				}
 			}
 		}	

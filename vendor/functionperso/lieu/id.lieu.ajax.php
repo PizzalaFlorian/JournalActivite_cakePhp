@@ -14,7 +14,7 @@ if (! empty($id)){
 	$requete = $bdd->query("SELECT COUNT(*) AS num FROM lieu WHERE CodeLieux = $id");
 	$data = $requete->fetch();
 	if ($data['num'] != 0)
-		echo "<div class=\"msg_alert\">Cet id n'est pas disponible il est déjà affecté à un lieu</div>";
+		echo "<div class=\"msg_alert\">Cet id n'est pas disponible, il est déjà affecté à un lieu</div>";
 	$requete->closeCursor();
 }
 ?>

@@ -15,7 +15,7 @@ if (! empty($id) && ! empty($id_old)){
 	$requete = $bdd->query("SELECT COUNT(*) AS num FROM compagnie WHERE CodeCompagnie = $id");
 	$data = $requete->fetch();
 	if ($data['num'] != 0 && $id != $id_old)
-		echo "<div class=\"msg_alert\">Cet id n'est pas disponible il est déjà affecté à une autre compagnie</div>";
+		echo "<div class=\"msg_alert\">Cet id n'est pas disponible, il est déjà affecté à une autre compagnie</div>";
 	$requete->closeCursor();
 }
 ?>

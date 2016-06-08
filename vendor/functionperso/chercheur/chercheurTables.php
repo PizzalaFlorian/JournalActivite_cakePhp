@@ -23,7 +23,7 @@
 					$req->execute(array(
 						'NomCategorie' => $nom_categorie
 					));
-					$msg = "<div class=\"msg_confirm\">La catégorie '$nom_categorie' a bien été rajouté!</div>";
+					$msg = "<div class=\"msg_confirm\">La catégorie '$nom_categorie' a bien été rajoutée!</div>";
 					
 				}
 			}
@@ -39,9 +39,9 @@
 					if($data['num']!= 0){
 						$requete = $bdd->query("SELECT * FROM activite WHERE CodeCategorie = $num_categorie");
 						if($data['num']== 1)
-							$msg ="<div class=\"msg_alert\">Impossible de supprimer la catégorie l'activités suivante est affectée à la catégorie: ";
+							$msg ="<div class=\"msg_alert\">Impossible de supprimer la catégorie, l'activités suivante est affectée à la catégorie: ";
 						else
-							$msg ="<div class=\"msg_alert\">Impossible de supprimer la catégorie les activités suivantes sont affectées à la catégorie: ";
+							$msg ="<div class=\"msg_alert\">Impossible de supprimer la catégorie, les activités suivantes sont affectées à la catégorie: ";
 						while ($data = $requete->fetch()){
 							$msg.="<br/>".$data['CodeActivite']."  ".$data['NomActivite'];
 						}
@@ -86,7 +86,7 @@
 					$data = $requete->fetch();
 					if($data['num']!= 0){
 						$requete = $bdd->query("SELECT * FROM dispositif WHERE CodeDispositif = $id");
-						$msg ="<div class=\"msg_alert\">Impossible de rajouter le dispositif l'id $id est déà affecté au dispositif ";
+						$msg ="<div class=\"msg_alert\">Impossible d'ajouter le dispositif: l'id $id est déjà affecté au dispositif ";
 						$data = $requete->fetch();
 						$msg.=$data['NomDispositif']." .</div>";
 					}
@@ -97,7 +97,7 @@
 							'CodeDispositif' => $id,
 							'NomDispositif' => $nom_dispositif
 						));
-						$msg = "<div class=\"msg_confirm\">Le dispositif '$nom_dispositif' a bien été rajouté!</div>";
+						$msg = "<div class=\"msg_confirm\">Le dispositif '$nom_dispositif' a bien été ajouté!</div>";
 					}
 					
 				}
@@ -114,7 +114,7 @@
 					$data = $requete->fetch();
 					if($data['num']!= 0){
 						$requete = $bdd->query("SELECT * FROM compagnie WHERE CodeCompagnie = $id");
-						$msg ="<div class=\"msg_alert\">Impossible de rajouter la compagnie l'id $id est déà affecté à la compagnie ";
+						$msg ="<div class=\"msg_alert\">Impossible d'ajouter la compagnie, l'id $id est déà affecté à la compagnie ";
 						$data = $requete->fetch();
 						$msg.=$data['NomCompagnie']." .</div>";
 					}
@@ -227,7 +227,7 @@
 								'CodeDispositif' => $id_old
 							));
 							
-							$msg = "<div class=\"msg_confirm\">Le dispositif a bien été modifiée!</div>";
+							$msg = "<div class=\"msg_confirm\">Le dispositif a bien été modifié!</div>";
 						}
 						
 					}
@@ -299,7 +299,7 @@
 					$data = $requete->fetch();
 					if($data['num']!= 0){
 						$requete = $bdd->query("SELECT * FROM lieu WHERE CodeLieux = $id");
-						$msg ="<div class=\"msg_alert\">Impossible de rajouter le lieu l'id $id est déà affecté au lieu ";
+						$msg ="<div class=\"msg_alert\">Impossible d'ajouter le lieu: l'id $id est déà affecté au lieu ";
 						$data = $requete->fetch();
 						$msg.=$data['NomLieux']." .</div>";
 					}
@@ -311,7 +311,7 @@
 							'NomLieux' => $nom_lieu,
 							'CodeCategorieLieux' => $cat
 						));
-						$msg = "<div class=\"msg_confirm\">Le lieux '$nom_lieu' a bien été rajouté!</div>";
+						$msg = "<div class=\"msg_confirm\">Le lieux '$nom_lieu' a bien été ajouté!</div>";
 					}
 					
 				}
@@ -357,7 +357,7 @@
 							'NomLieux' => $nom_lieu,
 							'CodeLieux' => $id
 						));
-						$msg = "<div class=\"msg_confirm\">Le lieu a bien été modifiée!</div>";
+						$msg = "<div class=\"msg_confirm\">Le lieu a bien été modifié!</div>";
 					}
 					else{
 						/*L'id change, on vérifie si on n'écrase pas un autre lieu*/
@@ -365,7 +365,7 @@
 						$data = $requete->fetch();
 						if($data['num']!= 0){
 							$requete = $bdd->query("SELECT * FROM lieu WHERE CodeLieux = $id");
-							$msg ="<div class=\"msg_alert\">Impossible de modifier le lieu l'id $id est déà affecté au dispositif ";
+							$msg ="<div class=\"msg_alert\">Impossible de modifier le lieu: l'id $id est déjà affecté au dispositif ";
 							$data = $requete->fetch();
 							$msg.=$data['NomLieux']." .</div>";
 						}
@@ -391,7 +391,7 @@
 								'CodeDispositif' => $id_old
 							));
 							
-							$msg = "<div class=\"msg_confirm\">Le lieu a bien été modifiée!</div>";
+							$msg = "<div class=\"msg_confirm\">Le lieu a bien été modifié!</div>";
 						}			
 					}
 				}
@@ -410,7 +410,7 @@
 					$data = $requete->fetch();
 					if($data['num']!= 0){
 						$requete = $bdd->query("SELECT * FROM activite WHERE CodeActivite = $id");
-						$msg ="<div class=\"msg_alert\">Impossible de rajouter l'activite l'id $id est déà affecté à l'activité ";
+						$msg ="<div class=\"msg_alert\">Impossible d'ajouter l'activité: l'id $id est déjà affecté à l'activité ";
 						$data = $requete->fetch();
 						$msg.=$data['NomActivite']." .</div>";
 					}
@@ -423,14 +423,14 @@
 							'CodeCategorie' => $cat ,
 							'DescriptifActivite' => $desc
 						));
-						$msg = "<div class=\"msg_confirm\">L'activite '$nom_activite' a bien été rajouté!</div>";
+						$msg = "<div class=\"msg_confirm\">L'activité '$nom_activite' a bien été ajouté!</div>";
 					}
 					
 				}
 			}
 			elseif(isset($_POST['sup_activite'])){
 				if (empty($_POST['id']) && $_POST['id'] != 0){
-					$msg = "<div class=\"msg_alert\">Il faut sélectionner une activite!</div>";
+					$msg = "<div class=\"msg_alert\">Il faut sélectionner une activité!</div>";
 				}
 				else{
 					$id = test_input($_POST['id']);
@@ -447,7 +447,7 @@
 						$req->execute(array(
 							'CodeActivite' => $id
 						));
-						$msg = "<div class=\"msg_confirm\">L'activite a bien été supprimé</div>";
+						$msg = "<div class=\"msg_confirm\">L'activité a bien été supprimé</div>";
 					}
 					else{
 						$msg = "<div class=\"msg_alert\">Il faut sélectionner une activité!</div>";
@@ -481,7 +481,7 @@
 						$data = $requete->fetch();
 						if($data['num']!= 0){
 							$requete = $bdd->query("SELECT * FROM activite WHERE CodeActivite = $id");
-							$msg ="<div class=\"msg_alert\">Impossible de modifier l'activité l'id $id est déjà affecté à l'activité ";
+							$msg ="<div class=\"msg_alert\">Impossible de modifier l'activité: l'id $id est déjà affecté à l'activité ";
 							$data = $requete->fetch();
 							$msg.=$data['NomActivite']." .</div>";
 						}

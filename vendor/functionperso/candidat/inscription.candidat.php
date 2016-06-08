@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isRecaptchaValid(test_input($_POST['
 					$requete = $bdd->query("SELECT COUNT(*) AS num FROM utilisateur WHERE MailCandidat LIKE '$mail' ");
 					$data = $requete->fetch();
 						if ($data['num'] > 0)
-						$msg = "Un compte existe déjà avec cet e-mail, aller sur j'ai perdu mes identifants";
+						$msg = "Un compte existe déjà avec cet e-mail, allez sur j'ai perdu mes identifants";
 					else{
 			/* tuti fruti on insère le candidat dans utilisateur*/			
 						$req = $bdd->prepare("INSERT INTO utilisateur (Login,TypeUser,MotDePasse,MailCandidat) VALUES (:Login,:TypeUser,:MotDePasse,:MailCandidat)");
