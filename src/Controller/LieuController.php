@@ -48,28 +48,6 @@ class LieuController extends AppController
     }
 
     /**
-     * View method
-     * @accès chercheur
-     * @param string|null $id Lieu id.
-     * @return \Cake\Network\Response|null
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function view($id = null)
-    {
-        $this->viewBuilder()->layout('cherLayout');
-        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
-            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
-        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
-            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
-        $lieu = $this->Lieu->get($id, [
-            'contain' => []
-        ]);
-
-        $this->set('lieu', $lieu);
-        $this->set('_serialize', ['lieu']);
-    }
-
-    /**
      * Add method
      * @accès chercheur
      * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
@@ -87,10 +65,10 @@ class LieuController extends AppController
             debug($this->request->data);
             $lieu = $this->Lieu->patchEntity($lieu, $this->request->data);
             if ($this->Lieu->save($lieu)) {
-                $this->Flash->success(__('Le lieu as été ajouté.'));
+                $this->Flash->success(__('Le lieu a été ajouté.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('Erreur lors de l\'ajout.'));
+                $this->Flash->error(__('Erreur lors de l\'ajout. Veuillez réessayer.'));
             }
         }
         $this->set(compact('lieu'));
@@ -117,10 +95,10 @@ class LieuController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $lieu = $this->Lieu->patchEntity($lieu, $this->request->data);
             if ($this->Lieu->save($lieu)) {
-                $this->Flash->success(__('Le lieu as été modifié.'));
+                $this->Flash->success(__('Le lieu a été modifié.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('Erreur lors de la modification.'));
+                $this->Flash->error(__('Erreur lors de la modification. Veuillez réessayer.'));
             }
         }
         $this->set(compact('lieu'));
@@ -150,14 +128,14 @@ class LieuController extends AppController
             ->first();
 
         if(isset($table['CodeLieux'])){
-             $this->Flash->error(__('Ce lieu a été utilisée par des candidats, veuillez choisir une action.'));
+             $this->Flash->error(__('Ce lieu a été utilisé par des candidats, veuillez choisir une action.'));
             return $this->redirect(['action' => 'reaffect',$lieu->CodeLieux]);
         }
 
         if ($this->Lieu->delete($lieu)) {
-            $this->Flash->success(__('Le lieu as été supprimée.'));
+            $this->Flash->success(__('Le lieu a été supprimé.'));
         } else {
-            $this->Flash->error(__('Erreur lors de la suppression.'));
+            $this->Flash->error(__('Erreur lors de la suppression. Veuillez réessayer.'));
         }
         return $this->redirect(['action' => 'index']);
     }
@@ -233,7 +211,7 @@ class LieuController extends AppController
                 ->where(['CodeLieux' => $lieu['CodeLieux']])
                 ->execute();
 
-            $this->Flash->success(__('l\'activitée Les occupations ont été supprimées'));
+            $this->Flash->success(__('le lieu et les occupations liées ont été supprimés'));
             return $this->redirect(['action' => 'index']);
         }
 

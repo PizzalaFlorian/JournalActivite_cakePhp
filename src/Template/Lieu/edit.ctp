@@ -34,7 +34,7 @@
             $this->Form->postLink(
                 __('Supprimer'),
                 ['action' => 'delete', $lieu->CodeLieux],
-                array("class"=>"button",'confirm' => __('Êtes vous sur de vouloir supprimer ce lieu/transport : {0}?', $lieu->NomLieux))
+                array("class"=>"button",'confirm' => __('Êtes-vous sur de vouloir supprimer ce lieu/transport : {0}?', $lieu->NomLieux))
             );
     ?>
 </div>
