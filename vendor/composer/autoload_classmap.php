@@ -64,6 +64,8 @@ return array(
     'CssVariablesMinifierFilter' => $vendorDir . '/natxet/CssMin/src/CssMin.php',
     'CssVariablesMinifierPlugin' => $vendorDir . '/natxet/CssMin/src/CssMin.php',
     'CssWhitesmithsFormatter' => $vendorDir . '/natxet/CssMin/src/CssMin.php',
+    'JSMin' => $vendorDir . '/linkorb/jsmin-php/src/jsmin-1.1.1.php',
+    'JSMinException' => $vendorDir . '/linkorb/jsmin-php/src/jsmin-1.1.1.php',
     'Mobile_Detect' => $vendorDir . '/mobiledetect/mobiledetectlib/Mobile_Detect.php',
     'SqlFormatter' => $vendorDir . '/jdorn/sql-formatter/lib/SqlFormatter.php',
     'aCssAtBlockEndToken' => $vendorDir . '/natxet/CssMin/src/CssMin.php',

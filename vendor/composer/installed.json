@@ -1690,5 +1690,64 @@
             "css",
             "minify"
         ]
+    },
+    {
+        "name": "linkorb/jsmin-php",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/linkorb/jsmin-php.git",
+            "reference": "be85d87fc9c27730e7e9ced742b13010dafc1026"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/linkorb/jsmin-php/zipball/be85d87fc9c27730e7e9ced742b13010dafc1026",
+            "reference": "be85d87fc9c27730e7e9ced742b13010dafc1026",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.0.0"
+        },
+        "time": "2013-03-15 13:16:35",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Joost Faassen",
+                "email": "j.faassen@linkorb.com",
+                "role": "Packaging for composer"
+            },
+            {
+                "name": "Ryan Grove",
+                "email": "ryan@wonko.com",
+                "role": "PHP port"
+            },
+            {
+                "name": "Adam Gofort",
+                "email": "aag@adamgoforth.com",
+                "role": "Updates to the PHP port"
+            },
+            {
+                "name": "Douglas Crockford",
+                "email": "douglas@crockford.com"
+            }
+        ],
+        "description": "Unofficial package of jsmin-php",
+        "homepage": "http://www.github.com/linkorb/jsmin-php",
+        "keywords": [
+            "javascript",
+            "jsmin",
+            "minify"
+        ]
     }
 ]
