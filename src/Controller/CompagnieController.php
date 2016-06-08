@@ -49,29 +49,6 @@ class CompagnieController extends AppController
     }
 
     /**
-     * View method
-     * @Accès chercheur
-     * @param string|null $id Compagnie id.
-     * @return \Cake\Network\Response|null
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function view($id = null)
-    {
-        $this->viewBuilder()->layout('cherLayout');
-        if($_SESSION['Auth']['User']['typeUser'] == 'candidat')
-            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
-        if($_SESSION['Auth']['User']['typeUser'] == 'admin')
-            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
-
-        $compagnie = $this->Compagnie->get($id, [
-            'contain' => []
-        ]);
-
-        $this->set('compagnie', $compagnie);
-        $this->set('_serialize', ['compagnie']);
-    }
-
-    /**
      * Add method
      * @Accès chercheur
      * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
@@ -88,10 +65,10 @@ class CompagnieController extends AppController
         if ($this->request->is('post')) {
             $compagnie = $this->Compagnie->patchEntity($compagnie, $this->request->data);
             if ($this->Compagnie->save($compagnie)) {
-                $this->Flash->success(__('La comapgnie as bien été ajoutée.'));
+                $this->Flash->success(__('La comapgnie a bien été ajoutée.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('Erreur lors de l\'ajout de la compagnie.'));
+                $this->Flash->error(__('Erreur lors de l\'ajout de la compagnie. Veuillez réessayer.'));
             }
         }
         $this->set(compact('compagnie'));
@@ -120,10 +97,10 @@ class CompagnieController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $compagnie = $this->Compagnie->patchEntity($compagnie, $this->request->data);
             if ($this->Compagnie->save($compagnie)) {
-                $this->Flash->success(__('La compagnie as bien été modifiée.'));
+                $this->Flash->success(__('La compagnie a bien été modifiée.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('Erreur lors de la modification.'));
+                $this->Flash->error(__('Erreur lors de la modification. Veuillez réessayer.'));
             }
         }
         $this->set(compact('compagnie'));
@@ -159,9 +136,9 @@ class CompagnieController extends AppController
         }  
 
         if ($this->Compagnie->delete($compagnie)) {
-            $this->Flash->success(__('La compagnie as bien été supprimée.'));
+            $this->Flash->success(__('La compagnie a bien été supprimée.'));
         } else {
-            $this->Flash->error(__('Erreur lors de la suppression.'));
+            $this->Flash->error(__('Erreur lors de la suppression. Veuillez réessayer.'));
         }
         return $this->redirect(['action' => 'index']);
     }

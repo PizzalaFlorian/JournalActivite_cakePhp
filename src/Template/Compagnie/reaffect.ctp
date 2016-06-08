@@ -5,7 +5,7 @@
 <h3 class="center"><?php echo $compagnie['NomCompagnie']; ?></h3>
 <div class="compagnie form large-12 medium-11 columns content">
 	<?php 
-		 echo $this->Html->link(__('Annuler et retourner a la liste des compagnie'), ['action' => 'index'],['class'=>'button']);
+		 echo $this->Html->link(__('Annuler et retourner à la liste des compagnies'), ['action' => 'index'],['class'=>'button']);
 	?>
 	<h4>Réaffecter</h4>	
 		<?= $this->Form->create($compagnie) ?>
@@ -31,6 +31,6 @@
 	<h4>Supprimer</h4>
 	<?php 
 		 
-		 echo $this->Form->postLink(__('Supprimer cette compagnie et toutes les occupations associées'), ['action' => 'deleteAll',$compagnie->CodeCompagnie], ['class'=>'button','confirm' => __('êtes vous sur de vouloir supprimée toutes ces occupations de la base de données ?')]);
+		 echo $this->Form->postLink(__('Supprimer cette compagnie et toutes les occupations associées'), ['action' => 'deleteAll',$compagnie->CodeCompagnie], ['class'=>'button','confirm' => __('Êtes vous sur de vouloir supprimer toutes ces occupations de la base de données ?')]);
 	?>
 </div>
