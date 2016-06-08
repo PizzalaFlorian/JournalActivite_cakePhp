@@ -42,23 +42,23 @@
             <?php foreach ($messages as $message): ?>
             <tr >
                 <?php $lu = message_Lu($message); ?>
-                <!-- DATE D'ENVOIE -->
+                <?php //-- DATE D'ENVOIE --?>
                 <td class="<?php echo $lu; ?>">
                         <?= h($message->DateEnvoi) ?>
                 </td>
-                <!-- LIEN AFFICHE LE MESSAGE -->
+                <?php //-- LIEN AFFICHE LE MESSAGE --?>
                 <td class="<?php echo $lu; ?>">
                     <?= $this->Html->link(h(substr($message->Sujet, 0, 30)), ['action' => 'view', $message->IDMessage]) ?>
                 </td>
-                <!-- NOM DE L'EXPEDITEUR -->
+                <?php //-- NOM DE L'EXPEDITEUR --?>
                 <td class="<?php echo $lu; ?>">
                     <?php echo whoIsID($message->userExpediteur); ?>
                 </td>
-                <!-- ACTIONS -->
+                <?php //-- ACTIONS --?>
                 <td class="actions">
                     <!-- REPONDRE -->  
                     <?php 
-                        // si l'utilisateur a été supprimer, aucune possibilité de repondre
+                        // si l'utilisateur a été supprimé, aucune possibilité de repondre
                         if(!($message->userExpediteur == 4)){ 
                             echo $this->Html->link(
                              $this->Html->image('open.png', array('title' => "Lire")),
@@ -83,9 +83,9 @@
     </table>
     <div class="paginator">
         <ul class="pagination">
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
+            <?= $this->Paginator->prev('< ' . __('Précédant')) ?>
             <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
+            <?= $this->Paginator->next(__('Suivant') . ' >') ?>
         </ul>
         <p><?= $this->Paginator->counter() ?></p>
     </div>
