@@ -459,4 +459,41 @@ class UsersController extends AppController
         $this->set(compact('sideBar'));
         $this->set('_serialize', ['message']);
     }
+
+    public function resetMDP(){
+        if($this->request->is('post')){
+
+            $char = 'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMOPQRSTUVWXYZ';
+            
+            $password = str_shuffle($char);
+            $password = substr ( $password , 0, 10 );
+
+            $user = TableRegistry::get('users')
+                ->find()
+                ->where(['email'=>$this->request->query['Email']])
+                ->first();
+
+            if(!isset($user)){
+                $this->Flash->error(__('Cette adresse e-mail n\'est pas présente dans notre base de données.'));
+            } 
+            else{
+                $update_user = TableRegistry::get('users')
+                ->query();
+                $update_user    
+                    ->update()
+                    ->set(['password' => (new DefaultPasswordHasher)->hash($password)])
+                    ->where(['email' => $this->request->query['Email']])
+                    ->execute();
+
+                $this->Flash->success(__('Le mot de passe de l\'utilisateur "'.$this->request->query['Email'].'"a bien été modifié.'));
+                $email = new Email('default');
+                $email
+                    ->to($this->request->query['Email'])
+                    ->subject("Nouveau Mot de passe")
+                    ->send("Voici vos nouveaux identifiants, veuillez les changer dès votre prochaine connexion"."\n--------------------------------------------------------------------------------\nVoici vos identifiant de votre compte : \nLogin : ".$user['login']."\nMot de passe : ".$password."\n--------------------------------------------------------------------------------\n");
+                
+                return $this->redirect(['controller'=>'users','action' => 'index']);
+            }      
+        }
+    }
 }
