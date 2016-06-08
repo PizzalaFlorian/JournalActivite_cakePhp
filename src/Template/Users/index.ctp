@@ -13,6 +13,7 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
+                <th><?= $this->Paginator->sort('ID') ?></th>
                 <th><?= $this->Paginator->sort('login') ?></th>
                 <th><?= $this->Paginator->sort('typeUser') ?></th>
                 <th><?= $this->Paginator->sort('email') ?></th>
@@ -22,6 +23,7 @@
         <tbody>
             <?php foreach ($users as $user): ?>
             <tr>
+                <td><?= h($user->ID) ?></td>
                 <td><?= h($user->login) ?></td>
                 <td><?= h($user->typeUser) ?></td>
                 <td><?= h($user->email) ?></td>
