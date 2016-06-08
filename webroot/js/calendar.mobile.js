@@ -62,7 +62,11 @@ $(function(){
         //TEST recup heure //
         jour_deb = $(this).closest('td').attr('id');
         console.log('jai clique droit',event_id)
-        $("#click-menue").css({top:e.pageY,left:e.pageX}).show();
+        var decale=e.pageX;
+        if(e.pageX + parseInt($("#click-menue").css('width').replace('px', ''))+10 >= $(window).width() ){
+            decale = e.pageX - parseInt($("#click-menue").css('width').replace('px', ''));
+        }
+        $("#click-menue").css({top:e.pageY,left:decale}).show();
         $("#paste-menue").hide();
         $("#cp").click(function(e){
             console.log("copier out",event_id);
@@ -156,7 +160,11 @@ $(function(){
             buffer_dispositif = '';
         });
         if(buffer_event_id != null){
-            $("#paste-menue").css({top:e.pageY,left:e.pageX}).show();
+            var decale=e.pageX;
+            if(e.pageX + parseInt($("#paste-menue").css('width').replace('px', '')) >= $(window).width() ){
+                decale = e.pageX - parseInt($("#paste-menue").css('width').replace('px', ''));
+            }
+            $("#paste-menue").css({top:e.pageY,left:decale}).show();
         }
         column_target = $(this);
         jour_deb = $(this).attr('id');
