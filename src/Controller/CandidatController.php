@@ -28,7 +28,14 @@ class CandidatController extends AppController
             $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
         if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
             $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
-
+        $candidat = TableRegistry::get('candidat')
+            ->find()
+            ->where(['ID' => $_SESSION['Auth']['User']['ID']])
+            ->first();
+        
+        if(isset($candidat["CodeCandidat"]))
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+            
         if ($this->request->is(['patch', 'post', 'put'])) {
             if(isset($this->request->data['published'])){
                 return $this->redirect([
@@ -323,6 +330,18 @@ class CandidatController extends AppController
      */
     public function add()
     {
+        if($_SESSION['Auth']['User']['typeUser'] == 'administrateur')
+            $this->redirect(['controller'=>'administrateur','action' => 'accueil']);
+        if($_SESSION['Auth']['User']['typeUser'] == 'chercheur')
+            $this->redirect(['controller'=>'chercheur','action' => 'accueil']);
+        $candidatTest = TableRegistry::get('candidat')
+            ->find()
+            ->where(['ID' => $_SESSION['Auth']['User']['ID']])
+            ->first();
+        if(isset($candidatTest["CodeCandidat"])){
+            $this->redirect(['controller'=>'candidat','action' => 'accueil']);
+        }
+            
         $candidat = $this->Candidat->newEntity();
         if ($this->request->is('post')) {
             $candidat = $this->Candidat->patchEntity($candidat, $this->request->data);
