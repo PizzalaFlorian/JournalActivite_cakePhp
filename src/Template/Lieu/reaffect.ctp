@@ -5,12 +5,12 @@
 <h3><?php echo $lieu['NomLieux']; ?></h3>
 <div class="activite form large-12 medium-11 columns content">
 	<?php 
-		 echo $this->Html->link(__('Annuler et retourner a la liste des lieux'), ['action' => 'index'],array("class"=>"button"));
+		 echo $this->Html->link(__('Annuler et retourner à la liste des lieux'), ['action' => 'index'],array("class"=>"button"));
 	?>
 	<h4>Réaffecter</h4>	
 		<?= $this->Form->create($lieu) ?>
 	    <fieldset>
-	        <legend><?= __('Réaffectation les occupations se déroulans dans '.$lieu['NomLieux'].' dans le lieux:') ?></legend>
+	        <legend><?= __('Réaffectation des occupations se déroulant dans '.$lieu['NomLieux'].' dans le lieu:') ?></legend>
 	        <?php
 	            echo '<select name="CodeLieux">';
 	            foreach ($list_lieux as $acti) {
@@ -30,6 +30,6 @@
 	<br>    
 	<h4>Supprimer</h4>
 	<?php 
-		 echo $this->Form->postLink(__('Supprimer ce lieu et toutes les occupations associées'), ['action' => 'deleteAll',$lieu->CodeLieux], ["class"=>"button",'confirm' => __('êtes vous sur de vouloir supprimée toutes ces occupations de la base de données ?')]);
+		 echo $this->Form->postLink(__('Supprimer ce lieu et toutes les occupations associées'), ['action' => 'deleteAll',$lieu->CodeLieux], ["class"=>"button",'confirm' => __('Êtes-vous sur de vouloir supprimer toutes ces occupations de la base de données ?')]);
 	?>
 </div>
