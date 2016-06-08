@@ -168,7 +168,7 @@ class AdministrateurController extends AppController
                 $email = new Email('default');
                 $email
                     ->to($this->request->data['email'])
-                    ->subject("Création de votre compte"
+                    ->subject("Création de votre compte")
                     ->send($messageChercheur."\n--------------------------------------------------------------------------------\nVoici vos identifiant de votre compte chercheur : \nLogin : ".$this->request->data['login']."\nMot de passe : ".$this->request->data['password']."\n--------------------------------------------------------------------------------\n");
                 
                 return $this->redirect(['controller'=>'users','action' => 'index']);
