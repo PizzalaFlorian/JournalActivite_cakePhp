@@ -5,15 +5,7 @@
 ?>
 
 <div class="actualites index large-12 medium-11 columns content">
-	<!-- <h4>Sauvegarde de la base de données</h4>
-	<div class="monAction"><?php 
-        echo $this->Html->link(
-            'Sauvegarde de la base de données au format .SQL',
-            ['controller' => 'administrateur', 'action' => 'downloadBdd', '_full' => true]
-        );
-    ?>
-	</div>
-	<br/> -->
+
 	<h4>Suppression des données 'Candidats' de la base de données</h4>
 	<div class="description">
 		Cette action entraine la destruction des données des candidats.<br/>
@@ -36,7 +28,7 @@
         echo $this->Html->link(
             'Supprimer les données entrées par les Candidats',
             ['controller' => 'administrateur', 'action' => 'supprOccupation', '_full' => true],
-			['confirm' => __('Attention : Cette action va entrainer la destruction de données dans la base de données. Êtes-vous sûr de vouloir continuer?')]
+			['class'=>'button','confirm' => __('Attention : Cette action va entrainer la destruction de données dans la base de données. Êtes-vous sûr de vouloir continuer?')]
         );
     ?>
 	</div>	
@@ -65,7 +57,7 @@
         echo $this->Html->link(
             'Supprimer les comptes candidats ainsi que leurs données',
             ['controller' => 'administrateur', 'action' => 'supprCandidat', '_full' => true], 
-			['confirm' => __('Attention : Cette action va entrainer la destruction de données dans la base de données. \nÊtes-vous sûr de vouloir continuer?')]
+			['class'=>'button','confirm' => __('Attention : Cette action va entrainer la destruction de données dans la base de données. \nÊtes-vous sûr de vouloir continuer?')]
 		);
     ?></div>
 	Attention : Cette action peut durer plusieurs minutes
