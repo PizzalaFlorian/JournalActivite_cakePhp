@@ -73,6 +73,6 @@
             </select>
         </div>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Envoyer')) ?>
     <?= $this->Form->end() ?>
 </div>

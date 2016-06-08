@@ -13,14 +13,14 @@
             </select><select id="edit_minute_debut"><option id="edit_m_debut"><?php echo retourneMinute($occupation->HeureDebut); ?></select>
         </div>
         <div class="input select required"> 
-            <label for="HeureFin">heure de fin :</label>            
+            <label for="HeureFin">Heure de fin :</label>            
             <!-- <input id="edit_event_heure_fin" type="text" value="<?php echo retourneHeure($occupation->HeureFin); ?>" /> -->
             <select id="edit_heure_fin"><option id="edit_h_fin"><?php echo retourneHeure($occupation->HeureFin); ?></option>
             </select><select id="edit_minute_fin"><option id="edit_m_fin"><?php echo retourneMinute($occupation->HeureFin); ?></select>
         </div>
 
         <div class="input number required">
-            <label for="CodeCategorieActivite">Categorie d'activité' :</label>
+            <label for="CodeCategorieActivite">Categorie d'activité :</label>
             <select id="Activite" class="RA_target" type="text" name="CodeCategorieActivite">
             <?php
                 $required = "";
@@ -60,7 +60,7 @@
             </select>
         </div>
         <div class="input number required">
-            <label for="codeLieux">Lieux :</label>
+            <label for="codeLieux">Lieu :</label>
             <select id="CodeLieux" class="Lieu" type="text" name="CodeLieux">
             <?php
                 $required = "";
