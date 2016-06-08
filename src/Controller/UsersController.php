@@ -80,15 +80,15 @@ class UsersController extends AppController
             }
 
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('L\utilisateur as bien été ajouté.'));
+                $this->Flash->success(__('L\'utilisateur a bien été ajouté.'));
                 $email = new Email('default');
                 $email
                     ->to($this->request->data['email'])
                     ->subject("Confirmation de compte")
-                    ->send("Bonjour,\nVoici vos identifiant de votre compte : \nLogin : ".$this->request->data['login']."\nMot de passe : ".$this->request->data['password']."\nCordialement\n");
+                    ->send("Bonjour,\nVoici les identifiants de votre compte : \nLogin : ".$this->request->data['login']."\nMot de passe : ".$this->request->data['password']."\nCordialement\n");
                 return $this->redirect(['controller'=>'candidat','action' => 'add']);
             } else {
-                $this->Flash->error(__('Erreure lors de l\'ajout.'));
+                $this->Flash->error(__('Erreur lors de l\'ajout.'));
             }
         }
         $this->set(compact('user'));
@@ -118,7 +118,7 @@ class UsersController extends AppController
 
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('L\'utilisateur as bien été modifier.'));
+                $this->Flash->success(__('L\'utilisateur a bien été modifié.'));
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('Erreur lors de la modification.'));
@@ -163,7 +163,7 @@ class UsersController extends AppController
                 $this->Flash->success(__('Vos informations ont bien été modifiées.'));
                     return $this->redirect(['action' => 'modif']);
             } else {
-                $this->Flash->error(__('Vos données sont incompatibles ou incomplètes, veuillez réessayer.'));
+                $this->Flash->error(__('Vos données sont incompatibles ou incomplètes. Veuillez réessayer.'));
             }
         }
         $this->set(compact('user'));
@@ -242,7 +242,7 @@ class UsersController extends AppController
             }
         }
         if ($this->Users->delete($user)) {
-            $this->Flash->success(__('L\'utilisateur as été supprimer.'));
+            $this->Flash->success(__('L\'utilisateur a été supprimé.'));
             //suppression des messages de l'utilisateur
             $this->loadModel('Messages');
             $messages = $this->Messages->find('all', ['conditions' => ['Messages.IDExpediteur' => $user->ID]]);
@@ -336,7 +336,7 @@ class UsersController extends AppController
                 }
 
             }
-            $this->Flash->error(__('Erreure, login ou Mot de passe invalide'));
+            $this->Flash->error(__('Erreur, login ou mot de passe invalide'));
         }
     }
 
@@ -363,7 +363,7 @@ class UsersController extends AppController
                 ->first();
 
             if(!isset($user)){
-                $this->Flash->error(__('Cette adresse email n\'est pas présente dans notre base de donnée.'));
+                $this->Flash->error(__('Cette adresse e-mail n\'est pas présente dans notre base de données.'));
             } 
             else{
                 $update_user = TableRegistry::get('users')
@@ -374,12 +374,12 @@ class UsersController extends AppController
                     ->where(['email' => $this->request->data['Email']])
                     ->execute();
 
-                $this->Flash->success(__('Votre mot de passe a bien été modifié. Veuillez consulter votre adresse email.'));
+                $this->Flash->success(__('Votre mot de passe a bien été modifié. Veuillez consulter votre adresse e-mail.'));
                 $email = new Email('default');
                 $email
                     ->to($this->request->data['Email'])
                     ->subject("Nouveau Mot de passe")
-                    ->send("Voici vos nouveaux identifiant, veuillez les changer dès votre prochaine connexion"."\n--------------------------------------------------------------------------------\nVoici vos identifiant de votre compte : \nLogin : ".$user['login']."\nMot de passe : ".$password."\n--------------------------------------------------------------------------------\n");
+                    ->send("Voici vos nouveaux identifiants, veuillez les changer dès votre prochaine connexion"."\n--------------------------------------------------------------------------------\nVoici vos identifiant de votre compte : \nLogin : ".$user['login']."\nMot de passe : ".$password."\n--------------------------------------------------------------------------------\n");
                 
                 return $this->redirect(['controller'=>'users','action' => 'login']);
             }      
@@ -441,8 +441,8 @@ class UsersController extends AppController
                                     // suppression de l'user
                                         $user = $this->Users->get($idUser);
                                         if($this->Users->delete($user)){
-                                            $this->Flash->success(__('Toutes vos données on bien été supprimées'));
-                                            $this->Flash->success(__('Votre compte à bien été supprimées'));
+                                            $this->Flash->success(__('Toutes vos données ont bien été supprimées'));
+                                            $this->Flash->success(__('Votre compte à bien été supprimé'));
                                             return $this->redirect(['controller' => 'users', 'action' => 'logout']);
                                         }
                                         else{
@@ -453,7 +453,7 @@ class UsersController extends AppController
                                 }
                         }
             } else{
-                echo "vous n'avez pas cocher la case suppression du compte";
+                echo "vous n'avez pas coché la case suppression du compte";
             }
         }
         $this->set(compact('sideBar'));

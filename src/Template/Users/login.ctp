@@ -9,7 +9,7 @@
 			<!-- <?= $this->Flash->render('auth') ?> -->
 			<?= $this->Form->create('user') ?>
 		    <fieldset>
-		        <legend><?= __("Merci de rentrer vos login et mot de passe") ?></legend>
+		        <legend><?= __("Merci de renseigner vos login et mot de passe") ?></legend>
 		        <?= $this->Form->input('login',['required'=>'true']) ?>
 		        <?= $this->Form->input('password',['required'=>'true']) ?>
 		    </fieldset>
