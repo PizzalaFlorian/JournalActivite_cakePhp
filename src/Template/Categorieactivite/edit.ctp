@@ -18,7 +18,7 @@
             $this->Form->postLink(
                 __('Supprimer'),
                 ['action' => 'delete', $categorieactivite->CodeCategorieActivite],
-                array("class"=>"button",'confirm' => __('Etes vous sur de vouloir supprimer la categorie : {0}?', $categorieactivite->CodeCategorieActivite))
+                array("class"=>"button",'confirm' => __('Êtes vous sur de vouloir supprimer la categorie : {0}?', $categorieactivite->CodeCategorieActivite))
             );
     ?>
 </div>

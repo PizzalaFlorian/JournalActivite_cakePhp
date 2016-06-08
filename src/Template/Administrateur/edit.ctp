@@ -4,7 +4,7 @@
         <li><?= $this->Form->postLink(
                 __('Delete'),
                 ['action' => 'delete', $administrateur->CodeAdmin],
-                ['confirm' => __('Etes-vous sur de vouloir supprimer # {0}?', $administrateur->CodeAdmin)]
+                ['confirm' => __('Êtes-vous sur de vouloir supprimer # {0}?', $administrateur->CodeAdmin)]
             )
         ?></li>
         <li><?= $this->Html->link(__('List Administrateur'), ['action' => 'index']) ?></li>

@@ -34,7 +34,7 @@
                         echo $this->Form->postLink(
                             $this->Html->image('supprimer.ico', array('title' => "Supprimer")),
                             array('action' => 'delete', $administrateur->CodeAdmin),
-                            array('escape' => false,"confirm"=>__('Etes-vous sur de vouloir supprimer # {0}?', $administrateur->CodeAdmin))
+                            array('escape' => false,"confirm"=>__('Êtes-vous sur de vouloir supprimer # {0}?', $administrateur->CodeAdmin))
                         ); 
                     ?>
                 </td>

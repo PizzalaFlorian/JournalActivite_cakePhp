@@ -29,7 +29,7 @@
             .' '.
             $this->Form->postLink(
                 __('Supprimer cette activité'),
-                ['action' => 'delete', $activite->CodeActivite],array("class"=>"button",'confirm' => __('Etes-vous sur de vouloir supprimer l\'activité : {0}?', $activite->NomActivite))
+                ['action' => 'delete', $activite->CodeActivite],array("class"=>"button",'confirm' => __('Êtes-vous sur de vouloir supprimer l\'activité : {0}?', $activite->NomActivite))
             );
     ?>
 </div>

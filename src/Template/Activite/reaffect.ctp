@@ -31,6 +31,6 @@
 	<h4>Supprimer</h4>
 	<?php 
 		 
-		 echo $this->Form->postLink(__('Supprimer cette activité et toutes les occupations associées'), ['action' => 'deleteAll',$activite->CodeActivite],array("class"=>"button"), ['confirm' => __('Etes-vous sur de vouloir supprimer toutes ces occupations de la base de données ?')]);
+		 echo $this->Form->postLink(__('Supprimer cette activité et toutes les occupations associées'), ['action' => 'deleteAll',$activite->CodeActivite],array("class"=>"button"), ['confirm' => __('Êtes-vous sur de vouloir supprimer toutes ces occupations de la base de données ?')]);
 	?>
 </div>

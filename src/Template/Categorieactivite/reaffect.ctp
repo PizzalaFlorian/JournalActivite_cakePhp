@@ -50,7 +50,7 @@
             }     
 		 }
 		if($flag == 0){
-		 echo $this->Form->postLink(__('Supprimer cette categorie et toutes les activités associées'), ['action' => 'deleteAll',$categorieactivite->CodeCategorieActivite],array("class"=>"button"), ['confirm' => __('Etes vous sur de vouloir supprimer toutes ces activités de la base de données ?')]);
+		 echo $this->Form->postLink(__('Supprimer cette categorie et toutes les activités associées'), ['action' => 'deleteAll',$categorieactivite->CodeCategorieActivite],array("class"=>"button"), ['confirm' => __('Êtes vous sur de vouloir supprimer toutes ces activités de la base de données ?')]);
 		}
 		else {
 			echo 'Suppression impossible, veuillez réaffecter ou supprimer les activités utilisées de la base de données avant de réaliser cette opération';
