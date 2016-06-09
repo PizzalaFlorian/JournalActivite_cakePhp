@@ -166,7 +166,11 @@ class MessagesController extends AppController
             $this->Flash->error(__('Veuillez vous reconnecter.'));
             return $this->redirect(['controller' => 'users', 'action' => 'logout']);
         } else {
-            return $this->redirect(['action' => 'index']);  
+            if(isset($this->request->query['page'])){
+                return $this->redirect(['action' => $this->request->query('page')]);
+            }else{
+                return $this->redirect(['action' => $page]);
+            }
         }
     }
 //affiche la messagerie d'un utilisateur
@@ -295,7 +299,8 @@ class MessagesController extends AppController
             }
             //recupère le pseudo de l'expediteur
             $this->loadModel('Users');
-            $users = $this->Users->get($message->IDExpediteur, ['contain' => [] ]);
+            //echo $message->IDExpediteur;
+            $users = $this->Users->get($message->userExpediteur, ['contain' => [] ]);
             switch ($users->typeUser) {
                 case 'candidat':    $pseudo = "Candidat ".$users->ID;  $pseudoID = $users->ID;           break;
                 case 'chercheur':   $pseudo = "Chercheur";             $pseudoID = '1';                  break;

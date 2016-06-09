@@ -41,7 +41,7 @@
                         <?php 
                             echo $this->Form->postLink(
                                 $this->Html->image('supprimer.ico', array('title' => "Supprimer")),
-                                ['action' => 'delete', $message->IDMessage],
+                                ['action' => 'delete', $message->IDMessage, 'page'=>'envoie'],
                                 array('escape' => false,'confirm' => __('Êtes-vous sûr de vouloir supprimer ce message?', $message->IDMessage)));
                           ?>
                     </td>
