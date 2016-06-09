@@ -8,7 +8,7 @@
 		 echo $this->Html->link(__('Annuler et retourner à la liste des activités'), ['action' => 'index'],array("class"=>"button"));
 	?>
 	<h4>Réaffecter</h4>	
-		<?= $this->Form->create($activite) ?>
+		<?= $this->Form->create($activite,array('onsubmit'=>'return confirm("ATTENTION : une fois les données réaffectés, aucun retour en arrière ne sera possible.");')) ?>
 	    <fieldset>
 	        <legend><?= __('Réaffectation des occupations de '.$activite['NomActivite'].' dans :') ?></legend>
 	        <?php
@@ -24,7 +24,10 @@
 	            echo '</select>';
 	        ?>
 	    </fieldset>
-	    <center><?= $this->Form->button(__('Réaffecter')) ?></center>
+	    <center><?= $this->Form->button(__('Réaffecter'))
+			//['confirm' => ('ATTENTION : une fois les données réaffecté, aucun retour en arrière ne sera possible.')]) 
+			?>
+		</center>
 	    <?= $this->Form->end() ?> 
 	<br>
 	<br>    
