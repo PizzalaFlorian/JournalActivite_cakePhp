@@ -1,7 +1,6 @@
 $(function(){
 	$( ".RA_activ" ).change(function() {
 		var test = $(this).find("option:selected").attr('id');
-		//   console.log(test);
 	});
 	
     function getBaseURL() {
@@ -43,14 +42,11 @@ $(function(){
     /*drop zone*/
     $(".calendar_event").mousedown(function(){
         drag_id = $(this).attr('id');
-        //console.log("mouse dowm",drag_id);
     });
     $('.ui-droppable').droppable({
         drop : function(){
              // cette alerte s'exécutera une fois le bloc déposé
-            
             jour_drop = $(this).attr('id');
-            console.log('drop chez moi',jour_drop);
         }
     });
     
@@ -61,7 +57,6 @@ $(function(){
         var event_id=object_clicked.attr("id");
         //TEST recup heure //
         jour_deb = $(this).closest('td').attr('id');
-        console.log('jai clique droit',event_id)
         var decale=e.pageX;
         if(e.pageX + parseInt($("#click-menue").css('width').replace('px', ''))+10 >= $(window).width() ){
             decale = e.pageX - parseInt($("#click-menue").css('width').replace('px', ''));
@@ -69,7 +64,6 @@ $(function(){
         $("#click-menue").css({top:e.pageY,left:decale}).show();
         $("#paste-menue").hide();
         $("#cp").click(function(e){
-            console.log("copier out",event_id);
             buffer_event_id = event_id;
             buffer_height =  $('#'+event_id).css('height');
             if($('#'+event_id).css('top') != null){
@@ -82,8 +76,6 @@ $(function(){
             else {
                 buffer_margin = $('#'+event_id).css('margin-top');
             }
-            console.log("height",buffer_height);
-            console.log("margin",buffer_margin);
             buffer_heure_debut = $('#'+event_id+'_date_debut_heure').html();
             buffer_minute_debut = $('#'+event_id+'_date_debut_minute').html();
             buffer_heure_fin = $('#'+event_id+'_date_fin_heure').html();
@@ -98,10 +90,8 @@ $(function(){
     });
 
     $("#sp").click(function(e){
-            console.log("Supprimer");
             $("#supp").html("Veuillez Confirmer la suppression");
             var event_id = event_right_cliked;
-            //$("#dialog").dialog('destroy');
             $("#supp").dialog({
                 bgiframe: true,
                 resizable: true,
@@ -120,7 +110,6 @@ $(function(){
                                 data : event_id,
                                 dataType : 'html', 
                                 success : function(code_html, statut){ 
-                                    console.log("ok");
                                 }
                             });
                         $("#"+event_id).hide("highlight",{
@@ -146,7 +135,6 @@ $(function(){
     $(document).on('click', '.other_day,', function(e) {
         $("#click-menue").hide();
         $("#vd").click(function(e){
-            console.log("vider");
             buffer_event_id = null;
             buffer_height =  '';
             buffer_margin = '';
@@ -175,12 +163,7 @@ $(function(){
     
     //COLLER//
     $("#cl").click(function(e){
-        console.log("coller dans ",jour_deb);
-        
-        //var event_id = "cp_"+buffer_event_id;
-        //var jour_deb = $(this).closest('td').attr('id');
-        console.log("new jour : ",jour_deb);
-    
+
         var agenda_first_id=0;
         var position_choisie=e.pageY-$(this).position().top;
 
@@ -225,7 +208,6 @@ $(function(){
         var new_event_heure_debut=jour_deb+" "+buffer_heure_debut+":"+buffer_minute_debut+":00";
         var new_event_heure_fin=jour_deb+" "+buffer_heure_fin+":"+buffer_minute_fin+":00";
 
-        //console.log('event',new_event_heure_debut);
         var tab_debut = new_event_heure_debut.split(' ');
         var h_debut =  tab_debut[1].split(':');
 
@@ -238,8 +220,6 @@ $(function(){
         
         var margin_top_o = (((depSec/60)/60)*4)*10;
         var height_o = (((dureeSec/60)/60)*4)*10; 
-        console.log('height',buffer_height);
-        console.log('margin',buffer_margin);
         
         $("#ajax_load").html("");
         var event = $('<div></div>')
@@ -328,7 +308,7 @@ $(function(){
                            '&HeureFin=' + new_event_heure_fin,
                     dataType : 'html', 
                     success : function(code_html, statut){ 
-                        console.log(code_html);
+                    
                         var event_id = code_html;
                         $('#0_main').attr('id',event_id);
                         $('#0_tmp').remove();
@@ -357,9 +337,7 @@ $(function(){
     
          $("#sp").click(function(e){
             var event_id = event_right_cliked;
-            console.log("Supprimer");
             $("#supp").html("Veuillez Confirmer la suppression");
-            //$("#dialog").dialog('destroy');
             $("#supp").dialog({
                 bgiframe: true,
                 resizable: true,
@@ -378,7 +356,6 @@ $(function(){
                                 data : event_id,
                                 dataType : 'html', 
                                 success : function(code_html, statut){ 
-                                    console.log("ok");
                                 }
                             });
                         $("#"+event_id).hide("highlight",{
@@ -394,13 +371,9 @@ $(function(){
                 }
             });
         });
-        //event.click(function(e){
+
         $("#md").click(function(e){
-            // var object_clicked = $(this);
-            // var event_id=object_clicked.attr("id");
-            // console.log('jai clique',event_id);
             var event_id = event_right_cliked;
-            //var jour_deb = $(this).closest('td').attr('id');
             
             $("#dialog").dialog({
                 bgiframe: true,
@@ -563,7 +536,7 @@ $(function(){
                             minute_fin = $("#edit_minute_fin option:selected").html();
                         });
                         $("#edit_heure_debut").change(function(e){
-                            console.log("click edit heure",$("#edit_heure_debut option:selected").html());
+                            
                             var heure_debut_modif = $("#edit_heure_debut option:selected").html();
                             heure_debut = heure_debut_modif
                             var liste_heure_fin_modif = '';
@@ -618,7 +591,7 @@ $(function(){
                         });
 
                         $("#edit_minute_debut").change(function(e){
-                            console.log("click edit minute",$("#edit_minute_debut option:selected").html());
+                           
                             var minute_debut_modif = $("#edit_minute_debut option:selected").html();
 
                             var liste_minute_fin_modif2 = '';
@@ -671,7 +644,7 @@ $(function(){
                     var new_event_heure_debut=jour_deb+" "+$("#edit_heure_debut").find("option:selected").html()+":"+$("#edit_minute_debut").find("option:selected").html()+":00";
                     var new_event_heure_fin=jour_deb+" "+$("#edit_heure_fin").find("option:selected").html()+":"+$("#edit_minute_fin").find("option:selected").html()+":00";
 
-                    console.log('event',new_event_heure_debut);
+                    
                     var tab_debut = new_event_heure_debut.split(' ');
                     var h_debut =  tab_debut[1].split(':');
 
@@ -730,8 +703,7 @@ $(function(){
                                 '&CodeDispositif=' + new_dispositif,
                         dataType : 'html',
                         success : function(rep, statut){ 
-                            
-                            console.log('modif success');
+                        
                         }
                     });
                     $(this).dialog('destroy');
@@ -745,7 +717,7 @@ $(function(){
     /*nouvel event*/
     $(".calendar_td").on('doubletap',function(e){
         var jour_deb = $(this).attr('id');
-        console.log(jour_deb);
+        
         heure_prec_brut = 'toto';
         $.ajax({  
             url : '../occupation/precedente/',
@@ -942,7 +914,6 @@ $(function(){
             minute_fin = $("#new_minute_fin option:selected").html();
         });
         $("#new_heure_debut").change(function(e){
-            console.log("click new heure",$("#new_heure_debut option:selected").html());
             var heure_debut_modif = $("#new_heure_debut option:selected").html();
             heure_debut = heure_debut_modif
             var liste_heure_fin_modif = '';
@@ -997,7 +968,6 @@ $(function(){
         });
 
         $("#new_minute_debut").change(function(e){
-            console.log("click new minute",$("#new_minute_debut option:selected").html());
             var minute_debut_modif = $("#new_minute_debut option:selected").html();
 
             var liste_minute_fin_modif2 = '';
@@ -1067,10 +1037,7 @@ $(function(){
             },
             buttons: {
                 'Enregistrer': function() {
-					// console.log($("#new_event_lieu").find("option:selected").attr('id'));
                     $(this).dialog('destroy');
-	//=================================================================================================================
-					//recolte des champs du formulaire
                     var new_activit=$("#new_event_codeActivite").find("option:selected").attr('id');
                     var nom_activit=$("#new_event_codeActivite").find("option:selected").html();
 					var new_lieu=$("#new_event_lieu").find("option:selected").attr('id');
@@ -1079,9 +1046,6 @@ $(function(){
                     var new_event_heure_debut=jour_deb+" "+$("#new_heure_debut option:selected").html()+":"+$("#new_minute_debut option:selected").html()+":00";
 					var new_event_heure_fin=jour_deb+" "+$("#new_heure_fin option:selected").html()+":"+$("#new_minute_fin option:selected").html()+":00";
 					
-                    //var event_id = rep;
-
-                    console.log('event',new_event_heure_debut);
                     var tab_debut = new_event_heure_debut.split(' ');
                     var h_debut =  tab_debut[1].split(':');
 
@@ -1094,10 +1058,7 @@ $(function(){
                     
                     var margin_top_o = (((depSec/60)/60)*4)*10;
                     var height_o = (((dureeSec/60)/60)*4)*10; 
-                    console.log('height',height_o);
-                    
-                    // var rename_event = $('#0')
-                    //  .attr( 'id',event_id );
+                  
                     var event_modif_height = $('#'+event_id)
                     .css( "height",height_o+"px");
 
@@ -1249,13 +1210,9 @@ $(function(){
         });
         $("#cp").click(function(e){
             var event_id = event_right_cliked
-            console.log("copier from new event_id",event_id);
             buffer_event_id = event_id;
             buffer_height =  $('#'+event_id).css('height');
-            console.log('copy from new top',$('#'+event_id).css('top'))
             buffer_margin = $('#'+event_id).css('top');
-            console.log("copier from new height",buffer_height);
-            console.log("copier from new margin",buffer_margin);
             buffer_heure_debut = $('#'+event_id+'_date_debut_heure').html();
             buffer_minute_debut = $('#'+event_id+'_date_debut_minute').html();
             buffer_heure_fin = $('#'+event_id+'_date_fin_heure').html();
@@ -1268,7 +1225,6 @@ $(function(){
 
          $("#sp").click(function(e){
             var event_id = event_right_cliked;
-            console.log("Supprimer");
             $("#supp").html("Veuillez Confirmer la suppression");
             //$("#dialog").dialog('destroy');
             $("#supp").dialog({
@@ -1289,7 +1245,7 @@ $(function(){
                                 data : event_id,
                                 dataType : 'html', 
                                 success : function(code_html, statut){ 
-                                    console.log("ok");
+                                    
                                 }
                             });
                         $("#"+event_id).hide("highlight",{
@@ -1306,16 +1262,11 @@ $(function(){
             });
         });
 
-        
-        //event.click(function(e){
+
         $("#md").click(function(e){
-            //var object_clicked = $(this);
-            //var event_id=object_clicked.attr("id");
+           
             var event_id=event_right_cliked;
-            console.log('jai clique',event_id);
-            //TEST recup heure //
-            //var jour_deb = $(this).closest('td').attr('id');
-            
+          
             $("#dialog").dialog({
                 bgiframe: true,
                 resizable: true,
@@ -1477,7 +1428,6 @@ $(function(){
                             minute_fin = $("#edit_minute_fin option:selected").html();
                         });
                         $("#edit_heure_debut").change(function(e){
-                            console.log("click edit heure",$("#edit_heure_debut option:selected").html());
                             var heure_debut_modif = $("#edit_heure_debut option:selected").html();
                             heure_debut = heure_debut_modif
                             var liste_heure_fin_modif = '';
@@ -1532,7 +1482,6 @@ $(function(){
                         });
 
                         $("#edit_minute_debut").change(function(e){
-                            console.log("click edit minute",$("#edit_minute_debut option:selected").html());
                             var minute_debut_modif = $("#edit_minute_debut option:selected").html();
 
                             var liste_minute_fin_modif2 = '';
@@ -1585,7 +1534,6 @@ $(function(){
                     var new_event_heure_debut=jour_deb+" "+$("#edit_heure_debut").find("option:selected").html()+":"+$("#edit_minute_debut").find("option:selected").html()+":00";
                     var new_event_heure_fin=jour_deb+" "+$("#edit_heure_fin").find("option:selected").html()+":"+$("#edit_minute_fin").find("option:selected").html()+":00";
 
-                    console.log('event',new_event_heure_debut);
                     var tab_debut = new_event_heure_debut.split(' ');
                     var h_debut =  tab_debut[1].split(':');
 
@@ -1649,8 +1597,7 @@ $(function(){
                                 '&CodeDispositif=' + new_dispositif,
                         dataType : 'html',
                         success : function(rep, statut){ 
-                            
-                            console.log('modif success');
+                        
                             $("#"+event_id+"_tmp").remove();
                         }
                     });
@@ -1665,13 +1612,10 @@ $(function(){
 
 
     /*info event*/
-    //$(".calendar_event").click(function(e){
     $("#md").click(function(e){
-        //var object_clicked = $(this);
+
         var event_id = event_right_cliked;
-        //var event_id=object_clicked.attr("id");
-        console.log('jai clique calendar event',event_id);
-        
+
         $("#dialog").dialog({
             bgiframe: true,
             resizable: true,
@@ -1833,7 +1777,6 @@ $(function(){
                             minute_fin = $("#edit_minute_fin option:selected").html();
                         });
                         $("#edit_heure_debut").change(function(e){
-                            console.log("click edit heure",$("#edit_heure_debut option:selected").html());
                             var heure_debut_modif = $("#edit_heure_debut option:selected").html();
                             heure_debut = heure_debut_modif
                             var liste_heure_fin_modif = '';
@@ -1888,7 +1831,6 @@ $(function(){
                         });
 
                         $("#edit_minute_debut").change(function(e){
-                            console.log("click edit minute",$("#edit_minute_debut option:selected").html());
                             var minute_debut_modif = $("#edit_minute_debut option:selected").html();
                             minute_debut = minute_debut_modif;
                             var liste_minute_fin_modif2 = '';
@@ -1941,23 +1883,12 @@ $(function(){
                     var new_event_heure_debut=jour_deb+" "+$("#edit_heure_debut").find("option:selected").html()+":"+$("#edit_minute_debut").find("option:selected").html()+":00";
                     var new_event_heure_fin=jour_deb+" "+$("#edit_heure_fin").find("option:selected").html()+":"+$("#edit_minute_fin").find("option:selected").html()+":00";
 
-                    console.log('event d',new_event_heure_debut);
-                    console.log('event f',new_event_heure_fin);
-                    // var tab_debut = new_event_heure_debut.split(' ');
-                    // var h_debut =  tab_debut[1].split(':');
-
-                    // var tab_fin = new_event_heure_fin.split(' ');
-                    // var h_fin =  tab_fin[1].split(':');
-
                     var depSec = (parseInt(heure_debut) * 60 + parseInt(minute_debut)) * 60;
                     var finSec = (parseInt(heure_fin) * 60 + parseInt(minute_fin)) * 60;
                     var dureeSec = finSec - depSec;
                     
                     var margin_top_o = (((depSec/60)/60)*4)*10;
                     var height_o = (((dureeSec/60)/60)*4)*10; 
-
-                    console.log("new height = ",height_o);
-                    console.log("id = ",event_id);
 
                     var event_modif_height = $('#'+event_id)
                     .css( "height",height_o+"px");
@@ -2009,7 +1940,6 @@ $(function(){
                                 '&CodeDispositif=' + new_dispositif,
                         dataType : 'html',
                         success : function(rep, statut){ 
-                            console.log('modif success'); 
                             $("#"+event_id+"_tmp").remove();                     
                         }
                     });

@@ -135,7 +135,12 @@ $(function(){
 
             console.log('Jai bougé');
             //var jour_deb = $(this).closest('td').attr('id');
-            var jour_deb = jour_drop;
+            if(typeof jour_drop != 'undefined'){
+                var jour_deb = jour_drop;
+            }
+            else{
+                var jour_deb = $(this).closest('td').attr('id'); 
+            }
             var drag_event_heure_debut=jour_deb+" "+nouvelle_heure_depart.getHours()+":"+nouvelle_heure_depart.getMinutes()+":00";
             var drag_event_heure_fin=jour_deb+" "+nouvelle_heure_fin.getHours()+":"+nouvelle_heure_fin.getMinutes()+":00";
             //DATA CHANGE DRAG
@@ -176,7 +181,7 @@ $(function(){
             console.log("changement de taille");
             var jour_deb = $(this).closest('td').attr('id');
             var drag_event_heure_fin=jour_deb+" "+$("#"+event_id+"_date_fin_heure").html()+":"+$("#"+event_id+"_date_fin_minute").html()+":00";
-            var drag_event_heure_fin=jour_deb+" "+new_heure.getHours()+":"+new_heure.getMinutes()+":00";
+            //var drag_event_heure_fin=jour_deb+" "+new_heure.getHours()+":"+new_heure.getMinutes()+":00";
 
             $("#dialog").dialog('destroy');
             $("#ui-dialog-title-dialog").dialog('destroy');
