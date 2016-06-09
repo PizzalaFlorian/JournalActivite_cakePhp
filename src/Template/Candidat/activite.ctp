@@ -45,6 +45,9 @@
     echo $this->Html->css('Demo_calendar_jquery');
     echo $this->Html->css('main_custom');
     echo $this->Html->css('responsive');
+    if(!$isMobile){
+       echo $this->Html->css('pc'); 
+    }
 
 
     if($isMobile){

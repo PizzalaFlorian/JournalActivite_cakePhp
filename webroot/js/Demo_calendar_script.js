@@ -169,8 +169,9 @@ $(function(){
     /* Redimensionnement event */
     //TODO
     $(".calendar_event").resizable({
+        containment: ".calendar_td",
+        grid: [0, 1],
         handles: 's',
-        grid: [0, 10],
         stop: function(event, ui) {
             var object_drop = $(this);
             var event_id=object_drop.attr("id");
@@ -219,10 +220,10 @@ $(function(){
     
             var new_heure = new Date();
             new_heure.setTime(timestamp+duree_en_milli);
-    
-            $("#"+event_id+"_date_fin_heure").html(afficheTime(new_heure.getHours()));
-            $("#"+event_id+"_date_fin_minute").html(afficheTime(new_heure.getMinutes()));
-
+            if(new_heure.getHours() >= heure_ref.getHours()){
+                    $("#"+event_id+"_date_fin_heure").html(new_heure.getHours());
+                    $("#"+event_id+"_date_fin_minute").html(new_heure.getMinutes());
+            }
         }
     });
 
@@ -645,8 +646,9 @@ $(function(){
             }
         });
         event.resizable({
+            containment: ".calendar_td",
+            grid: [0, 1],
             handles: 's',
-            grid: [0, 5],
             stop: function(event, ui) {
                 var object_drop = $(this);
                 var event_id=object_drop.attr("id");
@@ -679,18 +681,16 @@ $(function(){
 
                 var timestamp=heure_ref.getTime();
 
-
-
-
                 var height_css=object_drop.css("height");
                 var height_css_value=parseInt(height_css.replace(".px",""));
                 var duree_en_milli=((((height_css_value/10)/4)*60)*60)*1000;
 
                 var new_heure = new Date();
                 new_heure.setTime(timestamp+duree_en_milli);
-
-                $("#"+event_id+"_date_fin_heure").html(new_heure.getHours());
-                $("#"+event_id+"_date_fin_minute").html(new_heure.getMinutes());
+                if(new_heure.getHours() >= heure_ref.getHours()){
+                    $("#"+event_id+"_date_fin_heure").html(new_heure.getHours());
+                    $("#"+event_id+"_date_fin_minute").html(new_heure.getMinutes());
+                }
 
             //        $("#"+event_id+"_date").corner("top");
             }
@@ -1685,8 +1685,9 @@ $(function(){
             }
         });
         event.resizable({
+            containment: ".calendar_td",    
+            grid: [0, 1],
             handles: 's',
-            grid: [0, 5],
             stop: function(event, ui) {
                 var object_drop = $(this);
                 var event_id=object_drop.attr("id");
@@ -1719,19 +1720,17 @@ $(function(){
 
                 var timestamp=heure_ref.getTime();
 
-
-
-
                 var height_css=object_drop.css("height");
                 var height_css_value=parseInt(height_css.replace(".px",""));
                 var duree_en_milli=((((height_css_value/10)/4)*60)*60)*1000;
 
                 var new_heure = new Date();
                 new_heure.setTime(timestamp+duree_en_milli);
-
-                $("#"+event_id+"_date_fin_heure").html(new_heure.getHours());
-                $("#"+event_id+"_date_fin_minute").html(new_heure.getMinutes());
-            //        $("#"+event_id+"_date").corner("top");
+                if(new_heure.getHours() >= heure_ref.getHours()){
+                    $("#"+event_id+"_date_fin_heure").html(new_heure.getHours());
+                    $("#"+event_id+"_date_fin_minute").html(new_heure.getMinutes());
+                }
+                //        $("#"+event_id+"_date").corner("top");
             }
         });
         //TODO
