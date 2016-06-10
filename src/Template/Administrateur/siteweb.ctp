@@ -9,7 +9,7 @@
 	<h4>But de l'experience</h4>
 	<?php 
         echo $this->Html->link(
-            'Modifier le texte rappellant le but de l\'experience',
+            'Modifier le texte rappelant le but de l\'expérience',
             ['controller' => 'administrateur', 'action' => 'butExperience', '_full' => true]
         );
     ?>
