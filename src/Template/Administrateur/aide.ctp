@@ -24,11 +24,13 @@
 		<br/> <a href="#" class="menu_aide">Modifier une actualité</a>	
 		<p >
 			Pour modifier une actualité, allez sur votre page d’accueil. A droite de chacune des actualités présente dans la liste, se trouve deux icônes, l’un composé de deux outils, et l’autre d’une corbeille. Cliquez sur d'icône en forme d’outil pour visualise ou modifier l’actualité.<br/>
+			<?php echo $this->Html->image('modifier.ico', array('title' => "Modifier")); ?>
 			Vous accéderez a une interface permettant de modifier l’actualité. Cliquez sur ‘Envoyer’ une fois vos modification terminé.
 		</p>
 		<br/> <a href="#" class="menu_aide">Supprimer une actualité</a>	
 		<p >
 			Pour supprimer une actualité, allez sur votre page d’accueil. A droite de chacune des actualités présente dans la liste, se trouve deux icônes, l’un composé de deux outils, et l’autre d’une corbeille. Cliquez sur d'icône en forme de corbeille pour supprimer une actualité.
+			<?php echo $this->Html->image('supprimer.ico', array('title' => "Supprimer")); ?>
 		</p>
 		<h4>Gestion du site web</h4>
 
@@ -99,42 +101,45 @@
 		<br/> <a href="#" class="menu_aide">Supprimer les données des Candidats de la base de données</a>	
 		<p >
 			Cette action permet de supprimer toutes les occupation entrés par les Candidats.
-			
+			<br/>
 			Données supprimées :
-			
-				Données liées aux activités des candidats
-			
-			
+			<ul>
+				<li>Données liées aux activités des candidats</li>
+			</ul>
+			<br/>
 			Données conservées :
-			
-				Données des Comptes Candidats/Chercheurs/Administrateurs
-				Catégorie Activités/Lieux
-				Activités/Lieux/Dispositifs/Compagnie
-				Tous les messages envoyées
-				Carnet de bord
-				Actualités
-			
-			Pour supprimer les occupation des candidat, allez sur la page ‘Gestion des données’ et cliquez sur le bouton ‘Supprimer les données entrées par les Candidats’.
-			Attention : Une fois lancé, cette action est irréversible.
+			<ul>
+				<li>Données des Comptes Candidats/Chercheurs/Administrateurs</li>
+				<li>Catégorie Activités/Lieux</li>
+				<li>Activités/Lieux/Dispositifs/Compagnie</li>
+				<li>Tous les messages envoyées</li>
+				<li>Carnet de bord</li>
+				<li>Actualités</li>
+			</ul>
+			Pour supprimer les occupation des candidat, allez sur la page ‘Gestion des données’ et cliquez sur le bouton ‘Supprimer les données entrées par les Candidats’.<br/>
+			<div class="imortant">Attention : Une fois lancé, cette action est irréversible.</div>
 		</p>
 		<br/> <a href="#" class="menu_aide">Suppression des comptes Candidats</a>	
 		<p >
 			Cette action permet de supprimer toutes les informations entré par les Candidats ainsi que leurs comptes.<br/>
-			Données supprimées :         
-			Données liées aux activités des candidats
-			Tous les messages envoyées
-			Données des Comptes Candidats
+			<br/>
+			Données supprimées :<br/>         
+			<ul>
+				<li>Données liées aux activités des candidats</li>
+				<li>Tous les messages envoyées</li>
+				<li>Données des Comptes Candidats</li>
+			</ul>
+			Données conservées :<br/>
+			<ul>         
+				<li>Données des Comptes Chercheurs/Administrateurs</li>
+				<li>Catégorie Activités/Lieux</li>
+				<li>Activités/Lieux/Dispositifs/Compagnie</li>
+				<li>Carnet de bord</li>
+				<li>Actualités</li>
+			</ul>
+			Pour supprimer toutes les informations des Candidats, allez sur la page ‘Gestion des données’ et cliquez sur le bouton ‘Supprimer les comptes candidats ainsi que leurs données’.<br/> 
 
-			Données conservées :         
-			Données des Comptes Chercheurs/Administrateurs
-			Catégorie Activités/Lieux
-			Activités/Lieux/Dispositifs/Compagnie
-			Carnet de bord
-			Actualités
-
-			Pour supprimer toutes les informations des Candidats, allez sur la page ‘Gestion des données’ et cliquez sur le bouton ‘Supprimer les comptes candidats ainsi que leurs données’. 
-
-			Attention : Une fois lancé, cette action est irréversible.
+			<div class="imortant">Attention : Une fois lancé, cette action est irréversible.</div>
 		</p>
 		<h4>Messagerie</h4>
 		<br/> <a href="#" class="menu_aide">Configurer la messagerie de l’application</a>	
@@ -155,7 +160,7 @@
 				<li>Le mots de passe de l'identifiant saisie ci-dessus</li>
 				<li>Le chiffrement utilisé par le serveur mail (SSL, TLS ou aucune sécurité)</li>
 			</ul>		
-			Attention : Pour prendre en compte les modifications, vous devrez redémarrer le serveur. "A CONFIRMER"
+			<div class="imortant">Attention : Pour prendre en compte les modifications, vous devrez redémarrer le serveur. "A CONFIRMER"</div>
 		</p>
 		<br/>
 		<br/>
