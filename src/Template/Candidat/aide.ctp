@@ -102,6 +102,7 @@
 			L’administrateur n’est pas soumis aux mêmes critères de confidentialité que les chercheurs, n’ayant pas accès a vos données sur vos activités. Les échanges ne seront pas anonyme et l’administrateur pourra être amené a vous posez des question pour vérifier votre identité en cas d’oublis de mot de passe. Si vous rencontrer un bug lié a votre session, n’hésitez pas décliner votre identité a l’administrateur (et seulement a lui).<br/>
 			Ne transmettez cependant aucun mot de passe a quiquonque sur le site.<br/>
 			L'administrateur n'étant pas toujours disponible il peut mettre un certain temps à vous répondre. Soyez patients.<br/>
+			
 		</p>
 	</div>
 </div>
