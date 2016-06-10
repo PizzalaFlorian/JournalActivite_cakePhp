@@ -25,7 +25,7 @@
 			Sélectionnez votre compagnie, c'est à dire les personnes avec qui vous êtes.
 			Sélectionnez le dispositif que vous utilisez, puis cliquez sur "enregistrer" pour ajouter votre activité. <br/>
 			<br/>
-			Vous pourrez a tout moment venir modifier ou supprimer cette activité en cas d’erreure de saisie.<br/>
+			Vous pourrez a tout moment venir modifier ou supprimer cette activité en cas d’erreure de saisie.
 		</p>
 		<br/> <a href="#" class="menu_aide">Modifier une activité</a>
 		<p>
@@ -36,7 +36,7 @@
 			Faites vos modifications, puis cliquer sur enregistrer pour sauvegarder vos modifications.<br/>
 			<br/>
 			version mobile :<br/>
-			Pour modifier une activité, veuillez tappez du doigts une fois  l’activitée voulu. Sur le menu contextuel cliquez sur modifier . Faites vos modifications sur la fêntre de modification, puis cliquez sur enregistrer pour sauvegarder vos modifications.<br/>
+			Pour modifier une activité, veuillez tappez du doigts une fois  l’activitée voulu. Sur le menu contextuel cliquez sur modifier . Faites vos modifications sur la fêntre de modification, puis cliquez sur enregistrer pour sauvegarder vos modifications.
 		</p>
 		<br/> <a href="#" class="menu_aide">Supprimer une activité</a>
 		<p>
@@ -45,7 +45,7 @@
 			Faites un clique droit sur l'activité à supprimer. Cliquez sur supprimer dans le menu contextuel. Confirmez la suppression de l'activité.<br/>
 			<br/>
 			version mobile :<br/>
-			Tappez du doigts une fois sur l'activité à supprimer. Cliquez sur supprimer dans le menu contextuel. Confirmez la suppression de l'activité.<br/>
+			Tappez du doigts une fois sur l'activité à supprimer. Cliquez sur supprimer dans le menu contextuel. Confirmez la suppression de l'activité.
 		</p>
 		<br/> <a href="#" class="menu_aide">Dupliquer une activité</a>
 		<p>
@@ -55,13 +55,13 @@
 			Faites un clique droit sur l'activité à dupliquer, cliquez sur copier, déplacee la souris sur la journée où vous souhaitez dupliquer l'activité, faites un clique droit, cliquez sur coller.<br/>
 			<br/>
 			version mobile :<br/>
-			Tappez du doigts une fois sur l'activité à dupliquer, cliquez sur copier. Tappez du doigts une fois sur la journée où vous souhaitez dupliquer l'activité, cliquez sur coller.<br/>
+			Tappez du doigts une fois sur l'activité à dupliquer, cliquez sur copier. Tappez du doigts une fois sur la journée où vous souhaitez dupliquer l'activité, cliquez sur coller.
 		</p>
 		<h4>Modifier son compte</h4>
 		<br/> <a href="#" class="menu_aide">Voir et changer ses informations personnelles</a>
 		<p>
 			Pour voir et changer ses informations personnelles que vous avez rentré lors de votre première connexion allez dans l'onglet "Informations Personnelles", là vous pouvez modifier votre nom, prénom, âge, genre, lieux d'étude, niveau d'étude, le diplôme que vous êtes en train de préparer, votre état civil et le nombre d'enfant que vous possédez.<br/>
-			Cliquez sur modifier pour enregistrer vos modifications.<br/>
+			Cliquez sur modifier pour enregistrer vos modifications.
 		</p>
 		<br/> <a href="#" class="menu_aide">Changer son login</a>
 		<p>
@@ -101,8 +101,15 @@
 			Si vous avez des remarques à faire sur le fonctionnement du site, si vous constatez des bugs. Ou que vous avez perdu vos identifiants et que vous n’avez plus accès a votre adresse email de contact.<br/>
 			L’administrateur n’est pas soumis aux mêmes critères de confidentialité que les chercheurs, n’ayant pas accès a vos données sur vos activités. Les échanges ne seront pas anonyme et l’administrateur pourra être amené a vous posez des question pour vérifier votre identité en cas d’oublis de mot de passe. Si vous rencontrer un bug lié a votre session, n’hésitez pas décliner votre identité a l’administrateur (et seulement a lui).<br/>
 			Ne transmettez cependant aucun mot de passe a quiquonque sur le site.<br/>
-			L'administrateur n'étant pas toujours disponible il peut mettre un certain temps à vous répondre. Soyez patients.<br/>
-			
+			L'administrateur n'étant pas toujours disponible il peut mettre un certain temps à vous répondre. Soyez patients.
 		</p>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
 	</div>
 </div>
