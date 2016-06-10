@@ -373,13 +373,14 @@ class UsersController extends AppController
                     ->set(['password' => (new DefaultPasswordHasher)->hash($password)])
                     ->where(['email' => $this->request->data['Email']])
                     ->execute();
+                $adresseServer = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].str_replace('webroot/index.php','users/login',$_SERVER['PHP_SELF']);
 
                 $this->Flash->success(__('Votre mot de passe a bien été modifié. Veuillez consulter votre adresse e-mail.'));
                 $email = new Email('default');
                 $email
                     ->to($this->request->data['Email'])
                     ->subject("Nouveau Mot de passe")
-                    ->send("Voici vos nouveaux identifiants, veuillez les changer dès votre prochaine connexion"."\n--------------------------------------------------------------------------------\nVoici vos identifiant de votre compte : \nLogin : ".$user['login']."\nMot de passe : ".$password."\n--------------------------------------------------------------------------------\n");
+                    ->send("Voici vos nouveaux identifiants, veuillez les changer dès votre prochaine connexion"."\n--------------------------------------------------------------------------------\nVoici vos identifiant de votre compte : \nLogin : ".$user['login']."\nMot de passe : ".$password."\nveuillez vous connecter à l'adresse suivante :".$adresseServer."\n--------------------------------------------------------------------------------\n");
                 
                 return $this->redirect(['controller'=>'users','action' => 'login']);
             }      

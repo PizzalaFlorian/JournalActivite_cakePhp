@@ -163,13 +163,13 @@ class AdministrateurController extends AppController
             $user = TableRegistry::get('users')->patchEntity($user, $this->request->data);
             if (TableRegistry::get('users')->save($user)) {
                 $this->Flash->success(__('l\'utilisateur a été invité'));
-
+                $adresseServer = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].str_replace('webroot/index.php','users/login',$_SERVER['PHP_SELF']);
                 $messageChercheur = file_get_contents(ROOT.'/webroot/files/email_auto_chercheur.ctp');
                 $email = new Email('default');
                 $email
                     ->to($this->request->data['email'])
                     ->subject("Création de votre compte")
-                    ->send($messageChercheur."\n--------------------------------------------------------------------------------\nVoici vos identifiant de votre compte chercheur : \nLogin : ".$this->request->data['login']."\nMot de passe : ".$this->request->data['password']."\n--------------------------------------------------------------------------------\n");
+                    ->send($messageChercheur."\n--------------------------------------------------------------------------------\nVoici vos identifiant de votre compte chercheur : \nLogin : ".$this->request->data['login']."\nMot de passe : ".$this->request->data['password']."\nveuillez vous connecter à l'adresse suivante :".$adresseServer."\n--------------------------------------------------------------------------------\n");
                 
                 return $this->redirect(['controller'=>'users','action' => 'index']);
             } else {
@@ -224,16 +224,17 @@ class AdministrateurController extends AppController
             $user = TableRegistry::get('users')->patchEntity($user, $this->request->data);
             if (TableRegistry::get('users')->save($user)) {
                 $this->Flash->success(__('l\'utilisateur a été invité'));
+                $adresseServer = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].str_replace('webroot/index.php','users/login',$_SERVER['PHP_SELF']);
                 $messageCandidat = file_get_contents(ROOT.'/webroot/files/email_auto_candidat.ctp');
                 $email = new Email('default');
                 $email
                     ->to($this->request->data['email'])
                     ->subject("Confirmation de compte")
-                    ->send($messageCandidat."\n--------------------------------------------------------------------------------\nVoici vos identifiant de votre compte candidat : \nLogin : ".$this->request->data['login']."\nMot de passe : ".$this->request->data['password']."\n--------------------------------------------------------------------------------\n");
+                    ->send($messageCandidat."\n--------------------------------------------------------------------------------\nVoici vos identifiant de votre compte candidat : \nLogin : ".$this->request->data['login']."\nMot de passe : ".$this->request->data['password']."\nveuillez vous connecter à l'adresse suivante :".$adresseServer."\n--------------------------------------------------------------------------------\n");
                 
                 return $this->redirect(['controller'=>'users','action' => 'index']);
             } else {
-            $this->Flash->error(__('Erreur lors de l\'enregistrement, veuillez réessayer.'));
+                $this->Flash->error(__('Erreur lors de l\'enregistrement, veuillez réessayer.'));
             }
         }
         $this->set('user',$user);
@@ -326,12 +327,13 @@ class AdministrateurController extends AppController
                     
                     if (TableRegistry::get('users')->save($newuser)) {
                         //$this->Flash->success(__('l\'utilisateur '.$email.' a été inviter'));
+                        $adresseServer = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].str_replace('webroot/index.php','users/login',$_SERVER['PHP_SELF']);
                         $messageCandidat = file_get_contents(ROOT.'/webroot/files/email_auto_candidat.ctp');
                         $message = new Email('default');
                         $message
                             ->to($email)
                             ->subject("Confirmation de compte")
-                            ->send($messageCandidat."\n--------------------------------------------------------------------------------\nVoici vos identifiant de votre compte candidat : \nLogin : ".$login."\nMot de passe : ".$password."\n--------------------------------------------------------------------------------\n");
+                            ->send($messageCandidat."\n--------------------------------------------------------------------------------\nVoici vos identifiant de votre compte candidat : \nLogin : ".$login."\nMot de passe : ".$password."\nveuillez vous connecter à l'adresse suivante :".$adresseServer."\n--------------------------------------------------------------------------------\n");
                         
                         
                     } else {
