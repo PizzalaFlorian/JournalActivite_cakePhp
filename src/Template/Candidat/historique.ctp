@@ -91,6 +91,16 @@
 	<?php
 	}
 	?>
-	
+	<a href="#" id="stat_all">Mais que font les autres étudiants?</a>
+		<div>
+		
+	    <h3>Les statistiques en moyenne pour une journée de tous les étudiants</h3> 
+	    <p class="moyenne_all">
+	    <?php
+	    echo $this->element("stat");
+	    ?>
+	    </p>
+        
+    </div>
 </div>
 

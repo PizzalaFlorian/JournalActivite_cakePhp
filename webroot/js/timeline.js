@@ -265,4 +265,12 @@ jQuery(document).ready(function($){
 		//check if mobile or desktop device
 		return window.getComputedStyle(document.querySelector('.cd-horizontal-timeline'), '::before').getPropertyValue('content').replace(/'/g, "").replace(/"/g, "");
 	}
+	
+	$("#stat_all").next().hide();
+	
+	$("#stat_all").click(function(e){
+		e.preventDefault();
+        $(this).next().toggle();
+    });
+	
 });
