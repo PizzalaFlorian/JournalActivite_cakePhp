@@ -169,8 +169,9 @@ class AdministrateurController extends AppController
                 $email
                     ->to($this->request->data['email'])
                     ->subject("Création de votre compte")
-                    ->send($messageChercheur."\n--------------------------------------------------------------------------------\nVoici vos identifiant de votre compte chercheur : \nLogin : ".$this->request->data['login']."\nMot de passe : ".$this->request->data['password']."\nveuillez vous connecter à l'adresse suivante :".$adresseServer."\n--------------------------------------------------------------------------------\n");
-                
+                    ->send($messageCandidat."\n--------------------------------------------------------------------------------\nVoici vos identifiant de votre compte candidat : \nLogin : ".$login."\nMot de passe : ".$password."\nveuillez vous connecter à l'adresse suivante :".$adresseServer."\n--------------------------------------------------------------------------------\n");
+                        
+                        
                 return $this->redirect(['controller'=>'users','action' => 'index']);
             } else {
             $this->Flash->error(__('Erreur lors de l\'enregistrement de l\'utilisateur, veuillez réessayer.'));
@@ -716,14 +717,14 @@ class AdministrateurController extends AppController
             //var_dump($this->request->data);
             fclose($fp);
             // ouverture de config/app en ecriture
-            $fp = fopen("config/app.php","w");
+            $fp = fopen(ROOT .DS."config/app.php","w");
             fwrite($fp, $app);
             fclose($fp);
             $this->redirect(['controller'=>'administrateur','action' => 'messagerie']);
         }
 
         // ======= Lecture de APP.PHP ======= //
-        $fp = fopen("config/app.php","r"); //lecture
+        $fp = fopen(ROOT .DS."config/app.php","r"); //lecture
         //parcourt su fichier app.php afin de trouver la partie "SMTP"
         while((($ligne = fgets($fp,255)) != "            'appli' => [\n") && ($ligne  != false))
         {}
