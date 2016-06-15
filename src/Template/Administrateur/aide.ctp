@@ -103,43 +103,43 @@
 			Cette action permet de supprimer toutes les occupation entrés par les Candidats.
 			<br/>
 			Données supprimées :
-			<ul>
-				<li>Données liées aux activités des candidats</li>
-			</ul>
+			
+				Données liées aux activités des candidats<br/>
 			<br/>
+			
 			Données conservées :
-			<ul>
-				<li>Données des Comptes Candidats/Chercheurs/Administrateurs</li>
-				<li>Catégorie Activités/Lieux</li>
-				<li>Activités/Lieux/Dispositifs/Compagnie</li>
-				<li>Tous les messages envoyées</li>
-				<li>Carnet de bord</li>
-				<li>Actualités</li>
-			</ul>
+			
+				Données des Comptes Candidats/Chercheurs/Administrateurs<br/>
+				Catégorie Activités/Lieux<br/>
+				Activités/Lieux/Dispositifs/Compagnie<br/>
+				Tous les messages envoyées<br/>
+				Carnet de bord<br/>
+				Actualités<br/>
+			<br/>
 			Pour supprimer les occupation des candidat, allez sur la page ‘Gestion des données’ et cliquez sur le bouton ‘Supprimer les données entrées par les Candidats’.<br/>
-			<div class="imortant">Attention : Une fois lancé, cette action est irréversible.</div>
+			Attention : Une fois lancé, cette action est irréversible.
 		</p>
 		<br/> <a href="#" class="menu_aide">Suppression des comptes Candidats</a>	
 		<p >
 			Cette action permet de supprimer toutes les informations entré par les Candidats ainsi que leurs comptes.<br/>
 			<br/>
 			Données supprimées :<br/>         
-			<ul>
-				<li>Données liées aux activités des candidats</li>
-				<li>Tous les messages envoyées</li>
-				<li>Données des Comptes Candidats</li>
-			</ul>
+			
+				Données liées aux activités des candidats<br/>
+				Tous les messages envoyées<br/>
+				Données des Comptes Candidats<br/>
+			<br/>
 			Données conservées :<br/>
-			<ul>         
-				<li>Données des Comptes Chercheurs/Administrateurs</li>
-				<li>Catégorie Activités/Lieux</li>
-				<li>Activités/Lieux/Dispositifs/Compagnie</li>
-				<li>Carnet de bord</li>
-				<li>Actualités</li>
-			</ul>
+			         
+				Données des Comptes Chercheurs/Administrateurs<br/>
+				Catégorie Activités/Lieux<br/>
+				Activités/Lieux/Dispositifs/Compagnie<br/>
+				Carnet de bord<br/>
+				Actualités<br/>
+			<br/>
 			Pour supprimer toutes les informations des Candidats, allez sur la page ‘Gestion des données’ et cliquez sur le bouton ‘Supprimer les comptes candidats ainsi que leurs données’.<br/> 
 
-			<div class="imortant">Attention : Une fois lancé, cette action est irréversible.</div>
+			Attention : Une fois lancé, cette action est irréversible.
 		</p>
 		<h4>Messagerie</h4>
 		<br/> <a href="#" class="menu_aide">Configurer la messagerie de l’application</a>	
@@ -147,20 +147,20 @@
 			La page Configuration de la messagerie permet de connecter l'application au compte d'une messagerie afin que celle-ci puisse envoyer des emails aux utilisateurs de l'application.<br/>
 			<br/>
 			Cas d'envoi d'email :<br/>
-			<ul>
-				<li>Création d'un compte</li>
-				<li>Envoi d'un Email aux chercheurs lors de la réception d'un message de la part d'un candidat</li>
-				<li>Envoi d'un Email aux administrateurs lors d'une demande de 'contacts'.</li>     
-			</ul>
+			
+				Création d'un compte<br/>
+				Envoi d'un Email aux chercheurs lors de la réception d'un message de la part d'un candidat<br/>
+				Envoi d'un Email aux administrateurs lors d'une demande de 'contacts'.<br/>     
+			<br/>
 			Pour cela, l'application a besoin de connaître les informations concernant la messagerie, par exemple :<br/>
 			Le nom de l'Email de l'application (par exemple : noreply.monappli@.com)
-			<ul>
-				<li>Le nom du serveur de messagerie (par exemple : smtp.gmail.com pour une adresse Gmail)</li>
-				<li>Un identifiant, afin de pouvoir se connecter au serveur mail (les emails seront envoyés à partir de cette identifiant, sous le nom d'email noreply@monappli.com)</li>
-				<li>Le mots de passe de l'identifiant saisie ci-dessus</li>
-				<li>Le chiffrement utilisé par le serveur mail (SSL, TLS ou aucune sécurité)</li>
-			</ul>		
-			<div class="imortant">Attention : Pour prendre en compte les modifications, vous devrez redémarrer le serveur. "A CONFIRMER"</div>
+			
+				Le nom du serveur de messagerie (par exemple : smtp.gmail.com pour une adresse Gmail)<br/>
+				Un identifiant, afin de pouvoir se connecter au serveur mail (les emails seront envoyés à partir de cette identifiant, sous le nom d'email noreply@monappli.com)<br/>
+				Le mots de passe de l'identifiant saisie ci-dessus<br/>
+				Le chiffrement utilisé par le serveur mail (SSL, TLS ou aucune sécurité)<br/>
+			<br/>		
+			Attention : Pour prendre en compte les modifications, vous devrez redémarrer le serveur. "A CONFIRMER"
 		</p>
 		<br/>
 		<br/>
