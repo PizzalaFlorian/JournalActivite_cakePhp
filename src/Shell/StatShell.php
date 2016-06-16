@@ -4,7 +4,7 @@ namespace App\Shell;
 use Cake\ORM\TableRegistry;
 use Cake\Console\Shell;
 
-class HelloShell extends Shell
+class StatShell extends Shell
 {
     public function main()
     {
