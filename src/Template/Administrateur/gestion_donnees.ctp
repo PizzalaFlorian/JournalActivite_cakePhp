@@ -16,9 +16,9 @@
 		Données conservées :
 		<ul>
 			<li>Données des Comptes Candidats/Chercheurs/Administrateurs</li>
-			<li>Catégorie Activités/Lieux</li>
+			<li>Catégories Activités/Lieux</li>
 			<li>Activités/Lieux/Dispositifs/Compagnie</li>
-			<li>Tous les messages envoyées</li>
+			<li>Tous les messages envoyés</li>
 			<li>Carnet de bord</li>
 			<li>Actualités</li>
 		</ul>
@@ -32,7 +32,7 @@
         );
     ?>
 	</div>	
-	Attention : Cette action peut durer plusieurs minutes
+	Attention : La suppression peut nécessiter plusieurs minutes
 	<br/>
 	<br/>
 	<h4>Suppression des Comptes Candidats</h4>
@@ -47,8 +47,8 @@
 		Données conservées :
 		<ul>
 			<li>Données des Comptes Chercheurs/Administrateurs</li>
-			<li>Catégorie Activités/Lieux</li>
-			<li>Activités/Lieux/Dispositifs/Compagnie</li>
+			<li>Catégories Activités/Lieux</li>
+			<li>Activités/Lieux/Dispositifs/Compagnies</li>
 			<li>Carnet de bord</li>
 			<li>Actualités</li>
 		</ul>
@@ -60,6 +60,6 @@
 			['class'=>'button','confirm' => __('Attention : Cette action va entrainer la destruction de données dans la base de données. \nÊtes-vous sûr de vouloir continuer?')]
 		);
     ?></div>
-	Attention : Cette action peut durer plusieurs minutes
+	Attention : La suppression peut nécessiter plusieurs minutes
 	<br/><br/><br/>
 </div>

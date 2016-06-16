@@ -11,9 +11,9 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th><?= $this->Paginator->sort('CodeChercheur') ?></th>
-                <th><?= $this->Paginator->sort('PrenomChercheur') ?></th>
-                <th><?= $this->Paginator->sort('NomChercheur') ?></th>
+                <th><?= $this->Paginator->sort('CodeChercheur','Code Chercheur') ?></th>
+                <th><?= $this->Paginator->sort('PrenomChercheur','Prénom Chercheur') ?></th>
+                <th><?= $this->Paginator->sort('NomChercheur','Nom Chercheur') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
