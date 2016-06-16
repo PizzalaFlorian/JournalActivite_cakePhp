@@ -29,7 +29,8 @@
         <legend><?= __('Modifier l\'Actualité') ?></legend>
         <?php
             echo $this->Form->input('Sujet');
-            echo $this->Form->input('Contenue');
+            echo $this->Form->label('Contenue', 'Contenu *');
+            echo $this->Form->input('Contenue',['label'=>false]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Envoyer')) ?>

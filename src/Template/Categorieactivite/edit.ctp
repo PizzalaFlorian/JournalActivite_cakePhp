@@ -6,9 +6,10 @@
 <div class="categorieactivite form large-12 medium-11 columns content">
     <?= $this->Form->create($categorieactivite) ?>
     <fieldset>
-        <legend><?= __('Modifier la categorie d\'activité') ?></legend>
+        <legend><?= __('Modifier la catégorie d\'activité') ?></legend>
         <?php
-            echo $this->Form->input('NomCategorie');
+            echo $this->Form->label('NomCategorie', 'Nom Catégorie *');
+            echo $this->Form->input('NomCategorie',['label'=>false]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Modifier')) ?>

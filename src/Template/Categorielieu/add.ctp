@@ -16,7 +16,8 @@
         <legend><?= __('Ajouter une categorie de lieu') ?></legend>
         <?php
             echo $this->form->input('CodeCategorieLieux',['required'=>true,'default'=>$max['code']+1]);
-            echo $this->Form->input('NomCategorie');
+            echo $this->Form->label('NomCategorie', 'Nom Catégorie *');
+            echo $this->Form->input('NomCategorie',['label'=>false]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Ajouter')) ?>

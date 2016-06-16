@@ -40,7 +40,7 @@
 			
 			
 			
-			<h2>Noms correspondants aux codes:</h2>
+			<h2>Noms correspondant aux codes:</h2>
 			<a href="#" id="afficheLegende">Afficher les noms correspondant aux codes</a><br/>
 			<?php echo $this->Html->link(
             'Télécharger les noms correspondant aux codes (txt)',

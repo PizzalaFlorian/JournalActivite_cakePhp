@@ -6,7 +6,7 @@
 <h3 class="center"><?php echo $categorieactivite['NomCategorie']; ?></h3>
 <div class="categorieactivite form large-12 medium-11 columns content">
 	<?php 
-		 echo $this->Html->link(__('Annuler et retourner a la liste des categories d\'activités'), ['action' => 'index'],array("class"=>"button"));
+		 echo $this->Html->link(__('Annuler et retourner a la liste des catégories d\'activités'), ['action' => 'index'],array("class"=>"button"));
 	?>
 	<h4>Réaffecter</h4>	
 		<?= $this->Form->create($categorieactivite) ?>

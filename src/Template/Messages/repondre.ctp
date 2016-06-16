@@ -5,7 +5,10 @@
 <div id="content">
     <div class="messages form large-12 medium-11 columns content">
         <?= $this->Form->create($message) ?>
+        <?php  if($_SESSION['Auth']['User']['typeUser']=='candidat') {
+        ?>
         <p>Ce message doit rester anonyme. Ne transmettez pas votre nom, prénom, ou votre identifiant. Votre numéro de candidat sera transféré automatiquement.</p>
+        <?php } ?>
         <fieldset>
             <div class="input text required">
                 <label for="idrecepteur">Répondre à :</label>

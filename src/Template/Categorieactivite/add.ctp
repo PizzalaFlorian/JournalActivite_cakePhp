@@ -6,9 +6,10 @@
 
     <?= $this->Form->create($categorieactivite) ?>
     <fieldset>
-        <legend><?= __('Ajouter une categorie d\'activité') ?></legend>
+        <legend><?= __('Ajouter une catégorie d\'activité') ?></legend>
         <?php
-            echo $this->Form->input('NomCategorie');
+            echo $this->Form->label('NomCategorie', 'Nom Catégorie *');
+            echo $this->Form->input('NomCategorie',['label'=>false]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Ajouter')) ?>

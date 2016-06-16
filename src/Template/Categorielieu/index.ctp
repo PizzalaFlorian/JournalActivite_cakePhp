@@ -5,13 +5,13 @@
 ?>
 
 <div class="categorielieu index large-12 medium-11 columns content">
-    <h3 class="center"><?= __('Table des categories de lieux') ?></h3>
-    <?= $this->Html->link(__('Ajouter une categorie'), ['action' => 'add'],array("class"=>"button")); ?>
+    <h3 class="center"><?= __('Table des catégories de lieux') ?></h3>
+    <?= $this->Html->link(__('Ajouter une catégorie'), ['action' => 'add'],array("class"=>"button")); ?>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th><?= $this->Paginator->sort('CodeCategorieLieux') ?></th>
-                <th><?= $this->Paginator->sort('NomCategorie') ?></th>
+                <th><?= $this->Paginator->sort('CodeCategorieLieux','Code Catégorie Lieux') ?></th>
+                <th><?= $this->Paginator->sort('NomCategorie','Nom Catégorie') ?></th>
                 <th><?= $this->Paginator->sort('Nombre de lieux liées') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>

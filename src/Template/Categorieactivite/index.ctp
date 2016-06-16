@@ -4,13 +4,13 @@
     use Cake\ORM\TableRegistry;
 ?>
 <div class="categorieactivite index large-12 medium-11 columns content">
-    <h3 class="center"><?= __('Table des categories d\'activitées') ?></h3>
-    <?= $this->Html->link(__('Ajouter une categorie'), ['action' => 'add'],array("class"=>"button")) ?>
+    <h3 class="center"><?= __('Table des catégories d\'activités') ?></h3>
+    <?= $this->Html->link(__('Ajouter une catégorie'), ['action' => 'add'],array("class"=>"button")) ?>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th><?= $this->Paginator->sort('CodeCategorieActivite') ?></th>
-                <th><?= $this->Paginator->sort('NomCategorie') ?></th>
+                <th><?= $this->Paginator->sort('CodeCategorieActivite','Code Catégorie Activité') ?></th>
+                <th><?= $this->Paginator->sort('NomCategorie','Nom Catégorie') ?></th>
                 <th><?= $this->Paginator->sort('Nombre d\'activité liées') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
