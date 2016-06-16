@@ -15,7 +15,7 @@
 		Pour la ou les finalité(s) suivante(s) : 
 		<br>
 		<br>
-		<strong>Les données ainsi récoltés seront utilisée pour mieux comprendre le rythme de vie et les occupations des étudiants d'aujourd'hui.</strong>
+		<strong>Les données ainsi récoltées seront utilisées pour mieux comprendre le rythme de vie et les occupations des étudiants d'aujourd'hui.</strong>
 		<br>
 		<br>
 		Les données seront anonymisées et utilisées seulement par :
@@ -34,7 +34,7 @@
 		F-38040 Grenoble Cedex 9<br>
 		<br>
 		<br>
-		Où directement sur le site internet !
+		Ou directement sur ce site internet.
 		</strong>
 		<br>
 		<br>
@@ -46,20 +46,14 @@
 
 		<div>
 		    <?= $this->Form->create() ?>
-		    <br/><br/><br/>En cochant cette case, vous déclarez avoir pris connaissances de vos droits, et autorisez les chercheurs du LSE à exploiter vos données dans le cadre de leurs expériences.
-		    Vous disposez toujours de votre droit de rétractation, et vous pourrez a tout moment faire opposition a l'utilisation de vos données, directement depuis le site internet.
+		    <br/><br/><br/>En cochant cette case, vous déclarez avoir pris connaissance de vos droits, et autorisez les chercheurs du LSE à exploiter vos données dans le cadre de leur expérience.
+		    Vous disposez d'un droit de rétractation, et vous pourrez à tout moment faire opposition à l'utilisation de vos données, directement depuis le site internet.
 			    <fieldset>
 			    	    
 				    	<div id="radioButon">
 				    	<?php 
 				    		echo $this->Form->checkbox('published', ['hiddenField' => false]);
-				   			// $options = [
-						 	//        ['value' => 'supprWithData' , 'text' => "Je souhaite supprimer mon compte, ainsi que toutes les données liées à celui-ci."],
-						 	//        ['value' => 'supprWithOutData', 'text' => "Je souhaite supprimer mon compte, mais j'autorise la conservation des données me concernant." ]
-							// ];
-							// $attribut = ['default'=>'supprCompte'];
-							// echo $this->Form->radio('field', $options, $attribut);
-				    	?>J'ai pris connaissances de mes droits, et autorise les chercheurs a utilisés mes données.
+				   	?>J'ai pris connaissance de mes droits, et autorise les chercheurs à utiliser mes données.
 				    </div>
 				</fieldset>
 				<div id="button">

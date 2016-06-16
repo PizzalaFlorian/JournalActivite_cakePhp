@@ -5,11 +5,14 @@
     <?= $this->Form->create($candidat) ?>
     <fieldset>
         <legend><?= __('S\'inscrire') ?></legend>
-        <p> Vos informations nominatives ne seront jamais transmis aux chercheurs, ni aux autres participant à l'études. Cependant, il sera néccésaire que votre nom et prénom soit correctement remplit pour la génération du certificat de participation à l'étude. Merci de votre compréhension.</p>
+        <p> Vos informations nominatives ne seront jamais transmises aux chercheurs ou aux autres participants à l'étude.
+        Cependant, il est nécéssaire que vos nom et prénom soient correctement remplis pour la génération du certificat de participation à l'étude.</p>
         <?php
             echo $this->Form->input('NomCandidat',['required'=>'true']);
-            echo $this->Form->input('PrenomCandidat',['required'=>'true']);
-            echo $this->Form->input('Age',['required'=>'true']);
+            echo $this->Form->label('PrenomCandidat', 'Prénom *');
+            echo $this->Form->input('PrenomCandidat',['required'=>'true','label'=>false]);
+            echo $this->Form->label('Age', 'Âge *');
+            echo $this->Form->input('Age',['required'=>'true','label'=>false]);
         ?>
         <div class="input select required">
         <?php
@@ -21,7 +24,8 @@
         ?>
         </div>
         <?php
-            echo $this->Form->input('LieuxEtude',['required'=>'true']);
+            echo $this->Form->label('LieuxEtude', 'Lieu d\'étude *');
+            echo $this->Form->input('LieuxEtude',['required'=>'true','label'=>false]);
         ?>
         <div class="input select required">
         <?php
@@ -44,7 +48,7 @@
         </div>
         <div class="input select required">
         <?php    
-            echo $this->Form->label('DiplomePrep');
+            echo $this->Form->label('DiplomePrep','Diplôme préparé');
             echo $this->Form->select(
                 'DiplomePrep',
                 ["Licence"=>"Licence", 

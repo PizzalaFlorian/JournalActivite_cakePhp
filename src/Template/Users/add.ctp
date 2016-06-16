@@ -9,8 +9,10 @@
         <?php
             echo $this->Form->input('login');
             echo $this->Form->input('typeUser',['type'=>'hidden','value'=>'candidat']);
-            echo $this->Form->input('password');
-            echo $this->Form->input('comfirmez password',['type'=>'password','required'=>true]);
+            echo $this->Form->label('password', 'Mot de passe *'); 
+            echo $this->Form->input('password',['label'=>false]);
+            echo $this->Form->label('comfirmez password', 'Comfirmer le mot de passe *'); 
+            echo $this->Form->input('comfirmez password',['type'=>'password','required'=>true,'label'=>false]);
             echo $this->Form->input('email');
         ?>
     </fieldset>

@@ -85,7 +85,7 @@ class UsersController extends AppController
                 $email
                     ->to($this->request->data['email'])
                     ->subject("Confirmation de compte")
-                    ->send("Bonjour,\nVoici les identifiants de votre compte : \nLogin : ".$this->request->data['login']."\nMot de passe : ".$this->request->data['password']."\nCordialement\n");
+                    ->send("Bonjour,\n\nVoici les identifiants de votre compte : \nLogin : ".$this->request->data['login']."\nMot de passe : ".$this->request->data['password']."\n\nCordialement\nL'équipe du LSE");
                 return $this->redirect(['controller'=>'candidat','action' => 'add']);
             } else {
                 $this->Flash->error(__('Erreur lors de l\'ajout.'));
