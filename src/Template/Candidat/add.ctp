@@ -9,7 +9,7 @@
         Cependant, il est nécéssaire que vos nom et prénom soient correctement remplis pour la génération du certificat de participation à l'étude.</p>
         <?php
             echo $this->Form->input('NomCandidat',['required'=>'true']);
-            echo $this->Form->label('PrenomCandidat', 'Prénom *');
+            echo $this->Form->label('PrenomCandidat', 'Prénom Candidat *');
             echo $this->Form->input('PrenomCandidat',['required'=>'true','label'=>false]);
             echo $this->Form->label('Age', 'Âge *');
             echo $this->Form->input('Age',['required'=>'true','label'=>false]);
@@ -29,7 +29,7 @@
         ?>
         <div class="input select required">
         <?php
-            echo $this->Form->label('NiveauEtude');
+            echo $this->Form->label('NiveauEtude','Niveau d\'étude');
             echo $this->Form->select(
                 'NiveauEtude',
                 ['Bac +1'=>'Bac +1',

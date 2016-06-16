@@ -55,7 +55,7 @@
             echo "
             <div id='dialog-tuto-mobile'>
                 <h3 class='center'> Tutoriel Mobile </h3>
-                <p class='center'><strong> Votre but ? </strong> Rempli votre agenda</p>
+                <p class='center'><strong> Votre but ? </strong> Remplir votre agenda</p>
                 <p class='center'><strong> Comment ? </strong></p>
                 <p class='justify'>
                 <strong> double-tap : </strong> Ajoutez une occupation.<br>
@@ -70,14 +70,16 @@
             echo "
             <div id='dialog-tuto-pc'>
                 <h3 class='center'> Tutoriel </h3>
-                <p class='center'><strong> Votre but ? </strong> Rempli votre agenda</p>
+                <p class='center'><strong> Votre but ? </strong> Remplir votre agenda</p>
                 <p class='center'><strong> Comment ? </strong></p>
                 <p class='justify'>
                 <strong> double-click : </strong> Ajoutez une occupation.<br>
-                <strong> click-droit : </strong> Utilisez le click droit sur une occupation pour modifier, supprimer ou même copier une occupation.<br>
-                <strong> click+resize : </strong> Attrappez le bord de fin d'une occupation pour la redimenssionner.<br>
-                <strong> click+drag : </strong> Cliquez sur une occupation et faites la glissez pour changer d'heure, ou même de jour.<br>
-                (Note: hors changement de jour, le changement de durée et d'horaire peu aussi être éffectuer sur le menue modifier via click-droit sur une occupation).
+                <strong> clic-droit : </strong> modifier, supprimer ou même copier une occupation.<br>
+                <strong> clic + tirer le bord : </strong> attrappez le bord de fin d'une occupation pour la redimensionner.<br>
+                <strong> clic + déplacer la souris  : </strong> Cliquez sur une occupation et faites la glissez pour changer d'heure, ou même de jour.<br>
+                (Note : le changement de durée et d'horaire peut également être
+                effectué à l'aide du menu modifier via clic-droit sur une occupation, à l'exception du
+                changement de jour).
                 </p>
     
             </div>

@@ -8,7 +8,8 @@
 	<fieldset>
         <legend><?= __('Entrez votre code étudiant') ?></legend>
          <?php
-            echo $this->Form->input('Code Etudiant',['required'=>'true']);
+         echo $this->Form->label('Code Etudiant', 'Numéro Etudiant *');
+            echo $this->Form->input('Code Etudiant',['required'=>'true','label'=>false]);
         ?>
         </fieldset>
     	<?= $this->Form->button(__('Générer mon certificat')) ?>

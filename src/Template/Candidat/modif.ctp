@@ -14,25 +14,27 @@
         <legend><?= __('Vos informations personnelles') ?></legend>
         <?php
             echo $this->Form->input('NomCandidat',['required'=>'true']);
-            echo $this->Form->input('PrenomCandidat',['required'=>'true']);
-            echo $this->Form->input('Age',['required'=>'true']);
+            echo $this->Form->label('PrenomCandidat', 'Prénom Candidat *');
+            echo $this->Form->input('PrenomCandidat',['required'=>'true','label'=>false]);
+            echo $this->Form->label('Age', 'Âge *');
+            echo $this->Form->input('Age',['required'=>'true','label'=>false]);
         ?>
         <div class="input select required">
         <?php
             echo $this->Form->label('GenreCandidat');
             echo $this->Form->select(
                 'GenreCandidat',
-                ['homme'=>'homme', 'femme'=>'femme'],
-                ['default' => $candidat['GenreCandidat']]
+                ['homme'=>'homme', 'femme'=>'femme']
             );
         ?>
         </div>
         <?php
-            echo $this->Form->input('LieuxEtude',['required'=>'true']);
+            echo $this->Form->label('LieuxEtude', 'Lieu d\'étude *');
+            echo $this->Form->input('LieuxEtude',['required'=>'true','label'=>false]);
         ?>
         <div class="input select required">
         <?php
-            echo $this->Form->label('NiveauEtude');
+            echo $this->Form->label('NiveauEtude','Niveau d\'étude');
             echo $this->Form->select(
                 'NiveauEtude',
                 ['Bac +1'=>'Bac +1',
@@ -45,14 +47,13 @@
                  'Bac +8'=>'Bac +8', 
                  'Bac +9'=>'Bac +9', 
                  'Bac +10'=>'Bac +10', 
-                 'Bac +11'=>'Bac +11'],
-                ['default' => $candidat['NiveauEtude']]
+                 'Bac +11'=>'Bac +11']
             );
         ?>
         </div>
         <div class="input select required">
         <?php    
-            echo $this->Form->label('DiplomePrep');
+            echo $this->Form->label('DiplomePrep','Diplôme préparé');
             echo $this->Form->select(
                 'DiplomePrep',
                 ["Licence"=>"Licence", 
@@ -63,8 +64,7 @@
                  "Diplôme d'ingénieur"=>"Diplôme d'ingénieur",
                  "Diplôme médical et paramédical"=>"Diplôme médical et paramédical",
                  "Autre diplôme"=>"Autre diplôme"
-                 ],
-                ['default' => $candidat['DiplomePrep']]
+                 ]
             );
         ?>
         </div>
@@ -79,8 +79,7 @@
                 "Non marié(e) sans partenaire stable"=>"Non marié(e) sans partenaire stable",
                 "Veuve, veuf"=>"Veuve, veuf",
                 "Divorcé"=>"Divorcé"
-                ],
-                ['default' => $candidat['EtatCivil']]
+                ]
             );
         ?>
         </div>

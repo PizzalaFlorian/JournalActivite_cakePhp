@@ -17,8 +17,10 @@
         <?php
             echo $this->Form->input('login');
             echo $this->Form->input('password',['type'=>'hidden']);
-            echo $this->Form->input('nouveau password',['type'=>'password']);
-            echo $this->Form->input('comfirmez password',['type'=>'password']);
+            echo $this->Form->label('nouveau password', 'Nouveau mot de passe');
+            echo $this->Form->input('nouveau password',['type'=>'password','label'=>false]);
+            echo $this->Form->label('comfirmez password', 'Comfirmer le nouveau mot de passe'); 
+            echo $this->Form->input('comfirmez password',['type'=>'password','required'=>true,'label'=>false]);
             echo $this->Form->input('email');
         ?>
     </fieldset>

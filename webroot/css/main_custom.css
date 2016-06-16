@@ -8,6 +8,9 @@
 #loginSite form input[type="login"]{
 	text-align:center;
 }*/
+
+
+
 .justify{
 	text-align:justify;
 }
@@ -96,6 +99,14 @@ p{
 	margin-left: 29%;
 	width:100%;
 	text-align: center !important;
+}
+
+#loginSite label{
+   font-weight: bold;
+}
+
+label{
+	font-weight: bold;	
 }
 
 #loginSite input{
