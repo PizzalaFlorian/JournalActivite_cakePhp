@@ -47,7 +47,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <ul class="right">
                 <li>
                     <?= $this->Html->link(
-                            'Deconnexion',
+                            'Déconnexion',
                             ['controller' => 'users', 'action' => 'logout', '_full' => true]) 
                     ?>
                 </li>

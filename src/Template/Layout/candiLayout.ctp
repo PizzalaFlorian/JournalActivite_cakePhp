@@ -55,7 +55,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                     <li><a target="_blank" href="http://api.cakephp.org/3.0/">API</a></li> -->
                     <li>
                         <?= $this->Html->link(
-                                'Deconnexion',
+                                'Déconnexion',
                                 ['controller' => 'users', 'action' => 'logout', '_full' => true]) 
                         ?>
                     </li>

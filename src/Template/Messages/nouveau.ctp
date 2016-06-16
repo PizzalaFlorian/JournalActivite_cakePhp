@@ -7,7 +7,7 @@
 <div id="content">
     <div class="messages form large-12 medium-11 columns content">
         <?= $this->Form->create($message) ?>
-        <p style="text-align:justify">Ce message doit rester anonyme. Ne transmettez pas votre nom, prénom, ou votre identifiant. Votre numéro de candidat sera transféré automatiquement.</p>
+        <p style="text-align:justify">Le message écrit doit rester anonyme pour les besoins de l'expérience : ne communiquez ni vos nom, prénom et identifiant, ni un quelconque signe permettant de vous reconnaître. Votre numéro de candidat est automatiquement transféré avec votre message.</p>
         <fieldset>
             <legend><?= __('Nouveau message') ?></legend>
             <?php

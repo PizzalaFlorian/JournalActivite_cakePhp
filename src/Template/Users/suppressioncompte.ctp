@@ -16,7 +16,7 @@
 	</div>
 	<div>
 	    <?= $this->Form->create() ?>
-	    <br/><br/><br/>En supprimant votre compte, vous vous opposer au traitement des données vous concernant. Toutes vos données seront alors supprimées de nos serveurs.
+	    <br/><br/><br/>En supprimant votre compte, vous vous opposez au traitement des données vous concernant. Toutes vos données seront alors supprimées de nos serveurs.
 		    <fieldset>
 		    	    
 			    	<div id="radioButon">

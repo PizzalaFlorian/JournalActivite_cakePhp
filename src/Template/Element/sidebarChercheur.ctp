@@ -128,7 +128,7 @@
 <li> 
     <?php 
         echo $this->Html->link(
-            'Deconnexion',
+            'Déconnexion',
             ['controller' => 'users', 'action' => 'logout', '_full' => true]
         ); 
     ?> 
