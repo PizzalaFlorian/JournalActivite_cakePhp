@@ -110,7 +110,7 @@ class MessagesController extends AppController
             $this->set('_serialize', ['message']);    
         } else {
             // Si la page demandé n'est pas disponible pour l'utilisateur, on demande une nouvel authentification
-            $this->Flash->error(__('Une erreur d\'Authentification est survenue.'));
+            $this->Flash->error(__('Une erreur d\'authentification est survenue.'));
             $this->Flash->error(__('Veuillez vous reconnecter.'));
             return $this->redirect(['controller' => 'users', 'action' => 'logout']);
         }
@@ -142,7 +142,7 @@ class MessagesController extends AppController
                 $this->Flash->success(__('Le message à bien été supprimé.'));
                 //return $this->redirect(['action' => '']);
             } else {
-                $this->Flash->error(__('Erreur: Le message n\'a pas pu être supprimer, veuillez réessayer.'));
+                $this->Flash->error(__('Erreur: Le message n\'a pas pu être supprimé, veuillez réessayer.'));
             }
         }
         // si l'utilisateur est le recepteur
@@ -153,7 +153,7 @@ class MessagesController extends AppController
                 $this->Flash->success(__('Le message à bien été supprimé.'));
                 //return $this->redirect(['action' => '']);
             } else {
-                $this->Flash->error(__('Erreur: Le message n\'a pas pu être supprimer, veuillez réessayer.'));
+                $this->Flash->error(__('Erreur: Le message n\'a pas pu être supprimé, veuillez réessayer.'));
             }
         }
         // si plus aucun expediteur / recepteur, alors on supprimer le message de la base de données.
@@ -162,7 +162,7 @@ class MessagesController extends AppController
         }
         if($operationInterdite == "true"){
             // Si le message affiché n'appartient pas a l'utilisateur connecté, on demande une nouvel authentification
-            $this->Flash->error(__('Une erreur d\'Authentification est survenue.'));
+            $this->Flash->error(__('Une erreur d\'authentification est survenue.'));
             $this->Flash->error(__('Veuillez vous reconnecter.'));
             return $this->redirect(['controller' => 'users', 'action' => 'logout']);
         } else {
@@ -319,7 +319,7 @@ class MessagesController extends AppController
             $this->set('_serialize', ['message']);
         } else {
             // Si le message affiché n'appartient pas a l'utilisateur connecté, on demande une nouvel authentification
-            $this->Flash->error(__('Une erreur d\'Authentification est survenue.'));
+            $this->Flash->error(__('Une erreur d\'authentification est survenue.'));
             $this->Flash->error(__('Veuillez vous reconnecter.'));
             return $this->redirect(['controller' => 'users', 'action' => 'logout']);
         }

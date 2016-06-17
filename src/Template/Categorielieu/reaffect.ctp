@@ -45,7 +45,7 @@
                     ->first();
             if(isset($count['count'])){
             	$flag = 1;
-            	echo 'le lieu "'.$lieu_suppr->NomLieux.'" présent dans cette catégorie est utilisée '.$count['count'].' fois dans la base de données.';
+            	echo 'Le lieu "'.$lieu_suppr->NomLieux.'" présent dans cette catégorie est utilisé '.$count['count'].' fois dans la base de données.';
             	echo '<br>';
             }     
 		 }
@@ -53,7 +53,7 @@
 		 echo $this->Form->postLink(__('Supprimer cette categorie et toutes les lieux associées'), ['action' => 'deleteAll',$categorielieu->CodeCategorieLieux], ['class'=>'button','confirm' => __('êtes vous sur de vouloir supprimée toutes ces lieux de la base de données ?')]);
 		}
 		else {
-			echo 'Suppression impossible, veuillez réaffecter ou supprimer les lieux utilisées de la base de données avant de réalisé cette opération';
+			echo 'Suppression impossible, veuillez réaffecter ou supprimer les lieux utilisées de la base de données avant de réaliser cette opération.';
 		}
 	?>
 </div>

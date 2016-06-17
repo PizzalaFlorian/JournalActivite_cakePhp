@@ -131,7 +131,7 @@ class CategorieactiviteController extends AppController
             ->first();
 
         if(isset($table['CodeCategorie'])){
-             $this->Flash->error(__('Cette categorire est liée à des activitées, veuillez choisir une action.'));
+             $this->Flash->error(__('Cette catégorie est liée à des activitées, veuillez choisir une action.'));
             return $this->redirect(['action' => 'reaffect',$categorieactivite->CodeCategorieActivite]);
         }
 

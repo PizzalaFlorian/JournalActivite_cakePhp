@@ -69,7 +69,7 @@ class ActiviteController extends AppController
                 $this->Flash->success(__('L\'activité a bien été sauvegardée.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('Une erreur a eu lieu lors de la sauvegarde. Veuillez réessayer.'));
+                $this->Flash->error(__('Une erreur est survenue. Veuillez réessayer.'));
             }
         }
         $this->set(compact('activite'));

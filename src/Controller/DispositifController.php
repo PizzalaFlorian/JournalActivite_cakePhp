@@ -130,12 +130,12 @@ class DispositifController extends AppController
             ->first();
 
         if(isset($table['CodeDispositif'])){
-             $this->Flash->error(__('Ce dispositif a été utilisée par des candidats, veuillez choisir une action.'));
+             $this->Flash->error(__('Ce dispositif a été utilisé par des candidats, veuillez choisir une action.'));
             return $this->redirect(['action' => 'reaffect',$dispositif->CodeDispositif]);
         }
 
         if ($this->Dispositif->delete($dispositif)) {
-            $this->Flash->success(__('Le dispositif a été supprimée.'));
+            $this->Flash->success(__('Le dispositif a été supprimé.'));
         } else {
             $this->Flash->error(__('Erreur lors de la suppression. Veuillez réessayer.'));
         }
@@ -211,7 +211,7 @@ class DispositifController extends AppController
                 ->where(['CodeDispositif' => $dispositif['CodeDispositif']])
                 ->execute();
 
-            $this->Flash->success(__('le dispositif et les occupations ont été supprimées'));
+            $this->Flash->success(__('le dispositif et les occupations ont été supprimés'));
             return $this->redirect(['action' => 'index']);
         }
 

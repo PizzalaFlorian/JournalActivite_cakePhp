@@ -84,7 +84,6 @@ class OccupationController extends AppController
 
                 if ($this->Occupation->save($occupation)) {
                     echo $occupation->CodeOccupation;
-                    //$this->Flash->success(__('The occupation has been saved.'));
                 } else {
                     $this->Flash->error(__('Erreur lors de l\'ajout de l\'occupation. Veuillez réessayer.'));
                 }
@@ -183,7 +182,6 @@ class OccupationController extends AppController
 
                 if ($this->Occupation->save($occupation)) {
                     echo $occupation->CodeOccupation;
-                    //$this->Flash->success(__('The occupation has been saved.'));
                 } else {
                     $this->Flash->error(__('Erreur lors de la copie. Veuillez réessayer.'));
                 }
@@ -192,7 +190,6 @@ class OccupationController extends AppController
                 $occupation = $this->Occupation->patchEntity($occupation, $this->request->data);
             
                 if ($this->Occupation->save($occupation)) {
-                    //$this->Flash->success(__('The occupation has been saved.'));
                     return $this->redirect(['action' => 'index']);
                 } else {
                     $this->Flash->error(__('Erreur lors de la copie. Veuillez réessayer.'));
@@ -360,7 +357,6 @@ class OccupationController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $occupation = $this->Occupation->get($id);
         if ($this->Occupation->delete($occupation)) {
-            //$this->Flash->success(__('The occupation has been deleted.'));
         } else {
             $this->Flash->error(__('Erreur lors de la suppression. Veuillez réessayer.'));
         }

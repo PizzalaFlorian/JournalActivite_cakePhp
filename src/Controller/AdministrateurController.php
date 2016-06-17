@@ -327,7 +327,6 @@ class AdministrateurController extends AppController
                     $newuser->email = $email;
                     
                     if (TableRegistry::get('users')->save($newuser)) {
-                        //$this->Flash->success(__('l\'utilisateur '.$email.' a été inviter'));
                         $adresseServer = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].str_replace('webroot/index.php','users/login',$_SERVER['PHP_SELF']);
                         $messageCandidat = file_get_contents(ROOT.'/webroot/files/email_auto_candidat.ctp');
                         $message = new Email('default');

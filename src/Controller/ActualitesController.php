@@ -99,7 +99,7 @@ class ActualitesController extends AppController
             $this->set('_serialize', ['actualite']);
         } else {
             // Si la page demandé n'est pas disponible pour l'utilisateur, on demande une nouvel authentification
-            $this->Flash->error(__('Une erreur d\'Authentification est survenue.'));
+            $this->Flash->error(__('Une erreur d\'authentification est survenue.'));
             $this->Flash->error(__('Veuillez vous reconnecter.'));
             return $this->redirect(['controller' => 'users', 'action' => 'logout']);
         }
@@ -135,12 +135,12 @@ class ActualitesController extends AppController
             if ($this->Actualites->delete($actualite)) {
                 $this->Flash->success(__('La suppression à réussi.'));
             } else {
-                $this->Flash->error(__('L\'actualité n\'a pas pu être supprimés. Veuillez réessayer.'));
+                $this->Flash->error(__('L\'actualité n\'a pas pu être supprimée. Veuillez réessayer.'));
             }
             return $this->redirect(['controller' => $monController, 'action' => $monAction]);
         } else {
             // Si la page demandé n'est pas disponible pour l'utilisateur, on demande une nouvel authentification
-            $this->Flash->error(__('Une erreur d\'Authentification est survenue.'));
+            $this->Flash->error(__('Une erreur d\'authentification est survenue.'));
             $this->Flash->error(__('Veuillez vous reconnecter.'));
             return $this->redirect(['controller' => 'users', 'action' => 'logout']);
         }
@@ -190,7 +190,7 @@ class ActualitesController extends AppController
             $this->set('_serialize', ['actualite']);
         } else {
             // Si la page demandé n'est pas disponible pour l'utilisateur, on demande une nouvel authentification
-            $this->Flash->error(__('Une erreur d\'Authentification est survenue.'));
+            $this->Flash->error(__('Une erreur d\'authentification est survenue.'));
             $this->Flash->error(__('Veuillez vous reconnecter.'));
             return $this->redirect(['controller' => 'users', 'action' => 'logout']);
         }

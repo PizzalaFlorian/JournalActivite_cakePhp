@@ -65,7 +65,7 @@ class CompagnieController extends AppController
         if ($this->request->is('post')) {
             $compagnie = $this->Compagnie->patchEntity($compagnie, $this->request->data);
             if ($this->Compagnie->save($compagnie)) {
-                $this->Flash->success(__('La comapgnie a bien été ajoutée.'));
+                $this->Flash->success(__('La compagnie a bien été ajoutée.'));
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('Erreur lors de l\'ajout de la compagnie. Veuillez réessayer.'));

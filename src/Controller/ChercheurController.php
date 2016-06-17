@@ -380,7 +380,7 @@ class ChercheurController extends AppController
 
             $chercheur = $this->Chercheur->patchEntity($chercheur, $this->request->data);
             if ($this->Chercheur->save($chercheur)) {
-                $this->Flash->success(__('Vos informations ont bien été enregistrée.'));
+                $this->Flash->success(__('Vos informations ont bien été enregistrées.'));
                 return $this->redirect(['action' => 'accueil']);
             } else {
                 $this->Flash->error(__('Erreur lors de l\'enregistrement de vos informations.'));

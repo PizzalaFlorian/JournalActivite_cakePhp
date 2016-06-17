@@ -186,7 +186,7 @@ class CandidatController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $candidat = $this->Candidat->patchEntity($candidat, $this->request->data);
             if ($this->Candidat->save($candidat)) {
-                $this->Flash->success(__('Vos informations personnelles ont bien été modifié.'));
+                $this->Flash->success(__('Vos informations personnelles ont bien été modifiées.'));
                 return $this->redirect(['action' => 'modif']);
             } else {
                 $this->Flash->error(__('Erreur lors de la modification de vos informations personnelles. Veuillez réessayer.'));

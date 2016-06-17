@@ -25,7 +25,7 @@
     <tr>
         <th>
         	<br>
-        	<h1>Certification de participation a l'experience du candidat <?php echo $candidat['PrenomCandidat'].' '.$candidat['NomCandidat']; ?></h1>
+        	<h1>Certification de participation à l'experience du candidat <?php echo $candidat['PrenomCandidat'].' '.$candidat['NomCandidat']; ?></h1>
         	<br>
         </th>
     </tr>

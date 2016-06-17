@@ -134,7 +134,7 @@ class CategorielieuController extends AppController
             ->first();
 
         if(isset($table['CodeCategorieLieux'])){
-             $this->Flash->error(__('Cette categorire contient des lieu, veuillez choisir une action.'));
+             $this->Flash->error(__('Cette catégorie contient des lieux utilisés, veuillez choisir une action.'));
             return $this->redirect(['action' => 'reaffect',$categorielieu->CodeCategorieLieux]);
         }
 

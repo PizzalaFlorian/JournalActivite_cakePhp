@@ -59,7 +59,7 @@
                 <p class='center'><strong> Comment ? </strong></p>
                 <p class='justify'>
                 <strong> double-tap : </strong> Ajoutez une occupation.<br>
-                <strong> tap : </strong> Touchez une occupation pour ouvrir le menu et modifier, supprimer ou même copier une occupation.<br>
+                <strong> touchez : </strong> touchez une occupation pour ouvrir le menu et modifier, supprimer ou même copier une occupation.<br>
                 </p>
             </div>
             ";
