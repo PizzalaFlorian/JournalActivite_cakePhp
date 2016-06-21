@@ -1,6 +1,6 @@
 <?php
     echo $this->element('sidebarChercheur');
-    echo $this->Html->css('main_custom');
+ //   echo $this->Html->css('main_custom');
     use Cake\ORM\TableRegistry;
 ?>
 <div class="activite index large-12 medium-11 columns content">

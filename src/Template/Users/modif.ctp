@@ -8,7 +8,7 @@
     if($_SESSION['Auth']['User']['typeUser']=='admin')
         echo $this->element('sidebarAdmin');
 
-    echo $this->Html->css('main_custom');
+   // echo $this->Html->css('main_custom');
 ?>
 <div class="users form large-11 medium-12 columns content">
     <?= $this->Form->create($user) ?>

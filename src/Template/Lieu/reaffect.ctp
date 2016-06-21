@@ -1,6 +1,6 @@
 <?php
     echo $this->element('sidebarChercheur');
-    echo $this->Html->css('main_custom');
+//    echo $this->Html->css('main_custom');
 ?>
 <h3><?php echo $lieu['NomLieux']; ?></h3>
 <div class="activite form large-12 medium-11 columns content">

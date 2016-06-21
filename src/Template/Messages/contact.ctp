@@ -1,6 +1,6 @@
 <?php
     echo $this->element($sideBar);
-    echo $this->Html->css('main_custom');
+ //   echo $this->Html->css('main_custom');
     echo $this->assign('title', "tiiii");
 ?>
 <div id="content">

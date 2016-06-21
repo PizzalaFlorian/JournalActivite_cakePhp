@@ -1,7 +1,7 @@
 <?php
     use Cake\ORM\TableRegistry;
     $this->start('sidebarCandidat');
-    echo $this->Html->css('main_custom');
+ //   echo $this->Html->css('main_custom');
 ?>
 <li> 
     <?php 

@@ -1,7 +1,7 @@
 <?php
 	use Cake\ORM\TableRegistry;
 	echo $this->element('sidebarCandidat');
-	echo $this->Html->css('main_custom');
+//	echo $this->Html->css('main_custom');
 
 	echo $this->Html->script("https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js");
 	if($isMobile){
@@ -15,8 +15,8 @@
     echo $this->Html->script('timeline');
     echo $this->Html->script('skel.min');
     echo $this->Html->script('util');
-	echo $this->Html->css('timeline');
-	echo $this->Html->css('responsive');
+	echo $this->Html->css('timeline2');
+//	echo $this->Html->css('responsive');
 	
     $candidat = TableRegistry::get('candidat')
             ->find()

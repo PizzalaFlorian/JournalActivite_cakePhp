@@ -1,8 +1,8 @@
 <?php
     echo $this->element($sideBar);
-    echo $this->Html->css('messagerie');
-    echo $this->Html->css('main_custom');
-    echo $this->Html->css('responsive');
+//    echo $this->Html->css('messagerie');
+//    echo $this->Html->css('main_custom');
+//    echo $this->Html->css('responsive');
 ?>
 <div id="content">
     <div class="messages index large-12 medium-11 columns content">

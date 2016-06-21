@@ -38,15 +38,18 @@
     echo $this->Html->script('jquery-cookie');
     echo $this->Html->script('pop_up');
 
-
-    echo $this->Html->css('modale');
-    echo $this->Html->css('occupation');
-    echo $this->Html->css('Demo_calendar_style');
-    echo $this->Html->css('Demo_calendar_jquery');
-    echo $this->Html->css('main_custom');
-    echo $this->Html->css('responsive');
+          
+//    echo $this->Html->css('modale');
+//    echo $this->Html->css('occupation');
+//    echo $this->Html->css('Demo_calendar_style');
+//    echo $this->Html->css('Demo_calendar_jquery');
+//    echo $this->Html->css('main_custom');
+//    echo $this->Html->css('responsive');
     if(!$isMobile){
-       echo $this->Html->css('pc'); 
+       echo $this->Html->css('activite_pc'); 
+    }
+    else{
+       echo $this->Html->css('activite_mobile');  
     }
 
 

@@ -1,6 +1,6 @@
 <?php
 	echo $this->element('sidebarAdmin');
-	echo $this->Html->css('main_custom');
+//	echo $this->Html->css('main_custom');
 	echo $this->Html->script('jquery-1.7.min');
 	echo $this->Html->script('aide.js');
 	echo $this->Html->css('administrateur');
