@@ -5,16 +5,19 @@
 
 	echo $this->Html->script("https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js");
 	if($isMobile){
-		echo $this->Html->script('highcharts.mobile');	
+	//	echo $this->Html->script('highcharts.mobile');
+		echo $this->Html->script('historique_mobile');
 	}
 	else{
-		echo $this->Html->script('highcharts');
+		echo $this->Html->script('historique');
+//		echo $this->Html->script('highcharts');
 	}
-	echo $this->Html->script('jquery.mobile.custom.min');
-	echo $this->Html->script('modernizr');
-    echo $this->Html->script('timeline');
-    echo $this->Html->script('skel.min');
-    echo $this->Html->script('util');
+//	echo $this->Html->script('jquery.mobile.custom.min');
+//	echo $this->Html->script('modernizr');
+//    echo $this->Html->script('timeline');
+//    echo $this->Html->script('skel.min');
+//    echo $this->Html->script('util');
+	
 	echo $this->Html->css('timeline2');
 //	echo $this->Html->css('responsive');
 	

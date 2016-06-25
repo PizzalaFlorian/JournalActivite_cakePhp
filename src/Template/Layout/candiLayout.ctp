@@ -31,9 +31,13 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->css('cake2.css') ?>
     
     
-    <?= $this->Html->script('jquery-1.7.min') ?>
-    <?= $this->Html->script('jquery-ui-1.7.2.custom.min') ?>
-    <?= $this->Html->script('menu.js') ?>
+    <?php /*$this->Html->script('jquery-1.7.min'); 
+     $this->Html->script('jquery-ui-1.7.2.custom.min');
+     $this->Html->script('menu.js');
+    */
+    ?>
+    <?= $this->Html->script('base.js') ?>
+    
     
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>

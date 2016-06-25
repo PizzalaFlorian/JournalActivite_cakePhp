@@ -1,7 +1,7 @@
 <?php
 	echo $this->element('sidebarCandidat');
 //	echo $this->Html->css('main_custom');
-	echo $this->Html->script('aide.js');
+//	echo $this->Html->script('aide.js');
 ?>
 
 <div id="content">

@@ -25,19 +25,21 @@
     echo $this->element('sidebarCandidat');
 
     if($isMobile == true){
-        echo $this->Html->script('finger');
-        echo $this->Html->script('calendar.mobile');
+    //    echo $this->Html->script('finger');
+    //    echo $this->Html->script('calendar.mobile');
+        echo $this->Html->script('activitemobile.js');
 
     }
     else{
-        echo $this->Html->script('Demo_calendar_script');
+  //      echo $this->Html->script('Demo_calendar_script');
+   echo $this->Html->script('activite');
     }
-    echo $this->Html->script('jquery.corner');
-    echo $this->Html->script('candidat.activite');
-    echo $this->Html->script('candidat_Renseignement.activite');
-    echo $this->Html->script('jquery-cookie');
-    echo $this->Html->script('pop_up');
-
+ //   echo $this->Html->script('jquery.corner');
+ //   echo $this->Html->script('candidat.activite');
+ //   echo $this->Html->script('candidat_Renseignement.activite');
+ //   echo $this->Html->script('jquery-cookie');
+ //   echo $this->Html->script('pop_up');
+     
           
 //    echo $this->Html->css('modale');
 //    echo $this->Html->css('occupation');
