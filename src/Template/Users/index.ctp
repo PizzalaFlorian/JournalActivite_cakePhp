@@ -29,17 +29,22 @@
                 <td><?= h($user->email) ?></td>
                 <td class="actions">
                     <?php 
-                        echo $this->Html->link(
-                            $this->Html->image('modifier.ico', array('title' => "Modifier")), 
-                            array('action' => 'edit', $user->ID),
-                            array('escape' => false) 
-                        );
-                         
-                        echo $this->Form->postLink(
-                            $this->Html->image('supprimer.ico', array('title' => "Supprimer")),
-                            array('action' => 'delete', $user->ID),
-                            array('escape' => false,"confirm"=>__('Êtes-vous sur de vouloir supprimer # {0}?', $user->email))
-                        ); 
+			if(($user->ID != 1)&&($user->ID != 2)){
+		                echo $this->Html->link(
+		                    $this->Html->image('modifier.ico', array('title' => "Modifier")), 
+		                    array('action' => 'edit', $user->ID),
+		                    array('escape' => false) 
+		                );
+		                 
+		                echo $this->Form->postLink(
+		                    $this->Html->image('supprimer.ico', array('title' => "Supprimer")),
+		                    array('action' => 'delete', $user->ID),
+		                    array('escape' => false,"confirm"=>__('Êtes-vous sur de vouloir supprimer # {0}?', $user->email))
+		                ); 
+			} else
+			{
+				echo "Ne pas modifier";
+			}
                     ?>
                 </td>
             </tr>
