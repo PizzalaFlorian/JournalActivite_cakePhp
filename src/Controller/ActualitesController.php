@@ -176,7 +176,7 @@ class ActualitesController extends AppController
                 // ajoute de l'heure du post
                 $this->request->data['Date'] = Time::now();
                 $actualite = $this->Actualites->patchEntity($actualite, $this->request->data);
-                debug($actualite);
+                //debug($actualite);
                 if ($this->Actualites->save($actualite)) {
                     $this->Flash->success(__('L\'actualité a été sauvegardée.'));
                     return $this->redirect(['controller' => $monController, 'action' => $monAction]);
