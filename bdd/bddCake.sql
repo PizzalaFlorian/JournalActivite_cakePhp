@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 17, 2016 at 03:26 PM
+-- Generation Time: Jun 28, 2016 at 12:54 PM
 -- Server version: 5.6.30-0ubuntu0.15.10.1
--- PHP Version: 5.6.11-1ubuntu3.3
+-- PHP Version: 5.6.11-1ubuntu3.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,8 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `bddCake`
 --
-CREATE DATABASE IF NOT EXISTS `bddCake` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `bddCake`;
+
 -- --------------------------------------------------------
 
 --
@@ -43,7 +42,7 @@ INSERT INTO `activite` (`CodeActivite`, `NomActivite`, `DescriptifActivite`, `Co
 (13, 'Evènements sportifs', '', 13),
 (20, 'Repas', '', 1),
 (30, 'Habillage – soins du corps', '', 1),
-(40, 'Temps personnel', '', 1),
+(40, 'Temps personnels', '', 1),
 (101, 'Déplacements pour raisons personnelles (soins, relations avec une administration…)', '', 17),
 (102, 'Déplacements pour aller/revenir du travail', '', 17),
 (103, 'Déplacements pour aller/revenir de l’université', '', 17),
@@ -54,9 +53,9 @@ INSERT INTO `activite` (`CodeActivite`, `NomActivite`, `DescriptifActivite`, `Co
 (108, 'Déplacements lies aux activités de loisirs et de divertissement', '', 17),
 (109, 'Déplacements pour activités sportives', '', 17),
 (110, 'Travail salarié (salarié, indépendant…) ', '', 2),
-(120, 'Pauses durant l’activité salarié (café…)', '', 2),
+(120, 'Pauses durant l’activité salariée (café…)', '', 2),
 (130, 'Pauses repas pendant l’activité salarié', '', 2),
-(140, 'Autres types d’activités liées au travail salarié (hors déplacements)', '', 2),
+(140, 'Autres type d’activités liées au travail salarié (hors déplacement)', '', 2),
 (211, 'Audition, prise de notes', '', 3),
 (212, 'Échanges avec les enseignants', '', 3),
 (213, 'Autre type d’activités liées à la participation aux cours magistraux TD/TP', '', 3),
@@ -68,7 +67,7 @@ INSERT INTO `activite` (`CodeActivite`, `NomActivite`, `DescriptifActivite`, `Co
 (226, 'Autre type d’activités de TP/TD', '', 3),
 (231, 'Révisions (écriture de fiches, relectures…)', '', 4),
 (232, 'Documentation (lecture, recherche documentaire, fiche de lecture…)', '', 4),
-(233, 'Préparation (exposés, TD, exercices…)', '', 4),
+(233, 'Préparation (exposé, TD, exercices…)', '', 4),
 (234, 'Reprise de cours (suite à une absence, remise en forme…) ', '', 4),
 (235, 'Recherche de compléments au cours', '', 4),
 (236, 'Planification du travail académique', '', 4),
@@ -82,9 +81,9 @@ INSERT INTO `activite` (`CodeActivite`, `NomActivite`, `DescriptifActivite`, `Co
 (253, 'Consultation d’annales', '', 6),
 (261, 'Pause, goûter', '', 7),
 (310, 'Préparation des repas ', '', 8),
-(320, 'préparation/débarrassage table, vaisselle', '', 8),
+(320, 'Installation/désinstallation table, vaisselle', '', 8),
 (330, 'Nettoyage de la maison', '', 8),
-(340, 'Lavage et/ou repassage du linge', '', 8),
+(340, 'Lavage du linge (y compris le repassage)', '', 8),
 (350, 'Jardinage et soins des animaux de compagnie, Bricolage, Entretien d’un véhicule', '', 8),
 (360, 'Courses, achats', '', 8),
 (370, 'Gestion des affaires domestiques (documents officiels, factures, démarches administratives', '', 8),
@@ -97,9 +96,9 @@ INSERT INTO `activite` (`CodeActivite`, `NomActivite`, `DescriptifActivite`, `Co
 (521, 'Courses, aides à domicile… ', '', 11),
 (522, 'Garde d’enfants ', '', 11),
 (523, 'Autre type d’aide aux personnes', '', 11),
-(530, 'Activités religieuses ', '', 10),
-(540, 'Activités politiques (meeting…)', '', 10),
-(550, 'Autres type d’activités associatives, politiques et bénévoles', '', 10),
+(530, 'Activités religieuses ', '', 11),
+(540, 'Activités politiques (meeting…)', '', 11),
+(550, 'Autres type d’activités associatives, politiques et bénévoles', '', 11),
 (610, 'Vie sociale', '', 12),
 (620, 'Activités en famille', '', 12),
 (630, 'Rencontres avec des amis (visite ou réception)', '', 12),
@@ -128,7 +127,7 @@ INSERT INTO `activite` (`CodeActivite`, `NomActivite`, `DescriptifActivite`, `Co
 (920, 'TV et vidéos', '', 15),
 (930, 'Radio', '', 15),
 (940, 'Consultations médias sur supports électroniques (tablettes, ordinateurs…)', '', 15),
-(950, 'Écoute de musique (autre que radio)', '', 15),
+(950, 'écoute de musique (autre que radio)', '', 15),
 (999, 'Autres temps, temps non spécifié', '', 18);
 
 -- --------------------------------------------------------
@@ -142,17 +141,7 @@ CREATE TABLE IF NOT EXISTS `actualites` (
   `Sujet` varchar(255) NOT NULL,
   `Contenue` text NOT NULL,
   `Date` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `actualites`
---
-
-INSERT INTO `actualites` (`ID`, `Sujet`, `Contenue`, `Date`) VALUES
-(3, 'Les marmottes', 'Les marmottes (Marmota) forment un genre de mammifère fouisseur de l''ordre des rongeurs.\r\n\r\nL''espèce la plus connue en Europe est la marmotte vivant dans les montagnes (Marmota marmota), alors qu''en Amérique du Nord, c''est la Marmota monax, appelée familièrement « siffleux » au Québec.', '2016-05-17 13:16:29'),
-(4, 'Sardine', 'La sardine (Sardina pilchardus) est une espèce de poisson de la famille des Clupeidae, qui comprend également le hareng, l''alose, notamment. Selon la région elle prend les noms de célan, célerin, pilchard, royan, sarda, sardinyola.', '2016-05-17 13:17:00'),
-(5, 'Théorème de Pythagore', 'Le théorème de Pythagore est un théorème de géométrie euclidienne qui met en relation les longueurs des côtés dans un triangle rectangle : le carré de la longueur de l’hypoténuse, qui est le côté opposé à l''angle droit, est égal à la somme des carrés des longueurs des deux autres côtés.', '2016-05-17 13:17:32'),
-(6, 'Mozzarella', 'La mozzarella est un fromage à pâte filée d''origine italienne à base de lait de vache ou de bufflonne. La mozzarella di Bufala Campana, produite en Campanie avec du lait de bufflonne, est l''objet d''une appellation d''origine protégée (AOP) depuis 1996. ', '2016-05-17 13:18:17');
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -163,14 +152,14 @@ INSERT INTO `actualites` (`ID`, `Sujet`, `Contenue`, `Date`) VALUES
 CREATE TABLE IF NOT EXISTS `administrateur` (
   `CodeAdmin` int(10) unsigned NOT NULL,
   `ID` int(10) unsigned NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `administrateur`
 --
 
 INSERT INTO `administrateur` (`CodeAdmin`, `ID`) VALUES
-(1, 14);
+(3, 27);
 
 -- --------------------------------------------------------
 
@@ -190,17 +179,7 @@ CREATE TABLE IF NOT EXISTS `candidat` (
   `EtatCivil` varchar(250) NOT NULL,
   `NombreEnfant` int(10) unsigned NOT NULL,
   `ID` int(10) unsigned NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `candidat`
---
-
-INSERT INTO `candidat` (`CodeCandidat`, `NomCandidat`, `PrenomCandidat`, `Age`, `GenreCandidat`, `LieuxEtude`, `NiveauEtude`, `DiplomePrep`, `EtatCivil`, `NombreEnfant`, `ID`) VALUES
-(1, 'Gimenz', 'Jeremy', 22, 'homme', 'Grenoble', 'Bac +1', 'Licence', 'Marié(e)', 12, 9),
-(2, 'Boyle', 'Suzanne', 19, 'tortue', 'Suez', 'BAC +2', 'Master Droit', 'En couple', 0, 10),
-(3, 'Michel', 'Jean-Jacque', 26, 'homme', 'Vienne', 'BAC+7', 'L1 jardinage', 'Celibataire', 1, 11),
-(4, 'Robert', 'Christian', 11, 'chien', 'Paris', 'MatSup', 'CNRS', 'Union libre', 4, 12);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -244,7 +223,7 @@ INSERT INTO `categorieactivite` (`CodeCategorieActivite`, `NomCategorie`) VALUES
 (10, 'Activités associatives, politiques et bénévoles '),
 (11, 'Aides aux personnes '),
 (12, 'Vie sociale et divertissements'),
-(13, 'Culture et divertissements '),
+(13, 'Culture et divertissement '),
 (14, 'Activités sportives \r\nExercices physiques '),
 (15, 'Loisirs '),
 (16, 'Jeux'),
@@ -281,14 +260,7 @@ CREATE TABLE IF NOT EXISTS `chercheur` (
   `NomChercheur` varchar(250) NOT NULL,
   `PrenomChercheur` varchar(250) NOT NULL,
   `ID` int(11) unsigned NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `chercheur`
---
-
-INSERT INTO `chercheur` (`CodeChercheur`, `NomChercheur`, `PrenomChercheur`, `ID`) VALUES
-(3, 'Dupont', 'Jean', 13);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -331,7 +303,7 @@ CREATE TABLE IF NOT EXISTS `dispositif` (
 INSERT INTO `dispositif` (`CodeDispositif`, `NomDispositif`) VALUES
 (0, 'Aucun '),
 (1, 'Ordinateur '),
-(2, 'Tablette'),
+(2, 'Tablettes'),
 (3, 'Téléphone'),
 (4, 'Télévision'),
 (5, 'Livre'),
@@ -368,7 +340,7 @@ INSERT INTO `lieu` (`CodeLieux`, `NomLieux`, `CodeCategorieLieux`) VALUES
 (11, 'Terrain et équipement de sport', 1),
 (12, 'Lieu de divertissement (cinéma, théâtre, salle de concert) ', 1),
 (13, 'Commerces bâtiments publiques (Mairie, administrations, écoles,...) ', 1),
-(14, 'Voie publique (rue, route, autoroute)', 1),
+(14, 'Voie publique (rue, route, autoroutes)', 1),
 (15, 'Autre lieu ', 1),
 (16, 'Voiture personnelle ', 2),
 (17, 'Covoiturage', 2),
@@ -396,17 +368,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `IDRecepteur` int(10) unsigned NOT NULL,
   `userExpediteur` int(10) NOT NULL,
   `userRecepteur` int(10) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `messages`
---
-
-INSERT INTO `messages` (`IDMessage`, `DateEnvoi`, `Sujet`, `ContenuMessage`, `recepteurLu`, `expediteurLu`, `IDExpediteur`, `IDRecepteur`, `userExpediteur`, `userRecepteur`) VALUES
-(3, '2016-05-17 13:15:33', 'Message 1', 'Un message est un ensemble de signes. Il implique donc un codage par l''émetteur, et un décodage par le récepteur (d''où la nécessité d''un code commun). La théorie de l''information fut mise au point pour déterminer mathématiquement le taux d’information transmis dans la communication d’un message par un canal de communication, notamment en présence de parasites appelés bruits. Il fut repris par Roman Jakobson pour étayer la théorie linguistique.', 0, 0, 9, 1, 9, 1),
-(4, '2016-05-17 13:15:48', 'Message 2', 'Les premiers travaux sur la notion d’information de Claude Shannon, Ralph Hartley, Warren Weaver, Harold Lasswell, Werner Meyer-Eppler... ont permis de mieux comprendre les systèmes de structuration d’un message : ils ont entraîné de nombreuses recherches sur les moyens de traitement de l’information et donc sur un concept directement lié à l’informatique. Ils ont même rejoint la sphère paradigmatique des grandes théories qui furent utilisées pour expliquer l’univers. Le message, c’est-à-dire l’élément constitutif de toute communication, ne doit plus être considéré pour son contenant (le signal) mais pour son contenu (l’information). L’information est la mesure a priori de l’originalité d’une situation, du caractère probable ou improbable de tel ou tel événement.', 1, 0, 9, 1, 9, 1),
-(5, '2016-05-17 13:19:23', 'Re: Message 2', 'Les Aztèques, ou Mexicas (du nom de leur capitale, Mexico-Tenochtitlan), étaient un peuple amérindien du groupe nahua, c''est-à-dire de langue nahuatl.\r\n\r\nIls s''étaient définitivement sédentarisés dans le plateau central du Mexique, dans la vallée de Mexico, sur une île du lac Texcoco, vers le début du XIVe siècle. Au début du XVIe siècle, ils avaient atteint un niveau de civilisation parmi les plus avancés d''Amérique et dominaient, avec les autres membres de leur Triple alliance, le plus vaste empire de la Mésoamérique postclassique.\r\n\r\n\r\n>De		: Candidat 9\r\n>Le		: 17/05/2016 13:15 \r\n>Sujet	: Message 2\r\n>\r\n>Les premiers travaux sur la notion d’information de Claude Shannon, Ralph Hartley, Warren Weaver, Harold Lasswell, Werner Meyer-Eppler... ont permis de mieux comprendre les systèmes de structuration d’un message : ils ont entraîné de nombreuses recherches sur les moyens de traitement de l’information et donc sur un concept directement lié à l’informatique. Ils ont même rejoint la sphère paradigmatique des grandes théories qui furent utilisées pour expliquer l’univers. Le message, c’est-à-dire l’élément constitutif de toute communication, ne doit plus être considéré pour son contenant (le signal) mais pour son contenu (l’information). L’information est la mesure a priori de l’originalité d’une situation, du caractère probable ou improbable de tel ou tel événement.', 0, 0, 1, 9, 1, 9),
-(6, '2016-05-17 13:22:51', 'Cambodge', 'La capitale du royaume est Phnom Penh. Le Cambodge est l’État successeur de l’Empire khmer hindouiste et bouddhiste qui régna sur pratiquement toute la péninsule d’Indochine entre le XIe et le XIVe siècles. Le Cambodge a des frontières communes avec la Thaïlande à l''ouest et au nord-ouest, avec le Laos au nord-est et avec le Viêt Nam à l''est et au sud-est.', 0, 0, 11, 1, 11, 1);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -423,26 +385,7 @@ CREATE TABLE IF NOT EXISTS `occupation` (
   `CodeActivite` int(10) unsigned NOT NULL,
   `CodeCompagnie` int(10) unsigned NOT NULL,
   `CodeDispositif` int(10) unsigned NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `occupation`
---
-
-INSERT INTO `occupation` (`CodeOccupation`, `HeureDebut`, `HeureFin`, `CodeCandidat`, `CodeLieux`, `CodeActivite`, `CodeCompagnie`, `CodeDispositif`) VALUES
-(1, '2016-05-09 00:00:00', '2016-05-09 07:00:00', 1, 1, 10, 0, 0),
-(7, '2016-05-12 00:45:00', '2016-05-12 14:45:00', 1, 1, 10, 0, 0),
-(8, '2016-05-10 01:15:00', '2016-05-10 05:15:00', 1, 1, 10, 0, 0),
-(9, '2016-05-11 01:15:00', '2016-05-11 03:15:00', 1, 1, 10, 0, 0),
-(10, '2016-05-13 00:45:00', '2016-05-13 18:45:00', 1, 1, 10, 0, 0),
-(11, '2016-05-10 05:45:00', '2016-05-10 07:45:00', 1, 1, 10, 0, 0),
-(12, '2016-05-14 01:15:00', '2016-05-14 03:15:00', 1, 1, 10, 0, 0),
-(13, '2016-05-09 08:15:00', '2016-05-09 18:15:00', 1, 1, 213, 0, 0),
-(14, '2016-05-10 09:15:00', '2016-05-10 14:15:00', 1, 1, 510, 0, 0),
-(15, '2016-05-14 06:30:00', '2016-05-14 14:30:00', 1, 1, 261, 0, 0),
-(16, '2016-05-11 05:15:00', '2016-05-11 05:16:00', 1, 1, 715, 0, 0),
-(17, '2016-05-15 00:15:00', '2016-05-15 22:15:00', 1, 1, 330, 0, 0),
-(18, '2016-05-11 07:00:00', '2016-05-11 09:00:00', 1, 1, 10, 0, 0);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -456,7 +399,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `typeUser` varchar(25) NOT NULL,
   `password` varchar(60) NOT NULL,
   `email` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
@@ -465,12 +408,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`ID`, `login`, `typeUser`, `password`, `email`) VALUES
 (1, 'chercheur', 'chercheur', 'chercheur', 'chercheur@mail.com'),
 (2, 'admin', 'admin', 'admin', 'admin@mail.com'),
-(9, 'test', 'candidat', '$2y$10$WKx74nNCFSWYaEAdKvNqi.7ccJgsVoHWFiWcMfaEYzfvxgN.gGWnG', 'test2@test.com'),
-(10, 'toto', 'candidat', '$2y$10$LlXoTfeYdi1Zq24LhA3dau8PPXpNUsy1xyESVQj/B7RXAzqUhnQPS', 'toto@toto.com'),
-(11, 'boule', 'candidat', '$2y$10$70jLgRkEiNnFGZGPNo7f0OsvW1.nbgGNGo2OtBzIR.lwWSpSyuOVe', 'boule@boule.com'),
-(12, 'bill', 'candidat', '$2y$10$FcO8VR4QeUKeGX7NozVv6u21KrRoEjZgmYeMduAXLAhEVbFEroAYO', 'bill@bill.com'),
-(13, 'trouve', 'chercheur', '$2y$10$R6pvPppREa26Cq8/lbK5q.lKs0LPWrXmi/FMFrZuolnothfh9wQQS', 'trouve@test.com'),
-(14, 'admin2', 'admin', '$2y$10$JAGmVUjMotic8.HQp/2YKuwNt/TdjzPD3x4eP.Xb.kbFBUCAjJFbC', 'admin@test.com');
+(27, 'administrateur', 'admin', '$2y$10$ijX82bOlHHoqYhV0nv25Aet8r3sQlJmdwDsWkcRfBGKiD7aUmFv.6', 'admin@admin.com');
 
 --
 -- Indexes for dumped tables
@@ -581,17 +519,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `actualites`
 --
 ALTER TABLE `actualites`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `administrateur`
 --
 ALTER TABLE `administrateur`
-  MODIFY `CodeAdmin` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `CodeAdmin` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `candidat`
 --
 ALTER TABLE `candidat`
-  MODIFY `CodeCandidat` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `CodeCandidat` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `carnetdebord`
 --
@@ -606,22 +544,22 @@ ALTER TABLE `categorieactivite`
 -- AUTO_INCREMENT for table `chercheur`
 --
 ALTER TABLE `chercheur`
-  MODIFY `CodeChercheur` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `CodeChercheur` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `IDMessage` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `IDMessage` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `occupation`
 --
 ALTER TABLE `occupation`
-  MODIFY `CodeOccupation` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+  MODIFY `CodeOccupation` bigint(20) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+  MODIFY `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
 --
 -- Constraints for dumped tables
 --
