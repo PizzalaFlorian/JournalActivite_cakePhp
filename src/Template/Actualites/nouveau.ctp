@@ -16,7 +16,8 @@
         <legend><?= __('Création Actualité') ?></legend>
         <?php
             echo $this->Form->input('Sujet');
-            echo $this->Form->input('Contenu');
+	    echo $this->Form->label('Contenu');
+            echo $this->Form->input('Contenue', ['label' => false]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Envoyer')) ?>
