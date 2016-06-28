@@ -442,40 +442,40 @@ class ChercheurController extends AppController
         $chercheur = $this->Chercheur->get($id);
         $save_id = $chercheur->ID;
         $save_code = $chercheur->CodeChercheur;
-            
+        $cdb = TableRegistry::get('carnetdebord')
+                ->query();
+        $cbd
+            ->update()
+            ->set(['CodeChercheur' => 1])
+            ->where(['CodeChercheur' => $save_code])
+            ->execute();
+        $this->loadModel('Messages');
+        $messages = $this->Messages->find('all', ['conditions' => ['Messages.IDExpediteur' => $save_id]]);
+        foreach ($messages as $message) {
+            $message->IDExpediteur = 0;             // Le messages est considéré comme supprimer
+            $message->userExpediteur = 4;           // Categorie : Utilisateur Supprimer
+            if($message->IDRecepteur == 0 ){
+                $this->Messages->delete($message);  // Supprime le message si il faut le supprimer
+            }
+            else{
+                $this->Messages->save($message);    // mets a jours les messages
+            }
+        }
+        $messages = $this->Messages->find('all', ['conditions' => ['Messages.IDRecepteur' => $save_id]]);
+        foreach ($messages as $message) {
+            $message->IDRecepteur = 0;              // Le messages est considéré comme supprimer
+            $message->userRecepteur = 4;            // Categorie : Utilisateur Supprimer
+            if($message->IDExpediteur == 0 ){
+                $this->Messages->delete($message);  // Supprime le message si il faut le supprimer
+            }
+            else{
+                $this->Messages->save($message);    // mets a jours les messages
+            }
+        }   
+        
         if ($this->Chercheur->delete($chercheur)) {
             $this->Flash->success(__('Le chercheur as été supprimé.'));
-            $cdb = TableRegistry::get('carnetdebord')
-                    ->query();
-                $cbd
-                    ->update()
-                    ->set(['CodeChercheur' => 1])
-                    ->where(['CodeChercheur' => $save_code])
-                    ->execute();
-
-            $this->loadModel('Messages');
-            $messages = $this->Messages->find('all', ['conditions' => ['Messages.IDExpediteur' => $save_id]]);
-            foreach ($messages as $message) {
-                $message->IDExpediteur = 0;             // Le messages est considéré comme supprimer
-                $message->userExpediteur = 4;           // Categorie : Utilisateur Supprimer
-                if($message->IDRecepteur == 0 ){
-                    $this->Messages->delete($message);  // Supprime le message si il faut le supprimer
-                }
-                else{
-                    $this->Messages->save($message);    // mets a jours les messages
-                }
-            }
-            $messages = $this->Messages->find('all', ['conditions' => ['Messages.IDRecepteur' => $save_id]]);
-            foreach ($messages as $message) {
-                $message->IDRecepteur = 0;              // Le messages est considéré comme supprimer
-                $message->userRecepteur = 4;            // Categorie : Utilisateur Supprimer
-                if($message->IDExpediteur == 0 ){
-                    $this->Messages->delete($message);  // Supprime le message si il faut le supprimer
-                }
-                else{
-                    $this->Messages->save($message);    // mets a jours les messages
-                }
-            }
+            
             $user = TableRegistry::get('users')
                 ->query();
             $user
