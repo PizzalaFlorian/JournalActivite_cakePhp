@@ -213,7 +213,7 @@ class UsersController extends AppController
             if(isset($chercheur)){
                 $cdb = TableRegistry::get('carnetdebord')
                     ->query();
-                $cbd
+                $cdb
                     ->update()
                     ->set(['CodeChercheur' => 1])
                     ->where(['CodeChercheur' => $chercheur['CodeChercheur']])
