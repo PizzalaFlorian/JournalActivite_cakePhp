@@ -14,6 +14,6 @@
             echo $this->Form->input('message',['type'=>'textarea','required'=>true,'default'=>$file]);
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Envoyer')) ?>
     <?= $this->Form->end() ?>
 </div>

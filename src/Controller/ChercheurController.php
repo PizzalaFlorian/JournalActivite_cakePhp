@@ -444,7 +444,7 @@ class ChercheurController extends AppController
         $save_code = $chercheur->CodeChercheur;
         $cdb = TableRegistry::get('carnetdebord')
                 ->query();
-        $cbd
+        $cdb
             ->update()
             ->set(['CodeChercheur' => 1])
             ->where(['CodeChercheur' => $save_code])

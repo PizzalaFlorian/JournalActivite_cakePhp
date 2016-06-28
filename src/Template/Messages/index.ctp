@@ -5,7 +5,7 @@
 //    echo $this->Html->css('responsive');
 ?>
 <div id="content">
-<nav id="messagerieMenu" class="large-10 medium-10 columns">
+<nav id="messagerieMenu" class="large-12 medium-11 columns">
     <div class="center">
         <?php 
             if($monController == 'candidat'){
@@ -13,12 +13,14 @@
             }
             echo $this->Html->link(__('Messages envoyés'), ['action' => 'envoie'],array('class' => 'button'));
         ?>
-        <?php 
-        echo $this->Html->link(
-                'Contacter un administrateur', 
-                ['controller' => 'contacts', 'action' => 'contact'],
-                ['class'=>'button']
-            );
+        <?php
+            if($_SESSION['Auth']['User']['typeUser'] == 'candidat'){
+                echo $this->Html->link(
+                        'Contacter un administrateur', 
+                        ['controller' => 'contacts', 'action' => 'contact'],
+                        ['class'=>'button']
+                    );
+            }
         ?>
 
     </div>
