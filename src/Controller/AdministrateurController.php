@@ -137,7 +137,7 @@ class AdministrateurController extends AppController
 
          $this->viewBuilder()->layout('adminLayout');
 
-        $char = 'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMOPQRSTUVWXYZ';
+            $char = 'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMOPQRSTUVWXYZ';
             $password = str_shuffle($char);
             $password = substr ( $password , 0, 7 );
 
@@ -158,10 +158,12 @@ class AdministrateurController extends AppController
             
 
         $user = TableRegistry::get('users')->newEntity();
-        
+
         if($this->request->is('post')){
             $user = TableRegistry::get('users')->patchEntity($user, $this->request->data);
             if (TableRegistry::get('users')->save($user)) {
+                debug($login);
+                debug($password);
                 $this->Flash->success(__('l\'utilisateur a été invité'));
                 $adresseServer = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].str_replace('webroot/index.php','users/login',$_SERVER['PHP_SELF']);
                 $messageChercheur = file_get_contents(ROOT.'/webroot/files/email_auto_chercheur.ctp');
@@ -169,7 +171,7 @@ class AdministrateurController extends AppController
                 $email
                     ->to($this->request->data['email'])
                     ->subject("Création de votre compte")
-                    ->send($messageChercheur."\n--------------------------------------------------------------------------------\nVoici vos identifiant de votre compte candidat : \nLogin : ".$login."\nMot de passe : ".$password."\nveuillez vous connecter à l'adresse suivante :".$adresseServer."\n--------------------------------------------------------------------------------\n");
+                    ->send($messageChercheur."\n--------------------------------------------------------------------------------\nVoici vos identifiant de votre compte chercheur : \nLogin : ".$this->request->data['login']."\nMot de passe : ".$this->request->data['password']."\nveuillez vous connecter à l'adresse suivante :".$adresseServer."\n--------------------------------------------------------------------------------\n");
                         
                         
                 return $this->redirect(['controller'=>'users','action' => 'index']);
