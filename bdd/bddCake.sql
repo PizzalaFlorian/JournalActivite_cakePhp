@@ -67,7 +67,7 @@ INSERT INTO `activite` (`CodeActivite`, `NomActivite`, `DescriptifActivite`, `Co
 (226, 'Autre type d’activités de TP/TD', '', 3),
 (231, 'Révisions (écriture de fiches, relectures…)', '', 4),
 (232, 'Documentation (lecture, recherche documentaire, fiche de lecture…)', '', 4),
-(233, 'Préparation (exposé, TD, exercices…)', '', 4),
+(233, 'Préparation (exposés, TD, exercices…)', '', 4),
 (234, 'Reprise de cours (suite à une absence, remise en forme…) ', '', 4),
 (235, 'Recherche de compléments au cours', '', 4),
 (236, 'Planification du travail académique', '', 4),
@@ -96,9 +96,9 @@ INSERT INTO `activite` (`CodeActivite`, `NomActivite`, `DescriptifActivite`, `Co
 (521, 'Courses, aides à domicile… ', '', 11),
 (522, 'Garde d’enfants ', '', 11),
 (523, 'Autre type d’aide aux personnes', '', 11),
-(530, 'Activités religieuses ', '', 11),
-(540, 'Activités politiques (meeting…)', '', 11),
-(550, 'Autres type d’activités associatives, politiques et bénévoles', '', 11),
+(530, 'Activités religieuses ', '', 12),
+(540, 'Activités politiques (meeting…)', '', 12),
+(550, 'Autres type d’activités associatives, politiques et bénévoles', '', 12),
 (610, 'Vie sociale', '', 12),
 (620, 'Activités en famille', '', 12),
 (630, 'Rencontres avec des amis (visite ou réception)', '', 12),
@@ -127,7 +127,7 @@ INSERT INTO `activite` (`CodeActivite`, `NomActivite`, `DescriptifActivite`, `Co
 (920, 'TV et vidéos', '', 15),
 (930, 'Radio', '', 15),
 (940, 'Consultations médias sur supports électroniques (tablettes, ordinateurs…)', '', 15),
-(950, 'écoute de musique (autre que radio)', '', 15),
+(950, 'Ecoute de musique (autre que radio)', '', 15),
 (999, 'Autres temps, temps non spécifié', '', 18);
 
 -- --------------------------------------------------------
@@ -211,7 +211,7 @@ CREATE TABLE IF NOT EXISTS `categorieactivite` (
 --
 
 INSERT INTO `categorieactivite` (`CodeCategorieActivite`, `NomCategorie`) VALUES
-(1, 'Soins personnels \r\nActivités principales et secondaires'),
+(1, 'Soins personnel \r\nActivités principales et secondaires'),
 (2, 'Emplois salariés '),
 (3, 'Études et travail académique - \r\nCours magistraux '),
 (4, 'Études et travail académique - Travail académique personnel '),
@@ -223,7 +223,7 @@ INSERT INTO `categorieactivite` (`CodeCategorieActivite`, `NomCategorie`) VALUES
 (10, 'Activités associatives, politiques et bénévoles '),
 (11, 'Aides aux personnes '),
 (12, 'Vie sociale et divertissements'),
-(13, 'Culture et divertissement '),
+(13, 'Culture et divertissements '),
 (14, 'Activités sportives \r\nExercices physiques '),
 (15, 'Loisirs '),
 (16, 'Jeux'),
@@ -340,7 +340,7 @@ INSERT INTO `lieu` (`CodeLieux`, `NomLieux`, `CodeCategorieLieux`) VALUES
 (11, 'Terrain et équipement de sport', 1),
 (12, 'Lieu de divertissement (cinéma, théâtre, salle de concert) ', 1),
 (13, 'Commerces bâtiments publiques (Mairie, administrations, écoles,...) ', 1),
-(14, 'Voie publique (rue, route, autoroutes)', 1),
+(14, 'Voie publique (rue, route, autoroute)', 1),
 (15, 'Autre lieu ', 1),
 (16, 'Voiture personnelle ', 2),
 (17, 'Covoiturage', 2),
